@@ -6,7 +6,7 @@
     <description>Recent content in Java on vikaspogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 14 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 14 May 2019 14:36:27 -0500</lastBuildDate>
     
 	<atom:link href="https://vikaspogu.dev/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Debugging a Java application in OpenShift</title>
       <link>https://vikaspogu.dev/posts/2019-05-14-debug-java-container/</link>
-      <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 14 May 2019 14:36:27 -0500</pubDate>
       
       <guid>https://vikaspogu.dev/posts/2019-05-14-debug-java-container/</guid>
       <description>This post will discuss debugging a JAVA application running inside a container. First, you must set the JAVA_DEBUG environment variable inside the container to true and configure port forwarding so that you can connect to your application from a remote debugger.
