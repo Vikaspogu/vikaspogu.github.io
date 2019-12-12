@@ -6,99 +6,164 @@
     <description>Recent content in Posts on vikaspogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 20 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 02 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://vikaspogu.dev/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Render LaTeX using KaTeX</title>
-      <link>https://vikaspogu.dev/posts/render-latex-using-katex/</link>
-      <pubDate>Wed, 20 Mar 2019 00:00:00 +0000</pubDate>
+      <title>Create and add NFS storage to RHV</title>
+      <link>https://vikaspogu.dev/posts/2019-11-02-create-nfs-server-rhel-rhv/</link>
+      <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://vikaspogu.dev/posts/render-latex-using-katex/</guid>
-      <description>Enable katex by adding katex = &amp;quot;true&amp;quot; to the front matter
-+++ katex = &amp;#34;true&amp;#34; +++ If you want to enable KaTeX or MathJax for all post, add katex = ture or math = true in config.toml in [params] section.
-It&#39;s almost a dropin alternative to the mathjax solution,you should just choose one of them.
-Inline math looks like this
-This is text with inline math $\sum_{n=1}^{\infty}2^{-n}=1$ This is text with inline math $\sum_{n=1}^{\infty} 2^{-n} = 1$</description>
+      <guid>https://vikaspogu.dev/posts/2019-11-02-create-nfs-server-rhel-rhv/</guid>
+      <description>Set up NFS shares that will serve as storage domains on a Red Hat Enterprise Linux server.
+Add firewall rule are to rhel server
+firewall-cmd --permanent --add-service nfs firewall-cmd --permanent --add-service mountd firewall-cmd --reload Create and add group kvm; set the ownership of your exported directories to 36:36, which gives vdsm:kvm ownership; change the mode of the directories so that read and write access is granted to the owner
+groupadd kvm -g 36 useradd vdsm -u 36 -g 36 mkdir -pv /home/rhv-data-vol chown -R 36:36 /home/rhv-data-vol chmod 0755 /home/rhv-data-vol Add newly created directory to /etc/exports file which controls file systems are exported to remote hosts and specifies options.</description>
     </item>
     
     <item>
-      <title>Hugo coder wiki</title>
-      <link>https://vikaspogu.dev/posts/hugo-coder-wiki/</link>
-      <pubDate>Thu, 17 Jan 2019 00:00:00 +0000</pubDate>
+      <title>Configuring couchbase SSL for dynamic certificates in Openshift</title>
+      <link>https://vikaspogu.dev/posts/2019-08-28-couchbase-ssl-openshift/</link>
+      <pubDate>Wed, 28 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://vikaspogu.dev/posts/hugo-coder-wiki/</guid>
-      <description></description>
+      <guid>https://vikaspogu.dev/posts/2019-08-28-couchbase-ssl-openshift/</guid>
+      <description>If you have followed dynamic creation of java keystores in openshift post and wondered how to use similar concepts for couchbase database and a java application. This post will help you.
+Couchbase setup This is the couchbase documentation for configuring server side certificates, we are interested in last few steps since openshift will generate key and cert by adding annotation to the couchbase service.
+Note: By adding this annotation you can dynamically create certificates service.</description>
     </item>
     
     <item>
-      <title>Dummy</title>
-      <link>https://vikaspogu.dev/posts/dummy/</link>
-      <pubDate>Mon, 31 Dec 2018 00:00:00 +0000</pubDate>
+      <title>TektonCD on Openshift</title>
+      <link>https://vikaspogu.dev/posts/2019-08-09-intro-tektoncd-ocp/</link>
+      <pubDate>Fri, 09 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://vikaspogu.dev/posts/dummy/</guid>
-      <description>Nada para ver aqui!</description>
+      <guid>https://vikaspogu.dev/posts/2019-08-09-intro-tektoncd-ocp/</guid>
+      <description>Recently I came across tektoncd project, The Tekton Pipelines project provides Kubernetes-style resources for declaring CI/CD-style pipelines caught my attention and started playing with it.
+Basic Concepts In order to create a tekton pipeline, one does the following:
+ Create custom or install existing reusable Tasks Create a Pipeline and PipelineResources to define your application&#39;s delivery pipeline Create a PipelineRun to instantiate and invoke the pipeline  Installing Tekton on Openshift Login as a user with cluster-admin privileges</description>
     </item>
     
     <item>
-      <title>Theme Demo</title>
-      <link>https://vikaspogu.dev/posts/theme-demo/</link>
-      <pubDate>Sun, 08 Jan 2017 00:00:00 +0000</pubDate>
+      <title>Go JWT Authentication with keycloak</title>
+      <link>https://vikaspogu.dev/posts/2019-07-27-sso-jwt-golang/</link>
+      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://vikaspogu.dev/posts/theme-demo/</guid>
-      <description>Style Demo h1 Heading h2 Heading h3 Heading h4 Heading h5 Heading h6 Heading  This is bold text
-This is bold text
-This is italic text
-This is italic text
-Deleted text
-This is text with inline math $\sum_{n=1}^{\infty} 2^{-n} = 1$ and with math blocks:
-$$ \sum_{n=1}^{\infty} 2^{-n} = 1 $$
-   Heading Another heading     text text   text text   text text     Block quotes are written like so.</description>
+      <guid>https://vikaspogu.dev/posts/2019-07-27-sso-jwt-golang/</guid>
+      <description>Recently I was working on a React project with Go backend using Gin web framework. Keycloak was the authentication mechanism for the frontend; I also wanted to secure the backend using JSON Web Tokens which was provided by Keycloak on every login. Setup for jwt verification in Go was easy.
+First, copy RS256 algorithm public key value from Keycloak
+Send the token as Authorization header
+axios .get(BACKEND_URL.concat(&amp;#34;sampleendpoint&amp;#34;), { headers: { Authorization: this.</description>
     </item>
     
     <item>
-      <title>Creating a New Theme</title>
-      <link>https://vikaspogu.dev/posts/creating-a-new-theme/</link>
-      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
+      <title>React App with RedHat SSO or keycloak</title>
+      <link>https://vikaspogu.dev/posts/2019-07-25-redhat-sso-react/</link>
+      <pubDate>Thu, 25 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://vikaspogu.dev/posts/creating-a-new-theme/</guid>
-      <description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&#39;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&#39;t cover using CSS to style your theme.
-We&#39;ll start with creating a new site with a very basic template.</description>
+      <guid>https://vikaspogu.dev/posts/2019-07-25-redhat-sso-react/</guid>
+      <description>In this post, I will show you how to secure a React app using RedHat SSO (upstream keycloak). In this case, openid-connect is my identity provider.
+Install the offical keycloak js adapter
+$ npm i keycloak-js --save Setup the client with the host and port; in my case it&#39;s localhost:9000
+In App.js add in a JavaScript object with the required configuration; you will find these configurations under Clients-&amp;gt;Installation
+//keycloak init options const initOptions = { url: &amp;#34;https://localhost:8080/auth&amp;#34;, realm: &amp;#34;test&amp;#34;, clientId: &amp;#34;react-app&amp;#34;, onLoad: &amp;#34;login-required&amp;#34; }; By default, to authenticate you need to call the login function.</description>
     </item>
     
     <item>
-      <title>(Hu)go Template Primer</title>
-      <link>https://vikaspogu.dev/posts/hugo-template-primer/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      <title>Heketi JWT token expired error</title>
+      <link>https://vikaspogu.dev/posts/2019-07-16-heketi-jwt-error/</link>
+      <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://vikaspogu.dev/posts/hugo-template-primer/</guid>
-      <description>Hugo uses the excellent go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in go templates.
-This document is a brief primer on using go templates.</description>
+      <guid>https://vikaspogu.dev/posts/2019-07-16-heketi-jwt-error/</guid>
+      <description>Recently I encountered an JWT token expired error on heketi pod in Openshift cluster.
+[jwt] ERROR 2019/07/16 19:17:14 heketi/middleware/jwt.go:66:middleware.(*HeketiJwtClaims).Valid: exp validation failed: Token is expired by 1h48m59s After a lot of google search, I synchronized clocks across the pod running heketi and the masters, which solved the issue
+$ ntpdate -q 0.rhel.pool.ntp.org; systemctl restart ntpd </description>
     </item>
     
     <item>
-      <title>Getting Started with Hugo</title>
-      <link>https://vikaspogu.dev/posts/hugoisforlovers/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      <title>Patternfly setup in React Application</title>
+      <link>https://vikaspogu.dev/posts/2019-07-01-patternfly-setup-react/</link>
+      <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://vikaspogu.dev/posts/hugoisforlovers/</guid>
-      <description>Step 1. Install Hugo Goto hugo releases and download the appropriate version for your os and architecture.
-Save it somewhere specific as we will be using it in the next step.
-More complete instructions are available at installing hugo
-Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.
-Follow the following steps:
- Clone the hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313  Corresponding pseudo commands:</description>
+      <guid>https://vikaspogu.dev/posts/2019-07-01-patternfly-setup-react/</guid>
+      <description>To order to integrate Patternfly framework into a ReactJS application, create a new project or use an existing one
+$ npx create-react-app patternfly-setup-react Install patternfly dependencies react-core, react-table and patternfly
+$ npm i --save @patternfly/patternfly \  @patternfly/react-core @patternfly/react-table Note: Import base.css and patternfly.css in your project, or some components may diverge in appearance
+//This imports are must to render css import &amp;#34;@patternfly/react-core/dist/styles/base.css&amp;#34;; import &amp;#34;@patternfly/patternfly/patternfly.css&amp;#34;; To make sure everything is working correctly, update App.</description>
     </item>
     
     <item>
-      <title>Migrate to Hugo from Jekyll</title>
-      <link>https://vikaspogu.dev/posts/migrate-from-jekyll/</link>
-      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
+      <title>Authenticate a Node application with LDAP</title>
+      <link>https://vikaspogu.dev/posts/2019-05-15-node-ldap-auth/</link>
+      <pubDate>Wed, 15 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://vikaspogu.dev/posts/migrate-from-jekyll/</guid>
-      <description>Table of Contents  Move static content to static Create your Hugo configuration file Set your configuration publish folder to site Convert Jekyll templates to Hugo templates Convert Jekyll plugins to Hugo shortcodes  Implementation Usage   Finishing Touches  Fix Content Clean Up   A practical example in a diff  Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output.</description>
+      <guid>https://vikaspogu.dev/posts/2019-05-15-node-ldap-auth/</guid>
+      <description>This post demonstrates how to authenticate a user against LDAP.
+Let&#39;s start by installing basic-auth and ldapauth-fork packages
+npm install ldapauth-fork npm install basic-auth Steps for implementation;
+ Add packages Create a ldap variable with authentication configuration Basic auth should prompt for you username and password. Once user is found, verify the given password by trying to bind the user client with the found LDAP user object and given password.  const auth = require(&amp;#34;basic-auth&amp;#34;); var LdapAuth = require(&amp;#34;ldapauth-fork&amp;#34;); var ldap = new LdapAuth({ url: &amp;#34;ldap://ldap-url:389&amp;#34;, bindDN: &amp;#34;uid=rc,ou=AppAccounts,ou=People,ou=Entsys,dc=example.</description>
+    </item>
+    
+    <item>
+      <title>Deleting a OpenShift project stuck in terminating state</title>
+      <link>https://vikaspogu.dev/posts/2019-05-15-project-terminating/</link>
+      <pubDate>Wed, 15 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vikaspogu.dev/posts/2019-05-15-project-terminating/</guid>
+      <description>Recently I was faced an issue where one of my project was stuck in terminating state for days. The workaround below fixed the issue.
+Export OpenShift project as an JSON Object
+oc get project delete-me -o json &amp;gt; ns-without-finalizers.json Replace below from
+spec: finalizers: - kubernetes to
+spec: finalizers: [] On one of the master node, execute these commands.
+$ kubectl proxy &amp;amp; PID=$! $ curl -X PUT http://localhost:8001/api/v1/namespaces/delete-me/finalize \ -H &amp;#34;Content-Type: application/json&amp;#34; --data-binary @ns-without-finalizers.</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot metrics with Prometheus and Grafana in OpenShift</title>
+      <link>https://vikaspogu.dev/posts/2019-05-15-springboot-metrics-grafana/</link>
+      <pubDate>Wed, 15 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vikaspogu.dev/posts/2019-05-15-springboot-metrics-grafana/</guid>
+      <description>In this post I&#39;ll discuss how to monitor spring boot application metrics using Prometheus and Grafana.
+Prometheus Prometheus is a monitoring system which collects metrics from configured targets at given intervals.
+Grafana Grafana is an open source metric analytics &amp;amp; visualization tool.
+Micrometer Micrometer is a metrics instrumentation library for JVM-based applications.
+Spring Boot Actuator Spring Boot Actuator helps you monitor and manage your application when it’s pushed to production. You can choose to manage and monitor your application using HTTP or JMX endpoints.</description>
+    </item>
+    
+    <item>
+      <title>Debugging a .NET Core application running on OpenShift</title>
+      <link>https://vikaspogu.dev/posts/2019-05-14-debug-netcore-openshift/</link>
+      <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vikaspogu.dev/posts/2019-05-14-debug-netcore-openshift/</guid>
+      <description>This post is about how to remote debug a ASP.NET Core application on OpenShift using Visual Studio Code. You can use any Microsoft proprietary debugger engine vsdbg with Visual Studio Code.
+First, list the available .Net application pods using oc command.
+$ oc get pod NAME READY STATUS RESTARTS AGE MY_APP_NAME-3-1xrsp 0/1 Running 0 6s $ oc rsh MY_APP_NAME-3-1xrsp sh-4.2$ curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l /opt/app-root/vsdbg -r linux-x64 Note: If you&#39;re container is running behind a corporate proxy and cannot access internet, you&#39;ll have to build base dotnet image with the debugger engine vsdbg installed in it.</description>
+    </item>
+    
+    <item>
+      <title>Debugging a Java application in OpenShift</title>
+      <link>https://vikaspogu.dev/posts/2019-05-14-debug-java-container/</link>
+      <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vikaspogu.dev/posts/2019-05-14-debug-java-container/</guid>
+      <description>This post will discuss debugging a JAVA application running inside a container. First, you must set the JAVA_DEBUG environment variable inside the container to true and configure port forwarding so that you can connect to your application from a remote debugger.
+Note: If you are using tomcat image replace JAVA_DEBUG environment variable to DEBUG
+Using the oc command, list the available deployment configurations:
+$ oc get dc Set the JAVA_DEBUG environment variable in the deployment configuration of your application to true, which configures the JVM to open the port number 5005 for debugging.</description>
+    </item>
+    
+    <item>
+      <title>Profiling a application in OpenShift container</title>
+      <link>https://vikaspogu.dev/posts/2019-05-14-javaprofiler-openshift/</link>
+      <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vikaspogu.dev/posts/2019-05-14-javaprofiler-openshift/</guid>
+      <description>Sometimes writing code that just runs is not enough. We might want to know what goes on internally such as how memory is allocated, consequences of using one coding approach over another, implications of concurrent executions, areas to improve performance, etc. We can use profilers for this.
+In this post I&#39;ll discuss how to use YourKit-JavaProfiler inside a container.
+Since my sample application is built using OpenShift S2I process and pushed into openshift internal registry, I&#39;ll have to pull the image locally.</description>
     </item>
     
   </channel>
