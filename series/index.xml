@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Series on vikaspogu</title>
-    <link>http://vikaspogu.github.io/series/</link>
+    <link>http://vikaspogu.dev/series/</link>
     <description>Recent content in Series on vikaspogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 20 Mar 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://vikaspogu.github.io/series/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://vikaspogu.dev/series/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hugo</title>
-      <link>http://vikaspogu.github.io/series/hugo/</link>
+      <link>http://vikaspogu.dev/series/hugo/</link>
       <pubDate>Wed, 20 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://vikaspogu.github.io/series/hugo/</guid>
+      <guid>http://vikaspogu.dev/series/hugo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Theme</title>
-      <link>http://vikaspogu.github.io/series/theme/</link>
+      <link>http://vikaspogu.dev/series/theme/</link>
       <pubDate>Wed, 20 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://vikaspogu.github.io/series/theme/</guid>
+      <guid>http://vikaspogu.dev/series/theme/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Getting Started</title>
-      <link>http://vikaspogu.github.io/series/getting-started/</link>
+      <link>http://vikaspogu.dev/series/getting-started/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://vikaspogu.github.io/series/getting-started/</guid>
+      <guid>http://vikaspogu.dev/series/getting-started/</guid>
       <description></description>
     </item>
     
