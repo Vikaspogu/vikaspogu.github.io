@@ -3,6 +3,41 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://vikaspogu.dev/posts/golang-basicauth-gin/</loc>
+    <lastmod>2019-12-16T15:29:34-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/basicauth/</loc>
+    <lastmod>2019-12-16T15:29:34-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/gin/</loc>
+    <lastmod>2019-12-16T15:29:34-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/golang/</loc>
+    <lastmod>2019-12-16T15:29:34-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/posts/</loc>
+    <lastmod>2019-12-16T15:29:34-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/</loc>
+    <lastmod>2019-12-16T15:29:34-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/</loc>
+    <lastmod>2019-12-16T15:29:34-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://vikaspogu.dev/posts/2019-11-02-create-nfs-server-rhel-rhv/</loc>
     <lastmod>2019-11-02T00:00:00+00:00</lastmod>
   </url>
@@ -13,22 +48,7 @@
   </url>
   
   <url>
-    <loc>https://vikaspogu.dev/posts/</loc>
-    <lastmod>2019-11-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://vikaspogu.dev/tags/rhv/</loc>
-    <lastmod>2019-11-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/tags/</loc>
-    <lastmod>2019-11-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/</loc>
     <lastmod>2019-11-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -64,11 +84,6 @@
   
   <url>
     <loc>https://vikaspogu.dev/posts/2019-07-27-sso-jwt-golang/</loc>
-    <lastmod>2019-07-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/tags/golang/</loc>
     <lastmod>2019-07-27T00:00:00+00:00</lastmod>
   </url>
   
