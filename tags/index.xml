@@ -6,10 +6,19 @@
     <description>Recent content in Tags on vikaspogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Dec 2019 15:29:34 -0500</lastBuildDate>
+    <lastBuildDate>Wed, 18 Dec 2019 12:10:07 -0500</lastBuildDate>
     
 	<atom:link href="https://vikaspogu.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>OpenShift</title>
+      <link>https://vikaspogu.dev/tags/openshift/</link>
+      <pubDate>Wed, 18 Dec 2019 12:10:07 -0500</pubDate>
+      
+      <guid>https://vikaspogu.dev/tags/openshift/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>basicauth</title>
@@ -62,15 +71,6 @@
       <pubDate>Wed, 28 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/tags/couchbase/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>OpenShift</title>
-      <link>https://vikaspogu.dev/tags/openshift/</link>
-      <pubDate>Wed, 28 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://vikaspogu.dev/tags/openshift/</guid>
       <description></description>
     </item>
     

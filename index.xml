@@ -6,10 +6,21 @@
     <description>Recent content on vikaspogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Dec 2019 15:29:34 -0500</lastBuildDate>
+    <lastBuildDate>Wed, 18 Dec 2019 12:10:07 -0500</lastBuildDate>
     
 	<atom:link href="https://vikaspogu.dev/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Permission denied pushing to Openshift Registry</title>
+      <link>https://vikaspogu.dev/posts/ocp-docker-registry-500-err/</link>
+      <pubDate>Wed, 18 Dec 2019 12:10:07 -0500</pubDate>
+      
+      <guid>https://vikaspogu.dev/posts/ocp-docker-registry-500-err/</guid>
+      <description>Recently, i ran into a issue where pushing images to the docker registry after a build fails
+Pushing image docker-registry.default.svc:5000/simple-go-build/simple-go:latest ... Registry server Address: Registry server User Name: serviceaccount Registry server Email: serviceaccount@example.org Registry server Password: &amp;lt;&amp;lt;non-empty&amp;gt;&amp;gt; error: build error: Failed to push image: received unexpected HTTP status: 500 Internal Server Error Registry pods logs show permission denied
+err.code=UNKNOWN err.detail=&amp;#34;filesystem: mkdir /registry/docker/registry/v2/repositories/simple-go-build/simple-go/_uploads/c34415b4-c6d8-42ba-9854-aee449efd984: permission denied&amp;#34; One of the Red Hat solutions article suggested to verify the file ownership of the files, directories in the volume and compare it to the uid of the registry</description>
+    </item>
     
     <item>
       <title>Basic Authentication in Go with Gin</title>
