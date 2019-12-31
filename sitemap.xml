@@ -3,27 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://vikaspogu.dev/tags/k3s/</loc>
+    <lastmod>2019-12-31T13:47:10-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/posts/kubernetes-home-cluster-traefik/</loc>
+    <lastmod>2019-12-31T13:47:10-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/posts/</loc>
+    <lastmod>2019-12-31T13:47:10-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/raspberry-pi/</loc>
+    <lastmod>2019-12-31T13:47:10-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/</loc>
+    <lastmod>2019-12-31T13:47:10-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/traefik/</loc>
+    <lastmod>2019-12-31T13:47:10-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/</loc>
+    <lastmod>2019-12-31T13:47:10-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://vikaspogu.dev/tags/openshift/</loc>
     <lastmod>2019-12-18T12:10:07-05:00</lastmod>
   </url>
   
   <url>
     <loc>https://vikaspogu.dev/posts/ocp-docker-registry-500-err/</loc>
-    <lastmod>2019-12-18T12:10:07-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/posts/</loc>
-    <lastmod>2019-12-18T12:10:07-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/tags/</loc>
-    <lastmod>2019-12-18T12:10:07-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/</loc>
     <lastmod>2019-12-18T12:10:07-05:00</lastmod>
   </url>
   
