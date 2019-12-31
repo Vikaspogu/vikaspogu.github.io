@@ -127,7 +127,7 @@
       </header>
 
       <div>
-        <p>In this post, I’ll share my home setup for <a href="https://k3s.io/">Rancher's k3s</a> kubernetes cluster</p>
+        <p>In this post, I’ll share my home setup for <a href="https://k3s.io/">Rancher's k3s</a> kubernetes cluster.</p>
 <p>Requirements:</p>
 <ul>
 <li>I wanted the web interface to be accessible outside of my home so I could check and manage devices while away</li>
@@ -140,7 +140,7 @@
 <li>Deploying Traefik as a Kubernetes Ingress Controller and configuring it to manage SSL with Let’s Encrypt</li>
 </ul>
 <h3 id="setting-up-a-pi-kubernetes-cluster">Setting up a Pi Kubernetes Cluster</h3>
-<p>I followed an excellent guide written by Alex Ellis <a href="https://blog.alexellis.io/test-drive-k3s-on-raspberry-pi/">here</a> to initialize a cluster on the master and then join a single node</p>
+<p>I followed an excellent guide written by Alex Ellis <a href="https://blog.alexellis.io/test-drive-k3s-on-raspberry-pi/">here</a> to initialize a cluster on the master and then join a single node.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ k3s kubectl get nodes
 NAME        STATUS   ROLES    AGE    VERSION
 pi-node1    Ready    &lt;none&gt;   3d     v1.16.3-k3s.2
@@ -150,10 +150,10 @@ pi-master   Ready    master   3d     v1.16.3-k3s.2
 <li>Add a DNS entry for the wildcard domain <code>*.home.vikaspogu.com</code> to point at the dynamic IP</li>
 <li>Open ports <code>80</code> and <code>443</code> on router’s firewall</li>
 </ul>
-<p>At this point a short <code>dig</code> on domain should return your dynamic IP</p>
+<p>At this point a short <code>dig</code> on domain should return your dynamic IP.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ dig +short test.home.vikaspogu.com
 X.X.X.X
-</code></pre></div><p>I found this script online which will update DNS record if Dynamic IP is changed</p>
+</code></pre></div><p>I found this script online which will update DNS record if Dynamic IP is changed.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#0f0;font-weight:bold">#!/bin/sh
 </span><span style="color:#0f0;font-weight:bold"></span>zone=example.com
 <span style="color:#007f7f"># dnsrecord is the A record which will be updated</span>
@@ -186,11 +186,11 @@ curl -s -X PUT <span style="color:#0ff;font-weight:bold">&#34;</span><span style
 </span><span style="color:#0ff;font-weight:bold"></span>  -H <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">X-Auth-Key: </span>$API_KEY<span style="color:#0ff;font-weight:bold">&#34;</span> <span style="color:#0ff;font-weight:bold">\
 </span><span style="color:#0ff;font-weight:bold"></span>  -H <span style="color:#0ff;font-weight:bold">&#34;Content-Type: application/json&#34;</span> <span style="color:#0ff;font-weight:bold">\
 </span><span style="color:#0ff;font-weight:bold"></span>  --data <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">{\&#34;type\&#34;:\&#34;A\&#34;,\&#34;name\&#34;:\&#34;</span>$dnsrecord<span style="color:#0ff;font-weight:bold">\&#34;,\&#34;content\&#34;:\&#34;</span>$ip<span style="color:#0ff;font-weight:bold">\&#34;,\&#34;ttl\&#34;:1,\&#34;proxied\&#34;:false}</span><span style="color:#0ff;font-weight:bold">&#34;</span> | jq
-</code></pre></div><p>Create a configmap from script, secret with cloudflare <code>EMAIL</code> and <code>GLOBAL_API_TOKEN</code></p>
+</code></pre></div><p>Create a configmap from script, secret with cloudflare <code>EMAIL</code> and <code>GLOBAL_API_TOKEN</code>.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ k3s create configmap update-script --from-file=cloudfare-dns-update.sh
 $ k3s kubectl create secret generic cloudflare --from-literal=email=me@cloudflare.com <span style="color:#0ff;font-weight:bold">\
 </span><span style="color:#0ff;font-weight:bold"></span>--from-literal=api_key=1234567890abcdef1234567890abcdef
-</code></pre></div><p>Now create a kubernetes cronjob to update DNS record to right address</p>
+</code></pre></div><p>Now create a kubernetes cronjob to update DNS record to right address.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
@@ -228,12 +228,12 @@ spec:
                 name: update-script
                 defaultMode: <span style="color:#ff0;font-weight:bold">0744</span>
 </code></pre></div><h3 id="traefik-and-lets-encrypt">Traefik and Let’s Encrypt</h3>
-<p>With a functioning cluster and the networking setup complete, the next task is to deploy a reverse proxy to manage the application routing</p>
-<p>In Kubernetes we can deploy an Ingress Controller to achieve this. An Ingress Controller is an implementation of a reverse proxy which listens for changes to KubernetesIngress resources and updates it’s configuration accordingly</p>
-<p>Traefik provides an detailed <a href="https://docs.traefik.io/v1.7/user-guide/kubernetes/">instructions</a> on kubernetes implementation but I customised it slightly to get things working with my setup</p>
-<p>First create RoleBinding's</p>
+<p>With a functioning cluster and the networking setup complete, the next task is to deploy a reverse proxy to manage the application routing.</p>
+<p>In Kubernetes we can deploy an Ingress Controller to achieve this. An Ingress Controller is an implementation of a reverse proxy which listens for changes to KubernetesIngress resources and updates it’s configuration accordingly.</p>
+<p>Traefik provides an detailed <a href="https://docs.traefik.io/v1.7/user-guide/kubernetes/">instructions</a> on kubernetes implementation but I customised it slightly to get things working with my setup.</p>
+<p>First create RoleBinding's.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ k3s kubectl apply -f https://raw.githubusercontent.com/containous/traefik/v1.7/examples/k8s/traefik-rbac.yaml
-</code></pre></div><p>Configure Let’s Encrypt to support HTTPS endpoint and automatically fetch certificates. I used Cloudflare as the DNS provider which configures Traefik to use DNS records for domain validation</p>
+</code></pre></div><p>Configure Let’s Encrypt to support HTTPS endpoint and automatically fetch certificates. I used Cloudflare as the DNS provider which configures Traefik to use DNS records for domain validation.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">[acme]
     email = <span style="color:#0ff;font-weight:bold">&#34;me@cloudflare.com&#34;</span>
     storage=<span style="color:#0ff;font-weight:bold">&#34;./acme.json&#34;</span>
@@ -360,7 +360,7 @@ spec:
       name: admin
   externalIPs:
     - <span style="color:#ff0;font-weight:bold">192.168</span><span style="color:#ff0;font-weight:bold">.0</span><span style="color:#ff0;font-weight:bold">.101</span> <span style="color:#007f7f"># This is the node address</span>
-</code></pre></div><p>Deploy Ingress controller for traefik dashboard</p>
+</code></pre></div><p>Deploy Ingress controller for traefik dashboard.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -379,8 +379,8 @@ spec:
 </code></pre></div><p>Voila!</p>
 <p><img src="https://vikaspogu.dev/images/traefik-dashboard.png" alt="Traefik UI"></p>
 <h3 id="deploy-kubernetes-dashboard">Deploy kubernetes dashboard</h3>
-<p>Follow these instructions to <a href="https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/">deploy dashboard UI</a></p>
-<p>Create ingress controller to access dashboard</p>
+<p>Follow these instructions to <a href="https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/">deploy dashboard UI</a>.</p>
+<p>Create ingress controller to access dashboard.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
 apiVersion: extensions/v1beta1
 kind: Ingress
