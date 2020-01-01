@@ -3,17 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://vikaspogu.dev/tags/k3s/</loc>
-    <lastmod>2019-12-31T13:47:10-05:00</lastmod>
+    <loc>https://vikaspogu.dev/tags/grafana/</loc>
+    <lastmod>2020-01-01T16:19:29-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://vikaspogu.dev/posts/kubernetes-home-cluster-traefik/</loc>
-    <lastmod>2019-12-31T13:47:10-05:00</lastmod>
+    <loc>https://vikaspogu.dev/tags/influxdb/</loc>
+    <lastmod>2020-01-01T16:19:29-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/k3s/</loc>
+    <lastmod>2020-01-01T16:19:29-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/posts/raspberry-pi-temp-telegraf/</loc>
+    <lastmod>2020-01-01T16:19:29-05:00</lastmod>
   </url>
   
   <url>
     <loc>https://vikaspogu.dev/posts/</loc>
+    <lastmod>2020-01-01T16:19:29-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/</loc>
+    <lastmod>2020-01-01T16:19:29-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/telegraf/</loc>
+    <lastmod>2020-01-01T16:19:29-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/</loc>
+    <lastmod>2020-01-01T16:19:29-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/posts/kubernetes-home-cluster-traefik/</loc>
     <lastmod>2019-12-31T13:47:10-05:00</lastmod>
   </url>
   
@@ -23,17 +53,7 @@
   </url>
   
   <url>
-    <loc>https://vikaspogu.dev/tags/</loc>
-    <lastmod>2019-12-31T13:47:10-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://vikaspogu.dev/tags/traefik/</loc>
-    <lastmod>2019-12-31T13:47:10-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/</loc>
     <lastmod>2019-12-31T13:47:10-05:00</lastmod>
   </url>
   
@@ -174,11 +194,6 @@
   
   <url>
     <loc>https://vikaspogu.dev/posts/2019-05-15-project-terminating/</loc>
-    <lastmod>2019-05-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/tags/grafana/</loc>
     <lastmod>2019-05-15T00:00:00+00:00</lastmod>
   </url>
   
