@@ -187,6 +187,9 @@ REPOSITORY   TAG   IMAGE ID   CREATED   SIZE
 Trying to pull docker.io/tomcat...
 ....
 d2e6db3c7....
+</code></pre></div><p>Building images:</p>
+<p><strong>Note:</strong> The podman-remote.conf file seems to be ignored by the podman build command, so we have to add <code>--remote-host 127.0.0.1 --username root --port 2222</code> to each command</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ podman --remote-host 127.0.0.1 --username root --port <span style="color:#ff0;font-weight:bold">2222</span> build --tag mytag .
 </code></pre></div>
       </div>
 
