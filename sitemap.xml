@@ -3,6 +3,41 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://vikaspogu.dev/posts/podman-macos/</loc>
+    <lastmod>2020-01-06T14:15:03-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/macos/</loc>
+    <lastmod>2020-01-06T14:15:03-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/podman/</loc>
+    <lastmod>2020-01-06T14:15:03-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/posts/</loc>
+    <lastmod>2020-01-06T14:15:03-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/</loc>
+    <lastmod>2020-01-06T14:15:03-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/vagrant/</loc>
+    <lastmod>2020-01-06T14:15:03-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/</loc>
+    <lastmod>2020-01-06T14:15:03-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://vikaspogu.dev/tags/grafana/</loc>
     <lastmod>2020-01-01T16:19:29-05:00</lastmod>
   </url>
@@ -23,22 +58,7 @@
   </url>
   
   <url>
-    <loc>https://vikaspogu.dev/posts/</loc>
-    <lastmod>2020-01-01T16:19:29-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/tags/</loc>
-    <lastmod>2020-01-01T16:19:29-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://vikaspogu.dev/tags/telegraf/</loc>
-    <lastmod>2020-01-01T16:19:29-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/</loc>
     <lastmod>2020-01-01T16:19:29-05:00</lastmod>
   </url>
   
