@@ -93,21 +93,46 @@ Note: By adding this annotation you can dynamically create certificates service.
     <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
     <ul class="navigation-list">
       
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://vikaspogu.dev/about/">About</a>
-          </li>
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://vikaspogu.dev/posts/">Blog</a>
-          </li>
-        
+      
+      <li class="navigation-item">
+        <a class="navigation-link" href="https://vikaspogu.dev/about/">About</a>
+      </li>
+      
+      <li class="navigation-item">
+        <a class="navigation-link" href="https://vikaspogu.dev/posts/">Blog</a>
+      </li>
+      
       
       
     </ul>
   </section>
 </nav>
-
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "https:\/\/vikaspogu.dev"
+        },
+        "articleSection" : "posts",
+        "name" : "Configuring couchbase SSL for dynamic certificates in Openshift",
+        "headline" : "Configuring couchbase SSL for dynamic certificates in Openshift",
+        "description" : "If you have followed dynamic creation of java keystores in openshift post and wondered how to use similar concepts for couchbase database and a java application. This post will help you.\nCouchbase setup This is the couchbase documentation for configuring server side certificates, we are interested in last few steps since openshift will generate key and cert by adding annotation to the couchbase service.\nNote: By adding this annotation you can dynamically create certificates service.",
+        "inLanguage" : "en-US",
+        "author" : "Vikas Pogu",
+        "creator" : "Vikas Pogu",
+        "publisher": "Vikas Pogu",
+        "accountablePerson" : "Vikas Pogu",
+        "copyrightHolder" : "Vikas Pogu",
+        "copyrightYear" : "2019",
+        "datePublished": "2019-08-28 00:00:00 \x2b0000 UTC",
+        "dateModified" : "2019-08-28 00:00:00 \x2b0000 UTC",
+        "url" : "https:\/\/vikaspogu.dev\/posts\/2019-08-28-couchbase-ssl-openshift\/",
+        "wordCount" : "608",
+        "keywords" : [ "Openshift","couchbase","ssl","Blog" ]
+    }
+    </script>
 
     <div class="content">
       

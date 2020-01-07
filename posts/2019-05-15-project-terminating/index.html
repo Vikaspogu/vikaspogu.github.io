@@ -99,21 +99,46 @@ $ kubectl proxy &amp; PID=$! $ curl -X PUT http://localhost:8001/api/v1/namespac
     <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
     <ul class="navigation-list">
       
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://vikaspogu.dev/about/">About</a>
-          </li>
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://vikaspogu.dev/posts/">Blog</a>
-          </li>
-        
+      
+      <li class="navigation-item">
+        <a class="navigation-link" href="https://vikaspogu.dev/about/">About</a>
+      </li>
+      
+      <li class="navigation-item">
+        <a class="navigation-link" href="https://vikaspogu.dev/posts/">Blog</a>
+      </li>
+      
       
       
     </ul>
   </section>
 </nav>
-
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "https:\/\/vikaspogu.dev"
+        },
+        "articleSection" : "posts",
+        "name" : "Deleting a OpenShift project stuck in terminating state",
+        "headline" : "Deleting a OpenShift project stuck in terminating state",
+        "description" : "Recently I was faced an issue where one of my project was stuck in terminating state for days. The workaround below fixed the issue.\nExport OpenShift project as an JSON Object\noc get project delete-me -o json \x26gt; ns-without-finalizers.json Replace below from\nspec: finalizers: - kubernetes to\nspec: finalizers: [] On one of the master node, execute these commands.\n$ kubectl proxy \x26amp; PID=$! $ curl -X PUT http:\/\/localhost:8001\/api\/v1\/namespaces\/delete-me\/finalize \\ -H \x26#34;Content-Type: application\/json\x26#34; --data-binary @ns-without-finalizers.",
+        "inLanguage" : "en-US",
+        "author" : "Vikas Pogu",
+        "creator" : "Vikas Pogu",
+        "publisher": "Vikas Pogu",
+        "accountablePerson" : "Vikas Pogu",
+        "copyrightHolder" : "Vikas Pogu",
+        "copyrightYear" : "2019",
+        "datePublished": "2019-05-15 00:00:00 \x2b0000 UTC",
+        "dateModified" : "2019-05-15 00:00:00 \x2b0000 UTC",
+        "url" : "https:\/\/vikaspogu.dev\/posts\/2019-05-15-project-terminating\/",
+        "wordCount" : "78",
+        "keywords" : [ "OpenShift","Blog" ]
+    }
+    </script>
 
     <div class="content">
       

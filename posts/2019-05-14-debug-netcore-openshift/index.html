@@ -93,21 +93,46 @@ $ oc get pod NAME READY STATUS RESTARTS AGE MY_APP_NAME-3-1xrsp 0/1 Running 0 6s
     <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
     <ul class="navigation-list">
       
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://vikaspogu.dev/about/">About</a>
-          </li>
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://vikaspogu.dev/posts/">Blog</a>
-          </li>
-        
+      
+      <li class="navigation-item">
+        <a class="navigation-link" href="https://vikaspogu.dev/about/">About</a>
+      </li>
+      
+      <li class="navigation-item">
+        <a class="navigation-link" href="https://vikaspogu.dev/posts/">Blog</a>
+      </li>
+      
       
       
     </ul>
   </section>
 </nav>
-
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "https:\/\/vikaspogu.dev"
+        },
+        "articleSection" : "posts",
+        "name" : "Debugging a .NET Core application running on OpenShift",
+        "headline" : "Debugging a .NET Core application running on OpenShift",
+        "description" : "This post is about how to remote debug a ASP.NET Core application on OpenShift using Visual Studio Code. You can use any Microsoft proprietary debugger engine vsdbg with Visual Studio Code.\nFirst, list the available .Net application pods using oc command.\n$ oc get pod NAME READY STATUS RESTARTS AGE MY_APP_NAME-3-1xrsp 0\/1 Running 0 6s $ oc rsh MY_APP_NAME-3-1xrsp sh-4.2$ curl -sSL https:\/\/aka.ms\/getvsdbgsh | bash \/dev\/stdin -v latest -l \/opt\/app-root\/vsdbg -r linux-x64 Note: If you\x27re container is running behind a corporate proxy and cannot access internet, you\x27ll have to build base dotnet image with the debugger engine vsdbg installed in it.",
+        "inLanguage" : "en-US",
+        "author" : "Vikas Pogu",
+        "creator" : "Vikas Pogu",
+        "publisher": "Vikas Pogu",
+        "accountablePerson" : "Vikas Pogu",
+        "copyrightHolder" : "Vikas Pogu",
+        "copyrightYear" : "2019",
+        "datePublished": "2019-05-14 00:00:00 \x2b0000 UTC",
+        "dateModified" : "2019-05-14 00:00:00 \x2b0000 UTC",
+        "url" : "https:\/\/vikaspogu.dev\/posts\/2019-05-14-debug-netcore-openshift\/",
+        "wordCount" : "302",
+        "keywords" : [ "OpenShift",".NET","Blog" ]
+    }
+    </script>
 
     <div class="content">
       

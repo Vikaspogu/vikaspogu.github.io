@@ -95,21 +95,46 @@ $ oc get dc Set the JAVA_DEBUG environment variable in the deployment configurat
     <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
     <ul class="navigation-list">
       
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://vikaspogu.dev/about/">About</a>
-          </li>
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://vikaspogu.dev/posts/">Blog</a>
-          </li>
-        
+      
+      <li class="navigation-item">
+        <a class="navigation-link" href="https://vikaspogu.dev/about/">About</a>
+      </li>
+      
+      <li class="navigation-item">
+        <a class="navigation-link" href="https://vikaspogu.dev/posts/">Blog</a>
+      </li>
+      
       
       
     </ul>
   </section>
 </nav>
-
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "https:\/\/vikaspogu.dev"
+        },
+        "articleSection" : "posts",
+        "name" : "Debugging a Java application in OpenShift",
+        "headline" : "Debugging a Java application in OpenShift",
+        "description" : "This post will discuss debugging a JAVA application running inside a container. First, you must set the JAVA_DEBUG environment variable inside the container to true and configure port forwarding so that you can connect to your application from a remote debugger.\nNote: If you are using tomcat image replace JAVA_DEBUG environment variable to DEBUG\nUsing the oc command, list the available deployment configurations:\n$ oc get dc Set the JAVA_DEBUG environment variable in the deployment configuration of your application to true, which configures the JVM to open the port number 5005 for debugging.",
+        "inLanguage" : "en-US",
+        "author" : "Vikas Pogu",
+        "creator" : "Vikas Pogu",
+        "publisher": "Vikas Pogu",
+        "accountablePerson" : "Vikas Pogu",
+        "copyrightHolder" : "Vikas Pogu",
+        "copyrightYear" : "2019",
+        "datePublished": "2019-05-14 14:36:27 -0500 -0500",
+        "dateModified" : "2019-05-14 14:36:27 -0500 -0500",
+        "url" : "https:\/\/vikaspogu.dev\/posts\/2019-05-14-debug-java-container\/",
+        "wordCount" : "317",
+        "keywords" : [ "OpenShift","Java","Blog" ]
+    }
+    </script>
 
     <div class="content">
       

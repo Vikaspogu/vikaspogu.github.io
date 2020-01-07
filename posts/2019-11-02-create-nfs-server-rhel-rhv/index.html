@@ -95,21 +95,46 @@ groupadd kvm -g 36 useradd vdsm -u 36 -g 36 mkdir -pv /home/rhv-data-vol chown -
     <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
     <ul class="navigation-list">
       
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://vikaspogu.dev/about/">About</a>
-          </li>
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://vikaspogu.dev/posts/">Blog</a>
-          </li>
-        
+      
+      <li class="navigation-item">
+        <a class="navigation-link" href="https://vikaspogu.dev/about/">About</a>
+      </li>
+      
+      <li class="navigation-item">
+        <a class="navigation-link" href="https://vikaspogu.dev/posts/">Blog</a>
+      </li>
+      
       
       
     </ul>
   </section>
 </nav>
-
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "https:\/\/vikaspogu.dev"
+        },
+        "articleSection" : "posts",
+        "name" : "Create and add NFS storage to RHV",
+        "headline" : "Create and add NFS storage to RHV",
+        "description" : "Set up NFS shares that will serve as storage domains on a Red Hat Enterprise Linux server.\nAdd firewall rule are to rhel server\nfirewall-cmd --permanent --add-service nfs firewall-cmd --permanent --add-service mountd firewall-cmd --reload Create and add group kvm; set the ownership of your exported directories to 36:36, which gives vdsm:kvm ownership; change the mode of the directories so that read and write access is granted to the owner\ngroupadd kvm -g 36 useradd vdsm -u 36 -g 36 mkdir -pv \/home\/rhv-data-vol chown -R 36:36 \/home\/rhv-data-vol chmod 0755 \/home\/rhv-data-vol Add newly created directory to \/etc\/exports file which controls file systems are exported to remote hosts and specifies options.",
+        "inLanguage" : "en-US",
+        "author" : "Vikas Pogu",
+        "creator" : "Vikas Pogu",
+        "publisher": "Vikas Pogu",
+        "accountablePerson" : "Vikas Pogu",
+        "copyrightHolder" : "Vikas Pogu",
+        "copyrightYear" : "2019",
+        "datePublished": "2019-11-02 00:00:00 \x2b0000 UTC",
+        "dateModified" : "2019-11-02 00:00:00 \x2b0000 UTC",
+        "url" : "https:\/\/vikaspogu.dev\/posts\/2019-11-02-create-nfs-server-rhel-rhv\/",
+        "wordCount" : "137",
+        "keywords" : [ "RHV","NFS","Blog" ]
+    }
+    </script>
 
     <div class="content">
       

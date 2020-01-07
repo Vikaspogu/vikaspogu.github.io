@@ -95,21 +95,46 @@ npm install ldapauth-fork npm install basic-auth Steps for implementation;
     <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
     <ul class="navigation-list">
       
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://vikaspogu.dev/about/">About</a>
-          </li>
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://vikaspogu.dev/posts/">Blog</a>
-          </li>
-        
+      
+      <li class="navigation-item">
+        <a class="navigation-link" href="https://vikaspogu.dev/about/">About</a>
+      </li>
+      
+      <li class="navigation-item">
+        <a class="navigation-link" href="https://vikaspogu.dev/posts/">Blog</a>
+      </li>
+      
       
       
     </ul>
   </section>
 </nav>
-
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "https:\/\/vikaspogu.dev"
+        },
+        "articleSection" : "posts",
+        "name" : "Authenticate a Node application with LDAP",
+        "headline" : "Authenticate a Node application with LDAP",
+        "description" : "This post demonstrates how to authenticate a user against LDAP.\nLet\x27s start by installing basic-auth and ldapauth-fork packages\nnpm install ldapauth-fork npm install basic-auth Steps for implementation;\n Add packages Create a ldap variable with authentication configuration Basic auth should prompt for you username and password. Once user is found, verify the given password by trying to bind the user client with the found LDAP user object and given password.  const auth = require(\x26#34;basic-auth\x26#34;); var LdapAuth = require(\x26#34;ldapauth-fork\x26#34;); var ldap = new LdapAuth({ url: \x26#34;ldap:\/\/ldap-url:389\x26#34;, bindDN: \x26#34;uid=rc,ou=AppAccounts,ou=People,ou=Entsys,dc=example.",
+        "inLanguage" : "en-US",
+        "author" : "Vikas Pogu",
+        "creator" : "Vikas Pogu",
+        "publisher": "Vikas Pogu",
+        "accountablePerson" : "Vikas Pogu",
+        "copyrightHolder" : "Vikas Pogu",
+        "copyrightYear" : "2019",
+        "datePublished": "2019-05-15 00:00:00 \x2b0000 UTC",
+        "dateModified" : "2019-05-15 00:00:00 \x2b0000 UTC",
+        "url" : "https:\/\/vikaspogu.dev\/posts\/2019-05-15-node-ldap-auth\/",
+        "wordCount" : "159",
+        "keywords" : [ "NodeJS","LDAP","Blog" ]
+    }
+    </script>
 
     <div class="content">
       

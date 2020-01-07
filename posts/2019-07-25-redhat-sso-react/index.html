@@ -97,21 +97,46 @@ In App.js add in a JavaScript object with the required configuration; you will f
     <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
     <ul class="navigation-list">
       
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://vikaspogu.dev/about/">About</a>
-          </li>
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://vikaspogu.dev/posts/">Blog</a>
-          </li>
-        
+      
+      <li class="navigation-item">
+        <a class="navigation-link" href="https://vikaspogu.dev/about/">About</a>
+      </li>
+      
+      <li class="navigation-item">
+        <a class="navigation-link" href="https://vikaspogu.dev/posts/">Blog</a>
+      </li>
+      
       
       
     </ul>
   </section>
 </nav>
-
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "https:\/\/vikaspogu.dev"
+        },
+        "articleSection" : "posts",
+        "name" : "React App with RedHat SSO or keycloak",
+        "headline" : "React App with RedHat SSO or keycloak",
+        "description" : "In this post, I will show you how to secure a React app using RedHat SSO (upstream keycloak). In this case, openid-connect is my identity provider.\nInstall the offical keycloak js adapter\n$ npm i keycloak-js --save Setup the client with the host and port; in my case it\x27s localhost:9000\nIn App.js add in a JavaScript object with the required configuration; you will find these configurations under Clients-\x26gt;Installation\n\/\/keycloak init options const initOptions = { url: \x26#34;https:\/\/localhost:8080\/auth\x26#34;, realm: \x26#34;test\x26#34;, clientId: \x26#34;react-app\x26#34;, onLoad: \x26#34;login-required\x26#34; }; By default, to authenticate you need to call the login function.",
+        "inLanguage" : "en-US",
+        "author" : "Vikas Pogu",
+        "creator" : "Vikas Pogu",
+        "publisher": "Vikas Pogu",
+        "accountablePerson" : "Vikas Pogu",
+        "copyrightHolder" : "Vikas Pogu",
+        "copyrightYear" : "2019",
+        "datePublished": "2019-07-25 00:00:00 \x2b0000 UTC",
+        "dateModified" : "2019-07-25 00:00:00 \x2b0000 UTC",
+        "url" : "https:\/\/vikaspogu.dev\/posts\/2019-07-25-redhat-sso-react\/",
+        "wordCount" : "289",
+        "keywords" : [ "RedHat SSO","React","keycloak","Blog" ]
+    }
+    </script>
 
     <div class="content">
       
