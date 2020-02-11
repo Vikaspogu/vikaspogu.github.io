@@ -70,7 +70,7 @@
   <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-16x16.png"
     sizes="16x16">
 
-  <meta name="generator" content="Hugo 0.62.2" />
+  <meta name="generator" content="Hugo 0.64.1" />
 </head>
 
 
@@ -164,7 +164,7 @@
       </header>
 
       <div>
-        <p>In this post, I’ll share my home setup for <a href="https://k3s.io/">Rancher's k3s</a> kubernetes cluster.</p>
+        <p>In this post, I’ll share my home setup for <a href="https://k3s.io/">Rancher&rsquo;s k3s</a> kubernetes cluster.</p>
 <p>Requirements:</p>
 <ul>
 <li>I wanted the web interface to be accessible outside of my home so I could check and manage devices while away</li>
@@ -228,47 +228,47 @@ curl -s -X PUT <span style="color:#0ff;font-weight:bold">&#34;</span><span style
 $ k3s kubectl create secret generic cloudflare --from-literal=email=me@cloudflare.com <span style="color:#0ff;font-weight:bold">\
 </span><span style="color:#0ff;font-weight:bold"></span>--from-literal=api_key=1234567890abcdef1234567890abcdef
 </code></pre></div><p>Now create a kubernetes cronjob to update DNS record to right address.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: batch/v1beta1
-kind: CronJob
-metadata:
-  name: dns-update
-  namespace: default
-spec:
-  schedule: <span style="color:#0ff;font-weight:bold">&#34;0 0 * * *&#34;</span>
-  concurrencyPolicy: Forbid
-  jobTemplate:
-    spec:
-      template:
-        spec:
-          restartPolicy: OnFailure
-          containers:
-            - name: dns-update
-              image: e2eteam/dnsutils:<span style="color:#ff0;font-weight:bold">1.1</span>-linux-arm
-              command: [<span style="color:#0ff;font-weight:bold">&#34;/bin/sh&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;-c&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;/scripts/cloudfare-dns-update.sh&#34;</span>]
-              env:
-                - name: API_KEY
-                  valueFrom:
-                    secretKeyRef:
-                      name: cloudflare
-                      key: api_key
-                - name: EMAIL
-                  valueFrom:
-                    secretKeyRef:
-                      name: cloudflare
-                      key: email
-              volumeMounts:
-                - name: config-volume
-                  mountPath: /scripts
-          volumes:
-            - name: config-volume
-              configMap:
-                name: update-script
-                defaultMode: <span style="color:#ff0;font-weight:bold">0744</span>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#fff;font-weight:bold">apiVersion</span>: batch/v1beta1
+<span style="color:#fff;font-weight:bold">kind</span>: CronJob
+<span style="color:#fff;font-weight:bold">metadata</span>:
+  <span style="color:#fff;font-weight:bold">name</span>: dns-update
+  <span style="color:#fff;font-weight:bold">namespace</span>: default
+<span style="color:#fff;font-weight:bold">spec</span>:
+  <span style="color:#fff;font-weight:bold">schedule</span>: <span style="color:#0ff;font-weight:bold">&#34;0 0 * * *&#34;</span>
+  <span style="color:#fff;font-weight:bold">concurrencyPolicy</span>: Forbid
+  <span style="color:#fff;font-weight:bold">jobTemplate</span>:
+    <span style="color:#fff;font-weight:bold">spec</span>:
+      <span style="color:#fff;font-weight:bold">template</span>:
+        <span style="color:#fff;font-weight:bold">spec</span>:
+          <span style="color:#fff;font-weight:bold">restartPolicy</span>: OnFailure
+          <span style="color:#fff;font-weight:bold">containers</span>:
+            - <span style="color:#fff;font-weight:bold">name</span>: dns-update
+              <span style="color:#fff;font-weight:bold">image</span>: e2eteam/dnsutils:<span style="color:#ff0;font-weight:bold">1.1</span>-linux-arm
+              <span style="color:#fff;font-weight:bold">command</span>: [<span style="color:#0ff;font-weight:bold">&#34;/bin/sh&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;-c&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;/scripts/cloudfare-dns-update.sh&#34;</span>]
+              <span style="color:#fff;font-weight:bold">env</span>:
+                - <span style="color:#fff;font-weight:bold">name</span>: API_KEY
+                  <span style="color:#fff;font-weight:bold">valueFrom</span>:
+                    <span style="color:#fff;font-weight:bold">secretKeyRef</span>:
+                      <span style="color:#fff;font-weight:bold">name</span>: cloudflare
+                      <span style="color:#fff;font-weight:bold">key</span>: api_key
+                - <span style="color:#fff;font-weight:bold">name</span>: EMAIL
+                  <span style="color:#fff;font-weight:bold">valueFrom</span>:
+                    <span style="color:#fff;font-weight:bold">secretKeyRef</span>:
+                      <span style="color:#fff;font-weight:bold">name</span>: cloudflare
+                      <span style="color:#fff;font-weight:bold">key</span>: email
+              <span style="color:#fff;font-weight:bold">volumeMounts</span>:
+                - <span style="color:#fff;font-weight:bold">name</span>: config-volume
+                  <span style="color:#fff;font-weight:bold">mountPath</span>: /scripts
+          <span style="color:#fff;font-weight:bold">volumes</span>:
+            - <span style="color:#fff;font-weight:bold">name</span>: config-volume
+              <span style="color:#fff;font-weight:bold">configMap</span>:
+                <span style="color:#fff;font-weight:bold">name</span>: update-script
+                <span style="color:#fff;font-weight:bold">defaultMode</span>: <span style="color:#ff0;font-weight:bold">0744</span>
 </code></pre></div><h3 id="traefik-and-lets-encrypt">Traefik and Let’s Encrypt</h3>
 <p>With a functioning cluster and the networking setup complete, the next task is to deploy a reverse proxy to manage the application routing.</p>
 <p>In Kubernetes we can deploy an Ingress Controller to achieve this. An Ingress Controller is an implementation of a reverse proxy which listens for changes to KubernetesIngress resources and updates it’s configuration accordingly.</p>
 <p>Traefik provides an detailed <a href="https://docs.traefik.io/v1.7/user-guide/kubernetes/">instructions</a> on kubernetes implementation but I customised it slightly to get things working with my setup.</p>
-<p>First create RoleBinding's.</p>
+<p>First create RoleBinding&rsquo;s.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ k3s kubectl apply -f https://raw.githubusercontent.com/containous/traefik/v1.7/examples/k8s/traefik-rbac.yaml
 </code></pre></div><p>Configure Let’s Encrypt to support HTTPS endpoint and automatically fetch certificates. I used Cloudflare as the DNS provider which configures Traefik to use DNS records for domain validation.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">[acme]
@@ -283,9 +283,9 @@ spec:
       main = <span style="color:#0ff;font-weight:bold">&#34;*.home.vikaspogu.com&#34;</span>
       sans = [<span style="color:#0ff;font-weight:bold">&#34;home.vikaspogu.com&#34;</span>]
 </code></pre></div><p>The Deployment objects look like this:</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: v1
-data:
-  traefik.toml: <span style="color:#0ff;font-weight:bold">|
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#fff;font-weight:bold">apiVersion</span>: v1
+<span style="color:#fff;font-weight:bold">data</span>:
+  <span style="color:#fff;font-weight:bold">traefik.toml</span>: <span style="color:#0ff;font-weight:bold">|
 </span><span style="color:#0ff;font-weight:bold">   </span><span style="color:#0ff;font-weight:bold"> </span><span style="color:#0ff;font-weight:bold"># traefik.toml</span>
     logLevel = <span style="color:#0ff;font-weight:bold">&#34;info&#34;</span>
     debug = <span style="color:#fff;font-weight:bold">true</span>
@@ -313,125 +313,125 @@ data:
     [[acme.domains]]
       main = <span style="color:#0ff;font-weight:bold">&#34;*.home.vikaspogu.com&#34;</span>
       sans = [<span style="color:#0ff;font-weight:bold">&#34;home.vikaspogu.com&#34;</span>]
-kind: ConfigMap
-metadata:
-  labels:
-    app: traefik
-  name: traefik-config
-  namespace: default
+<span style="color:#fff;font-weight:bold">kind</span>: ConfigMap
+<span style="color:#fff;font-weight:bold">metadata</span>:
+  <span style="color:#fff;font-weight:bold">labels</span>:
+    <span style="color:#fff;font-weight:bold">app</span>: traefik
+  <span style="color:#fff;font-weight:bold">name</span>: traefik-config
+  <span style="color:#fff;font-weight:bold">namespace</span>: default
 ---
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  namespace: default
-  name: traefik-ingress-controller
-  labels:
-    app: traefik
+<span style="color:#fff;font-weight:bold">apiVersion</span>: v1
+<span style="color:#fff;font-weight:bold">kind</span>: ServiceAccount
+<span style="color:#fff;font-weight:bold">metadata</span>:
+  <span style="color:#fff;font-weight:bold">namespace</span>: default
+  <span style="color:#fff;font-weight:bold">name</span>: traefik-ingress-controller
+  <span style="color:#fff;font-weight:bold">labels</span>:
+    <span style="color:#fff;font-weight:bold">app</span>: traefik
 ---
-kind: Deployment
-apiVersion: apps/v1
-metadata:
-  namespace: default
-  name: traefik
-  labels:
-    app: traefik
-spec:
-  replicas: <span style="color:#ff0;font-weight:bold">1</span>
-  selector:
-    matchLabels:
-      app: traefik
-  template:
-    metadata:
-      labels:
-        app: traefik
-    spec:
-      serviceAccountName: traefik-ingress-controller
-      containers:
-        - name: traefik
-          image: traefik:<span style="color:#ff0;font-weight:bold">1.7</span><span style="color:#ff0;font-weight:bold">.4</span>
-          ports:
-            - name: http
-              containerPort: <span style="color:#ff0;font-weight:bold">80</span>
-            - name: https
-              containerPort: <span style="color:#ff0;font-weight:bold">443</span>
-            - name: admin
-              containerPort: <span style="color:#ff0;font-weight:bold">8080</span>
-          env:
-            - name: CF_API_EMAIL
-              valueFrom:
-                secretKeyRef:
-                  name: cloudflare
-                  key: email
-            - name: CF_API_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: cloudflare
-                  key: api_key
-          volumeMounts:
-            - mountPath: <span style="color:#0ff;font-weight:bold">&#34;/config&#34;</span>
-              name: <span style="color:#0ff;font-weight:bold">&#34;config&#34;</span>
-          args:
+<span style="color:#fff;font-weight:bold">kind</span>: Deployment
+<span style="color:#fff;font-weight:bold">apiVersion</span>: apps/v1
+<span style="color:#fff;font-weight:bold">metadata</span>:
+  <span style="color:#fff;font-weight:bold">namespace</span>: default
+  <span style="color:#fff;font-weight:bold">name</span>: traefik
+  <span style="color:#fff;font-weight:bold">labels</span>:
+    <span style="color:#fff;font-weight:bold">app</span>: traefik
+<span style="color:#fff;font-weight:bold">spec</span>:
+  <span style="color:#fff;font-weight:bold">replicas</span>: <span style="color:#ff0;font-weight:bold">1</span>
+  <span style="color:#fff;font-weight:bold">selector</span>:
+    <span style="color:#fff;font-weight:bold">matchLabels</span>:
+      <span style="color:#fff;font-weight:bold">app</span>: traefik
+  <span style="color:#fff;font-weight:bold">template</span>:
+    <span style="color:#fff;font-weight:bold">metadata</span>:
+      <span style="color:#fff;font-weight:bold">labels</span>:
+        <span style="color:#fff;font-weight:bold">app</span>: traefik
+    <span style="color:#fff;font-weight:bold">spec</span>:
+      <span style="color:#fff;font-weight:bold">serviceAccountName</span>: traefik-ingress-controller
+      <span style="color:#fff;font-weight:bold">containers</span>:
+        - <span style="color:#fff;font-weight:bold">name</span>: traefik
+          <span style="color:#fff;font-weight:bold">image</span>: traefik:<span style="color:#ff0;font-weight:bold">1.7</span><span style="color:#ff0;font-weight:bold">.4</span>
+          <span style="color:#fff;font-weight:bold">ports</span>:
+            - <span style="color:#fff;font-weight:bold">name</span>: http
+              <span style="color:#fff;font-weight:bold">containerPort</span>: <span style="color:#ff0;font-weight:bold">80</span>
+            - <span style="color:#fff;font-weight:bold">name</span>: https
+              <span style="color:#fff;font-weight:bold">containerPort</span>: <span style="color:#ff0;font-weight:bold">443</span>
+            - <span style="color:#fff;font-weight:bold">name</span>: admin
+              <span style="color:#fff;font-weight:bold">containerPort</span>: <span style="color:#ff0;font-weight:bold">8080</span>
+          <span style="color:#fff;font-weight:bold">env</span>:
+            - <span style="color:#fff;font-weight:bold">name</span>: CF_API_EMAIL
+              <span style="color:#fff;font-weight:bold">valueFrom</span>:
+                <span style="color:#fff;font-weight:bold">secretKeyRef</span>:
+                  <span style="color:#fff;font-weight:bold">name</span>: cloudflare
+                  <span style="color:#fff;font-weight:bold">key</span>: email
+            - <span style="color:#fff;font-weight:bold">name</span>: CF_API_KEY
+              <span style="color:#fff;font-weight:bold">valueFrom</span>:
+                <span style="color:#fff;font-weight:bold">secretKeyRef</span>:
+                  <span style="color:#fff;font-weight:bold">name</span>: cloudflare
+                  <span style="color:#fff;font-weight:bold">key</span>: api_key
+          <span style="color:#fff;font-weight:bold">volumeMounts</span>:
+            - <span style="color:#fff;font-weight:bold">mountPath</span>: <span style="color:#0ff;font-weight:bold">&#34;/config&#34;</span>
+              <span style="color:#fff;font-weight:bold">name</span>: <span style="color:#0ff;font-weight:bold">&#34;config&#34;</span>
+          <span style="color:#fff;font-weight:bold">args</span>:
             - --configfile=/config/traefik.toml
-      volumes:
-        - name: config
-          configMap:
-            name: traefik-config
+      <span style="color:#fff;font-weight:bold">volumes</span>:
+        - <span style="color:#fff;font-weight:bold">name</span>: config
+          <span style="color:#fff;font-weight:bold">configMap</span>:
+            <span style="color:#fff;font-weight:bold">name</span>: traefik-config
 ---
-kind: Service
-apiVersion: v1
-metadata:
-  name: traefik-ingress-service
-  namespace: default
-spec:
-  selector:
-    app: traefik
-  ports:
-    - protocol: TCP
-      port: <span style="color:#ff0;font-weight:bold">80</span>
-      name: http
-    - protocol: TCP
-      port: <span style="color:#ff0;font-weight:bold">443</span>
-      name: https
-    - protocol: TCP
-      port: <span style="color:#ff0;font-weight:bold">8080</span>
-      name: admin
-  externalIPs:
+<span style="color:#fff;font-weight:bold">kind</span>: Service
+<span style="color:#fff;font-weight:bold">apiVersion</span>: v1
+<span style="color:#fff;font-weight:bold">metadata</span>:
+  <span style="color:#fff;font-weight:bold">name</span>: traefik-ingress-service
+  <span style="color:#fff;font-weight:bold">namespace</span>: default
+<span style="color:#fff;font-weight:bold">spec</span>:
+  <span style="color:#fff;font-weight:bold">selector</span>:
+    <span style="color:#fff;font-weight:bold">app</span>: traefik
+  <span style="color:#fff;font-weight:bold">ports</span>:
+    - <span style="color:#fff;font-weight:bold">protocol</span>: TCP
+      <span style="color:#fff;font-weight:bold">port</span>: <span style="color:#ff0;font-weight:bold">80</span>
+      <span style="color:#fff;font-weight:bold">name</span>: http
+    - <span style="color:#fff;font-weight:bold">protocol</span>: TCP
+      <span style="color:#fff;font-weight:bold">port</span>: <span style="color:#ff0;font-weight:bold">443</span>
+      <span style="color:#fff;font-weight:bold">name</span>: https
+    - <span style="color:#fff;font-weight:bold">protocol</span>: TCP
+      <span style="color:#fff;font-weight:bold">port</span>: <span style="color:#ff0;font-weight:bold">8080</span>
+      <span style="color:#fff;font-weight:bold">name</span>: admin
+  <span style="color:#fff;font-weight:bold">externalIPs</span>:
     - <span style="color:#ff0;font-weight:bold">192.168</span><span style="color:#ff0;font-weight:bold">.0</span><span style="color:#ff0;font-weight:bold">.101</span> <span style="color:#007f7f"># This is the node address</span>
 </code></pre></div><p>Deploy Ingress controller for traefik dashboard.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: traefik-web-ui
-  namespace: default
-spec:
-  rules:
-    - host: traefik.home.vikaspogu.com
-      http:
-        paths:
-          - path: /
-            backend:
-              serviceName: traefik-ingress-service
-              servicePort: admin
+<span style="color:#fff;font-weight:bold">apiVersion</span>: extensions/v1beta1
+<span style="color:#fff;font-weight:bold">kind</span>: Ingress
+<span style="color:#fff;font-weight:bold">metadata</span>:
+  <span style="color:#fff;font-weight:bold">name</span>: traefik-web-ui
+  <span style="color:#fff;font-weight:bold">namespace</span>: default
+<span style="color:#fff;font-weight:bold">spec</span>:
+  <span style="color:#fff;font-weight:bold">rules</span>:
+    - <span style="color:#fff;font-weight:bold">host</span>: traefik.home.vikaspogu.com
+      <span style="color:#fff;font-weight:bold">http</span>:
+        <span style="color:#fff;font-weight:bold">paths</span>:
+          - <span style="color:#fff;font-weight:bold">path</span>: /
+            <span style="color:#fff;font-weight:bold">backend</span>:
+              <span style="color:#fff;font-weight:bold">serviceName</span>: traefik-ingress-service
+              <span style="color:#fff;font-weight:bold">servicePort</span>: admin
 </code></pre></div><p>Voila!</p>
 <p><img src="https://vikaspogu.dev/images/traefik-dashboard.png" alt="Traefik UI"></p>
 <h3 id="deploy-kubernetes-dashboard">Deploy kubernetes dashboard</h3>
 <p>Follow these instructions to <a href="https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/">deploy dashboard UI</a>.</p>
 <p>Create ingress controller to access dashboard.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: kubernetes-dashboard-ingress
-  namespace: kubernetes-dashboard
-spec:
-  rules:
-    - host: kubernetes-dashboard.home.vikaspogu.com
-      http:
-        paths:
-          - backend:
-              serviceName: kubernetes-dashboard
-              servicePort: <span style="color:#ff0;font-weight:bold">443</span>
+<span style="color:#fff;font-weight:bold">apiVersion</span>: extensions/v1beta1
+<span style="color:#fff;font-weight:bold">kind</span>: Ingress
+<span style="color:#fff;font-weight:bold">metadata</span>:
+  <span style="color:#fff;font-weight:bold">name</span>: kubernetes-dashboard-ingress
+  <span style="color:#fff;font-weight:bold">namespace</span>: kubernetes-dashboard
+<span style="color:#fff;font-weight:bold">spec</span>:
+  <span style="color:#fff;font-weight:bold">rules</span>:
+    - <span style="color:#fff;font-weight:bold">host</span>: kubernetes-dashboard.home.vikaspogu.com
+      <span style="color:#fff;font-weight:bold">http</span>:
+        <span style="color:#fff;font-weight:bold">paths</span>:
+          - <span style="color:#fff;font-weight:bold">backend</span>:
+              <span style="color:#fff;font-weight:bold">serviceName</span>: kubernetes-dashboard
+              <span style="color:#fff;font-weight:bold">servicePort</span>: <span style="color:#ff0;font-weight:bold">443</span>
 </code></pre></div>
       </div>
 

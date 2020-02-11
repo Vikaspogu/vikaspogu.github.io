@@ -17,12 +17,12 @@
 <meta name="twitter:title" content="Debugging a .NET Core application running on OpenShift"/>
 <meta name="twitter:description" content="This post is about how to remote debug a ASP.NET Core application on OpenShift using Visual Studio Code. You can use any Microsoft proprietary debugger engine vsdbg with Visual Studio Code.
 First, list the available .Net application pods using oc command.
-$ oc get pod NAME READY STATUS RESTARTS AGE MY_APP_NAME-3-1xrsp 0/1 Running 0 6s $ oc rsh MY_APP_NAME-3-1xrsp sh-4.2$ curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l /opt/app-root/vsdbg -r linux-x64 Note: If you&#39;re container is running behind a corporate proxy and cannot access internet, you&#39;ll have to build base dotnet image with the debugger engine vsdbg installed in it."/>
+$ oc get pod NAME READY STATUS RESTARTS AGE MY_APP_NAME-3-1xrsp 0/1 Running 0 6s $ oc rsh MY_APP_NAME-3-1xrsp sh-4.2$ curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l /opt/app-root/vsdbg -r linux-x64 Note: If you&rsquo;re container is running behind a corporate proxy and cannot access internet, you&rsquo;ll have to build base dotnet image with the debugger engine vsdbg installed in it."/>
 
   <meta property="og:title" content="Debugging a .NET Core application running on OpenShift" />
 <meta property="og:description" content="This post is about how to remote debug a ASP.NET Core application on OpenShift using Visual Studio Code. You can use any Microsoft proprietary debugger engine vsdbg with Visual Studio Code.
 First, list the available .Net application pods using oc command.
-$ oc get pod NAME READY STATUS RESTARTS AGE MY_APP_NAME-3-1xrsp 0/1 Running 0 6s $ oc rsh MY_APP_NAME-3-1xrsp sh-4.2$ curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l /opt/app-root/vsdbg -r linux-x64 Note: If you&#39;re container is running behind a corporate proxy and cannot access internet, you&#39;ll have to build base dotnet image with the debugger engine vsdbg installed in it." />
+$ oc get pod NAME READY STATUS RESTARTS AGE MY_APP_NAME-3-1xrsp 0/1 Running 0 6s $ oc rsh MY_APP_NAME-3-1xrsp sh-4.2$ curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l /opt/app-root/vsdbg -r linux-x64 Note: If you&rsquo;re container is running behind a corporate proxy and cannot access internet, you&rsquo;ll have to build base dotnet image with the debugger engine vsdbg installed in it." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://vikaspogu.dev/posts/2019-05-14-debug-netcore-openshift/" />
 <meta property="article:published_time" content="2019-05-14T00:00:00+00:00" />
@@ -74,7 +74,7 @@ $ oc get pod NAME READY STATUS RESTARTS AGE MY_APP_NAME-3-1xrsp 0/1 Running 0 6s
   <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-16x16.png"
     sizes="16x16">
 
-  <meta name="generator" content="Hugo 0.62.2" />
+  <meta name="generator" content="Hugo 0.64.1" />
 </head>
 
 
@@ -118,7 +118,7 @@ $ oc get pod NAME READY STATUS RESTARTS AGE MY_APP_NAME-3-1xrsp 0/1 Running 0 6s
         "articleSection" : "posts",
         "name" : "Debugging a .NET Core application running on OpenShift",
         "headline" : "Debugging a .NET Core application running on OpenShift",
-        "description" : "This post is about how to remote debug a ASP.NET Core application on OpenShift using Visual Studio Code. You can use any Microsoft proprietary debugger engine vsdbg with Visual Studio Code.\nFirst, list the available .Net application pods using oc command.\n$ oc get pod NAME READY STATUS RESTARTS AGE MY_APP_NAME-3-1xrsp 0\/1 Running 0 6s $ oc rsh MY_APP_NAME-3-1xrsp sh-4.2$ curl -sSL https:\/\/aka.ms\/getvsdbgsh | bash \/dev\/stdin -v latest -l \/opt\/app-root\/vsdbg -r linux-x64 Note: If you\x27re container is running behind a corporate proxy and cannot access internet, you\x27ll have to build base dotnet image with the debugger engine vsdbg installed in it.",
+        "description" : "This post is about how to remote debug a ASP.NET Core application on OpenShift using Visual Studio Code. You can use any Microsoft proprietary debugger engine vsdbg with Visual Studio Code.\nFirst, list the available .Net application pods using oc command.\n$ oc get pod NAME READY STATUS RESTARTS AGE MY_APP_NAME-3-1xrsp 0\/1 Running 0 6s $ oc rsh MY_APP_NAME-3-1xrsp sh-4.2$ curl -sSL https:\/\/aka.ms\/getvsdbgsh | bash \/dev\/stdin -v latest -l \/opt\/app-root\/vsdbg -r linux-x64 Note: If you\x26rsquo;re container is running behind a corporate proxy and cannot access internet, you\x26rsquo;ll have to build base dotnet image with the debugger engine vsdbg installed in it.",
         "inLanguage" : "en-US",
         "author" : "Vikas Pogu",
         "creator" : "Vikas Pogu",
@@ -173,7 +173,7 @@ $ oc get pod NAME READY STATUS RESTARTS AGE MY_APP_NAME-3-1xrsp 0/1 Running 0 6s
     MY_APP_NAME-3-1xrsp          0/1       Running     <span style="color:#ff0;font-weight:bold">0</span>          6s
 $ oc rsh MY_APP_NAME-3-1xrsp
 sh-4.2$  curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l /opt/app-root/vsdbg -r linux-x64
-</code></pre></div><p><strong>Note:</strong> If you're container is running behind a corporate proxy and cannot access internet, you'll have to build base dotnet image with the debugger engine <code>vsdbg</code> installed in it.</p>
+</code></pre></div><p><strong>Note:</strong> If you&rsquo;re container is running behind a corporate proxy and cannot access internet, you&rsquo;ll have to build base dotnet image with the debugger engine <code>vsdbg</code> installed in it.</p>
 <p>Create (or open) the <code>.vscode/launch.json</code> file inside the source directory of the application (i.e. at same level as the project folder), then add the following:</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
   <span style="font-weight:bold">&#34;version&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;0.1.0&#34;</span>,

@@ -76,7 +76,7 @@ axios .get(BACKEND_URL.concat(&#34;sampleendpoint&#34;), { headers: { Authorizat
   <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-16x16.png"
     sizes="16x16">
 
-  <meta name="generator" content="Hugo 0.62.2" />
+  <meta name="generator" content="Hugo 0.64.1" />
 </head>
 
 
@@ -183,7 +183,7 @@ axios .get(BACKEND_URL.concat(&#34;sampleendpoint&#34;), { headers: { Authorizat
     }
   })
   .then(res =&gt; {});
-</code></pre></div><p>Now Go-backend setup; let's install the <code>jwt-go</code>, <code>gin-cors</code> libraries:</p>
+</code></pre></div><p>Now Go-backend setup; let&rsquo;s install the <code>jwt-go</code>, <code>gin-cors</code> libraries:</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ go get -u github.com/dgrijalva/jwt-go
 $ go get -u github.com/gin-contrib/cors
 </code></pre></div><p>Add cors config to the router to allow <code>authorization</code> header</p>
@@ -195,7 +195,7 @@ $ go get -u github.com/gin-contrib/cors
   AllowCredentials: <span style="color:#fff;font-weight:bold">true</span>,
   MaxAge:           <span style="color:#ff0;font-weight:bold">12</span> * time.Hour,
 }))
-</code></pre></div><p>Let's create a custom handler; add the public key from Keycloak and pass it to <code>ParseRSAPublicKeyFromPEM</code> which will return a key. The key and token are then validated</p>
+</code></pre></div><p>Let&rsquo;s create a custom handler; add the public key from Keycloak and pass it to <code>ParseRSAPublicKeyFromPEM</code> which will return a key. The key and token are then validated</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#fff;font-weight:bold">func</span> VerifyToken(c *gin.Context) {
   SecretKey := <span style="color:#0ff;font-weight:bold">&#34;-----BEGIN CERTIFICATE-----\n&#34;</span>+
   <span style="color:#0ff;font-weight:bold">&#34;MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApn
@@ -235,7 +235,7 @@ $ go get -u github.com/gin-contrib/cors
 }
 </code></pre></div><p>Add the handler to the route</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">router.GET(<span style="color:#0ff;font-weight:bold">&#34;/sample&#34;</span>, VerifyToken(), handlers.SampleEndpoint)
-</code></pre></div><p>That's, it done, If the token is valid, you will get the data from backend or else you'll see <code>401 Unauthorized</code></p>
+</code></pre></div><p>That&rsquo;s, it done, If the token is valid, you will get the data from backend or else you&rsquo;ll see <code>401 Unauthorized</code></p>
 
       </div>
 

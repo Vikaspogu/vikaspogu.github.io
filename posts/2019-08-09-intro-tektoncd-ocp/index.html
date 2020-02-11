@@ -17,12 +17,12 @@
 <meta name="twitter:title" content="TektonCD on Openshift"/>
 <meta name="twitter:description" content="Recently I came across tektoncd project, The Tekton Pipelines project provides Kubernetes-style resources for declaring CI/CD-style pipelines caught my attention and started playing with it.
 Basic Concepts In order to create a tekton pipeline, one does the following:
- Create custom or install existing reusable Tasks Create a Pipeline and PipelineResources to define your application&#39;s delivery pipeline Create a PipelineRun to instantiate and invoke the pipeline  Installing Tekton on Openshift Login as a user with cluster-admin privileges"/>
+ Create custom or install existing reusable Tasks Create a Pipeline and PipelineResources to define your application&rsquo;s delivery pipeline Create a PipelineRun to instantiate and invoke the pipeline  Installing Tekton on Openshift Login as a user with cluster-admin privileges"/>
 
   <meta property="og:title" content="TektonCD on Openshift" />
 <meta property="og:description" content="Recently I came across tektoncd project, The Tekton Pipelines project provides Kubernetes-style resources for declaring CI/CD-style pipelines caught my attention and started playing with it.
 Basic Concepts In order to create a tekton pipeline, one does the following:
- Create custom or install existing reusable Tasks Create a Pipeline and PipelineResources to define your application&#39;s delivery pipeline Create a PipelineRun to instantiate and invoke the pipeline  Installing Tekton on Openshift Login as a user with cluster-admin privileges" />
+ Create custom or install existing reusable Tasks Create a Pipeline and PipelineResources to define your application&rsquo;s delivery pipeline Create a PipelineRun to instantiate and invoke the pipeline  Installing Tekton on Openshift Login as a user with cluster-admin privileges" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://vikaspogu.dev/posts/2019-08-09-intro-tektoncd-ocp/" />
 <meta property="article:published_time" content="2019-08-09T00:00:00+00:00" />
@@ -74,7 +74,7 @@ Basic Concepts In order to create a tekton pipeline, one does the following:
   <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-16x16.png"
     sizes="16x16">
 
-  <meta name="generator" content="Hugo 0.62.2" />
+  <meta name="generator" content="Hugo 0.64.1" />
 </head>
 
 
@@ -118,7 +118,7 @@ Basic Concepts In order to create a tekton pipeline, one does the following:
         "articleSection" : "posts",
         "name" : "TektonCD on Openshift",
         "headline" : "TektonCD on Openshift",
-        "description" : "Recently I came across tektoncd project, The Tekton Pipelines project provides Kubernetes-style resources for declaring CI\/CD-style pipelines caught my attention and started playing with it.\nBasic Concepts In order to create a tekton pipeline, one does the following:\n Create custom or install existing reusable Tasks Create a Pipeline and PipelineResources to define your application\x27s delivery pipeline Create a PipelineRun to instantiate and invoke the pipeline  Installing Tekton on Openshift Login as a user with cluster-admin privileges",
+        "description" : "Recently I came across tektoncd project, The Tekton Pipelines project provides Kubernetes-style resources for declaring CI\/CD-style pipelines caught my attention and started playing with it.\nBasic Concepts In order to create a tekton pipeline, one does the following:\n Create custom or install existing reusable Tasks Create a Pipeline and PipelineResources to define your application\x26rsquo;s delivery pipeline Create a PipelineRun to instantiate and invoke the pipeline  Installing Tekton on Openshift Login as a user with cluster-admin privileges",
         "inLanguage" : "en-US",
         "author" : "Vikas Pogu",
         "creator" : "Vikas Pogu",
@@ -172,7 +172,7 @@ Basic Concepts In order to create a tekton pipeline, one does the following:
 <p>In order to create a tekton pipeline, one does the following:</p>
 <ul>
 <li>Create custom or install existing reusable Tasks</li>
-<li>Create a Pipeline and PipelineResources to define your application's delivery pipeline</li>
+<li>Create a Pipeline and PipelineResources to define your application&rsquo;s delivery pipeline</li>
 <li>Create a PipelineRun to instantiate and invoke the pipeline</li>
 </ul>
 <h3 id="installing-tekton-on-openshift">Installing Tekton on Openshift</h3>
@@ -201,119 +201,119 @@ oc adm policy add-scc-to-user privileged -z pipeline
 oc adm policy add-role-to-user edit -z pipeline
 </code></pre></div><p>Optionally, create openshift objects(i.e DeploymentConfig, ImageStream, Service, Route)</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
-apiVersion: image.openshift.io/v1
-kind: ImageStream
-metadata:
-  labels:
-    app: go-sample
-  name: go-sample
+<span style="color:#fff;font-weight:bold">apiVersion</span>: image.openshift.io/v1
+<span style="color:#fff;font-weight:bold">kind</span>: ImageStream
+<span style="color:#fff;font-weight:bold">metadata</span>:
+  <span style="color:#fff;font-weight:bold">labels</span>:
+    <span style="color:#fff;font-weight:bold">app</span>: go-sample
+  <span style="color:#fff;font-weight:bold">name</span>: go-sample
 ---
-apiVersion: apps.openshift.io/v1
-kind: DeploymentConfig
-metadata:
-  labels:
-    app: go-sample
-  name: go-sample
-spec:
-  replicas: <span style="color:#ff0;font-weight:bold">1</span>
-  revisionHistoryLimit: <span style="color:#ff0;font-weight:bold">10</span>
-  selector:
-    app: go-sample
-    deploymentconfig: go-sample
-  strategy:
-    activeDeadlineSeconds: <span style="color:#ff0;font-weight:bold">21600</span>
-    resources: {}
-    rollingParams:
-      intervalSeconds: <span style="color:#ff0;font-weight:bold">1</span>
-      maxSurge: <span style="color:#ff0;font-weight:bold">25</span>%
-      maxUnavailable: <span style="color:#ff0;font-weight:bold">25</span>%
-      timeoutSeconds: <span style="color:#ff0;font-weight:bold">600</span>
-      updatePeriodSeconds: <span style="color:#ff0;font-weight:bold">1</span>
-    type: Rolling
-  template:
-    metadata:
-      labels:
-        app: go-sample
-        deploymentconfig: go-sample
-    spec:
-      containers:
-        - image: go-sample:latest
-          imagePullPolicy: Always
-          livenessProbe:
-            failureThreshold: <span style="color:#ff0;font-weight:bold">3</span>
-            httpGet:
-              path: /
-              port: <span style="color:#ff0;font-weight:bold">8080</span>
-              scheme: HTTP
-            initialDelaySeconds: <span style="color:#ff0;font-weight:bold">45</span>
-            periodSeconds: <span style="color:#ff0;font-weight:bold">10</span>
-            successThreshold: <span style="color:#ff0;font-weight:bold">1</span>
-            timeoutSeconds: <span style="color:#ff0;font-weight:bold">1</span>
-          name: go-sample
-          ports:
-            - containerPort: <span style="color:#ff0;font-weight:bold">8080</span>
-              protocol: TCP
-          readinessProbe:
-            failureThreshold: <span style="color:#ff0;font-weight:bold">3</span>
-            httpGet:
-              path: /
-              port: <span style="color:#ff0;font-weight:bold">8080</span>
-              scheme: HTTP
-            initialDelaySeconds: <span style="color:#ff0;font-weight:bold">45</span>
-            periodSeconds: <span style="color:#ff0;font-weight:bold">10</span>
-            successThreshold: <span style="color:#ff0;font-weight:bold">1</span>
-            timeoutSeconds: <span style="color:#ff0;font-weight:bold">5</span>
-          resources: {}
-          terminationMessagePath: /dev/termination-log
-          terminationMessagePolicy: File
-      dnsPolicy: ClusterFirst
-      restartPolicy: Always
-      schedulerName: default-scheduler
-      securityContext: {}
-      terminationGracePeriodSeconds: <span style="color:#ff0;font-weight:bold">30</span>
-  test: <span style="color:#fff;font-weight:bold">false</span>
-  triggers:
-    - imageChangeParams:
-        containerNames:
+<span style="color:#fff;font-weight:bold">apiVersion</span>: apps.openshift.io/v1
+<span style="color:#fff;font-weight:bold">kind</span>: DeploymentConfig
+<span style="color:#fff;font-weight:bold">metadata</span>:
+  <span style="color:#fff;font-weight:bold">labels</span>:
+    <span style="color:#fff;font-weight:bold">app</span>: go-sample
+  <span style="color:#fff;font-weight:bold">name</span>: go-sample
+<span style="color:#fff;font-weight:bold">spec</span>:
+  <span style="color:#fff;font-weight:bold">replicas</span>: <span style="color:#ff0;font-weight:bold">1</span>
+  <span style="color:#fff;font-weight:bold">revisionHistoryLimit</span>: <span style="color:#ff0;font-weight:bold">10</span>
+  <span style="color:#fff;font-weight:bold">selector</span>:
+    <span style="color:#fff;font-weight:bold">app</span>: go-sample
+    <span style="color:#fff;font-weight:bold">deploymentconfig</span>: go-sample
+  <span style="color:#fff;font-weight:bold">strategy</span>:
+    <span style="color:#fff;font-weight:bold">activeDeadlineSeconds</span>: <span style="color:#ff0;font-weight:bold">21600</span>
+    <span style="color:#fff;font-weight:bold">resources</span>: {}
+    <span style="color:#fff;font-weight:bold">rollingParams</span>:
+      <span style="color:#fff;font-weight:bold">intervalSeconds</span>: <span style="color:#ff0;font-weight:bold">1</span>
+      <span style="color:#fff;font-weight:bold">maxSurge</span>: <span style="color:#ff0;font-weight:bold">25</span>%
+      <span style="color:#fff;font-weight:bold">maxUnavailable</span>: <span style="color:#ff0;font-weight:bold">25</span>%
+      <span style="color:#fff;font-weight:bold">timeoutSeconds</span>: <span style="color:#ff0;font-weight:bold">600</span>
+      <span style="color:#fff;font-weight:bold">updatePeriodSeconds</span>: <span style="color:#ff0;font-weight:bold">1</span>
+    <span style="color:#fff;font-weight:bold">type</span>: Rolling
+  <span style="color:#fff;font-weight:bold">template</span>:
+    <span style="color:#fff;font-weight:bold">metadata</span>:
+      <span style="color:#fff;font-weight:bold">labels</span>:
+        <span style="color:#fff;font-weight:bold">app</span>: go-sample
+        <span style="color:#fff;font-weight:bold">deploymentconfig</span>: go-sample
+    <span style="color:#fff;font-weight:bold">spec</span>:
+      <span style="color:#fff;font-weight:bold">containers</span>:
+        - <span style="color:#fff;font-weight:bold">image</span>: go-sample:latest
+          <span style="color:#fff;font-weight:bold">imagePullPolicy</span>: Always
+          <span style="color:#fff;font-weight:bold">livenessProbe</span>:
+            <span style="color:#fff;font-weight:bold">failureThreshold</span>: <span style="color:#ff0;font-weight:bold">3</span>
+            <span style="color:#fff;font-weight:bold">httpGet</span>:
+              <span style="color:#fff;font-weight:bold">path</span>: /
+              <span style="color:#fff;font-weight:bold">port</span>: <span style="color:#ff0;font-weight:bold">8080</span>
+              <span style="color:#fff;font-weight:bold">scheme</span>: HTTP
+            <span style="color:#fff;font-weight:bold">initialDelaySeconds</span>: <span style="color:#ff0;font-weight:bold">45</span>
+            <span style="color:#fff;font-weight:bold">periodSeconds</span>: <span style="color:#ff0;font-weight:bold">10</span>
+            <span style="color:#fff;font-weight:bold">successThreshold</span>: <span style="color:#ff0;font-weight:bold">1</span>
+            <span style="color:#fff;font-weight:bold">timeoutSeconds</span>: <span style="color:#ff0;font-weight:bold">1</span>
+          <span style="color:#fff;font-weight:bold">name</span>: go-sample
+          <span style="color:#fff;font-weight:bold">ports</span>:
+            - <span style="color:#fff;font-weight:bold">containerPort</span>: <span style="color:#ff0;font-weight:bold">8080</span>
+              <span style="color:#fff;font-weight:bold">protocol</span>: TCP
+          <span style="color:#fff;font-weight:bold">readinessProbe</span>:
+            <span style="color:#fff;font-weight:bold">failureThreshold</span>: <span style="color:#ff0;font-weight:bold">3</span>
+            <span style="color:#fff;font-weight:bold">httpGet</span>:
+              <span style="color:#fff;font-weight:bold">path</span>: /
+              <span style="color:#fff;font-weight:bold">port</span>: <span style="color:#ff0;font-weight:bold">8080</span>
+              <span style="color:#fff;font-weight:bold">scheme</span>: HTTP
+            <span style="color:#fff;font-weight:bold">initialDelaySeconds</span>: <span style="color:#ff0;font-weight:bold">45</span>
+            <span style="color:#fff;font-weight:bold">periodSeconds</span>: <span style="color:#ff0;font-weight:bold">10</span>
+            <span style="color:#fff;font-weight:bold">successThreshold</span>: <span style="color:#ff0;font-weight:bold">1</span>
+            <span style="color:#fff;font-weight:bold">timeoutSeconds</span>: <span style="color:#ff0;font-weight:bold">5</span>
+          <span style="color:#fff;font-weight:bold">resources</span>: {}
+          <span style="color:#fff;font-weight:bold">terminationMessagePath</span>: /dev/termination-log
+          <span style="color:#fff;font-weight:bold">terminationMessagePolicy</span>: File
+      <span style="color:#fff;font-weight:bold">dnsPolicy</span>: ClusterFirst
+      <span style="color:#fff;font-weight:bold">restartPolicy</span>: Always
+      <span style="color:#fff;font-weight:bold">schedulerName</span>: default-scheduler
+      <span style="color:#fff;font-weight:bold">securityContext</span>: {}
+      <span style="color:#fff;font-weight:bold">terminationGracePeriodSeconds</span>: <span style="color:#ff0;font-weight:bold">30</span>
+  <span style="color:#fff;font-weight:bold">test</span>: <span style="color:#fff;font-weight:bold">false</span>
+  <span style="color:#fff;font-weight:bold">triggers</span>:
+    - <span style="color:#fff;font-weight:bold">imageChangeParams</span>:
+        <span style="color:#fff;font-weight:bold">containerNames</span>:
           - go-sample
-        from:
-          kind: ImageStreamTag
-          name: go-sample:latest
-          namespace: tektontutorial
-      type: ImageChange
-    - type: ConfigChange
+        <span style="color:#fff;font-weight:bold">from</span>:
+          <span style="color:#fff;font-weight:bold">kind</span>: ImageStreamTag
+          <span style="color:#fff;font-weight:bold">name</span>: go-sample:latest
+          <span style="color:#fff;font-weight:bold">namespace</span>: tektontutorial
+      <span style="color:#fff;font-weight:bold">type</span>: ImageChange
+    - <span style="color:#fff;font-weight:bold">type</span>: ConfigChange
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    app: go-sample
-  name: go-sample
-spec:
-  ports:
-    - name: <span style="color:#ff0;font-weight:bold">8080</span>-tcp
-      port: <span style="color:#ff0;font-weight:bold">8080</span>
-      protocol: TCP
-      targetPort: <span style="color:#ff0;font-weight:bold">8080</span>
-  selector:
-    app: go-sample
-    deploymentconfig: go-sample
-  sessionAffinity: None
-  type: ClusterIP
+<span style="color:#fff;font-weight:bold">apiVersion</span>: v1
+<span style="color:#fff;font-weight:bold">kind</span>: Service
+<span style="color:#fff;font-weight:bold">metadata</span>:
+  <span style="color:#fff;font-weight:bold">labels</span>:
+    <span style="color:#fff;font-weight:bold">app</span>: go-sample
+  <span style="color:#fff;font-weight:bold">name</span>: go-sample
+<span style="color:#fff;font-weight:bold">spec</span>:
+  <span style="color:#fff;font-weight:bold">ports</span>:
+    - <span style="color:#fff;font-weight:bold">name</span>: <span style="color:#ff0;font-weight:bold">8080</span>-tcp
+      <span style="color:#fff;font-weight:bold">port</span>: <span style="color:#ff0;font-weight:bold">8080</span>
+      <span style="color:#fff;font-weight:bold">protocol</span>: TCP
+      <span style="color:#fff;font-weight:bold">targetPort</span>: <span style="color:#ff0;font-weight:bold">8080</span>
+  <span style="color:#fff;font-weight:bold">selector</span>:
+    <span style="color:#fff;font-weight:bold">app</span>: go-sample
+    <span style="color:#fff;font-weight:bold">deploymentconfig</span>: go-sample
+  <span style="color:#fff;font-weight:bold">sessionAffinity</span>: None
+  <span style="color:#fff;font-weight:bold">type</span>: ClusterIP
 ---
-apiVersion: route.openshift.io/v1
-kind: Route
-metadata:
-  labels:
-    app: go-sample
-  name: go-sample
-spec:
-  port:
-    targetPort: <span style="color:#ff0;font-weight:bold">8080</span>-tcp
-  to:
-    kind: Service
-    name: go-sample
-    weight: <span style="color:#ff0;font-weight:bold">100</span>
+<span style="color:#fff;font-weight:bold">apiVersion</span>: route.openshift.io/v1
+<span style="color:#fff;font-weight:bold">kind</span>: Route
+<span style="color:#fff;font-weight:bold">metadata</span>:
+  <span style="color:#fff;font-weight:bold">labels</span>:
+    <span style="color:#fff;font-weight:bold">app</span>: go-sample
+  <span style="color:#fff;font-weight:bold">name</span>: go-sample
+<span style="color:#fff;font-weight:bold">spec</span>:
+  <span style="color:#fff;font-weight:bold">port</span>:
+    <span style="color:#fff;font-weight:bold">targetPort</span>: <span style="color:#ff0;font-weight:bold">8080</span>-tcp
+  <span style="color:#fff;font-weight:bold">to</span>:
+    <span style="color:#fff;font-weight:bold">kind</span>: Service
+    <span style="color:#fff;font-weight:bold">name</span>: go-sample
+    <span style="color:#fff;font-weight:bold">weight</span>: <span style="color:#ff0;font-weight:bold">100</span>
 </code></pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc apply -f go-sample-template.yml
 </code></pre></div><p>Deployment will not complete since there are no container image for <code>go-sample</code> app</p>
 <p><img src="https://vikaspogu.dev/images/tekton-intro/temp.png" alt="App template"></p>
@@ -323,62 +323,62 @@ spec:
 oc create -f https://raw.githubusercontent.com/tektoncd/catalog/master/openshift-client/openshift-client-task.yaml
 </code></pre></div><p>Create pipeline resources</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
-apiVersion: tekton.dev/v1alpha1
-kind: PipelineResource
-metadata:
-  name: go-sample-image
-spec:
-  type: image
-  params:
-    - name: url
-      value: image-registry.openshift-image-registry.svc:<span style="color:#ff0;font-weight:bold">5000</span>/tektontutorial/go-sample
+<span style="color:#fff;font-weight:bold">apiVersion</span>: tekton.dev/v1alpha1
+<span style="color:#fff;font-weight:bold">kind</span>: PipelineResource
+<span style="color:#fff;font-weight:bold">metadata</span>:
+  <span style="color:#fff;font-weight:bold">name</span>: go-sample-image
+<span style="color:#fff;font-weight:bold">spec</span>:
+  <span style="color:#fff;font-weight:bold">type</span>: image
+  <span style="color:#fff;font-weight:bold">params</span>:
+    - <span style="color:#fff;font-weight:bold">name</span>: url
+      <span style="color:#fff;font-weight:bold">value</span>: image-registry.openshift-image-registry.svc:<span style="color:#ff0;font-weight:bold">5000</span>/tektontutorial/go-sample
 ---
-apiVersion: tekton.dev/v1alpha1
-kind: PipelineResource
-metadata:
-  name: go-sample-git
-spec:
-  type: git
-  params:
-    - name: url
-      value: https://github.com/go-training/helloworld
+<span style="color:#fff;font-weight:bold">apiVersion</span>: tekton.dev/v1alpha1
+<span style="color:#fff;font-weight:bold">kind</span>: PipelineResource
+<span style="color:#fff;font-weight:bold">metadata</span>:
+  <span style="color:#fff;font-weight:bold">name</span>: go-sample-git
+<span style="color:#fff;font-weight:bold">spec</span>:
+  <span style="color:#fff;font-weight:bold">type</span>: git
+  <span style="color:#fff;font-weight:bold">params</span>:
+    - <span style="color:#fff;font-weight:bold">name</span>: url
+      <span style="color:#fff;font-weight:bold">value</span>: https://github.com/go-training/helloworld
 </code></pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc apply -f resources.yml
 </code></pre></div><p><img src="https://vikaspogu.dev/images/tekton-intro/resource.png" alt="Pipeline resources"></p>
 <p>Create pipeline, pipelines has two tasks here <code>build</code>, <code>deploy</code>. Build uses <code>s2i-go</code> task to create image from source and deploy uses <code>openshift-client</code> task to rollout latest deployment of <code>go-sample</code></p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: tekton.dev/v1alpha1
-kind: Pipeline
-metadata:
-  name: go-sample-pipeline
-spec:
-  resources:
-    - name: app-git
-      type: git
-    - name: app-image
-      type: image
-  tasks:
-    - name: build
-      taskRef:
-        name: s2i-go
-        kind: Task
-      params:
-        - name: TLSVERIFY
-          value: <span style="color:#0ff;font-weight:bold">&#34;false&#34;</span>
-      resources:
-        inputs:
-          - name: source
-            resource: app-git
-        outputs:
-          - name: image
-            resource: app-image
-    - name: deploy
-      taskRef:
-        name: openshift-client
-        kind: ClusterTask
-      runAfter:
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#fff;font-weight:bold">apiVersion</span>: tekton.dev/v1alpha1
+<span style="color:#fff;font-weight:bold">kind</span>: Pipeline
+<span style="color:#fff;font-weight:bold">metadata</span>:
+  <span style="color:#fff;font-weight:bold">name</span>: go-sample-pipeline
+<span style="color:#fff;font-weight:bold">spec</span>:
+  <span style="color:#fff;font-weight:bold">resources</span>:
+    - <span style="color:#fff;font-weight:bold">name</span>: app-git
+      <span style="color:#fff;font-weight:bold">type</span>: git
+    - <span style="color:#fff;font-weight:bold">name</span>: app-image
+      <span style="color:#fff;font-weight:bold">type</span>: image
+  <span style="color:#fff;font-weight:bold">tasks</span>:
+    - <span style="color:#fff;font-weight:bold">name</span>: build
+      <span style="color:#fff;font-weight:bold">taskRef</span>:
+        <span style="color:#fff;font-weight:bold">name</span>: s2i-go
+        <span style="color:#fff;font-weight:bold">kind</span>: Task
+      <span style="color:#fff;font-weight:bold">params</span>:
+        - <span style="color:#fff;font-weight:bold">name</span>: TLSVERIFY
+          <span style="color:#fff;font-weight:bold">value</span>: <span style="color:#0ff;font-weight:bold">&#34;false&#34;</span>
+      <span style="color:#fff;font-weight:bold">resources</span>:
+        <span style="color:#fff;font-weight:bold">inputs</span>:
+          - <span style="color:#fff;font-weight:bold">name</span>: source
+            <span style="color:#fff;font-weight:bold">resource</span>: app-git
+        <span style="color:#fff;font-weight:bold">outputs</span>:
+          - <span style="color:#fff;font-weight:bold">name</span>: image
+            <span style="color:#fff;font-weight:bold">resource</span>: app-image
+    - <span style="color:#fff;font-weight:bold">name</span>: deploy
+      <span style="color:#fff;font-weight:bold">taskRef</span>:
+        <span style="color:#fff;font-weight:bold">name</span>: openshift-client
+        <span style="color:#fff;font-weight:bold">kind</span>: ClusterTask
+      <span style="color:#fff;font-weight:bold">runAfter</span>:
         - build
-      params:
-        - name: ARGS
-          value: <span style="color:#0ff;font-weight:bold">&#34;rollout latest go-sample&#34;</span>
+      <span style="color:#fff;font-weight:bold">params</span>:
+        - <span style="color:#fff;font-weight:bold">name</span>: ARGS
+          <span style="color:#fff;font-weight:bold">value</span>: <span style="color:#0ff;font-weight:bold">&#34;rollout latest go-sample&#34;</span>
 </code></pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc apply -f go-sample-pipeline.yml
 </code></pre></div><p><img src="https://vikaspogu.dev/images/tekton-intro/pipeline.png" alt="Pipeline"></p>
 <p>Start pipeline on dashboard or by <a href="https://github.com/tektoncd/cli">tektoncli</a></p>

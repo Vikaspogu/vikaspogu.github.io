@@ -6,10 +6,21 @@
     <description>Recent content in OpenShift on vikaspogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 18 Dec 2019 12:10:07 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 10 Feb 2020 17:24:56 -0500</lastBuildDate>
     
 	<atom:link href="https://vikaspogu.dev/tags/openshift/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Jenkins Openshift OAuth SSL</title>
+      <link>https://vikaspogu.dev/posts/openshift-jenkins-oauth-ssl/</link>
+      <pubDate>Mon, 10 Feb 2020 17:24:56 -0500</pubDate>
+      
+      <guid>https://vikaspogu.dev/posts/openshift-jenkins-oauth-ssl/</guid>
+      <description>Recently, I encountered an issue while authenticating to Openshift Jenkins using Openshift OAuth plugin where trusted certificate provided by CA that aren&amp;rsquo;t included in the default JRE TrustStore.
+Logs from Jenkins pod
+2020-02-10 21:19:07.335+0000 [id=17]	INFO	o.o.j.p.o.OpenShiftOAuth2SecurityRealm#transportToUse: OpenShift OAuth got an SSL error when accessing the issuer&amp;#39;s token endpoint when using the SA certificate2020-02-10 21:19:07.348+0000 [id=17]	INFO	o.o.j.p.o.OpenShiftOAuth2SecurityRealm#transportToUse: OpenShift OAuth provider token endpoint failed unexpectedly using the JVMs default keystore sun.</description>
+    </item>
     
     <item>
       <title>Permission denied pushing to Openshift Registry</title>
@@ -41,7 +52,7 @@ Note: By adding this annotation you can dynamically create certificates service.
       <guid>https://vikaspogu.dev/posts/2019-08-09-intro-tektoncd-ocp/</guid>
       <description>Recently I came across tektoncd project, The Tekton Pipelines project provides Kubernetes-style resources for declaring CI/CD-style pipelines caught my attention and started playing with it.
 Basic Concepts In order to create a tekton pipeline, one does the following:
- Create custom or install existing reusable Tasks Create a Pipeline and PipelineResources to define your application&#39;s delivery pipeline Create a PipelineRun to instantiate and invoke the pipeline  Installing Tekton on Openshift Login as a user with cluster-admin privileges</description>
+ Create custom or install existing reusable Tasks Create a Pipeline and PipelineResources to define your application&amp;rsquo;s delivery pipeline Create a PipelineRun to instantiate and invoke the pipeline  Installing Tekton on Openshift Login as a user with cluster-admin privileges</description>
     </item>
     
     <item>
@@ -64,7 +75,7 @@ $ kubectl proxy &amp;amp; PID=$! $ curl -X PUT http://localhost:8001/api/v1/name
       <pubDate>Wed, 15 May 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/posts/2019-05-15-springboot-metrics-grafana/</guid>
-      <description>In this post I&#39;ll discuss how to monitor spring boot application metrics using Prometheus and Grafana.
+      <description>In this post I&amp;rsquo;ll discuss how to monitor spring boot application metrics using Prometheus and Grafana.
 Prometheus Prometheus is a monitoring system which collects metrics from configured targets at given intervals.
 Grafana Grafana is an open source metric analytics &amp;amp; visualization tool.
 Micrometer Micrometer is a metrics instrumentation library for JVM-based applications.
@@ -91,7 +102,7 @@ $ oc get dc Set the JAVA_DEBUG environment variable in the deployment configurat
       <guid>https://vikaspogu.dev/posts/2019-05-14-debug-netcore-openshift/</guid>
       <description>This post is about how to remote debug a ASP.NET Core application on OpenShift using Visual Studio Code. You can use any Microsoft proprietary debugger engine vsdbg with Visual Studio Code.
 First, list the available .Net application pods using oc command.
-$ oc get pod NAME READY STATUS RESTARTS AGE MY_APP_NAME-3-1xrsp 0/1 Running 0 6s $ oc rsh MY_APP_NAME-3-1xrsp sh-4.2$ curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l /opt/app-root/vsdbg -r linux-x64 Note: If you&#39;re container is running behind a corporate proxy and cannot access internet, you&#39;ll have to build base dotnet image with the debugger engine vsdbg installed in it.</description>
+$ oc get pod NAME READY STATUS RESTARTS AGE MY_APP_NAME-3-1xrsp 0/1 Running 0 6s $ oc rsh MY_APP_NAME-3-1xrsp sh-4.2$ curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l /opt/app-root/vsdbg -r linux-x64 Note: If you&amp;rsquo;re container is running behind a corporate proxy and cannot access internet, you&amp;rsquo;ll have to build base dotnet image with the debugger engine vsdbg installed in it.</description>
     </item>
     
     <item>
@@ -101,8 +112,8 @@ $ oc get pod NAME READY STATUS RESTARTS AGE MY_APP_NAME-3-1xrsp 0/1 Running 0 6s
       
       <guid>https://vikaspogu.dev/posts/2019-05-14-javaprofiler-openshift/</guid>
       <description>Sometimes writing code that just runs is not enough. We might want to know what goes on internally such as how memory is allocated, consequences of using one coding approach over another, implications of concurrent executions, areas to improve performance, etc. We can use profilers for this.
-In this post I&#39;ll discuss how to use YourKit-JavaProfiler inside a container.
-Since my sample application is built using OpenShift S2I process and pushed into openshift internal registry, I&#39;ll have to pull the image locally.</description>
+In this post I&amp;rsquo;ll discuss how to use YourKit-JavaProfiler inside a container.
+Since my sample application is built using OpenShift S2I process and pushed into openshift internal registry, I&amp;rsquo;ll have to pull the image locally.</description>
     </item>
     
   </channel>

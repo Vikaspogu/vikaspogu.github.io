@@ -17,7 +17,7 @@
       <pubDate>Wed, 01 Jan 2020 16:19:29 -0500</pubDate>
       
       <guid>https://vikaspogu.dev/posts/raspberry-pi-temp-telegraf/</guid>
-      <description>In my previous post, I went through k3s cluster home setup. Now, i&#39;ll show how to measure the temperature of those Raspberry Pi&#39;s using Telegraf, Influxdb, Grafana and Helm charts.
+      <description>In my previous post, I went through k3s cluster home setup. Now, i&amp;rsquo;ll show how to measure the temperature of those Raspberry Pi&amp;rsquo;s using Telegraf, Influxdb, Grafana and Helm charts.
 Why Telegraf? Telegraf has a plugin called exec, which can execute the commands on host machine at certain interval and parses those metrics from their output in any one of the accepted input data formats.
 First, deploy influxdb time series database chart</description>
     </item>

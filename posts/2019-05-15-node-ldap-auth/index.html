@@ -16,13 +16,13 @@
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Authenticate a Node application with LDAP"/>
 <meta name="twitter:description" content="This post demonstrates how to authenticate a user against LDAP.
-Let&#39;s start by installing basic-auth and ldapauth-fork packages
+Let&rsquo;s start by installing basic-auth and ldapauth-fork packages
 npm install ldapauth-fork npm install basic-auth Steps for implementation;
  Add packages Create a ldap variable with authentication configuration Basic auth should prompt for you username and password. Once user is found, verify the given password by trying to bind the user client with the found LDAP user object and given password.  const auth = require(&#34;basic-auth&#34;); var LdapAuth = require(&#34;ldapauth-fork&#34;); var ldap = new LdapAuth({ url: &#34;ldap://ldap-url:389&#34;, bindDN: &#34;uid=rc,ou=AppAccounts,ou=People,ou=Entsys,dc=example."/>
 
   <meta property="og:title" content="Authenticate a Node application with LDAP" />
 <meta property="og:description" content="This post demonstrates how to authenticate a user against LDAP.
-Let&#39;s start by installing basic-auth and ldapauth-fork packages
+Let&rsquo;s start by installing basic-auth and ldapauth-fork packages
 npm install ldapauth-fork npm install basic-auth Steps for implementation;
  Add packages Create a ldap variable with authentication configuration Basic auth should prompt for you username and password. Once user is found, verify the given password by trying to bind the user client with the found LDAP user object and given password.  const auth = require(&#34;basic-auth&#34;); var LdapAuth = require(&#34;ldapauth-fork&#34;); var ldap = new LdapAuth({ url: &#34;ldap://ldap-url:389&#34;, bindDN: &#34;uid=rc,ou=AppAccounts,ou=People,ou=Entsys,dc=example." />
 <meta property="og:type" content="article" />
@@ -76,7 +76,7 @@ npm install ldapauth-fork npm install basic-auth Steps for implementation;
   <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-16x16.png"
     sizes="16x16">
 
-  <meta name="generator" content="Hugo 0.62.2" />
+  <meta name="generator" content="Hugo 0.64.1" />
 </head>
 
 
@@ -120,7 +120,7 @@ npm install ldapauth-fork npm install basic-auth Steps for implementation;
         "articleSection" : "posts",
         "name" : "Authenticate a Node application with LDAP",
         "headline" : "Authenticate a Node application with LDAP",
-        "description" : "This post demonstrates how to authenticate a user against LDAP.\nLet\x27s start by installing basic-auth and ldapauth-fork packages\nnpm install ldapauth-fork npm install basic-auth Steps for implementation;\n Add packages Create a ldap variable with authentication configuration Basic auth should prompt for you username and password. Once user is found, verify the given password by trying to bind the user client with the found LDAP user object and given password.  const auth = require(\x26#34;basic-auth\x26#34;); var LdapAuth = require(\x26#34;ldapauth-fork\x26#34;); var ldap = new LdapAuth({ url: \x26#34;ldap:\/\/ldap-url:389\x26#34;, bindDN: \x26#34;uid=rc,ou=AppAccounts,ou=People,ou=Entsys,dc=example.",
+        "description" : "This post demonstrates how to authenticate a user against LDAP.\nLet\x26rsquo;s start by installing basic-auth and ldapauth-fork packages\nnpm install ldapauth-fork npm install basic-auth Steps for implementation;\n Add packages Create a ldap variable with authentication configuration Basic auth should prompt for you username and password. Once user is found, verify the given password by trying to bind the user client with the found LDAP user object and given password.  const auth = require(\x26#34;basic-auth\x26#34;); var LdapAuth = require(\x26#34;ldapauth-fork\x26#34;); var ldap = new LdapAuth({ url: \x26#34;ldap:\/\/ldap-url:389\x26#34;, bindDN: \x26#34;uid=rc,ou=AppAccounts,ou=People,ou=Entsys,dc=example.",
         "inLanguage" : "en-US",
         "author" : "Vikas Pogu",
         "creator" : "Vikas Pogu",
@@ -169,7 +169,7 @@ npm install ldapauth-fork npm install basic-auth Steps for implementation;
 
       <div>
         <p>This post demonstrates how to authenticate a user against LDAP.</p>
-<p>Let's start by installing <a href="https://www.npmjs.com/package/basic-auth">basic-auth</a> and <a href="https://www.npmjs.com/package/ldapauth-fork">ldapauth-fork</a> packages</p>
+<p>Let&rsquo;s start by installing <a href="https://www.npmjs.com/package/basic-auth">basic-auth</a> and <a href="https://www.npmjs.com/package/ldapauth-fork">ldapauth-fork</a> packages</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm install ldapauth-fork
 npm install basic-auth
 </code></pre></div><p>Steps for implementation;</p>

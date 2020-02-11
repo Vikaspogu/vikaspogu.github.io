@@ -6,10 +6,21 @@
     <description>Recent content in ssl on vikaspogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 28 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 10 Feb 2020 17:24:56 -0500</lastBuildDate>
     
 	<atom:link href="https://vikaspogu.dev/tags/ssl/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Jenkins Openshift OAuth SSL</title>
+      <link>https://vikaspogu.dev/posts/openshift-jenkins-oauth-ssl/</link>
+      <pubDate>Mon, 10 Feb 2020 17:24:56 -0500</pubDate>
+      
+      <guid>https://vikaspogu.dev/posts/openshift-jenkins-oauth-ssl/</guid>
+      <description>Recently, I encountered an issue while authenticating to Openshift Jenkins using Openshift OAuth plugin where trusted certificate provided by CA that aren&amp;rsquo;t included in the default JRE TrustStore.
+Logs from Jenkins pod
+2020-02-10 21:19:07.335+0000 [id=17]	INFO	o.o.j.p.o.OpenShiftOAuth2SecurityRealm#transportToUse: OpenShift OAuth got an SSL error when accessing the issuer&amp;#39;s token endpoint when using the SA certificate2020-02-10 21:19:07.348+0000 [id=17]	INFO	o.o.j.p.o.OpenShiftOAuth2SecurityRealm#transportToUse: OpenShift OAuth provider token endpoint failed unexpectedly using the JVMs default keystore sun.</description>
+    </item>
     
     <item>
       <title>Configuring couchbase SSL for dynamic certificates in Openshift</title>
