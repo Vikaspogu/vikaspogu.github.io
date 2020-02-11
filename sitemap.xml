@@ -3,17 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://vikaspogu.dev/categories/</loc>
-    <lastmod>2020-02-10T17:24:56-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://vikaspogu.dev/tags/jenkins/</loc>
-    <lastmod>2020-02-10T17:24:56-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/categories/jenkins/</loc>
     <lastmod>2020-02-10T17:24:56-05:00</lastmod>
   </url>
   
@@ -28,22 +18,12 @@
   </url>
   
   <url>
-    <loc>https://vikaspogu.dev/categories/openshift/</loc>
-    <lastmod>2020-02-10T17:24:56-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://vikaspogu.dev/posts/</loc>
     <lastmod>2020-02-10T17:24:56-05:00</lastmod>
   </url>
   
   <url>
     <loc>https://vikaspogu.dev/tags/ssl/</loc>
-    <lastmod>2020-02-10T17:24:56-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/categories/ssl/</loc>
     <lastmod>2020-02-10T17:24:56-05:00</lastmod>
   </url>
   
@@ -304,6 +284,10 @@
   
   <url>
     <loc>https://vikaspogu.dev/about/</loc>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/categories/</loc>
   </url>
   
   <url>
