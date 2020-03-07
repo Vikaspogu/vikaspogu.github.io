@@ -6,10 +6,21 @@
     <description>Recent content on vikaspogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 10 Feb 2020 17:24:56 -0500</lastBuildDate>
+    <lastBuildDate>Sat, 07 Mar 2020 14:31:32 -0500</lastBuildDate>
     
 	<atom:link href="https://vikaspogu.dev/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Pi Hole on k3s cluster</title>
+      <link>https://vikaspogu.dev/posts/pi-hole-kubernetes/</link>
+      <pubDate>Sat, 07 Mar 2020 14:31:32 -0500</pubDate>
+      
+      <guid>https://vikaspogu.dev/posts/pi-hole-kubernetes/</guid>
+      <description>The Pi-hole is a fantastic tool that blocks DNS requests to ad servers. That means you can surf the web without having to look at ads on every page.
+PiHole in Kubernetes After some google search, i have found this amazing helm repo which will install pi-hole using a helm chart.
+I have made few updates to chart like ingress, address values; Overriding default pi-hole variables like WEBPASSWORD and TZ as a container environment variables in deployment resource.</description>
+    </item>
     
     <item>
       <title>Jenkins Openshift OAuth SSL</title>

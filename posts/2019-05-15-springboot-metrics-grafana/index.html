@@ -78,7 +78,7 @@ Spring Boot Actuator Spring Boot Actuator helps you monitor and manage your appl
   <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-16x16.png"
     sizes="16x16">
 
-  <meta name="generator" content="Hugo 0.64.1" />
+  <meta name="generator" content="Hugo 0.66.0" />
 </head>
 
 
@@ -185,19 +185,19 @@ Spring Boot Actuator Spring Boot Actuator helps you monitor and manage your appl
 <p>Spring Boot Actuator helps you monitor and manage your application when it’s pushed to production. You can choose to manage and monitor your application using HTTP or JMX endpoints.</p>
 <h3 id="setup">Setup</h3>
 <p>Enable prometheus metrics by adding dependencies in <code>pom.xml</code></p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="font-weight:bold">&lt;dependency</span><span style="font-weight:bold">&gt;</span>
-    <span style="font-weight:bold">&lt;groupId</span><span style="font-weight:bold">&gt;</span>org.springframework.boot<span style="font-weight:bold">&lt;/groupId&gt;</span>
-    <span style="font-weight:bold">&lt;artifactId</span><span style="font-weight:bold">&gt;</span>spring-boot-starter-actuator<span style="font-weight:bold">&lt;/artifactId&gt;</span>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="font-weight:bold">&lt;dependency&gt;</span>
+    <span style="font-weight:bold">&lt;groupId&gt;</span>org.springframework.boot<span style="font-weight:bold">&lt;/groupId&gt;</span>
+    <span style="font-weight:bold">&lt;artifactId&gt;</span>spring-boot-starter-actuator<span style="font-weight:bold">&lt;/artifactId&gt;</span>
 <span style="font-weight:bold">&lt;/dependency&gt;</span>
-<span style="font-weight:bold">&lt;dependency</span><span style="font-weight:bold">&gt;</span>
-    <span style="font-weight:bold">&lt;groupId</span><span style="font-weight:bold">&gt;</span>io.micrometer<span style="font-weight:bold">&lt;/groupId&gt;</span>
-    <span style="font-weight:bold">&lt;artifactId</span><span style="font-weight:bold">&gt;</span>micrometer-core<span style="font-weight:bold">&lt;/artifactId&gt;</span>
-    <span style="font-weight:bold">&lt;version</span><span style="font-weight:bold">&gt;</span>1.1.4<span style="font-weight:bold">&lt;/version&gt;</span>
+<span style="font-weight:bold">&lt;dependency&gt;</span>
+    <span style="font-weight:bold">&lt;groupId&gt;</span>io.micrometer<span style="font-weight:bold">&lt;/groupId&gt;</span>
+    <span style="font-weight:bold">&lt;artifactId&gt;</span>micrometer-core<span style="font-weight:bold">&lt;/artifactId&gt;</span>
+    <span style="font-weight:bold">&lt;version&gt;</span>1.1.4<span style="font-weight:bold">&lt;/version&gt;</span>
 <span style="font-weight:bold">&lt;/dependency&gt;</span>
-<span style="font-weight:bold">&lt;dependency</span><span style="font-weight:bold">&gt;</span>
-    <span style="font-weight:bold">&lt;groupId</span><span style="font-weight:bold">&gt;</span>io.micrometer<span style="font-weight:bold">&lt;/groupId&gt;</span>
-    <span style="font-weight:bold">&lt;artifactId</span><span style="font-weight:bold">&gt;</span>micrometer-registry-prometheus<span style="font-weight:bold">&lt;/artifactId&gt;</span>
-    <span style="font-weight:bold">&lt;version</span><span style="font-weight:bold">&gt;</span>1.0.6<span style="font-weight:bold">&lt;/version&gt;</span>
+<span style="font-weight:bold">&lt;dependency&gt;</span>
+    <span style="font-weight:bold">&lt;groupId&gt;</span>io.micrometer<span style="font-weight:bold">&lt;/groupId&gt;</span>
+    <span style="font-weight:bold">&lt;artifactId&gt;</span>micrometer-registry-prometheus<span style="font-weight:bold">&lt;/artifactId&gt;</span>
+    <span style="font-weight:bold">&lt;version&gt;</span>1.0.6<span style="font-weight:bold">&lt;/version&gt;</span>
 <span style="font-weight:bold">&lt;/dependency&gt;</span>
 </code></pre></div><p>By default <code>prometheus</code> endpoint is not available and must be enabled in <code>application.properties</code>. More configurations can be found at spring-boot <a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready-metrics">docs</a></p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">#Metrics related configurations
