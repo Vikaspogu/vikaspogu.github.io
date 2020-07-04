@@ -3,6 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://vikaspogu.dev/tags/nodejs/</loc>
+    <lastmod>2020-07-04T15:08:54-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/posts/</loc>
+    <lastmod>2020-07-04T15:08:54-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/posts/nodejs-slack-bot/</loc>
+    <lastmod>2020-07-04T15:08:54-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/slack-bot/</loc>
+    <lastmod>2020-07-04T15:08:54-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/</loc>
+    <lastmod>2020-07-04T15:08:54-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/</loc>
+    <lastmod>2020-07-04T15:08:54-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://vikaspogu.dev/tags/k3s/</loc>
     <lastmod>2020-03-07T14:31:32-05:00</lastmod>
   </url>
@@ -14,21 +44,6 @@
   
   <url>
     <loc>https://vikaspogu.dev/tags/pi-hole/</loc>
-    <lastmod>2020-03-07T14:31:32-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/posts/</loc>
-    <lastmod>2020-03-07T14:31:32-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/tags/</loc>
-    <lastmod>2020-03-07T14:31:32-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/</loc>
     <lastmod>2020-03-07T14:31:32-05:00</lastmod>
   </url>
   
@@ -239,11 +254,6 @@
   
   <url>
     <loc>https://vikaspogu.dev/tags/ldap/</loc>
-    <lastmod>2019-05-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/tags/nodejs/</loc>
     <lastmod>2019-05-15T00:00:00+00:00</lastmod>
   </url>
   
