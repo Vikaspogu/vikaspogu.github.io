@@ -6,17 +6,53 @@
     <description>Recent content in Tags on vikaspogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 04 Jul 2020 15:08:54 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2020 16:26:22 -0500</lastBuildDate>
     
 	<atom:link href="https://vikaspogu.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>docker</title>
+      <link>https://vikaspogu.dev/tags/docker/</link>
+      <pubDate>Sun, 05 Jul 2020 16:26:22 -0500</pubDate>
+      
+      <guid>https://vikaspogu.dev/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>garage-door</title>
+      <link>https://vikaspogu.dev/tags/garage-door/</link>
+      <pubDate>Sun, 05 Jul 2020 16:26:22 -0500</pubDate>
+      
+      <guid>https://vikaspogu.dev/tags/garage-door/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes</title>
+      <link>https://vikaspogu.dev/tags/kubernetes/</link>
+      <pubDate>Sun, 05 Jul 2020 16:26:22 -0500</pubDate>
+      
+      <guid>https://vikaspogu.dev/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>NodeJS</title>
       <link>https://vikaspogu.dev/tags/nodejs/</link>
-      <pubDate>Sat, 04 Jul 2020 15:08:54 -0500</pubDate>
+      <pubDate>Sun, 05 Jul 2020 16:26:22 -0500</pubDate>
       
       <guid>https://vikaspogu.dev/tags/nodejs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>raspberry-pi</title>
+      <link>https://vikaspogu.dev/tags/raspberry-pi/</link>
+      <pubDate>Sun, 05 Jul 2020 16:26:22 -0500</pubDate>
+      
+      <guid>https://vikaspogu.dev/tags/raspberry-pi/</guid>
       <description></description>
     </item>
     
@@ -125,15 +161,6 @@
       <pubDate>Wed, 01 Jan 2020 16:19:29 -0500</pubDate>
       
       <guid>https://vikaspogu.dev/tags/telegraf/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>raspberry-pi</title>
-      <link>https://vikaspogu.dev/tags/raspberry-pi/</link>
-      <pubDate>Tue, 31 Dec 2019 13:47:10 -0500</pubDate>
-      
-      <guid>https://vikaspogu.dev/tags/raspberry-pi/</guid>
       <description></description>
     </item>
     
