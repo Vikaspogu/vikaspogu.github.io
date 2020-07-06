@@ -6,10 +6,21 @@
     <description>Recent content in jenkins on vikaspogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 10 Feb 2020 17:24:56 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 06 Jul 2020 13:23:05 -0500</lastBuildDate>
     
 	<atom:link href="https://vikaspogu.dev/tags/jenkins/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Openshift Jenkins configuration via JCasC plugin</title>
+      <link>https://vikaspogu.dev/posts/jenkins-config-as-code-openshift/</link>
+      <pubDate>Mon, 06 Jul 2020 13:23:05 -0500</pubDate>
+      
+      <guid>https://vikaspogu.dev/posts/jenkins-config-as-code-openshift/</guid>
+      <description>Deploying Jenkins on Kubernetes provides important benefits over a standard VM-based deployment. For example, gaining the ability to have project-specific Jenkins slaves (agents) on demand, instead of having a pool of VMs idle waiting for a job.
+Jenkins can be easily deployed using Helm, Openshift using jenkins catalog
+As everyone has experienced setting up Jenkins is a complex process, as both Jenkins and its plugins require some tuning and configuration, with dozens of parameters to set within the web UI manage section</description>
+    </item>
     
     <item>
       <title>Jenkins Openshift OAuth SSL</title>

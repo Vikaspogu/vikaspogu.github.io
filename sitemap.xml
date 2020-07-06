@@ -3,6 +3,41 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://vikaspogu.dev/tags/jcasc/</loc>
+    <lastmod>2020-07-06T13:23:05-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/jenkins/</loc>
+    <lastmod>2020-07-06T13:23:05-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/openshift/</loc>
+    <lastmod>2020-07-06T13:23:05-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/posts/jenkins-config-as-code-openshift/</loc>
+    <lastmod>2020-07-06T13:23:05-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/posts/</loc>
+    <lastmod>2020-07-06T13:23:05-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/</loc>
+    <lastmod>2020-07-06T13:23:05-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/</loc>
+    <lastmod>2020-07-06T13:23:05-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://vikaspogu.dev/tags/docker/</loc>
     <lastmod>2020-07-05T16:26:22-05:00</lastmod>
   </url>
@@ -23,27 +58,12 @@
   </url>
   
   <url>
-    <loc>https://vikaspogu.dev/posts/</loc>
-    <lastmod>2020-07-05T16:26:22-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://vikaspogu.dev/posts/pi-garage-k3s/</loc>
     <lastmod>2020-07-05T16:26:22-05:00</lastmod>
   </url>
   
   <url>
     <loc>https://vikaspogu.dev/tags/raspberry-pi/</loc>
-    <lastmod>2020-07-05T16:26:22-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/tags/</loc>
-    <lastmod>2020-07-05T16:26:22-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/</loc>
     <lastmod>2020-07-05T16:26:22-05:00</lastmod>
   </url>
   
@@ -73,17 +93,7 @@
   </url>
   
   <url>
-    <loc>https://vikaspogu.dev/tags/jenkins/</loc>
-    <lastmod>2020-02-10T17:24:56-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://vikaspogu.dev/posts/openshift-jenkins-oauth-ssl/</loc>
-    <lastmod>2020-02-10T17:24:56-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/tags/openshift/</loc>
     <lastmod>2020-02-10T17:24:56-05:00</lastmod>
   </url>
   
