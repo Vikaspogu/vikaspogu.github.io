@@ -13,10 +13,10 @@
     
     <item>
       <title>Spring Boot metrics with Prometheus and Grafana in OpenShift</title>
-      <link>https://vikaspogu.dev/posts/2019-05-15-springboot-metrics-grafana/</link>
+      <link>https://vikaspogu.dev/posts/springboot-metrics-grafana/</link>
       <pubDate>Wed, 15 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://vikaspogu.dev/posts/2019-05-15-springboot-metrics-grafana/</guid>
+      <guid>https://vikaspogu.dev/posts/springboot-metrics-grafana/</guid>
       <description>In this post I&amp;rsquo;ll discuss how to monitor spring boot application metrics using Prometheus and Grafana.
 Prometheus Prometheus is a monitoring system which collects metrics from configured targets at given intervals.
 Grafana Grafana is an open source metric analytics &amp;amp; visualization tool.

@@ -13,10 +13,10 @@
     
     <item>
       <title>Go JWT Authentication with keycloak</title>
-      <link>https://vikaspogu.dev/posts/2019-07-27-sso-jwt-golang/</link>
+      <link>https://vikaspogu.dev/posts/sso-jwt-golang/</link>
       <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://vikaspogu.dev/posts/2019-07-27-sso-jwt-golang/</guid>
+      <guid>https://vikaspogu.dev/posts/sso-jwt-golang/</guid>
       <description>Recently I was working on a React project with Go backend using Gin web framework. Keycloak was the authentication mechanism for the frontend; I also wanted to secure the backend using JSON Web Tokens which was provided by Keycloak on every login. Setup for jwt verification in Go was easy.
 First, copy RS256 algorithm public key value from Keycloak
 Send the token as Authorization header

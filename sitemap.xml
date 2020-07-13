@@ -193,7 +193,7 @@
   </url>
   
   <url>
-    <loc>https://vikaspogu.dev/posts/2019-11-02-create-nfs-server-rhel-rhv/</loc>
+    <loc>https://vikaspogu.dev/posts/create-nfs-server-rhel-rhv/</loc>
     <lastmod>2019-11-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -208,7 +208,7 @@
   </url>
   
   <url>
-    <loc>https://vikaspogu.dev/posts/2019-08-28-couchbase-ssl-openshift/</loc>
+    <loc>https://vikaspogu.dev/posts/couchbase-ssl-openshift/</loc>
     <lastmod>2019-08-28T00:00:00+00:00</lastmod>
   </url>
   
@@ -223,12 +223,12 @@
   </url>
   
   <url>
-    <loc>https://vikaspogu.dev/posts/2019-08-09-intro-tektoncd-ocp/</loc>
+    <loc>https://vikaspogu.dev/posts/intro-tektoncd-ocp/</loc>
     <lastmod>2019-08-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://vikaspogu.dev/posts/2019-07-27-sso-jwt-golang/</loc>
+    <loc>https://vikaspogu.dev/posts/sso-jwt-golang/</loc>
     <lastmod>2019-07-27T00:00:00+00:00</lastmod>
   </url>
   
@@ -253,7 +253,7 @@
   </url>
   
   <url>
-    <loc>https://vikaspogu.dev/posts/2019-07-25-redhat-sso-react/</loc>
+    <loc>https://vikaspogu.dev/posts/redhat-sso-react/</loc>
     <lastmod>2019-07-25T00:00:00+00:00</lastmod>
   </url>
   
@@ -268,7 +268,7 @@
   </url>
   
   <url>
-    <loc>https://vikaspogu.dev/posts/2019-07-16-heketi-jwt-error/</loc>
+    <loc>https://vikaspogu.dev/posts/heketi-jwt-error/</loc>
     <lastmod>2019-07-16T00:00:00+00:00</lastmod>
   </url>
   
@@ -278,7 +278,7 @@
   </url>
   
   <url>
-    <loc>https://vikaspogu.dev/posts/2019-07-01-patternfly-setup-react/</loc>
+    <loc>https://vikaspogu.dev/posts/patternfly-setup-react/</loc>
     <lastmod>2019-07-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -288,12 +288,12 @@
   </url>
   
   <url>
-    <loc>https://vikaspogu.dev/posts/2019-05-15-node-ldap-auth/</loc>
+    <loc>https://vikaspogu.dev/posts/node-ldap-auth/</loc>
     <lastmod>2019-05-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://vikaspogu.dev/posts/2019-05-15-project-terminating/</loc>
+    <loc>https://vikaspogu.dev/posts/project-terminating/</loc>
     <lastmod>2019-05-15T00:00:00+00:00</lastmod>
   </url>
   
@@ -313,12 +313,12 @@
   </url>
   
   <url>
-    <loc>https://vikaspogu.dev/posts/2019-05-15-springboot-metrics-grafana/</loc>
+    <loc>https://vikaspogu.dev/posts/springboot-metrics-grafana/</loc>
     <lastmod>2019-05-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://vikaspogu.dev/posts/2019-05-14-debug-java-container/</loc>
+    <loc>https://vikaspogu.dev/posts/debug-java-container/</loc>
     <lastmod>2019-05-14T14:36:27-05:00</lastmod>
   </url>
   
@@ -328,7 +328,7 @@
   </url>
   
   <url>
-    <loc>https://vikaspogu.dev/posts/2019-05-14-debug-netcore-openshift/</loc>
+    <loc>https://vikaspogu.dev/posts/debug-netcore-openshift/</loc>
     <lastmod>2019-05-14T00:00:00+00:00</lastmod>
   </url>
   
@@ -338,7 +338,7 @@
   </url>
   
   <url>
-    <loc>https://vikaspogu.dev/posts/2019-05-14-javaprofiler-openshift/</loc>
+    <loc>https://vikaspogu.dev/posts/javaprofiler-openshift/</loc>
     <lastmod>2019-05-14T00:00:00+00:00</lastmod>
   </url>
   

@@ -13,10 +13,10 @@
     
     <item>
       <title>Heketi JWT token expired error</title>
-      <link>https://vikaspogu.dev/posts/2019-07-16-heketi-jwt-error/</link>
+      <link>https://vikaspogu.dev/posts/heketi-jwt-error/</link>
       <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://vikaspogu.dev/posts/2019-07-16-heketi-jwt-error/</guid>
+      <guid>https://vikaspogu.dev/posts/heketi-jwt-error/</guid>
       <description>Recently I encountered an JWT token expired error on heketi pod in Openshift cluster.
 [jwt] ERROR 2019/07/16 19:17:14 heketi/middleware/jwt.go:66:middleware.(*HeketiJwtClaims).Valid: exp validation failed: Token is expired by 1h48m59s After a lot of google search, I synchronized clocks across the pod running heketi and the masters, which solved the issue
 $ ntpdate -q 0.rhel.pool.ntp.org; systemctl restart ntpd </description>

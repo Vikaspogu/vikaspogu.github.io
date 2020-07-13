@@ -13,10 +13,10 @@
     
     <item>
       <title>React App with RedHat SSO or keycloak</title>
-      <link>https://vikaspogu.dev/posts/2019-07-25-redhat-sso-react/</link>
+      <link>https://vikaspogu.dev/posts/redhat-sso-react/</link>
       <pubDate>Thu, 25 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://vikaspogu.dev/posts/2019-07-25-redhat-sso-react/</guid>
+      <guid>https://vikaspogu.dev/posts/redhat-sso-react/</guid>
       <description>In this post, I will show you how to secure a React app using RedHat SSO (upstream keycloak). In this case, openid-connect is my identity provider.
 Install the offical keycloak js adapter
 $ npm i keycloak-js --save Setup the client with the host and port; in my case it&amp;rsquo;s localhost:9000

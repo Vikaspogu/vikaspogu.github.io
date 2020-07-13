@@ -13,10 +13,10 @@
     
     <item>
       <title>Patternfly setup in React Application</title>
-      <link>https://vikaspogu.dev/posts/2019-07-01-patternfly-setup-react/</link>
+      <link>https://vikaspogu.dev/posts/patternfly-setup-react/</link>
       <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://vikaspogu.dev/posts/2019-07-01-patternfly-setup-react/</guid>
+      <guid>https://vikaspogu.dev/posts/patternfly-setup-react/</guid>
       <description>To order to integrate Patternfly framework into a ReactJS application, create a new project or use an existing one
 $ npx create-react-app patternfly-setup-react Install patternfly dependencies react-core, react-table and patternfly
 $ npm i --save @patternfly/patternfly \  @patternfly/react-core @patternfly/react-table Note: Import base.css and patternfly.css in your project, or some components may diverge in appearance

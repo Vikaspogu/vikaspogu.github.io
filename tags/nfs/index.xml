@@ -13,10 +13,10 @@
     
     <item>
       <title>Create and add NFS storage to RHV</title>
-      <link>https://vikaspogu.dev/posts/2019-11-02-create-nfs-server-rhel-rhv/</link>
+      <link>https://vikaspogu.dev/posts/create-nfs-server-rhel-rhv/</link>
       <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://vikaspogu.dev/posts/2019-11-02-create-nfs-server-rhel-rhv/</guid>
+      <guid>https://vikaspogu.dev/posts/create-nfs-server-rhel-rhv/</guid>
       <description>Set up NFS shares that will serve as storage domains on a Red Hat Enterprise Linux server.
 Add firewall rule are to rhel server
 firewall-cmd --permanent --add-service nfs firewall-cmd --permanent --add-service mountd firewall-cmd --reload Create and add group kvm; set the ownership of your exported directories to 36:36, which gives vdsm:kvm ownership; change the mode of the directories so that read and write access is granted to the owner

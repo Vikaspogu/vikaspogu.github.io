@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Golang on vikaspogu</title>
+    <title>golang on vikaspogu</title>
     <link>https://vikaspogu.dev/tags/golang/</link>
-    <description>Recent content in Golang on vikaspogu</description>
+    <description>Recent content in golang on vikaspogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 16 Dec 2019 15:29:34 -0500</lastBuildDate>
@@ -24,10 +24,10 @@ func main(){ r := gin.Default() r.GET(&amp;#34;/getAllUsers&amp;#34;, basicAuth,
     
     <item>
       <title>Go JWT Authentication with keycloak</title>
-      <link>https://vikaspogu.dev/posts/2019-07-27-sso-jwt-golang/</link>
+      <link>https://vikaspogu.dev/posts/sso-jwt-golang/</link>
       <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://vikaspogu.dev/posts/2019-07-27-sso-jwt-golang/</guid>
+      <guid>https://vikaspogu.dev/posts/sso-jwt-golang/</guid>
       <description>Recently I was working on a React project with Go backend using Gin web framework. Keycloak was the authentication mechanism for the frontend; I also wanted to secure the backend using JSON Web Tokens which was provided by Keycloak on every login. Setup for jwt verification in Go was easy.
 First, copy RS256 algorithm public key value from Keycloak
 Send the token as Authorization header

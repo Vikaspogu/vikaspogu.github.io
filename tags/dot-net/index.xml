@@ -13,10 +13,10 @@
     
     <item>
       <title>Debugging a .NET Core application running on OpenShift</title>
-      <link>https://vikaspogu.dev/posts/2019-05-14-debug-netcore-openshift/</link>
+      <link>https://vikaspogu.dev/posts/debug-netcore-openshift/</link>
       <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://vikaspogu.dev/posts/2019-05-14-debug-netcore-openshift/</guid>
+      <guid>https://vikaspogu.dev/posts/debug-netcore-openshift/</guid>
       <description>This post is about how to remote debug a ASP.NET Core application on OpenShift using Visual Studio Code. You can use any Microsoft proprietary debugger engine vsdbg with Visual Studio Code.
 First, list the available .Net application pods using oc command.
 $ oc get pod NAME READY STATUS RESTARTS AGE MY_APP_NAME-3-1xrsp 0/1 Running 0 6s $ oc rsh MY_APP_NAME-3-1xrsp sh-4.2$ curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l /opt/app-root/vsdbg -r linux-x64 Note: If you&amp;rsquo;re container is running behind a corporate proxy and cannot access internet, you&amp;rsquo;ll have to build base dotnet image with the debugger engine vsdbg installed in it.</description>
