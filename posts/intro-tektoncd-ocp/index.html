@@ -74,7 +74,7 @@ Basic Concepts In order to create a tekton pipeline, one does the following:
   <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-16x16.png"
     sizes="16x16">
 
-  <meta name="generator" content="Hugo 0.73.0" />
+  <meta name="generator" content="Hugo 0.74.1" />
 </head>
 
 
@@ -129,7 +129,7 @@ Basic Concepts In order to create a tekton pipeline, one does the following:
         "datePublished": "2019-08-09 00:00:00 \u002b0000 UTC",
         "dateModified" : "2019-08-09 00:00:00 \u002b0000 UTC",
         "url" : "https:\/\/vikaspogu.dev\/posts\/intro-tektoncd-ocp\/",
-        "wordCount" : "654",
+        "wordCount" : "652",
         "keywords" : [ "Openshift","tektoncd","Blog" ]
     }
     </script>
@@ -188,8 +188,7 @@ oc apply --filename https://storage.googleapis.com/tekton-releases/latest/releas
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc expose service tekton-dashboard <span style="color:#0ff;font-weight:bold">\
 </span><span style="color:#0ff;font-weight:bold"></span>  -n tekton-pipelines <span style="color:#0ff;font-weight:bold">\
 </span><span style="color:#0ff;font-weight:bold"></span>  --name <span style="color:#0ff;font-weight:bold">&#34;tekton-dashboard&#34;</span> <span style="color:#0ff;font-weight:bold">\
-</span><span style="color:#0ff;font-weight:bold"></span>  --port=<span style="color:#0ff;font-weight:bold">&#34;http&#34;</span> <span style="color:#0ff;font-weight:bold">\
-</span><span style="color:#0ff;font-weight:bold"></span>  --hostname=tekton-dashboard.<span style="color:#0ff;font-weight:bold">${</span>openshift_master_default_subdomain<span style="color:#0ff;font-weight:bold">}</span>
+</span><span style="color:#0ff;font-weight:bold"></span>  --port=<span style="color:#0ff;font-weight:bold">&#34;http&#34;</span>
 </code></pre></div><p><img src="https://vikaspogu.dev/images/tekton-intro/dashboard.png" alt="tekton dashboard"></p>
 <h3 id="create-pipeline">Create pipeline</h3>
 <p>This pipeline builds image from the source, starts a new rollout</p>

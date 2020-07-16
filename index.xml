@@ -236,7 +236,7 @@ Export OpenShift project as an JSON Object
 oc get project delete-me -o json &amp;gt; ns-without-finalizers.json Replace below from
 spec: finalizers: - kubernetes to
 spec: finalizers: [] On one of the master node, execute these commands.
-$ kubectl proxy &amp;amp; PID=$! $ curl -X PUT http://localhost:8001/api/v1/namespaces/delete-me/finalize \ -H &amp;#34;Content-Type: application/json&amp;#34; --data-binary @ns-without-finalizers.</description>
+kubectl proxy &amp;amp; PID=$! curl -X PUT http://localhost:8001/api/v1/namespaces/delete-me/finalize \ -H &amp;#34;Content-Type: application/json&amp;#34; --data-binary @ns-without-finalizers.</description>
     </item>
     
     <item>
