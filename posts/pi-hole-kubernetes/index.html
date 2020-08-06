@@ -70,7 +70,7 @@
   <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-16x16.png"
     sizes="16x16">
 
-  <meta name="generator" content="Hugo 0.74.1" />
+  <meta name="generator" content="Hugo 0.74.3" />
 </head>
 
 
@@ -125,7 +125,7 @@
         "datePublished": "2020-03-07 14:31:32 -0500 -0500",
         "dateModified" : "2020-03-07 14:31:32 -0500 -0500",
         "url" : "https:\/\/vikaspogu.dev\/posts\/pi-hole-kubernetes\/",
-        "wordCount" : "216",
+        "wordCount" : "278",
         "keywords" : [ "pi-hole","k3s","Blog" ]
     }
     </script>
@@ -162,30 +162,66 @@
       </header>
 
       <div>
-        <p>The <a href="https://pi-hole.net/">Pi-hole</a> is a fantastic tool that blocks DNS requests to ad servers. That means you can surf the web without having to look at ads on every page.</p>
+        <p><a href="https://pi-hole.net/">Pi-hole</a> is a fantastic tool that blocks DNS requests to ad servers. That means you can surf the web without having to look at ads on every page.</p>
 <h3 id="pihole-in-kubernetes">PiHole in Kubernetes</h3>
-<p>After some google search, i have found this <a href="https://github.com/ChrisPhillips-cminion/pihole-helm">amazing helm repo</a> which will install pi-hole using a <a href="https://helm.sh/">helm</a> chart.</p>
-<p>I have made few updates to chart like ingress, address values; Overriding default pi-hole variables like <code>WEBPASSWORD</code> and <code>TZ</code> as a container environment variables in deployment resource.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#fff;font-weight:bold">configData</span>: |<span style="color:#0ff;font-weight:bold">-
+<p>We are going to deploy modified version of this <a href="https://github.com/ChrisPhillips-cminion/pihole-helm">pihole helm chart</a></p>
+<p>Let&rsquo;s start by cloning repo</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/ChrisPhillips-cminion/pihole-helm.git
+<span style="color:#fff;font-weight:bold">cd</span> pihole-helm
+</code></pre></div><p>We now need to make few updates to the chart</p>
+<ul>
+<li>Update <code>ServerIP</code> with container host IP</li>
+<li>Update image to <code>v5.1.1</code> tag</li>
+<li>Add <code>WEB_PASSWORD</code>, <code>TZ</code> environment variables if needed</li>
+<li>Update <code>values.yaml</code> accordingly</li>
+</ul>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#007f7f">#deployment.yaml</span>
+<span style="color:#fff;font-weight:bold">spec</span>:
+  <span style="color:#fff;font-weight:bold">replicas</span>: <span style="color:#ff0;font-weight:bold">1</span>
+  <span style="color:#fff;font-weight:bold">template</span>:
+    <span style="color:#fff;font-weight:bold">metadata</span>:
+      <span style="color:#fff;font-weight:bold">labels</span>:
+        <span style="color:#fff;font-weight:bold">app</span>: {{ template <span style="color:#0ff;font-weight:bold">&#34;fullname&#34;</span> . }}
+    <span style="color:#fff;font-weight:bold">spec</span>:
+      <span style="color:#007f7f"># hostNetwork: true</span>
+      <span style="color:#fff;font-weight:bold">hostAliases</span>:
+      - <span style="color:#fff;font-weight:bold">ip</span>: <span style="color:#ff0;font-weight:bold">127.0.0.1</span>
+        <span style="color:#fff;font-weight:bold">hostnames</span>:
+        - pi.hole
+      <span style="color:#fff;font-weight:bold">nodeSelector</span>:
+        <span style="color:#fff;font-weight:bold">kubernetes.io/hostname</span>: randomstore
+      <span style="color:#fff;font-weight:bold">containers</span>:
+      - <span style="color:#fff;font-weight:bold">name</span>: {{ .Chart.Name }}
+        <span style="color:#fff;font-weight:bold">image</span>: pihole/pihole:v5<span style="color:#ff0;font-weight:bold">.1.1</span>
+        <span style="color:#fff;font-weight:bold">imagePullPolicy</span>: {{ .Values.image.pullPolicy }}
+        <span style="color:#fff;font-weight:bold">stdin</span>: <span style="color:#fff;font-weight:bold">true</span>
+        <span style="color:#fff;font-weight:bold">tty</span>: <span style="color:#fff;font-weight:bold">true</span>
+        <span style="color:#fff;font-weight:bold">resources</span>:
+          <span style="color:#fff;font-weight:bold">limits</span>:
+            <span style="color:#fff;font-weight:bold">memory</span>: 1Gi
+        <span style="color:#fff;font-weight:bold">env</span>:
+        - <span style="color:#fff;font-weight:bold">name</span>: <span style="color:#0ff;font-weight:bold">&#39;ServerIP&#39;</span>
+          <span style="color:#fff;font-weight:bold">value</span>: <span style="color:#0ff;font-weight:bold">&#39;192.168.1.132&#39;</span>
+        - <span style="color:#fff;font-weight:bold">name</span>: <span style="color:#0ff;font-weight:bold">&#39;DNS1&#39;</span>
+          <span style="color:#fff;font-weight:bold">value</span>: <span style="color:#0ff;font-weight:bold">&#39;8.8.8.8&#39;</span>
+        - <span style="color:#fff;font-weight:bold">name</span>: <span style="color:#0ff;font-weight:bold">&#39;DNS2&#39;</span>
+          <span style="color:#fff;font-weight:bold">value</span>: <span style="color:#0ff;font-weight:bold">&#39;8.8.4.4&#39;</span>
+		- <span style="color:#fff;font-weight:bold">name</span>: TZ
+		  <span style="color:#fff;font-weight:bold">value</span>: <span style="color:#0ff;font-weight:bold">&#34;America/New_York&#34;</span>
+		- <span style="color:#fff;font-weight:bold">name</span>: WEBPASSWORD
+		  <span style="color:#fff;font-weight:bold">value</span>: <span style="color:#0ff;font-weight:bold">&#34;somepassword&#34;</span>
+</code></pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#007f7f">#values.yaml</span>
+<span style="color:#fff;font-weight:bold">configData</span>: |<span style="color:#0ff;font-weight:bold">-
 </span><span style="color:#0ff;font-weight:bold">  server=/local/192.168.1.1</span>
   address=/.vikaspogu.com/<span style="color:#ff0;font-weight:bold">192.168.1.132</span>
 <span style="color:#fff;font-weight:bold">ingress</span>:
   <span style="color:#fff;font-weight:bold">host</span>: pi-hole.vikaspogu.com
-</code></pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">env:
-- name: TZ
-    value: &#34;America/New_York&#34;
-- name: WEBPASSWORD
-    value: &#34;somepassword&#34;
 </code></pre></div><h3 id="install-chart">Install chart</h3>
 <ul>
 <li>Create a new namespace (optional)</li>
-</ul>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#007f7f">#Create a new namespace</span>
-kubectl create ns pi-hole
-</code></pre></div><ul>
 <li>Install chart in namespace</li>
 </ul>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#fff;font-weight:bold">cd</span> pihole-helm
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create ns pi-hole
 helm install pi-hole .
 </code></pre></div><ul>
 <li>Wait to pods</li>
@@ -197,17 +233,17 @@ pi-hole-pihole-5bb56b5bd-b2wl7   1/1     Running   <span style="color:#ff0;font-
 <li>Navigate to ingress route in my case (pi-hole.vikaspogu.com) and login with <code>WEBPASSWORD</code> used in deployment</li>
 </ul>
 <p><img src="https://vikaspogu.dev/images/pi-hole.png" alt="Pi-Hole UI"></p>
-<h3 id="configure-devices-to-use-pi-hole-as-their-dns-server">Configure devices to use Pi-hole as their DNS server?</h3>
-<p>Configuring Verzion FiOS router to use Pi-Hole as DNS server:</p>
+<h3 id="dns-server">DNS Server</h3>
+<p>Configure <code>Verzion FiOS</code> router to use Pi Hole as the DNS server:</p>
 <ul>
 <li>
-<p>On the top</p>
+<p>On the top navigation menu</p>
 <ul>
 <li>Click My Network</li>
 </ul>
 </li>
 <li>
-<p>On the left</p>
+<p>On the left menu list</p>
 <ul>
 <li>Click Network Connections</li>
 </ul>

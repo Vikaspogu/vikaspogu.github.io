@@ -17,9 +17,11 @@
       <pubDate>Sat, 07 Mar 2020 14:31:32 -0500</pubDate>
       
       <guid>https://vikaspogu.dev/posts/pi-hole-kubernetes/</guid>
-      <description>The Pi-hole is a fantastic tool that blocks DNS requests to ad servers. That means you can surf the web without having to look at ads on every page.
-PiHole in Kubernetes After some google search, i have found this amazing helm repo which will install pi-hole using a helm chart.
-I have made few updates to chart like ingress, address values; Overriding default pi-hole variables like WEBPASSWORD and TZ as a container environment variables in deployment resource.</description>
+      <description>Pi-hole is a fantastic tool that blocks DNS requests to ad servers. That means you can surf the web without having to look at ads on every page.
+PiHole in Kubernetes We are going to deploy modified version of this pihole helm chart
+Let&amp;rsquo;s start by cloning repo
+git clone https://github.com/ChrisPhillips-cminion/pihole-helm.git cd pihole-helm We now need to make few updates to the chart
+ Update ServerIP with container host IP Update image to v5.</description>
     </item>
     
     <item>
