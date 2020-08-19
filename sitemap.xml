@@ -3,6 +3,61 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://vikaspogu.dev/tags/gatekeeper/</loc>
+    <lastmod>2020-08-18T14:47:02-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/opa/</loc>
+    <lastmod>2020-08-18T14:47:02-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/posts/opa-gatekeeper-openshift/</loc>
+    <lastmod>2020-08-18T14:47:02-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/openshift/</loc>
+    <lastmod>2020-08-18T14:47:02-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/posts/</loc>
+    <lastmod>2020-08-18T14:47:02-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/</loc>
+    <lastmod>2020-08-18T14:47:02-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/</loc>
+    <lastmod>2020-08-18T14:47:02-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/configuration-as-code-plugin/</loc>
+    <lastmod>2020-08-18T14:45:23-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/posts/jenkins-seed-job/</loc>
+    <lastmod>2020-08-18T14:45:23-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/jenkins/</loc>
+    <lastmod>2020-08-18T14:45:23-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/pipeline-job/</loc>
+    <lastmod>2020-08-18T14:45:23-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://vikaspogu.dev/tags/date/</loc>
     <lastmod>2020-07-07T09:19:15-05:00</lastmod>
   </url>
@@ -13,37 +68,12 @@
   </url>
   
   <url>
-    <loc>https://vikaspogu.dev/tags/jenkins/</loc>
-    <lastmod>2020-07-07T09:19:15-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://vikaspogu.dev/posts/jenkins-date-difference/</loc>
     <lastmod>2020-07-07T09:19:15-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://vikaspogu.dev/posts/</loc>
-    <lastmod>2020-07-07T09:19:15-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/tags/</loc>
-    <lastmod>2020-07-07T09:19:15-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/</loc>
-    <lastmod>2020-07-07T09:19:15-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://vikaspogu.dev/tags/jcasc/</loc>
-    <lastmod>2020-07-06T13:23:05-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/tags/openshift/</loc>
     <lastmod>2020-07-06T13:23:05-05:00</lastmod>
   </url>
   

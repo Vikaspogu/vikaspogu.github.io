@@ -6,10 +6,64 @@
     <description>Recent content in Tags on vikaspogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 07 Jul 2020 09:19:15 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 18 Aug 2020 14:47:02 -0500</lastBuildDate>
     
 	<atom:link href="https://vikaspogu.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>gatekeeper</title>
+      <link>https://vikaspogu.dev/tags/gatekeeper/</link>
+      <pubDate>Tue, 18 Aug 2020 14:47:02 -0500</pubDate>
+      
+      <guid>https://vikaspogu.dev/tags/gatekeeper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>opa</title>
+      <link>https://vikaspogu.dev/tags/opa/</link>
+      <pubDate>Tue, 18 Aug 2020 14:47:02 -0500</pubDate>
+      
+      <guid>https://vikaspogu.dev/tags/opa/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Openshift</title>
+      <link>https://vikaspogu.dev/tags/openshift/</link>
+      <pubDate>Tue, 18 Aug 2020 14:47:02 -0500</pubDate>
+      
+      <guid>https://vikaspogu.dev/tags/openshift/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>configuration-as-code-plugin</title>
+      <link>https://vikaspogu.dev/tags/configuration-as-code-plugin/</link>
+      <pubDate>Tue, 18 Aug 2020 14:45:23 -0500</pubDate>
+      
+      <guid>https://vikaspogu.dev/tags/configuration-as-code-plugin/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jenkins</title>
+      <link>https://vikaspogu.dev/tags/jenkins/</link>
+      <pubDate>Tue, 18 Aug 2020 14:45:23 -0500</pubDate>
+      
+      <guid>https://vikaspogu.dev/tags/jenkins/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pipeline-job</title>
+      <link>https://vikaspogu.dev/tags/pipeline-job/</link>
+      <pubDate>Tue, 18 Aug 2020 14:45:23 -0500</pubDate>
+      
+      <guid>https://vikaspogu.dev/tags/pipeline-job/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>date</title>
@@ -30,29 +84,11 @@
     </item>
     
     <item>
-      <title>jenkins</title>
-      <link>https://vikaspogu.dev/tags/jenkins/</link>
-      <pubDate>Tue, 07 Jul 2020 09:19:15 -0500</pubDate>
-      
-      <guid>https://vikaspogu.dev/tags/jenkins/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>jcasc</title>
       <link>https://vikaspogu.dev/tags/jcasc/</link>
       <pubDate>Mon, 06 Jul 2020 13:23:05 -0500</pubDate>
       
       <guid>https://vikaspogu.dev/tags/jcasc/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Openshift</title>
-      <link>https://vikaspogu.dev/tags/openshift/</link>
-      <pubDate>Mon, 06 Jul 2020 13:23:05 -0500</pubDate>
-      
-      <guid>https://vikaspogu.dev/tags/openshift/</guid>
       <description></description>
     </item>
     
