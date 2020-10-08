@@ -6,11 +6,7 @@
     <description>Recent content in ssl on vikaspogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 10 Feb 2020 17:24:56 -0500</lastBuildDate>
-    
-	<atom:link href="https://vikaspogu.dev/tags/ssl/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 10 Feb 2020 17:24:56 -0500</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/ssl/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Jenkins Openshift OAuth SSL</title>
       <link>https://vikaspogu.dev/posts/openshift-jenkins-oauth-ssl/</link>

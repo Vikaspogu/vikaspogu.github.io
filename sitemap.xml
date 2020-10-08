@@ -3,6 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://vikaspogu.dev/categories/</loc>
+    <lastmod>2020-10-08T09:17:20-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/categories/helm/</loc>
+    <lastmod>2020-10-08T09:17:20-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/posts/helm-helper-functions/</loc>
+    <lastmod>2020-10-08T09:17:20-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/posts/</loc>
+    <lastmod>2020-10-08T09:17:20-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/</loc>
+    <lastmod>2020-10-08T09:17:20-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://vikaspogu.dev/tags/ad-blocker/</loc>
     <lastmod>2020-08-19T08:52:26-05:00</lastmod>
   </url>
@@ -23,17 +48,7 @@
   </url>
   
   <url>
-    <loc>https://vikaspogu.dev/posts/</loc>
-    <lastmod>2020-08-19T08:52:26-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://vikaspogu.dev/tags/</loc>
-    <lastmod>2020-08-19T08:52:26-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/</loc>
     <lastmod>2020-08-19T08:52:26-05:00</lastmod>
   </url>
   
@@ -394,10 +409,6 @@
   
   <url>
     <loc>https://vikaspogu.dev/about/</loc>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/categories/</loc>
   </url>
   
   <url>

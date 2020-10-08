@@ -70,7 +70,7 @@
   <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-16x16.png"
     sizes="16x16">
 
-  <meta name="generator" content="Hugo 0.74.3" />
+  <meta name="generator" content="Hugo 0.75.1" />
 </head>
 
 
@@ -178,38 +178,38 @@ helm fetch billimek/adguard-home
 </ul>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#007f7f">#templates/deployment.yaml</span>
 ...
-  <span style="color:#fff;font-weight:bold">spec</span>:
-    <span style="color:#fff;font-weight:bold">hostNetwork</span>: <span style="color:#fff;font-weight:bold">true</span>
-    <span style="color:#fff;font-weight:bold">securityContext</span>:
+  <span style="font-weight:bold">spec</span>:
+    <span style="font-weight:bold">hostNetwork</span>: <span style="color:#fff;font-weight:bold">true</span>
+    <span style="font-weight:bold">securityContext</span>:
 ...
 </code></pre></div><ul>
 <li>Enable <code>configAsCode</code>, update <code>bind_host</code> to Kubernetes host IP in <code>values.yaml</code></li>
 </ul>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#007f7f"># values.yaml</span>
-<span style="color:#fff;font-weight:bold">configAsCode</span>:
-  <span style="color:#fff;font-weight:bold">enabled</span>: <span style="color:#fff;font-weight:bold">true</span>
-  <span style="color:#fff;font-weight:bold">config</span>:
-    <span style="color:#fff;font-weight:bold">bind_host</span>: <span style="color:#ff0;font-weight:bold">192.168.0.101</span>
-    <span style="color:#fff;font-weight:bold">bind_port</span>: <span style="color:#ff0;font-weight:bold">3000</span>
-    <span style="color:#fff;font-weight:bold">dns</span>:
-      <span style="color:#fff;font-weight:bold">bind_host</span>: <span style="color:#ff0;font-weight:bold">192.168.0.101</span>
+<span style="font-weight:bold">configAsCode</span>:
+  <span style="font-weight:bold">enabled</span>: <span style="color:#fff;font-weight:bold">true</span>
+  <span style="font-weight:bold">config</span>:
+    <span style="font-weight:bold">bind_host</span>: <span style="color:#ff0;font-weight:bold">192.168.0.101</span>
+    <span style="font-weight:bold">bind_port</span>: <span style="color:#ff0;font-weight:bold">3000</span>
+    <span style="font-weight:bold">dns</span>:
+      <span style="font-weight:bold">bind_host</span>: <span style="color:#ff0;font-weight:bold">192.168.0.101</span>
 </code></pre></div><ul>
 <li>Update <code>securityContext</code> to run as a <code>privileged</code> pod, drop all capabilities and add <code>NET_BIND_SERVICE</code></li>
 </ul>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#007f7f"># values.yaml</span>
-<span style="color:#fff;font-weight:bold">securityContext</span>:
-  <span style="color:#fff;font-weight:bold">privileged</span>: <span style="color:#fff;font-weight:bold">true</span>
-  <span style="color:#fff;font-weight:bold">capabilities</span>:
-    <span style="color:#fff;font-weight:bold">drop</span>:
+<span style="font-weight:bold">securityContext</span>:
+  <span style="font-weight:bold">privileged</span>: <span style="color:#fff;font-weight:bold">true</span>
+  <span style="font-weight:bold">capabilities</span>:
+    <span style="font-weight:bold">drop</span>:
       - ALL
-    <span style="color:#fff;font-weight:bold">add</span>:
+    <span style="font-weight:bold">add</span>:
       - NET_BIND_SERVICE
 </code></pre></div><ul>
 <li>Add <code>nodeSelector</code> to assign pod to that node</li>
 </ul>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#007f7f"># values.yaml</span>
-<span style="color:#fff;font-weight:bold">nodeSelector</span>:
-  <span style="color:#fff;font-weight:bold">kubernetes.io/hostname</span>: node3
+<span style="font-weight:bold">nodeSelector</span>:
+  <span style="font-weight:bold">kubernetes.io/hostname</span>: node3
 </code></pre></div><ul>
 <li>Deploy helm chart</li>
 </ul>

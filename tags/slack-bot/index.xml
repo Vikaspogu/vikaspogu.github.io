@@ -6,11 +6,7 @@
     <description>Recent content in slack-bot on vikaspogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 04 Jul 2020 15:08:54 -0500</lastBuildDate>
-    
-	<atom:link href="https://vikaspogu.dev/tags/slack-bot/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 04 Jul 2020 15:08:54 -0500</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/slack-bot/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Slack bot with Nodejs</title>
       <link>https://vikaspogu.dev/posts/nodejs-slack-bot/</link>

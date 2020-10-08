@@ -80,7 +80,7 @@ kubectl proxy &amp; PID=$! curl -X PUT http://localhost:8001/api/v1/namespaces/d
   <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-16x16.png"
     sizes="16x16">
 
-  <meta name="generator" content="Hugo 0.74.3" />
+  <meta name="generator" content="Hugo 0.75.1" />
 </head>
 
 
@@ -174,12 +174,12 @@ kubectl proxy &amp; PID=$! curl -X PUT http://localhost:8001/api/v1/namespaces/d
 <p>Export OpenShift project as an JSON Object</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc get project delete-me -o json &gt; ns-without-finalizers.json
 </code></pre></div><p>Replace below from</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#fff;font-weight:bold">spec</span>:
-  <span style="color:#fff;font-weight:bold">finalizers</span>:
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="font-weight:bold">spec</span>:
+  <span style="font-weight:bold">finalizers</span>:
     - kubernetes
 </code></pre></div><p>to</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#fff;font-weight:bold">spec</span>:
-  <span style="color:#fff;font-weight:bold">finalizers</span>: []
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="font-weight:bold">spec</span>:
+  <span style="font-weight:bold">finalizers</span>: []
 </code></pre></div><p>On one of the master node, execute these commands.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl proxy &amp; PID=$!
 curl -X PUT http://localhost:8001/api/v1/namespaces/delete-me/finalize <span style="color:#0ff;font-weight:bold">\

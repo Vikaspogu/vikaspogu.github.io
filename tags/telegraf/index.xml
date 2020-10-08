@@ -6,11 +6,7 @@
     <description>Recent content in telegraf on vikaspogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 01 Jan 2020 16:19:29 -0500</lastBuildDate>
-    
-	<atom:link href="https://vikaspogu.dev/tags/telegraf/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 01 Jan 2020 16:19:29 -0500</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/telegraf/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Measure Raspberry Pi temperature using Telegraf, Influxdb, Grafana on k3s</title>
       <link>https://vikaspogu.dev/posts/raspberry-pi-temp-telegraf/</link>

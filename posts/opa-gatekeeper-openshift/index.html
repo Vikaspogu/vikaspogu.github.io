@@ -70,7 +70,7 @@
   <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-16x16.png"
     sizes="16x16">
 
-  <meta name="generator" content="Hugo 0.74.3" />
+  <meta name="generator" content="Hugo 0.75.1" />
 </head>
 
 
@@ -199,92 +199,92 @@ gatekeeper-controller-manager-ff58b6688-vlrsl   1/1     Running   <span styl
 </code></pre></div><p>Gatekeeper uses the <a href="https://github.com/open-policy-agent/frameworks/tree/master/constraint">OPA Constraint Framework</a> to describe and enforce policy</p>
 <h3 id="defining-constraints">Defining constraints</h3>
 <p>Constraints can be defined by creating a CRD (CustomResourceDefinition) with the template of the constraint you want. Let’s look at a template which enforces that only secure routes are created in the cluster</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#fff;font-weight:bold">apiVersion</span>: templates.gatekeeper.sh/v1beta1
-<span style="color:#fff;font-weight:bold">kind</span>: ConstraintTemplate
-<span style="color:#fff;font-weight:bold">metadata</span>:
-  <span style="color:#fff;font-weight:bold">name</span>: k8sallowedroutes
-<span style="color:#fff;font-weight:bold">spec</span>:
-  <span style="color:#fff;font-weight:bold">crd</span>:
-    <span style="color:#fff;font-weight:bold">spec</span>:
-      <span style="color:#fff;font-weight:bold">names</span>:
-        <span style="color:#fff;font-weight:bold">kind</span>: K8sAllowedRoutes
-  <span style="color:#fff;font-weight:bold">targets</span>:
-    - <span style="color:#fff;font-weight:bold">target</span>: admission.k8s.gatekeeper.sh
-      <span style="color:#fff;font-weight:bold">rego</span>: <span style="color:#0ff;font-weight:bold">|
-</span><span style="color:#0ff;font-weight:bold">        package k8sallowedroutes</span>
-
-        violation[{<span style="color:#fff;font-weight:bold">&#34;msg&#34;: </span>msg}] {
-          not input.review.object.spec.tls
-          msg := sprintf(<span style="color:#0ff;font-weight:bold">&#34;&#39;%v&#39; route must be a secured route. non secured routes are not permitted&#34;</span>, [input.review.object.metadata.name])
-        }
-</code></pre></div><p>It will get the route and check if <code>tls</code> object is specified. If this is not true, the violation block continues and the violation is triggered with the corresponding message</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="font-weight:bold">apiVersion</span>: templates.gatekeeper.sh/v1beta1
+<span style="font-weight:bold">kind</span>: ConstraintTemplate
+<span style="font-weight:bold">metadata</span>:
+  <span style="font-weight:bold">name</span>: k8sallowedroutes
+<span style="font-weight:bold">spec</span>:
+  <span style="font-weight:bold">crd</span>:
+    <span style="font-weight:bold">spec</span>:
+      <span style="font-weight:bold">names</span>:
+        <span style="font-weight:bold">kind</span>: K8sAllowedRoutes
+  <span style="font-weight:bold">targets</span>:
+    - <span style="font-weight:bold">target</span>: admission.k8s.gatekeeper.sh
+      <span style="font-weight:bold">rego</span>: <span style="color:#0ff;font-weight:bold">|
+</span><span style="color:#0ff;font-weight:bold">        package k8sallowedroutes
+</span><span style="color:#0ff;font-weight:bold">
+</span><span style="color:#0ff;font-weight:bold">        violation[{&#34;msg&#34;: msg}] {
+</span><span style="color:#0ff;font-weight:bold">          not input.review.object.spec.tls
+</span><span style="color:#0ff;font-weight:bold">          msg := sprintf(&#34;&#39;%v&#39; route must be a secured route. non secured routes are not permitted&#34;, [input.review.object.metadata.name])
+</span><span style="color:#0ff;font-weight:bold">        }
+</span></code></pre></div><p>It will get the route and check if <code>tls</code> object is specified. If this is not true, the violation block continues and the violation is triggered with the corresponding message</p>
 <h3 id="enforcing-constraints">Enforcing constraints</h3>
 <p>These constrains which you defined now need to be enforced. This is done by defining a constraint which will use the template specified earlier.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#fff;font-weight:bold">apiVersion</span>: constraints.gatekeeper.sh/v1beta1
-<span style="color:#fff;font-weight:bold">kind</span>: K8sAllowedRoutes
-<span style="color:#fff;font-weight:bold">metadata</span>:
-  <span style="color:#fff;font-weight:bold">name</span>: secure-route
-<span style="color:#fff;font-weight:bold">spec</span>:
-  <span style="color:#fff;font-weight:bold">match</span>:
-    <span style="color:#fff;font-weight:bold">kinds</span>:
-      - <span style="color:#fff;font-weight:bold">apiGroups</span>: [<span style="color:#0ff;font-weight:bold">&#34;route.openshift.io&#34;</span>]
-        <span style="color:#fff;font-weight:bold">kinds</span>: [<span style="color:#0ff;font-weight:bold">&#34;Route&#34;</span>]
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="font-weight:bold">apiVersion</span>: constraints.gatekeeper.sh/v1beta1
+<span style="font-weight:bold">kind</span>: K8sAllowedRoutes
+<span style="font-weight:bold">metadata</span>:
+  <span style="font-weight:bold">name</span>: secure-route
+<span style="font-weight:bold">spec</span>:
+  <span style="font-weight:bold">match</span>:
+    <span style="font-weight:bold">kinds</span>:
+      - <span style="font-weight:bold">apiGroups</span>: [<span style="color:#0ff;font-weight:bold">&#34;route.openshift.io&#34;</span>]
+        <span style="font-weight:bold">kinds</span>: [<span style="color:#0ff;font-weight:bold">&#34;Route&#34;</span>]
 </code></pre></div><p>This policy will use the CRD “K8sAllowedRoutes” which we had already defined. Matching is done by specifying on which API group it has to be enforced</p>
 <p><img src="https://vikaspogu.dev/images/nonsecure-route.png" alt="nonsecure_route"></p>
 <p>Some constraints are impossible to write without access to more state than just the object under test. For example, it is impossible to know if an route&rsquo;s hostname is unique among all routes unless a rule has access to all other routes. To make such rules possible, we enable syncing of data into OPA.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#fff;font-weight:bold">apiVersion</span>: config.gatekeeper.sh/v1alpha1
-<span style="color:#fff;font-weight:bold">kind</span>: Config
-<span style="color:#fff;font-weight:bold">metadata</span>:
-  <span style="color:#fff;font-weight:bold">name</span>: config
-  <span style="color:#fff;font-weight:bold">namespace</span>: <span style="color:#0ff;font-weight:bold">&#34;gatekeeper-system&#34;</span>
-<span style="color:#fff;font-weight:bold">spec</span>:
-  <span style="color:#fff;font-weight:bold">sync</span>:
-    <span style="color:#fff;font-weight:bold">syncOnly</span>:
-      - <span style="color:#fff;font-weight:bold">group</span>: <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>
-        <span style="color:#fff;font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#34;v1&#34;</span>
-        <span style="color:#fff;font-weight:bold">kind</span>: <span style="color:#0ff;font-weight:bold">&#34;Namespace&#34;</span>
-      - <span style="color:#fff;font-weight:bold">group</span>: <span style="color:#0ff;font-weight:bold">&#34;route.openshift.io&#34;</span>
-        <span style="color:#fff;font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#34;v1&#34;</span>
-        <span style="color:#fff;font-weight:bold">kind</span>: <span style="color:#0ff;font-weight:bold">&#34;Route&#34;</span>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="font-weight:bold">apiVersion</span>: config.gatekeeper.sh/v1alpha1
+<span style="font-weight:bold">kind</span>: Config
+<span style="font-weight:bold">metadata</span>:
+  <span style="font-weight:bold">name</span>: config
+  <span style="font-weight:bold">namespace</span>: <span style="color:#0ff;font-weight:bold">&#34;gatekeeper-system&#34;</span>
+<span style="font-weight:bold">spec</span>:
+  <span style="font-weight:bold">sync</span>:
+    <span style="font-weight:bold">syncOnly</span>:
+      - <span style="font-weight:bold">group</span>: <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>
+        <span style="font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#34;v1&#34;</span>
+        <span style="font-weight:bold">kind</span>: <span style="color:#0ff;font-weight:bold">&#34;Namespace&#34;</span>
+      - <span style="font-weight:bold">group</span>: <span style="color:#0ff;font-weight:bold">&#34;route.openshift.io&#34;</span>
+        <span style="font-weight:bold">version</span>: <span style="color:#0ff;font-weight:bold">&#34;v1&#34;</span>
+        <span style="font-weight:bold">kind</span>: <span style="color:#0ff;font-weight:bold">&#34;Route&#34;</span>
 </code></pre></div><p>Let&rsquo;s create another policy which prevents conflicting routes from being created</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#fff;font-weight:bold">apiVersion</span>: templates.gatekeeper.sh/v1beta1
-<span style="color:#fff;font-weight:bold">kind</span>: ConstraintTemplate
-<span style="color:#fff;font-weight:bold">metadata</span>:
-  <span style="color:#fff;font-weight:bold">name</span>: k8suniqueroutehost
-<span style="color:#fff;font-weight:bold">spec</span>:
-  <span style="color:#fff;font-weight:bold">crd</span>:
-    <span style="color:#fff;font-weight:bold">spec</span>:
-      <span style="color:#fff;font-weight:bold">names</span>:
-        <span style="color:#fff;font-weight:bold">kind</span>: K8sUniqueRouteHost
-  <span style="color:#fff;font-weight:bold">targets</span>:
-    - <span style="color:#fff;font-weight:bold">target</span>: admission.k8s.gatekeeper.sh
-      <span style="color:#fff;font-weight:bold">rego</span>: <span style="color:#0ff;font-weight:bold">|
-</span><span style="color:#0ff;font-weight:bold">        package k8suniqueroutehost</span>
-
-        identical(obj, review) {
-          obj.metadata.namespace == review.object.metadata.namespace
-          obj.metadata.name == review.object.metadata.name
-        }
-
-        violation[{<span style="color:#fff;font-weight:bold">&#34;msg&#34;: </span>msg}] {
-          input.review.kind.kind == <span style="color:#0ff;font-weight:bold">&#34;Route&#34;</span>
-          re_match(<span style="color:#0ff;font-weight:bold">&#34;^(route.openshift.io)$&#34;</span>, input.review.kind.group)
-          host := input.review.object.spec.host
-          other := data.inventory.namespace[ns][otherapiversion][<span style="color:#0ff;font-weight:bold">&#34;Route&#34;</span>][name]
-          re_match(<span style="color:#0ff;font-weight:bold">&#34;^(route.openshift.io)/.+$&#34;</span>, otherapiversion)
-          other.spec.host == host
-          not identical(other, input.review)
-          msg := sprintf(<span style="color:#0ff;font-weight:bold">&#34;Route host conflicts with an existing route &lt;%v&gt;&#34;</span>, [host])
-        }
-</code></pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#fff;font-weight:bold">apiVersion</span>: constraints.gatekeeper.sh/v1beta1
-<span style="color:#fff;font-weight:bold">kind</span>: K8sUniqueRouteHost
-<span style="color:#fff;font-weight:bold">metadata</span>:
-  <span style="color:#fff;font-weight:bold">name</span>: unique-route-host
-<span style="color:#fff;font-weight:bold">spec</span>:
-  <span style="color:#fff;font-weight:bold">match</span>:
-    <span style="color:#fff;font-weight:bold">kinds</span>:
-      - <span style="color:#fff;font-weight:bold">apiGroups</span>: [<span style="color:#0ff;font-weight:bold">&#34;route.openshift.io&#34;</span>]
-        <span style="color:#fff;font-weight:bold">kinds</span>: [<span style="color:#0ff;font-weight:bold">&#34;Route&#34;</span>]
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="font-weight:bold">apiVersion</span>: templates.gatekeeper.sh/v1beta1
+<span style="font-weight:bold">kind</span>: ConstraintTemplate
+<span style="font-weight:bold">metadata</span>:
+  <span style="font-weight:bold">name</span>: k8suniqueroutehost
+<span style="font-weight:bold">spec</span>:
+  <span style="font-weight:bold">crd</span>:
+    <span style="font-weight:bold">spec</span>:
+      <span style="font-weight:bold">names</span>:
+        <span style="font-weight:bold">kind</span>: K8sUniqueRouteHost
+  <span style="font-weight:bold">targets</span>:
+    - <span style="font-weight:bold">target</span>: admission.k8s.gatekeeper.sh
+      <span style="font-weight:bold">rego</span>: <span style="color:#0ff;font-weight:bold">|
+</span><span style="color:#0ff;font-weight:bold">        package k8suniqueroutehost
+</span><span style="color:#0ff;font-weight:bold">
+</span><span style="color:#0ff;font-weight:bold">        identical(obj, review) {
+</span><span style="color:#0ff;font-weight:bold">          obj.metadata.namespace == review.object.metadata.namespace
+</span><span style="color:#0ff;font-weight:bold">          obj.metadata.name == review.object.metadata.name
+</span><span style="color:#0ff;font-weight:bold">        }
+</span><span style="color:#0ff;font-weight:bold">
+</span><span style="color:#0ff;font-weight:bold">        violation[{&#34;msg&#34;: msg}] {
+</span><span style="color:#0ff;font-weight:bold">          input.review.kind.kind == &#34;Route&#34;
+</span><span style="color:#0ff;font-weight:bold">          re_match(&#34;^(route.openshift.io)$&#34;, input.review.kind.group)
+</span><span style="color:#0ff;font-weight:bold">          host := input.review.object.spec.host
+</span><span style="color:#0ff;font-weight:bold">          other := data.inventory.namespace[ns][otherapiversion][&#34;Route&#34;][name]
+</span><span style="color:#0ff;font-weight:bold">          re_match(&#34;^(route.openshift.io)/.+$&#34;, otherapiversion)
+</span><span style="color:#0ff;font-weight:bold">          other.spec.host == host
+</span><span style="color:#0ff;font-weight:bold">          not identical(other, input.review)
+</span><span style="color:#0ff;font-weight:bold">          msg := sprintf(&#34;Route host conflicts with an existing route &lt;%v&gt;&#34;, [host])
+</span><span style="color:#0ff;font-weight:bold">        }
+</span></code></pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="font-weight:bold">apiVersion</span>: constraints.gatekeeper.sh/v1beta1
+<span style="font-weight:bold">kind</span>: K8sUniqueRouteHost
+<span style="font-weight:bold">metadata</span>:
+  <span style="font-weight:bold">name</span>: unique-route-host
+<span style="font-weight:bold">spec</span>:
+  <span style="font-weight:bold">match</span>:
+    <span style="font-weight:bold">kinds</span>:
+      - <span style="font-weight:bold">apiGroups</span>: [<span style="color:#0ff;font-weight:bold">&#34;route.openshift.io&#34;</span>]
+        <span style="font-weight:bold">kinds</span>: [<span style="color:#0ff;font-weight:bold">&#34;Route&#34;</span>]
 </code></pre></div><h3 id="additional-resources">Additional Resources</h3>
 <ul>
 <li><a href="https://www.openpolicyagent.org/docs/latest/">Open Policy Agent</a></li>

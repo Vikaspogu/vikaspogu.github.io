@@ -6,11 +6,7 @@
     <description>Recent content in date on vikaspogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 07 Jul 2020 09:19:15 -0500</lastBuildDate>
-    
-	<atom:link href="https://vikaspogu.dev/tags/date/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 07 Jul 2020 09:19:15 -0500</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/date/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Jenkins pipeline date helper functions</title>
       <link>https://vikaspogu.dev/posts/jenkins-date-difference/</link>

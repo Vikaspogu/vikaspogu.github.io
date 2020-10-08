@@ -6,11 +6,7 @@
     <description>Recent content in JWT on vikaspogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 27 Jul 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://vikaspogu.dev/tags/jwt/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 27 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/jwt/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Go JWT Authentication with keycloak</title>
       <link>https://vikaspogu.dev/posts/sso-jwt-golang/</link>

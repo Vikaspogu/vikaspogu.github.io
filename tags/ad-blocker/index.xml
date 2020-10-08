@@ -6,11 +6,7 @@
     <description>Recent content in ad-blocker on vikaspogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 19 Aug 2020 08:52:26 -0500</lastBuildDate>
-    
-	<atom:link href="https://vikaspogu.dev/tags/ad-blocker/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 19 Aug 2020 08:52:26 -0500</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/ad-blocker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AdGuard on Kubernetes</title>
       <link>https://vikaspogu.dev/posts/adguardhome-kubernetes/</link>
