@@ -74,7 +74,7 @@ Note: By adding this annotation you can dynamically create certificates service.
   <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-16x16.png"
     sizes="16x16">
 
-  <meta name="generator" content="Hugo 0.75.1" />
+  <meta name="generator" content="Hugo 0.78.0" />
 </head>
 
 
@@ -129,7 +129,7 @@ Note: By adding this annotation you can dynamically create certificates service.
         "datePublished": "2019-08-28 00:00:00 \u002b0000 UTC",
         "dateModified" : "2019-08-28 00:00:00 \u002b0000 UTC",
         "url" : "https:\/\/vikaspogu.dev\/posts\/couchbase-ssl-openshift\/",
-        "wordCount" : "608",
+        "wordCount" : "607",
         "keywords" : [ "Openshift","couchbase","ssl","Blog" ]
     }
     </script>
@@ -197,29 +197,29 @@ Note: By adding this annotation you can dynamically create certificates service.
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="font-weight:bold">initContainers</span>:
   - <span style="font-weight:bold">args</span>:
       - <span style="color:#0ff;font-weight:bold">&#34;-c&#34;</span>
-      - <span style="color:#0ff;font-weight:bold">&gt;-
+      - &gt;-<span style="color:#0ff;font-weight:bold">
 </span><span style="color:#0ff;font-weight:bold">        csplit -z -f crt- $crtfile &#39;/-----BEGIN CERTIFICATE-----/&#39; &#39;{*}&#39;
 </span><span style="color:#0ff;font-weight:bold">        &amp;&amp; for file in crt-*; do cat $file &gt;
 </span><span style="color:#0ff;font-weight:bold">        /opt/couchbase/var/lib/couchbase/inbox/service-$file; done &amp;&amp; cat
 </span><span style="color:#0ff;font-weight:bold">        $crtfile &gt; /opt/couchbase/var/lib/couchbase/inbox/chain.pem &amp;&amp; cat
-</span><span style="color:#0ff;font-weight:bold">        $keyfile &gt; /opt/couchbase/var/lib/couchbase/inbox/pkey.key
-</span><span style="color:#0ff;font-weight:bold">    command:
-</span><span style="color:#0ff;font-weight:bold">      - /bin/bash
-</span><span style="color:#0ff;font-weight:bold">    env:
-</span><span style="color:#0ff;font-weight:bold">      - name: keyfile
-</span><span style="color:#0ff;font-weight:bold">        value: /var/run/secrets/openshift.io/services_serving_certs/tls.key
-</span><span style="color:#0ff;font-weight:bold">      - name: crtfile
-</span><span style="color:#0ff;font-weight:bold">        value: /var/run/secrets/openshift.io/services_serving_certs/tls.crt
-</span><span style="color:#0ff;font-weight:bold">      - name: password
-</span><span style="color:#0ff;font-weight:bold">        value: changeit
-</span><span style="color:#0ff;font-weight:bold">    image: registry.access.redhat.com/redhat-sso-7/sso72-openshift:latest
-</span><span style="color:#0ff;font-weight:bold">    imagePullPolicy: Always
-</span><span style="color:#0ff;font-weight:bold">    name: couchbase-ssl
-</span><span style="color:#0ff;font-weight:bold">    volumeMounts:
-</span><span style="color:#0ff;font-weight:bold">      - mountPath: /var/run/secrets/openshift.io/services_serving_certs
-</span><span style="color:#0ff;font-weight:bold">        name: couchbase-db-certs
-</span><span style="color:#0ff;font-weight:bold">      - mountPath: /opt/couchbase/var/lib/couchbase/inbox/
-</span><span style="color:#0ff;font-weight:bold">        name: couchbase-ssl-volume</span>
+</span><span style="color:#0ff;font-weight:bold">        $keyfile &gt; /opt/couchbase/var/lib/couchbase/inbox/pkey.key</span>        
+    <span style="font-weight:bold">command</span>:
+      - /bin/bash
+    <span style="font-weight:bold">env</span>:
+      - <span style="font-weight:bold">name</span>: keyfile
+        <span style="font-weight:bold">value</span>: /var/run/secrets/openshift.io/services_serving_certs/tls.key
+      - <span style="font-weight:bold">name</span>: crtfile
+        <span style="font-weight:bold">value</span>: /var/run/secrets/openshift.io/services_serving_certs/tls.crt
+      - <span style="font-weight:bold">name</span>: password
+        <span style="font-weight:bold">value</span>: changeit
+    <span style="font-weight:bold">image</span>: registry.access.redhat.com/redhat-sso-7/sso72-openshift:latest
+    <span style="font-weight:bold">imagePullPolicy</span>: Always
+    <span style="font-weight:bold">name</span>: couchbase-ssl
+    <span style="font-weight:bold">volumeMounts</span>:
+      - <span style="font-weight:bold">mountPath</span>: /var/run/secrets/openshift.io/services_serving_certs
+        <span style="font-weight:bold">name</span>: couchbase-db-certs
+      - <span style="font-weight:bold">mountPath</span>: /opt/couchbase/var/lib/couchbase/inbox/
+        <span style="font-weight:bold">name</span>: couchbase-ssl-volume
 <span style="font-weight:bold">volumes</span>:
   - <span style="font-weight:bold">emptyDir</span>: {}
     <span style="font-weight:bold">name</span>: couchbase-ssl-volume

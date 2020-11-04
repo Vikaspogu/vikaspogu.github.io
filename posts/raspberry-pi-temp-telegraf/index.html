@@ -70,7 +70,7 @@
   <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-16x16.png"
     sizes="16x16">
 
-  <meta name="generator" content="Hugo 0.75.1" />
+  <meta name="generator" content="Hugo 0.78.0" />
 </head>
 
 
@@ -125,7 +125,7 @@
         "datePublished": "2020-01-01 16:19:29 -0500 -0500",
         "dateModified" : "2020-01-01 16:19:29 -0500 -0500",
         "url" : "https:\/\/vikaspogu.dev\/posts\/raspberry-pi-temp-telegraf\/",
-        "wordCount" : "202",
+        "wordCount" : "201",
         "keywords" : [ "k3s","grafana","influxdb","telegraf","Blog" ]
     }
     </script>
@@ -189,7 +189,7 @@
 <span style="font-weight:bold">spec</span>:
   <span style="font-weight:bold">chart</span>: stable/telegraf
   <span style="font-weight:bold">targetNamespace</span>: monitoring
-  <span style="font-weight:bold">valuesContent</span>: <span style="color:#0ff;font-weight:bold">|-
+  <span style="font-weight:bold">valuesContent</span>: |-<span style="color:#0ff;font-weight:bold">
 </span><span style="color:#0ff;font-weight:bold">    replicaCount: 2
 </span><span style="color:#0ff;font-weight:bold">    image:
 </span><span style="color:#0ff;font-weight:bold">      repo: &#34;telegraf&#34;
@@ -206,8 +206,8 @@
 </span><span style="color:#0ff;font-weight:bold">            commands: [&#34;awk &#39;{print $1/1000}&#39; /sys/class/thermal/thermal_zone0/temp&#34;]
 </span><span style="color:#0ff;font-weight:bold">            name_override: &#34;rpi_temp&#34;
 </span><span style="color:#0ff;font-weight:bold">            data_format: &#34;value&#34;
-</span><span style="color:#0ff;font-weight:bold">            data_type: &#34;float&#34;
-</span></code></pre></div><p>Once influxdb and telegraf pods are in ready state, add influxdb datasource in grafana.</p>
+</span><span style="color:#0ff;font-weight:bold">            data_type: &#34;float&#34;</span>    
+</code></pre></div><p>Once influxdb and telegraf pods are in ready state, add influxdb datasource in grafana.</p>
 <p><img src="https://vikaspogu.dev/images/influxdb.png" alt="Traefik UI"></p>
 <p>For Grafana visualisation, import <a href="https://gist.github.com/Vikaspogu/b2d2f04e3102d65deb1ce6913f126e57">this</a> dashboard.</p>
 <p><img src="https://vikaspogu.dev/images/pi-temp-grafana.png" alt="Traefik UI"></p>

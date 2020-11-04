@@ -70,7 +70,7 @@
   <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-16x16.png"
     sizes="16x16">
 
-  <meta name="generator" content="Hugo 0.75.1" />
+  <meta name="generator" content="Hugo 0.78.0" />
 </head>
 
 
@@ -125,7 +125,7 @@
         "datePublished": "2020-08-18 14:47:02 -0500 CDT",
         "dateModified" : "2020-08-18 14:47:02 -0500 CDT",
         "url" : "https:\/\/vikaspogu.dev\/posts\/opa-gatekeeper-openshift\/",
-        "wordCount" : "644",
+        "wordCount" : "642",
         "keywords" : [ "openshift","opa","gatekeeper","Blog" ]
     }
     </script>
@@ -210,14 +210,14 @@ gatekeeper-controller-manager-ff58b6688-vlrsl   1/1     Running   <span styl
         <span style="font-weight:bold">kind</span>: K8sAllowedRoutes
   <span style="font-weight:bold">targets</span>:
     - <span style="font-weight:bold">target</span>: admission.k8s.gatekeeper.sh
-      <span style="font-weight:bold">rego</span>: <span style="color:#0ff;font-weight:bold">|
+      <span style="font-weight:bold">rego</span>: |<span style="color:#0ff;font-weight:bold">
 </span><span style="color:#0ff;font-weight:bold">        package k8sallowedroutes
 </span><span style="color:#0ff;font-weight:bold">
 </span><span style="color:#0ff;font-weight:bold">        violation[{&#34;msg&#34;: msg}] {
 </span><span style="color:#0ff;font-weight:bold">          not input.review.object.spec.tls
 </span><span style="color:#0ff;font-weight:bold">          msg := sprintf(&#34;&#39;%v&#39; route must be a secured route. non secured routes are not permitted&#34;, [input.review.object.metadata.name])
-</span><span style="color:#0ff;font-weight:bold">        }
-</span></code></pre></div><p>It will get the route and check if <code>tls</code> object is specified. If this is not true, the violation block continues and the violation is triggered with the corresponding message</p>
+</span><span style="color:#0ff;font-weight:bold">        }</span>        
+</code></pre></div><p>It will get the route and check if <code>tls</code> object is specified. If this is not true, the violation block continues and the violation is triggered with the corresponding message</p>
 <h3 id="enforcing-constraints">Enforcing constraints</h3>
 <p>These constrains which you defined now need to be enforced. This is done by defining a constraint which will use the template specified earlier.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="font-weight:bold">apiVersion</span>: constraints.gatekeeper.sh/v1beta1
@@ -258,7 +258,7 @@ gatekeeper-controller-manager-ff58b6688-vlrsl   1/1     Running   <span styl
         <span style="font-weight:bold">kind</span>: K8sUniqueRouteHost
   <span style="font-weight:bold">targets</span>:
     - <span style="font-weight:bold">target</span>: admission.k8s.gatekeeper.sh
-      <span style="font-weight:bold">rego</span>: <span style="color:#0ff;font-weight:bold">|
+      <span style="font-weight:bold">rego</span>: |<span style="color:#0ff;font-weight:bold">
 </span><span style="color:#0ff;font-weight:bold">        package k8suniqueroutehost
 </span><span style="color:#0ff;font-weight:bold">
 </span><span style="color:#0ff;font-weight:bold">        identical(obj, review) {
@@ -275,8 +275,8 @@ gatekeeper-controller-manager-ff58b6688-vlrsl   1/1     Running   <span styl
 </span><span style="color:#0ff;font-weight:bold">          other.spec.host == host
 </span><span style="color:#0ff;font-weight:bold">          not identical(other, input.review)
 </span><span style="color:#0ff;font-weight:bold">          msg := sprintf(&#34;Route host conflicts with an existing route &lt;%v&gt;&#34;, [host])
-</span><span style="color:#0ff;font-weight:bold">        }
-</span></code></pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="font-weight:bold">apiVersion</span>: constraints.gatekeeper.sh/v1beta1
+</span><span style="color:#0ff;font-weight:bold">        }</span>        
+</code></pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="font-weight:bold">apiVersion</span>: constraints.gatekeeper.sh/v1beta1
 <span style="font-weight:bold">kind</span>: K8sUniqueRouteHost
 <span style="font-weight:bold">metadata</span>:
   <span style="font-weight:bold">name</span>: unique-route-host

@@ -6,7 +6,25 @@
     <description>Recent content in Tags on vikaspogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 19 Aug 2020 08:52:26 -0500</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 04 Nov 2020 10:34:30 -0600</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>loki</title>
+      <link>https://vikaspogu.dev/tags/loki/</link>
+      <pubDate>Wed, 04 Nov 2020 10:34:30 -0600</pubDate>
+      
+      <guid>https://vikaspogu.dev/tags/loki/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rsyslog</title>
+      <link>https://vikaspogu.dev/tags/rsyslog/</link>
+      <pubDate>Wed, 04 Nov 2020 10:34:30 -0600</pubDate>
+      
+      <guid>https://vikaspogu.dev/tags/rsyslog/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>ad-blocker</title>
       <link>https://vikaspogu.dev/tags/ad-blocker/</link>

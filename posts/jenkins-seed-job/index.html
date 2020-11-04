@@ -70,7 +70,7 @@
   <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-16x16.png"
     sizes="16x16">
 
-  <meta name="generator" content="Hugo 0.75.1" />
+  <meta name="generator" content="Hugo 0.78.0" />
 </head>
 
 
@@ -125,7 +125,7 @@
         "datePublished": "2020-08-18 14:45:23 -0500 CDT",
         "dateModified" : "2020-08-18 14:45:23 -0500 CDT",
         "url" : "https:\/\/vikaspogu.dev\/posts\/jenkins-seed-job\/",
-        "wordCount" : "82",
+        "wordCount" : "81",
         "keywords" : [ "jenkins","configuration-as-code-plugin","pipeline-job","Blog" ]
     }
     </script>
@@ -166,7 +166,7 @@
       <div>
         <p>In one of my previous posts, I have discussed configuring multibranch pipeline seed jobs using Jenkins configuration as code <a href="https://github.com/jenkinsci/configuration-as-code-plugin">plugin</a></p>
 <p>This is an example of configuring a declarative pipeline job from bitbucket repo, running at midnight every day</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="font-weight:bold">script</span>: <span style="color:#0ff;font-weight:bold">&gt;
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="font-weight:bold">script</span>: &gt;<span style="color:#0ff;font-weight:bold">
 </span><span style="color:#0ff;font-weight:bold">    pipelineJob(&#39;sample-job&#39;) {
 </span><span style="color:#0ff;font-weight:bold">      definition {
 </span><span style="color:#0ff;font-weight:bold">          cpsScm {
@@ -186,8 +186,8 @@
 </span><span style="color:#0ff;font-weight:bold">            }
 </span><span style="color:#0ff;font-weight:bold">          }
 </span><span style="color:#0ff;font-weight:bold">      }
-</span><span style="color:#0ff;font-weight:bold">    }
-</span></code></pre></div>
+</span><span style="color:#0ff;font-weight:bold">    }</span>    
+</code></pre></div>
       </div>
 
       <footer>
