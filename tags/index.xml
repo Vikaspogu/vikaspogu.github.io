@@ -6,7 +6,61 @@
     <description>Recent content in Tags on vikaspogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 04 Nov 2020 10:34:30 -0600</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 12 Nov 2020 08:39:50 -0600</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>authentication</title>
+      <link>https://vikaspogu.dev/tags/authentication/</link>
+      <pubDate>Thu, 12 Nov 2020 08:39:50 -0600</pubDate>
+      
+      <guid>https://vikaspogu.dev/tags/authentication/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>authorization</title>
+      <link>https://vikaspogu.dev/tags/authorization/</link>
+      <pubDate>Thu, 12 Nov 2020 08:39:50 -0600</pubDate>
+      
+      <guid>https://vikaspogu.dev/tags/authorization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>istio</title>
+      <link>https://vikaspogu.dev/tags/istio/</link>
+      <pubDate>Thu, 12 Nov 2020 08:39:50 -0600</pubDate>
+      
+      <guid>https://vikaspogu.dev/tags/istio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jwt</title>
+      <link>https://vikaspogu.dev/tags/jwt/</link>
+      <pubDate>Thu, 12 Nov 2020 08:39:50 -0600</pubDate>
+      
+      <guid>https://vikaspogu.dev/tags/jwt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>keycloak</title>
+      <link>https://vikaspogu.dev/tags/keycloak/</link>
+      <pubDate>Thu, 12 Nov 2020 08:39:50 -0600</pubDate>
+      
+      <guid>https://vikaspogu.dev/tags/keycloak/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>service mesh</title>
+      <link>https://vikaspogu.dev/tags/service-mesh/</link>
+      <pubDate>Thu, 12 Nov 2020 08:39:50 -0600</pubDate>
+      
+      <guid>https://vikaspogu.dev/tags/service-mesh/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>loki</title>
       <link>https://vikaspogu.dev/tags/loki/</link>
@@ -328,24 +382,6 @@
       <pubDate>Fri, 09 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/tags/tektoncd/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>JWT</title>
-      <link>https://vikaspogu.dev/tags/jwt/</link>
-      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://vikaspogu.dev/tags/jwt/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>keycloak</title>
-      <link>https://vikaspogu.dev/tags/keycloak/</link>
-      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://vikaspogu.dev/tags/keycloak/</guid>
       <description></description>
     </item>
     

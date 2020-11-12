@@ -6,7 +6,19 @@
     <description>Recent content on vikaspogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 04 Nov 2020 10:34:30 -0600</lastBuildDate><atom:link href="https://vikaspogu.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 12 Nov 2020 08:39:50 -0600</lastBuildDate><atom:link href="https://vikaspogu.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>End User Auth and Authz with Openshift Service Mesh and Keycloak</title>
+      <link>https://vikaspogu.dev/posts/servicemesh-jwt-auth-authz-keycloack/</link>
+      <pubDate>Thu, 12 Nov 2020 08:39:50 -0600</pubDate>
+      
+      <guid>https://vikaspogu.dev/posts/servicemesh-jwt-auth-authz-keycloack/</guid>
+      <description>In this article, I will share the setup for enabling Authentication and Authorization in Openshift Service Mesh with Keycloak
+Installing Openshift Service Mesh Follow the Installing Red Hat OpenShift Service Mesh guide for setup
+Enable following configuration in your ServiceMeshControlPlane resource
+ Strict mTLS across the mesh Automatic istio route creation  apiVersion: maistra.io/v2 kind: ServiceMeshControlPlane spec: version: v1.1 security: controlPlane: mtls: true gateways: openshiftRoute: enabled: true Keycloak Keycloak is an open-source identity and access management application that uses open protocols and is easily integrated with other providers.</description>
+    </item>
+    
     <item>
       <title>Syslog with Loki Promtail</title>
       <link>https://vikaspogu.dev/posts/loki-rsyslog-k3s/</link>

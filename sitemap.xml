@@ -3,12 +3,57 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://vikaspogu.dev/tags/loki/</loc>
-    <lastmod>2020-11-04T10:34:30-06:00</lastmod>
+    <loc>https://vikaspogu.dev/tags/authentication/</loc>
+    <lastmod>2020-11-12T08:39:50-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/authorization/</loc>
+    <lastmod>2020-11-12T08:39:50-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/posts/servicemesh-jwt-auth-authz-keycloack/</loc>
+    <lastmod>2020-11-12T08:39:50-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/istio/</loc>
+    <lastmod>2020-11-12T08:39:50-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/jwt/</loc>
+    <lastmod>2020-11-12T08:39:50-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/keycloak/</loc>
+    <lastmod>2020-11-12T08:39:50-06:00</lastmod>
   </url>
   
   <url>
     <loc>https://vikaspogu.dev/posts/</loc>
+    <lastmod>2020-11-12T08:39:50-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/service-mesh/</loc>
+    <lastmod>2020-11-12T08:39:50-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/</loc>
+    <lastmod>2020-11-12T08:39:50-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/</loc>
+    <lastmod>2020-11-12T08:39:50-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/loki/</loc>
     <lastmod>2020-11-04T10:34:30-06:00</lastmod>
   </url>
   
@@ -19,16 +64,6 @@
   
   <url>
     <loc>https://vikaspogu.dev/posts/loki-rsyslog-k3s/</loc>
-    <lastmod>2020-11-04T10:34:30-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/tags/</loc>
-    <lastmod>2020-11-04T10:34:30-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/</loc>
     <lastmod>2020-11-04T10:34:30-06:00</lastmod>
   </url>
   
@@ -304,16 +339,6 @@
   
   <url>
     <loc>https://vikaspogu.dev/posts/sso-jwt-golang/</loc>
-    <lastmod>2019-07-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/tags/jwt/</loc>
-    <lastmod>2019-07-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/tags/keycloak/</loc>
     <lastmod>2019-07-27T00:00:00+00:00</lastmod>
   </url>
   
