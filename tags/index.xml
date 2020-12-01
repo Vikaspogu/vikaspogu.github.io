@@ -6,7 +6,25 @@
     <description>Recent content in Tags on vikaspogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 12 Nov 2020 08:39:50 -0600</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Dec 2020 12:07:46 -0600</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>boot</title>
+      <link>https://vikaspogu.dev/tags/boot/</link>
+      <pubDate>Tue, 01 Dec 2020 12:07:46 -0600</pubDate>
+      
+      <guid>https://vikaspogu.dev/tags/boot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>grub</title>
+      <link>https://vikaspogu.dev/tags/grub/</link>
+      <pubDate>Tue, 01 Dec 2020 12:07:46 -0600</pubDate>
+      
+      <guid>https://vikaspogu.dev/tags/grub/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>authentication</title>
       <link>https://vikaspogu.dev/tags/authentication/</link>

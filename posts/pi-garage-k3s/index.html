@@ -70,7 +70,7 @@
   <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-16x16.png"
     sizes="16x16">
 
-  <meta name="generator" content="Hugo 0.78.1" />
+  <meta name="generator" content="Hugo 0.79.0" />
 </head>
 
 
@@ -380,7 +380,7 @@ app.get(<span style="color:#0ff;font-weight:bold">&#34;/&#34;</span>, <span styl
 <p>Install <code>dotenv</code>, <code>twilio</code> and <code>node-schedule</code> packages</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm i dotenv node-schedule twilio -S
 </code></pre></div><p>Create a <code>.env</code> file at root of the project and add your twilio auth key, account sid and phone number</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">TWILIO_ACCOUNT_SID=
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-env" data-lang="env">TWILIO_ACCOUNT_SID=
 TWILIO_AUTH_TOKEN=
 TWILIO_PHONE_NUMBER=
 </code></pre></div><p>Create a <code>twilio.js</code> file, add below code</p>
