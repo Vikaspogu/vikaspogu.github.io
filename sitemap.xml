@@ -3,6 +3,41 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://vikaspogu.dev/tags/buildx/</loc>
+    <lastmod>2020-12-05T10:22:47-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/docker/</loc>
+    <lastmod>2020-12-05T10:22:47-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/linux/</loc>
+    <lastmod>2020-12-05T10:22:47-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/posts/</loc>
+    <lastmod>2020-12-05T10:22:47-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/posts/docker-buildx-setup/</loc>
+    <lastmod>2020-12-05T10:22:47-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/</loc>
+    <lastmod>2020-12-05T10:22:47-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/</loc>
+    <lastmod>2020-12-05T10:22:47-06:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://vikaspogu.dev/tags/boot/</loc>
     <lastmod>2020-12-01T12:07:46-06:00</lastmod>
   </url>
@@ -14,21 +49,6 @@
   
   <url>
     <loc>https://vikaspogu.dev/tags/grub/</loc>
-    <lastmod>2020-12-01T12:07:46-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/posts/</loc>
-    <lastmod>2020-12-01T12:07:46-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/tags/</loc>
-    <lastmod>2020-12-01T12:07:46-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/</loc>
     <lastmod>2020-12-01T12:07:46-06:00</lastmod>
   </url>
   
@@ -180,11 +200,6 @@
   <url>
     <loc>https://vikaspogu.dev/posts/jenkins-config-as-code-openshift/</loc>
     <lastmod>2020-07-06T13:23:05-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/tags/docker/</loc>
-    <lastmod>2020-07-05T16:26:22-05:00</lastmod>
   </url>
   
   <url>

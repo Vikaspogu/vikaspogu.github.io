@@ -6,7 +6,34 @@
     <description>Recent content in Tags on vikaspogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 01 Dec 2020 12:07:46 -0600</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 05 Dec 2020 10:22:47 -0600</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>buildx</title>
+      <link>https://vikaspogu.dev/tags/buildx/</link>
+      <pubDate>Sat, 05 Dec 2020 10:22:47 -0600</pubDate>
+      
+      <guid>https://vikaspogu.dev/tags/buildx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>https://vikaspogu.dev/tags/docker/</link>
+      <pubDate>Sat, 05 Dec 2020 10:22:47 -0600</pubDate>
+      
+      <guid>https://vikaspogu.dev/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://vikaspogu.dev/tags/linux/</link>
+      <pubDate>Sat, 05 Dec 2020 10:22:47 -0600</pubDate>
+      
+      <guid>https://vikaspogu.dev/tags/linux/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>boot</title>
       <link>https://vikaspogu.dev/tags/boot/</link>
@@ -202,15 +229,6 @@
       <pubDate>Mon, 06 Jul 2020 13:23:05 -0500</pubDate>
       
       <guid>https://vikaspogu.dev/tags/jcasc/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>docker</title>
-      <link>https://vikaspogu.dev/tags/docker/</link>
-      <pubDate>Sun, 05 Jul 2020 16:26:22 -0500</pubDate>
-      
-      <guid>https://vikaspogu.dev/tags/docker/</guid>
       <description></description>
     </item>
     
