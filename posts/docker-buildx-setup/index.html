@@ -125,7 +125,7 @@
         "datePublished": "2020-12-05 10:22:47 -0600 CST",
         "dateModified" : "2020-12-05 10:22:47 -0600 CST",
         "url" : "https:\/\/vikaspogu.dev\/posts\/docker-buildx-setup\/",
-        "wordCount" : "251",
+        "wordCount" : "278",
         "keywords" : [ "docker","buildx","linux","Blog" ]
     }
     </script>
@@ -218,6 +218,10 @@ $ docker buildx use amr64
 
 # build the multi images
 $ docker buildx build -t vikaspogu/test:v0.0.1 . --push --platform linux/arm64
+</code></pre></div><blockquote>
+<p>If you encounter <code>/bin/sh: Invalid ELF image for this architecture</code> error. Run following docker image and then build</p>
+</blockquote>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
 </code></pre></div>
       </div>
 
