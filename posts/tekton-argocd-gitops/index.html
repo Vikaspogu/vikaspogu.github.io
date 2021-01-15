@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="google-site-verification" content="5JztMFjgtrbhV0pe_cLh7EH3c0NJBY7sVrnd7x86pMI" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <meta name="author" content="Vikas Pogu">
+  
+  <meta name="description" content="Vikas Pogu&#39;s Blog">
+  
+  <meta name="keywords" content="blog,developer">
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="GitOps with Tekton and ArgoCD"/>
+<meta name="twitter:description" content="build and release pipeline with tekton, argocd in gitops fashion"/>
+
+  <meta property="og:title" content="GitOps with Tekton and ArgoCD" />
+<meta property="og:description" content="build and release pipeline with tekton, argocd in gitops fashion" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://vikaspogu.dev/posts/tekton-argocd-gitops/" />
+<meta property="article:published_time" content="2021-01-14T15:35:04-06:00" />
+<meta property="article:modified_time" content="2021-01-14T15:35:04-06:00" />
+
+
+  
+  <base href="https://vikaspogu.dev/posts/tekton-argocd-gitops/">
+  
+  <title>
+  GitOps with Tekton and ArgoCD · vikaspogu
+</title>
+
+  
+  <link rel="canonical" href="https://vikaspogu.dev/posts/tekton-argocd-gitops/">
+  
+
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
+    integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+  
+  
+  
+  <link rel="stylesheet" href="https://vikaspogu.dev/css/coder.min.28d751104f30c16da1aa1bb04015cbe662cacfe0d1b01af4f2240ad58580069c.css" integrity="sha256-KNdREE8wwW2hqhuwQBXL5mLKz&#43;DRsBr08iQK1YWABpw="
+    crossorigin="anonymous" media="screen" />
+  
+
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://vikaspogu.dev/css/coder-dark.min.83a2010dac9f59f943b3004cd6c4f230507ad036da635d3621401d42ec4e2835.css" integrity="sha256-g6IBDayfWflDswBM1sTyMFB60DbaY102IUAdQuxOKDU="
+    crossorigin="anonymous" media="screen" />
+  
+  
+
+  
+
+  
+
+  <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-32x32.png"
+    sizes="32x32">
+  <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-16x16.png"
+    sizes="16x16">
+
+  <meta name="generator" content="Hugo 0.80.0" />
+</head>
+
+
+
+
+
+
+<body class="colorscheme-auto">
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://vikaspogu.dev/">
+      vikaspogu
+    </a>
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+      
+      <li class="navigation-item">
+        <a class="navigation-link" href="https://vikaspogu.dev/about/">About</a>
+      </li>
+      
+      <li class="navigation-item">
+        <a class="navigation-link" href="https://vikaspogu.dev/posts/">Blog</a>
+      </li>
+      
+      
+      
+    </ul>
+  </section>
+</nav>
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "https:\/\/vikaspogu.dev"
+        },
+        "articleSection" : "posts",
+        "name" : "GitOps with Tekton and ArgoCD",
+        "headline" : "GitOps with Tekton and ArgoCD",
+        "description" : "build and release pipeline with tekton, argocd in gitops fashion",
+        "inLanguage" : "en-US",
+        "author" : "Vikas Pogu",
+        "creator" : "Vikas Pogu",
+        "publisher": "Vikas Pogu",
+        "accountablePerson" : "Vikas Pogu",
+        "copyrightHolder" : "Vikas Pogu",
+        "copyrightYear" : "2021",
+        "datePublished": "2021-01-14 15:35:04 -0600 CST",
+        "dateModified" : "2021-01-14 15:35:04 -0600 CST",
+        "url" : "https:\/\/vikaspogu.dev\/posts\/tekton-argocd-gitops\/",
+        "wordCount" : "669",
+        "keywords" : [ "argocd","tekton","gitops","openshift-pipelines","Blog" ]
+    }
+    </script>
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">GitOps with Tekton and ArgoCD</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2021-01-14T15:35:04-06:00'>
+                January 14, 2021
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              4 minutes read
+            </span>
+          </div>
+          
+          <div class="tags">
+  <i class="fas fa-tag"></i>
+    <a href="https://vikaspogu.dev/tags/argocd/">argocd</a>
+      <span class="separator">•</span>
+    <a href="https://vikaspogu.dev/tags/tekton/">tekton</a>
+      <span class="separator">•</span>
+    <a href="https://vikaspogu.dev/tags/gitops/">gitops</a>
+      <span class="separator">•</span>
+    <a href="https://vikaspogu.dev/tags/openshift-pipelines/">openshift-pipelines</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        <p>In this post, I will:</p>
+<ul>
+<li>Use Tekton to build and publish image to docker registry</li>
+<li>Trigger a Tekton pipeline from GitHub</li>
+<li>Use Argo to deploy application</li>
+</ul>
+<p><img src="https://vikaspogu.dev/images/gitops-tekton-argocd/gitops-architecture.png" alt="alt argo-flow-1"></p>
+<h2 id="getting-started">Getting Started</h2>
+<p><em><strong>Assumptions:</strong></em></p>
+<ul>
+<li>You have a running Openshift 4 cluster with ArgoCD, and Openshift Pipelines installed. If not, you follow instructions to <a href="https://docs.openshift.com/container-platform/4.6/pipelines/installing-pipelines.html">Openshift Pipelines</a> and <a href="https://argocd-operator.readthedocs.io/en/latest/install/openshift/">ArgoCD Operator</a></li>
+<li>Understand of basic argocd and tekton concepts</li>
+</ul>
+<p>Create an OpenShift project called node-web-project</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc new-project node-web-project
+</code></pre></div><h3 id="using-private-registries">Using Private Registries</h3>
+<p>Create a docker secret with registry authentication details</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc create secret docker-registry container-registry-secret <span style="color:#0ff;font-weight:bold">\
+</span><span style="color:#0ff;font-weight:bold"></span>  --docker-server=$CONTAINER_REGISTRY_SERVER <span style="color:#0ff;font-weight:bold">\
+</span><span style="color:#0ff;font-weight:bold"></span>  --docker-username=$CONTAINER_REGISTRY_USER <span style="color:#0ff;font-weight:bold">\
+</span><span style="color:#0ff;font-weight:bold"></span>  --docker-password=$CONTAINER_REGISTRY_PASSWORD -n node-web-project
+</code></pre></div><p>Create a service account named <code>build-bot</code></p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc create sa -n node-web-project build-bot
+serviceaccount/build-bot created
+</code></pre></div><p>Add docker secret <code>container-registry-secret</code> to newly created service account <code>build-bot</code></p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc patch serviceaccount build-bot <span style="color:#0ff;font-weight:bold">\
+</span><span style="color:#0ff;font-weight:bold"></span>  -p <span style="color:#0ff;font-weight:bold">&#39;{&#34;secrets&#34;: [{&#34;name&#34;: &#34;container-registry-secret&#34;}]}&#39;</span>
+serviceaccount/build-bot patched
+</code></pre></div><p>Verify if the service account has the secret added:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc get sa -n node-web-project build-bot -o yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: <span style="color:#0ff;font-weight:bold">&#34;2021-01-12T03:34:32Z&#34;</span>
+  name: build-bot
+  namespace: node-web-project
+  resourceVersion: <span style="color:#0ff;font-weight:bold">&#34;53879&#34;</span>
+  selfLink: /api/v1/namespaces/node-web-project/serviceaccounts/build-bot
+  uid: 628067fd-91d1-4cdd-b6a6-88b4f7280ff0
+secrets:
+- name: container-registry-secret
+- name: build-bot-token-8nl2v
+</code></pre></div><h3 id="create-pipeline">Create Pipeline</h3>
+<p>A Pipeline is a collection of Tasks that you want to run as part of your workflow. Each Task in a Pipeline is executed in a pod and by default they run in parallel. However, you can specify the order by using <code>runAfter</code></p>
+<p>There are 3 Tasks in below pipeline</p>
+<ul>
+<li>Clone source code</li>
+<li>Build and push image using <code>Buildah</code> cluster task</li>
+<li>Syncing argo deployment</li>
+</ul>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="font-weight:bold">apiVersion</span>: tekton.dev/v1alpha1
+<span style="font-weight:bold">kind</span>: Pipeline
+<span style="font-weight:bold">metadata</span>:
+  <span style="font-weight:bold">name</span>: node-web-app-pipeline
+  <span style="font-weight:bold">namespace</span>: node-web-project
+<span style="font-weight:bold">spec</span>:
+  <span style="font-weight:bold">workspaces</span>:
+    - <span style="font-weight:bold">name</span>: shared-workspace
+  <span style="font-weight:bold">params</span>:
+    - <span style="font-weight:bold">name</span>: node-web-app-source
+    - <span style="font-weight:bold">name</span>: node-web-app-image
+  <span style="font-weight:bold">tasks</span>:
+    - <span style="font-weight:bold">name</span>: fetch-repository
+      <span style="font-weight:bold">taskRef</span>:
+        <span style="font-weight:bold">kind</span>: ClusterTask
+        <span style="font-weight:bold">name</span>: git-clone
+      <span style="font-weight:bold">workspaces</span>:
+      - <span style="font-weight:bold">name</span>: output
+        <span style="font-weight:bold">workspace</span>: shared-workspace
+      <span style="font-weight:bold">params</span>:
+      - <span style="font-weight:bold">name</span>: url
+        <span style="font-weight:bold">value</span>: $(params.node-web-app-source)
+    - <span style="font-weight:bold">name</span>: build-and-publish-image
+      <span style="font-weight:bold">params</span>:
+        - <span style="font-weight:bold">name</span>: IMAGE
+          <span style="font-weight:bold">value</span>: $(params.node-web-app-image)
+        - <span style="font-weight:bold">name</span>: TLSVERIFY
+          <span style="font-weight:bold">value</span>: <span style="color:#0ff;font-weight:bold">&#39;false&#39;</span>
+      <span style="font-weight:bold">taskRef</span>:
+        <span style="font-weight:bold">kind</span>: ClusterTask
+        <span style="font-weight:bold">name</span>: buildah
+      <span style="font-weight:bold">runAfter</span>:
+        - fetch-repository
+      <span style="font-weight:bold">workspaces</span>:
+      - <span style="font-weight:bold">name</span>: source
+        <span style="font-weight:bold">workspace</span>: shared-workspace
+    - <span style="font-weight:bold">name</span>: sync-application
+      <span style="font-weight:bold">taskRef</span>:
+        <span style="font-weight:bold">name</span>: argocd-task-sync-and-wait
+      <span style="font-weight:bold">params</span>:
+        - <span style="font-weight:bold">name</span>: application-name
+          <span style="font-weight:bold">value</span>: node-web-app
+        - <span style="font-weight:bold">name</span>: flags
+          <span style="font-weight:bold">value</span>: --insecure --grpc-web
+        - <span style="font-weight:bold">name</span>: argocd-version
+          <span style="font-weight:bold">value</span>: v1.7.11
+      <span style="font-weight:bold">runAfter</span>:
+        - build-and-publish-image
+</code></pre></div><h3 id="triggers">Triggers</h3>
+<p>Now that the pipeline is setup, we need to setup webhook from GitHub to trigger pipeline. We need to create following resources:</p>
+<ul>
+<li>
+<p>A <code>TriggerTemplate</code> act as a blueprint for pipeline resources. It can also be used to define parameters that can then be substituted anywhere within the resource template(s) being defined</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="font-weight:bold">apiVersion</span>: triggers.tekton.dev/v1alpha1
+<span style="font-weight:bold">kind</span>: TriggerTemplate
+<span style="font-weight:bold">metadata</span>:
+  <span style="font-weight:bold">name</span>: pipeline-template
+  <span style="font-weight:bold">namespace</span>: node-web-project
+<span style="font-weight:bold">spec</span>:
+  <span style="font-weight:bold">params</span>:
+    - <span style="font-weight:bold">name</span>: git-repo-url
+    - <span style="font-weight:bold">name</span>: git-repo-name
+    - <span style="font-weight:bold">name</span>: git-revision
+    - <span style="font-weight:bold">name</span>: image-name
+  <span style="font-weight:bold">resourcetemplates</span>:
+    - <span style="font-weight:bold">apiVersion</span>: tekton.dev/v1beta1
+        <span style="font-weight:bold">kind</span>: PipelineRun
+        <span style="font-weight:bold">metadata</span>:
+        <span style="font-weight:bold">generateName</span>: $(tt.params.git-repo-name)-pipeline-run-
+        <span style="font-weight:bold">namespace</span>: node-web-project
+        <span style="font-weight:bold">spec</span>:
+        <span style="font-weight:bold">params</span>:
+        - <span style="font-weight:bold">name</span>: source
+            <span style="font-weight:bold">value</span>: $(tt.params.git-repo-url)
+        - <span style="font-weight:bold">name</span>: image
+            <span style="font-weight:bold">value</span>: $(tt.params.image-name)
+        <span style="font-weight:bold">pipelineRef</span>:
+            <span style="font-weight:bold">name</span>: node-web-app-pipeline
+        <span style="font-weight:bold">serviceAccountName</span>: build-bot
+        <span style="font-weight:bold">timeout</span>: 1h0m0s
+        <span style="font-weight:bold">workspaces</span>:
+        - <span style="font-weight:bold">name</span>: shared-workspace
+            <span style="font-weight:bold">persistentVolumeClaim</span>:
+            <span style="font-weight:bold">claimName</span>: tekton-workspace-pvc
+</code></pre></div></li>
+<li>
+<p>A <code>TriggerBinding</code> binds the incoming event data to the template (i.e. git url, repo name, revision, etc&hellip;.)</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="font-weight:bold">apiVersion</span>: triggers.tekton.dev/v1alpha1
+<span style="font-weight:bold">kind</span>: TriggerBinding
+<span style="font-weight:bold">metadata</span>:
+  <span style="font-weight:bold">name</span>: pipeline-binding
+  <span style="font-weight:bold">namespace</span>: node-web-project
+<span style="font-weight:bold">spec</span>:
+  <span style="font-weight:bold">params</span>:
+    - <span style="font-weight:bold">name</span>: git-repo-name
+      <span style="font-weight:bold">value</span>: $(body.repository.name)
+    - <span style="font-weight:bold">name</span>: git-repo-url
+      <span style="font-weight:bold">value</span>: $(body.repository.url)
+    - <span style="font-weight:bold">name</span>: git-revision
+      <span style="font-weight:bold">value</span>: $(body.head_commit.id)
+    - <span style="font-weight:bold">name</span>: image-name
+      <span style="font-weight:bold">value</span>: docker.io/vikaspogu/$(body.repository.name):$(body.head_commit.id)
+</code></pre></div></li>
+<li>
+<p>An <code>EventListener</code> that will create a pod application bringing together a binding and a template</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="font-weight:bold">apiVersion</span>: triggers.tekton.dev/v1alpha1
+<span style="font-weight:bold">kind</span>: EventListener
+<span style="font-weight:bold">metadata</span>:
+  <span style="font-weight:bold">name</span>: el-node-web-app
+  <span style="font-weight:bold">namespace</span>: default
+<span style="font-weight:bold">spec</span>:
+  <span style="font-weight:bold">serviceAccountName</span>: build-bot
+  <span style="font-weight:bold">triggers</span>:
+    - <span style="font-weight:bold">name</span>: node-web-app-trigger
+      <span style="font-weight:bold">bindings</span>:
+        - <span style="font-weight:bold">ref</span>: pipeline-binding
+      <span style="font-weight:bold">template</span>:
+        <span style="font-weight:bold">ref</span>: pipeline-template
+</code></pre></div></li>
+<li>
+<p>An OpenShift Route to expose the Event Listener</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ oc expose svc el-node-web-app
+$ <span style="color:#fff;font-weight:bold">echo</span> <span style="color:#0ff;font-weight:bold">&#34;URL: </span><span style="color:#fff;font-weight:bold">$(</span>oc get route el-node-web-app --template=<span style="color:#0ff;font-weight:bold">&#39;http://{{.spec.host}}&#39;</span><span style="color:#fff;font-weight:bold">)</span><span style="color:#0ff;font-weight:bold">&#34;</span>
+http://el-node-web-app-node-web-project.apps.cluster-7d51.sandbox659.opentlc.com
+</code></pre></div></li>
+</ul>
+<p>You can learn about <a href="https://tekton.dev/docs/triggers/">Tekton Triggers</a> and <a href="https://docs.openshift.com/container-platform/4.6/pipelines/understanding-openshift-pipelines.html">OpenShift Pipleines</a></p>
+<h3 id="create-argocd-app-for-web-app-resources">Create ArgoCD App for Web App Resources</h3>
+<p><a href="https://argoproj.github.io/argo-cd/getting_started/">Create an ArgoCD application via the GUI or command line</a></p>
+<p><img src="https://vikaspogu.dev/images/gitops-tekton-argocd/argo-node-web-app.png" alt="alt argo-pipeline"></p>
+<ul>
+<li>Project: default</li>
+<li>cluster: (URL Of your OpenShift Cluster)</li>
+<li>namespace should be the name of your OpenShift Project</li>
+<li>repo url: git repo</li>
+<li>Targer Revision: Head</li>
+<li>PATH: deployment</li>
+<li>AutoSync Disabled</li>
+</ul>
+<h3 id="configure-webhooks">Configure Webhooks</h3>
+<p>You will now need to configure GitHub webHook to Tekton Event Listener to start a tekton build from git push</p>
+<p><img src="https://vikaspogu.dev/images/gitops-tekton-argocd/tekton-webhook.png" alt="alt webhooks"></p>
+<h3 id="make-a-code-change-and-commit-look-at-build">Make a code change and commit, look at build.</h3>
+<ol>
+<li>
+<p>Push an empty commit to repo</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git commit -m <span style="color:#0ff;font-weight:bold">&#34;empty-commit&#34;</span> --allow-empty &amp;&amp; git push
+</code></pre></div></li>
+<li>
+<p>In OpenShift Console you should see a pipleine run</p>
+<p><img src="https://vikaspogu.dev/images/gitops-tekton-argocd/gittrigger.png" alt="alt webhooks"></p>
+</li>
+<li>
+<p>Once pipeline is finished. Use Openshift route to verify app</p>
+</li>
+</ol>
+
+      </div>
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    
+    
+    
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+</body>
+
+</html>
