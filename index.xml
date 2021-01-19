@@ -6,7 +6,18 @@
     <description>Recent content on vikaspogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 14 Jan 2021 15:35:04 -0600</lastBuildDate><atom:link href="https://vikaspogu.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 19 Jan 2021 09:46:00 -0600</lastBuildDate><atom:link href="https://vikaspogu.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Build multi arch docker image using Tekton</title>
+      <link>https://vikaspogu.dev/posts/tekton-multiarch-buildx/</link>
+      <pubDate>Tue, 19 Jan 2021 09:46:00 -0600</pubDate>
+      
+      <guid>https://vikaspogu.dev/posts/tekton-multiarch-buildx/</guid>
+      <description>There are three different strategies to build multi-platform images that are supported by Buildx and Dockerfiles:
+ Using the QEMU emulation support in the kernel Building on multiple native nodes using the same builder instance Using a stage in Dockerfile to cross-compile to different architectures  I’ll focus on the first option, cross building with emulation.
+docker buildx build --platform linux/amd64,linux/arm64 . Setup This differs from platform to platform but one thing we all have in common is pipelines, so I’ve constructed a basic buildx setup for TektonCD task.</description>
+    </item>
+    
     <item>
       <title>GitOps with Tekton and ArgoCD</title>
       <link>https://vikaspogu.dev/posts/tekton-argocd-gitops/</link>

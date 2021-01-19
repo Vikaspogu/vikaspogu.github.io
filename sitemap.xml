@@ -3,6 +3,41 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://vikaspogu.dev/posts/tekton-multiarch-buildx/</loc>
+    <lastmod>2021-01-19T09:46:00-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/buildx/</loc>
+    <lastmod>2021-01-19T09:46:00-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/multi-arch/</loc>
+    <lastmod>2021-01-19T09:46:00-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/posts/</loc>
+    <lastmod>2021-01-19T09:46:00-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/</loc>
+    <lastmod>2021-01-19T09:46:00-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/tekton/</loc>
+    <lastmod>2021-01-19T09:46:00-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/</loc>
+    <lastmod>2021-01-19T09:46:00-06:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://vikaspogu.dev/tags/argocd/</loc>
     <lastmod>2021-01-14T15:35:04-06:00</lastmod>
   </url>
@@ -20,31 +55,6 @@
   <url>
     <loc>https://vikaspogu.dev/tags/openshift-pipelines/</loc>
     <lastmod>2021-01-14T15:35:04-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/posts/</loc>
-    <lastmod>2021-01-14T15:35:04-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/tags/</loc>
-    <lastmod>2021-01-14T15:35:04-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/tags/tekton/</loc>
-    <lastmod>2021-01-14T15:35:04-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/</loc>
-    <lastmod>2021-01-14T15:35:04-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/tags/buildx/</loc>
-    <lastmod>2020-12-05T10:22:47-06:00</lastmod>
   </url>
   
   <url>
