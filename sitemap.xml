@@ -3,6 +3,41 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://vikaspogu.dev/tags/cel/</loc>
+    <lastmod>2021-01-19T13:42:07-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/posts/</loc>
+    <lastmod>2021-01-19T13:42:07-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/</loc>
+    <lastmod>2021-01-19T13:42:07-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/tekton/</loc>
+    <lastmod>2021-01-19T13:42:07-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/posts/tekton-triggers-cel-interception/</loc>
+    <lastmod>2021-01-19T13:42:07-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/tags/triggers/</loc>
+    <lastmod>2021-01-19T13:42:07-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vikaspogu.dev/</loc>
+    <lastmod>2021-01-19T13:42:07-06:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://vikaspogu.dev/posts/tekton-multiarch-buildx/</loc>
     <lastmod>2021-01-19T09:46:00-06:00</lastmod>
   </url>
@@ -14,26 +49,6 @@
   
   <url>
     <loc>https://vikaspogu.dev/tags/multi-arch/</loc>
-    <lastmod>2021-01-19T09:46:00-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/posts/</loc>
-    <lastmod>2021-01-19T09:46:00-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/tags/</loc>
-    <lastmod>2021-01-19T09:46:00-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/tags/tekton/</loc>
-    <lastmod>2021-01-19T09:46:00-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vikaspogu.dev/</loc>
     <lastmod>2021-01-19T09:46:00-06:00</lastmod>
   </url>
   

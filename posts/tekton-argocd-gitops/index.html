@@ -125,7 +125,7 @@
         "datePublished": "2021-01-14 15:35:04 -0600 CST",
         "dateModified" : "2021-01-14 15:35:04 -0600 CST",
         "url" : "https:\/\/vikaspogu.dev\/posts\/tekton-argocd-gitops\/",
-        "wordCount" : "669",
+        "wordCount" : "702",
         "keywords" : [ "argocd","tekton","gitops","openshift-pipelines","Blog" ]
     }
     </script>
@@ -372,7 +372,20 @@ http://el-node-web-app-node-web-project.apps.cluster-7d51.sandbox659.opentlc.com
 <p>Once pipeline is finished. Use Openshift route to verify app</p>
 </li>
 </ol>
-
+<h2 id="workspace-pvc">Workspace PVC</h2>
+<p>To use same PVC wit multiple pipelines, a <code>ReadWriteMany</code> pvc has to be created</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="font-weight:bold">apiVersion</span>: v1
+<span style="font-weight:bold">kind</span>: PersistentVolumeClaim
+<span style="font-weight:bold">metadata</span>:
+  <span style="font-weight:bold">name</span>: tekton-workspace-pvc
+  <span style="font-weight:bold">namespace</span>: default
+<span style="font-weight:bold">spec</span>:
+  <span style="font-weight:bold">accessModes</span>:
+    - ReadWriteMany
+  <span style="font-weight:bold">resources</span>:
+    <span style="font-weight:bold">requests</span>:
+      <span style="font-weight:bold">storage</span>: 2Gi
+</code></pre></div>
       </div>
 
       <footer>

@@ -6,7 +6,18 @@
     <description>Recent content on vikaspogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 19 Jan 2021 09:46:00 -0600</lastBuildDate><atom:link href="https://vikaspogu.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 19 Jan 2021 13:42:07 -0600</lastBuildDate><atom:link href="https://vikaspogu.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tekton triggers and Interceptors</title>
+      <link>https://vikaspogu.dev/posts/tekton-triggers-cel-interception/</link>
+      <pubDate>Tue, 19 Jan 2021 13:42:07 -0600</pubDate>
+      
+      <guid>https://vikaspogu.dev/posts/tekton-triggers-cel-interception/</guid>
+      <description>Tekton Triggers work by having EventListeners receive incoming webhook notifications, processing them using an Interceptor, and creating Kubernetes resources from templates if the interceptor allows it, with extraction of fields from the body of the webhook
+CEL Interceptors can be used to filter or modify incoming events. for example if you want to truncate commit id from the webhook body
+apiVersion: triggers.tekton.dev/v1alpha1 kind: EventListener metadata: name: shared-listener namespace: default spec: serviceAccountName: build-bot triggers: - name: shared-pipeline-trigger interceptors: - cel: overlays: - key: intercepted.</description>
+    </item>
+    
     <item>
       <title>Build multi arch docker image using Tekton</title>
       <link>https://vikaspogu.dev/posts/tekton-multiarch-buildx/</link>
