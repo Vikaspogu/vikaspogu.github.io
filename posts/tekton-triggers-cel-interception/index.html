@@ -24,9 +24,10 @@ apiVersion: triggers.tekton.dev/v1alpha1 kind: EventListener metadata: name: sha
 CEL Interceptors can be used to filter or modify incoming events. for example if you want to truncate commit id from the webhook body
 apiVersion: triggers.tekton.dev/v1alpha1 kind: EventListener metadata: name: shared-listener namespace: default spec: serviceAccountName: build-bot triggers: - name: shared-pipeline-trigger interceptors: - cel: overlays: - key: intercepted." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://vikaspogu.dev/posts/tekton-triggers-cel-interception/" />
+<meta property="og:url" content="https://vikaspogu.dev/posts/tekton-triggers-cel-interception/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-01-19T13:42:07-06:00" />
 <meta property="article:modified_time" content="2021-01-19T13:42:07-06:00" />
+
 
 
   
@@ -74,7 +75,7 @@ apiVersion: triggers.tekton.dev/v1alpha1 kind: EventListener metadata: name: sha
   <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-16x16.png"
     sizes="16x16">
 
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.81.0" />
 </head>
 
 

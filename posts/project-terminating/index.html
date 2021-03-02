@@ -30,9 +30,10 @@ spec: finalizers: - kubernetes to
 spec: finalizers: [] On one of the master node, execute these commands.
 kubectl proxy &amp; PID=$! curl -X PUT http://localhost:8001/api/v1/namespaces/delete-me/finalize \ -H &#34;Content-Type: application/json&#34; --data-binary @ns-without-finalizers." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://vikaspogu.dev/posts/project-terminating/" />
-<meta property="article:published_time" content="2019-05-15T00:00:00+00:00" />
-<meta property="article:modified_time" content="2019-05-15T00:00:00+00:00" />
+<meta property="og:url" content="https://vikaspogu.dev/posts/project-terminating/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-05-15T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2019-05-15T00:00:00&#43;00:00" />
+
 
 
   
@@ -80,7 +81,7 @@ kubectl proxy &amp; PID=$! curl -X PUT http://localhost:8001/api/v1/namespaces/d
   <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-16x16.png"
     sizes="16x16">
 
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.81.0" />
 </head>
 
 

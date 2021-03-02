@@ -106,10 +106,9 @@ Spring Boot Actuator Spring Boot Actuator helps you monitor and manage your appl
       <pubDate>Tue, 14 May 2019 14:36:27 -0500</pubDate>
       
       <guid>https://vikaspogu.dev/posts/debug-java-container/</guid>
-      <description>This post will discuss debugging a JAVA application running inside a container. First, you must set the JAVA_DEBUG environment variable inside the container to true and configure port forwarding so that you can connect to your application from a remote debugger.
-Note: If you are using tomcat image replace JAVA_DEBUG environment variable to DEBUG
-Using the oc command, list the available deployment configurations:
-$ oc get dc Set the JAVA_DEBUG environment variable in the deployment configuration of your application to true, which configures the JVM to open the port number 5005 for debugging.</description>
+      <description>This post will discuss debugging a JAVA application running inside a container.
+When you bootstrap your JVM, you should have a way to enable JVM debug. For example Red Hat S2I images allows you to control classpath and debugging via environment variables.
+# Set debug options if required if [ x&amp;#34;${JAVA_DEBUG}&amp;#34; != x ] &amp;amp;&amp;amp; [ &amp;#34;${JAVA_DEBUG}&amp;#34; != &amp;#34;false&amp;#34; ]; then java_debug_args=&amp;#34;-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=${JAVA_DEBUG_PORT:-5005}&amp;#34; fi  Setting the JAVA_DEBUG environment variable inside the container to true will add debug args to JVM startup command Configure port forwarding so that you can connect to your application from a remote debugger  Note: If you are using tomcat image replace JAVA_DEBUG environment variable to DEBUG</description>
     </item>
     
     <item>

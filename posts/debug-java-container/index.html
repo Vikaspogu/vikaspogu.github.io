@@ -15,20 +15,19 @@
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Debugging a Java application in OpenShift"/>
-<meta name="twitter:description" content="This post will discuss debugging a JAVA application running inside a container. First, you must set the JAVA_DEBUG environment variable inside the container to true and configure port forwarding so that you can connect to your application from a remote debugger.
-Note: If you are using tomcat image replace JAVA_DEBUG environment variable to DEBUG
-Using the oc command, list the available deployment configurations:
-$ oc get dc Set the JAVA_DEBUG environment variable in the deployment configuration of your application to true, which configures the JVM to open the port number 5005 for debugging."/>
+<meta name="twitter:description" content="This post will discuss debugging a JAVA application running inside a container.
+When you bootstrap your JVM, you should have a way to enable JVM debug. For example Red Hat S2I images allows you to control classpath and debugging via environment variables.
+# Set debug options if required if [ x&#34;${JAVA_DEBUG}&#34; != x ] &amp;&amp; [ &#34;${JAVA_DEBUG}&#34; != &#34;false&#34; ]; then java_debug_args=&#34;-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=${JAVA_DEBUG_PORT:-5005}&#34; fi  Setting the JAVA_DEBUG environment variable inside the container to true will add debug args to JVM startup command Configure port forwarding so that you can connect to your application from a remote debugger  Note: If you are using tomcat image replace JAVA_DEBUG environment variable to DEBUG"/>
 
   <meta property="og:title" content="Debugging a Java application in OpenShift" />
-<meta property="og:description" content="This post will discuss debugging a JAVA application running inside a container. First, you must set the JAVA_DEBUG environment variable inside the container to true and configure port forwarding so that you can connect to your application from a remote debugger.
-Note: If you are using tomcat image replace JAVA_DEBUG environment variable to DEBUG
-Using the oc command, list the available deployment configurations:
-$ oc get dc Set the JAVA_DEBUG environment variable in the deployment configuration of your application to true, which configures the JVM to open the port number 5005 for debugging." />
+<meta property="og:description" content="This post will discuss debugging a JAVA application running inside a container.
+When you bootstrap your JVM, you should have a way to enable JVM debug. For example Red Hat S2I images allows you to control classpath and debugging via environment variables.
+# Set debug options if required if [ x&#34;${JAVA_DEBUG}&#34; != x ] &amp;&amp; [ &#34;${JAVA_DEBUG}&#34; != &#34;false&#34; ]; then java_debug_args=&#34;-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=${JAVA_DEBUG_PORT:-5005}&#34; fi  Setting the JAVA_DEBUG environment variable inside the container to true will add debug args to JVM startup command Configure port forwarding so that you can connect to your application from a remote debugger  Note: If you are using tomcat image replace JAVA_DEBUG environment variable to DEBUG" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://vikaspogu.dev/posts/debug-java-container/" />
+<meta property="og:url" content="https://vikaspogu.dev/posts/debug-java-container/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2019-05-14T14:36:27-05:00" />
 <meta property="article:modified_time" content="2019-05-14T14:36:27-05:00" />
+
 
 
   
@@ -76,7 +75,7 @@ $ oc get dc Set the JAVA_DEBUG environment variable in the deployment configurat
   <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-16x16.png"
     sizes="16x16">
 
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.81.0" />
 </head>
 
 
@@ -120,7 +119,7 @@ $ oc get dc Set the JAVA_DEBUG environment variable in the deployment configurat
         "articleSection" : "posts",
         "name" : "Debugging a Java application in OpenShift",
         "headline" : "Debugging a Java application in OpenShift",
-        "description" : "This post will discuss debugging a JAVA application running inside a container. First, you must set the JAVA_DEBUG environment variable inside the container to true and configure port forwarding so that you can connect to your application from a remote debugger.\nNote: If you are using tomcat image replace JAVA_DEBUG environment variable to DEBUG\nUsing the oc command, list the available deployment configurations:\n$ oc get dc Set the JAVA_DEBUG environment variable in the deployment configuration of your application to true, which configures the JVM to open the port number 5005 for debugging.",
+        "description" : "This post will discuss debugging a JAVA application running inside a container.\nWhen you bootstrap your JVM, you should have a way to enable JVM debug. For example Red Hat S2I images allows you to control classpath and debugging via environment variables.\n# Set debug options if required if [ x\u0026#34;${JAVA_DEBUG}\u0026#34; != x ] \u0026amp;\u0026amp; [ \u0026#34;${JAVA_DEBUG}\u0026#34; != \u0026#34;false\u0026#34; ]; then java_debug_args=\u0026#34;-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=${JAVA_DEBUG_PORT:-5005}\u0026#34; fi  Setting the JAVA_DEBUG environment variable inside the container to true will add debug args to JVM startup command Configure port forwarding so that you can connect to your application from a remote debugger  Note: If you are using tomcat image replace JAVA_DEBUG environment variable to DEBUG",
         "inLanguage" : "en-US",
         "author" : "Vikas Pogu",
         "creator" : "Vikas Pogu",
@@ -131,7 +130,7 @@ $ oc get dc Set the JAVA_DEBUG environment variable in the deployment configurat
         "datePublished": "2019-05-14 14:36:27 -0500 CDT",
         "dateModified" : "2019-05-14 14:36:27 -0500 CDT",
         "url" : "https:\/\/vikaspogu.dev\/posts\/debug-java-container\/",
-        "wordCount" : "317",
+        "wordCount" : "435",
         "keywords" : [ "OpenShift","Java","Blog" ]
     }
     </script>
@@ -154,7 +153,7 @@ $ oc get dc Set the JAVA_DEBUG environment variable in the deployment configurat
             </span>
             <span class="reading-time">
               <i class="fas fa-clock"></i>
-              2 minutes read
+              3 minutes read
             </span>
           </div>
           
@@ -168,7 +167,16 @@ $ oc get dc Set the JAVA_DEBUG environment variable in the deployment configurat
       </header>
 
       <div>
-        <p>This post will discuss debugging a JAVA application running inside a container. First, you must set the <code>JAVA_DEBUG</code> environment variable inside the container to <code>true</code> and configure port forwarding so that you can connect to your application from a remote debugger.</p>
+        <p>This post will discuss debugging a JAVA application running inside a container.</p>
+<p>When you bootstrap your JVM, you should have a way to enable JVM debug. For example Red Hat S2I images allows you to control classpath and debugging via environment variables.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#007f7f"># Set debug options if required</span>
+<span style="color:#fff;font-weight:bold">if</span> [ x<span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>JAVA_DEBUG<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span> != x ] &amp;&amp; [ <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>JAVA_DEBUG<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span> != <span style="color:#0ff;font-weight:bold">&#34;false&#34;</span> ]; <span style="color:#fff;font-weight:bold">then</span>
+    java_debug_args=<span style="color:#0ff;font-weight:bold">&#34;-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=</span><span style="color:#0ff;font-weight:bold">${</span>JAVA_DEBUG_PORT<span style="color:#fff;font-weight:bold">:-</span>5005<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span>
+<span style="color:#fff;font-weight:bold">fi</span>
+</code></pre></div><ol>
+<li>Setting the <code>JAVA_DEBUG</code> environment variable inside the container to <code>true</code> will add debug args to JVM startup command</li>
+<li>Configure port forwarding so that you can connect to your application from a remote debugger</li>
+</ol>
 <p><strong>Note:</strong> If you are using <code>tomcat</code> image replace <code>JAVA_DEBUG</code> environment variable to <code>DEBUG</code></p>
 <p>Using the oc command, list the available deployment configurations:</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ oc get dc
@@ -209,6 +217,16 @@ $ oc port-forward MY_APP_NAME-3-1xrsp $LOCAL_PORT_NUMBER:5005
 </ol>
 <p>When you are done debugging, unset the <code>JAVA_DEBUG</code> environment variable in your application pod.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ oc <span style="color:#fff;font-weight:bold">set</span> env dc/MY_APP_NAME JAVA_DEBUG-
+</code></pre></div><h2 id="non-red-hat-container-images">Non Red Hat container images</h2>
+<p>If you are using <code>openjdk</code> image to build application, update <code>ENTRYPOINT</code> as below to pass options to the JVM through <code>$JAVA_OPTS</code> environment variable</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">FROM openjdk:11.0.3-jdk-slim
+RUN mkdir /usr/myapp
+COPY target/java-kubernetes.jar /usr/myapp/app.jar
+WORKDIR /usr/myapp
+EXPOSE 8080
+ENTRYPOINT [ &#34;sh&#34;, &#34;-c&#34;, &#34;java $JAVA_OPTS -jar app.jar&#34; ]
+</code></pre></div><p>And then set deployments <code>JAVA_OPTS</code> environment variable</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ oc <span style="color:#fff;font-weight:bold">set</span> env deployment MY_APP_NAME JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,address=*:5005,server=y,suspend=n
 </code></pre></div>
       </div>
 
