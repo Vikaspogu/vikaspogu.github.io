@@ -2,10 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://vikaspogu.dev/tags/cel/</loc>
-    <lastmod>2021-01-19T13:42:07-06:00</lastmod>
+    <loc>https://vikaspogu.dev/categories/</loc>
+    <lastmod>2021-07-08T07:58:06-05:00</lastmod>
+  </url><url>
+    <loc>https://vikaspogu.dev/categories/dict/</loc>
+    <lastmod>2021-07-08T07:58:06-05:00</lastmod>
+  </url><url>
+    <loc>https://vikaspogu.dev/categories/helm/</loc>
+    <lastmod>2021-07-08T07:58:06-05:00</lastmod>
+  </url><url>
+    <loc>https://vikaspogu.dev/posts/helm-dict-function/</loc>
+    <lastmod>2021-07-08T07:58:06-05:00</lastmod>
   </url><url>
     <loc>https://vikaspogu.dev/posts/</loc>
+    <lastmod>2021-07-08T07:58:06-05:00</lastmod>
+  </url><url>
+    <loc>https://vikaspogu.dev/</loc>
+    <lastmod>2021-07-08T07:58:06-05:00</lastmod>
+  </url><url>
+    <loc>https://vikaspogu.dev/tags/cel/</loc>
     <lastmod>2021-01-19T13:42:07-06:00</lastmod>
   </url><url>
     <loc>https://vikaspogu.dev/tags/</loc>
@@ -18,9 +33,6 @@
     <lastmod>2021-01-19T13:42:07-06:00</lastmod>
   </url><url>
     <loc>https://vikaspogu.dev/tags/triggers/</loc>
-    <lastmod>2021-01-19T13:42:07-06:00</lastmod>
-  </url><url>
-    <loc>https://vikaspogu.dev/</loc>
     <lastmod>2021-01-19T13:42:07-06:00</lastmod>
   </url><url>
     <loc>https://vikaspogu.dev/posts/tekton-multiarch-buildx/</loc>
@@ -92,13 +104,7 @@
     <loc>https://vikaspogu.dev/posts/loki-rsyslog-k3s/</loc>
     <lastmod>2020-11-04T10:34:30-06:00</lastmod>
   </url><url>
-    <loc>https://vikaspogu.dev/categories/</loc>
-    <lastmod>2020-10-08T09:17:20-05:00</lastmod>
-  </url><url>
-    <loc>https://vikaspogu.dev/categories/helm/</loc>
-    <lastmod>2020-10-08T09:17:20-05:00</lastmod>
-  </url><url>
-    <loc>https://vikaspogu.dev/posts/helm-helper-functions/</loc>
+    <loc>https://vikaspogu.dev/posts/helm-join-function/</loc>
     <lastmod>2020-10-08T09:17:20-05:00</lastmod>
   </url><url>
     <loc>https://vikaspogu.dev/tags/ad-blocker/</loc>

@@ -71,7 +71,7 @@
   <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-16x16.png"
     sizes="16x16">
 
-  <meta name="generator" content="Hugo 0.81.0" />
+  <meta name="generator" content="Hugo 0.85.0" />
 </head>
 
 
@@ -167,8 +167,8 @@
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">grub&gt;ls 
 (hd0) (hd0,gpt1) (hd1) (hd1,gpt8) (cd0))
 </code></pre></div><p>Type <code>ls (cd0)</code> to get UUID of device</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">grub&gt;ls (hd0,gpt1) 
-Partition hd0,gpt1: Filesystem type fat - Label `CES_X64FREV`, UUID 4099-DBD9 Partition start-512 Sectors...
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql">grub&gt;ls (hd0,gpt1) 
+Partition hd0,gpt1: Filesystem type fat - Label `CES_X64FREV`, UUID <span style="color:#ff0;font-weight:bold">4099</span>-DBD9 Partition start-<span style="color:#ff0;font-weight:bold">512</span> Sectors...
 </code></pre></div><p>Note the UUID of you usb drive, shown in above command</p>
 <p>Type the following commands</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">insmod part_gpt
