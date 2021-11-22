@@ -1,182 +1,130 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='multi arch builds in tekton using docker buildx'><title>Build multi arch docker image using Tekton</title>
 
-<head>
-  <meta name="google-site-verification" content="5JztMFjgtrbhV0pe_cLh7EH3c0NJBY7sVrnd7x86pMI" />
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel='canonical' href='https://vikaspogu.dev/posts/tekton-multiarch-buildx/'>
 
-  
-  <meta name="author" content="Vikas Pogu">
-  
-  <meta name="description" content="Vikas Pogu&#39;s Blog">
-  
-  <meta name="keywords" content="blog,developer">
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Build multi arch docker image using Tekton'>
+<meta property='og:description' content='multi arch builds in tekton using docker buildx'>
+<meta property='og:url' content='https://vikaspogu.dev/posts/tekton-multiarch-buildx/'>
+<meta property='og:site_name' content='Vikas Pogu&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='tekton' /><meta property='article:tag' content='multi-arch' /><meta property='article:tag' content='buildx' /><meta property='article:published_time' content='2021-01-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-01-19T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Build multi arch docker image using Tekton">
+<meta name="twitter:description" content="multi arch builds in tekton using docker buildx">
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
 
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Build multi arch docker image using Tekton"/>
-<meta name="twitter:description" content="multi arch builds in tekton using docker buildx"/>
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
 
-  <meta property="og:title" content="Build multi arch docker image using Tekton" />
-<meta property="og:description" content="multi arch builds in tekton using docker buildx" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://vikaspogu.dev/posts/tekton-multiarch-buildx/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-01-19T09:46:00-06:00" />
-<meta property="article:modified_time" content="2021-01-19T09:46:00-06:00" />
-
-
-
-  
-  <base href="https://vikaspogu.dev/posts/tekton-multiarch-buildx/">
-  
-  <title>
-  Build multi arch docker image using Tekton · vikaspogu
-</title>
-
-  
-  <link rel="canonical" href="https://vikaspogu.dev/posts/tekton-multiarch-buildx/">
-  
-
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700"
-    rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
-    integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-    integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
-
-  
-  
-  
-  <link rel="stylesheet" href="https://vikaspogu.dev/css/coder.min.28d751104f30c16da1aa1bb04015cbe662cacfe0d1b01af4f2240ad58580069c.css" integrity="sha256-KNdREE8wwW2hqhuwQBXL5mLKz&#43;DRsBr08iQK1YWABpw="
-    crossorigin="anonymous" media="screen" />
-  
-
-  
-
-  
-  
-  
-  
-  <link rel="stylesheet" href="https://vikaspogu.dev/css/coder-dark.min.83a2010dac9f59f943b3004cd6c4f230507ad036da635d3621401d42ec4e2835.css" integrity="sha256-g6IBDayfWflDswBM1sTyMFB60DbaY102IUAdQuxOKDU="
-    crossorigin="anonymous" media="screen" />
-  
-  
-
-  
-
-  
-
-  <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-32x32.png"
-    sizes="32x32">
-  <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-16x16.png"
-    sizes="16x16">
-
-  <meta name="generator" content="Hugo 0.85.0" />
-</head>
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
 
 
 
-
-
-
-<body class="colorscheme-auto">
-  <main class="wrapper">
-    <nav class="navigation">
-  <section class="container">
-    <a class="navigation-title" href="https://vikaspogu.dev/">
-      vikaspogu
-    </a>
-    <input type="checkbox" id="menu-toggle" />
-    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
-    <ul class="navigation-list">
-      
-      
-      <li class="navigation-item">
-        <a class="navigation-link" href="https://vikaspogu.dev/about/">About</a>
-      </li>
-      
-      <li class="navigation-item">
-        <a class="navigation-link" href="https://vikaspogu.dev/posts/">Blog</a>
-      </li>
-      
-      
-      
-    </ul>
-  </section>
-</nav>
-<script type="application/ld+json">
-    {
-        "@context" : "http://schema.org",
-        "@type" : "BlogPosting",
-        "mainEntityOfPage": {
-             "@type": "WebPage",
-             "@id": "https:\/\/vikaspogu.dev"
-        },
-        "articleSection" : "posts",
-        "name" : "Build multi arch docker image using Tekton",
-        "headline" : "Build multi arch docker image using Tekton",
-        "description" : "multi arch builds in tekton using docker buildx",
-        "inLanguage" : "en-US",
-        "author" : "Vikas Pogu",
-        "creator" : "Vikas Pogu",
-        "publisher": "Vikas Pogu",
-        "accountablePerson" : "Vikas Pogu",
-        "copyrightHolder" : "Vikas Pogu",
-        "copyrightYear" : "2021",
-        "datePublished": "2021-01-19 09:46:00 -0600 CST",
-        "dateModified" : "2021-01-19 09:46:00 -0600 CST",
-        "url" : "https:\/\/vikaspogu.dev\/posts\/tekton-multiarch-buildx\/",
-        "wordCount" : "636",
-        "keywords" : [ "tekton","multi-arch","buildx","Blog" ]
-    }
-    </script>
-
-    <div class="content">
-      
-  <section class="container post">
-    <article>
-      <header>
-        <div class="post-title">
-          <h1 class="title">Build multi arch docker image using Tekton</h1>
+                <span>Back</span>
+            </a>
         </div>
-        <div class="post-meta">
-          <div class="date">
-            <span class="posted-on">
-              <i class="fas fa-calendar"></i>
-              <time datetime='2021-01-19T09:46:00-06:00'>
-                January 19, 2021
-              </time>
-            </span>
-            <span class="reading-time">
-              <i class="fas fa-clock"></i>
-              3 minutes read
-            </span>
-          </div>
-          
-          <div class="tags">
-  <i class="fas fa-tag"></i>
-    <a href="https://vikaspogu.dev/tags/tekton/">tekton</a>
-      <span class="separator">•</span>
-    <a href="https://vikaspogu.dev/tags/multi-arch/">multi-arch</a>
-      <span class="separator">•</span>
-    <a href="https://vikaspogu.dev/tags/buildx/">buildx</a></div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
 
-        </div>
-      </header>
+    <div class="article-details">
+    
 
-      <div>
-        <p>There are three different strategies to build multi-platform images that are supported by Buildx and Dockerfiles:</p>
+    <h2 class="article-title">
+        <a href="/posts/tekton-multiarch-buildx/">Build multi arch docker image using Tekton</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        multi arch builds in tekton using docker buildx
+    </h3>
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 19, 2021</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    3 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <p>There are three different strategies to build multi-platform images that are supported by Buildx and Dockerfiles:</p>
 <ul>
 <li>Using the QEMU emulation support in the kernel</li>
 <li>Building on multiple native nodes using the same builder instance</li>
 <li>Using a stage in Dockerfile to cross-compile to different architectures</li>
 </ul>
 <p>I’ll focus on the first option, cross building with emulation.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker buildx build --platform linux/amd64,linux/arm64 .
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker buildx build --platform linux/amd64,linux/arm64 .
 </code></pre></div><h2 id="setup">Setup</h2>
 <p>This differs from platform to platform but one thing we all have in common is pipelines, so I’ve constructed a basic buildx setup for TektonCD task.</p>
 <h2 id="pipeline">Pipeline</h2>
-<p>Below is a modified task of <a href="https://github.com/tektoncd/catalog/blob/master/task/docker-build/0.1/docker-build.yaml">docker-build</a></p>
+<p>Below is a modified task of <a class="link" href="https://github.com/tektoncd/catalog/blob/master/task/docker-build/0.1/docker-build.yaml"  target="_blank" rel="noopener"
+    >docker-build</a></p>
 <p>What&rsquo;s modified</p>
 <ul>
 <li>Enable <code>DOCKER_BUILDKIT</code> and <code>DOCKER_CLI_EXPERIMENTAL</code></li>
@@ -186,169 +134,313 @@
 <li>Docker build with <code>docker buildx build --platform</code></li>
 </ul>
 <p>Create a secret holding docker username and token</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create secret generic docker-token <span style="color:#0ff;font-weight:bold">\
-</span><span style="color:#0ff;font-weight:bold"></span>    --from-literal=username=<span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>CONTAINER_REGISTRY_USER<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span> <span style="color:#0ff;font-weight:bold">\
-</span><span style="color:#0ff;font-weight:bold"></span>    --from-literal=password=<span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>CONTAINER_REGISTRY_PASSWORD<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span>
-</code></pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="font-weight:bold">apiVersion</span>: tekton.dev/v1beta1
-<span style="font-weight:bold">kind</span>: ClusterTask
-<span style="font-weight:bold">metadata</span>:
-  <span style="font-weight:bold">name</span>: docker-buildx
-  <span style="font-weight:bold">labels</span>:
-    <span style="font-weight:bold">app.kubernetes.io/version</span>: <span style="color:#0ff;font-weight:bold">&#34;0.1&#34;</span>
-  <span style="font-weight:bold">annotations</span>:
-    <span style="font-weight:bold">tekton.dev/pipelines.minVersion</span>: <span style="color:#0ff;font-weight:bold">&#34;0.12.1&#34;</span>
-    <span style="font-weight:bold">tekton.dev/tags</span>: docker, build-image, push-image, dind, buildx, multi-arch
-    <span style="font-weight:bold">tekton.dev/displayName</span>: docker-buildx
-<span style="font-weight:bold">spec</span>:
-  <span style="font-weight:bold">description</span>: &gt;-<span style="color:#0ff;font-weight:bold">
-</span><span style="color:#0ff;font-weight:bold">    This task will build and push an image using docker buildx.
-</span><span style="color:#0ff;font-weight:bold">    The task will build an out image out of a Dockerfile.
-</span><span style="color:#0ff;font-weight:bold">    This image will be pushed to an image registry.
-</span><span style="color:#0ff;font-weight:bold">    The image will be built and pushed using a dind sidecar over TCP+TLS.</span>    
-  <span style="font-weight:bold">params</span>:
-  - <span style="font-weight:bold">name</span>: image
-    <span style="font-weight:bold">description</span>: Reference of the image docker will produce.
-  - <span style="font-weight:bold">name</span>: builder_image
-    <span style="font-weight:bold">description</span>: The location of the docker builder image.
-    <span style="font-weight:bold">default</span>: docker.io/library/docker:19.03.14
-  - <span style="font-weight:bold">name</span>: dockerfile
-    <span style="font-weight:bold">description</span>: Path to the Dockerfile to build.
-    <span style="font-weight:bold">default</span>: ./Dockerfile
-  - <span style="font-weight:bold">name</span>: context
-    <span style="font-weight:bold">description</span>: Path to the directory to use as context.
-    <span style="font-weight:bold">default</span>: .
-  - <span style="font-weight:bold">name</span>: build_extra_args
-    <span style="font-weight:bold">description</span>: Extra parameters passed for the build command when building images.
-    <span style="font-weight:bold">default</span>: <span style="color:#0ff;font-weight:bold">&#34;--platform linux/amd64,linux/arm/v7 --no-cache&#34;</span>
-  - <span style="font-weight:bold">name</span>: push_extra_args
-    <span style="font-weight:bold">description</span>: Extra parameters passed for the push command when pushing images.
-    <span style="font-weight:bold">default</span>: <span style="color:#0ff;font-weight:bold">&#34;--push&#34;</span>
-  - <span style="font-weight:bold">name</span>: insecure_registry
-    <span style="font-weight:bold">description</span>: Allows the user to push to an insecure registry that has been specified
-    <span style="font-weight:bold">default</span>: <span style="color:#0ff;font-weight:bold">&#34;&#34;</span>
-  - <span style="font-weight:bold">name</span>: docker-token-secret
-    <span style="font-weight:bold">type</span>: string
-    <span style="font-weight:bold">description</span>: name of the secret holding the docker-token
-    <span style="font-weight:bold">default</span>: docker-token
-  <span style="font-weight:bold">workspaces</span>:
-  - <span style="font-weight:bold">name</span>: source
-  <span style="font-weight:bold">results</span>:
-  - <span style="font-weight:bold">name</span>: IMAGE_DIGEST
-    <span style="font-weight:bold">description</span>: Digest of the image just built.
-  <span style="font-weight:bold">steps</span>:
-  - <span style="font-weight:bold">name</span>: buildx-build-push
-    <span style="font-weight:bold">image</span>: $(params.builder_image)
-    <span style="font-weight:bold">env</span>:
-    <span style="color:#007f7f"># Connect to the sidecar over TCP, with TLS.</span>
-    - <span style="font-weight:bold">name</span>: DOCKER_HOST
-      <span style="font-weight:bold">value</span>: tcp://localhost:2376
-    <span style="color:#007f7f"># Verify TLS.</span>
-    - <span style="font-weight:bold">name</span>: DOCKER_TLS_VERIFY
-      <span style="font-weight:bold">value</span>: <span style="color:#0ff;font-weight:bold">&#39;1&#39;</span>
-    <span style="color:#007f7f"># Use the certs generated by the sidecar daemon.</span>
-    - <span style="font-weight:bold">name</span>: DOCKER_CERT_PATH
-      <span style="font-weight:bold">value</span>: /certs/client
-    - <span style="font-weight:bold">name</span>: DOCKERHUB_USER
-      <span style="font-weight:bold">valueFrom</span>:
-        <span style="font-weight:bold">secretKeyRef</span>:
-          <span style="font-weight:bold">name</span>: $(params.docker-token-secret)
-          <span style="font-weight:bold">key</span>: username
-    - <span style="font-weight:bold">name</span>: DOCKERHUB_PASS
-      <span style="font-weight:bold">valueFrom</span>:
-        <span style="font-weight:bold">secretKeyRef</span>:
-          <span style="font-weight:bold">name</span>: $(params.docker-token-secret)
-          <span style="font-weight:bold">key</span>: password
-    <span style="font-weight:bold">workingDir</span>: $(workspaces.source.path)
-    <span style="font-weight:bold">script</span>: |<span style="color:#0ff;font-weight:bold">
-</span><span style="color:#0ff;font-weight:bold">      # install depends
-</span><span style="color:#0ff;font-weight:bold">      apk add curl jq
-</span><span style="color:#0ff;font-weight:bold">
-</span><span style="color:#0ff;font-weight:bold">      # enable experimental buildx features
-</span><span style="color:#0ff;font-weight:bold">      export DOCKER_BUILDKIT=1
-</span><span style="color:#0ff;font-weight:bold">      export DOCKER_CLI_EXPERIMENTAL=enabled
-</span><span style="color:#0ff;font-weight:bold">
-</span><span style="color:#0ff;font-weight:bold">      # Download latest buildx bin from github
-</span><span style="color:#0ff;font-weight:bold">      mkdir -p ~/.docker/cli-plugins/
-</span><span style="color:#0ff;font-weight:bold">      BUILDX_LATEST_BIN_URI=$(curl -s -L https://github.com/docker/buildx/releases/latest | grep &#39;linux-amd64&#39; | grep &#39;href&#39; | sed &#39;s/.*href=&#34;/https:\/\/github.com/g; s/amd64&#34;.*/amd64/g&#39;)
-</span><span style="color:#0ff;font-weight:bold">      curl -s -L ${BUILDX_LATEST_BIN_URI} -o ~/.docker/cli-plugins/docker-buildx
-</span><span style="color:#0ff;font-weight:bold">      chmod a+x ~/.docker/cli-plugins/docker-buildx
-</span><span style="color:#0ff;font-weight:bold">
-</span><span style="color:#0ff;font-weight:bold">      # Get and run the latest docker/binfmt tag to use its qemu parts
-</span><span style="color:#0ff;font-weight:bold">      BINFMT_IMAGE_TAG=$(curl -s https://registry.hub.docker.com/v2/repositories/docker/binfmt/tags | jq &#39;.results | sort_by(.last_updated)[-1].name&#39; -r)
-</span><span style="color:#0ff;font-weight:bold">      docker run --rm --privileged docker/binfmt:${BINFMT_IMAGE_TAG}
-</span><span style="color:#0ff;font-weight:bold">
-</span><span style="color:#0ff;font-weight:bold">      docker context create tls-environment
-</span><span style="color:#0ff;font-weight:bold">      # create the multibuilder
-</span><span style="color:#0ff;font-weight:bold">      docker buildx create --name multibuilder --use tls-environment
-</span><span style="color:#0ff;font-weight:bold">      docker buildx use multibuilder
-</span><span style="color:#0ff;font-weight:bold">
-</span><span style="color:#0ff;font-weight:bold">      # login to a registry
-</span><span style="color:#0ff;font-weight:bold">      echo ${DOCKERHUB_PASS} | docker login -u ${DOCKERHUB_USER} --password-stdin
-</span><span style="color:#0ff;font-weight:bold">
-</span><span style="color:#0ff;font-weight:bold">      # build the containers and push them to the registry then display the images
-</span><span style="color:#0ff;font-weight:bold">      docker buildx build $(params.build_extra_args) \
-</span><span style="color:#0ff;font-weight:bold">          -f $(params.dockerfile) -t $(params.image) $(params.context) $(params.push_extra_args)</span>      
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">kubectl create secret generic docker-token <span class="se">\
+</span><span class="se"></span>    --from-literal<span class="o">=</span><span class="nv">username</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CONTAINER_REGISTRY_USER</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
+</span><span class="se"></span>    --from-literal<span class="o">=</span><span class="nv">password</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CONTAINER_REGISTRY_PASSWORD</span><span class="si">}</span><span class="s2">&#34;</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">tekton.dev/v1beta1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ClusterTask</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">docker-buildx</span><span class="w">
+</span><span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">app.kubernetes.io/version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;0.1&#34;</span><span class="w">
+</span><span class="w">  </span><span class="nt">annotations</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">tekton.dev/pipelines.minVersion</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;0.12.1&#34;</span><span class="w">
+</span><span class="w">    </span><span class="nt">tekton.dev/tags</span><span class="p">:</span><span class="w"> </span><span class="l">docker, build-image, push-image, dind, buildx, multi-arch</span><span class="w">
+</span><span class="w">    </span><span class="nt">tekton.dev/displayName</span><span class="p">:</span><span class="w"> </span><span class="l">docker-buildx</span><span class="w">
+</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p">&gt;-</span><span class="sd">
+</span><span class="sd">    This task will build and push an image using docker buildx.
+</span><span class="sd">    The task will build an out image out of a Dockerfile.
+</span><span class="sd">    This image will be pushed to an image registry.
+</span><span class="sd">    The image will be built and pushed using a dind sidecar over TCP+TLS.</span><span class="w">    
+</span><span class="w">  </span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">image</span><span class="w">
+</span><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">Reference of the image docker will produce.</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">builder_image</span><span class="w">
+</span><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">The location of the docker builder image.</span><span class="w">
+</span><span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="l">docker.io/library/docker:19.03.14</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">dockerfile</span><span class="w">
+</span><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">Path to the Dockerfile to build.</span><span class="w">
+</span><span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="l">./Dockerfile</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">context</span><span class="w">
+</span><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">Path to the directory to use as context.</span><span class="w">
+</span><span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="l">.</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">build_extra_args</span><span class="w">
+</span><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">Extra parameters passed for the build command when building images.</span><span class="w">
+</span><span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;--platform linux/amd64,linux/arm/v7 --no-cache&#34;</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">push_extra_args</span><span class="w">
+</span><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">Extra parameters passed for the push command when pushing images.</span><span class="w">
+</span><span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;--push&#34;</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">insecure_registry</span><span class="w">
+</span><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">Allows the user to push to an insecure registry that has been specified</span><span class="w">
+</span><span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">docker-token-secret</span><span class="w">
+</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">string</span><span class="w">
+</span><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">name of the secret holding the docker-token</span><span class="w">
+</span><span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="l">docker-token</span><span class="w">
+</span><span class="w">  </span><span class="nt">workspaces</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">source</span><span class="w">
+</span><span class="w">  </span><span class="nt">results</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">IMAGE_DIGEST</span><span class="w">
+</span><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">Digest of the image just built.</span><span class="w">
+</span><span class="w">  </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">buildx-build-push</span><span class="w">
+</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">$(params.builder_image)</span><span class="w">
+</span><span class="w">    </span><span class="nt">env</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="c"># Connect to the sidecar over TCP, with TLS.</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">DOCKER_HOST</span><span class="w">
+</span><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">tcp://localhost:2376</span><span class="w">
+</span><span class="w">    </span><span class="c"># Verify TLS.</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">DOCKER_TLS_VERIFY</span><span class="w">
+</span><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="w">
+</span><span class="w">    </span><span class="c"># Use the certs generated by the sidecar daemon.</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">DOCKER_CERT_PATH</span><span class="w">
+</span><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">/certs/client</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">DOCKERHUB_USER</span><span class="w">
+</span><span class="w">      </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">secretKeyRef</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">$(params.docker-token-secret)</span><span class="w">
+</span><span class="w">          </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">username</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">DOCKERHUB_PASS</span><span class="w">
+</span><span class="w">      </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">secretKeyRef</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">$(params.docker-token-secret)</span><span class="w">
+</span><span class="w">          </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">password</span><span class="w">
+</span><span class="w">    </span><span class="nt">workingDir</span><span class="p">:</span><span class="w"> </span><span class="l">$(workspaces.source.path)</span><span class="w">
+</span><span class="w">    </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span><span class="sd">      # install depends
+</span><span class="sd">      apk add curl jq
+</span><span class="sd">
+</span><span class="sd">      # enable experimental buildx features
+</span><span class="sd">      export DOCKER_BUILDKIT=1
+</span><span class="sd">      export DOCKER_CLI_EXPERIMENTAL=enabled
+</span><span class="sd">
+</span><span class="sd">      # Download latest buildx bin from github
+</span><span class="sd">      mkdir -p ~/.docker/cli-plugins/
+</span><span class="sd">      BUILDX_LATEST_BIN_URI=$(curl -s -L https://github.com/docker/buildx/releases/latest | grep &#39;linux-amd64&#39; | grep &#39;href&#39; | sed &#39;s/.*href=&#34;/https:\/\/github.com/g; s/amd64&#34;.*/amd64/g&#39;)
+</span><span class="sd">      curl -s -L ${BUILDX_LATEST_BIN_URI} -o ~/.docker/cli-plugins/docker-buildx
+</span><span class="sd">      chmod a+x ~/.docker/cli-plugins/docker-buildx
+</span><span class="sd">
+</span><span class="sd">      # Get and run the latest docker/binfmt tag to use its qemu parts
+</span><span class="sd">      BINFMT_IMAGE_TAG=$(curl -s https://registry.hub.docker.com/v2/repositories/docker/binfmt/tags | jq &#39;.results | sort_by(.last_updated)[-1].name&#39; -r)
+</span><span class="sd">      docker run --rm --privileged docker/binfmt:${BINFMT_IMAGE_TAG}
+</span><span class="sd">
+</span><span class="sd">      docker context create tls-environment
+</span><span class="sd">      # create the multibuilder
+</span><span class="sd">      docker buildx create --name multibuilder --use tls-environment
+</span><span class="sd">      docker buildx use multibuilder
+</span><span class="sd">
+</span><span class="sd">      # login to a registry
+</span><span class="sd">      echo ${DOCKERHUB_PASS} | docker login -u ${DOCKERHUB_USER} --password-stdin
+</span><span class="sd">
+</span><span class="sd">      # build the containers and push them to the registry then display the images
+</span><span class="sd">      docker buildx build $(params.build_extra_args) \
+</span><span class="sd">          -f $(params.dockerfile) -t $(params.image) $(params.context) $(params.push_extra_args)</span><span class="w">      
+</span><span class="w">
+</span><span class="w">    </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/certs/client</span><span class="w">
+</span><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">dind-certs</span><span class="w">
+</span><span class="w">  </span><span class="nt">sidecars</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">docker:19.03.14-dind</span><span class="w">
+</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">server</span><span class="w">
+</span><span class="w">    </span><span class="nt">args</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- --<span class="l">storage-driver=vfs</span><span class="w">
+</span><span class="w">      </span>- --<span class="l">userland-proxy=false</span><span class="w">
+</span><span class="w">      </span>- --<span class="l">debug</span><span class="w">
+</span><span class="w">    </span><span class="nt">securityContext</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">    </span><span class="nt">env</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="c"># Write generated certs to the path shared with the client.</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">DOCKER_TLS_CERTDIR</span><span class="w">
+</span><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">/certs</span><span class="w">
+</span><span class="w">    </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/certs/client</span><span class="w">
+</span><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">dind-certs</span><span class="w">
+</span><span class="w">    </span><span class="c"># Wait for the dind daemon to generate the certs it will share with the</span><span class="w">
+</span><span class="w">    </span><span class="c"># client.</span><span class="w">
+</span><span class="w">    </span><span class="nt">readinessProbe</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">      </span><span class="nt">exec</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;ls&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;/certs/client/ca.pem&#39;</span><span class="p">]</span><span class="w">
+</span><span class="w">  </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">dind-certs</span><span class="w">
+</span><span class="w">    </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span></code></pre></div><p>Make sure you have a base image that supports multiarch like alpine or one of <a class="link" href="https://hub.docker.com/search?category=base&amp;source=verified&amp;type=image&amp;architecture=arm%2Carm64%2Camd64"  target="_blank" rel="noopener"
+    >these</a> base images</p>
 
-    <span style="font-weight:bold">volumeMounts</span>:
-      - <span style="font-weight:bold">mountPath</span>: /certs/client
-        <span style="font-weight:bold">name</span>: dind-certs
-  <span style="font-weight:bold">sidecars</span>:
-  - <span style="font-weight:bold">image</span>: docker:19.03.14-dind
-    <span style="font-weight:bold">name</span>: server
-    <span style="font-weight:bold">args</span>:
-      - --storage-driver=vfs
-      - --userland-proxy=false
-      - --debug
-    <span style="font-weight:bold">securityContext</span>:
-      <span style="font-weight:bold">privileged</span>: <span style="color:#fff;font-weight:bold">true</span>
-    <span style="font-weight:bold">env</span>:
-    <span style="color:#007f7f"># Write generated certs to the path shared with the client.</span>
-    - <span style="font-weight:bold">name</span>: DOCKER_TLS_CERTDIR
-      <span style="font-weight:bold">value</span>: /certs
-    <span style="font-weight:bold">volumeMounts</span>:
-    - <span style="font-weight:bold">mountPath</span>: /certs/client
-      <span style="font-weight:bold">name</span>: dind-certs
-    <span style="color:#007f7f"># Wait for the dind daemon to generate the certs it will share with the</span>
-    <span style="color:#007f7f"># client.</span>
-    <span style="font-weight:bold">readinessProbe</span>:
-      <span style="font-weight:bold">periodSeconds</span>: <span style="color:#ff0;font-weight:bold">1</span>
-      <span style="font-weight:bold">exec</span>:
-        <span style="font-weight:bold">command</span>: [<span style="color:#0ff;font-weight:bold">&#39;ls&#39;</span>, <span style="color:#0ff;font-weight:bold">&#39;/certs/client/ca.pem&#39;</span>]
-  <span style="font-weight:bold">volumes</span>:
-  - <span style="font-weight:bold">name</span>: dind-certs
-    <span style="font-weight:bold">emptyDir</span>: {}
-</code></pre></div><p>Make sure you have a base image that supports multiarch like alpine or one of <a href="https://hub.docker.com/search?category=base&amp;source=verified&amp;type=image&amp;architecture=arm%2Carm64%2Camd64">these</a> base images</p>
+</section>
 
-      </div>
 
-      <footer>
+    <footer class="article-footer">
+    
+    <section class="article-tags">
         
+            <a href="/tags/tekton/">tekton</a>
+        
+            <a href="/tags/multi-arch/">multi-arch</a>
+        
+            <a href="/tags/buildx/">buildx</a>
+        
+    </section>
 
 
-        
-        
-        
-      </footer>
-    </article>
+    </footer>
+
 
     
-  </section>
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2021 Vikas Pogu&#39;s Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
 
     </div>
 
-    <footer class="footer">
-  <section class="container">
-    
-    
-    
-    
-  </section>
-</footer>
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
 
-  </main>
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
 
-  
 
-</body>
 
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#setup">Setup</a></li>
+    <li><a href="#pipeline">Pipeline</a></li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
 </html>

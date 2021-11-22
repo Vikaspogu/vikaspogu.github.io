@@ -1,207 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta name="google-site-verification" content="5JztMFjgtrbhV0pe_cLh7EH3c0NJBY7sVrnd7x86pMI" />
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  
-  <meta name="author" content="Vikas Pogu">
-  
-  <meta name="description" content="Vikas Pogu&#39;s Blog">
-  
-  <meta name="keywords" content="blog,developer">
-
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Spring Boot metrics with Prometheus and Grafana in OpenShift"/>
-<meta name="twitter:description" content="In this post I&rsquo;ll discuss how to monitor spring boot application metrics using Prometheus and Grafana.
+<html lang="en-us">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Spring Boot Metrics In this post I&amp;rsquo;ll discuss how to monitor spring boot application metrics using Prometheus and Grafana.
 Prometheus Prometheus is a monitoring system which collects metrics from configured targets at given intervals.
-Grafana Grafana is an open source metric analytics &amp; visualization tool.
+Grafana Grafana is an open source metric analytics &amp;amp; visualization tool.
 Micrometer Micrometer is a metrics instrumentation library for JVM-based applications.
-Spring Boot Actuator Spring Boot Actuator helps you monitor and manage your application when it’s pushed to production. You can choose to manage and monitor your application using HTTP or JMX endpoints."/>
+Spring Boot Actuator Spring Boot Actuator helps you monitor and manage your application when it’s pushed to production.'><title>Spring Boot metrics with Prometheus and Grafana in OpenShift</title>
 
-  <meta property="og:title" content="Spring Boot metrics with Prometheus and Grafana in OpenShift" />
-<meta property="og:description" content="In this post I&rsquo;ll discuss how to monitor spring boot application metrics using Prometheus and Grafana.
+<link rel='canonical' href='https://vikaspogu.dev/posts/springboot-metrics-grafana/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Spring Boot metrics with Prometheus and Grafana in OpenShift'>
+<meta property='og:description' content='Spring Boot Metrics In this post I&amp;rsquo;ll discuss how to monitor spring boot application metrics using Prometheus and Grafana.
 Prometheus Prometheus is a monitoring system which collects metrics from configured targets at given intervals.
-Grafana Grafana is an open source metric analytics &amp; visualization tool.
+Grafana Grafana is an open source metric analytics &amp;amp; visualization tool.
 Micrometer Micrometer is a metrics instrumentation library for JVM-based applications.
-Spring Boot Actuator Spring Boot Actuator helps you monitor and manage your application when it’s pushed to production. You can choose to manage and monitor your application using HTTP or JMX endpoints." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://vikaspogu.dev/posts/springboot-metrics-grafana/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2019-05-15T00:00:00+00:00" />
-<meta property="article:modified_time" content="2019-05-15T00:00:00+00:00" />
+Spring Boot Actuator Spring Boot Actuator helps you monitor and manage your application when it’s pushed to production.'>
+<meta property='og:url' content='https://vikaspogu.dev/posts/springboot-metrics-grafana/'>
+<meta property='og:site_name' content='Vikas Pogu&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='OpenShift' /><meta property='article:tag' content='Spring Boot' /><meta property='article:tag' content='Prometheus' /><meta property='article:tag' content='Grafana' /><meta property='article:published_time' content='2019-05-15T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2019-05-15T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Spring Boot metrics with Prometheus and Grafana in OpenShift">
+<meta name="twitter:description" content="Spring Boot Metrics In this post I&amp;rsquo;ll discuss how to monitor spring boot application metrics using Prometheus and Grafana.
+Prometheus Prometheus is a monitoring system which collects metrics from configured targets at given intervals.
+Grafana Grafana is an open source metric analytics &amp;amp; visualization tool.
+Micrometer Micrometer is a metrics instrumentation library for JVM-based applications.
+Spring Boot Actuator Spring Boot Actuator helps you monitor and manage your application when it’s pushed to production.">
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
 
 
 
-  
-  <base href="https://vikaspogu.dev/posts/springboot-metrics-grafana/">
-  
-  <title>
-  Spring Boot metrics with Prometheus and Grafana in OpenShift · vikaspogu
-</title>
-
-  
-  <link rel="canonical" href="https://vikaspogu.dev/posts/springboot-metrics-grafana/">
-  
-
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700"
-    rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
-    integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-    integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
-
-  
-  
-  
-  <link rel="stylesheet" href="https://vikaspogu.dev/css/coder.min.28d751104f30c16da1aa1bb04015cbe662cacfe0d1b01af4f2240ad58580069c.css" integrity="sha256-KNdREE8wwW2hqhuwQBXL5mLKz&#43;DRsBr08iQK1YWABpw="
-    crossorigin="anonymous" media="screen" />
-  
-
-  
-
-  
-  
-  
-  
-  <link rel="stylesheet" href="https://vikaspogu.dev/css/coder-dark.min.83a2010dac9f59f943b3004cd6c4f230507ad036da635d3621401d42ec4e2835.css" integrity="sha256-g6IBDayfWflDswBM1sTyMFB60DbaY102IUAdQuxOKDU="
-    crossorigin="anonymous" media="screen" />
-  
-  
-
-  
-
-  
-
-  <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-32x32.png"
-    sizes="32x32">
-  <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-16x16.png"
-    sizes="16x16">
-
-  <meta name="generator" content="Hugo 0.85.0" />
-</head>
-
-
-
-
-
-
-<body class="colorscheme-auto">
-  <main class="wrapper">
-    <nav class="navigation">
-  <section class="container">
-    <a class="navigation-title" href="https://vikaspogu.dev/">
-      vikaspogu
-    </a>
-    <input type="checkbox" id="menu-toggle" />
-    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
-    <ul class="navigation-list">
-      
-      
-      <li class="navigation-item">
-        <a class="navigation-link" href="https://vikaspogu.dev/about/">About</a>
-      </li>
-      
-      <li class="navigation-item">
-        <a class="navigation-link" href="https://vikaspogu.dev/posts/">Blog</a>
-      </li>
-      
-      
-      
-    </ul>
-  </section>
-</nav>
-<script type="application/ld+json">
-    {
-        "@context" : "http://schema.org",
-        "@type" : "BlogPosting",
-        "mainEntityOfPage": {
-             "@type": "WebPage",
-             "@id": "https:\/\/vikaspogu.dev"
-        },
-        "articleSection" : "posts",
-        "name" : "Spring Boot metrics with Prometheus and Grafana in OpenShift",
-        "headline" : "Spring Boot metrics with Prometheus and Grafana in OpenShift",
-        "description" : "In this post I\u0026rsquo;ll discuss how to monitor spring boot application metrics using Prometheus and Grafana.\nPrometheus Prometheus is a monitoring system which collects metrics from configured targets at given intervals.\nGrafana Grafana is an open source metric analytics \u0026amp; visualization tool.\nMicrometer Micrometer is a metrics instrumentation library for JVM-based applications.\nSpring Boot Actuator Spring Boot Actuator helps you monitor and manage your application when it’s pushed to production. You can choose to manage and monitor your application using HTTP or JMX endpoints.",
-        "inLanguage" : "en-US",
-        "author" : "Vikas Pogu",
-        "creator" : "Vikas Pogu",
-        "publisher": "Vikas Pogu",
-        "accountablePerson" : "Vikas Pogu",
-        "copyrightHolder" : "Vikas Pogu",
-        "copyrightYear" : "2019",
-        "datePublished": "2019-05-15 00:00:00 \u002b0000 UTC",
-        "dateModified" : "2019-05-15 00:00:00 \u002b0000 UTC",
-        "url" : "https:\/\/vikaspogu.dev\/posts\/springboot-metrics-grafana\/",
-        "wordCount" : "425",
-        "keywords" : [ "OpenShift","Spring Boot","Prometheus","Grafana","Blog" ]
-    }
-    </script>
-
-    <div class="content">
-      
-  <section class="container post">
-    <article>
-      <header>
-        <div class="post-title">
-          <h1 class="title">Spring Boot metrics with Prometheus and Grafana in OpenShift</h1>
+                <span>Back</span>
+            </a>
         </div>
-        <div class="post-meta">
-          <div class="date">
-            <span class="posted-on">
-              <i class="fas fa-calendar"></i>
-              <time datetime='2019-05-15T00:00:00Z'>
-                May 15, 2019
-              </time>
-            </span>
-            <span class="reading-time">
-              <i class="fas fa-clock"></i>
-              2 minutes read
-            </span>
-          </div>
-          
-          <div class="tags">
-  <i class="fas fa-tag"></i>
-    <a href="https://vikaspogu.dev/tags/openshift/">OpenShift</a>
-      <span class="separator">•</span>
-    <a href="https://vikaspogu.dev/tags/spring-boot/">Spring Boot</a>
-      <span class="separator">•</span>
-    <a href="https://vikaspogu.dev/tags/prometheus/">Prometheus</a>
-      <span class="separator">•</span>
-    <a href="https://vikaspogu.dev/tags/grafana/">Grafana</a></div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
 
-        </div>
-      </header>
+    <div class="article-details">
+    
 
-      <div>
-        <p>In this post I&rsquo;ll discuss how to monitor spring boot application metrics using Prometheus and Grafana.</p>
-<h3 id="prometheushttpsprometheusio"><a href="https://prometheus.io/">Prometheus</a></h3>
+    <h2 class="article-title">
+        <a href="/posts/springboot-metrics-grafana/">Spring Boot metrics with Prometheus and Grafana in OpenShift</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">May 15, 2019</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    3 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <h2 id="spring-boot-metrics">Spring Boot Metrics</h2>
+<p>In this post I&rsquo;ll discuss how to monitor spring boot application metrics using Prometheus and Grafana.</p>
+<h3 id="prometheushttpsprometheusio"><a class="link" href="https://prometheus.io/"  target="_blank" rel="noopener"
+    >Prometheus</a></h3>
 <p>Prometheus is a monitoring system which collects metrics from configured targets at given intervals.</p>
-<h3 id="grafanahttpsgrafanacomdocs"><a href="https://grafana.com/docs/">Grafana</a></h3>
+<h3 id="grafanahttpsgrafanacomdocs"><a class="link" href="https://grafana.com/docs/"  target="_blank" rel="noopener"
+    >Grafana</a></h3>
 <p>Grafana is an open source metric analytics &amp; visualization tool.</p>
-<h3 id="micrometerhttpsmicrometerio"><a href="https://micrometer.io/">Micrometer</a></h3>
+<h3 id="micrometerhttpsmicrometerio"><a class="link" href="https://micrometer.io/"  target="_blank" rel="noopener"
+    >Micrometer</a></h3>
 <p>Micrometer is a metrics instrumentation library for JVM-based applications.</p>
-<h3 id="spring-boot-actuatorhttpsdocsspringiospring-bootdocscurrentreferencehtmlproduction-ready-endpointshtml"><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html">Spring Boot Actuator</a></h3>
+<h3 id="spring-boot-actuatorhttpsdocsspringiospring-bootdocscurrentreferencehtmlproduction-ready-endpointshtml"><a class="link" href="https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html"  target="_blank" rel="noopener"
+    >Spring Boot Actuator</a></h3>
 <p>Spring Boot Actuator helps you monitor and manage your application when it’s pushed to production. You can choose to manage and monitor your application using HTTP or JMX endpoints.</p>
 <h3 id="setup">Setup</h3>
 <p>Enable prometheus metrics by adding dependencies in <code>pom.xml</code></p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="font-weight:bold">&lt;dependency&gt;</span>
-    <span style="font-weight:bold">&lt;groupId&gt;</span>org.springframework.boot<span style="font-weight:bold">&lt;/groupId&gt;</span>
-    <span style="font-weight:bold">&lt;artifactId&gt;</span>spring-boot-starter-actuator<span style="font-weight:bold">&lt;/artifactId&gt;</span>
-<span style="font-weight:bold">&lt;/dependency&gt;</span>
-<span style="font-weight:bold">&lt;dependency&gt;</span>
-    <span style="font-weight:bold">&lt;groupId&gt;</span>io.micrometer<span style="font-weight:bold">&lt;/groupId&gt;</span>
-    <span style="font-weight:bold">&lt;artifactId&gt;</span>micrometer-core<span style="font-weight:bold">&lt;/artifactId&gt;</span>
-    <span style="font-weight:bold">&lt;version&gt;</span>1.1.4<span style="font-weight:bold">&lt;/version&gt;</span>
-<span style="font-weight:bold">&lt;/dependency&gt;</span>
-<span style="font-weight:bold">&lt;dependency&gt;</span>
-    <span style="font-weight:bold">&lt;groupId&gt;</span>io.micrometer<span style="font-weight:bold">&lt;/groupId&gt;</span>
-    <span style="font-weight:bold">&lt;artifactId&gt;</span>micrometer-registry-prometheus<span style="font-weight:bold">&lt;/artifactId&gt;</span>
-    <span style="font-weight:bold">&lt;version&gt;</span>1.0.6<span style="font-weight:bold">&lt;/version&gt;</span>
-<span style="font-weight:bold">&lt;/dependency&gt;</span>
-</code></pre></div><p>By default <code>prometheus</code> endpoint is not available and must be enabled in <code>application.properties</code>. More configurations can be found at spring-boot <a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready-metrics">docs</a></p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">#Metrics related configurations
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-actuator<span class="nt">&lt;/artifactId&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>io.micrometer<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>micrometer-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.1.4<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>io.micrometer<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>micrometer-registry-prometheus<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.0.6<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div><p>By default <code>prometheus</code> endpoint is not available and must be enabled in <code>application.properties</code>. More configurations can be found at spring-boot <a class="link" href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready-metrics"  target="_blank" rel="noopener"
+    >docs</a></p>
+<pre tabindex="0"><code class="language-properties" data-lang="properties">#Metrics related configurations
 management.endpoint.metrics.enabled=true
 management.endpoints.web.exposure.include=*
 management.endpoint.prometheus.enabled=true
@@ -209,42 +160,42 @@ management.metrics.export.prometheus.enabled=true
 management.metrics.distribution.percentiles-histogram.http.server.requests=true
 management.metrics.distribution.sla.http.server.requests=1ms,5ms
 management.metrics.distribution.percentiles.http.server.requests=0.5,0.9,0.95,0.99,0.999
-</code></pre></div><p>Optionally register any number of <code>MeterRegistryCustomizer</code> to further configure the registry (such as applying common tags) before any meters are registered with the registry.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">@Bean
-MeterRegistryCustomizer&lt;MeterRegistry&gt; metricsCommonTags() {
-    <span style="color:#fff;font-weight:bold">return</span> registry -&gt; registry.<span style="color:#007f7f">config</span>().<span style="color:#007f7f">commonTags</span>(<span style="color:#0ff;font-weight:bold">&#34;application&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;sample-app&#34;</span>);
-}
+</code></pre><p>Optionally register any number of <code>MeterRegistryCustomizer</code> to further configure the registry (such as applying common tags) before any meters are registered with the registry.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Bean</span>
+<span class="n">MeterRegistryCustomizer</span><span class="o">&lt;</span><span class="n">MeterRegistry</span><span class="o">&gt;</span> <span class="nf">metricsCommonTags</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">registry</span> <span class="o">-&gt;</span> <span class="n">registry</span><span class="o">.</span><span class="na">config</span><span class="o">().</span><span class="na">commonTags</span><span class="o">(</span><span class="s">&#34;application&#34;</span><span class="o">,</span> <span class="s">&#34;sample-app&#34;</span><span class="o">);</span>
+<span class="o">}</span>
 </code></pre></div><p>Create a new project; deploy the application and prometheus in Openshift.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ oc project myproject
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ oc project myproject
 $ oc new-app redhat-openjdk18-openshift~&lt;git_repo_URL&gt; -n sample-app
 $ oc new-app prom/prometheus -n prometheus
 </code></pre></div><p>In order to keep the prometheus image and configuration decoupled, use the <code>ConfigMap</code> object to inject our the Prometheus deployment with the appropriate configuration data</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat <span style="color:#0ff;font-weight:bold">&lt;&lt;&#39;EOF&#39; &gt; prometheus.yml
-</span><span style="color:#0ff;font-weight:bold">global:
-</span><span style="color:#0ff;font-weight:bold">  scrape_interval:     5s
-</span><span style="color:#0ff;font-weight:bold">  evaluation_interval: 5s
-</span><span style="color:#0ff;font-weight:bold">
-</span><span style="color:#0ff;font-weight:bold">scrape_configs:
-</span><span style="color:#0ff;font-weight:bold">  - job_name: &#39;sample-app&#39;
-</span><span style="color:#0ff;font-weight:bold">    metrics_path: &#39;/actuator/prometheus&#39;
-</span><span style="color:#0ff;font-weight:bold">    static_configs:
-</span><span style="color:#0ff;font-weight:bold">    - targets: [&#39;sample-app:8080&#39;]
-</span><span style="color:#0ff;font-weight:bold">
-</span><span style="color:#0ff;font-weight:bold">EOF</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">cat <span class="s">&lt;&lt;&#39;EOF&#39; &gt; prometheus.yml
+</span><span class="s">global:
+</span><span class="s">  scrape_interval:     5s
+</span><span class="s">  evaluation_interval: 5s
+</span><span class="s">
+</span><span class="s">scrape_configs:
+</span><span class="s">  - job_name: &#39;sample-app&#39;
+</span><span class="s">    metrics_path: &#39;/actuator/prometheus&#39;
+</span><span class="s">    static_configs:
+</span><span class="s">    - targets: [&#39;sample-app:8080&#39;]
+</span><span class="s">
+</span><span class="s">EOF</span>
 
-oc create configmap prom-config-example --from-file=prometheus.yml
+oc create configmap prom-config-example --from-file<span class="o">=</span>prometheus.yml
 </code></pre></div><p>Next, edit the deployment configuration for Prometheus to include this ConfigMap.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc edit dc/prometheus
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">oc edit dc/prometheus
 </code></pre></div><p>Add new volume and volume mount</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">- name: prom-config-example-volume
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">- name: prom-config-example-volume
    configMap:
      name: prom-config-example
-     defaultMode: <span style="color:#ff0;font-weight:bold">420</span>
+     defaultMode: <span class="m">420</span>
 
 - name: prom-config-example-volume
   mountPath: /etc/prometheus/
 </code></pre></div><p>Use an OpenShift Template to run Grafana with persistent storage.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ oc process -f https://gist.githubusercontent.com/Vikaspogu/4a67495acf8dba5dc94837e031129fde/raw/e88f42515c6ed101c9554c7c2425794e80e10a64/openshift-grafana.yaml | oc apply -f-
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ oc process -f https://gist.githubusercontent.com/Vikaspogu/4a67495acf8dba5dc94837e031129fde/raw/e88f42515c6ed101c9554c7c2425794e80e10a64/openshift-grafana.yaml <span class="p">|</span> oc apply -f-
 </code></pre></div><p>Once deployed, log-in to Grafana using the Route provided in the Template and using default account admin with password admin (it maybe a good idea to change the password after this).</p>
 <h3 id="grafana-data-source">Grafana Data Source</h3>
 <ol>
@@ -259,39 +210,212 @@ oc create configmap prom-config-example --from-file=prometheus.yml
 <ol>
 <li>The Grafana template automatically provisions sample dashboards. These dashboards are by no means comprehensive but could be used as a starting point for further customization.</li>
 </ol>
-<p><img src="https://vikaspogu.dev/images/grafana-springboot.png" alt="grafana-springboot"></p>
-<p>You can find more official &amp; community built grafana dashboards <a href="https://grafana.com/dashboards?dataSource=prometheus&amp;search=Micrometer">here</a></p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 210; 
+			flex-basis: 504px"
+	>
+	<a href="/posts/springboot-metrics-grafana/grafana-springboot.png" data-size="1783x849">
+		<img src="/posts/springboot-metrics-grafana/grafana-springboot.png"
+			width="1783"
+			height="849"
+			srcset="/posts/springboot-metrics-grafana/grafana-springboot_huc60a91668b01a02646b45eef8aed5d9e_117791_480x0_resize_box_3.png 480w, /posts/springboot-metrics-grafana/grafana-springboot_huc60a91668b01a02646b45eef8aed5d9e_117791_1024x0_resize_box_3.png 1024w"
+			loading="lazy"
+			alt="grafana-springboot">
+	</a>
+	
+	<figcaption>grafana-springboot</figcaption>
+	
+</figure></p>
+<p>You can find more official &amp; community built grafana dashboards <a class="link" href="https://grafana.com/dashboards?dataSource=prometheus&amp;search=Micrometer"  target="_blank" rel="noopener"
+    >here</a></p>
 
-      </div>
-
-      <footer>
-        
+</section>
 
 
+    <footer class="article-footer">
+    
+    <section class="article-tags">
         
+            <a href="/tags/openshift/">Openshift</a>
         
+            <a href="/tags/spring-boot/">Spring Boot</a>
         
-      </footer>
-    </article>
+            <a href="/tags/prometheus/">Prometheus</a>
+        
+            <a href="/tags/grafana/">grafana</a>
+        
+    </section>
+
+
+    </footer>
+
 
     
-  </section>
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2021 Vikas Pogu&#39;s Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
 
     </div>
 
-    <footer class="footer">
-  <section class="container">
-    
-    
-    
-    
-  </section>
-</footer>
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
 
-  </main>
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
 
-  
 
-</body>
 
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#spring-boot-metrics">Spring Boot Metrics</a>
+      <ol>
+        <li><a href="#prometheushttpsprometheusio"><a href="https://prometheus.io/">Prometheus</a></a></li>
+        <li><a href="#grafanahttpsgrafanacomdocs"><a href="https://grafana.com/docs/">Grafana</a></a></li>
+        <li><a href="#micrometerhttpsmicrometerio"><a href="https://micrometer.io/">Micrometer</a></a></li>
+        <li><a href="#spring-boot-actuatorhttpsdocsspringiospring-bootdocscurrentreferencehtmlproduction-ready-endpointshtml"><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html">Spring Boot Actuator</a></a></li>
+        <li><a href="#setup">Setup</a></li>
+        <li><a href="#grafana-data-source">Grafana Data Source</a></li>
+        <li><a href="#grafana-dashboard">Grafana Dashboard</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
 </html>

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>dict on vikaspogu</title>
+    <title>dict on Vikas Pogu&#39;s Blog</title>
     <link>https://vikaspogu.dev/categories/dict/</link>
-    <description>Recent content in dict on vikaspogu</description>
+    <description>Recent content in dict on Vikas Pogu&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Thu, 08 Jul 2021 07:58:06 -0500</lastBuildDate><atom:link href="https://vikaspogu.dev/categories/dict/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Thu, 08 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/categories/dict/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Helm alternative for multiple If-Else conditions</title>
       <link>https://vikaspogu.dev/posts/helm-dict-function/</link>
-      <pubDate>Thu, 08 Jul 2021 07:58:06 -0500</pubDate>
+      <pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/posts/helm-dict-function/</guid>
       <description>Recently I was in a situation where I ended up writing multiple if-else statements in the helm template. Code block didn&amp;rsquo;t look clean and, I begin to explore alternative ways to achieve a clean and concise way to achieve the same behavior.
 Helm dict function perfectly fits my use case.
 Before
-{{- if eq .Values.imageType &amp;#34;java&amp;#34; }} name: openjdk:latest {{- else if eq .Values.imageType &amp;#34;nodejs&amp;#34; }} name: nodejs:latest {{- else if eq .</description>
+{{- if eq .Values.imageType &amp;#34;java&amp;#34; }}name:openjdk:latest{{- else if eq .Values.imageType &amp;#34;nodejs&amp;#34; }}name:nodejs:latest{{- else if eq .Values.imageType &amp;#34;golang&amp;#34; }}name:golang:latest{{- else if eq .</description>
     </item>
     
   </channel>

@@ -1,395 +1,517 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='End User Authentication and Authorization with Openshift Service Mesh and Keycloak'><title>End User Auth and Authz with Openshift Service Mesh and Keycloak</title>
 
-<head>
-  <meta name="google-site-verification" content="5JztMFjgtrbhV0pe_cLh7EH3c0NJBY7sVrnd7x86pMI" />
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel='canonical' href='https://vikaspogu.dev/posts/servicemesh-jwt-auth-authz-keycloack/'>
 
-  
-  <meta name="author" content="Vikas Pogu">
-  
-  <meta name="description" content="Vikas Pogu&#39;s Blog">
-  
-  <meta name="keywords" content="blog,developer">
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='End User Auth and Authz with Openshift Service Mesh and Keycloak'>
+<meta property='og:description' content='End User Authentication and Authorization with Openshift Service Mesh and Keycloak'>
+<meta property='og:url' content='https://vikaspogu.dev/posts/servicemesh-jwt-auth-authz-keycloack/'>
+<meta property='og:site_name' content='Vikas Pogu&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='istio' /><meta property='article:tag' content='service mesh' /><meta property='article:tag' content='keycloak' /><meta property='article:tag' content='jwt' /><meta property='article:tag' content='authentication' /><meta property='article:tag' content='authorization' /><meta property='article:published_time' content='2020-11-12T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-11-12T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="End User Auth and Authz with Openshift Service Mesh and Keycloak">
+<meta name="twitter:description" content="End User Authentication and Authorization with Openshift Service Mesh and Keycloak">
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
 
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="End User Auth and Authz with Openshift Service Mesh and Keycloak"/>
-<meta name="twitter:description" content="End User Authentication and Authorization with Openshift Service Mesh and Keycloak"/>
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
 
-  <meta property="og:title" content="End User Auth and Authz with Openshift Service Mesh and Keycloak" />
-<meta property="og:description" content="End User Authentication and Authorization with Openshift Service Mesh and Keycloak" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://vikaspogu.dev/posts/servicemesh-jwt-auth-authz-keycloack/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-11-12T08:39:50-06:00" />
-<meta property="article:modified_time" content="2020-11-12T08:39:50-06:00" />
-
-
-
-  
-  <base href="https://vikaspogu.dev/posts/servicemesh-jwt-auth-authz-keycloack/">
-  
-  <title>
-  End User Auth and Authz with Openshift Service Mesh and Keycloak · vikaspogu
-</title>
-
-  
-  <link rel="canonical" href="https://vikaspogu.dev/posts/servicemesh-jwt-auth-authz-keycloack/">
-  
-
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700"
-    rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
-    integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-    integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
-
-  
-  
-  
-  <link rel="stylesheet" href="https://vikaspogu.dev/css/coder.min.28d751104f30c16da1aa1bb04015cbe662cacfe0d1b01af4f2240ad58580069c.css" integrity="sha256-KNdREE8wwW2hqhuwQBXL5mLKz&#43;DRsBr08iQK1YWABpw="
-    crossorigin="anonymous" media="screen" />
-  
-
-  
-
-  
-  
-  
-  
-  <link rel="stylesheet" href="https://vikaspogu.dev/css/coder-dark.min.83a2010dac9f59f943b3004cd6c4f230507ad036da635d3621401d42ec4e2835.css" integrity="sha256-g6IBDayfWflDswBM1sTyMFB60DbaY102IUAdQuxOKDU="
-    crossorigin="anonymous" media="screen" />
-  
-  
-
-  
-
-  
-
-  <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-32x32.png"
-    sizes="32x32">
-  <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-16x16.png"
-    sizes="16x16">
-
-  <meta name="generator" content="Hugo 0.85.0" />
-</head>
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
 
 
 
-
-
-
-<body class="colorscheme-auto">
-  <main class="wrapper">
-    <nav class="navigation">
-  <section class="container">
-    <a class="navigation-title" href="https://vikaspogu.dev/">
-      vikaspogu
-    </a>
-    <input type="checkbox" id="menu-toggle" />
-    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
-    <ul class="navigation-list">
-      
-      
-      <li class="navigation-item">
-        <a class="navigation-link" href="https://vikaspogu.dev/about/">About</a>
-      </li>
-      
-      <li class="navigation-item">
-        <a class="navigation-link" href="https://vikaspogu.dev/posts/">Blog</a>
-      </li>
-      
-      
-      
-    </ul>
-  </section>
-</nav>
-<script type="application/ld+json">
-    {
-        "@context" : "http://schema.org",
-        "@type" : "BlogPosting",
-        "mainEntityOfPage": {
-             "@type": "WebPage",
-             "@id": "https:\/\/vikaspogu.dev"
-        },
-        "articleSection" : "posts",
-        "name" : "End User Auth and Authz with Openshift Service Mesh and Keycloak",
-        "headline" : "End User Auth and Authz with Openshift Service Mesh and Keycloak",
-        "description" : "End User Authentication and Authorization with Openshift Service Mesh and Keycloak",
-        "inLanguage" : "en-US",
-        "author" : "Vikas Pogu",
-        "creator" : "Vikas Pogu",
-        "publisher": "Vikas Pogu",
-        "accountablePerson" : "Vikas Pogu",
-        "copyrightHolder" : "Vikas Pogu",
-        "copyrightYear" : "2020",
-        "datePublished": "2020-11-12 08:39:50 -0600 CST",
-        "dateModified" : "2020-11-12 08:39:50 -0600 CST",
-        "url" : "https:\/\/vikaspogu.dev\/posts\/servicemesh-jwt-auth-authz-keycloack\/",
-        "wordCount" : "989",
-        "keywords" : [ "istio","service mesh","keycloak","jwt","authentication","authorization","Blog" ]
-    }
-    </script>
-
-    <div class="content">
-      
-  <section class="container post">
-    <article>
-      <header>
-        <div class="post-title">
-          <h1 class="title">End User Auth and Authz with Openshift Service Mesh and Keycloak</h1>
+                <span>Back</span>
+            </a>
         </div>
-        <div class="post-meta">
-          <div class="date">
-            <span class="posted-on">
-              <i class="fas fa-calendar"></i>
-              <time datetime='2020-11-12T08:39:50-06:00'>
-                November 12, 2020
-              </time>
-            </span>
-            <span class="reading-time">
-              <i class="fas fa-clock"></i>
-              5 minutes read
-            </span>
-          </div>
-          
-          <div class="tags">
-  <i class="fas fa-tag"></i>
-    <a href="https://vikaspogu.dev/tags/istio/">istio</a>
-      <span class="separator">•</span>
-    <a href="https://vikaspogu.dev/tags/service-mesh/">service mesh</a>
-      <span class="separator">•</span>
-    <a href="https://vikaspogu.dev/tags/keycloak/">keycloak</a>
-      <span class="separator">•</span>
-    <a href="https://vikaspogu.dev/tags/jwt/">jwt</a>
-      <span class="separator">•</span>
-    <a href="https://vikaspogu.dev/tags/authentication/">authentication</a>
-      <span class="separator">•</span>
-    <a href="https://vikaspogu.dev/tags/authorization/">authorization</a></div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
 
-        </div>
-      </header>
+    <div class="article-details">
+    
 
-      <div>
-        <p>In this article, I will share the setup for enabling Authentication and Authorization in Openshift Service Mesh with Keycloak</p>
+    <h2 class="article-title">
+        <a href="/posts/servicemesh-jwt-auth-authz-keycloack/">End User Auth and Authz with Openshift Service Mesh and Keycloak</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        End User Authentication and Authorization with Openshift Service Mesh and Keycloak
+    </h3>
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 12, 2020</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    5 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <p>In this article, I will share the setup for enabling Authentication and Authorization in Openshift Service Mesh with Keycloak</p>
 <h2 id="installing-openshift-service-mesh">Installing Openshift Service Mesh</h2>
-<p>Follow the <a href="https://docs.openshift.com/container-platform/4.6/service_mesh/v1x/installing-ossm.html">Installing Red Hat OpenShift Service Mesh</a> guide for setup</p>
+<p>Follow the <a class="link" href="https://docs.openshift.com/container-platform/4.6/service_mesh/v1x/installing-ossm.html"  target="_blank" rel="noopener"
+    >Installing Red Hat OpenShift Service Mesh</a> guide for setup</p>
 <p>Enable following configuration in your <code>ServiceMeshControlPlane</code> resource</p>
 <ul>
 <li>Strict mTLS across the mesh</li>
 <li>Automatic istio route creation</li>
 </ul>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">apiVersion: maistra.io/v2
-kind: ServiceMeshControlPlane
-spec:
-  version: v1.1
-  security:
-    controlPlane:
-      mtls: true
-  gateways:
-    openshiftRoute:
-      enabled: true
-</code></pre></div><h2 id="keycloak">Keycloak</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">maistra.io/v2</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ServiceMeshControlPlane</span><span class="w">
+</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l">v1.1</span><span class="w">
+</span><span class="w">  </span><span class="nt">security</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">controlPlane</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">mtls</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span><span class="nt">gateways</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">openshiftRoute</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></code></pre></div><h2 id="keycloak">Keycloak</h2>
 <p>Keycloak is an open-source identity and access management application that uses open protocols and is easily integrated with other providers. It is the open-source project base of Red Hat Single Sign-on</p>
 <h3 id="deploying-red-hat-single-sign-on">Deploying Red Hat Single Sign-on</h3>
 <p>The easiest way to deploy SSO is from the operator hub</p>
-<p><img src="https://vikaspogu.dev/images/sm-jwt/sso-operator.png" alt="sso-operator"></p>
-<p>Follow the <a href="https://labs.consol.de/development/2020/05/07/istio-and-keycloak.html">Keycloak identity provider</a> article for adding new secuity realm, client, role, user</p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 94; 
+			flex-basis: 227px"
+	>
+	<a href="/posts/servicemesh-jwt-auth-authz-keycloack/sso-operator.png" data-size="724x764">
+		<img src="/posts/servicemesh-jwt-auth-authz-keycloack/sso-operator.png"
+			width="724"
+			height="764"
+			srcset="/posts/servicemesh-jwt-auth-authz-keycloack/sso-operator_hu6e26b3fe14a4b5f53abe5905cfc509da_70708_480x0_resize_box_3.png 480w, /posts/servicemesh-jwt-auth-authz-keycloack/sso-operator_hu6e26b3fe14a4b5f53abe5905cfc509da_70708_1024x0_resize_box_3.png 1024w"
+			loading="lazy"
+			alt="sso-operator">
+	</a>
+	
+	<figcaption>sso-operator</figcaption>
+	
+</figure></p>
+<p>Follow the <a class="link" href="https://labs.consol.de/development/2020/05/07/istio-and-keycloak.html"  target="_blank" rel="noopener"
+    >Keycloak identity provider</a> article for adding new secuity realm, client, role, user</p>
 <h3 id="deploying-bookinfo-example-application">Deploying Bookinfo example application</h3>
 <p>Create a new namespace</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc new-project bookinfo
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">oc new-project bookinfo
 </code></pre></div><p>Edit the default Service Mesh Member Roll YAML and add bookinfo to the members list</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="font-weight:bold">apiVersion</span>: maistra.io/v1
-<span style="font-weight:bold">kind</span>: ServiceMeshMemberRoll
-<span style="font-weight:bold">metadata</span>:
-  <span style="font-weight:bold">name</span>: default
-<span style="font-weight:bold">spec</span>:
-  <span style="font-weight:bold">members</span>:
-  - bookinfo
-</code></pre></div><p>From the CLI, deploy the Bookinfo application in the <code>bookinfo</code> project by applying the bookinfo.yaml file</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ oc apply -n bookinfo -f https://raw.githubusercontent.com/Maistra/istio/maistra-2.0/samples/bookinfo/platform/kube/bookinfo.yaml
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">maistra.io/v1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ServiceMeshMemberRoll</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">default</span><span class="w">
+</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">members</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="l">bookinfo</span><span class="w">
+</span></code></pre></div><p>From the CLI, deploy the Bookinfo application in the <code>bookinfo</code> project by applying the bookinfo.yaml file</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">oc apply -n bookinfo -f https://raw.githubusercontent.com/Maistra/istio/maistra-2.0/samples/bookinfo/platform/kube/bookinfo.yaml
 </code></pre></div><p>Create the ingress gateway by applying the bookinfo-gateway.yaml file</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ oc apply -n bookinfo -f https://raw.githubusercontent.com/Maistra/istio/maistra-2.0/samples/bookinfo/networking/bookinfo-gateway.yaml
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">oc apply -n bookinfo -f https://raw.githubusercontent.com/Maistra/istio/maistra-2.0/samples/bookinfo/networking/bookinfo-gateway.yaml
 </code></pre></div><p>Set the value for the <code>GATEWAY_URL</code> parameter</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ oc get routes -n istio-system | grep bookinfo
-$ export GATEWAY_URL=$(oc -n istio-system get route bookinfo-gateway-pl2rw -o jsonpath=&#39;{.spec.host}&#39;)
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">oc get routes -n istio-system <span class="p">|</span> grep bookinfo
+<span class="nb">export</span> <span class="nv">GATEWAY_URL</span><span class="o">=</span><span class="k">$(</span>oc -n istio-system get route bookinfo-gateway-pl2rw -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.spec.host}&#39;</span><span class="k">)</span>
 </code></pre></div><p>Adding default destination rules</p>
 <p>I have enabled global mutual TLS in the control plane, so I’ll deploy the destination rule with all mtls</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ oc apply -n bookinfo -f https://raw.githubusercontent.com/Maistra/istio/maistra-2.0/samples/bookinfo/networking/destination-rule-all-mtls.yaml
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">oc apply -n bookinfo -f https://raw.githubusercontent.com/Maistra/istio/maistra-2.0/samples/bookinfo/networking/destination-rule-all-mtls.yaml
 </code></pre></div><p>Verifying the Bookinfo installation</p>
 <p>Run this command to confirm that Bookinfo is deployed</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ curl -o /dev/null -s -w &#34;%{http_code}\n&#34; http://$GATEWAY_URL/productpage
-</code></pre></div><h2 id="authentication-with-jwt-and-rbac">Authentication with JWT and RBAC</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">curl -o /dev/null -s -w <span class="s2">&#34;%{http_code}\n&#34;</span> http://<span class="nv">$GATEWAY_URL</span>/productpage
+</code></pre></div><h2 id="authentication">Authentication</h2>
 <h3 id="enabling-user-end-authentication">Enabling User-End Authentication</h3>
 <p>Now it is time to enable end-user authentication</p>
 <p>The first thing you need to do is validate that it is possible to communicate between all services without authentication</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -k -o /dev/null -w <span style="color:#0ff;font-weight:bold">&#34;%{http_code}&#34;</span> http://$GATEWAY_URL/productpage
-<span style="color:#ff0;font-weight:bold">200</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">curl -k -o /dev/null -w <span class="s2">&#34;%{http_code}&#34;</span> http://<span class="nv">$GATEWAY_URL</span>/productpage
+<span class="m">200</span>
 </code></pre></div><p>You can create the end-user authentication policy</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ cat &lt;&lt;EOF | oc apply -n bookinfo -f -
-apiVersion: authentication.istio.io/v1alpha1
-kind: Policy
-metadata:
-  name: &#34;productpage-jwt&#34;
-  namespace: &#34;bookinfo&#34;
-spec:
-  targets:
-    - name: productpage
-  peers:
-    - mtls: {}
-  origins:
-    - jwt:
-        issuer: &#34;https://keycloak-sso.apps.amp01.lab.amp.aapaws/auth/realms/istio&#34;
-        jwksUri: &#34;https://keycloak-sso.apps.amp01.lab.amp.aapaws/auth/realms/istio/protocol/openid-connect/certs&#34;
-        audiences:
-          - customer
-        triggerRules:
-          - excludedPaths:
-              - prefix: /healthz
-  principalBinding: USE_ORIGIN
-EOF
-</code></pre></div><p><strong>NOTE</strong>: If you see <code>Origin authentication failed.</code> after passing right access token and url. Verify your istio-pilot pods for any <code>x509: certificate signed by unknown authority</code> if thats the case follow this <a href="https://labs.consol.de/development/2020/05/07/debugging-istio.html">workaround</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">cat <span class="s">&lt;&lt;EOF | oc apply -n bookinfo -f -
+</span><span class="s">apiVersion: authentication.istio.io/v1alpha1
+</span><span class="s">kind: Policy
+</span><span class="s">metadata:
+</span><span class="s">  name: &#34;productpage-jwt&#34;
+</span><span class="s">  namespace: &#34;bookinfo&#34;
+</span><span class="s">spec:
+</span><span class="s">  targets:
+</span><span class="s">    - name: productpage
+</span><span class="s">  peers:
+</span><span class="s">    - mtls: {}
+</span><span class="s">  origins:
+</span><span class="s">    - jwt:
+</span><span class="s">        issuer: &#34;https://keycloak-sso.apps.amp01.lab.amp.aapaws/auth/realms/istio&#34;
+</span><span class="s">        jwksUri: &#34;https://keycloak-sso.apps.amp01.lab.amp.aapaws/auth/realms/istio/protocol/openid-connect/certs&#34;
+</span><span class="s">        audiences:
+</span><span class="s">          - customer
+</span><span class="s">        triggerRules:
+</span><span class="s">          - excludedPaths:
+</span><span class="s">              - prefix: /healthz
+</span><span class="s">  principalBinding: USE_ORIGIN
+</span><span class="s">EOF</span>
+</code></pre></div><p><strong>NOTE</strong>: If you see <code>Origin authentication failed.</code> after passing right access token and url. Verify your istio-pilot pods for any <code>x509: certificate signed by unknown authority</code> if thats the case follow this <a class="link" href="https://labs.consol.de/development/2020/05/07/debugging-istio.html"  target="_blank" rel="noopener"
+    >workaround</a></p>
 <p>Then let’s run the curl again</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">curl -k http://$GATEWAY_URL/productpage
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">curl -k http://<span class="nv">$GATEWAY_URL</span>/productpage
 </code></pre></div><p>And you will see something like</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Origin authentication failed.
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">Origin authentication failed.
 </code></pre></div><p>Set the value for the <code>TOKEN</code> parameter from keyclock</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">export TOKEN=$(curl -sk --data &#34;username=demo&amp;password=demo&amp;grant_type=password&amp;client_id=istio&#34; https://keycloak-sso.apps.amp01.lab.amp.aapaws/auth/realms/istio/protocol/openid-connect/token | jq &#34;.access_token&#34;)
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">TOKEN</span><span class="o">=</span><span class="k">$(</span>curl -sk --data <span class="s2">&#34;username=demo&amp;password=demo&amp;grant_type=password&amp;client_id=istio&#34;</span> https://keycloak-sso.apps.amp01.lab.amp.aapaws/auth/realms/istio/protocol/openid-connect/token <span class="p">|</span> jq <span class="s2">&#34;.access_token&#34;</span><span class="k">)</span>
 </code></pre></div><p>Then let’s run the curl again, this time with the token</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ curl -k -o /dev/null -w &#34;%{http_code}&#34; -H &#34;Authorization: Bearer $TOKEN&#34; http://$GATEWAY_URL/productpage
-200
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">curl -k -o /dev/null -w <span class="s2">&#34;%{http_code}&#34;</span> -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">&#34;</span> http://<span class="nv">$GATEWAY_URL</span>/productpage
+<span class="m">200</span>
 </code></pre></div><h2 id="authorization">Authorization</h2>
 <p>Create a deny-all policy in the namespace. The policy doesn’t have a selector field, which applies the policy to every workload in the namespace. The spec: field of the policy has the empty value {}. The empty value means that no traffic is permitted, effectively denying all requests</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ cat &lt;&lt;EOF | oc apply -n bookinfo -f -
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: deny-all
-spec:
-  {}
-EOF
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ cat <span class="s">&lt;&lt;EOF | oc apply -n bookinfo -f -
+</span><span class="s">apiVersion: security.istio.io/v1beta1
+</span><span class="s">kind: AuthorizationPolicy
+</span><span class="s">metadata:
+</span><span class="s">  name: deny-all
+</span><span class="s">spec:
+</span><span class="s">  {}
+</span><span class="s">EOF</span>
 </code></pre></div><p>Once the policy takes effect, verify that mesh rejected the curl connection to the workload</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ curl -k -H &#34;Authorization: Bearer $TOKEN&#34; http://$GATEWAY_URL/productpage
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ curl -k -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">&#34;</span> http://<span class="nv">$GATEWAY_URL</span>/productpage
 RBAC: access denied
 </code></pre></div><p>To give read access to the productpage workload, create the policy that applies to workload with label app: productpage and allows users with roles customer to access it with all method</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ cat &lt;&lt;EOF | oc apply -n bookinfo -f -
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: &#34;productpage-authz&#34;
-  namespace: &#34;bookinfo&#34;
-spec:
-  selector:
-    matchLabels:
-      app: productpage
-  rules:
-    - to:
-        - operation:
-            methods: [&#34;*&#34;]
-      when:
-        - key: request.auth.claims[roles]
-          values: [&#34;customer&#34;]
-EOF
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ cat <span class="s">&lt;&lt;EOF | oc apply -n bookinfo -f -
+</span><span class="s">apiVersion: security.istio.io/v1beta1
+</span><span class="s">kind: AuthorizationPolicy
+</span><span class="s">metadata:
+</span><span class="s">  name: &#34;productpage-authz&#34;
+</span><span class="s">  namespace: &#34;bookinfo&#34;
+</span><span class="s">spec:
+</span><span class="s">  selector:
+</span><span class="s">    matchLabels:
+</span><span class="s">      app: productpage
+</span><span class="s">  rules:
+</span><span class="s">    - to:
+</span><span class="s">        - operation:
+</span><span class="s">            methods: [&#34;*&#34;]
+</span><span class="s">      when:
+</span><span class="s">        - key: request.auth.claims[roles]
+</span><span class="s">          values: [&#34;customer&#34;]
+</span><span class="s">EOF</span>
 </code></pre></div><p>Wait for the newly defined policy to take effect</p>
 <p>After the policy takes effect, verify the connection to the httpbin workload succeeds</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">curl -k  -o /dev/null -w &#34;%{http_code}&#34; -H &#34;Authorization: Bearer $TOKEN&#34; http://$GATEWAY_URL/productpage
-200
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">curl -k  -o /dev/null -w <span class="s2">&#34;%{http_code}&#34;</span> -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">&#34;</span> http://<span class="nv">$GATEWAY_URL</span>/productpage
+<span class="m">200</span>
 </code></pre></div><p>However, you can see the following errors on the page</p>
 <ul>
 <li>Error fetching product details</li>
 <li>Error fetching product reviews on the page</li>
 </ul>
 <p>Run the following command to create the details-viewer policy to allow the productpage workload, which issues requests using the <code>cluster.local/ns/bookinfo/sa/bookinfo-productpage</code> service account, to access the details workload through GET methods</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ oc apply -f - &lt;&lt;EOF
-apiVersion: &#34;security.istio.io/v1beta1&#34;
-kind: &#34;AuthorizationPolicy&#34;
-metadata:
-  name: &#34;details-viewer&#34;
-  namespace: bookinfo
-spec:
-  selector:
-    matchLabels:
-      app: details
-  rules:
-  - from:
-    - source:
-        principals: [&#34;cluster.local/ns/bookinfo/sa/bookinfo-productpage&#34;]
-    to:
-    - operation:
-        methods: [&#34;GET&#34;]
-EOF
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">oc apply -f - <span class="s">&lt;&lt;EOF
+</span><span class="s">apiVersion: &#34;security.istio.io/v1beta1&#34;
+</span><span class="s">kind: &#34;AuthorizationPolicy&#34;
+</span><span class="s">metadata:
+</span><span class="s">  name: &#34;details-viewer&#34;
+</span><span class="s">  namespace: bookinfo
+</span><span class="s">spec:
+</span><span class="s">  selector:
+</span><span class="s">    matchLabels:
+</span><span class="s">      app: details
+</span><span class="s">  rules:
+</span><span class="s">  - from:
+</span><span class="s">    - source:
+</span><span class="s">        principals: [&#34;cluster.local/ns/bookinfo/sa/bookinfo-productpage&#34;]
+</span><span class="s">    to:
+</span><span class="s">    - operation:
+</span><span class="s">        methods: [&#34;GET&#34;]
+</span><span class="s">EOF</span>
 </code></pre></div><p>Run the following command to create a policy reviews-viewer to allow the productpage workload, which issues requests using the <code>cluster.local/ns/bookinfo/sa/bookinfo-productpage</code> service account, to access the reviews workload through GET methods</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ oc apply -f - &lt;&lt;EOF
-apiVersion: &#34;security.istio.io/v1beta1&#34;
-kind: &#34;AuthorizationPolicy&#34;
-metadata:
-  name: &#34;reviews-viewer&#34;
-  namespace: bookinfo
-spec:
-  selector:
-    matchLabels:
-      app: reviews
-  rules:
-  - from:
-    - source:
-        principals: [&#34;cluster.local/ns/bookinfo/sa/bookinfo-productpage&#34;]
-    to:
-    - operation:
-        methods: [&#34;GET&#34;]
-EOF
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">oc apply -f - <span class="s">&lt;&lt;EOF
+</span><span class="s">apiVersion: &#34;security.istio.io/v1beta1&#34;
+</span><span class="s">kind: &#34;AuthorizationPolicy&#34;
+</span><span class="s">metadata:
+</span><span class="s">  name: &#34;reviews-viewer&#34;
+</span><span class="s">  namespace: bookinfo
+</span><span class="s">spec:
+</span><span class="s">  selector:
+</span><span class="s">    matchLabels:
+</span><span class="s">      app: reviews
+</span><span class="s">  rules:
+</span><span class="s">  - from:
+</span><span class="s">    - source:
+</span><span class="s">        principals: [&#34;cluster.local/ns/bookinfo/sa/bookinfo-productpage&#34;]
+</span><span class="s">    to:
+</span><span class="s">    - operation:
+</span><span class="s">        methods: [&#34;GET&#34;]
+</span><span class="s">EOF</span>
 </code></pre></div><p>Point your browser at the Bookinfo productpage (http://$GATEWAY_URL/productpage). Now, you should see the “Bookinfo Sample” page with “Book Details” on the lower left part, and “Book Reviews” on the lower right part. However, in the “Book Reviews” section, there is an error Ratings service currently unavailable</p>
 <p>This is because the reviews workload doesn’t have permission to access the ratings workload. To fix this issue, you need to grant the reviews workload access to the ratings workload. Next, we configure a policy to grant the reviews workload that access</p>
 <p>Run the following command to create the ratings-viewer policy to allow the reviews workload, which issues requests using the <code>cluster.local/ns/bookinfo/sa/bookinfo-reviews</code> service account, to access the ratings workload through GET methods</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ oc apply -f - &lt;&lt;EOF
-apiVersion: &#34;security.istio.io/v1beta1&#34;
-kind: &#34;AuthorizationPolicy&#34;
-metadata:
-  name: &#34;ratings-viewer&#34;
-  namespace: bookinfo
-spec:
-  selector:
-    matchLabels:
-      app: ratings
-  rules:
-  - from:
-    - source:
-        principals: [&#34;cluster.local/ns/bookinfo/sa/bookinfo-reviews&#34;]
-    to:
-    - operation:
-        methods: [&#34;GET&#34;]
-EOF
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">oc apply -f - <span class="s">&lt;&lt;EOF
+</span><span class="s">apiVersion: &#34;security.istio.io/v1beta1&#34;
+</span><span class="s">kind: &#34;AuthorizationPolicy&#34;
+</span><span class="s">metadata:
+</span><span class="s">  name: &#34;ratings-viewer&#34;
+</span><span class="s">  namespace: bookinfo
+</span><span class="s">spec:
+</span><span class="s">  selector:
+</span><span class="s">    matchLabels:
+</span><span class="s">      app: ratings
+</span><span class="s">  rules:
+</span><span class="s">  - from:
+</span><span class="s">    - source:
+</span><span class="s">        principals: [&#34;cluster.local/ns/bookinfo/sa/bookinfo-reviews&#34;]
+</span><span class="s">    to:
+</span><span class="s">    - operation:
+</span><span class="s">        methods: [&#34;GET&#34;]
+</span><span class="s">EOF</span>
 </code></pre></div><p>Point your browser at the Bookinfo productpage (http://$GATEWAY_URL/productpage). You should see the “black” and “red” ratings in the “Book Reviews” section</p>
 
-      </div>
-
-      <footer>
-        
+</section>
 
 
+    <footer class="article-footer">
+    
+    <section class="article-tags">
         
+            <a href="/tags/istio/">istio</a>
         
+            <a href="/tags/service-mesh/">service mesh</a>
         
-      </footer>
-    </article>
+            <a href="/tags/keycloak/">keycloak</a>
+        
+            <a href="/tags/jwt/">jwt</a>
+        
+            <a href="/tags/authentication/">authentication</a>
+        
+            <a href="/tags/authorization/">authorization</a>
+        
+    </section>
+
+
+    </footer>
+
 
     
-  </section>
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2021 Vikas Pogu&#39;s Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
 
     </div>
 
-    <footer class="footer">
-  <section class="container">
-    
-    
-    
-    
-  </section>
-</footer>
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
 
-  </main>
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
 
-  
 
-</body>
 
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#installing-openshift-service-mesh">Installing Openshift Service Mesh</a></li>
+    <li><a href="#keycloak">Keycloak</a>
+      <ol>
+        <li><a href="#deploying-red-hat-single-sign-on">Deploying Red Hat Single Sign-on</a></li>
+        <li><a href="#deploying-bookinfo-example-application">Deploying Bookinfo example application</a></li>
+      </ol>
+    </li>
+    <li><a href="#authentication">Authentication</a>
+      <ol>
+        <li><a href="#enabling-user-end-authentication">Enabling User-End Authentication</a></li>
+      </ol>
+    </li>
+    <li><a href="#authorization">Authorization</a></li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
 </html>

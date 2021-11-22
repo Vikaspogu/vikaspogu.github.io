@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>golang on vikaspogu</title>
+    <title>golang on Vikas Pogu&#39;s Blog</title>
     <link>https://vikaspogu.dev/tags/golang/</link>
-    <description>Recent content in golang on vikaspogu</description>
+    <description>Recent content in golang on Vikas Pogu&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Mon, 16 Dec 2019 15:29:34 -0500</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Mon, 16 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Basic Authentication in Go with Gin</title>
       <link>https://vikaspogu.dev/posts/golang-basicauth-gin/</link>
-      <pubDate>Mon, 16 Dec 2019 15:29:34 -0500</pubDate>
+      <pubDate>Mon, 16 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/posts/golang-basicauth-gin/</guid>
       <description>This is short post on adding basic authentication to go applications. Our sample application uses gin web framework
@@ -26,6 +26,7 @@ func main(){ r := gin.Default() r.GET(&amp;#34;/getAllUsers&amp;#34;, basicAuth,
       <guid>https://vikaspogu.dev/posts/sso-jwt-golang/</guid>
       <description>Recently I was working on a React project with Go backend using Gin web framework. Keycloak was the authentication mechanism for the frontend; I also wanted to secure the backend using JSON Web Tokens which was provided by Keycloak on every login. Setup for jwt verification in Go was easy.
 First, copy RS256 algorithm public key value from Keycloak
+ sso_setup 
 Send the token as Authorization header
 axios .get(BACKEND_URL.concat(&amp;#34;sampleendpoint&amp;#34;), { headers: { Authorization: this.</description>
     </item>

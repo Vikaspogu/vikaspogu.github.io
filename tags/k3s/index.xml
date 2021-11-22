@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>k3s on vikaspogu</title>
+    <title>k3s on Vikas Pogu&#39;s Blog</title>
     <link>https://vikaspogu.dev/tags/k3s/</link>
-    <description>Recent content in k3s on vikaspogu</description>
+    <description>Recent content in k3s on Vikas Pogu&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Sat, 07 Mar 2020 14:31:32 -0500</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/k3s/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Sat, 07 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/k3s/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Pi Hole on k3s cluster</title>
       <link>https://vikaspogu.dev/posts/pi-hole-kubernetes/</link>
-      <pubDate>Sat, 07 Mar 2020 14:31:32 -0500</pubDate>
+      <pubDate>Sat, 07 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/posts/pi-hole-kubernetes/</guid>
       <description>Pi-hole is a fantastic tool that blocks DNS requests to ad servers. That means you can surf the web without having to look at ads on every page.
-PiHole in Kubernetes We are going to deploy modified version of this pihole helm chart
+Pi-Hole in Kubernetes We are going to deploy modified version of this pihole helm chart
 Let&amp;rsquo;s start by cloning repo
 git clone https://github.com/ChrisPhillips-cminion/pihole-helm.git cd pihole-helm We now need to make few updates to the chart
  Update ServerIP with container host IP Update image to v5.</description>
@@ -23,7 +23,7 @@ git clone https://github.com/ChrisPhillips-cminion/pihole-helm.git cd pihole-hel
     <item>
       <title>Measure Raspberry Pi temperature using Telegraf, Influxdb, Grafana on k3s</title>
       <link>https://vikaspogu.dev/posts/raspberry-pi-temp-telegraf/</link>
-      <pubDate>Wed, 01 Jan 2020 16:19:29 -0500</pubDate>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/posts/raspberry-pi-temp-telegraf/</guid>
       <description>In my previous post, I went through k3s cluster home setup. Now, i&amp;rsquo;ll show how to measure the temperature of those Raspberry Pi&amp;rsquo;s using Telegraf, Influxdb, Grafana and Helm charts.
@@ -34,7 +34,7 @@ First, deploy influxdb time series database chart</description>
     <item>
       <title>k3s cluster with Raspberry-Pi, Traefik</title>
       <link>https://vikaspogu.dev/posts/kubernetes-home-cluster-traefik/</link>
-      <pubDate>Tue, 31 Dec 2019 13:47:10 -0500</pubDate>
+      <pubDate>Tue, 31 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/posts/kubernetes-home-cluster-traefik/</guid>
       <description>In this post, I’ll share my home setup for Rancher&amp;rsquo;s k3s kubernetes cluster.

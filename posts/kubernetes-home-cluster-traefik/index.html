@@ -1,171 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Walk through on setting up K3S cluster on raspberry pi and traefik ingress with cloudfare'><title>k3s cluster with Raspberry-Pi, Traefik</title>
 
-<head>
-  <meta name="google-site-verification" content="5JztMFjgtrbhV0pe_cLh7EH3c0NJBY7sVrnd7x86pMI" />
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel='canonical' href='https://vikaspogu.dev/posts/kubernetes-home-cluster-traefik/'>
 
-  
-  <meta name="author" content="Vikas Pogu">
-  
-  <meta name="description" content="Vikas Pogu&#39;s Blog">
-  
-  <meta name="keywords" content="blog,developer">
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='k3s cluster with Raspberry-Pi, Traefik'>
+<meta property='og:description' content='Walk through on setting up K3S cluster on raspberry pi and traefik ingress with cloudfare'>
+<meta property='og:url' content='https://vikaspogu.dev/posts/kubernetes-home-cluster-traefik/'>
+<meta property='og:site_name' content='Vikas Pogu&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='k3s' /><meta property='article:tag' content='traefik' /><meta property='article:tag' content='raspberry-pi' /><meta property='article:published_time' content='2019-12-31T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2019-12-31T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="k3s cluster with Raspberry-Pi, Traefik">
+<meta name="twitter:description" content="Walk through on setting up K3S cluster on raspberry pi and traefik ingress with cloudfare">
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
 
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="k3s cluster with Raspberry-Pi, Traefik"/>
-<meta name="twitter:description" content="Walk through on setting up K3S cluster on raspberry pi and traefik ingress with cloudfare"/>
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
 
-  <meta property="og:title" content="k3s cluster with Raspberry-Pi, Traefik" />
-<meta property="og:description" content="Walk through on setting up K3S cluster on raspberry pi and traefik ingress with cloudfare" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://vikaspogu.dev/posts/kubernetes-home-cluster-traefik/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2019-12-31T13:47:10-05:00" />
-<meta property="article:modified_time" content="2019-12-31T13:47:10-05:00" />
-
-
-
-  
-  <base href="https://vikaspogu.dev/posts/kubernetes-home-cluster-traefik/">
-  
-  <title>
-  k3s cluster with Raspberry-Pi, Traefik · vikaspogu
-</title>
-
-  
-  <link rel="canonical" href="https://vikaspogu.dev/posts/kubernetes-home-cluster-traefik/">
-  
-
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700"
-    rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
-    integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-    integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
-
-  
-  
-  
-  <link rel="stylesheet" href="https://vikaspogu.dev/css/coder.min.28d751104f30c16da1aa1bb04015cbe662cacfe0d1b01af4f2240ad58580069c.css" integrity="sha256-KNdREE8wwW2hqhuwQBXL5mLKz&#43;DRsBr08iQK1YWABpw="
-    crossorigin="anonymous" media="screen" />
-  
-
-  
-
-  
-  
-  
-  
-  <link rel="stylesheet" href="https://vikaspogu.dev/css/coder-dark.min.83a2010dac9f59f943b3004cd6c4f230507ad036da635d3621401d42ec4e2835.css" integrity="sha256-g6IBDayfWflDswBM1sTyMFB60DbaY102IUAdQuxOKDU="
-    crossorigin="anonymous" media="screen" />
-  
-  
-
-  
-
-  
-
-  <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-32x32.png"
-    sizes="32x32">
-  <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-16x16.png"
-    sizes="16x16">
-
-  <meta name="generator" content="Hugo 0.85.0" />
-</head>
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
 
 
 
-
-
-
-<body class="colorscheme-auto">
-  <main class="wrapper">
-    <nav class="navigation">
-  <section class="container">
-    <a class="navigation-title" href="https://vikaspogu.dev/">
-      vikaspogu
-    </a>
-    <input type="checkbox" id="menu-toggle" />
-    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
-    <ul class="navigation-list">
-      
-      
-      <li class="navigation-item">
-        <a class="navigation-link" href="https://vikaspogu.dev/about/">About</a>
-      </li>
-      
-      <li class="navigation-item">
-        <a class="navigation-link" href="https://vikaspogu.dev/posts/">Blog</a>
-      </li>
-      
-      
-      
-    </ul>
-  </section>
-</nav>
-<script type="application/ld+json">
-    {
-        "@context" : "http://schema.org",
-        "@type" : "BlogPosting",
-        "mainEntityOfPage": {
-             "@type": "WebPage",
-             "@id": "https:\/\/vikaspogu.dev"
-        },
-        "articleSection" : "posts",
-        "name" : "k3s cluster with Raspberry-Pi, Traefik",
-        "headline" : "k3s cluster with Raspberry-Pi, Traefik",
-        "description" : "Walk through on setting up K3S cluster on raspberry pi and traefik ingress with cloudfare",
-        "inLanguage" : "en-US",
-        "author" : "Vikas Pogu",
-        "creator" : "Vikas Pogu",
-        "publisher": "Vikas Pogu",
-        "accountablePerson" : "Vikas Pogu",
-        "copyrightHolder" : "Vikas Pogu",
-        "copyrightYear" : "2019",
-        "datePublished": "2019-12-31 13:47:10 -0500 -0500",
-        "dateModified" : "2019-12-31 13:47:10 -0500 -0500",
-        "url" : "https:\/\/vikaspogu.dev\/posts\/kubernetes-home-cluster-traefik\/",
-        "wordCount" : "891",
-        "keywords" : [ "k3s","traefik","raspberry-pi","Blog" ]
-    }
-    </script>
-
-    <div class="content">
-      
-  <section class="container post">
-    <article>
-      <header>
-        <div class="post-title">
-          <h1 class="title">k3s cluster with Raspberry-Pi, Traefik</h1>
+                <span>Back</span>
+            </a>
         </div>
-        <div class="post-meta">
-          <div class="date">
-            <span class="posted-on">
-              <i class="fas fa-calendar"></i>
-              <time datetime='2019-12-31T13:47:10-05:00'>
-                December 31, 2019
-              </time>
-            </span>
-            <span class="reading-time">
-              <i class="fas fa-clock"></i>
-              5 minutes read
-            </span>
-          </div>
-          
-          <div class="tags">
-  <i class="fas fa-tag"></i>
-    <a href="https://vikaspogu.dev/tags/k3s/">k3s</a>
-      <span class="separator">•</span>
-    <a href="https://vikaspogu.dev/tags/traefik/">traefik</a>
-      <span class="separator">•</span>
-    <a href="https://vikaspogu.dev/tags/raspberry-pi/">raspberry-pi</a></div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
 
-        </div>
-      </header>
+    <div class="article-details">
+    
 
-      <div>
-        <p>In this post, I’ll share my home setup for <a href="https://k3s.io/">Rancher&rsquo;s k3s</a> kubernetes cluster.</p>
+    <h2 class="article-title">
+        <a href="/posts/kubernetes-home-cluster-traefik/">k3s cluster with Raspberry-Pi, Traefik</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        Walk through on setting up K3S cluster on raspberry pi and traefik ingress with cloudfare
+    </h3>
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Dec 31, 2019</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <p>In this post, I’ll share my home setup for <a class="link" href="https://k3s.io/"  target="_blank" rel="noopener"
+    >Rancher&rsquo;s k3s</a> kubernetes cluster.</p>
 <p>Requirements:</p>
 <ul>
 <li>I wanted the web interface to be accessible outside of my home so I could check and manage devices while away</li>
@@ -178,8 +126,9 @@
 <li>Deploying Traefik as a Kubernetes Ingress Controller and configuring it to manage SSL with Let’s Encrypt</li>
 </ul>
 <h3 id="setting-up-a-pi-kubernetes-cluster">Setting up a Pi Kubernetes Cluster</h3>
-<p>I followed an excellent guide written by Alex Ellis <a href="https://blog.alexellis.io/test-drive-k3s-on-raspberry-pi/">here</a> to initialize a cluster on the master and then join a single node.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ k3s kubectl get nodes
+<p>I followed an excellent guide written by Alex Ellis <a class="link" href="https://blog.alexellis.io/test-drive-k3s-on-raspberry-pi/"  target="_blank" rel="noopener"
+    >here</a> to initialize a cluster on the master and then join a single node.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ k3s kubectl get nodes
 NAME        STATUS   ROLES    AGE    VERSION
 pi-node1    Ready    &lt;none&gt;   3d     v1.16.3-k3s.2
 pi-master   Ready    master   3d     v1.16.3-k3s.2
@@ -189,281 +138,451 @@ pi-master   Ready    master   3d     v1.16.3-k3s.2
 <li>Open ports <code>80</code> and <code>443</code> on router’s firewall</li>
 </ul>
 <p>At this point a short <code>dig</code> on domain should return your dynamic IP.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ dig +short test.home.vikaspogu.com
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ dig +short test.home.vikaspogu.com
 X.X.X.X
 </code></pre></div><p>I found this script online which will update DNS record if Dynamic IP is changed.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#0f0;font-weight:bold">#!/bin/sh
-</span><span style="color:#0f0;font-weight:bold"></span>zone=example.com
-<span style="color:#007f7f"># dnsrecord is the A record which will be updated</span>
-dnsrecord=www.example.com
-EMAIL=me@cloudflare.com
-API_KEY=1234567890abcdef1234567890abcdef
-<span style="color:#007f7f"># Get the current external IP address</span>
-ip=<span style="color:#fff;font-weight:bold">$(</span>dig +short &lt;CURRENT EXTERNAL IP&gt;<span style="color:#fff;font-weight:bold">)</span>
-<span style="color:#fff;font-weight:bold">echo</span> <span style="color:#0ff;font-weight:bold">&#34;Current IP is </span>$ip<span style="color:#0ff;font-weight:bold">&#34;</span>
-<span style="color:#fff;font-weight:bold">if</span> host $dnsrecord 1.1.1.1 | grep <span style="color:#0ff;font-weight:bold">&#34;has address&#34;</span> | grep <span style="color:#0ff;font-weight:bold">&#34;</span>$ip<span style="color:#0ff;font-weight:bold">&#34;</span>; <span style="color:#fff;font-weight:bold">then</span>
-  <span style="color:#fff;font-weight:bold">echo</span> <span style="color:#0ff;font-weight:bold">&#34;</span>$dnsrecord<span style="color:#0ff;font-weight:bold"> is currently set to </span>$ip<span style="color:#0ff;font-weight:bold">; no changes needed&#34;</span>
-  <span style="color:#fff;font-weight:bold">exit</span>
-<span style="color:#fff;font-weight:bold">fi</span>
-<span style="color:#007f7f"># if here, the dns record needs updating</span>
-<span style="color:#007f7f"># get the zone id for the requested zone</span>
-zoneid=<span style="color:#fff;font-weight:bold">$(</span>curl -s -X GET <span style="color:#0ff;font-weight:bold">&#34;https://api.cloudflare.com/client/v4/zones?name=</span>$zone<span style="color:#0ff;font-weight:bold">&amp;status=active&#34;</span> <span style="color:#0ff;font-weight:bold">\
-</span><span style="color:#0ff;font-weight:bold"></span>  -H <span style="color:#0ff;font-weight:bold">&#34;X-Auth-Email: </span>$EMAIL<span style="color:#0ff;font-weight:bold">&#34;</span> <span style="color:#0ff;font-weight:bold">\
-</span><span style="color:#0ff;font-weight:bold"></span>  -H <span style="color:#0ff;font-weight:bold">&#34;X-Auth-Key: </span>$API_KEY<span style="color:#0ff;font-weight:bold">&#34;</span> <span style="color:#0ff;font-weight:bold">\
-</span><span style="color:#0ff;font-weight:bold"></span>  -H <span style="color:#0ff;font-weight:bold">&#34;Content-Type: application/json&#34;</span> | jq -r <span style="color:#0ff;font-weight:bold">&#39;{&#34;result&#34;}[] | .[0] | .id&#39;</span><span style="color:#fff;font-weight:bold">)</span>
-<span style="color:#fff;font-weight:bold">echo</span> <span style="color:#0ff;font-weight:bold">&#34;Zoneid for </span>$zone<span style="color:#0ff;font-weight:bold"> is </span>$zoneid<span style="color:#0ff;font-weight:bold">&#34;</span>
-<span style="color:#007f7f"># get the dns record id</span>
-dnsrecordid=<span style="color:#fff;font-weight:bold">$(</span>curl -s -X GET <span style="color:#0ff;font-weight:bold">&#34;https://api.cloudflare.com/client/v4/zones/</span>$zoneid<span style="color:#0ff;font-weight:bold">/dns_records?type=A&amp;name=</span>$dnsrecord<span style="color:#0ff;font-weight:bold">&#34;</span> <span style="color:#0ff;font-weight:bold">\
-</span><span style="color:#0ff;font-weight:bold"></span>  -H <span style="color:#0ff;font-weight:bold">&#34;X-Auth-Email: </span>$EMAIL<span style="color:#0ff;font-weight:bold">&#34;</span> <span style="color:#0ff;font-weight:bold">\
-</span><span style="color:#0ff;font-weight:bold"></span>  -H <span style="color:#0ff;font-weight:bold">&#34;X-Auth-Key: </span>$API_KEY<span style="color:#0ff;font-weight:bold">&#34;</span> <span style="color:#0ff;font-weight:bold">\
-</span><span style="color:#0ff;font-weight:bold"></span>  -H <span style="color:#0ff;font-weight:bold">&#34;Content-Type: application/json&#34;</span> | jq -r <span style="color:#0ff;font-weight:bold">&#39;{&#34;result&#34;}[] | .[0] | .id&#39;</span><span style="color:#fff;font-weight:bold">)</span>
-<span style="color:#fff;font-weight:bold">echo</span> <span style="color:#0ff;font-weight:bold">&#34;DNSrecordid for </span>$dnsrecord<span style="color:#0ff;font-weight:bold"> is </span>$dnsrecordid<span style="color:#0ff;font-weight:bold">&#34;</span>
-<span style="color:#007f7f"># update the record</span>
-curl -s -X PUT <span style="color:#0ff;font-weight:bold">&#34;https://api.cloudflare.com/client/v4/zones/</span>$zoneid<span style="color:#0ff;font-weight:bold">/dns_records/</span>$dnsrecordid<span style="color:#0ff;font-weight:bold">&#34;</span> <span style="color:#0ff;font-weight:bold">\
-</span><span style="color:#0ff;font-weight:bold"></span>  -H <span style="color:#0ff;font-weight:bold">&#34;X-Auth-Email: </span>$EMAIL<span style="color:#0ff;font-weight:bold">&#34;</span> <span style="color:#0ff;font-weight:bold">\
-</span><span style="color:#0ff;font-weight:bold"></span>  -H <span style="color:#0ff;font-weight:bold">&#34;X-Auth-Key: </span>$API_KEY<span style="color:#0ff;font-weight:bold">&#34;</span> <span style="color:#0ff;font-weight:bold">\
-</span><span style="color:#0ff;font-weight:bold"></span>  -H <span style="color:#0ff;font-weight:bold">&#34;Content-Type: application/json&#34;</span> <span style="color:#0ff;font-weight:bold">\
-</span><span style="color:#0ff;font-weight:bold"></span>  --data <span style="color:#0ff;font-weight:bold">&#34;{\&#34;type\&#34;:\&#34;A\&#34;,\&#34;name\&#34;:\&#34;</span>$dnsrecord<span style="color:#0ff;font-weight:bold">\&#34;,\&#34;content\&#34;:\&#34;</span>$ip<span style="color:#0ff;font-weight:bold">\&#34;,\&#34;ttl\&#34;:1,\&#34;proxied\&#34;:false}&#34;</span> | jq
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="cp">#!/bin/sh
+</span><span class="cp"></span><span class="nv">zone</span><span class="o">=</span>example.com
+<span class="c1"># dnsrecord is the A record which will be updated</span>
+<span class="nv">dnsrecord</span><span class="o">=</span>www.example.com
+<span class="nv">EMAIL</span><span class="o">=</span>me@cloudflare.com
+<span class="nv">API_KEY</span><span class="o">=</span>1234567890abcdef1234567890abcdef
+<span class="c1"># Get the current external IP address</span>
+<span class="nv">ip</span><span class="o">=</span><span class="k">$(</span>dig +short &lt;CURRENT EXTERNAL IP&gt;<span class="k">)</span>
+<span class="nb">echo</span> <span class="s2">&#34;Current IP is </span><span class="nv">$ip</span><span class="s2">&#34;</span>
+<span class="k">if</span> host <span class="nv">$dnsrecord</span> 1.1.1.1 <span class="p">|</span> grep <span class="s2">&#34;has address&#34;</span> <span class="p">|</span> grep <span class="s2">&#34;</span><span class="nv">$ip</span><span class="s2">&#34;</span><span class="p">;</span> <span class="k">then</span>
+  <span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$dnsrecord</span><span class="s2"> is currently set to </span><span class="nv">$ip</span><span class="s2">; no changes needed&#34;</span>
+  <span class="nb">exit</span>
+<span class="k">fi</span>
+<span class="c1"># if here, the dns record needs updating</span>
+<span class="c1"># get the zone id for the requested zone</span>
+<span class="nv">zoneid</span><span class="o">=</span><span class="k">$(</span>curl -s -X GET <span class="s2">&#34;https://api.cloudflare.com/client/v4/zones?name=</span><span class="nv">$zone</span><span class="s2">&amp;status=active&#34;</span> <span class="se">\
+</span><span class="se"></span>  -H <span class="s2">&#34;X-Auth-Email: </span><span class="nv">$EMAIL</span><span class="s2">&#34;</span> <span class="se">\
+</span><span class="se"></span>  -H <span class="s2">&#34;X-Auth-Key: </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="se">\
+</span><span class="se"></span>  -H <span class="s2">&#34;Content-Type: application/json&#34;</span> <span class="p">|</span> jq -r <span class="s1">&#39;{&#34;result&#34;}[] | .[0] | .id&#39;</span><span class="k">)</span>
+<span class="nb">echo</span> <span class="s2">&#34;Zoneid for </span><span class="nv">$zone</span><span class="s2"> is </span><span class="nv">$zoneid</span><span class="s2">&#34;</span>
+<span class="c1"># get the dns record id</span>
+<span class="nv">dnsrecordid</span><span class="o">=</span><span class="k">$(</span>curl -s -X GET <span class="s2">&#34;https://api.cloudflare.com/client/v4/zones/</span><span class="nv">$zoneid</span><span class="s2">/dns_records?type=A&amp;name=</span><span class="nv">$dnsrecord</span><span class="s2">&#34;</span> <span class="se">\
+</span><span class="se"></span>  -H <span class="s2">&#34;X-Auth-Email: </span><span class="nv">$EMAIL</span><span class="s2">&#34;</span> <span class="se">\
+</span><span class="se"></span>  -H <span class="s2">&#34;X-Auth-Key: </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="se">\
+</span><span class="se"></span>  -H <span class="s2">&#34;Content-Type: application/json&#34;</span> <span class="p">|</span> jq -r <span class="s1">&#39;{&#34;result&#34;}[] | .[0] | .id&#39;</span><span class="k">)</span>
+<span class="nb">echo</span> <span class="s2">&#34;DNSrecordid for </span><span class="nv">$dnsrecord</span><span class="s2"> is </span><span class="nv">$dnsrecordid</span><span class="s2">&#34;</span>
+<span class="c1"># update the record</span>
+curl -s -X PUT <span class="s2">&#34;https://api.cloudflare.com/client/v4/zones/</span><span class="nv">$zoneid</span><span class="s2">/dns_records/</span><span class="nv">$dnsrecordid</span><span class="s2">&#34;</span> <span class="se">\
+</span><span class="se"></span>  -H <span class="s2">&#34;X-Auth-Email: </span><span class="nv">$EMAIL</span><span class="s2">&#34;</span> <span class="se">\
+</span><span class="se"></span>  -H <span class="s2">&#34;X-Auth-Key: </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="se">\
+</span><span class="se"></span>  -H <span class="s2">&#34;Content-Type: application/json&#34;</span> <span class="se">\
+</span><span class="se"></span>  --data <span class="s2">&#34;{\&#34;type\&#34;:\&#34;A\&#34;,\&#34;name\&#34;:\&#34;</span><span class="nv">$dnsrecord</span><span class="s2">\&#34;,\&#34;content\&#34;:\&#34;</span><span class="nv">$ip</span><span class="s2">\&#34;,\&#34;ttl\&#34;:1,\&#34;proxied\&#34;:false}&#34;</span> <span class="p">|</span> jq
 </code></pre></div><p>Create a configmap from script, secret with cloudflare <code>EMAIL</code> and <code>GLOBAL_API_TOKEN</code>.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ k3s create configmap update-script --from-file=cloudfare-dns-update.sh
-$ k3s kubectl create secret generic cloudflare --from-literal=email=me@cloudflare.com <span style="color:#0ff;font-weight:bold">\
-</span><span style="color:#0ff;font-weight:bold"></span>--from-literal=api_key=1234567890abcdef1234567890abcdef
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ k3s create configmap update-script --from-file<span class="o">=</span>cloudfare-dns-update.sh
+$ k3s kubectl create secret generic cloudflare --from-literal<span class="o">=</span><span class="nv">email</span><span class="o">=</span>me@cloudflare.com <span class="se">\
+</span><span class="se"></span>--from-literal<span class="o">=</span><span class="nv">api_key</span><span class="o">=</span>1234567890abcdef1234567890abcdef
 </code></pre></div><p>Now create a kubernetes cronjob to update DNS record to right address.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="font-weight:bold">apiVersion</span>: batch/v1beta1
-<span style="font-weight:bold">kind</span>: CronJob
-<span style="font-weight:bold">metadata</span>:
-  <span style="font-weight:bold">name</span>: dns-update
-  <span style="font-weight:bold">namespace</span>: default
-<span style="font-weight:bold">spec</span>:
-  <span style="font-weight:bold">schedule</span>: <span style="color:#0ff;font-weight:bold">&#34;0 0 * * *&#34;</span>
-  <span style="font-weight:bold">concurrencyPolicy</span>: Forbid
-  <span style="font-weight:bold">jobTemplate</span>:
-    <span style="font-weight:bold">spec</span>:
-      <span style="font-weight:bold">template</span>:
-        <span style="font-weight:bold">spec</span>:
-          <span style="font-weight:bold">restartPolicy</span>: OnFailure
-          <span style="font-weight:bold">containers</span>:
-            - <span style="font-weight:bold">name</span>: dns-update
-              <span style="font-weight:bold">image</span>: e2eteam/dnsutils:1.1-linux-arm
-              <span style="font-weight:bold">command</span>: [<span style="color:#0ff;font-weight:bold">&#34;/bin/sh&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;-c&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;/scripts/cloudfare-dns-update.sh&#34;</span>]
-              <span style="font-weight:bold">env</span>:
-                - <span style="font-weight:bold">name</span>: API_KEY
-                  <span style="font-weight:bold">valueFrom</span>:
-                    <span style="font-weight:bold">secretKeyRef</span>:
-                      <span style="font-weight:bold">name</span>: cloudflare
-                      <span style="font-weight:bold">key</span>: api_key
-                - <span style="font-weight:bold">name</span>: EMAIL
-                  <span style="font-weight:bold">valueFrom</span>:
-                    <span style="font-weight:bold">secretKeyRef</span>:
-                      <span style="font-weight:bold">name</span>: cloudflare
-                      <span style="font-weight:bold">key</span>: email
-              <span style="font-weight:bold">volumeMounts</span>:
-                - <span style="font-weight:bold">name</span>: config-volume
-                  <span style="font-weight:bold">mountPath</span>: /scripts
-          <span style="font-weight:bold">volumes</span>:
-            - <span style="font-weight:bold">name</span>: config-volume
-              <span style="font-weight:bold">configMap</span>:
-                <span style="font-weight:bold">name</span>: update-script
-                <span style="font-weight:bold">defaultMode</span>: <span style="color:#ff0;font-weight:bold">0744</span>
-</code></pre></div><h3 id="traefik-and-lets-encrypt">Traefik and Let’s Encrypt</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">batch/v1beta1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">CronJob</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">dns-update</span><span class="w">
+</span><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">default</span><span class="w">
+</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;0 0 * * *&#34;</span><span class="w">
+</span><span class="w">  </span><span class="nt">concurrencyPolicy</span><span class="p">:</span><span class="w"> </span><span class="l">Forbid</span><span class="w">
+</span><span class="w">  </span><span class="nt">jobTemplate</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">template</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l">OnFailure</span><span class="w">
+</span><span class="w">          </span><span class="nt">containers</span><span class="p">:</span><span class="w">
+</span><span class="w">            </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">dns-update</span><span class="w">
+</span><span class="w">              </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">e2eteam/dnsutils:1.1-linux-arm</span><span class="w">
+</span><span class="w">              </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;/bin/sh&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;-c&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;/scripts/cloudfare-dns-update.sh&#34;</span><span class="p">]</span><span class="w">
+</span><span class="w">              </span><span class="nt">env</span><span class="p">:</span><span class="w">
+</span><span class="w">                </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">API_KEY</span><span class="w">
+</span><span class="w">                  </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w">
+</span><span class="w">                    </span><span class="nt">secretKeyRef</span><span class="p">:</span><span class="w">
+</span><span class="w">                      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">cloudflare</span><span class="w">
+</span><span class="w">                      </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">api_key</span><span class="w">
+</span><span class="w">                </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">EMAIL</span><span class="w">
+</span><span class="w">                  </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w">
+</span><span class="w">                    </span><span class="nt">secretKeyRef</span><span class="p">:</span><span class="w">
+</span><span class="w">                      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">cloudflare</span><span class="w">
+</span><span class="w">                      </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">email</span><span class="w">
+</span><span class="w">              </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">
+</span><span class="w">                </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">config-volume</span><span class="w">
+</span><span class="w">                  </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/scripts</span><span class="w">
+</span><span class="w">          </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">            </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">config-volume</span><span class="w">
+</span><span class="w">              </span><span class="nt">configMap</span><span class="p">:</span><span class="w">
+</span><span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">update-script</span><span class="w">
+</span><span class="w">                </span><span class="nt">defaultMode</span><span class="p">:</span><span class="w"> </span><span class="m">0744</span><span class="w">
+</span></code></pre></div><h3 id="traefik-and-lets-encrypt">Traefik and Let’s Encrypt</h3>
 <p>With a functioning cluster and the networking setup complete, the next task is to deploy a reverse proxy to manage the application routing.</p>
 <p>In Kubernetes we can deploy an Ingress Controller to achieve this. An Ingress Controller is an implementation of a reverse proxy which listens for changes to KubernetesIngress resources and updates it’s configuration accordingly.</p>
-<p>Traefik provides an detailed <a href="https://docs.traefik.io/v1.7/user-guide/kubernetes/">instructions</a> on kubernetes implementation but I customised it slightly to get things working with my setup.</p>
+<p>Traefik provides an detailed <a class="link" href="https://docs.traefik.io/v1.7/user-guide/kubernetes/"  target="_blank" rel="noopener"
+    >instructions</a> on kubernetes implementation but I customised it slightly to get things working with my setup.</p>
 <p>First create RoleBinding&rsquo;s.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ k3s kubectl apply -f https://raw.githubusercontent.com/containous/traefik/v1.7/examples/k8s/traefik-rbac.yaml
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ k3s kubectl apply -f https://raw.githubusercontent.com/containous/traefik/v1.7/examples/k8s/traefik-rbac.yaml
 </code></pre></div><p>Configure Let’s Encrypt to support HTTPS endpoint and automatically fetch certificates. I used Cloudflare as the DNS provider which configures Traefik to use DNS records for domain validation.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">[acme]
-    email = &#34;me@cloudflare.com&#34;
-    storage=&#34;./acme.json&#34;
-    entryPoint = &#34;https&#34;
-    acmeLogging=true
-    [acme.dnsChallenge]
-      provider = &#34;cloudflare&#34;
-      delayBeforeCheck = 0
-    [[acme.domains]]
-      main = &#34;*.home.vikaspogu.com&#34;
-      sans = [&#34;home.vikaspogu.com&#34;]
-</code></pre></div><p>The Deployment objects look like this:</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="font-weight:bold">apiVersion</span>: v1
-<span style="font-weight:bold">data</span>:
-  <span style="font-weight:bold">traefik.toml</span>: |<span style="color:#0ff;font-weight:bold">
-</span><span style="color:#0ff;font-weight:bold">    # traefik.toml
-</span><span style="color:#0ff;font-weight:bold">    logLevel = &#34;info&#34;
-</span><span style="color:#0ff;font-weight:bold">    debug = true
-</span><span style="color:#0ff;font-weight:bold">    insecureSkipVerify = true
-</span><span style="color:#0ff;font-weight:bold">    defaultEntryPoints = [&#34;http&#34;,&#34;https&#34;]
-</span><span style="color:#0ff;font-weight:bold">    [entryPoints]
-</span><span style="color:#0ff;font-weight:bold">      [entryPoints.http]
-</span><span style="color:#0ff;font-weight:bold">      address = &#34;:80&#34;
-</span><span style="color:#0ff;font-weight:bold">        [entryPoints.http.redirect]
-</span><span style="color:#0ff;font-weight:bold">        entryPoint = &#34;https&#34;
-</span><span style="color:#0ff;font-weight:bold">      [entryPoints.https]
-</span><span style="color:#0ff;font-weight:bold">      address = &#34;:443&#34;
-</span><span style="color:#0ff;font-weight:bold">        [entryPoints.https.tls]
-</span><span style="color:#0ff;font-weight:bold">    [api]
-</span><span style="color:#0ff;font-weight:bold">      dashboard = true
-</span><span style="color:#0ff;font-weight:bold">    [kubernetes]
-</span><span style="color:#0ff;font-weight:bold">    [acme]
-</span><span style="color:#0ff;font-weight:bold">    email = &#34;me@cloudflare.com&#34;
-</span><span style="color:#0ff;font-weight:bold">    storage=&#34;./acme.json&#34;
-</span><span style="color:#0ff;font-weight:bold">    entryPoint = &#34;https&#34;
-</span><span style="color:#0ff;font-weight:bold">    acmeLogging=true
-</span><span style="color:#0ff;font-weight:bold">    [acme.dnsChallenge]
-</span><span style="color:#0ff;font-weight:bold">      provider = &#34;cloudflare&#34;
-</span><span style="color:#0ff;font-weight:bold">      delayBeforeCheck = 0
-</span><span style="color:#0ff;font-weight:bold">    [[acme.domains]]
-</span><span style="color:#0ff;font-weight:bold">      main = &#34;*.home.vikaspogu.com&#34;
-</span><span style="color:#0ff;font-weight:bold">      sans = [&#34;home.vikaspogu.com&#34;]</span>    
-<span style="font-weight:bold">kind</span>: ConfigMap
-<span style="font-weight:bold">metadata</span>:
-  <span style="font-weight:bold">labels</span>:
-    <span style="font-weight:bold">app</span>: traefik
-  <span style="font-weight:bold">name</span>: traefik-config
-  <span style="font-weight:bold">namespace</span>: default
----
-<span style="font-weight:bold">apiVersion</span>: v1
-<span style="font-weight:bold">kind</span>: ServiceAccount
-<span style="font-weight:bold">metadata</span>:
-  <span style="font-weight:bold">namespace</span>: default
-  <span style="font-weight:bold">name</span>: traefik-ingress-controller
-  <span style="font-weight:bold">labels</span>:
-    <span style="font-weight:bold">app</span>: traefik
----
-<span style="font-weight:bold">kind</span>: Deployment
-<span style="font-weight:bold">apiVersion</span>: apps/v1
-<span style="font-weight:bold">metadata</span>:
-  <span style="font-weight:bold">namespace</span>: default
-  <span style="font-weight:bold">name</span>: traefik
-  <span style="font-weight:bold">labels</span>:
-    <span style="font-weight:bold">app</span>: traefik
-<span style="font-weight:bold">spec</span>:
-  <span style="font-weight:bold">replicas</span>: <span style="color:#ff0;font-weight:bold">1</span>
-  <span style="font-weight:bold">selector</span>:
-    <span style="font-weight:bold">matchLabels</span>:
-      <span style="font-weight:bold">app</span>: traefik
-  <span style="font-weight:bold">template</span>:
-    <span style="font-weight:bold">metadata</span>:
-      <span style="font-weight:bold">labels</span>:
-        <span style="font-weight:bold">app</span>: traefik
-    <span style="font-weight:bold">spec</span>:
-      <span style="font-weight:bold">serviceAccountName</span>: traefik-ingress-controller
-      <span style="font-weight:bold">containers</span>:
-        - <span style="font-weight:bold">name</span>: traefik
-          <span style="font-weight:bold">image</span>: traefik:1.7.4
-          <span style="font-weight:bold">ports</span>:
-            - <span style="font-weight:bold">name</span>: http
-              <span style="font-weight:bold">containerPort</span>: <span style="color:#ff0;font-weight:bold">80</span>
-            - <span style="font-weight:bold">name</span>: https
-              <span style="font-weight:bold">containerPort</span>: <span style="color:#ff0;font-weight:bold">443</span>
-            - <span style="font-weight:bold">name</span>: admin
-              <span style="font-weight:bold">containerPort</span>: <span style="color:#ff0;font-weight:bold">8080</span>
-          <span style="font-weight:bold">env</span>:
-            - <span style="font-weight:bold">name</span>: CF_API_EMAIL
-              <span style="font-weight:bold">valueFrom</span>:
-                <span style="font-weight:bold">secretKeyRef</span>:
-                  <span style="font-weight:bold">name</span>: cloudflare
-                  <span style="font-weight:bold">key</span>: email
-            - <span style="font-weight:bold">name</span>: CF_API_KEY
-              <span style="font-weight:bold">valueFrom</span>:
-                <span style="font-weight:bold">secretKeyRef</span>:
-                  <span style="font-weight:bold">name</span>: cloudflare
-                  <span style="font-weight:bold">key</span>: api_key
-          <span style="font-weight:bold">volumeMounts</span>:
-            - <span style="font-weight:bold">mountPath</span>: <span style="color:#0ff;font-weight:bold">&#34;/config&#34;</span>
-              <span style="font-weight:bold">name</span>: <span style="color:#0ff;font-weight:bold">&#34;config&#34;</span>
-          <span style="font-weight:bold">args</span>:
-            - --configfile=/config/traefik.toml
-      <span style="font-weight:bold">volumes</span>:
-        - <span style="font-weight:bold">name</span>: config
-          <span style="font-weight:bold">configMap</span>:
-            <span style="font-weight:bold">name</span>: traefik-config
----
-<span style="font-weight:bold">kind</span>: Service
-<span style="font-weight:bold">apiVersion</span>: v1
-<span style="font-weight:bold">metadata</span>:
-  <span style="font-weight:bold">name</span>: traefik-ingress-service
-  <span style="font-weight:bold">namespace</span>: default
-<span style="font-weight:bold">spec</span>:
-  <span style="font-weight:bold">selector</span>:
-    <span style="font-weight:bold">app</span>: traefik
-  <span style="font-weight:bold">ports</span>:
-    - <span style="font-weight:bold">protocol</span>: TCP
-      <span style="font-weight:bold">port</span>: <span style="color:#ff0;font-weight:bold">80</span>
-      <span style="font-weight:bold">name</span>: http
-    - <span style="font-weight:bold">protocol</span>: TCP
-      <span style="font-weight:bold">port</span>: <span style="color:#ff0;font-weight:bold">443</span>
-      <span style="font-weight:bold">name</span>: https
-    - <span style="font-weight:bold">protocol</span>: TCP
-      <span style="font-weight:bold">port</span>: <span style="color:#ff0;font-weight:bold">8080</span>
-      <span style="font-weight:bold">name</span>: admin
-  <span style="font-weight:bold">externalIPs</span>:
-    - <span style="color:#ff0;font-weight:bold">192.168.0.101</span> <span style="color:#007f7f"># This is the node address</span>
-</code></pre></div><p>Deploy Ingress controller for traefik dashboard.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
-<span style="font-weight:bold">apiVersion</span>: extensions/v1beta1
-<span style="font-weight:bold">kind</span>: Ingress
-<span style="font-weight:bold">metadata</span>:
-  <span style="font-weight:bold">name</span>: traefik-web-ui
-  <span style="font-weight:bold">namespace</span>: default
-<span style="font-weight:bold">spec</span>:
-  <span style="font-weight:bold">rules</span>:
-    - <span style="font-weight:bold">host</span>: traefik.home.vikaspogu.com
-      <span style="font-weight:bold">http</span>:
-        <span style="font-weight:bold">paths</span>:
-          - <span style="font-weight:bold">path</span>: /
-            <span style="font-weight:bold">backend</span>:
-              <span style="font-weight:bold">serviceName</span>: traefik-ingress-service
-              <span style="font-weight:bold">servicePort</span>: admin
-</code></pre></div><p>Voila!</p>
-<p><img src="https://vikaspogu.dev/images/traefik-dashboard.png" alt="Traefik UI"></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="p">[</span><span class="l">acme]</span><span class="w">
+</span><span class="w">    </span><span class="l">email = &#34;me@cloudflare.com&#34;</span><span class="w">
+</span><span class="w">    </span><span class="l">storage=&#34;./acme.json&#34;</span><span class="w">
+</span><span class="w">    </span><span class="l">entryPoint = &#34;https&#34;</span><span class="w">
+</span><span class="w">    </span><span class="l">acmeLogging=true</span><span class="w">
+</span><span class="w">    </span><span class="p">[</span><span class="l">acme.dnsChallenge]</span><span class="w">
+</span><span class="w">      </span><span class="l">provider = &#34;cloudflare&#34;</span><span class="w">
+</span><span class="w">      </span><span class="l">delayBeforeCheck = 0</span><span class="w">
+</span><span class="w">    </span><span class="p">[[</span><span class="l">acme.domains]]</span><span class="w">
+</span><span class="w">      </span><span class="l">main = &#34;*.home.vikaspogu.com&#34;</span><span class="w">
+</span><span class="w">      </span><span class="l">sans = [&#34;home.vikaspogu.com&#34;]</span><span class="w">
+</span></code></pre></div><p>The Deployment objects look like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span><span class="w"></span><span class="nt">data</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">traefik.toml</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span><span class="sd">    # traefik.toml
+</span><span class="sd">    logLevel = &#34;info&#34;
+</span><span class="sd">    debug = true
+</span><span class="sd">    insecureSkipVerify = true
+</span><span class="sd">    defaultEntryPoints = [&#34;http&#34;,&#34;https&#34;]
+</span><span class="sd">    [entryPoints]
+</span><span class="sd">      [entryPoints.http]
+</span><span class="sd">      address = &#34;:80&#34;
+</span><span class="sd">        [entryPoints.http.redirect]
+</span><span class="sd">        entryPoint = &#34;https&#34;
+</span><span class="sd">      [entryPoints.https]
+</span><span class="sd">      address = &#34;:443&#34;
+</span><span class="sd">        [entryPoints.https.tls]
+</span><span class="sd">    [api]
+</span><span class="sd">      dashboard = true
+</span><span class="sd">    [kubernetes]
+</span><span class="sd">    [acme]
+</span><span class="sd">    email = &#34;me@cloudflare.com&#34;
+</span><span class="sd">    storage=&#34;./acme.json&#34;
+</span><span class="sd">    entryPoint = &#34;https&#34;
+</span><span class="sd">    acmeLogging=true
+</span><span class="sd">    [acme.dnsChallenge]
+</span><span class="sd">      provider = &#34;cloudflare&#34;
+</span><span class="sd">      delayBeforeCheck = 0
+</span><span class="sd">    [[acme.domains]]
+</span><span class="sd">      main = &#34;*.home.vikaspogu.com&#34;
+</span><span class="sd">      sans = [&#34;home.vikaspogu.com&#34;]</span><span class="w">    
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ConfigMap</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l">traefik</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">traefik-config</span><span class="w">
+</span><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">default</span><span class="w">
+</span><span class="w"></span><span class="nn">---</span><span class="w">
+</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ServiceAccount</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">default</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">traefik-ingress-controller</span><span class="w">
+</span><span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l">traefik</span><span class="w">
+</span><span class="w"></span><span class="nn">---</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Deployment</span><span class="w">
+</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">apps/v1</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">default</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">traefik</span><span class="w">
+</span><span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l">traefik</span><span class="w">
+</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l">traefik</span><span class="w">
+</span><span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">labels</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l">traefik</span><span class="w">
+</span><span class="w">    </span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">serviceAccountName</span><span class="p">:</span><span class="w"> </span><span class="l">traefik-ingress-controller</span><span class="w">
+</span><span class="w">      </span><span class="nt">containers</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">traefik</span><span class="w">
+</span><span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">traefik:1.7.4</span><span class="w">
+</span><span class="w">          </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span><span class="w">            </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">http</span><span class="w">
+</span><span class="w">              </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="m">80</span><span class="w">
+</span><span class="w">            </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">https</span><span class="w">
+</span><span class="w">              </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="m">443</span><span class="w">
+</span><span class="w">            </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">admin</span><span class="w">
+</span><span class="w">              </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="m">8080</span><span class="w">
+</span><span class="w">          </span><span class="nt">env</span><span class="p">:</span><span class="w">
+</span><span class="w">            </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">CF_API_EMAIL</span><span class="w">
+</span><span class="w">              </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w">
+</span><span class="w">                </span><span class="nt">secretKeyRef</span><span class="p">:</span><span class="w">
+</span><span class="w">                  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">cloudflare</span><span class="w">
+</span><span class="w">                  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">email</span><span class="w">
+</span><span class="w">            </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">CF_API_KEY</span><span class="w">
+</span><span class="w">              </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w">
+</span><span class="w">                </span><span class="nt">secretKeyRef</span><span class="p">:</span><span class="w">
+</span><span class="w">                  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">cloudflare</span><span class="w">
+</span><span class="w">                  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">api_key</span><span class="w">
+</span><span class="w">          </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">
+</span><span class="w">            </span>- <span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/config&#34;</span><span class="w">
+</span><span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;config&#34;</span><span class="w">
+</span><span class="w">          </span><span class="nt">args</span><span class="p">:</span><span class="w">
+</span><span class="w">            </span>- --<span class="l">configfile=/config/traefik.toml</span><span class="w">
+</span><span class="w">      </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">config</span><span class="w">
+</span><span class="w">          </span><span class="nt">configMap</span><span class="p">:</span><span class="w">
+</span><span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">traefik-config</span><span class="w">
+</span><span class="w"></span><span class="nn">---</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Service</span><span class="w">
+</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">traefik-ingress-service</span><span class="w">
+</span><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">default</span><span class="w">
+</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l">traefik</span><span class="w">
+</span><span class="w">  </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l">TCP</span><span class="w">
+</span><span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">80</span><span class="w">
+</span><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">http</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l">TCP</span><span class="w">
+</span><span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">443</span><span class="w">
+</span><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">https</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l">TCP</span><span class="w">
+</span><span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">8080</span><span class="w">
+</span><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">admin</span><span class="w">
+</span><span class="w">  </span><span class="nt">externalIPs</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="m">192.168.0.101</span><span class="w"> </span><span class="c"># This is the node address</span><span class="w">
+</span></code></pre></div><p>Deploy Ingress controller for traefik dashboard.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nn">---</span><span class="w">
+</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">extensions/v1beta1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Ingress</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">traefik-web-ui</span><span class="w">
+</span><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">default</span><span class="w">
+</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">rules</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l">traefik.home.vikaspogu.com</span><span class="w">
+</span><span class="w">      </span><span class="nt">http</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">paths</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span>- <span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/</span><span class="w">
+</span><span class="w">            </span><span class="nt">backend</span><span class="p">:</span><span class="w">
+</span><span class="w">              </span><span class="nt">serviceName</span><span class="p">:</span><span class="w"> </span><span class="l">traefik-ingress-service</span><span class="w">
+</span><span class="w">              </span><span class="nt">servicePort</span><span class="p">:</span><span class="w"> </span><span class="l">admin</span><span class="w">
+</span></code></pre></div><p>Voila!</p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 202; 
+			flex-basis: 486px"
+	>
+	<a href="/posts/kubernetes-home-cluster-traefik/traefik-dashboard.png" data-size="1256x619">
+		<img src="/posts/kubernetes-home-cluster-traefik/traefik-dashboard.png"
+			width="1256"
+			height="619"
+			srcset="/posts/kubernetes-home-cluster-traefik/traefik-dashboard_hue6490dffc57f40edeff81be5f7d7d71d_86935_480x0_resize_box_3.png 480w, /posts/kubernetes-home-cluster-traefik/traefik-dashboard_hue6490dffc57f40edeff81be5f7d7d71d_86935_1024x0_resize_box_3.png 1024w"
+			loading="lazy"
+			alt="Traefik UI">
+	</a>
+	
+	<figcaption>Traefik UI</figcaption>
+	
+</figure></p>
 <h3 id="deploy-kubernetes-dashboard">Deploy kubernetes dashboard</h3>
-<p>Follow these instructions to <a href="https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/">deploy dashboard UI</a>.</p>
+<p>Follow these instructions to <a class="link" href="https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/"  target="_blank" rel="noopener"
+    >deploy dashboard UI</a>.</p>
 <p>Create ingress controller to access dashboard.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
-<span style="font-weight:bold">apiVersion</span>: extensions/v1beta1
-<span style="font-weight:bold">kind</span>: Ingress
-<span style="font-weight:bold">metadata</span>:
-  <span style="font-weight:bold">name</span>: kubernetes-dashboard-ingress
-  <span style="font-weight:bold">namespace</span>: kubernetes-dashboard
-<span style="font-weight:bold">spec</span>:
-  <span style="font-weight:bold">rules</span>:
-    - <span style="font-weight:bold">host</span>: kubernetes-dashboard.home.vikaspogu.com
-      <span style="font-weight:bold">http</span>:
-        <span style="font-weight:bold">paths</span>:
-          - <span style="font-weight:bold">backend</span>:
-              <span style="font-weight:bold">serviceName</span>: kubernetes-dashboard
-              <span style="font-weight:bold">servicePort</span>: <span style="color:#ff0;font-weight:bold">443</span>
-</code></pre></div>
-      </div>
-
-      <footer>
-        
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nn">---</span><span class="w">
+</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">extensions/v1beta1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Ingress</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">kubernetes-dashboard-ingress</span><span class="w">
+</span><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">kubernetes-dashboard</span><span class="w">
+</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">rules</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l">kubernetes-dashboard.home.vikaspogu.com</span><span class="w">
+</span><span class="w">      </span><span class="nt">http</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">paths</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span>- <span class="nt">backend</span><span class="p">:</span><span class="w">
+</span><span class="w">              </span><span class="nt">serviceName</span><span class="p">:</span><span class="w"> </span><span class="l">kubernetes-dashboard</span><span class="w">
+</span><span class="w">              </span><span class="nt">servicePort</span><span class="p">:</span><span class="w"> </span><span class="m">443</span><span class="w">
+</span></code></pre></div>
+</section>
 
 
+    <footer class="article-footer">
+    
+    <section class="article-tags">
         
+            <a href="/tags/k3s/">k3s</a>
         
+            <a href="/tags/traefik/">traefik</a>
         
-      </footer>
-    </article>
+            <a href="/tags/raspberry-pi/">raspberry-pi</a>
+        
+    </section>
+
+
+    </footer>
+
 
     
-  </section>
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2021 Vikas Pogu&#39;s Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
 
     </div>
 
-    <footer class="footer">
-  <section class="container">
-    
-    
-    
-    
-  </section>
-</footer>
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
 
-  </main>
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
 
-  
 
-</body>
 
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#setup">Setup</a></li>
+        <li><a href="#setting-up-a-pi-kubernetes-cluster">Setting up a Pi Kubernetes Cluster</a></li>
+        <li><a href="#dns-and-routing">DNS and Routing</a></li>
+        <li><a href="#traefik-and-lets-encrypt">Traefik and Let’s Encrypt</a></li>
+        <li><a href="#deploy-kubernetes-dashboard">Deploy kubernetes dashboard</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
 </html>

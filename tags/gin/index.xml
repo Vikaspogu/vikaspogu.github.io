@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>gin on vikaspogu</title>
+    <title>gin on Vikas Pogu&#39;s Blog</title>
     <link>https://vikaspogu.dev/tags/gin/</link>
-    <description>Recent content in gin on vikaspogu</description>
+    <description>Recent content in gin on Vikas Pogu&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Mon, 16 Dec 2019 15:29:34 -0500</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/gin/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Mon, 16 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/gin/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Basic Authentication in Go with Gin</title>
       <link>https://vikaspogu.dev/posts/golang-basicauth-gin/</link>
-      <pubDate>Mon, 16 Dec 2019 15:29:34 -0500</pubDate>
+      <pubDate>Mon, 16 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/posts/golang-basicauth-gin/</guid>
       <description>This is short post on adding basic authentication to go applications. Our sample application uses gin web framework

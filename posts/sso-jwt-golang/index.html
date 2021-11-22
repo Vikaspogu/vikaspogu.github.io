@@ -1,273 +1,553 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Recently I was working on a React project with Go backend using Gin web framework. Keycloak was the authentication mechanism for the frontend; I also wanted to secure the backend using JSON Web Tokens which was provided by Keycloak on every login. Setup for jwt verification in Go was easy.
+First, copy RS256 algorithm public key value from Keycloak
+ sso_setup 
+Send the token as Authorization header
+axios .get(BACKEND_URL.concat(&amp;#34;sampleendpoint&amp;#34;), { headers: { Authorization: this.'><title>Go JWT Authentication with keycloak</title>
 
-<head>
-  <meta name="google-site-verification" content="5JztMFjgtrbhV0pe_cLh7EH3c0NJBY7sVrnd7x86pMI" />
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel='canonical' href='https://vikaspogu.dev/posts/sso-jwt-golang/'>
 
-  
-  <meta name="author" content="Vikas Pogu">
-  
-  <meta name="description" content="Vikas Pogu&#39;s Blog">
-  
-  <meta name="keywords" content="blog,developer">
-
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Go JWT Authentication with keycloak"/>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Go JWT Authentication with keycloak'>
+<meta property='og:description' content='Recently I was working on a React project with Go backend using Gin web framework. Keycloak was the authentication mechanism for the frontend; I also wanted to secure the backend using JSON Web Tokens which was provided by Keycloak on every login. Setup for jwt verification in Go was easy.
+First, copy RS256 algorithm public key value from Keycloak
+ sso_setup 
+Send the token as Authorization header
+axios .get(BACKEND_URL.concat(&amp;#34;sampleendpoint&amp;#34;), { headers: { Authorization: this.'>
+<meta property='og:url' content='https://vikaspogu.dev/posts/sso-jwt-golang/'>
+<meta property='og:site_name' content='Vikas Pogu&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='RedHat SSO' /><meta property='article:tag' content='Golang' /><meta property='article:tag' content='keycloak' /><meta property='article:tag' content='JWT' /><meta property='article:published_time' content='2019-07-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2019-07-27T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Go JWT Authentication with keycloak">
 <meta name="twitter:description" content="Recently I was working on a React project with Go backend using Gin web framework. Keycloak was the authentication mechanism for the frontend; I also wanted to secure the backend using JSON Web Tokens which was provided by Keycloak on every login. Setup for jwt verification in Go was easy.
 First, copy RS256 algorithm public key value from Keycloak
+ sso_setup 
 Send the token as Authorization header
-axios .get(BACKEND_URL.concat(&#34;sampleendpoint&#34;), { headers: { Authorization: this."/>
+axios .get(BACKEND_URL.concat(&amp;#34;sampleendpoint&amp;#34;), { headers: { Authorization: this.">
+    </head>
+    <body class="
+    article-page 
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
 
-  <meta property="og:title" content="Go JWT Authentication with keycloak" />
-<meta property="og:description" content="Recently I was working on a React project with Go backend using Gin web framework. Keycloak was the authentication mechanism for the frontend; I also wanted to secure the backend using JSON Web Tokens which was provided by Keycloak on every login. Setup for jwt verification in Go was easy.
-First, copy RS256 algorithm public key value from Keycloak
-Send the token as Authorization header
-axios .get(BACKEND_URL.concat(&#34;sampleendpoint&#34;), { headers: { Authorization: this." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://vikaspogu.dev/posts/sso-jwt-golang/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2019-07-27T00:00:00+00:00" />
-<meta property="article:modified_time" content="2019-07-27T00:00:00+00:00" />
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
 
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        on-phone--column extended
+    
+">
+    
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
 
-
-  
-  <base href="https://vikaspogu.dev/posts/sso-jwt-golang/">
-  
-  <title>
-  Go JWT Authentication with keycloak · vikaspogu
-</title>
-
-  
-  <link rel="canonical" href="https://vikaspogu.dev/posts/sso-jwt-golang/">
-  
-
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700"
-    rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
-    integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-    integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
-
-  
-  
-  
-  <link rel="stylesheet" href="https://vikaspogu.dev/css/coder.min.28d751104f30c16da1aa1bb04015cbe662cacfe0d1b01af4f2240ad58580069c.css" integrity="sha256-KNdREE8wwW2hqhuwQBXL5mLKz&#43;DRsBr08iQK1YWABpw="
-    crossorigin="anonymous" media="screen" />
-  
-
-  
-
-  
-  
-  
-  
-  <link rel="stylesheet" href="https://vikaspogu.dev/css/coder-dark.min.83a2010dac9f59f943b3004cd6c4f230507ad036da635d3621401d42ec4e2835.css" integrity="sha256-g6IBDayfWflDswBM1sTyMFB60DbaY102IUAdQuxOKDU="
-    crossorigin="anonymous" media="screen" />
-  
-  
-
-  
-
-  
-
-  <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-32x32.png"
-    sizes="32x32">
-  <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-16x16.png"
-    sizes="16x16">
-
-  <meta name="generator" content="Hugo 0.85.0" />
-</head>
-
-
-
-
-
-
-<body class="colorscheme-auto">
-  <main class="wrapper">
-    <nav class="navigation">
-  <section class="container">
-    <a class="navigation-title" href="https://vikaspogu.dev/">
-      vikaspogu
-    </a>
-    <input type="checkbox" id="menu-toggle" />
-    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
-    <ul class="navigation-list">
-      
-      
-      <li class="navigation-item">
-        <a class="navigation-link" href="https://vikaspogu.dev/about/">About</a>
-      </li>
-      
-      <li class="navigation-item">
-        <a class="navigation-link" href="https://vikaspogu.dev/posts/">Blog</a>
-      </li>
-      
-      
-      
-    </ul>
-  </section>
-</nav>
-<script type="application/ld+json">
-    {
-        "@context" : "http://schema.org",
-        "@type" : "BlogPosting",
-        "mainEntityOfPage": {
-             "@type": "WebPage",
-             "@id": "https:\/\/vikaspogu.dev"
-        },
-        "articleSection" : "posts",
-        "name" : "Go JWT Authentication with keycloak",
-        "headline" : "Go JWT Authentication with keycloak",
-        "description" : "Recently I was working on a React project with Go backend using Gin web framework. Keycloak was the authentication mechanism for the frontend; I also wanted to secure the backend using JSON Web Tokens which was provided by Keycloak on every login. Setup for jwt verification in Go was easy.\nFirst, copy RS256 algorithm public key value from Keycloak\nSend the token as Authorization header\naxios .get(BACKEND_URL.concat(\u0026#34;sampleendpoint\u0026#34;), { headers: { Authorization: this.",
-        "inLanguage" : "en-US",
-        "author" : "Vikas Pogu",
-        "creator" : "Vikas Pogu",
-        "publisher": "Vikas Pogu",
-        "accountablePerson" : "Vikas Pogu",
-        "copyrightHolder" : "Vikas Pogu",
-        "copyrightYear" : "2019",
-        "datePublished": "2019-07-27 00:00:00 \u002b0000 UTC",
-        "dateModified" : "2019-07-27 00:00:00 \u002b0000 UTC",
-        "url" : "https:\/\/vikaspogu.dev\/posts\/sso-jwt-golang\/",
-        "wordCount" : "284",
-        "keywords" : [ "RedHat SSO","Golang","keycloak","JWT","Blog" ]
-    }
-    </script>
-
-    <div class="content">
-      
-  <section class="container post">
-    <article>
-      <header>
-        <div class="post-title">
-          <h1 class="title">Go JWT Authentication with keycloak</h1>
-        </div>
-        <div class="post-meta">
-          <div class="date">
-            <span class="posted-on">
-              <i class="fas fa-calendar"></i>
-              <time datetime='2019-07-27T00:00:00Z'>
-                July 27, 2019
-              </time>
-            </span>
-            <span class="reading-time">
-              <i class="fas fa-clock"></i>
-              2 minutes read
-            </span>
-          </div>
-          
-          <div class="tags">
-  <i class="fas fa-tag"></i>
-    <a href="https://vikaspogu.dev/tags/redhat-sso/">RedHat SSO</a>
-      <span class="separator">•</span>
-    <a href="https://vikaspogu.dev/tags/golang/">Golang</a>
-      <span class="separator">•</span>
-    <a href="https://vikaspogu.dev/tags/keycloak/">keycloak</a>
-      <span class="separator">•</span>
-    <a href="https://vikaspogu.dev/tags/jwt/">JWT</a></div>
-
-        </div>
-      </header>
-
-      <div>
-        <p>Recently I was working on a React project with Go backend using Gin web framework. Keycloak was the authentication mechanism for the frontend; I also wanted to secure the backend using JSON Web Tokens which was provided by Keycloak on every login. Setup for jwt verification in Go was easy.</p>
-<p>First, copy <code>RS256</code> algorithm public key value from Keycloak</p>
-<p><img src="https://vikaspogu.dev/images/sso-key.png" alt="sso_setup"></p>
-<p>Send the token as <code>Authorization</code> header</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">axios
-  .get(BACKEND_URL.concat(<span style="color:#0ff;font-weight:bold">&#34;sampleendpoint&#34;</span>), {
-    headers: {
-      Authorization: <span style="color:#fff;font-weight:bold">this</span>.state.token
-    }
-  })
-  .then(res =&gt; {});
-</code></pre></div><p>Now Go-backend setup; let&rsquo;s install the <code>jwt-go</code>, <code>gin-cors</code> libraries:</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ go get -u github.com/dgrijalva/jwt-go
-$ go get -u github.com/gin-contrib/cors
-</code></pre></div><p>Add cors config to the router to allow <code>authorization</code> header</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">router.Use(cors.New(cors.Config{
-  AllowOrigins:     []<span style="color:#fff;font-weight:bold">string</span>{<span style="color:#0ff;font-weight:bold">&#34;*&#34;</span>},
-  AllowMethods:     []<span style="color:#fff;font-weight:bold">string</span>{<span style="color:#0ff;font-weight:bold">&#34;GET&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;POST&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;PUT&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;DELETE&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;OPTIONS&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;HEAD&#34;</span>},
-  AllowHeaders:     []<span style="color:#fff;font-weight:bold">string</span>{<span style="color:#0ff;font-weight:bold">&#34;Origin&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;ontent-type&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;accept&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;authorization&#34;</span>},
-  ExposeHeaders:    []<span style="color:#fff;font-weight:bold">string</span>{<span style="color:#0ff;font-weight:bold">&#34;Content-Length&#34;</span>},
-  AllowCredentials: <span style="color:#fff;font-weight:bold">true</span>,
-  MaxAge:           <span style="color:#ff0;font-weight:bold">12</span> * time.Hour,
-}))
-</code></pre></div><p>Let&rsquo;s create a custom handler; add the public key from Keycloak and pass it to <code>ParseRSAPublicKeyFromPEM</code> which will return a key. The key and token are then validated</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#fff;font-weight:bold">func</span> VerifyToken(c *gin.Context) {
-  SecretKey := <span style="color:#0ff;font-weight:bold">&#34;-----BEGIN CERTIFICATE-----\n&#34;</span>+
-  <span style="color:#0ff;font-weight:bold">&#34;MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApn
-</span><span style="color:#0ff;font-weight:bold">  ......
-</span><span style="color:#0ff;font-weight:bold">  +wnyuCHaCHp8P1yCnwIDAQAB&#34;</span> + <span style="color:#0ff;font-weight:bold">&#34;\n-----END CERTIFICATE-----&#34;</span>
-
-	reqToken := c.GetHeader(<span style="color:#0ff;font-weight:bold">&#34;Authorization&#34;</span>)
-
-	key, er := jwt.ParseRSAPublicKeyFromPEM([]<span style="color:#fff;font-weight:bold">byte</span>(SecretKey))
-	<span style="color:#fff;font-weight:bold">if</span> er != <span style="color:#fff;font-weight:bold">nil</span> {
-		fmt.Println(er)
-		c.Abort()
-		c.Writer.WriteHeader(http.StatusUnauthorized)
-		c.Writer.Write([]<span style="color:#fff;font-weight:bold">byte</span>(<span style="color:#0ff;font-weight:bold">&#34;Unauthorized&#34;</span>))
-		<span style="color:#fff;font-weight:bold">return</span>
-	}
-
-	token, err := jwt.Parse(reqToken, <span style="color:#fff;font-weight:bold">func</span>(token *jwt.Token) (<span style="color:#fff;font-weight:bold">interface</span>{}, <span style="color:#fff;font-weight:bold">error</span>) {
-		<span style="color:#007f7f">// Don&#39;t forget to validate the alg is what you expect:
-</span><span style="color:#007f7f"></span>		<span style="color:#fff;font-weight:bold">if</span> _, ok := token.Method.(*jwt.SigningMethodRSA); !ok {
-			<span style="color:#fff;font-weight:bold">return</span> <span style="color:#fff;font-weight:bold">nil</span>, fmt.Errorf(<span style="color:#0ff;font-weight:bold">&#34;Unexpected signing method: %v&#34;</span>, token.Header[<span style="color:#0ff;font-weight:bold">&#34;alg&#34;</span>])
-		}
-		<span style="color:#fff;font-weight:bold">return</span> key, <span style="color:#fff;font-weight:bold">nil</span>
-	})
-
-	<span style="color:#fff;font-weight:bold">if</span> err != <span style="color:#fff;font-weight:bold">nil</span> {
-		fmt.Println(err)
-		c.Abort()
-		c.Writer.WriteHeader(http.StatusUnauthorized)
-		c.Writer.Write([]<span style="color:#fff;font-weight:bold">byte</span>(<span style="color:#0ff;font-weight:bold">&#34;Unauthorized&#34;</span>))
-		<span style="color:#fff;font-weight:bold">return</span>
-	}
-
-	<span style="color:#fff;font-weight:bold">if</span> _, ok := token.Claims.(jwt.MapClaims); ok &amp;&amp; token.Valid {
-		fmt.Println(<span style="color:#0ff;font-weight:bold">&#34;token is valid&#34;</span>)
-	}
-}
-</code></pre></div><p>Add the handler to the route</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">router.GET(<span style="color:#0ff;font-weight:bold">&#34;/sample&#34;</span>, VerifyToken(), handlers.SampleEndpoint)
-</code></pre></div><p>That&rsquo;s, it done, If the token is valid, you will get the data from backend or else you&rsquo;ll see <code>401 Unauthorized</code></p>
-
-      </div>
-
-      <footer>
+    <header class="site-info">
         
+            
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/myAvatar_hua882c21ea061ff9a690a266cf38baf1a_68117_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <h1 class="site-name"><a href="/">Vikas Pogu&#39;s Blog</a></h1>
+        <h2 class="site-description">OpenShift, Kubernetes, Docker and more</h2><ol class="social-menu">
+                
+                    <li>
+                        <a 
+                            href='https://github.com/vikaspogu'
+                            target="_blank"
+                            title="GitHub"
+                        >
+                            
+                            
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
 
 
+
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a 
+                            href='https://www.linkedin.com/in/vikaspogu/'
+                            target="_blank"
+                            title="Linkedin"
+                        >
+                            
+                            
+                                <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg 
+    role="img" 
+    xmlns="http://www.w3.org/2000/svg" 
+    width="1000mm"
+    height="1000mm"
+    viewBox="0 0 1000 1000"
+    style="max-width:1.6em; height: auto;">
+    
+    <path 
+        id="path" 
+        style="opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;"
+        d=" M 336 332C 336 332 336 789 336 789C 336 789 211 789 211 789C 211 789 211 332 211 332C 211 332 336 332 336 332M 346 206C 346 206 346 206 346 206C 346 247 313 280 273 280C 233 280 201 247 201 206C 201 166 233 133 273 133C 313 133 346 166 346 206M 834 508C 834 508 834 789 834 789C 834 789 709 789 709 789C 709 789 709 556 709 556C 709 416 543 427 543 556C 543 556 543 789 543 789C 543 789 419 789 419 789C 419 789 419 332 419 332C 419 332 543 332 543 332C 543 332 543 406 543 406C 601 298 834 290 834 508"
+        transform="">
+    </path>    
+</svg>
+                            
+                        </a>
+                    </li>
+                
+            </ol></header>
+
+    <ol class="menu" id="main-menu">
         
         
         
-      </footer>
-    </article>
+
+        <li >
+            <a href='/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about-me/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
 
     
-  </section>
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/posts/sso-jwt-golang/">Go JWT Authentication with keycloak</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 27, 2019</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <p>Recently I was working on a React project with Go backend using Gin web framework. Keycloak was the authentication mechanism for the frontend; I also wanted to secure the backend using JSON Web Tokens which was provided by Keycloak on every login. Setup for jwt verification in Go was easy.</p>
+<p>First, copy <code>RS256</code> algorithm public key value from Keycloak</p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 330; 
+			flex-basis: 792px"
+	>
+	<a href="/posts/sso-jwt-golang/sso-key.png" data-size="680x206">
+		<img src="/posts/sso-jwt-golang/sso-key.png"
+			width="680"
+			height="206"
+			srcset="/posts/sso-jwt-golang/sso-key_hu67e703aec83f3e78ffec7010277f60d9_87320_480x0_resize_box_3.png 480w, /posts/sso-jwt-golang/sso-key_hu67e703aec83f3e78ffec7010277f60d9_87320_1024x0_resize_box_3.png 1024w"
+			loading="lazy"
+			alt="sso_setup">
+	</a>
+	
+	<figcaption>sso_setup</figcaption>
+	
+</figure></p>
+<p>Send the token as <code>Authorization</code> header</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">axios</span>
+  <span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">BACKEND_URL</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="s2">&#34;sampleendpoint&#34;</span><span class="p">),</span> <span class="p">{</span>
+    <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">Authorization</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">token</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="p">=&gt;</span> <span class="p">{});</span>
+</code></pre></div><p>Now Go-backend setup; let&rsquo;s install the <code>jwt-go</code>, <code>gin-cors</code> libraries:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ go get -u github.com/dgrijalva/jwt-go
+$ go get -u github.com/gin-contrib/cors
+</code></pre></div><p>Add cors config to the router to allow <code>authorization</code> header</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="nx">router</span><span class="p">.</span><span class="nf">Use</span><span class="p">(</span><span class="nx">cors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="nx">cors</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
+  <span class="nx">AllowOrigins</span><span class="p">:</span>     <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;*&#34;</span><span class="p">},</span>
+  <span class="nx">AllowMethods</span><span class="p">:</span>     <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;GET&#34;</span><span class="p">,</span> <span class="s">&#34;POST&#34;</span><span class="p">,</span> <span class="s">&#34;PUT&#34;</span><span class="p">,</span> <span class="s">&#34;DELETE&#34;</span><span class="p">,</span> <span class="s">&#34;OPTIONS&#34;</span><span class="p">,</span> <span class="s">&#34;HEAD&#34;</span><span class="p">},</span>
+  <span class="nx">AllowHeaders</span><span class="p">:</span>     <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;Origin&#34;</span><span class="p">,</span> <span class="s">&#34;ontent-type&#34;</span><span class="p">,</span> <span class="s">&#34;accept&#34;</span><span class="p">,</span> <span class="s">&#34;authorization&#34;</span><span class="p">},</span>
+  <span class="nx">ExposeHeaders</span><span class="p">:</span>    <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;Content-Length&#34;</span><span class="p">},</span>
+  <span class="nx">AllowCredentials</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">MaxAge</span><span class="p">:</span>           <span class="mi">12</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Hour</span><span class="p">,</span>
+<span class="p">}))</span>
+</code></pre></div><p>Let&rsquo;s create a custom handler; add the public key from Keycloak and pass it to <code>ParseRSAPublicKeyFromPEM</code> which will return a key. The key and token are then validated</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">VerifyToken</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">SecretKey</span> <span class="o">:=</span> <span class="s">&#34;-----BEGIN CERTIFICATE-----\n&#34;</span><span class="o">+</span>
+  <span class="s">&#34;MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApn
+</span><span class="s">  ......
+</span><span class="s">  +wnyuCHaCHp8P1yCnwIDAQAB&#34;</span> <span class="o">+</span> <span class="s">&#34;\n-----END CERTIFICATE-----&#34;</span>
+
+	<span class="nx">reqToken</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nf">GetHeader</span><span class="p">(</span><span class="s">&#34;Authorization&#34;</span><span class="p">)</span>
+
+	<span class="nx">key</span><span class="p">,</span> <span class="nx">er</span> <span class="o">:=</span> <span class="nx">jwt</span><span class="p">.</span><span class="nf">ParseRSAPublicKeyFromPEM</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">SecretKey</span><span class="p">))</span>
+	<span class="k">if</span> <span class="nx">er</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">er</span><span class="p">)</span>
+		<span class="nx">c</span><span class="p">.</span><span class="nf">Abort</span><span class="p">()</span>
+		<span class="nx">c</span><span class="p">.</span><span class="nx">Writer</span><span class="p">.</span><span class="nf">WriteHeader</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusUnauthorized</span><span class="p">)</span>
+		<span class="nx">c</span><span class="p">.</span><span class="nx">Writer</span><span class="p">.</span><span class="nf">Write</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&#34;Unauthorized&#34;</span><span class="p">))</span>
+		<span class="k">return</span>
+	<span class="p">}</span>
+
+	<span class="nx">token</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">jwt</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="nx">reqToken</span><span class="p">,</span> <span class="kd">func</span><span class="p">(</span><span class="nx">token</span> <span class="o">*</span><span class="nx">jwt</span><span class="p">.</span><span class="nx">Token</span><span class="p">)</span> <span class="p">(</span><span class="kd">interface</span><span class="p">{},</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+		<span class="c1">// Don&#39;t forget to validate the alg is what you expect:
+</span><span class="c1"></span>		<span class="k">if</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">token</span><span class="p">.</span><span class="nx">Method</span><span class="p">.(</span><span class="o">*</span><span class="nx">jwt</span><span class="p">.</span><span class="nx">SigningMethodRSA</span><span class="p">);</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span>
+			<span class="k">return</span> <span class="kc">nil</span><span class="p">,</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;Unexpected signing method: %v&#34;</span><span class="p">,</span> <span class="nx">token</span><span class="p">.</span><span class="nx">Header</span><span class="p">[</span><span class="s">&#34;alg&#34;</span><span class="p">])</span>
+		<span class="p">}</span>
+		<span class="k">return</span> <span class="nx">key</span><span class="p">,</span> <span class="kc">nil</span>
+	<span class="p">})</span>
+
+	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+		<span class="nx">c</span><span class="p">.</span><span class="nf">Abort</span><span class="p">()</span>
+		<span class="nx">c</span><span class="p">.</span><span class="nx">Writer</span><span class="p">.</span><span class="nf">WriteHeader</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusUnauthorized</span><span class="p">)</span>
+		<span class="nx">c</span><span class="p">.</span><span class="nx">Writer</span><span class="p">.</span><span class="nf">Write</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&#34;Unauthorized&#34;</span><span class="p">))</span>
+		<span class="k">return</span>
+	<span class="p">}</span>
+
+	<span class="k">if</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">token</span><span class="p">.</span><span class="nx">Claims</span><span class="p">.(</span><span class="nx">jwt</span><span class="p">.</span><span class="nx">MapClaims</span><span class="p">);</span> <span class="nx">ok</span> <span class="o">&amp;&amp;</span> <span class="nx">token</span><span class="p">.</span><span class="nx">Valid</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;token is valid&#34;</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>Add the handler to the route</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="nx">router</span><span class="p">.</span><span class="nf">GET</span><span class="p">(</span><span class="s">&#34;/sample&#34;</span><span class="p">,</span> <span class="nf">VerifyToken</span><span class="p">(),</span> <span class="nx">handlers</span><span class="p">.</span><span class="nx">SampleEndpoint</span><span class="p">)</span>
+</code></pre></div><p>That&rsquo;s, it done, If the token is valid, you will get the data from backend or else you&rsquo;ll see <code>401 Unauthorized</code></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/redhat-sso/">RedHat SSO</a>
+        
+            <a href="/tags/golang/">golang</a>
+        
+            <a href="/tags/keycloak/">keycloak</a>
+        
+            <a href="/tags/jwt/">jwt</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/posts/redhat-sso-react/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">React App with RedHat SSO or keycloak</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2021 Vikas Pogu&#39;s Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
 
     </div>
 
-    <footer class="footer">
-  <section class="container">
-    
-    
-    
-    
-  </section>
-</footer>
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
 
-  </main>
+            </main>
+    
 
-  
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
 
-</body>
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
 
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
 </html>

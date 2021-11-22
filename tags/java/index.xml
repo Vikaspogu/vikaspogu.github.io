@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Java on vikaspogu</title>
+    <title>Java on Vikas Pogu&#39;s Blog</title>
     <link>https://vikaspogu.dev/tags/java/</link>
-    <description>Recent content in Java on vikaspogu</description>
+    <description>Recent content in Java on Vikas Pogu&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Tue, 14 May 2019 14:36:27 -0500</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Tue, 14 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/java/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Debugging a Java application in OpenShift</title>
       <link>https://vikaspogu.dev/posts/debug-java-container/</link>
-      <pubDate>Tue, 14 May 2019 14:36:27 -0500</pubDate>
+      <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/posts/debug-java-container/</guid>
       <description>This post will discuss debugging a JAVA application running inside a container.
-When you bootstrap your JVM, you should have a way to enable JVM debug. For example Red Hat S2I images allows you to control classpath and debugging via environment variables.
-# Set debug options if required if [ x&amp;#34;${JAVA_DEBUG}&amp;#34; != x ] &amp;amp;&amp;amp; [ &amp;#34;${JAVA_DEBUG}&amp;#34; != &amp;#34;false&amp;#34; ]; then java_debug_args=&amp;#34;-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=${JAVA_DEBUG_PORT:-5005}&amp;#34; fi  Setting the JAVA_DEBUG environment variable inside the container to true will add debug args to JVM startup command Configure port forwarding so that you can connect to your application from a remote debugger  Note: If you are using tomcat image replace JAVA_DEBUG environment variable to DEBUG</description>
+Red Hat container images When you bootstrap your JVM, you should have a way to enable JVM debug. For example Red Hat S2I images allows you to control classpath and debugging via environment variables.
+# Set debug options if required if [ x&amp;#34;${JAVA_DEBUG}&amp;#34; != x ] &amp;amp;&amp;amp; [ &amp;#34;${JAVA_DEBUG}&amp;#34; != &amp;#34;false&amp;#34; ]; then java_debug_args=&amp;#34;-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=${JAVA_DEBUG_PORT:-5005}&amp;#34; fi  Setting the JAVA_DEBUG environment variable inside the container to true will add debug args to JVM startup command Configure port forwarding so that you can connect to your application from a remote debugger   If you are using tomcat image replace JAVA_DEBUG environment variable to DEBUG</description>
     </item>
     
     <item>

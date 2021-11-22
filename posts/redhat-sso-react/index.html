@@ -1,271 +1,588 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='In this post, I will show you how to secure a React app using RedHat SSO (upstream keycloak). In this case, openid-connect is my identity provider.
+ sso_setup 
+Install the offical keycloak js adapter
+$ npm i keycloak-js --save Setup the client with the host and port; in my case it&amp;rsquo;s localhost:9000
+ sso_setup 
+In App.js add in a JavaScript object with the required configuration; you will find these configurations under Clients-&amp;gt;Installation'><title>React App with RedHat SSO or keycloak</title>
 
-<head>
-  <meta name="google-site-verification" content="5JztMFjgtrbhV0pe_cLh7EH3c0NJBY7sVrnd7x86pMI" />
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel='canonical' href='https://vikaspogu.dev/posts/redhat-sso-react/'>
 
-  
-  <meta name="author" content="Vikas Pogu">
-  
-  <meta name="description" content="Vikas Pogu&#39;s Blog">
-  
-  <meta name="keywords" content="blog,developer">
-
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="React App with RedHat SSO or keycloak"/>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='React App with RedHat SSO or keycloak'>
+<meta property='og:description' content='In this post, I will show you how to secure a React app using RedHat SSO (upstream keycloak). In this case, openid-connect is my identity provider.
+ sso_setup 
+Install the offical keycloak js adapter
+$ npm i keycloak-js --save Setup the client with the host and port; in my case it&amp;rsquo;s localhost:9000
+ sso_setup 
+In App.js add in a JavaScript object with the required configuration; you will find these configurations under Clients-&amp;gt;Installation'>
+<meta property='og:url' content='https://vikaspogu.dev/posts/redhat-sso-react/'>
+<meta property='og:site_name' content='Vikas Pogu&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='RedHat SSO' /><meta property='article:tag' content='React' /><meta property='article:tag' content='keycloak' /><meta property='article:published_time' content='2019-07-25T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2019-07-25T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="React App with RedHat SSO or keycloak">
 <meta name="twitter:description" content="In this post, I will show you how to secure a React app using RedHat SSO (upstream keycloak). In this case, openid-connect is my identity provider.
+ sso_setup 
 Install the offical keycloak js adapter
-$ npm i keycloak-js --save Setup the client with the host and port; in my case it&rsquo;s localhost:9000
-In App.js add in a JavaScript object with the required configuration; you will find these configurations under Clients-&gt;Installation
-//keycloak init options const initOptions = { url: &#34;https://localhost:8080/auth&#34;, realm: &#34;test&#34;, clientId: &#34;react-app&#34;, onLoad: &#34;login-required&#34; }; By default, to authenticate you need to call the login function."/>
+$ npm i keycloak-js --save Setup the client with the host and port; in my case it&amp;rsquo;s localhost:9000
+ sso_setup 
+In App.js add in a JavaScript object with the required configuration; you will find these configurations under Clients-&amp;gt;Installation">
+    </head>
+    <body class="
+    article-page 
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
 
-  <meta property="og:title" content="React App with RedHat SSO or keycloak" />
-<meta property="og:description" content="In this post, I will show you how to secure a React app using RedHat SSO (upstream keycloak). In this case, openid-connect is my identity provider.
-Install the offical keycloak js adapter
-$ npm i keycloak-js --save Setup the client with the host and port; in my case it&rsquo;s localhost:9000
-In App.js add in a JavaScript object with the required configuration; you will find these configurations under Clients-&gt;Installation
-//keycloak init options const initOptions = { url: &#34;https://localhost:8080/auth&#34;, realm: &#34;test&#34;, clientId: &#34;react-app&#34;, onLoad: &#34;login-required&#34; }; By default, to authenticate you need to call the login function." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://vikaspogu.dev/posts/redhat-sso-react/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2019-07-25T00:00:00+00:00" />
-<meta property="article:modified_time" content="2019-07-25T00:00:00+00:00" />
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
 
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        on-phone--column extended
+    
+">
+    
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
 
-
-  
-  <base href="https://vikaspogu.dev/posts/redhat-sso-react/">
-  
-  <title>
-  React App with RedHat SSO or keycloak · vikaspogu
-</title>
-
-  
-  <link rel="canonical" href="https://vikaspogu.dev/posts/redhat-sso-react/">
-  
-
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700"
-    rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
-    integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-    integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
-
-  
-  
-  
-  <link rel="stylesheet" href="https://vikaspogu.dev/css/coder.min.28d751104f30c16da1aa1bb04015cbe662cacfe0d1b01af4f2240ad58580069c.css" integrity="sha256-KNdREE8wwW2hqhuwQBXL5mLKz&#43;DRsBr08iQK1YWABpw="
-    crossorigin="anonymous" media="screen" />
-  
-
-  
-
-  
-  
-  
-  
-  <link rel="stylesheet" href="https://vikaspogu.dev/css/coder-dark.min.83a2010dac9f59f943b3004cd6c4f230507ad036da635d3621401d42ec4e2835.css" integrity="sha256-g6IBDayfWflDswBM1sTyMFB60DbaY102IUAdQuxOKDU="
-    crossorigin="anonymous" media="screen" />
-  
-  
-
-  
-
-  
-
-  <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-32x32.png"
-    sizes="32x32">
-  <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-16x16.png"
-    sizes="16x16">
-
-  <meta name="generator" content="Hugo 0.85.0" />
-</head>
-
-
-
-
-
-
-<body class="colorscheme-auto">
-  <main class="wrapper">
-    <nav class="navigation">
-  <section class="container">
-    <a class="navigation-title" href="https://vikaspogu.dev/">
-      vikaspogu
-    </a>
-    <input type="checkbox" id="menu-toggle" />
-    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
-    <ul class="navigation-list">
-      
-      
-      <li class="navigation-item">
-        <a class="navigation-link" href="https://vikaspogu.dev/about/">About</a>
-      </li>
-      
-      <li class="navigation-item">
-        <a class="navigation-link" href="https://vikaspogu.dev/posts/">Blog</a>
-      </li>
-      
-      
-      
-    </ul>
-  </section>
-</nav>
-<script type="application/ld+json">
-    {
-        "@context" : "http://schema.org",
-        "@type" : "BlogPosting",
-        "mainEntityOfPage": {
-             "@type": "WebPage",
-             "@id": "https:\/\/vikaspogu.dev"
-        },
-        "articleSection" : "posts",
-        "name" : "React App with RedHat SSO or keycloak",
-        "headline" : "React App with RedHat SSO or keycloak",
-        "description" : "In this post, I will show you how to secure a React app using RedHat SSO (upstream keycloak). In this case, openid-connect is my identity provider.\nInstall the offical keycloak js adapter\n$ npm i keycloak-js --save Setup the client with the host and port; in my case it\u0026rsquo;s localhost:9000\nIn App.js add in a JavaScript object with the required configuration; you will find these configurations under Clients-\u0026gt;Installation\n\/\/keycloak init options const initOptions = { url: \u0026#34;https:\/\/localhost:8080\/auth\u0026#34;, realm: \u0026#34;test\u0026#34;, clientId: \u0026#34;react-app\u0026#34;, onLoad: \u0026#34;login-required\u0026#34; }; By default, to authenticate you need to call the login function.",
-        "inLanguage" : "en-US",
-        "author" : "Vikas Pogu",
-        "creator" : "Vikas Pogu",
-        "publisher": "Vikas Pogu",
-        "accountablePerson" : "Vikas Pogu",
-        "copyrightHolder" : "Vikas Pogu",
-        "copyrightYear" : "2019",
-        "datePublished": "2019-07-25 00:00:00 \u002b0000 UTC",
-        "dateModified" : "2019-07-25 00:00:00 \u002b0000 UTC",
-        "url" : "https:\/\/vikaspogu.dev\/posts\/redhat-sso-react\/",
-        "wordCount" : "289",
-        "keywords" : [ "RedHat SSO","React","keycloak","Blog" ]
-    }
-    </script>
-
-    <div class="content">
-      
-  <section class="container post">
-    <article>
-      <header>
-        <div class="post-title">
-          <h1 class="title">React App with RedHat SSO or keycloak</h1>
-        </div>
-        <div class="post-meta">
-          <div class="date">
-            <span class="posted-on">
-              <i class="fas fa-calendar"></i>
-              <time datetime='2019-07-25T00:00:00Z'>
-                July 25, 2019
-              </time>
-            </span>
-            <span class="reading-time">
-              <i class="fas fa-clock"></i>
-              2 minutes read
-            </span>
-          </div>
-          
-          <div class="tags">
-  <i class="fas fa-tag"></i>
-    <a href="https://vikaspogu.dev/tags/redhat-sso/">RedHat SSO</a>
-      <span class="separator">•</span>
-    <a href="https://vikaspogu.dev/tags/react/">React</a>
-      <span class="separator">•</span>
-    <a href="https://vikaspogu.dev/tags/keycloak/">keycloak</a></div>
-
-        </div>
-      </header>
-
-      <div>
-        <p>In this post, I will show you how to secure a React app using RedHat SSO (upstream keycloak). In this case, <code>openid-connect</code> is my identity provider.</p>
-<p><img src="https://vikaspogu.dev/images/sso-openid.png" alt="sso_setup"></p>
-<p>Install the offical keycloak js adapter</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ npm i keycloak-js --save
-</code></pre></div><p>Setup the client with the host and port; in my case it&rsquo;s <code>localhost:9000</code></p>
-<p><img src="https://vikaspogu.dev/images/sso-client-settings.png" alt="sso_setup"></p>
-<p>In App.js add in a JavaScript object with the required configuration; you will find these configurations under <code>Clients</code>-&gt;<code>Installation</code></p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#007f7f">//keycloak init options
-</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">const</span> initOptions = {
-  url: <span style="color:#0ff;font-weight:bold">&#34;https://localhost:8080/auth&#34;</span>,
-  realm: <span style="color:#0ff;font-weight:bold">&#34;test&#34;</span>,
-  clientId: <span style="color:#0ff;font-weight:bold">&#34;react-app&#34;</span>,
-  onLoad: <span style="color:#0ff;font-weight:bold">&#34;login-required&#34;</span>
-};
-</code></pre></div><p><img src="https://vikaspogu.dev/images/sso-config.png" alt="sso_setup"></p>
-<p>By default, to authenticate you need to call the login function. However, there are two options available to make the adapter automatically authenticate. You can pass <code>login-required</code> or <code>check-sso</code> to the init function. <code>login-required</code> will authenticate the client if the user is logged-in to <code>{project_name}</code> or display the login page if not. <code>check-sso</code> will only authenticate the client if the user is already logged-in; if the user is not logged-in the browser will be redirected back to the application and remain unauthenticated.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">componentDidMount() {
-    <span style="color:#fff;font-weight:bold">let</span> keycloak = Keycloak(initOptions);
-    keycloak.init({ onLoad: initOptions.onLoad }).succes(authenticated =&gt; {});
-}
-</code></pre></div><p>Finally</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#fff;font-weight:bold">import</span> * as Keycloak from <span style="color:#0ff;font-weight:bold">&#34;keycloak-js&#34;</span>;
-
-<span style="color:#007f7f">//keycloak init options
-</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">const</span> initOptions = {
-  url: <span style="color:#0ff;font-weight:bold">&#34;https://localhost:8080/auth&#34;</span>,
-  realm: <span style="color:#0ff;font-weight:bold">&#34;test&#34;</span>,
-  clientId: <span style="color:#0ff;font-weight:bold">&#34;react-app&#34;</span>,
-  onLoad: <span style="color:#0ff;font-weight:bold">&#34;login-required&#34;</span>
-};
-
-<span style="color:#fff;font-weight:bold">class</span> App <span style="color:#fff;font-weight:bold">extends</span> React.Component {
-  constructor(props) {
-    <span style="color:#fff;font-weight:bold">super</span>(props);
-    <span style="color:#fff;font-weight:bold">this</span>.state = {
-      keycloak: <span style="color:#fff;font-weight:bold">null</span>,
-      authenticated: <span style="color:#fff;font-weight:bold">false</span>
-    };
-  }
-  componentDidMount() {
-    <span style="color:#fff;font-weight:bold">let</span> keycloak = Keycloak(initOptions);
-    keycloak.init({ onLoad: initOptions.onLoad }).success(authenticated =&gt; {
-      <span style="color:#fff;font-weight:bold">this</span>.setState({ keycloak: keycloak, authenticated: authenticated });
-    });
-  }
-  render() {
-    <span style="color:#fff;font-weight:bold">const</span> { keycloak, authenticated } = <span style="color:#fff;font-weight:bold">this</span>.state;
-    <span style="color:#fff;font-weight:bold">if</span> (keycloak) {
-      <span style="color:#fff;font-weight:bold">if</span> (authenticated) {
-        <span style="color:#fff;font-weight:bold">return</span> (
-          &lt;React.Fragment&gt;
-            &lt;AppRouter /&gt;
-          &lt;<span style="color:#f00">/React.Fragment&gt;</span>
-        );
-      }
-    }
-    <span style="color:#fff;font-weight:bold">return</span> &lt;div&gt;Initializing SS0...&lt;<span style="color:#f00">/div&gt;;</span>
-  }
-}
-</code></pre></div><p>Run your app</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ npm run start
-</code></pre></div><p>Navigate to <code>http://localhost:9000</code>; you should see the login page if you are not authenticated</p>
-
-      </div>
-
-      <footer>
+    <header class="site-info">
         
+            
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/myAvatar_hua882c21ea061ff9a690a266cf38baf1a_68117_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <h1 class="site-name"><a href="/">Vikas Pogu&#39;s Blog</a></h1>
+        <h2 class="site-description">OpenShift, Kubernetes, Docker and more</h2><ol class="social-menu">
+                
+                    <li>
+                        <a 
+                            href='https://github.com/vikaspogu'
+                            target="_blank"
+                            title="GitHub"
+                        >
+                            
+                            
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
 
 
+
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a 
+                            href='https://www.linkedin.com/in/vikaspogu/'
+                            target="_blank"
+                            title="Linkedin"
+                        >
+                            
+                            
+                                <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg 
+    role="img" 
+    xmlns="http://www.w3.org/2000/svg" 
+    width="1000mm"
+    height="1000mm"
+    viewBox="0 0 1000 1000"
+    style="max-width:1.6em; height: auto;">
+    
+    <path 
+        id="path" 
+        style="opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;"
+        d=" M 336 332C 336 332 336 789 336 789C 336 789 211 789 211 789C 211 789 211 332 211 332C 211 332 336 332 336 332M 346 206C 346 206 346 206 346 206C 346 247 313 280 273 280C 233 280 201 247 201 206C 201 166 233 133 273 133C 313 133 346 166 346 206M 834 508C 834 508 834 789 834 789C 834 789 709 789 709 789C 709 789 709 556 709 556C 709 416 543 427 543 556C 543 556 543 789 543 789C 543 789 419 789 419 789C 419 789 419 332 419 332C 419 332 543 332 543 332C 543 332 543 406 543 406C 601 298 834 290 834 508"
+        transform="">
+    </path>    
+</svg>
+                            
+                        </a>
+                    </li>
+                
+            </ol></header>
+
+    <ol class="menu" id="main-menu">
         
         
         
-      </footer>
-    </article>
+
+        <li >
+            <a href='/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about-me/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
 
     
-  </section>
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/posts/redhat-sso-react/">React App with RedHat SSO or keycloak</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 25, 2019</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <p>In this post, I will show you how to secure a React app using RedHat SSO (upstream keycloak). In this case, <code>openid-connect</code> is my identity provider.</p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 78; 
+			flex-basis: 187px"
+	>
+	<a href="/posts/redhat-sso-react/sso-openid.png" data-size="748x956">
+		<img src="/posts/redhat-sso-react/sso-openid.png"
+			width="748"
+			height="956"
+			srcset="/posts/redhat-sso-react/sso-openid_hu3177e258b346c2b7472d810f4ba4fd93_88063_480x0_resize_box_3.png 480w, /posts/redhat-sso-react/sso-openid_hu3177e258b346c2b7472d810f4ba4fd93_88063_1024x0_resize_box_3.png 1024w"
+			loading="lazy"
+			alt="sso_setup">
+	</a>
+	
+	<figcaption>sso_setup</figcaption>
+	
+</figure></p>
+<p>Install the offical keycloak js adapter</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ npm i keycloak-js --save
+</code></pre></div><p>Setup the client with the host and port; in my case it&rsquo;s <code>localhost:9000</code></p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 88; 
+			flex-basis: 212px"
+	>
+	<a href="/posts/redhat-sso-react/sso-client-settings.png" data-size="828x933">
+		<img src="/posts/redhat-sso-react/sso-client-settings.png"
+			width="828"
+			height="933"
+			srcset="/posts/redhat-sso-react/sso-client-settings_hu027facd5e4dfbac782ac05db15da6952_77023_480x0_resize_box_3.png 480w, /posts/redhat-sso-react/sso-client-settings_hu027facd5e4dfbac782ac05db15da6952_77023_1024x0_resize_box_3.png 1024w"
+			loading="lazy"
+			alt="sso_setup">
+	</a>
+	
+	<figcaption>sso_setup</figcaption>
+	
+</figure></p>
+<p>In App.js add in a JavaScript object with the required configuration; you will find these configurations under <code>Clients</code>-&gt;<code>Installation</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">//keycloak init options
+</span><span class="c1"></span><span class="kr">const</span> <span class="nx">initOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">url</span><span class="o">:</span> <span class="s2">&#34;https://localhost:8080/auth&#34;</span><span class="p">,</span>
+  <span class="nx">realm</span><span class="o">:</span> <span class="s2">&#34;test&#34;</span><span class="p">,</span>
+  <span class="nx">clientId</span><span class="o">:</span> <span class="s2">&#34;react-app&#34;</span><span class="p">,</span>
+  <span class="nx">onLoad</span><span class="o">:</span> <span class="s2">&#34;login-required&#34;</span>
+<span class="p">};</span>
+</code></pre></div><p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 163; 
+			flex-basis: 392px"
+	>
+	<a href="/posts/redhat-sso-react/sso-config.png" data-size="881x539">
+		<img src="/posts/redhat-sso-react/sso-config.png"
+			width="881"
+			height="539"
+			srcset="/posts/redhat-sso-react/sso-config_huffe5716e5b1c61e9b4b56a629f14bdd3_41729_480x0_resize_box_3.png 480w, /posts/redhat-sso-react/sso-config_huffe5716e5b1c61e9b4b56a629f14bdd3_41729_1024x0_resize_box_3.png 1024w"
+			loading="lazy"
+			alt="sso_setup">
+	</a>
+	
+	<figcaption>sso_setup</figcaption>
+	
+</figure></p>
+<p>By default, to authenticate you need to call the login function. However, there are two options available to make the adapter automatically authenticate. You can pass <code>login-required</code> or <code>check-sso</code> to the init function. <code>login-required</code> will authenticate the client if the user is logged-in to <code>{project_name}</code> or display the login page if not. <code>check-sso</code> will only authenticate the client if the user is already logged-in; if the user is not logged-in the browser will be redirected back to the application and remain unauthenticated.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">componentDidMount</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">keycloak</span> <span class="o">=</span> <span class="nx">Keycloak</span><span class="p">(</span><span class="nx">initOptions</span><span class="p">);</span>
+    <span class="nx">keycloak</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span> <span class="nx">onLoad</span><span class="o">:</span> <span class="nx">initOptions</span><span class="p">.</span><span class="nx">onLoad</span> <span class="p">}).</span><span class="nx">succes</span><span class="p">(</span><span class="nx">authenticated</span> <span class="p">=&gt;</span> <span class="p">{});</span>
+<span class="p">}</span>
+</code></pre></div><p>Finally</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">Keycloak</span> <span class="nx">from</span> <span class="s2">&#34;keycloak-js&#34;</span><span class="p">;</span>
+
+<span class="c1">//keycloak init options
+</span><span class="c1"></span><span class="kr">const</span> <span class="nx">initOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">url</span><span class="o">:</span> <span class="s2">&#34;https://localhost:8080/auth&#34;</span><span class="p">,</span>
+  <span class="nx">realm</span><span class="o">:</span> <span class="s2">&#34;test&#34;</span><span class="p">,</span>
+  <span class="nx">clientId</span><span class="o">:</span> <span class="s2">&#34;react-app&#34;</span><span class="p">,</span>
+  <span class="nx">onLoad</span><span class="o">:</span> <span class="s2">&#34;login-required&#34;</span>
+<span class="p">};</span>
+
+<span class="kr">class</span> <span class="nx">App</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">keycloak</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="nx">authenticated</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+  <span class="nx">componentDidMount</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">keycloak</span> <span class="o">=</span> <span class="nx">Keycloak</span><span class="p">(</span><span class="nx">initOptions</span><span class="p">);</span>
+    <span class="nx">keycloak</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span> <span class="nx">onLoad</span><span class="o">:</span> <span class="nx">initOptions</span><span class="p">.</span><span class="nx">onLoad</span> <span class="p">}).</span><span class="nx">success</span><span class="p">(</span><span class="nx">authenticated</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="nx">keycloak</span><span class="o">:</span> <span class="nx">keycloak</span><span class="p">,</span> <span class="nx">authenticated</span><span class="o">:</span> <span class="nx">authenticated</span> <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="p">{</span> <span class="nx">keycloak</span><span class="p">,</span> <span class="nx">authenticated</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">keycloak</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">authenticated</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span>
+          <span class="o">&lt;</span><span class="nx">React</span><span class="p">.</span><span class="nx">Fragment</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">AppRouter</span> <span class="o">/&gt;</span>
+          <span class="o">&lt;</span><span class="err">/React.Fragment&gt;</span>
+        <span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">Initializing</span> <span class="nx">SS0</span><span class="p">...</span><span class="o">&lt;</span><span class="err">/div&gt;;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>Run your app</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ npm run start
+</code></pre></div><p>Navigate to <code>http://localhost:9000</code>; you should see the login page if you are not authenticated</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/redhat-sso/">RedHat SSO</a>
+        
+            <a href="/tags/react/">React</a>
+        
+            <a href="/tags/keycloak/">keycloak</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/posts/sso-jwt-golang/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Go JWT Authentication with keycloak</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2021 Vikas Pogu&#39;s Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
 
     </div>
 
-    <footer class="footer">
-  <section class="container">
-    
-    
-    
-    
-  </section>
-</footer>
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
 
-  </main>
+            </main>
+    
 
-  
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
 
-</body>
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
 
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
 </html>
