@@ -8,8 +8,8 @@
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='GitOps with Tekton and ArgoCD'>
 <meta property='og:description' content='build and release pipeline with tekton, argocd in gitops fashion'>
 <meta property='og:url' content='https://vikaspogu.dev/posts/tekton-argocd-gitops/'>
-<meta property='og:site_name' content='Vikas Pogu&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='argocd' /><meta property='article:tag' content='tekton' /><meta property='article:tag' content='gitops' /><meta property='article:tag' content='openshift-pipelines' /><meta property='article:published_time' content='2021-01-14T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-01-14T00:00:00&#43;00:00'/>
+<meta property='og:site_name' content='My approach...'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='argocd' /><meta property='article:tag' content='tekton' /><meta property='article:tag' content='gitops' /><meta property='article:tag' content='OpenShift-pipelines' /><meta property='article:published_time' content='2021-01-14T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-01-14T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="GitOps with Tekton and ArgoCD">
 <meta name="twitter:description" content="build and release pipeline with tekton, argocd in gitops fashion">
     </head>
@@ -140,41 +140,41 @@
 <h2 id="getting-started">Getting Started</h2>
 <p><em><strong>Assumptions:</strong></em></p>
 <ul>
-<li>You have a running Openshift 4 cluster with ArgoCD, and Openshift Pipelines installed. If not, you follow instructions to <a class="link" href="https://docs.openshift.com/container-platform/4.6/pipelines/installing-pipelines.html"  target="_blank" rel="noopener"
-    >Openshift Pipelines</a> and <a class="link" href="https://argocd-operator.readthedocs.io/en/latest/install/openshift/"  target="_blank" rel="noopener"
+<li>You have a running OpenShift 4 cluster with ArgoCD, and OpenShift Pipelines installed. If not, you follow instructions to <a class="link" href="https://docs.OpenShift.com/container-platform/4.6/pipelines/installing-pipelines.html"  target="_blank" rel="noopener"
+    >OpenShift Pipelines</a> and <a class="link" href="https://argocd-operator.readthedocs.io/en/latest/install/OpenShift/"  target="_blank" rel="noopener"
     >ArgoCD Operator</a></li>
 <li>Understand of basic argocd and tekton concepts</li>
 </ul>
 <p>Create an OpenShift project called node-web-project</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">oc new-project node-web-project
-</code></pre></div><h3 id="using-private-registries">Using Private Registries</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">oc new-project node-web-project
+</span></span></code></pre></div><h3 id="using-private-registries">Using Private Registries</h3>
 <p>Create a docker secret with registry authentication details</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">oc create secret docker-registry container-registry-secret <span class="se">\
-</span><span class="se"></span>  --docker-server<span class="o">=</span><span class="nv">$CONTAINER_REGISTRY_SERVER</span> <span class="se">\
-</span><span class="se"></span>  --docker-username<span class="o">=</span><span class="nv">$CONTAINER_REGISTRY_USER</span> <span class="se">\
-</span><span class="se"></span>  --docker-password<span class="o">=</span><span class="nv">$CONTAINER_REGISTRY_PASSWORD</span> -n node-web-project
-</code></pre></div><p>Create a service account named <code>build-bot</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">oc create sa -n node-web-project build-bot
-serviceaccount/build-bot created
-</code></pre></div><p>Add docker secret <code>container-registry-secret</code> to newly created service account <code>build-bot</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">oc patch serviceaccount build-bot <span class="se">\
-</span><span class="se"></span>  -p <span class="s1">&#39;{&#34;secrets&#34;: [{&#34;name&#34;: &#34;container-registry-secret&#34;}]}&#39;</span>
-serviceaccount/build-bot patched
-</code></pre></div><p>Verify if the service account has the secret added:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">oc get sa -n node-web-project build-bot -o yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  creationTimestamp: <span class="s2">&#34;2021-01-12T03:34:32Z&#34;</span>
-  name: build-bot
-  namespace: node-web-project
-  resourceVersion: <span class="s2">&#34;53879&#34;</span>
-  selfLink: /api/v1/namespaces/node-web-project/serviceaccounts/build-bot
-  uid: 628067fd-91d1-4cdd-b6a6-88b4f7280ff0
-secrets:
-- name: container-registry-secret
-- name: build-bot-token-8nl2v
-</code></pre></div><h3 id="create-pipeline">Create Pipeline</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">oc create secret docker-registry container-registry-secret <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --docker-server<span class="o">=</span><span class="nv">$CONTAINER_REGISTRY_SERVER</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --docker-username<span class="o">=</span><span class="nv">$CONTAINER_REGISTRY_USER</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --docker-password<span class="o">=</span><span class="nv">$CONTAINER_REGISTRY_PASSWORD</span> -n node-web-project
+</span></span></code></pre></div><p>Create a service account named <code>build-bot</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">oc create sa -n node-web-project build-bot
+</span></span><span class="line"><span class="cl">serviceaccount/build-bot created
+</span></span></code></pre></div><p>Add docker secret <code>container-registry-secret</code> to newly created service account <code>build-bot</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">oc patch serviceaccount build-bot <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -p <span class="s1">&#39;{&#34;secrets&#34;: [{&#34;name&#34;: &#34;container-registry-secret&#34;}]}&#39;</span>
+</span></span><span class="line"><span class="cl">serviceaccount/build-bot patched
+</span></span></code></pre></div><p>Verify if the service account has the secret added:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">oc get sa -n node-web-project build-bot -o yaml
+</span></span><span class="line"><span class="cl">apiVersion: v1
+</span></span><span class="line"><span class="cl">kind: ServiceAccount
+</span></span><span class="line"><span class="cl">metadata:
+</span></span><span class="line"><span class="cl">  creationTimestamp: <span class="s2">&#34;2021-01-12T03:34:32Z&#34;</span>
+</span></span><span class="line"><span class="cl">  name: build-bot
+</span></span><span class="line"><span class="cl">  namespace: node-web-project
+</span></span><span class="line"><span class="cl">  resourceVersion: <span class="s2">&#34;53879&#34;</span>
+</span></span><span class="line"><span class="cl">  selfLink: /api/v1/namespaces/node-web-project/serviceaccounts/build-bot
+</span></span><span class="line"><span class="cl">  uid: 628067fd-91d1-4cdd-b6a6-88b4f7280ff0
+</span></span><span class="line"><span class="cl">secrets:
+</span></span><span class="line"><span class="cl">- name: container-registry-secret
+</span></span><span class="line"><span class="cl">- name: build-bot-token-8nl2v
+</span></span></code></pre></div><h3 id="create-pipeline">Create Pipeline</h3>
 <p>A Pipeline is a collection of Tasks that you want to run as part of your workflow. Each Task in a Pipeline is executed in a pod and by default they run in parallel. However, you can specify the order by using <code>runAfter</code></p>
 <p>There are 3 Tasks in below pipeline</p>
 <ul>
@@ -182,135 +182,135 @@ secrets:
 <li>Build and push image using <code>Buildah</code> cluster task</li>
 <li>Syncing argo deployment</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">tekton.dev/v1alpha1</span><span class="w">
-</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Pipeline</span><span class="w">
-</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">node-web-app-pipeline</span><span class="w">
-</span><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">node-web-project</span><span class="w">
-</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">workspaces</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">shared-workspace</span><span class="w">
-</span><span class="w">  </span><span class="nt">params</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">node-web-app-source</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">node-web-app-image</span><span class="w">
-</span><span class="w">  </span><span class="nt">tasks</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">fetch-repository</span><span class="w">
-</span><span class="w">      </span><span class="nt">taskRef</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ClusterTask</span><span class="w">
-</span><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">git-clone</span><span class="w">
-</span><span class="w">      </span><span class="nt">workspaces</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">output</span><span class="w">
-</span><span class="w">        </span><span class="nt">workspace</span><span class="p">:</span><span class="w"> </span><span class="l">shared-workspace</span><span class="w">
-</span><span class="w">      </span><span class="nt">params</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">url</span><span class="w">
-</span><span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">$(params.node-web-app-source)</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">build-and-publish-image</span><span class="w">
-</span><span class="w">      </span><span class="nt">params</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">IMAGE</span><span class="w">
-</span><span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">$(params.node-web-app-image)</span><span class="w">
-</span><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">TLSVERIFY</span><span class="w">
-</span><span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;false&#39;</span><span class="w">
-</span><span class="w">      </span><span class="nt">taskRef</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ClusterTask</span><span class="w">
-</span><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">buildah</span><span class="w">
-</span><span class="w">      </span><span class="nt">runAfter</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- <span class="l">fetch-repository</span><span class="w">
-</span><span class="w">      </span><span class="nt">workspaces</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">source</span><span class="w">
-</span><span class="w">        </span><span class="nt">workspace</span><span class="p">:</span><span class="w"> </span><span class="l">shared-workspace</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">sync-application</span><span class="w">
-</span><span class="w">      </span><span class="nt">taskRef</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">argocd-task-sync-and-wait</span><span class="w">
-</span><span class="w">      </span><span class="nt">params</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">application-name</span><span class="w">
-</span><span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">node-web-app</span><span class="w">
-</span><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">flags</span><span class="w">
-</span><span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span>--<span class="l">insecure --grpc-web</span><span class="w">
-</span><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">argocd-version</span><span class="w">
-</span><span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">v1.7.11</span><span class="w">
-</span><span class="w">      </span><span class="nt">runAfter</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- <span class="l">build-and-publish-image</span><span class="w">
-</span></code></pre></div><h3 id="triggers">Triggers</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">tekton.dev/v1alpha1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Pipeline</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">node-web-app-pipeline</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">node-web-project</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">workspaces</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">shared-workspace</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">node-web-app-source</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">node-web-app-image</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">tasks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">fetch-repository</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">taskRef</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ClusterTask</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">git-clone</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">workspaces</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">output</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">workspace</span><span class="p">:</span><span class="w"> </span><span class="l">shared-workspace</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">url</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">$(params.node-web-app-source)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">build-and-publish-image</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">IMAGE</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">$(params.node-web-app-image)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">TLSVERIFY</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;false&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">taskRef</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ClusterTask</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">buildah</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">runAfter</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">fetch-repository</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">workspaces</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">source</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">workspace</span><span class="p">:</span><span class="w"> </span><span class="l">shared-workspace</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">sync-application</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">taskRef</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">argocd-task-sync-and-wait</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">application-name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">node-web-app</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">flags</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span>--<span class="l">insecure --grpc-web</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">argocd-version</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">v1.7.11</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">runAfter</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">build-and-publish-image</span><span class="w">
+</span></span></span></code></pre></div><h3 id="triggers">Triggers</h3>
 <p>Now that the pipeline is setup, we need to setup webhook from GitHub to trigger pipeline. We need to create following resources:</p>
 <ul>
 <li>
 <p>A <code>TriggerTemplate</code> act as a blueprint for pipeline resources. It can also be used to define parameters that can then be substituted anywhere within the resource template(s) being defined</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">triggers.tekton.dev/v1alpha1</span><span class="w">
-</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">TriggerTemplate</span><span class="w">
-</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">pipeline-template</span><span class="w">
-</span><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">node-web-project</span><span class="w">
-</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">params</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">git-repo-url</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">git-repo-name</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">git-revision</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">image-name</span><span class="w">
-</span><span class="w">  </span><span class="nt">resourcetemplates</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">tekton.dev/v1beta1</span><span class="w">
-</span><span class="w">        </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">PipelineRun</span><span class="w">
-</span><span class="w">        </span><span class="nt">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">generateName</span><span class="p">:</span><span class="w"> </span><span class="l">$(tt.params.git-repo-name)-pipeline-run-</span><span class="w">
-</span><span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">node-web-project</span><span class="w">
-</span><span class="w">        </span><span class="nt">spec</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">params</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">source</span><span class="w">
-</span><span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">$(tt.params.git-repo-url)</span><span class="w">
-</span><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">image</span><span class="w">
-</span><span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">$(tt.params.image-name)</span><span class="w">
-</span><span class="w">        </span><span class="nt">pipelineRef</span><span class="p">:</span><span class="w">
-</span><span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">node-web-app-pipeline</span><span class="w">
-</span><span class="w">        </span><span class="nt">serviceAccountName</span><span class="p">:</span><span class="w"> </span><span class="l">build-bot</span><span class="w">
-</span><span class="w">        </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l">1h0m0s</span><span class="w">
-</span><span class="w">        </span><span class="nt">workspaces</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">shared-workspace</span><span class="w">
-</span><span class="w">            </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span><span class="w">
-</span><span class="w">            </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l">tekton-workspace-pvc</span><span class="w">
-</span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">triggers.tekton.dev/v1alpha1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">TriggerTemplate</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">pipeline-template</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">node-web-project</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">git-repo-url</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">git-repo-name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">git-revision</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">image-name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">resourcetemplates</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">tekton.dev/v1beta1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">PipelineRun</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">generateName</span><span class="p">:</span><span class="w"> </span><span class="l">$(tt.params.git-repo-name)-pipeline-run-</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">node-web-project</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">source</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">$(tt.params.git-repo-url)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">image</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">$(tt.params.image-name)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">pipelineRef</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">node-web-app-pipeline</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">serviceAccountName</span><span class="p">:</span><span class="w"> </span><span class="l">build-bot</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l">1h0m0s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">workspaces</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">shared-workspace</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l">tekton-workspace-pvc</span><span class="w">
+</span></span></span></code></pre></div></li>
 <li>
 <p>A <code>TriggerBinding</code> binds the incoming event data to the template (i.e. git url, repo name, revision, etc&hellip;.)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">triggers.tekton.dev/v1alpha1</span><span class="w">
-</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">TriggerBinding</span><span class="w">
-</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">pipeline-binding</span><span class="w">
-</span><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">node-web-project</span><span class="w">
-</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">params</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">git-repo-name</span><span class="w">
-</span><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">$(body.repository.name)</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">git-repo-url</span><span class="w">
-</span><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">$(body.repository.url)</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">git-revision</span><span class="w">
-</span><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">$(body.head_commit.id)</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">image-name</span><span class="w">
-</span><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">docker.io/vikaspogu/$(body.repository.name):$(body.head_commit.id)</span><span class="w">
-</span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">triggers.tekton.dev/v1alpha1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">TriggerBinding</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">pipeline-binding</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">node-web-project</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">git-repo-name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">$(body.repository.name)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">git-repo-url</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">$(body.repository.url)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">git-revision</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">$(body.head_commit.id)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">image-name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">docker.io/vikaspogu/$(body.repository.name):$(body.head_commit.id)</span><span class="w">
+</span></span></span></code></pre></div></li>
 <li>
 <p>An <code>EventListener</code> that will create a pod application bringing together a binding and a template</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">triggers.tekton.dev/v1alpha1</span><span class="w">
-</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">EventListener</span><span class="w">
-</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">el-node-web-app</span><span class="w">
-</span><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">default</span><span class="w">
-</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">serviceAccountName</span><span class="p">:</span><span class="w"> </span><span class="l">build-bot</span><span class="w">
-</span><span class="w">  </span><span class="nt">triggers</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">node-web-app-trigger</span><span class="w">
-</span><span class="w">      </span><span class="nt">bindings</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- <span class="nt">ref</span><span class="p">:</span><span class="w"> </span><span class="l">pipeline-binding</span><span class="w">
-</span><span class="w">      </span><span class="nt">template</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">ref</span><span class="p">:</span><span class="w"> </span><span class="l">pipeline-template</span><span class="w">
-</span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">triggers.tekton.dev/v1alpha1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">EventListener</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">el-node-web-app</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">default</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">serviceAccountName</span><span class="p">:</span><span class="w"> </span><span class="l">build-bot</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">triggers</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">node-web-app-trigger</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">bindings</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">ref</span><span class="p">:</span><span class="w"> </span><span class="l">pipeline-binding</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">template</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">ref</span><span class="p">:</span><span class="w"> </span><span class="l">pipeline-template</span><span class="w">
+</span></span></span></code></pre></div></li>
 <li>
 <p>An OpenShift Route to expose the Event Listener</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ oc expose svc el-node-web-app
-$ <span class="nb">echo</span> <span class="s2">&#34;URL: </span><span class="k">$(</span>oc get route el-node-web-app --template<span class="o">=</span><span class="s1">&#39;http://{{.spec.host}}&#39;</span><span class="k">)</span><span class="s2">&#34;</span>
-http://el-node-web-app-node-web-project.apps.cluster-7d51.sandbox659.opentlc.com
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ oc expose svc el-node-web-app
+</span></span><span class="line"><span class="cl">$ <span class="nb">echo</span> <span class="s2">&#34;URL: </span><span class="k">$(</span>oc get route el-node-web-app --template<span class="o">=</span><span class="s1">&#39;http://{{.spec.host}}&#39;</span><span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">http://el-node-web-app-node-web-project.apps.cluster-7d51.sandbox659.opentlc.com
+</span></span></code></pre></div></li>
 </ul>
 <p>You can learn about <a class="link" href="https://tekton.dev/docs/triggers/"  target="_blank" rel="noopener"
-    >Tekton Triggers</a> and <a class="link" href="https://docs.openshift.com/container-platform/4.6/pipelines/understanding-openshift-pipelines.html"  target="_blank" rel="noopener"
-    >OpenShift Pipleines</a></p>
+    >Tekton Triggers</a> and <a class="link" href="https://docs.OpenShift.com/container-platform/4.6/pipelines/understanding-OpenShift-pipelines.html"  target="_blank" rel="noopener"
+    >OpenShift Pipelines</a></p>
 <h3 id="create-argocd-app-for-web-app-resources">Create ArgoCD App for Web App Resources</h3>
 <p><a class="link" href="https://argoproj.github.io/argo-cd/getting_started/"  target="_blank" rel="noopener"
     >Create an ArgoCD application via the GUI or command line</a></p>
@@ -338,7 +338,7 @@ http://el-node-web-app-node-web-project.apps.cluster-7d51.sandbox659.opentlc.com
 <li>cluster: (URL Of your OpenShift Cluster)</li>
 <li>namespace should be the name of your OpenShift Project</li>
 <li>repo url: git repo</li>
-<li>Targer Revision: Head</li>
+<li>Target Revision: Head</li>
 <li>PATH: deployment</li>
 <li>AutoSync Disabled</li>
 </ul>
@@ -363,14 +363,14 @@ http://el-node-web-app-node-web-project.apps.cluster-7d51.sandbox659.opentlc.com
 	<figcaption>alt webhooks</figcaption>
 	
 </figure></p>
-<h3 id="make-a-code-change-and-commit-look-at-build">Make a code change and commit, look at build.</h3>
+<h3 id="make-a-code-change-and-commit-look-at-build">Make a code change and commit, look at build</h3>
 <ol>
 <li>
 <p>Push an empty commit to repo</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git commit -m <span class="s2">&#34;empty-commit&#34;</span> --allow-empty <span class="o">&amp;&amp;</span> git push
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git commit -m <span class="s2">&#34;empty-commit&#34;</span> --allow-empty <span class="o">&amp;&amp;</span> git push
+</span></span></code></pre></div></li>
 <li>
-<p>In OpenShift Console you should see a pipleine run</p>
+<p>In OpenShift Console you should see a pipeline run</p>
 <p><figure 
 	
 		class="gallery-image" 
@@ -392,23 +392,23 @@ http://el-node-web-app-node-web-project.apps.cluster-7d51.sandbox659.opentlc.com
 </figure></p>
 </li>
 <li>
-<p>Once pipeline is finished. Use Openshift route to verify app</p>
+<p>Once pipeline is finished. Use OpenShift route to verify app</p>
 </li>
 </ol>
 <h2 id="workspace-pvc">Workspace PVC</h2>
 <p>To use same PVC wit multiple pipelines, a <code>ReadWriteMany</code> pvc has to be created</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
-</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">PersistentVolumeClaim</span><span class="w">
-</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">tekton-workspace-pvc</span><span class="w">
-</span><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">default</span><span class="w">
-</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">accessModes</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="l">ReadWriteMany</span><span class="w">
-</span><span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">requests</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l">2Gi</span><span class="w">
-</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">PersistentVolumeClaim</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">tekton-workspace-pvc</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">default</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">accessModes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">ReadWriteMany</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">requests</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l">2Gi</span><span class="w">
+</span></span></span></code></pre></div>
 </section>
 
 
@@ -422,7 +422,7 @@ http://el-node-web-app-node-web-project.apps.cluster-7d51.sandbox659.opentlc.com
         
             <a href="/tags/gitops/">gitops</a>
         
-            <a href="/tags/openshift-pipelines/">openshift-pipelines</a>
+            <a href="/tags/openshift-pipelines/">OpenShift-pipelines</a>
         
     </section>
 
@@ -449,7 +449,7 @@ http://el-node-web-app-node-web-project.apps.cluster-7d51.sandbox659.opentlc.com
         
             2020 - 
         
-        2021 Vikas Pogu&#39;s Blog
+        2022 My approach...
     </section>
     
     <section class="powerby">
@@ -565,7 +565,7 @@ http://el-node-web-app-node-web-project.apps.cluster-7d51.sandbox659.opentlc.com
         <li><a href="#triggers">Triggers</a></li>
         <li><a href="#create-argocd-app-for-web-app-resources">Create ArgoCD App for Web App Resources</a></li>
         <li><a href="#configure-webhooks">Configure Webhooks</a></li>
-        <li><a href="#make-a-code-change-and-commit-look-at-build">Make a code change and commit, look at build.</a></li>
+        <li><a href="#make-a-code-change-and-commit-look-at-build">Make a code change and commit, look at build</a></li>
       </ol>
     </li>
     <li><a href="#workspace-pvc">Workspace PVC</a></li>

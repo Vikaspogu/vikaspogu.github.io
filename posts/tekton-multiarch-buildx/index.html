@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Build multi arch docker image using Tekton'>
 <meta property='og:description' content='multi arch builds in tekton using docker buildx'>
 <meta property='og:url' content='https://vikaspogu.dev/posts/tekton-multiarch-buildx/'>
-<meta property='og:site_name' content='Vikas Pogu&#39;s Blog'>
+<meta property='og:site_name' content='My approach...'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='tekton' /><meta property='article:tag' content='multi-arch' /><meta property='article:tag' content='buildx' /><meta property='article:published_time' content='2021-01-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-01-19T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Build multi arch docker image using Tekton">
 <meta name="twitter:description" content="multi arch builds in tekton using docker buildx">
@@ -119,8 +119,8 @@
 <li>Using a stage in Dockerfile to cross-compile to different architectures</li>
 </ul>
 <p>I’ll focus on the first option, cross building with emulation.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker buildx build --platform linux/amd64,linux/arm64 .
-</code></pre></div><h2 id="setup">Setup</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker buildx build --platform linux/amd64,linux/arm64 .
+</span></span></code></pre></div><h2 id="setup">Setup</h2>
 <p>This differs from platform to platform but one thing we all have in common is pipelines, so I’ve constructed a basic buildx setup for TektonCD task.</p>
 <h2 id="pipeline">Pipeline</h2>
 <p>Below is a modified task of <a class="link" href="https://github.com/tektoncd/catalog/blob/master/task/docker-build/0.1/docker-build.yaml"  target="_blank" rel="noopener"
@@ -134,138 +134,138 @@
 <li>Docker build with <code>docker buildx build --platform</code></li>
 </ul>
 <p>Create a secret holding docker username and token</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">kubectl create secret generic docker-token <span class="se">\
-</span><span class="se"></span>    --from-literal<span class="o">=</span><span class="nv">username</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CONTAINER_REGISTRY_USER</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
-</span><span class="se"></span>    --from-literal<span class="o">=</span><span class="nv">password</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CONTAINER_REGISTRY_PASSWORD</span><span class="si">}</span><span class="s2">&#34;</span>
-</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">tekton.dev/v1beta1</span><span class="w">
-</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ClusterTask</span><span class="w">
-</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">docker-buildx</span><span class="w">
-</span><span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">app.kubernetes.io/version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;0.1&#34;</span><span class="w">
-</span><span class="w">  </span><span class="nt">annotations</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">tekton.dev/pipelines.minVersion</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;0.12.1&#34;</span><span class="w">
-</span><span class="w">    </span><span class="nt">tekton.dev/tags</span><span class="p">:</span><span class="w"> </span><span class="l">docker, build-image, push-image, dind, buildx, multi-arch</span><span class="w">
-</span><span class="w">    </span><span class="nt">tekton.dev/displayName</span><span class="p">:</span><span class="w"> </span><span class="l">docker-buildx</span><span class="w">
-</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p">&gt;-</span><span class="sd">
-</span><span class="sd">    This task will build and push an image using docker buildx.
-</span><span class="sd">    The task will build an out image out of a Dockerfile.
-</span><span class="sd">    This image will be pushed to an image registry.
-</span><span class="sd">    The image will be built and pushed using a dind sidecar over TCP+TLS.</span><span class="w">    
-</span><span class="w">  </span><span class="nt">params</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">image</span><span class="w">
-</span><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">Reference of the image docker will produce.</span><span class="w">
-</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">builder_image</span><span class="w">
-</span><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">The location of the docker builder image.</span><span class="w">
-</span><span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="l">docker.io/library/docker:19.03.14</span><span class="w">
-</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">dockerfile</span><span class="w">
-</span><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">Path to the Dockerfile to build.</span><span class="w">
-</span><span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="l">./Dockerfile</span><span class="w">
-</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">context</span><span class="w">
-</span><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">Path to the directory to use as context.</span><span class="w">
-</span><span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="l">.</span><span class="w">
-</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">build_extra_args</span><span class="w">
-</span><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">Extra parameters passed for the build command when building images.</span><span class="w">
-</span><span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;--platform linux/amd64,linux/arm/v7 --no-cache&#34;</span><span class="w">
-</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">push_extra_args</span><span class="w">
-</span><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">Extra parameters passed for the push command when pushing images.</span><span class="w">
-</span><span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;--push&#34;</span><span class="w">
-</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">insecure_registry</span><span class="w">
-</span><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">Allows the user to push to an insecure registry that has been specified</span><span class="w">
-</span><span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w">
-</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">docker-token-secret</span><span class="w">
-</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">string</span><span class="w">
-</span><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">name of the secret holding the docker-token</span><span class="w">
-</span><span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="l">docker-token</span><span class="w">
-</span><span class="w">  </span><span class="nt">workspaces</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">source</span><span class="w">
-</span><span class="w">  </span><span class="nt">results</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">IMAGE_DIGEST</span><span class="w">
-</span><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">Digest of the image just built.</span><span class="w">
-</span><span class="w">  </span><span class="nt">steps</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">buildx-build-push</span><span class="w">
-</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">$(params.builder_image)</span><span class="w">
-</span><span class="w">    </span><span class="nt">env</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="c"># Connect to the sidecar over TCP, with TLS.</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">DOCKER_HOST</span><span class="w">
-</span><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">tcp://localhost:2376</span><span class="w">
-</span><span class="w">    </span><span class="c"># Verify TLS.</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">DOCKER_TLS_VERIFY</span><span class="w">
-</span><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="w">
-</span><span class="w">    </span><span class="c"># Use the certs generated by the sidecar daemon.</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">DOCKER_CERT_PATH</span><span class="w">
-</span><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">/certs/client</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">DOCKERHUB_USER</span><span class="w">
-</span><span class="w">      </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">secretKeyRef</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">$(params.docker-token-secret)</span><span class="w">
-</span><span class="w">          </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">username</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">DOCKERHUB_PASS</span><span class="w">
-</span><span class="w">      </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">secretKeyRef</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">$(params.docker-token-secret)</span><span class="w">
-</span><span class="w">          </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">password</span><span class="w">
-</span><span class="w">    </span><span class="nt">workingDir</span><span class="p">:</span><span class="w"> </span><span class="l">$(workspaces.source.path)</span><span class="w">
-</span><span class="w">    </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
-</span><span class="sd">      # install depends
-</span><span class="sd">      apk add curl jq
-</span><span class="sd">
-</span><span class="sd">      # enable experimental buildx features
-</span><span class="sd">      export DOCKER_BUILDKIT=1
-</span><span class="sd">      export DOCKER_CLI_EXPERIMENTAL=enabled
-</span><span class="sd">
-</span><span class="sd">      # Download latest buildx bin from github
-</span><span class="sd">      mkdir -p ~/.docker/cli-plugins/
-</span><span class="sd">      BUILDX_LATEST_BIN_URI=$(curl -s -L https://github.com/docker/buildx/releases/latest | grep &#39;linux-amd64&#39; | grep &#39;href&#39; | sed &#39;s/.*href=&#34;/https:\/\/github.com/g; s/amd64&#34;.*/amd64/g&#39;)
-</span><span class="sd">      curl -s -L ${BUILDX_LATEST_BIN_URI} -o ~/.docker/cli-plugins/docker-buildx
-</span><span class="sd">      chmod a+x ~/.docker/cli-plugins/docker-buildx
-</span><span class="sd">
-</span><span class="sd">      # Get and run the latest docker/binfmt tag to use its qemu parts
-</span><span class="sd">      BINFMT_IMAGE_TAG=$(curl -s https://registry.hub.docker.com/v2/repositories/docker/binfmt/tags | jq &#39;.results | sort_by(.last_updated)[-1].name&#39; -r)
-</span><span class="sd">      docker run --rm --privileged docker/binfmt:${BINFMT_IMAGE_TAG}
-</span><span class="sd">
-</span><span class="sd">      docker context create tls-environment
-</span><span class="sd">      # create the multibuilder
-</span><span class="sd">      docker buildx create --name multibuilder --use tls-environment
-</span><span class="sd">      docker buildx use multibuilder
-</span><span class="sd">
-</span><span class="sd">      # login to a registry
-</span><span class="sd">      echo ${DOCKERHUB_PASS} | docker login -u ${DOCKERHUB_USER} --password-stdin
-</span><span class="sd">
-</span><span class="sd">      # build the containers and push them to the registry then display the images
-</span><span class="sd">      docker buildx build $(params.build_extra_args) \
-</span><span class="sd">          -f $(params.dockerfile) -t $(params.image) $(params.context) $(params.push_extra_args)</span><span class="w">      
-</span><span class="w">
-</span><span class="w">    </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/certs/client</span><span class="w">
-</span><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">dind-certs</span><span class="w">
-</span><span class="w">  </span><span class="nt">sidecars</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">docker:19.03.14-dind</span><span class="w">
-</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">server</span><span class="w">
-</span><span class="w">    </span><span class="nt">args</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- --<span class="l">storage-driver=vfs</span><span class="w">
-</span><span class="w">      </span>- --<span class="l">userland-proxy=false</span><span class="w">
-</span><span class="w">      </span>- --<span class="l">debug</span><span class="w">
-</span><span class="w">    </span><span class="nt">securityContext</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="w">    </span><span class="nt">env</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="c"># Write generated certs to the path shared with the client.</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">DOCKER_TLS_CERTDIR</span><span class="w">
-</span><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">/certs</span><span class="w">
-</span><span class="w">    </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/certs/client</span><span class="w">
-</span><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">dind-certs</span><span class="w">
-</span><span class="w">    </span><span class="c"># Wait for the dind daemon to generate the certs it will share with the</span><span class="w">
-</span><span class="w">    </span><span class="c"># client.</span><span class="w">
-</span><span class="w">    </span><span class="nt">readinessProbe</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
-</span><span class="w">      </span><span class="nt">exec</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;ls&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;/certs/client/ca.pem&#39;</span><span class="p">]</span><span class="w">
-</span><span class="w">  </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">dind-certs</span><span class="w">
-</span><span class="w">    </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
-</span></code></pre></div><p>Make sure you have a base image that supports multiarch like alpine or one of <a class="link" href="https://hub.docker.com/search?category=base&amp;source=verified&amp;type=image&amp;architecture=arm%2Carm64%2Camd64"  target="_blank" rel="noopener"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kubectl create secret generic docker-token <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --from-literal<span class="o">=</span><span class="nv">username</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CONTAINER_REGISTRY_USER</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --from-literal<span class="o">=</span><span class="nv">password</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CONTAINER_REGISTRY_PASSWORD</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">tekton.dev/v1beta1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ClusterTask</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">docker-buildx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">app.kubernetes.io/version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;0.1&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">annotations</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">tekton.dev/pipelines.minVersion</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;0.12.1&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">tekton.dev/tags</span><span class="p">:</span><span class="w"> </span><span class="l">docker, build-image, push-image, dind, buildx, multi-arch</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">tekton.dev/displayName</span><span class="p">:</span><span class="w"> </span><span class="l">docker-buildx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p">&gt;-</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">    This task will build and push an image using docker buildx.
+</span></span></span><span class="line"><span class="cl"><span class="sd">    The task will build an out image out of a Dockerfile.
+</span></span></span><span class="line"><span class="cl"><span class="sd">    This image will be pushed to an image registry.
+</span></span></span><span class="line"><span class="cl"><span class="sd">    The image will be built and pushed using a dind sidecar over TCP+TLS.</span><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">image</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">Reference of the image docker will produce.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">builder_image</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">The location of the docker builder image.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="l">docker.io/library/docker:19.03.14</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">dockerfile</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">Path to the Dockerfile to build.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="l">./Dockerfile</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">context</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">Path to the directory to use as context.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="l">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">build_extra_args</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">Extra parameters passed for the build command when building images.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;--platform linux/amd64,linux/arm/v7 --no-cache&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">push_extra_args</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">Extra parameters passed for the push command when pushing images.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;--push&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">insecure_registry</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">Allows the user to push to an insecure registry that has been specified</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">docker-token-secret</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">string</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">name of the secret holding the docker-token</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="l">docker-token</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">workspaces</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">source</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">results</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">IMAGE_DIGEST</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">Digest of the image just built.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">buildx-build-push</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">$(params.builder_image)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">env</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># Connect to the sidecar over TCP, with TLS.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">DOCKER_HOST</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">tcp://localhost:2376</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># Verify TLS.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">DOCKER_TLS_VERIFY</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># Use the certs generated by the sidecar daemon.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">DOCKER_CERT_PATH</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">/certs/client</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">DOCKERHUB_USER</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">secretKeyRef</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">$(params.docker-token-secret)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">username</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">DOCKERHUB_PASS</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">secretKeyRef</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">$(params.docker-token-secret)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">password</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">workingDir</span><span class="p">:</span><span class="w"> </span><span class="l">$(workspaces.source.path)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">      # install depends
+</span></span></span><span class="line"><span class="cl"><span class="sd">      apk add curl jq
+</span></span></span><span class="line"><span class="cl"><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">      # enable experimental buildx features
+</span></span></span><span class="line"><span class="cl"><span class="sd">      export DOCKER_BUILDKIT=1
+</span></span></span><span class="line"><span class="cl"><span class="sd">      export DOCKER_CLI_EXPERIMENTAL=enabled
+</span></span></span><span class="line"><span class="cl"><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">      # Download latest buildx bin from github
+</span></span></span><span class="line"><span class="cl"><span class="sd">      mkdir -p ~/.docker/cli-plugins/
+</span></span></span><span class="line"><span class="cl"><span class="sd">      BUILDX_LATEST_BIN_URI=$(curl -s -L https://github.com/docker/buildx/releases/latest | grep &#39;linux-amd64&#39; | grep &#39;href&#39; | sed &#39;s/.*href=&#34;/https:\/\/github.com/g; s/amd64&#34;.*/amd64/g&#39;)
+</span></span></span><span class="line"><span class="cl"><span class="sd">      curl -s -L ${BUILDX_LATEST_BIN_URI} -o ~/.docker/cli-plugins/docker-buildx
+</span></span></span><span class="line"><span class="cl"><span class="sd">      chmod a+x ~/.docker/cli-plugins/docker-buildx
+</span></span></span><span class="line"><span class="cl"><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">      # Get and run the latest docker/binfmt tag to use its qemu parts
+</span></span></span><span class="line"><span class="cl"><span class="sd">      BINFMT_IMAGE_TAG=$(curl -s https://registry.hub.docker.com/v2/repositories/docker/binfmt/tags | jq &#39;.results | sort_by(.last_updated)[-1].name&#39; -r)
+</span></span></span><span class="line"><span class="cl"><span class="sd">      docker run --rm --privileged docker/binfmt:${BINFMT_IMAGE_TAG}
+</span></span></span><span class="line"><span class="cl"><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">      docker context create tls-environment
+</span></span></span><span class="line"><span class="cl"><span class="sd">      # create the multibuilder
+</span></span></span><span class="line"><span class="cl"><span class="sd">      docker buildx create --name multibuilder --use tls-environment
+</span></span></span><span class="line"><span class="cl"><span class="sd">      docker buildx use multibuilder
+</span></span></span><span class="line"><span class="cl"><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">      # login to a registry
+</span></span></span><span class="line"><span class="cl"><span class="sd">      echo ${DOCKERHUB_PASS} | docker login -u ${DOCKERHUB_USER} --password-stdin
+</span></span></span><span class="line"><span class="cl"><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">      # build the containers and push them to the registry then display the images
+</span></span></span><span class="line"><span class="cl"><span class="sd">      docker buildx build $(params.build_extra_args) \
+</span></span></span><span class="line"><span class="cl"><span class="sd">          -f $(params.dockerfile) -t $(params.image) $(params.context) $(params.push_extra_args)</span><span class="w">      
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/certs/client</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">dind-certs</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">sidecars</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">docker:19.03.14-dind</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">server</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">args</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- --<span class="l">storage-driver=vfs</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- --<span class="l">userland-proxy=false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- --<span class="l">debug</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">securityContext</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">env</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># Write generated certs to the path shared with the client.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">DOCKER_TLS_CERTDIR</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">/certs</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/certs/client</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">dind-certs</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># Wait for the dind daemon to generate the certs it will share with the</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># client.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">readinessProbe</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">exec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;ls&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;/certs/client/ca.pem&#39;</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">dind-certs</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span></span></span></code></pre></div><p>Make sure you have a base image that supports multiarch like alpine or one of <a class="link" href="https://hub.docker.com/search?category=base&amp;source=verified&amp;type=image&amp;architecture=arm%2Carm64%2Camd64"  target="_blank" rel="noopener"
     >these</a> base images</p>
 
 </section>
@@ -306,7 +306,7 @@
         
             2020 - 
         
-        2021 Vikas Pogu&#39;s Blog
+        2022 My approach...
     </section>
     
     <section class="powerby">

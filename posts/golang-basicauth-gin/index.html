@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Basic Authentication in Go with Gin'>
 <meta property='og:description' content='Basic user authentication with gin web framework in Golang'>
 <meta property='og:url' content='https://vikaspogu.dev/posts/golang-basicauth-gin/'>
-<meta property='og:site_name' content='Vikas Pogu&#39;s Blog'>
+<meta property='og:site_name' content='My approach...'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='golang' /><meta property='article:tag' content='basicauth' /><meta property='article:tag' content='gin' /><meta property='article:published_time' content='2019-12-16T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2019-12-16T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Basic Authentication in Go with Gin">
 <meta name="twitter:description" content="Basic user authentication with gin web framework in Golang">
@@ -72,7 +72,7 @@
             
         
         
-        <h1 class="site-name"><a href="/">Vikas Pogu&#39;s Blog</a></h1>
+        <h1 class="site-name"><a href="/">My approach...</a></h1>
         <h2 class="site-description">OpenShift, Kubernetes, Docker and more</h2><ol class="social-menu">
                 
                     <li>
@@ -292,30 +292,30 @@
     <section class="article-content">
     <p>This is short post on adding basic authentication to go applications. Our sample application uses gin web framework</p>
 <p>Let&rsquo;s start by creating a gin router with default middleware, by default it serves on <code>:8080</code> unless a <code>PORT</code> environment variable was defined</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">(){</span>
-	<span class="nx">r</span> <span class="o">:=</span> <span class="nx">gin</span><span class="p">.</span><span class="nf">Default</span><span class="p">()</span>
-	<span class="nx">r</span><span class="p">.</span><span class="nf">GET</span><span class="p">(</span><span class="s">&#34;/getAllUsers&#34;</span><span class="p">,</span> <span class="nx">basicAuth</span><span class="p">,</span> <span class="nx">handlers</span><span class="p">.</span><span class="nx">UsersList</span><span class="p">)</span>
-	<span class="nx">_</span> <span class="p">=</span> <span class="nx">r</span><span class="p">.</span><span class="nf">Run</span><span class="p">()</span>
-<span class="p">}</span>
-</code></pre></div><p>Now that we have our basic route, lets create a method to add authentication logic. Get basic auth credentials from context request and validate them. If user isn&rsquo;t authenticated, authentication window is prompted with username and password.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">basicAuth</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="p">{</span>
-	<span class="c1">// Get the Basic Authentication credentials
-</span><span class="c1"></span>	<span class="nx">user</span><span class="p">,</span> <span class="nx">password</span><span class="p">,</span> <span class="nx">hasAuth</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nf">BasicAuth</span><span class="p">()</span>
-	<span class="k">if</span> <span class="nx">hasAuth</span> <span class="o">&amp;&amp;</span> <span class="nx">user</span> <span class="o">==</span> <span class="s">&#34;testuser&#34;</span> <span class="o">&amp;&amp;</span> <span class="nx">password</span> <span class="o">==</span> <span class="s">&#34;testpass&#34;</span> <span class="p">{</span>
-		<span class="nx">log</span><span class="p">.</span><span class="nf">WithFields</span><span class="p">(</span><span class="nx">log</span><span class="p">.</span><span class="nx">Fields</span><span class="p">{</span>
-			<span class="s">&#34;user&#34;</span><span class="p">:</span> <span class="nx">user</span><span class="p">,</span>
-		<span class="p">}).</span><span class="nf">Info</span><span class="p">(</span><span class="s">&#34;User authenticated&#34;</span><span class="p">)</span>
-	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-		<span class="nx">c</span><span class="p">.</span><span class="nf">Abort</span><span class="p">()</span>
-		<span class="nx">c</span><span class="p">.</span><span class="nx">Writer</span><span class="p">.</span><span class="nf">Header</span><span class="p">().</span><span class="nf">Set</span><span class="p">(</span><span class="s">&#34;WWW-Authenticate&#34;</span><span class="p">,</span> <span class="s">&#34;Basic realm=Restricted&#34;</span><span class="p">)</span>
-		<span class="k">return</span>
-	<span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><p>Run application</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ go run main.go
-</code></pre></div><p>Verify if authentication works</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ curl -X GET <span class="s2">&#34;http://testuser:testpass@localhost:8080/getAllUsers&#34;</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">r</span> <span class="o">:=</span> <span class="nx">gin</span><span class="p">.</span><span class="nf">Default</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">r</span><span class="p">.</span><span class="nf">GET</span><span class="p">(</span><span class="s">&#34;/getAllUsers&#34;</span><span class="p">,</span> <span class="nx">basicAuth</span><span class="p">,</span> <span class="nx">handlers</span><span class="p">.</span><span class="nx">UsersList</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">_</span> <span class="p">=</span> <span class="nx">r</span><span class="p">.</span><span class="nf">Run</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Now that we have our basic route, lets create a method to add authentication logic. Get basic auth credentials from context request and validate them. If user isn&rsquo;t authenticated, authentication window is prompted with username and password.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">basicAuth</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Get the Basic Authentication credentials
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">user</span><span class="p">,</span> <span class="nx">password</span><span class="p">,</span> <span class="nx">hasAuth</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nf">BasicAuth</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">hasAuth</span> <span class="o">&amp;&amp;</span> <span class="nx">user</span> <span class="o">==</span> <span class="s">&#34;testuser&#34;</span> <span class="o">&amp;&amp;</span> <span class="nx">password</span> <span class="o">==</span> <span class="s">&#34;testpass&#34;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">log</span><span class="p">.</span><span class="nf">WithFields</span><span class="p">(</span><span class="nx">log</span><span class="p">.</span><span class="nx">Fields</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="s">&#34;user&#34;</span><span class="p">:</span> <span class="nx">user</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}).</span><span class="nf">Info</span><span class="p">(</span><span class="s">&#34;User authenticated&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">c</span><span class="p">.</span><span class="nf">Abort</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">c</span><span class="p">.</span><span class="nx">Writer</span><span class="p">.</span><span class="nf">Header</span><span class="p">().</span><span class="nf">Set</span><span class="p">(</span><span class="s">&#34;WWW-Authenticate&#34;</span><span class="p">,</span> <span class="s">&#34;Basic realm=Restricted&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Run application</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">go run main.go
+</span></span></code></pre></div><p>Verify if authentication works</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET <span class="s2">&#34;http://testuser:testpass@localhost:8080/getAllUsers&#34;</span>
+</span></span></code></pre></div>
 </section>
 
 
@@ -354,7 +354,7 @@
         
             2020 - 
         
-        2021 Vikas Pogu&#39;s Blog
+        2022 My approach...
     </section>
     
     <section class="powerby">

@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en-us">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='End User Authentication and Authorization with Openshift Service Mesh and Keycloak'><title>End User Auth and Authz with Openshift Service Mesh and Keycloak</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='End User Authentication and Authorization with OpenShift Service Mesh and Keycloak'><title>End User Auth and Authz with OpenShift Service Mesh and Keycloak</title>
 
 <link rel='canonical' href='https://vikaspogu.dev/posts/servicemesh-jwt-auth-authz-keycloack/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='End User Auth and Authz with Openshift Service Mesh and Keycloak'>
-<meta property='og:description' content='End User Authentication and Authorization with Openshift Service Mesh and Keycloak'>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='End User Auth and Authz with OpenShift Service Mesh and Keycloak'>
+<meta property='og:description' content='End User Authentication and Authorization with OpenShift Service Mesh and Keycloak'>
 <meta property='og:url' content='https://vikaspogu.dev/posts/servicemesh-jwt-auth-authz-keycloack/'>
-<meta property='og:site_name' content='Vikas Pogu&#39;s Blog'>
+<meta property='og:site_name' content='My approach...'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='istio' /><meta property='article:tag' content='service mesh' /><meta property='article:tag' content='keycloak' /><meta property='article:tag' content='jwt' /><meta property='article:tag' content='authentication' /><meta property='article:tag' content='authorization' /><meta property='article:published_time' content='2020-11-12T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-11-12T00:00:00&#43;00:00'/>
-<meta name="twitter:title" content="End User Auth and Authz with Openshift Service Mesh and Keycloak">
-<meta name="twitter:description" content="End User Authentication and Authorization with Openshift Service Mesh and Keycloak">
+<meta name="twitter:title" content="End User Auth and Authz with OpenShift Service Mesh and Keycloak">
+<meta name="twitter:description" content="End User Authentication and Authorization with OpenShift Service Mesh and Keycloak">
     </head>
     <body class="
     article-page has-toc
@@ -65,12 +65,12 @@
     
 
     <h2 class="article-title">
-        <a href="/posts/servicemesh-jwt-auth-authz-keycloack/">End User Auth and Authz with Openshift Service Mesh and Keycloak</a>
+        <a href="/posts/servicemesh-jwt-auth-authz-keycloack/">End User Auth and Authz with OpenShift Service Mesh and Keycloak</a>
     </h2>
 
     
     <h3 class="article-subtitle">
-        End User Authentication and Authorization with Openshift Service Mesh and Keycloak
+        End User Authentication and Authorization with OpenShift Service Mesh and Keycloak
     </h3>
     
 
@@ -112,26 +112,26 @@
 </header>
 
     <section class="article-content">
-    <p>In this article, I will share the setup for enabling Authentication and Authorization in Openshift Service Mesh with Keycloak</p>
-<h2 id="installing-openshift-service-mesh">Installing Openshift Service Mesh</h2>
-<p>Follow the <a class="link" href="https://docs.openshift.com/container-platform/4.6/service_mesh/v1x/installing-ossm.html"  target="_blank" rel="noopener"
+    <p>In this article, I will share the setup for enabling Authentication and Authorization in OpenShift Service Mesh with Keycloak</p>
+<h2 id="installing-openshift-service-mesh">Installing OpenShift Service Mesh</h2>
+<p>Follow the <a class="link" href="https://docs.OpenShift.com/container-platform/4.6/service_mesh/v1x/installing-ossm.html"  target="_blank" rel="noopener"
     >Installing Red Hat OpenShift Service Mesh</a> guide for setup</p>
 <p>Enable following configuration in your <code>ServiceMeshControlPlane</code> resource</p>
 <ul>
 <li>Strict mTLS across the mesh</li>
 <li>Automatic istio route creation</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">maistra.io/v2</span><span class="w">
-</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ServiceMeshControlPlane</span><span class="w">
-</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l">v1.1</span><span class="w">
-</span><span class="w">  </span><span class="nt">security</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">controlPlane</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">mtls</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="w">  </span><span class="nt">gateways</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">openshiftRoute</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></code></pre></div><h2 id="keycloak">Keycloak</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">maistra.io/v2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ServiceMeshControlPlane</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l">v1.1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">security</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">controlPlane</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">mtls</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">gateways</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">OpenShiftRoute</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span></code></pre></div><h2 id="keycloak">Keycloak</h2>
 <p>Keycloak is an open-source identity and access management application that uses open protocols and is easily integrated with other providers. It is the open-source project base of Red Hat Single Sign-on</p>
 <h3 id="deploying-red-hat-single-sign-on">Deploying Red Hat Single Sign-on</h3>
 <p>The easiest way to deploy SSO is from the operator hub</p>
@@ -158,169 +158,169 @@
     >Keycloak identity provider</a> article for adding new secuity realm, client, role, user</p>
 <h3 id="deploying-bookinfo-example-application">Deploying Bookinfo example application</h3>
 <p>Create a new namespace</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">oc new-project bookinfo
-</code></pre></div><p>Edit the default Service Mesh Member Roll YAML and add bookinfo to the members list</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">maistra.io/v1</span><span class="w">
-</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ServiceMeshMemberRoll</span><span class="w">
-</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">default</span><span class="w">
-</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">members</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="l">bookinfo</span><span class="w">
-</span></code></pre></div><p>From the CLI, deploy the Bookinfo application in the <code>bookinfo</code> project by applying the bookinfo.yaml file</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">oc apply -n bookinfo -f https://raw.githubusercontent.com/Maistra/istio/maistra-2.0/samples/bookinfo/platform/kube/bookinfo.yaml
-</code></pre></div><p>Create the ingress gateway by applying the bookinfo-gateway.yaml file</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">oc apply -n bookinfo -f https://raw.githubusercontent.com/Maistra/istio/maistra-2.0/samples/bookinfo/networking/bookinfo-gateway.yaml
-</code></pre></div><p>Set the value for the <code>GATEWAY_URL</code> parameter</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">oc get routes -n istio-system <span class="p">|</span> grep bookinfo
-<span class="nb">export</span> <span class="nv">GATEWAY_URL</span><span class="o">=</span><span class="k">$(</span>oc -n istio-system get route bookinfo-gateway-pl2rw -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.spec.host}&#39;</span><span class="k">)</span>
-</code></pre></div><p>Adding default destination rules</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">oc new-project bookinfo
+</span></span></code></pre></div><p>Edit the default Service Mesh Member Roll YAML and add bookinfo to the members list</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">maistra.io/v1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ServiceMeshMemberRoll</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">default</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">members</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">bookinfo</span><span class="w">
+</span></span></span></code></pre></div><p>From the CLI, deploy the Bookinfo application in the <code>bookinfo</code> project by applying the bookinfo.yaml file</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">oc apply -n bookinfo -f https://raw.githubusercontent.com/Maistra/istio/maistra-2.0/samples/bookinfo/platform/kube/bookinfo.yaml
+</span></span></code></pre></div><p>Create the ingress gateway by applying the bookinfo-gateway.yaml file</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">oc apply -n bookinfo -f https://raw.githubusercontent.com/Maistra/istio/maistra-2.0/samples/bookinfo/networking/bookinfo-gateway.yaml
+</span></span></code></pre></div><p>Set the value for the <code>GATEWAY_URL</code> parameter</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">oc get routes -n istio-system <span class="p">|</span> grep bookinfo
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">GATEWAY_URL</span><span class="o">=</span><span class="k">$(</span>oc -n istio-system get route bookinfo-gateway-pl2rw -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.spec.host}&#39;</span><span class="k">)</span>
+</span></span></code></pre></div><p>Adding default destination rules</p>
 <p>I have enabled global mutual TLS in the control plane, so I’ll deploy the destination rule with all mtls</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">oc apply -n bookinfo -f https://raw.githubusercontent.com/Maistra/istio/maistra-2.0/samples/bookinfo/networking/destination-rule-all-mtls.yaml
-</code></pre></div><p>Verifying the Bookinfo installation</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">oc apply -n bookinfo -f https://raw.githubusercontent.com/Maistra/istio/maistra-2.0/samples/bookinfo/networking/destination-rule-all-mtls.yaml
+</span></span></code></pre></div><p>Verifying the Bookinfo installation</p>
 <p>Run this command to confirm that Bookinfo is deployed</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">curl -o /dev/null -s -w <span class="s2">&#34;%{http_code}\n&#34;</span> http://<span class="nv">$GATEWAY_URL</span>/productpage
-</code></pre></div><h2 id="authentication">Authentication</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -o /dev/null -s -w <span class="s2">&#34;%{http_code}\n&#34;</span> http://<span class="nv">$GATEWAY_URL</span>/productpage
+</span></span></code></pre></div><h2 id="authentication">Authentication</h2>
 <h3 id="enabling-user-end-authentication">Enabling User-End Authentication</h3>
 <p>Now it is time to enable end-user authentication</p>
 <p>The first thing you need to do is validate that it is possible to communicate between all services without authentication</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">curl -k -o /dev/null -w <span class="s2">&#34;%{http_code}&#34;</span> http://<span class="nv">$GATEWAY_URL</span>/productpage
-<span class="m">200</span>
-</code></pre></div><p>You can create the end-user authentication policy</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">cat <span class="s">&lt;&lt;EOF | oc apply -n bookinfo -f -
-</span><span class="s">apiVersion: authentication.istio.io/v1alpha1
-</span><span class="s">kind: Policy
-</span><span class="s">metadata:
-</span><span class="s">  name: &#34;productpage-jwt&#34;
-</span><span class="s">  namespace: &#34;bookinfo&#34;
-</span><span class="s">spec:
-</span><span class="s">  targets:
-</span><span class="s">    - name: productpage
-</span><span class="s">  peers:
-</span><span class="s">    - mtls: {}
-</span><span class="s">  origins:
-</span><span class="s">    - jwt:
-</span><span class="s">        issuer: &#34;https://keycloak-sso.apps.amp01.lab.amp.aapaws/auth/realms/istio&#34;
-</span><span class="s">        jwksUri: &#34;https://keycloak-sso.apps.amp01.lab.amp.aapaws/auth/realms/istio/protocol/openid-connect/certs&#34;
-</span><span class="s">        audiences:
-</span><span class="s">          - customer
-</span><span class="s">        triggerRules:
-</span><span class="s">          - excludedPaths:
-</span><span class="s">              - prefix: /healthz
-</span><span class="s">  principalBinding: USE_ORIGIN
-</span><span class="s">EOF</span>
-</code></pre></div><p><strong>NOTE</strong>: If you see <code>Origin authentication failed.</code> after passing right access token and url. Verify your istio-pilot pods for any <code>x509: certificate signed by unknown authority</code> if thats the case follow this <a class="link" href="https://labs.consol.de/development/2020/05/07/debugging-istio.html"  target="_blank" rel="noopener"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -k -o /dev/null -w <span class="s2">&#34;%{http_code}&#34;</span> http://<span class="nv">$GATEWAY_URL</span>/productpage
+</span></span><span class="line"><span class="cl"><span class="m">200</span>
+</span></span></code></pre></div><p>You can create the end-user authentication policy</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat <span class="s">&lt;&lt;EOF | oc apply -n bookinfo -f -
+</span></span></span><span class="line"><span class="cl"><span class="s">apiVersion: authentication.istio.io/v1alpha1
+</span></span></span><span class="line"><span class="cl"><span class="s">kind: Policy
+</span></span></span><span class="line"><span class="cl"><span class="s">metadata:
+</span></span></span><span class="line"><span class="cl"><span class="s">  name: &#34;productpage-jwt&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">  namespace: &#34;bookinfo&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">spec:
+</span></span></span><span class="line"><span class="cl"><span class="s">  targets:
+</span></span></span><span class="line"><span class="cl"><span class="s">    - name: productpage
+</span></span></span><span class="line"><span class="cl"><span class="s">  peers:
+</span></span></span><span class="line"><span class="cl"><span class="s">    - mtls: {}
+</span></span></span><span class="line"><span class="cl"><span class="s">  origins:
+</span></span></span><span class="line"><span class="cl"><span class="s">    - jwt:
+</span></span></span><span class="line"><span class="cl"><span class="s">        issuer: &#34;https://keycloak-sso.apps.amp01.lab.amp.aapaws/auth/realms/istio&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">        jwksUri: &#34;https://keycloak-sso.apps.amp01.lab.amp.aapaws/auth/realms/istio/protocol/openid-connect/certs&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">        audiences:
+</span></span></span><span class="line"><span class="cl"><span class="s">          - customer
+</span></span></span><span class="line"><span class="cl"><span class="s">        triggerRules:
+</span></span></span><span class="line"><span class="cl"><span class="s">          - excludedPaths:
+</span></span></span><span class="line"><span class="cl"><span class="s">              - prefix: /healthz
+</span></span></span><span class="line"><span class="cl"><span class="s">  principalBinding: USE_ORIGIN
+</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
+</span></span></code></pre></div><p><strong>NOTE</strong>: If you see <code>Origin authentication failed.</code> after passing right access token and url. Verify your istio-pilot pods for any <code>x509: certificate signed by unknown authority</code> if thats the case follow this <a class="link" href="https://labs.consol.de/development/2020/05/07/debugging-istio.html"  target="_blank" rel="noopener"
     >workaround</a></p>
 <p>Then let’s run the curl again</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">curl -k http://<span class="nv">$GATEWAY_URL</span>/productpage
-</code></pre></div><p>And you will see something like</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">Origin authentication failed.
-</code></pre></div><p>Set the value for the <code>TOKEN</code> parameter from keyclock</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">TOKEN</span><span class="o">=</span><span class="k">$(</span>curl -sk --data <span class="s2">&#34;username=demo&amp;password=demo&amp;grant_type=password&amp;client_id=istio&#34;</span> https://keycloak-sso.apps.amp01.lab.amp.aapaws/auth/realms/istio/protocol/openid-connect/token <span class="p">|</span> jq <span class="s2">&#34;.access_token&#34;</span><span class="k">)</span>
-</code></pre></div><p>Then let’s run the curl again, this time with the token</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">curl -k -o /dev/null -w <span class="s2">&#34;%{http_code}&#34;</span> -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">&#34;</span> http://<span class="nv">$GATEWAY_URL</span>/productpage
-<span class="m">200</span>
-</code></pre></div><h2 id="authorization">Authorization</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -k http://<span class="nv">$GATEWAY_URL</span>/productpage
+</span></span></code></pre></div><p>And you will see something like</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Origin authentication failed.
+</span></span></code></pre></div><p>Set the value for the <code>TOKEN</code> parameter from keyclock</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">TOKEN</span><span class="o">=</span><span class="k">$(</span>curl -sk --data <span class="s2">&#34;username=demo&amp;password=demo&amp;grant_type=password&amp;client_id=istio&#34;</span> https://keycloak-sso.apps.amp01.lab.amp.aapaws/auth/realms/istio/protocol/openid-connect/token <span class="p">|</span> jq <span class="s2">&#34;.access_token&#34;</span><span class="k">)</span>
+</span></span></code></pre></div><p>Then let’s run the curl again, this time with the token</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -k -o /dev/null -w <span class="s2">&#34;%{http_code}&#34;</span> -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">&#34;</span> http://<span class="nv">$GATEWAY_URL</span>/productpage
+</span></span><span class="line"><span class="cl"><span class="m">200</span>
+</span></span></code></pre></div><h2 id="authorization">Authorization</h2>
 <p>Create a deny-all policy in the namespace. The policy doesn’t have a selector field, which applies the policy to every workload in the namespace. The spec: field of the policy has the empty value {}. The empty value means that no traffic is permitted, effectively denying all requests</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ cat <span class="s">&lt;&lt;EOF | oc apply -n bookinfo -f -
-</span><span class="s">apiVersion: security.istio.io/v1beta1
-</span><span class="s">kind: AuthorizationPolicy
-</span><span class="s">metadata:
-</span><span class="s">  name: deny-all
-</span><span class="s">spec:
-</span><span class="s">  {}
-</span><span class="s">EOF</span>
-</code></pre></div><p>Once the policy takes effect, verify that mesh rejected the curl connection to the workload</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ curl -k -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">&#34;</span> http://<span class="nv">$GATEWAY_URL</span>/productpage
-RBAC: access denied
-</code></pre></div><p>To give read access to the productpage workload, create the policy that applies to workload with label app: productpage and allows users with roles customer to access it with all method</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ cat <span class="s">&lt;&lt;EOF | oc apply -n bookinfo -f -
-</span><span class="s">apiVersion: security.istio.io/v1beta1
-</span><span class="s">kind: AuthorizationPolicy
-</span><span class="s">metadata:
-</span><span class="s">  name: &#34;productpage-authz&#34;
-</span><span class="s">  namespace: &#34;bookinfo&#34;
-</span><span class="s">spec:
-</span><span class="s">  selector:
-</span><span class="s">    matchLabels:
-</span><span class="s">      app: productpage
-</span><span class="s">  rules:
-</span><span class="s">    - to:
-</span><span class="s">        - operation:
-</span><span class="s">            methods: [&#34;*&#34;]
-</span><span class="s">      when:
-</span><span class="s">        - key: request.auth.claims[roles]
-</span><span class="s">          values: [&#34;customer&#34;]
-</span><span class="s">EOF</span>
-</code></pre></div><p>Wait for the newly defined policy to take effect</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ cat <span class="s">&lt;&lt;EOF | oc apply -n bookinfo -f -
+</span></span></span><span class="line"><span class="cl"><span class="s">apiVersion: security.istio.io/v1beta1
+</span></span></span><span class="line"><span class="cl"><span class="s">kind: AuthorizationPolicy
+</span></span></span><span class="line"><span class="cl"><span class="s">metadata:
+</span></span></span><span class="line"><span class="cl"><span class="s">  name: deny-all
+</span></span></span><span class="line"><span class="cl"><span class="s">spec:
+</span></span></span><span class="line"><span class="cl"><span class="s">  {}
+</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
+</span></span></code></pre></div><p>Once the policy takes effect, verify that mesh rejected the curl connection to the workload</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ curl -k -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">&#34;</span> http://<span class="nv">$GATEWAY_URL</span>/productpage
+</span></span><span class="line"><span class="cl">RBAC: access denied
+</span></span></code></pre></div><p>To give read access to the productpage workload, create the policy that applies to workload with label app: productpage and allows users with roles customer to access it with all method</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ cat <span class="s">&lt;&lt;EOF | oc apply -n bookinfo -f -
+</span></span></span><span class="line"><span class="cl"><span class="s">apiVersion: security.istio.io/v1beta1
+</span></span></span><span class="line"><span class="cl"><span class="s">kind: AuthorizationPolicy
+</span></span></span><span class="line"><span class="cl"><span class="s">metadata:
+</span></span></span><span class="line"><span class="cl"><span class="s">  name: &#34;productpage-authz&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">  namespace: &#34;bookinfo&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">spec:
+</span></span></span><span class="line"><span class="cl"><span class="s">  selector:
+</span></span></span><span class="line"><span class="cl"><span class="s">    matchLabels:
+</span></span></span><span class="line"><span class="cl"><span class="s">      app: productpage
+</span></span></span><span class="line"><span class="cl"><span class="s">  rules:
+</span></span></span><span class="line"><span class="cl"><span class="s">    - to:
+</span></span></span><span class="line"><span class="cl"><span class="s">        - operation:
+</span></span></span><span class="line"><span class="cl"><span class="s">            methods: [&#34;*&#34;]
+</span></span></span><span class="line"><span class="cl"><span class="s">      when:
+</span></span></span><span class="line"><span class="cl"><span class="s">        - key: request.auth.claims[roles]
+</span></span></span><span class="line"><span class="cl"><span class="s">          values: [&#34;customer&#34;]
+</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
+</span></span></code></pre></div><p>Wait for the newly defined policy to take effect</p>
 <p>After the policy takes effect, verify the connection to the httpbin workload succeeds</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">curl -k  -o /dev/null -w <span class="s2">&#34;%{http_code}&#34;</span> -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">&#34;</span> http://<span class="nv">$GATEWAY_URL</span>/productpage
-<span class="m">200</span>
-</code></pre></div><p>However, you can see the following errors on the page</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -k  -o /dev/null -w <span class="s2">&#34;%{http_code}&#34;</span> -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">&#34;</span> http://<span class="nv">$GATEWAY_URL</span>/productpage
+</span></span><span class="line"><span class="cl"><span class="m">200</span>
+</span></span></code></pre></div><p>However, you can see the following errors on the page</p>
 <ul>
 <li>Error fetching product details</li>
 <li>Error fetching product reviews on the page</li>
 </ul>
 <p>Run the following command to create the details-viewer policy to allow the productpage workload, which issues requests using the <code>cluster.local/ns/bookinfo/sa/bookinfo-productpage</code> service account, to access the details workload through GET methods</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">oc apply -f - <span class="s">&lt;&lt;EOF
-</span><span class="s">apiVersion: &#34;security.istio.io/v1beta1&#34;
-</span><span class="s">kind: &#34;AuthorizationPolicy&#34;
-</span><span class="s">metadata:
-</span><span class="s">  name: &#34;details-viewer&#34;
-</span><span class="s">  namespace: bookinfo
-</span><span class="s">spec:
-</span><span class="s">  selector:
-</span><span class="s">    matchLabels:
-</span><span class="s">      app: details
-</span><span class="s">  rules:
-</span><span class="s">  - from:
-</span><span class="s">    - source:
-</span><span class="s">        principals: [&#34;cluster.local/ns/bookinfo/sa/bookinfo-productpage&#34;]
-</span><span class="s">    to:
-</span><span class="s">    - operation:
-</span><span class="s">        methods: [&#34;GET&#34;]
-</span><span class="s">EOF</span>
-</code></pre></div><p>Run the following command to create a policy reviews-viewer to allow the productpage workload, which issues requests using the <code>cluster.local/ns/bookinfo/sa/bookinfo-productpage</code> service account, to access the reviews workload through GET methods</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">oc apply -f - <span class="s">&lt;&lt;EOF
-</span><span class="s">apiVersion: &#34;security.istio.io/v1beta1&#34;
-</span><span class="s">kind: &#34;AuthorizationPolicy&#34;
-</span><span class="s">metadata:
-</span><span class="s">  name: &#34;reviews-viewer&#34;
-</span><span class="s">  namespace: bookinfo
-</span><span class="s">spec:
-</span><span class="s">  selector:
-</span><span class="s">    matchLabels:
-</span><span class="s">      app: reviews
-</span><span class="s">  rules:
-</span><span class="s">  - from:
-</span><span class="s">    - source:
-</span><span class="s">        principals: [&#34;cluster.local/ns/bookinfo/sa/bookinfo-productpage&#34;]
-</span><span class="s">    to:
-</span><span class="s">    - operation:
-</span><span class="s">        methods: [&#34;GET&#34;]
-</span><span class="s">EOF</span>
-</code></pre></div><p>Point your browser at the Bookinfo productpage (http://$GATEWAY_URL/productpage). Now, you should see the “Bookinfo Sample” page with “Book Details” on the lower left part, and “Book Reviews” on the lower right part. However, in the “Book Reviews” section, there is an error Ratings service currently unavailable</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">oc apply -f - <span class="s">&lt;&lt;EOF
+</span></span></span><span class="line"><span class="cl"><span class="s">apiVersion: &#34;security.istio.io/v1beta1&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">kind: &#34;AuthorizationPolicy&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">metadata:
+</span></span></span><span class="line"><span class="cl"><span class="s">  name: &#34;details-viewer&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">  namespace: bookinfo
+</span></span></span><span class="line"><span class="cl"><span class="s">spec:
+</span></span></span><span class="line"><span class="cl"><span class="s">  selector:
+</span></span></span><span class="line"><span class="cl"><span class="s">    matchLabels:
+</span></span></span><span class="line"><span class="cl"><span class="s">      app: details
+</span></span></span><span class="line"><span class="cl"><span class="s">  rules:
+</span></span></span><span class="line"><span class="cl"><span class="s">  - from:
+</span></span></span><span class="line"><span class="cl"><span class="s">    - source:
+</span></span></span><span class="line"><span class="cl"><span class="s">        principals: [&#34;cluster.local/ns/bookinfo/sa/bookinfo-productpage&#34;]
+</span></span></span><span class="line"><span class="cl"><span class="s">    to:
+</span></span></span><span class="line"><span class="cl"><span class="s">    - operation:
+</span></span></span><span class="line"><span class="cl"><span class="s">        methods: [&#34;GET&#34;]
+</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
+</span></span></code></pre></div><p>Run the following command to create a policy reviews-viewer to allow the productpage workload, which issues requests using the <code>cluster.local/ns/bookinfo/sa/bookinfo-productpage</code> service account, to access the reviews workload through GET methods</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">oc apply -f - <span class="s">&lt;&lt;EOF
+</span></span></span><span class="line"><span class="cl"><span class="s">apiVersion: &#34;security.istio.io/v1beta1&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">kind: &#34;AuthorizationPolicy&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">metadata:
+</span></span></span><span class="line"><span class="cl"><span class="s">  name: &#34;reviews-viewer&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">  namespace: bookinfo
+</span></span></span><span class="line"><span class="cl"><span class="s">spec:
+</span></span></span><span class="line"><span class="cl"><span class="s">  selector:
+</span></span></span><span class="line"><span class="cl"><span class="s">    matchLabels:
+</span></span></span><span class="line"><span class="cl"><span class="s">      app: reviews
+</span></span></span><span class="line"><span class="cl"><span class="s">  rules:
+</span></span></span><span class="line"><span class="cl"><span class="s">  - from:
+</span></span></span><span class="line"><span class="cl"><span class="s">    - source:
+</span></span></span><span class="line"><span class="cl"><span class="s">        principals: [&#34;cluster.local/ns/bookinfo/sa/bookinfo-productpage&#34;]
+</span></span></span><span class="line"><span class="cl"><span class="s">    to:
+</span></span></span><span class="line"><span class="cl"><span class="s">    - operation:
+</span></span></span><span class="line"><span class="cl"><span class="s">        methods: [&#34;GET&#34;]
+</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
+</span></span></code></pre></div><p>Point your browser at the Bookinfo productpage (http://$GATEWAY_URL/productpage). Now, you should see the “Bookinfo Sample” page with “Book Details” on the lower left part, and “Book Reviews” on the lower right part. However, in the “Book Reviews” section, there is an error Ratings service currently unavailable</p>
 <p>This is because the reviews workload doesn’t have permission to access the ratings workload. To fix this issue, you need to grant the reviews workload access to the ratings workload. Next, we configure a policy to grant the reviews workload that access</p>
 <p>Run the following command to create the ratings-viewer policy to allow the reviews workload, which issues requests using the <code>cluster.local/ns/bookinfo/sa/bookinfo-reviews</code> service account, to access the ratings workload through GET methods</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">oc apply -f - <span class="s">&lt;&lt;EOF
-</span><span class="s">apiVersion: &#34;security.istio.io/v1beta1&#34;
-</span><span class="s">kind: &#34;AuthorizationPolicy&#34;
-</span><span class="s">metadata:
-</span><span class="s">  name: &#34;ratings-viewer&#34;
-</span><span class="s">  namespace: bookinfo
-</span><span class="s">spec:
-</span><span class="s">  selector:
-</span><span class="s">    matchLabels:
-</span><span class="s">      app: ratings
-</span><span class="s">  rules:
-</span><span class="s">  - from:
-</span><span class="s">    - source:
-</span><span class="s">        principals: [&#34;cluster.local/ns/bookinfo/sa/bookinfo-reviews&#34;]
-</span><span class="s">    to:
-</span><span class="s">    - operation:
-</span><span class="s">        methods: [&#34;GET&#34;]
-</span><span class="s">EOF</span>
-</code></pre></div><p>Point your browser at the Bookinfo productpage (http://$GATEWAY_URL/productpage). You should see the “black” and “red” ratings in the “Book Reviews” section</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">oc apply -f - <span class="s">&lt;&lt;EOF
+</span></span></span><span class="line"><span class="cl"><span class="s">apiVersion: &#34;security.istio.io/v1beta1&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">kind: &#34;AuthorizationPolicy&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">metadata:
+</span></span></span><span class="line"><span class="cl"><span class="s">  name: &#34;ratings-viewer&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">  namespace: bookinfo
+</span></span></span><span class="line"><span class="cl"><span class="s">spec:
+</span></span></span><span class="line"><span class="cl"><span class="s">  selector:
+</span></span></span><span class="line"><span class="cl"><span class="s">    matchLabels:
+</span></span></span><span class="line"><span class="cl"><span class="s">      app: ratings
+</span></span></span><span class="line"><span class="cl"><span class="s">  rules:
+</span></span></span><span class="line"><span class="cl"><span class="s">  - from:
+</span></span></span><span class="line"><span class="cl"><span class="s">    - source:
+</span></span></span><span class="line"><span class="cl"><span class="s">        principals: [&#34;cluster.local/ns/bookinfo/sa/bookinfo-reviews&#34;]
+</span></span></span><span class="line"><span class="cl"><span class="s">    to:
+</span></span></span><span class="line"><span class="cl"><span class="s">    - operation:
+</span></span></span><span class="line"><span class="cl"><span class="s">        methods: [&#34;GET&#34;]
+</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
+</span></span></code></pre></div><p>Point your browser at the Bookinfo productpage (http://$GATEWAY_URL/productpage). You should see the “black” and “red” ratings in the “Book Reviews” section</p>
 
 </section>
 
@@ -366,7 +366,7 @@ RBAC: access denied
         
             2020 - 
         
-        2021 Vikas Pogu&#39;s Blog
+        2022 My approach...
     </section>
     
     <section class="powerby">
@@ -475,7 +475,7 @@ RBAC: access denied
                 <div class="widget--toc">
                     <nav id="TableOfContents">
   <ol>
-    <li><a href="#installing-openshift-service-mesh">Installing Openshift Service Mesh</a></li>
+    <li><a href="#installing-openshift-service-mesh">Installing OpenShift Service Mesh</a></li>
     <li><a href="#keycloak">Keycloak</a>
       <ol>
         <li><a href="#deploying-red-hat-single-sign-on">Deploying Red Hat Single Sign-on</a></li>

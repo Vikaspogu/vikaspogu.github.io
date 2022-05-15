@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Measure Raspberry Pi temperature using Telegraf, Influxdb, Grafana on k3s'>
 <meta property='og:description' content='Measure Raspberry Pi temperature using Telegraf, Influxdb, Grafana on k3s'>
 <meta property='og:url' content='https://vikaspogu.dev/posts/raspberry-pi-temp-telegraf/'>
-<meta property='og:site_name' content='Vikas Pogu&#39;s Blog'>
+<meta property='og:site_name' content='My approach...'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='k3s' /><meta property='article:tag' content='grafana' /><meta property='article:tag' content='influxdb' /><meta property='article:tag' content='telegraf' /><meta property='article:published_time' content='2020-01-01T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-01-01T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Measure Raspberry Pi temperature using Telegraf, Influxdb, Grafana on k3s">
 <meta name="twitter:description" content="Measure Raspberry Pi temperature using Telegraf, Influxdb, Grafana on k3s">
@@ -117,46 +117,46 @@
 <p>Telegraf has a plugin called <a class="link" href="https://github.com/influxdata/telegraf/tree/master/plugins/inputs/exec"  target="_blank" rel="noopener"
     >exec</a>, which can execute the commands on host machine at certain interval and parses those metrics from their output in any one of the accepted input data formats.</p>
 <p>First, deploy <code>influxdb</code> time series database chart</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">helm.cattle.io/v1</span><span class="w">
-</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">HelmChart</span><span class="w">
-</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">influxdb</span><span class="w">
-</span><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">kube-system</span><span class="w">
-</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l">stable/influxdb</span><span class="w">
-</span><span class="w">  </span><span class="nt">targetNamespace</span><span class="p">:</span><span class="w"> </span><span class="l">monitoring</span><span class="w">
-</span></code></pre></div><h3 id="get-pi-temperature">Get Pi temperature</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">helm.cattle.io/v1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">HelmChart</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">influxdb</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">kube-system</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l">stable/influxdb</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">targetNamespace</span><span class="p">:</span><span class="w"> </span><span class="l">monitoring</span><span class="w">
+</span></span></span></code></pre></div><h3 id="get-pi-temperature">Get Pi temperature</h3>
 <p>I found this one liner <code>/sys/class/thermal/thermal_zone0/temp</code> which returns the temperature of the Pi; divide the output by 1000 to get a result in °C and use awk in order to have a float value.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">awk <span class="s1">&#39;{print $1/1000}&#39;</span> /sys/class/thermal/thermal_zone0/temp
-</code></pre></div><h3 id="update-chart-values">Update Chart values</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">awk <span class="s1">&#39;{print $1/1000}&#39;</span> /sys/class/thermal/thermal_zone0/temp
+</span></span></code></pre></div><h3 id="update-chart-values">Update Chart values</h3>
 <p>Update chart values, add <code>[inputs.exec]</code> to config and deploy it</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">helm.cattle.io/v1</span><span class="w">
-</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">HelmChart</span><span class="w">
-</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">telegraf</span><span class="w">
-</span><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">kube-system</span><span class="w">
-</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l">stable/telegraf</span><span class="w">
-</span><span class="w">  </span><span class="nt">targetNamespace</span><span class="p">:</span><span class="w"> </span><span class="l">monitoring</span><span class="w">
-</span><span class="w">  </span><span class="nt">valuesContent</span><span class="p">:</span><span class="w"> </span><span class="p">|-</span><span class="sd">
-</span><span class="sd">    replicaCount: 2
-</span><span class="sd">    image:
-</span><span class="sd">      repo: &#34;telegraf&#34;
-</span><span class="sd">      tag: &#34;latest&#34;
-</span><span class="sd">      pullPolicy: IfNotPresent
-</span><span class="sd">    env:
-</span><span class="sd">    - name: HOSTNAME
-</span><span class="sd">      valueFrom:
-</span><span class="sd">        fieldRef:
-</span><span class="sd">          fieldPath: spec.nodeName
-</span><span class="sd">    config:
-</span><span class="sd">      inputs:
-</span><span class="sd">        - exec:
-</span><span class="sd">            commands: [&#34;awk &#39;{print $1/1000}&#39; /sys/class/thermal/thermal_zone0/temp&#34;]
-</span><span class="sd">            name_override: &#34;rpi_temp&#34;
-</span><span class="sd">            data_format: &#34;value&#34;
-</span><span class="sd">            data_type: &#34;float&#34;</span><span class="w">    
-</span></code></pre></div><h3 id="add-datasource">Add Datasource</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">helm.cattle.io/v1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">HelmChart</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">telegraf</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">kube-system</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l">stable/telegraf</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">targetNamespace</span><span class="p">:</span><span class="w"> </span><span class="l">monitoring</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">valuesContent</span><span class="p">:</span><span class="w"> </span><span class="p">|-</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">    replicaCount: 2
+</span></span></span><span class="line"><span class="cl"><span class="sd">    image:
+</span></span></span><span class="line"><span class="cl"><span class="sd">      repo: &#34;telegraf&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">      tag: &#34;latest&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">      pullPolicy: IfNotPresent
+</span></span></span><span class="line"><span class="cl"><span class="sd">    env:
+</span></span></span><span class="line"><span class="cl"><span class="sd">    - name: HOSTNAME
+</span></span></span><span class="line"><span class="cl"><span class="sd">      valueFrom:
+</span></span></span><span class="line"><span class="cl"><span class="sd">        fieldRef:
+</span></span></span><span class="line"><span class="cl"><span class="sd">          fieldPath: spec.nodeName
+</span></span></span><span class="line"><span class="cl"><span class="sd">    config:
+</span></span></span><span class="line"><span class="cl"><span class="sd">      inputs:
+</span></span></span><span class="line"><span class="cl"><span class="sd">        - exec:
+</span></span></span><span class="line"><span class="cl"><span class="sd">            commands: [&#34;awk &#39;{print $1/1000}&#39; /sys/class/thermal/thermal_zone0/temp&#34;]
+</span></span></span><span class="line"><span class="cl"><span class="sd">            name_override: &#34;rpi_temp&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">            data_format: &#34;value&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">            data_type: &#34;float&#34;</span><span class="w">    
+</span></span></span></code></pre></div><h3 id="add-datasource">Add Datasource</h3>
 <p>Once influxdb and telegraf pods are in ready state, add influxdb datasource in grafana.</p>
 <p><figure 
 	
@@ -178,7 +178,7 @@
 	
 </figure></p>
 <h3 id="grafana">Grafana</h3>
-<p>For Grafana visualisation, import <a class="link" href="https://gist.github.com/Vikaspogu/b2d2f04e3102d65deb1ce6913f126e57"  target="_blank" rel="noopener"
+<p>For Grafana visualization, import <a class="link" href="https://gist.github.com/Vikaspogu/b2d2f04e3102d65deb1ce6913f126e57"  target="_blank" rel="noopener"
     >this</a> dashboard.</p>
 <p><figure 
 	
@@ -240,7 +240,7 @@
         
             2020 - 
         
-        2021 Vikas Pogu&#39;s Blog
+        2022 My approach...
     </section>
     
     <section class="powerby">

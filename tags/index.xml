@@ -1,12 +1,39 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Vikas Pogu&#39;s Blog</title>
+    <title>Tags on My approach...</title>
     <link>https://vikaspogu.dev/tags/</link>
-    <description>Recent content in Tags on Vikas Pogu&#39;s Blog</description>
+    <description>Recent content in Tags on My approach...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 19 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 13 May 2022 16:09:15 -0500</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NAS</title>
+      <link>https://vikaspogu.dev/tags/nas/</link>
+      <pubDate>Fri, 13 May 2022 16:09:15 -0500</pubDate>
+      
+      <guid>https://vikaspogu.dev/tags/nas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PXE</title>
+      <link>https://vikaspogu.dev/tags/pxe/</link>
+      <pubDate>Fri, 13 May 2022 16:09:15 -0500</pubDate>
+      
+      <guid>https://vikaspogu.dev/tags/pxe/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>UDM</title>
+      <link>https://vikaspogu.dev/tags/udm/</link>
+      <pubDate>Fri, 13 May 2022 16:09:15 -0500</pubDate>
+      
+      <guid>https://vikaspogu.dev/tags/udm/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>buildx</title>
       <link>https://vikaspogu.dev/tags/buildx/</link>
@@ -71,7 +98,7 @@
     </item>
     
     <item>
-      <title>openshift-pipelines</title>
+      <title>OpenShift-pipelines</title>
       <link>https://vikaspogu.dev/tags/openshift-pipelines/</link>
       <pubDate>Thu, 14 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -251,7 +278,7 @@
     </item>
     
     <item>
-      <title>Openshift</title>
+      <title>OpenShift</title>
       <link>https://vikaspogu.dev/tags/openshift/</link>
       <pubDate>Tue, 18 Aug 2020 00:00:00 +0000</pubDate>
       

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PXE on My approach...</title>
+    <link>https://vikaspogu.dev/tags/pxe/</link>
+    <description>Recent content in PXE on My approach...</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 13 May 2022 16:09:15 -0500</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/pxe/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PXE boot with Synology NAS and UDM router</title>
+      <link>https://vikaspogu.dev/posts/tftp-udm-pxe/</link>
+      <pubDate>Fri, 13 May 2022 16:09:15 -0500</pubDate>
+      
+      <guid>https://vikaspogu.dev/posts/tftp-udm-pxe/</guid>
+      <description>In this post, I have documented the steps I followed to install RHEL 8 by booting from a PXE server over the network with a Kickstart file using Synology NAS as TFTP, HTTP server, and UDM as DHCP.
+ Install &amp;amp; Configure TFTP Install &amp;amp; Configure HTTP server Enable network boot on UDM PXE Boot setup  Prepare Installation Repository Prepare kickstart file Perform PXE boot    Install and Configure TFTP Trivial File Transfer Protocol (TFTP) is a simple file transfer protocol, generally used for transferring configurations or boot files when authentication is not required.</description>
+    </item>
+    
+  </channel>
+</rss>

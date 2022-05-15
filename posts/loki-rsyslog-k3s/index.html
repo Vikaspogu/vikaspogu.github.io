@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Syslog with Loki Promtail'>
 <meta property='og:description' content='Setup rsyslog in k3s with promtail chart'>
 <meta property='og:url' content='https://vikaspogu.dev/posts/loki-rsyslog-k3s/'>
-<meta property='og:site_name' content='Vikas Pogu&#39;s Blog'>
+<meta property='og:site_name' content='My approach...'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='loki' /><meta property='article:tag' content='rsyslog' /><meta property='article:published_time' content='2020-11-04T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-11-04T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Syslog with Loki Promtail">
 <meta name="twitter:description" content="Setup rsyslog in k3s with promtail chart">
@@ -72,7 +72,7 @@
             
         
         
-        <h1 class="site-name"><a href="/">Vikas Pogu&#39;s Blog</a></h1>
+        <h1 class="site-name"><a href="/">My approach...</a></h1>
         <h2 class="site-description">OpenShift, Kubernetes, Docker and more</h2><ol class="social-menu">
                 
                     <li>
@@ -293,40 +293,40 @@
     <h1 id="loki-promtail">Loki Promtail</h1>
 <p>Enable syslog, do this on each host and replace <code>target</code> IP (and maybe <code>port</code>) with you syslog <code>externalIP</code> that is in helm values for <a class="link" href="https://github.com/grafana/loki/tree/master/production/helm/promtail"  target="_blank" rel="noopener"
     >promtail</a></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">promtail</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">serviceMonitor</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="w">  </span><span class="nt">extraScrapeConfigs</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l">syslog</span><span class="w">
-</span><span class="w">      </span><span class="nt">syslog</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">listen_address</span><span class="p">:</span><span class="w"> </span><span class="m">0.0.0.0</span><span class="p">:</span><span class="m">1514</span><span class="w">
-</span><span class="w">        </span><span class="nt">label_structured_data</span><span class="p">:</span><span class="w"> </span><span class="kc">yes</span><span class="w">
-</span><span class="w">        </span><span class="nt">labels</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span><span class="nt">job</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;syslog&#34;</span><span class="w">
-</span><span class="w">      </span><span class="nt">relabel_configs</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- <span class="nt">source_labels</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;__syslog_connection_ip_address&#34;</span><span class="p">]</span><span class="w">
-</span><span class="w">          </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;ip_address&#34;</span><span class="w">
-</span><span class="w">        </span>- <span class="nt">source_labels</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;__syslog_message_severity&#34;</span><span class="p">]</span><span class="w">
-</span><span class="w">          </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;severity&#34;</span><span class="w">
-</span><span class="w">        </span>- <span class="nt">source_labels</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;__syslog_message_facility&#34;</span><span class="p">]</span><span class="w">
-</span><span class="w">          </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;facility&#34;</span><span class="w">
-</span><span class="w">        </span>- <span class="nt">source_labels</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;__syslog_message_hostname&#34;</span><span class="p">]</span><span class="w">
-</span><span class="w">          </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;host&#34;</span><span class="w">
-</span><span class="w">  </span><span class="nt">syslogService</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">LoadBalancer</span><span class="w">
-</span><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">1514</span><span class="w">
-</span><span class="w">    </span><span class="nt">externalIPs</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- <span class="m">192.168.42.155</span><span class="w">
-</span></code></pre></div><p>Create file <code>/etc/rsyslog.d/50-promtail.conf</code> with the following content:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">module<span class="o">(</span><span class="nv">load</span><span class="o">=</span><span class="s2">&#34;omprog&#34;</span><span class="o">)</span>
-module<span class="o">(</span><span class="nv">load</span><span class="o">=</span><span class="s2">&#34;mmutf8fix&#34;</span><span class="o">)</span>
-action<span class="o">(</span><span class="nv">type</span><span class="o">=</span><span class="s2">&#34;mmutf8fix&#34;</span> <span class="nv">replacementChar</span><span class="o">=</span><span class="s2">&#34;?&#34;</span><span class="o">)</span>
-action<span class="o">(</span><span class="nv">type</span><span class="o">=</span><span class="s2">&#34;omfwd&#34;</span> <span class="nv">protocol</span><span class="o">=</span><span class="s2">&#34;tcp&#34;</span> <span class="nv">target</span><span class="o">=</span><span class="s2">&#34;192.168.42.155&#34;</span> <span class="nv">port</span><span class="o">=</span><span class="s2">&#34;1514&#34;</span> <span class="nv">Template</span><span class="o">=</span><span class="s2">&#34;RSYSLOG_SyslogProtocol23Format&#34;</span> <span class="nv">TCP_Framing</span><span class="o">=</span><span class="s2">&#34;octet-counted&#34;</span> <span class="nv">KeepAlive</span><span class="o">=</span><span class="s2">&#34;on&#34;</span><span class="o">)</span>
-</code></pre></div><p>Restart rsyslog and view status</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl restart rsyslog
-sudo systemctl status rsyslog
-</code></pre></div><p>In Grafana, on the explore tab, you should now be able to view you hosts logs, e.g. this query <code>{host=&quot;k3s-master&quot;}</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">promtail</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">serviceMonitor</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">extraScrapeConfigs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l">syslog</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">syslog</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">listen_address</span><span class="p">:</span><span class="w"> </span><span class="m">0.0.0.0</span><span class="p">:</span><span class="m">1514</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">label_structured_data</span><span class="p">:</span><span class="w"> </span><span class="kc">yes</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">labels</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">job</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;syslog&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">relabel_configs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">source_labels</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;__syslog_connection_ip_address&#34;</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;ip_address&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">source_labels</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;__syslog_message_severity&#34;</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;severity&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">source_labels</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;__syslog_message_facility&#34;</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;facility&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">source_labels</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;__syslog_message_hostname&#34;</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;host&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">syslogService</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">LoadBalancer</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">1514</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">externalIPs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="m">192.168.42.155</span><span class="w">
+</span></span></span></code></pre></div><p>Create file <code>/etc/rsyslog.d/50-promtail.conf</code> with the following content:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">module<span class="o">(</span><span class="nv">load</span><span class="o">=</span><span class="s2">&#34;omprog&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">module<span class="o">(</span><span class="nv">load</span><span class="o">=</span><span class="s2">&#34;mmutf8fix&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">action<span class="o">(</span><span class="nv">type</span><span class="o">=</span><span class="s2">&#34;mmutf8fix&#34;</span> <span class="nv">replacementChar</span><span class="o">=</span><span class="s2">&#34;?&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">action<span class="o">(</span><span class="nv">type</span><span class="o">=</span><span class="s2">&#34;omfwd&#34;</span> <span class="nv">protocol</span><span class="o">=</span><span class="s2">&#34;tcp&#34;</span> <span class="nv">target</span><span class="o">=</span><span class="s2">&#34;192.168.42.155&#34;</span> <span class="nv">port</span><span class="o">=</span><span class="s2">&#34;1514&#34;</span> <span class="nv">Template</span><span class="o">=</span><span class="s2">&#34;RSYSLOG_SyslogProtocol23Format&#34;</span> <span class="nv">TCP_Framing</span><span class="o">=</span><span class="s2">&#34;octet-counted&#34;</span> <span class="nv">KeepAlive</span><span class="o">=</span><span class="s2">&#34;on&#34;</span><span class="o">)</span>
+</span></span></code></pre></div><p>Restart rsyslog and view status</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl restart rsyslog
+</span></span><span class="line"><span class="cl">sudo systemctl status rsyslog
+</span></span></code></pre></div><p>In Grafana, on the explore tab, you should now be able to view you hosts logs, e.g. this query <code>{host=&quot;k3s-master&quot;}</code></p>
 
 </section>
 
@@ -364,7 +364,7 @@ sudo systemctl status rsyslog
         
             2020 - 
         
-        2021 Vikas Pogu&#39;s Blog
+        2022 My approach...
     </section>
     
     <section class="powerby">

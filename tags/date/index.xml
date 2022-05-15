@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>date on Vikas Pogu&#39;s Blog</title>
+    <title>date on My approach...</title>
     <link>https://vikaspogu.dev/tags/date/</link>
-    <description>Recent content in date on Vikas Pogu&#39;s Blog</description>
+    <description>Recent content in date on My approach...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 07 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/date/index.xml" rel="self" type="application/rss+xml" />
@@ -13,8 +13,8 @@
       <pubDate>Tue, 07 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/posts/jenkins-date-difference/</guid>
-      <description>This is how you can calucate days between two dates in Jenkins pipeline. @NonCPS annotation is useful when you have methods which use objects that aren&amp;rsquo;t serializable
-import java.text.SimpleDateFormat stages { stage(&amp;#34;Calucate days&amp;#34;) { steps { script { def daysRemaining = getRemainingDays(&amp;#34;2020-06-25&amp;#34;) } } } } } @NonCPS def getRemainingDays(previousDate){ def currentDate = new Date() String currentTimeFormat= currentDate.format(&amp;#34;yyyy-MM-dd&amp;#34;) def oldDate = new SimpleDateFormat(&amp;#34;yyyy-MM-dd&amp;#34;).parse(previousDate) return currentTimeFormat-oldDate } Calculate if date is greater than 14 days</description>
+      <description>This is how you can calculate days between two dates in Jenkins pipeline. @NonCPS annotation is useful when you have methods which use objects that aren&amp;rsquo;t serializable
+import java.text.SimpleDateFormat stages { stage(&amp;#34;Calculate days&amp;#34;) { steps { script { def daysRemaining = getRemainingDays(&amp;#34;2020-06-25&amp;#34;) } } } } } @NonCPS def getRemainingDays(previousDate){ def currentDate = new Date() String currentTimeFormat= currentDate.format(&amp;#34;yyyy-MM-dd&amp;#34;) def oldDate = new SimpleDateFormat(&amp;#34;yyyy-MM-dd&amp;#34;).parse(previousDate) return currentTimeFormat-oldDate } Calculate if date is greater than 14 days</description>
     </item>
     
   </channel>

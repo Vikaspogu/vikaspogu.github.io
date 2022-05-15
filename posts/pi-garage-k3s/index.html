@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Raspberry Pi garage door opener using nodejs on k3s cluster'>
 <meta property='og:description' content='Raspberry Pi Garage door opener on kubernetes cluster using nodejs'>
 <meta property='og:url' content='https://vikaspogu.dev/posts/pi-garage-k3s/'>
-<meta property='og:site_name' content='Vikas Pogu&#39;s Blog'>
+<meta property='og:site_name' content='My approach...'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='raspberry-pi' /><meta property='article:tag' content='garage-door' /><meta property='article:tag' content='kubernetes' /><meta property='article:tag' content='docker' /><meta property='article:tag' content='nodejs' /><meta property='article:published_time' content='2020-07-05T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-07-05T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Raspberry Pi garage door opener using nodejs on k3s cluster">
 <meta name="twitter:description" content="Raspberry Pi Garage door opener on kubernetes cluster using nodejs">
@@ -125,82 +125,82 @@
 <p>Once you are done wiring up all components. Let&rsquo;s start setting up our Nodejs application</p>
 <h3 id="application-setup">Application setup</h3>
 <p>Create a npm project</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mkdir garage-pi <span class="o">&amp;&amp;</span> <span class="nb">cd</span> garage-pi
-npm init -y
-</code></pre></div><p>We&rsquo;ll be using <a class="link" href="https://github.com/jperkin/node-rpio"  target="_blank" rel="noopener"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir garage-pi <span class="o">&amp;&amp;</span> <span class="nb">cd</span> garage-pi
+</span></span><span class="line"><span class="cl">npm init -y
+</span></span></code></pre></div><p>We&rsquo;ll be using <a class="link" href="https://github.com/jperkin/node-rpio"  target="_blank" rel="noopener"
     >node-rpio</a> package which provides access to the Raspberry Pi GPIO interface</p>
 <p>Install <code>node-rpio</code> and <code>express</code> packages</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">npm i rpio express -S
-</code></pre></div><p>Create an express app which starts on port <code>8080</code> in <code>server.js</code> file</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="s2">&#34;use strict&#34;</span><span class="p">;</span>
-
-<span class="kr">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;express&#34;</span><span class="p">);</span>
-<span class="kr">const</span> <span class="nx">rpio</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;rpio&#34;</span><span class="p">);</span>
-
-<span class="kr">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
-<span class="kr">const</span> <span class="nx">PORT</span> <span class="o">=</span> <span class="mi">8080</span><span class="p">;</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s2">&#34;/assets&#34;</span><span class="p">,</span> <span class="nx">express</span><span class="p">.</span><span class="kr">static</span><span class="p">(</span><span class="s2">&#34;assets&#34;</span><span class="p">));</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;Running on http://localhost:&#34;</span> <span class="o">+</span> <span class="nx">PORT</span><span class="p">);</span>
-</code></pre></div><p>Below code let&rsquo;s you simulate a button press; In our case pin number is <code>19</code>. First, we want to output to low and set the pin to high after 1000ms. Please refer to <code>rpio</code> <a class="link" href="https://github.com/jperkin/node-rpio"  target="_blank" rel="noopener"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm i rpio express -S
+</span></span></code></pre></div><p>Create an express app which starts on port <code>8080</code> in <code>server.js</code> file</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="s2">&#34;use strict&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;express&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">rpio</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;rpio&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">PORT</span> <span class="o">=</span> <span class="mi">8080</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s2">&#34;/assets&#34;</span><span class="p">,</span> <span class="nx">express</span><span class="p">.</span><span class="kr">static</span><span class="p">(</span><span class="s2">&#34;assets&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;Running on http://localhost:&#34;</span> <span class="o">+</span> <span class="nx">PORT</span><span class="p">);</span>
+</span></span></code></pre></div><p>Below code let&rsquo;s you simulate a button press; In our case pin number is <code>19</code>. First, we want to output to low and set the pin to high after 1000ms. Please refer to <code>rpio</code> <a class="link" href="https://github.com/jperkin/node-rpio"  target="_blank" rel="noopener"
     >repo</a> for more explaination</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">openPin</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">OPEN_PIN</span> <span class="o">||</span> <span class="mi">19</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">relayPin</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">RELAY_PIN</span> <span class="o">||</span> <span class="mi">11</span><span class="p">;</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;/relay&#34;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// Simulate a button press
-</span><span class="c1"></span>  <span class="nx">rpio</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">relayPin</span><span class="p">,</span> <span class="nx">rpio</span><span class="p">.</span><span class="nx">LOW</span><span class="p">);</span>
-  <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="nx">rpio</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">relayPin</span><span class="p">,</span> <span class="nx">rpio</span><span class="p">.</span><span class="nx">HIGH</span><span class="p">);</span>
-    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&#34;done&#34;</span><span class="p">);</span>
-  <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre></div><p>To get the state of pin</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">getState</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="p">{</span>
-    <span class="nx">open</span><span class="o">:</span> <span class="o">!</span><span class="nx">rpio</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="nx">openPin</span><span class="p">),</span>
-  <span class="p">};</span>
-<span class="p">}</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;/status&#34;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">getState</span><span class="p">()));</span>
-<span class="p">});</span>
-</code></pre></div><p>Complete <code>server.js</code> file</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="s2">&#34;use strict&#34;</span><span class="p">;</span>
-
-<span class="kr">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;express&#34;</span><span class="p">);</span>
-<span class="kr">const</span> <span class="nx">rpio</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;rpio&#34;</span><span class="p">);</span>
-
-<span class="kr">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
-<span class="kr">const</span> <span class="nx">PORT</span> <span class="o">=</span> <span class="mi">8080</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">openPin</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">OPEN_PIN</span> <span class="o">||</span> <span class="mi">19</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">relayPin</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">RELAY_PIN</span> <span class="o">||</span> <span class="mi">11</span><span class="p">;</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s2">&#34;/assets&#34;</span><span class="p">,</span> <span class="nx">express</span><span class="p">.</span><span class="kr">static</span><span class="p">(</span><span class="s2">&#34;assets&#34;</span><span class="p">));</span>
-
-<span class="kd">function</span> <span class="nx">getState</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="p">{</span>
-    <span class="nx">open</span><span class="o">:</span> <span class="o">!</span><span class="nx">rpio</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="nx">openPin</span><span class="p">),</span>
-  <span class="p">};</span>
-<span class="p">}</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;/status&#34;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">getState</span><span class="p">()));</span>
-<span class="p">});</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;/relay&#34;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// Simulate a button press
-</span><span class="c1"></span>  <span class="nx">rpio</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">relayPin</span><span class="p">,</span> <span class="nx">rpio</span><span class="p">.</span><span class="nx">LOW</span><span class="p">);</span>
-  <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="nx">rpio</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">relayPin</span><span class="p">,</span> <span class="nx">rpio</span><span class="p">.</span><span class="nx">HIGH</span><span class="p">);</span>
-    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&#34;done&#34;</span><span class="p">);</span>
-  <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
-<span class="p">});</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;Running on http://localhost:&#34;</span> <span class="o">+</span> <span class="nx">PORT</span><span class="p">);</span>
-</code></pre></div><h3 id="container-image">Container image</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">openPin</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">OPEN_PIN</span> <span class="o">||</span> <span class="mi">19</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">relayPin</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">RELAY_PIN</span> <span class="o">||</span> <span class="mi">11</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;/relay&#34;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// Simulate a button press
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">rpio</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">relayPin</span><span class="p">,</span> <span class="nx">rpio</span><span class="p">.</span><span class="nx">LOW</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">rpio</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">relayPin</span><span class="p">,</span> <span class="nx">rpio</span><span class="p">.</span><span class="nx">HIGH</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&#34;done&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><p>To get the state of pin</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">getState</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">open</span><span class="o">:</span> <span class="o">!</span><span class="nx">rpio</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="nx">openPin</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;/status&#34;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">getState</span><span class="p">()));</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><p>Complete <code>server.js</code> file</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="s2">&#34;use strict&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;express&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">rpio</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;rpio&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">PORT</span> <span class="o">=</span> <span class="mi">8080</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">openPin</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">OPEN_PIN</span> <span class="o">||</span> <span class="mi">19</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">relayPin</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">RELAY_PIN</span> <span class="o">||</span> <span class="mi">11</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s2">&#34;/assets&#34;</span><span class="p">,</span> <span class="nx">express</span><span class="p">.</span><span class="kr">static</span><span class="p">(</span><span class="s2">&#34;assets&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">getState</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">open</span><span class="o">:</span> <span class="o">!</span><span class="nx">rpio</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="nx">openPin</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;/status&#34;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">getState</span><span class="p">()));</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;/relay&#34;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// Simulate a button press
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">rpio</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">relayPin</span><span class="p">,</span> <span class="nx">rpio</span><span class="p">.</span><span class="nx">LOW</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">rpio</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">relayPin</span><span class="p">,</span> <span class="nx">rpio</span><span class="p">.</span><span class="nx">HIGH</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&#34;done&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;Running on http://localhost:&#34;</span> <span class="o">+</span> <span class="nx">PORT</span><span class="p">);</span>
+</span></span></code></pre></div><h3 id="container-image">Container image</h3>
 <ul>
 <li>Create a dockerfile with <a class="link" href="https://docs.docker.com/develop/develop-images/multistage-build/"  target="_blank" rel="noopener"
     >multi-stage</a> builds using <a class="link" href="https://hub.docker.com/r/arm32v7/node/"  target="_blank" rel="noopener"
@@ -209,99 +209,99 @@ npm init -y
 <li>Build docker image</li>
 <li>Publish docker image to your repo in <a class="link" href="https://hub.docker.com/"  target="_blank" rel="noopener"
     >docker hub</a></li>
-<li>Creata new kubernetes deployment and service</li>
+<li>Create new kubernetes deployment and service</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Dockerfile" data-lang="Dockerfile"><span class="c"># Fetch node_modules for backend, nothing here except</span><span class="err">
-</span><span class="err"></span><span class="c"># the node_modules dir ends up in the final image</span><span class="err">
-</span><span class="err"></span><span class="k">FROM</span><span class="s"> arm32v7/node:12.18-alpine as builder</span><span class="err">
-</span><span class="err"></span><span class="k">RUN</span> mkdir /app<span class="err">
-</span><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
-</span><span class="err"></span><span class="k">ENV</span> PATH /app/node_modules/.bin:<span class="nv">$PATH</span><span class="err">
-</span><span class="err"></span><span class="k">COPY</span> package.json /app/package.json<span class="err">
-</span><span class="err"></span><span class="k">RUN</span> apk add --no-cache make gcc g++ python <span class="o">&amp;&amp;</span> <span class="se">\
-</span><span class="se"></span>    npm install --production --silent <span class="o">&amp;&amp;</span> <span class="se">\
-</span><span class="se"></span>    apk del make gcc g++ python<span class="err">
-</span><span class="err"></span><span class="k">RUN</span> npm install<span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="c"># Add the files to arm image</span><span class="err">
-</span><span class="err"></span><span class="k">FROM</span><span class="s"> arm32v7/node:12.18-alpine</span><span class="err">
-</span><span class="err"></span><span class="k">RUN</span> mkdir /app<span class="err">
-</span><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
-</span><span class="err"></span><span class="k">ENV</span> PATH /app/node_modules/.bin:<span class="nv">$PATH</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="c"># Same as earlier, be specific or copy everything</span><span class="err">
-</span><span class="err"></span><span class="k">ADD</span> package.json /app/package.json<span class="err">
-</span><span class="err"></span><span class="k">ADD</span> package-lock.json /app/package-lock.json<span class="err">
-</span><span class="err"></span><span class="k">ADD</span> . /app<span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>builder /app/node_modules /app/node_modules<span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="k">ENV</span> <span class="nv">PORT</span><span class="o">=</span><span class="m">8080</span>
-<span class="k">EXPOSE</span><span class="s"> 8080</span><span class="err">
-</span><span class="err"></span><span class="k">CMD</span> <span class="p">[</span> <span class="s2">&#34;npm&#34;</span><span class="p">,</span> <span class="s2">&#34;start&#34;</span> <span class="p">]</span><span class="err">
-</span></code></pre></div><p>Docker <a class="link" href="https://docs.docker.com/buildx/working-with-buildx/"  target="_blank" rel="noopener"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Dockerfile" data-lang="Dockerfile"><span class="line"><span class="cl"><span class="c"># Fetch node_modules for backend, nothing here except</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># the node_modules dir ends up in the final image</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> arm32v7/node:12.18-alpine as builder</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> mkdir /app<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENV</span> PATH /app/node_modules/.bin:<span class="nv">$PATH</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> package.json /app/package.json<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> apk add --no-cache make gcc g++ python <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    npm install --production --silent <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    apk del make gcc g++ python<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> npm install<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># Add the files to arm image</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> arm32v7/node:12.18-alpine</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> mkdir /app<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENV</span> PATH /app/node_modules/.bin:<span class="nv">$PATH</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># Same as earlier, be specific or copy everything</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ADD</span> package.json /app/package.json<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ADD</span> package-lock.json /app/package-lock.json<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ADD</span> . /app<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>builder /app/node_modules /app/node_modules<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENV</span> <span class="nv">PORT</span><span class="o">=</span><span class="m">8080</span>
+</span></span><span class="line"><span class="cl"><span class="k">EXPOSE</span><span class="s"> 8080</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span> <span class="s2">&#34;npm&#34;</span><span class="p">,</span> <span class="s2">&#34;start&#34;</span> <span class="p">]</span><span class="err">
+</span></span></span></code></pre></div><p>Docker <a class="link" href="https://docs.docker.com/buildx/working-with-buildx/"  target="_blank" rel="noopener"
     >buildx</a> feature lets you build arm based images on mac or windows system</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker buildx build --platform linux/arm64 -t &lt;docker-username&gt;/garage-pi .
-docker push &lt;docker-username&gt;/garage-pi
-</code></pre></div><p>Create a new deployment named <code>garage-pi</code> that runs earlier published image.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">kind: Deployment
-apiVersion: apps/v1
-metadata:
-  name: garage-pi
-  labels:
-    app.kubernetes.io/name: garage-pi
-spec:
-  replicas: <span class="m">1</span>
-  selector:
-    matchLabels:
-      app.kubernetes.io/instance: garage-pi
-      app.kubernetes.io/name: garage-pi
-  template:
-    metadata:
-      creationTimestamp: null
-      labels:
-        app.kubernetes.io/instance: garage-pi
-        app.kubernetes.io/name: garage-pi
-    spec:
-      volumes:
-        - name: dev-snd
-          hostPath:
-            path: /dev/mem
-            type: <span class="s1">&#39;&#39;</span>
-      containers:
-        - name: garage-pi
-          image: <span class="s1">&#39;&lt;docker-username&gt;/garage-pi:latest&#39;</span> <span class="c1">##update username here</span>
-          ports:
-            - name: http
-              containerPort: <span class="m">8080</span>
-              protocol: TCP
-          resources: <span class="o">{}</span>
-          volumeMounts:
-            - name: dev-snd
-              mountPath: /dev/mem
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-              scheme: HTTP
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
-              scheme: HTTP
-          imagePullPolicy: Always
-          securityContext:
-            privileged: <span class="nb">true</span>
-      restartPolicy: Always
-</code></pre></div><p>Create a service for an <code>garage-pi</code> deployment, which serves on port <code>8080</code> and connects to the containers on port <code>8080</code>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">kubectl expose deployment nginx --port<span class="o">=</span><span class="m">8080</span> --target-port<span class="o">=</span><span class="m">8080</span>
-</code></pre></div><p>That&rsquo;s it, you should be able to hit endpoint and simulate button click!</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker buildx build --platform linux/arm64 -t &lt;docker-username&gt;/garage-pi .
+</span></span><span class="line"><span class="cl">docker push &lt;docker-username&gt;/garage-pi
+</span></span></code></pre></div><p>Create a new deployment named <code>garage-pi</code> that runs earlier published image.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kind: Deployment
+</span></span><span class="line"><span class="cl">apiVersion: apps/v1
+</span></span><span class="line"><span class="cl">metadata:
+</span></span><span class="line"><span class="cl">  name: garage-pi
+</span></span><span class="line"><span class="cl">  labels:
+</span></span><span class="line"><span class="cl">    app.kubernetes.io/name: garage-pi
+</span></span><span class="line"><span class="cl">spec:
+</span></span><span class="line"><span class="cl">  replicas: <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  selector:
+</span></span><span class="line"><span class="cl">    matchLabels:
+</span></span><span class="line"><span class="cl">      app.kubernetes.io/instance: garage-pi
+</span></span><span class="line"><span class="cl">      app.kubernetes.io/name: garage-pi
+</span></span><span class="line"><span class="cl">  template:
+</span></span><span class="line"><span class="cl">    metadata:
+</span></span><span class="line"><span class="cl">      creationTimestamp: null
+</span></span><span class="line"><span class="cl">      labels:
+</span></span><span class="line"><span class="cl">        app.kubernetes.io/instance: garage-pi
+</span></span><span class="line"><span class="cl">        app.kubernetes.io/name: garage-pi
+</span></span><span class="line"><span class="cl">    spec:
+</span></span><span class="line"><span class="cl">      volumes:
+</span></span><span class="line"><span class="cl">        - name: dev-snd
+</span></span><span class="line"><span class="cl">          hostPath:
+</span></span><span class="line"><span class="cl">            path: /dev/mem
+</span></span><span class="line"><span class="cl">            type: <span class="s1">&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">      containers:
+</span></span><span class="line"><span class="cl">        - name: garage-pi
+</span></span><span class="line"><span class="cl">          image: <span class="s1">&#39;&lt;docker-username&gt;/garage-pi:latest&#39;</span> <span class="c1">##update username here</span>
+</span></span><span class="line"><span class="cl">          ports:
+</span></span><span class="line"><span class="cl">            - name: http
+</span></span><span class="line"><span class="cl">              containerPort: <span class="m">8080</span>
+</span></span><span class="line"><span class="cl">              protocol: TCP
+</span></span><span class="line"><span class="cl">          resources: <span class="o">{}</span>
+</span></span><span class="line"><span class="cl">          volumeMounts:
+</span></span><span class="line"><span class="cl">            - name: dev-snd
+</span></span><span class="line"><span class="cl">              mountPath: /dev/mem
+</span></span><span class="line"><span class="cl">          livenessProbe:
+</span></span><span class="line"><span class="cl">            httpGet:
+</span></span><span class="line"><span class="cl">              path: /
+</span></span><span class="line"><span class="cl">              port: http
+</span></span><span class="line"><span class="cl">              scheme: HTTP
+</span></span><span class="line"><span class="cl">          readinessProbe:
+</span></span><span class="line"><span class="cl">            httpGet:
+</span></span><span class="line"><span class="cl">              path: /
+</span></span><span class="line"><span class="cl">              port: http
+</span></span><span class="line"><span class="cl">              scheme: HTTP
+</span></span><span class="line"><span class="cl">          imagePullPolicy: Always
+</span></span><span class="line"><span class="cl">          securityContext:
+</span></span><span class="line"><span class="cl">            privileged: <span class="nb">true</span>
+</span></span><span class="line"><span class="cl">      restartPolicy: Always
+</span></span></code></pre></div><p>Create a service for an <code>garage-pi</code> deployment, which serves on port <code>8080</code> and connects to the containers on port <code>8080</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kubectl expose deployment nginx --port<span class="o">=</span><span class="m">8080</span> --target-port<span class="o">=</span><span class="m">8080</span>
+</span></span></code></pre></div><p>That&rsquo;s it, you should be able to hit endpoint and simulate button click!</p>
 <h3 id="frontend">Frontend</h3>
 <p>For frontend of application we&rsquo;ll use <a class="link" href="https://pugjs.org/api/getting-started.html"  target="_blank" rel="noopener"
     >pugjs</a> templating engine</p>
 <p>Install <code>pug</code> package</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">npm i pug -S
-</code></pre></div><ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm i pug -S
+</span></span></code></pre></div><ol>
 <li>add <code>views</code> folder in root directory and create a new <code>index.pug</code> file in views folder</li>
 <li>wire up templating engine with application</li>
 <li>render index page on root <code>/</code> endpoint</li>
@@ -309,62 +309,62 @@ spec:
 </ol>
 <pre tabindex="0"><code class="language-pug" data-lang="pug">doctype html
 head
-  meta(charset='utf-8')
-  meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
-  meta(name='description', content='')
-  meta(name='author', content='')
+  meta(charset=&#39;utf-8&#39;)
+  meta(name=&#39;viewport&#39;, content=&#39;width=device-width, initial-scale=1, shrink-to-fit=no&#39;)
+  meta(name=&#39;description&#39;, content=&#39;&#39;)
+  meta(name=&#39;author&#39;, content=&#39;&#39;)
   title Garage Opener
 .text-center
-form.form-signin(method='POST', action='/relay')
-  h1.h1.mb-2.font-weight-normal(style='color: #FFFFFF') Garage Door
+form.form-signin(method=&#39;POST&#39;, action=&#39;/relay&#39;)
+  h1.h1.mb-2.font-weight-normal(style=&#39;color: #FFFFFF&#39;) Garage Door
   .text-center
     .form-signin
       .text-center
       #open
-        h1.h2.mb-3.font-weight-normal(style='color: #CF6679')  The Door is Open &amp;#xF62B;
-  button#mainButton.btn.btn-lg.btn-primary.btn-block(type='submit') Close
-</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">app</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&#34;views&#34;</span><span class="p">,</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s2">&#34;views&#34;</span><span class="p">));</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&#34;view engine&#34;</span><span class="p">,</span> <span class="s2">&#34;pug&#34;</span><span class="p">);</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;/&#34;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s2">&#34;index&#34;</span><span class="p">,</span> <span class="nx">getState</span><span class="p">());</span>
-<span class="p">});</span>
-</code></pre></div><h3 id="twilio-integration-optional">Twilio Integration (Optional)</h3>
+        h1.h2.mb-3.font-weight-normal(style=&#39;color: #CF6679&#39;)  The Door is Open &amp;#xF62B;
+  button#mainButton.btn.btn-lg.btn-primary.btn-block(type=&#39;submit&#39;) Close
+</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&#34;views&#34;</span><span class="p">,</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s2">&#34;views&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&#34;view engine&#34;</span><span class="p">,</span> <span class="s2">&#34;pug&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;/&#34;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s2">&#34;index&#34;</span><span class="p">,</span> <span class="nx">getState</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><h3 id="twilio-integration-optional">Twilio Integration (Optional)</h3>
 <p>Install <code>dotenv</code>, <code>twilio</code> and <code>node-schedule</code> packages</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">npm i dotenv node-schedule twilio -S
-</code></pre></div><p>Create a <code>.env</code> file at root of the project and add your twilio auth key, account sid and phone number</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-env" data-lang="env"><span class="nv">TWILIO_ACCOUNT_SID</span><span class="o">=</span>
-<span class="nv">TWILIO_AUTH_TOKEN</span><span class="o">=</span>
-<span class="nv">TWILIO_PHONE_NUMBER</span><span class="o">=</span>
-</code></pre></div><p>Create a <code>twilio.js</code> file, add below code</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">require</span><span class="p">(</span><span class="s2">&#34;dotenv&#34;</span><span class="p">).</span><span class="nx">config</span><span class="p">();</span>
-
-<span class="kr">const</span> <span class="nx">accountSid</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">TWILIO_ACCOUNT_SID</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">authToken</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">TWILIO_AUTH_TOKEN</span><span class="p">;</span>
-
-<span class="kr">const</span> <span class="nx">sendSms</span> <span class="o">=</span> <span class="p">(</span><span class="nx">phone</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;twilio&#34;</span><span class="p">)(</span><span class="nx">accountSid</span><span class="p">,</span> <span class="nx">authToken</span><span class="p">);</span>
-  <span class="nx">client</span><span class="p">.</span><span class="nx">messages</span>
-    <span class="p">.</span><span class="nx">create</span><span class="p">({</span>
-      <span class="nx">body</span><span class="o">:</span> <span class="nx">message</span><span class="p">,</span>
-      <span class="nx">from</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">TWILIO_PHONE_NUMBER</span><span class="p">,</span>
-      <span class="nx">to</span><span class="o">:</span> <span class="nx">phone</span><span class="p">,</span>
-    <span class="p">})</span>
-    <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">message</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">sid</span><span class="p">));</span>
-<span class="p">};</span>
-
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">sendSms</span><span class="p">;</span>
-</code></pre></div><p>Schedule a job for every 15mins to check state of garage door, if door is open we&rsquo;ll send a message</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">sendSms</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;./twilio&#34;</span><span class="p">);</span>
-<span class="p">...</span>
-<span class="p">...</span>
-<span class="nx">schedule</span><span class="p">.</span><span class="nx">scheduleJob</span><span class="p">(</span><span class="s2">&#34;*/15 * * * *&#34;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">status</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">getState</span><span class="p">()));</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">status</span><span class="p">.</span><span class="nx">open</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">sendSms</span><span class="p">(</span><span class="s2">&#34;&lt;YOUR-NUMBER&gt;&#34;</span><span class="p">,</span> <span class="s2">&#34;Garage door is open 🔥&#34;</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">});</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm i dotenv node-schedule twilio -S
+</span></span></code></pre></div><p>Create a <code>.env</code> file at root of the project and add your twilio auth key, account sid and phone number</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-env" data-lang="env"><span class="line"><span class="cl"><span class="nv">TWILIO_ACCOUNT_SID</span><span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="nv">TWILIO_AUTH_TOKEN</span><span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="nv">TWILIO_PHONE_NUMBER</span><span class="o">=</span>
+</span></span></code></pre></div><p>Create a <code>twilio.js</code> file, add below code</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">require</span><span class="p">(</span><span class="s2">&#34;dotenv&#34;</span><span class="p">).</span><span class="nx">config</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">accountSid</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">TWILIO_ACCOUNT_SID</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">authToken</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">TWILIO_AUTH_TOKEN</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">sendSms</span> <span class="o">=</span> <span class="p">(</span><span class="nx">phone</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;twilio&#34;</span><span class="p">)(</span><span class="nx">accountSid</span><span class="p">,</span> <span class="nx">authToken</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">client</span><span class="p">.</span><span class="nx">messages</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">body</span><span class="o">:</span> <span class="nx">message</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">from</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">TWILIO_PHONE_NUMBER</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">to</span><span class="o">:</span> <span class="nx">phone</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">message</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">sid</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">sendSms</span><span class="p">;</span>
+</span></span></code></pre></div><p>Schedule a job for every 15mins to check state of garage door, if door is open we&rsquo;ll send a message</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">sendSms</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;./twilio&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="nx">schedule</span><span class="p">.</span><span class="nx">scheduleJob</span><span class="p">(</span><span class="s2">&#34;*/15 * * * *&#34;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">status</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">getState</span><span class="p">()));</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nx">status</span><span class="p">.</span><span class="nx">open</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">sendSms</span><span class="p">(</span><span class="s2">&#34;&lt;YOUR-NUMBER&gt;&#34;</span><span class="p">,</span> <span class="s2">&#34;Garage door is open 🔥&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div>
 </section>
 
 
@@ -407,7 +407,7 @@ form.form-signin(method='POST', action='/relay')
         
             2020 - 
         
-        2021 Vikas Pogu&#39;s Blog
+        2022 My approach...
     </section>
     
     <section class="powerby">

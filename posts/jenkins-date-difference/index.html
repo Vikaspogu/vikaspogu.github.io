@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Jenkins pipeline date helper functions'>
 <meta property='og:description' content='Jenkins pipeline function to get days between dates'>
 <meta property='og:url' content='https://vikaspogu.dev/posts/jenkins-date-difference/'>
-<meta property='og:site_name' content='Vikas Pogu&#39;s Blog'>
+<meta property='og:site_name' content='My approach...'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='jenkins' /><meta property='article:tag' content='groovy' /><meta property='article:tag' content='date' /><meta property='article:published_time' content='2020-07-07T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-07-07T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Jenkins pipeline date helper functions">
 <meta name="twitter:description" content="Jenkins pipeline function to get days between dates">
@@ -72,7 +72,7 @@
             
         
         
-        <h1 class="site-name"><a href="/">Vikas Pogu&#39;s Blog</a></h1>
+        <h1 class="site-name"><a href="/">My approach...</a></h1>
         <h2 class="site-description">OpenShift, Kubernetes, Docker and more</h2><ol class="social-menu">
                 
                     <li>
@@ -290,55 +290,55 @@
 </header>
 
     <section class="article-content">
-    <p>This is how you can calucate days between two dates in Jenkins pipeline. <code>@NonCPS</code> annotation is useful when you have methods which use objects that aren&rsquo;t <code>serializable</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-groovy" data-lang="groovy"><span class="kn">import</span> <span class="nn">java.text.SimpleDateFormat</span>
-
-<span class="n">stages</span> <span class="o">{</span>
-    <span class="n">stage</span><span class="o">(</span><span class="s2">&#34;Calucate days&#34;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">steps</span> <span class="o">{</span>
-        <span class="n">script</span> <span class="o">{</span>
-          <span class="kt">def</span> <span class="n">daysRemaining</span> <span class="o">=</span> <span class="n">getRemainingDays</span><span class="o">(</span><span class="s2">&#34;2020-06-25&#34;</span><span class="o">)</span>
-        <span class="o">}</span>
-      <span class="o">}</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-
-<span class="nd">@NonCPS</span>
-<span class="kt">def</span> <span class="nf">getRemainingDays</span><span class="o">(</span><span class="n">previousDate</span><span class="o">){</span>
-  <span class="kt">def</span> <span class="n">currentDate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">()</span>
-  <span class="n">String</span> <span class="n">currentTimeFormat</span><span class="o">=</span> <span class="n">currentDate</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s2">&#34;yyyy-MM-dd&#34;</span><span class="o">)</span>
-  <span class="kt">def</span> <span class="n">oldDate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="o">(</span><span class="s2">&#34;yyyy-MM-dd&#34;</span><span class="o">).</span><span class="na">parse</span><span class="o">(</span><span class="n">previousDate</span><span class="o">)</span>
-  <span class="k">return</span> <span class="n">currentTimeFormat</span><span class="o">-</span><span class="n">oldDate</span>
-<span class="o">}</span>
-</code></pre></div><p>Calculate if date is greater than 14 days</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-groovy" data-lang="groovy"><span class="kn">import</span> <span class="nn">java.time.LocalDate</span>
-<span class="kn">import</span> <span class="nn">java.time.format.DateTimeFormatter</span>
-
-<span class="n">stages</span> <span class="o">{</span>
-    <span class="n">stage</span><span class="o">(</span><span class="s2">&#34;Check if date is older than 14 days&#34;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">steps</span> <span class="o">{</span>
-        <span class="n">script</span> <span class="o">{</span>
-          <span class="k">if</span> <span class="o">(</span><span class="n">checkIfOtherThan</span><span class="o">(</span><span class="s2">&#34;2020-06-25&#34;</span><span class="o">)){</span>
-            <span class="n">println</span> <span class="s2">&#34;Date is greater than 14 days&#34;</span>
-          <span class="o">}</span>
-        <span class="o">}</span>
-      <span class="o">}</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-
-<span class="nd">@NonCPS</span>
-<span class="kt">def</span> <span class="nf">checkIfOlderThan</span><span class="o">(</span><span class="n">previousDate</span><span class="o">){</span>
-  <span class="kt">def</span> <span class="n">dateFormat</span> <span class="o">=</span> <span class="n">DateTimeFormatter</span><span class="o">.</span><span class="na">ofPattern</span><span class="o">(</span><span class="s2">&#34;yyyy-MM-dd&#34;</span><span class="o">)</span>
-  <span class="kt">def</span> <span class="n">currentDate</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">now</span><span class="o">().</span><span class="na">format</span><span class="o">(</span><span class="n">dateFormat</span><span class="o">);</span>
-  <span class="kt">def</span> <span class="n">projectpreviousDate</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">previousDate</span><span class="o">,</span>  <span class="n">dateFormat</span><span class="o">)</span>
-  <span class="k">if</span> <span class="o">(</span><span class="n">LocalDate</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">currentDate</span><span class="o">,</span> <span class="n">dateFormat</span><span class="o">).</span><span class="na">minusDays</span><span class="o">(</span><span class="mi">14</span><span class="o">)</span> <span class="o">&gt;</span> <span class="n">projectpreviousDate</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-  <span class="o">}</span>
-  <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></div>
+    <p>This is how you can calculate days between two dates in Jenkins pipeline. <code>@NonCPS</code> annotation is useful when you have methods which use objects that aren&rsquo;t <code>serializable</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-groovy" data-lang="groovy"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.text.SimpleDateFormat</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">stages</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">stage</span><span class="o">(</span><span class="s2">&#34;Calculate days&#34;</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">steps</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">script</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">          <span class="kt">def</span> <span class="n">daysRemaining</span> <span class="o">=</span> <span class="n">getRemainingDays</span><span class="o">(</span><span class="s2">&#34;2020-06-25&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">      <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@NonCPS</span>
+</span></span><span class="line"><span class="cl"><span class="kt">def</span> <span class="nf">getRemainingDays</span><span class="o">(</span><span class="n">previousDate</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">def</span> <span class="n">currentDate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">  <span class="n">String</span> <span class="n">currentTimeFormat</span><span class="o">=</span> <span class="n">currentDate</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s2">&#34;yyyy-MM-dd&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">def</span> <span class="n">oldDate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="o">(</span><span class="s2">&#34;yyyy-MM-dd&#34;</span><span class="o">).</span><span class="na">parse</span><span class="o">(</span><span class="n">previousDate</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">currentTimeFormat</span><span class="o">-</span><span class="n">oldDate</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>Calculate if date is greater than 14 days</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-groovy" data-lang="groovy"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.time.LocalDate</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.time.format.DateTimeFormatter</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">stages</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">stage</span><span class="o">(</span><span class="s2">&#34;Check if date is older than 14 days&#34;</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">steps</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">script</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">          <span class="k">if</span> <span class="o">(</span><span class="n">checkIfOtherThan</span><span class="o">(</span><span class="s2">&#34;2020-06-25&#34;</span><span class="o">)){</span>
+</span></span><span class="line"><span class="cl">            <span class="n">println</span> <span class="s2">&#34;Date is greater than 14 days&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">      <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@NonCPS</span>
+</span></span><span class="line"><span class="cl"><span class="kt">def</span> <span class="nf">checkIfOlderThan</span><span class="o">(</span><span class="n">previousDate</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">def</span> <span class="n">dateFormat</span> <span class="o">=</span> <span class="n">DateTimeFormatter</span><span class="o">.</span><span class="na">ofPattern</span><span class="o">(</span><span class="s2">&#34;yyyy-MM-dd&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">def</span> <span class="n">currentDate</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">now</span><span class="o">().</span><span class="na">format</span><span class="o">(</span><span class="n">dateFormat</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">def</span> <span class="n">projectpreviousDate</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">previousDate</span><span class="o">,</span>  <span class="n">dateFormat</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="o">(</span><span class="n">LocalDate</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">currentDate</span><span class="o">,</span> <span class="n">dateFormat</span><span class="o">).</span><span class="na">minusDays</span><span class="o">(</span><span class="mi">14</span><span class="o">)</span> <span class="o">&gt;</span> <span class="n">projectpreviousDate</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div>
 </section>
 
 
@@ -377,7 +377,7 @@
         
             2020 - 
         
-        2021 Vikas Pogu&#39;s Blog
+        2022 My approach...
     </section>
     
     <section class="powerby">

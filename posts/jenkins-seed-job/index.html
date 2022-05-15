@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Configure jenkins pipeline job'>
 <meta property='og:description' content='Configure bitbucket pipeline job using jenkins config as code'>
 <meta property='og:url' content='https://vikaspogu.dev/posts/jenkins-seed-job/'>
-<meta property='og:site_name' content='Vikas Pogu&#39;s Blog'>
+<meta property='og:site_name' content='My approach...'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='jenkins' /><meta property='article:tag' content='configuration-as-code-plugin' /><meta property='article:tag' content='pipeline-job' /><meta property='article:published_time' content='2020-08-18T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-08-18T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Configure jenkins pipeline job">
 <meta name="twitter:description" content="Configure bitbucket pipeline job using jenkins config as code">
@@ -72,7 +72,7 @@
             
         
         
-        <h1 class="site-name"><a href="/">Vikas Pogu&#39;s Blog</a></h1>
+        <h1 class="site-name"><a href="/">My approach...</a></h1>
         <h2 class="site-description">OpenShift, Kubernetes, Docker and more</h2><ol class="social-menu">
                 
                     <li>
@@ -293,28 +293,28 @@
     <p>In one of my previous posts, I have discussed configuring multibranch pipeline seed jobs using Jenkins configuration as code <a class="link" href="https://github.com/jenkinsci/configuration-as-code-plugin"  target="_blank" rel="noopener"
     >plugin</a></p>
 <p>This is an example of configuring a declarative pipeline job from bitbucket repo, running at midnight every day</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml">- <span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="p">&gt;</span><span class="sd">
-</span><span class="sd">    pipelineJob(&#39;sample-job&#39;) {
-</span><span class="sd">      definition {
-</span><span class="sd">          cpsScm {
-</span><span class="sd">            scriptPath &#39;job1/Jenkinsfile&#39; ## If jenkins job is in a nested folder
-</span><span class="sd">            scm {
-</span><span class="sd">              git {
-</span><span class="sd">                  remote {
-</span><span class="sd">                    url &#39;https://github.com/Vikaspogu/sample-repo&#39;
-</span><span class="sd">                    credentials &#39;sample-creds&#39;
-</span><span class="sd">                  }
-</span><span class="sd">                  branch &#39;*/master&#39;
-</span><span class="sd">                  extensions {}
-</span><span class="sd">              }
-</span><span class="sd">            }
-</span><span class="sd">            triggers {
-</span><span class="sd">              cron(&#39;@midnight&#39;)
-</span><span class="sd">            }
-</span><span class="sd">          }
-</span><span class="sd">      }
-</span><span class="sd">    }</span><span class="w">    
-</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl">- <span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="p">&gt;</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">    pipelineJob(&#39;sample-job&#39;) {
+</span></span></span><span class="line"><span class="cl"><span class="sd">      definition {
+</span></span></span><span class="line"><span class="cl"><span class="sd">          cpsScm {
+</span></span></span><span class="line"><span class="cl"><span class="sd">            scriptPath &#39;job1/Jenkinsfile&#39; ## If jenkins job is in a nested folder
+</span></span></span><span class="line"><span class="cl"><span class="sd">            scm {
+</span></span></span><span class="line"><span class="cl"><span class="sd">              git {
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  remote {
+</span></span></span><span class="line"><span class="cl"><span class="sd">                    url &#39;https://github.com/Vikaspogu/sample-repo&#39;
+</span></span></span><span class="line"><span class="cl"><span class="sd">                    credentials &#39;sample-creds&#39;
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  }
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  branch &#39;*/master&#39;
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  extensions {}
+</span></span></span><span class="line"><span class="cl"><span class="sd">              }
+</span></span></span><span class="line"><span class="cl"><span class="sd">            }
+</span></span></span><span class="line"><span class="cl"><span class="sd">            triggers {
+</span></span></span><span class="line"><span class="cl"><span class="sd">              cron(&#39;@midnight&#39;)
+</span></span></span><span class="line"><span class="cl"><span class="sd">            }
+</span></span></span><span class="line"><span class="cl"><span class="sd">          }
+</span></span></span><span class="line"><span class="cl"><span class="sd">      }
+</span></span></span><span class="line"><span class="cl"><span class="sd">    }</span><span class="w">    
+</span></span></span></code></pre></div>
 </section>
 
 
@@ -353,7 +353,7 @@
         
             2020 - 
         
-        2021 Vikas Pogu&#39;s Blog
+        2022 My approach...
     </section>
     
     <section class="powerby">

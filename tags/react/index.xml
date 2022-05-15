@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>React on Vikas Pogu&#39;s Blog</title>
+    <title>React on My approach...</title>
     <link>https://vikaspogu.dev/tags/react/</link>
-    <description>Recent content in React on Vikas Pogu&#39;s Blog</description>
+    <description>Recent content in React on My approach...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 25 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/react/index.xml" rel="self" type="application/rss+xml" />
@@ -15,8 +15,8 @@
       <guid>https://vikaspogu.dev/posts/redhat-sso-react/</guid>
       <description>In this post, I will show you how to secure a React app using RedHat SSO (upstream keycloak). In this case, openid-connect is my identity provider.
  sso_setup 
-Install the offical keycloak js adapter
-$ npm i keycloak-js --save Setup the client with the host and port; in my case it&amp;rsquo;s localhost:9000
+Install the official keycloak js adapter
+npm i keycloak-js --save Setup the client with the host and port; in my case it&amp;rsquo;s localhost:9000
  sso_setup 
 In App.js add in a JavaScript object with the required configuration; you will find these configurations under Clients-&amp;gt;Installation</description>
     </item>

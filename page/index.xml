@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Pages on Vikas Pogu&#39;s Blog</title>
+    <title>Pages on My approach...</title>
     <link>https://vikaspogu.dev/page/</link>
-    <description>Recent content in Pages on Vikas Pogu&#39;s Blog</description>
+    <description>Recent content in Pages on My approach...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 28 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/page/index.xml" rel="self" type="application/rss+xml" />
@@ -24,7 +24,7 @@
       <guid>https://vikaspogu.dev/about-me/</guid>
       <description>My Background I have about 8 years of experience in the Software Industry.
 Stuff I Work On I primarily work with the following:
- Programming Languages  Java Javascript Basic to Intermediate Golang   Scripting:  Bash   Automation  Ansible   DevOps  CI/CD, Jenkins, TektonCD, Flux, ArgoCD, Helm   Containers  Use docker for almost every container runtime environment Openshift and Kubernetes for Orchestrators   Open Source Knowledge Sharing  Thanks for reading!</description>
+ Programming Languages  Java Javascript Basic to Intermediate Golang   Scripting:  Bash   Automation  Ansible   DevOps  CI/CD, Jenkins, TektonCD, Flux, ArgoCD, Helm   Containers  Use docker for almost every container runtime environment OpenShift and Kubernetes for Orchestrators   Open Source Knowledge Sharing  Thanks for reading!</description>
     </item>
     
     <item>

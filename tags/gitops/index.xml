@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>gitops on Vikas Pogu&#39;s Blog</title>
+    <title>gitops on My approach...</title>
     <link>https://vikaspogu.dev/tags/gitops/</link>
-    <description>Recent content in gitops on Vikas Pogu&#39;s Blog</description>
+    <description>Recent content in gitops on My approach...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 14 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/gitops/index.xml" rel="self" type="application/rss+xml" />
@@ -16,7 +16,7 @@
       <description>In this post, I will:
  Use Tekton to build and publish image to docker registry Trigger a Tekton pipeline from GitHub Use Argo to deploy application   alt argo-flow-1 
 Getting Started Assumptions:
- You have a running Openshift 4 cluster with ArgoCD, and Openshift Pipelines installed. If not, you follow instructions to Openshift Pipelines and ArgoCD Operator Understand of basic argocd and tekton concepts  Create an OpenShift project called node-web-project</description>
+ You have a running OpenShift 4 cluster with ArgoCD, and OpenShift Pipelines installed. If not, you follow instructions to OpenShift Pipelines and ArgoCD Operator Understand of basic argocd and tekton concepts  Create an OpenShift project called node-web-project</description>
     </item>
     
   </channel>

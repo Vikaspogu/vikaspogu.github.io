@@ -12,7 +12,7 @@ apiVersion:triggers.tekton.dev/v1alpha1kind:EventListenermetadata:name:shared-li
 CEL Interceptors can be used to filter or modify incoming events. for example if you want to truncate commit id from the webhook body
 apiVersion:triggers.tekton.dev/v1alpha1kind:EventListenermetadata:name:shared-listenernamespace:defaultspec:serviceAccountName:build-bottriggers:- name:shared-pipeline-triggerinterceptors:- cel:overlays:- key:intercepted.commit_id_shortexpression:&amp;#34;body.head_commit.id.truncate(7)&amp;#34;bindings:- ref:pipeline-bindingtemplate:ref:pipeline-templateApplied overlay can be extracted using a extensions body in the binding.'>
 <meta property='og:url' content='https://vikaspogu.dev/posts/tekton-triggers-cel-interception/'>
-<meta property='og:site_name' content='Vikas Pogu&#39;s Blog'>
+<meta property='og:site_name' content='My approach...'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='tekton' /><meta property='article:tag' content='triggers' /><meta property='article:tag' content='cel' /><meta property='article:published_time' content='2021-01-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-01-19T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Tekton triggers and Interceptors">
 <meta name="twitter:description" content="Tekton Triggers work by having EventListeners receive incoming webhook notifications, processing them using an Interceptor, and creating Kubernetes resources from templates if the interceptor allows it, with extraction of fields from the body of the webhook
@@ -78,7 +78,7 @@ apiVersion:triggers.tekton.dev/v1alpha1kind:EventListenermetadata:name:shared-li
             
         
         
-        <h1 class="site-name"><a href="/">Vikas Pogu&#39;s Blog</a></h1>
+        <h1 class="site-name"><a href="/">My approach...</a></h1>
         <h2 class="site-description">OpenShift, Kubernetes, Docker and more</h2><ol class="social-menu">
                 
                     <li>
@@ -296,39 +296,39 @@ apiVersion:triggers.tekton.dev/v1alpha1kind:EventListenermetadata:name:shared-li
     >Triggers</a> work by having EventListeners receive incoming webhook notifications, processing them using an Interceptor, and creating Kubernetes resources from templates if the interceptor allows it, with extraction of fields from the body of the webhook</p>
 <p><a class="link" href="https://tekton.dev/docs/triggers/eventlisteners/#cel-interceptors"  target="_blank" rel="noopener"
     >CEL Interceptors</a> can be used to filter or modify incoming events. for example if you want to truncate commit id from the webhook body</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">triggers.tekton.dev/v1alpha1</span><span class="w">
-</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">EventListener</span><span class="w">
-</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">shared-listener</span><span class="w">
-</span><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">default</span><span class="w">
-</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">serviceAccountName</span><span class="p">:</span><span class="w"> </span><span class="l">build-bot</span><span class="w">
-</span><span class="w">  </span><span class="nt">triggers</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">shared-pipeline-trigger</span><span class="w">
-</span><span class="w">      </span><span class="nt">interceptors</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- <span class="nt">cel</span><span class="p">:</span><span class="w">
-</span><span class="w">            </span><span class="nt">overlays</span><span class="p">:</span><span class="w">
-</span><span class="w">            </span>- <span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">intercepted.commit_id_short</span><span class="w">
-</span><span class="w">              </span><span class="nt">expression</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;body.head_commit.id.truncate(7)&#34;</span><span class="w">
-</span><span class="w">      </span><span class="nt">bindings</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- <span class="nt">ref</span><span class="p">:</span><span class="w"> </span><span class="l">pipeline-binding</span><span class="w">
-</span><span class="w">      </span><span class="nt">template</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">ref</span><span class="p">:</span><span class="w"> </span><span class="l">pipeline-template</span><span class="w">
-</span></code></pre></div><p>Applied overlay can be extracted using a extensions body in the binding. In below example <code>$(extensions.&lt;overlay_key&gt;)</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">triggers.tekton.dev/v1alpha1</span><span class="w">
-</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">TriggerBinding</span><span class="w">
-</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">pipeline-binding</span><span class="w">
-</span><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">default</span><span class="w">
-</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">params</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">git-repo-name</span><span class="w">
-</span><span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">$(body.repository.name)</span><span class="w">
-</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">git-repo-url</span><span class="w">
-</span><span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">$(body.repository.url)</span><span class="w">
-</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">image-tag</span><span class="w">
-</span><span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">$(extensions.intercepted.commit_id_short)</span><span class="w">
-</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">triggers.tekton.dev/v1alpha1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">EventListener</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">shared-listener</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">default</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">serviceAccountName</span><span class="p">:</span><span class="w"> </span><span class="l">build-bot</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">triggers</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">shared-pipeline-trigger</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">interceptors</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">cel</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">overlays</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">intercepted.commit_id_short</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">expression</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;body.head_commit.id.truncate(7)&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">bindings</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">ref</span><span class="p">:</span><span class="w"> </span><span class="l">pipeline-binding</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">template</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">ref</span><span class="p">:</span><span class="w"> </span><span class="l">pipeline-template</span><span class="w">
+</span></span></span></code></pre></div><p>Applied overlay can be extracted using a extensions body in the binding. In below example <code>$(extensions.&lt;overlay_key&gt;)</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">triggers.tekton.dev/v1alpha1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">TriggerBinding</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">pipeline-binding</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">default</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">git-repo-name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">$(body.repository.name)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">git-repo-url</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">$(body.repository.url)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">image-tag</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">$(extensions.intercepted.commit_id_short)</span><span class="w">
+</span></span></span></code></pre></div>
 </section>
 
 
@@ -367,7 +367,7 @@ apiVersion:triggers.tekton.dev/v1alpha1kind:EventListenermetadata:name:shared-li
         
             2020 - 
         
-        2021 Vikas Pogu&#39;s Blog
+        2022 My approach...
     </section>
     
     <section class="powerby">

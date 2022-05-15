@@ -14,7 +14,7 @@ npx create-react-app patternfly-setup-react Install patternfly dependencies reac
 npm i --save @patternfly/patternfly \  @patternfly/react-core @patternfly/react-table Note: Import base.css and patternfly.css in your project, or some components may diverge in appearance
 //This imports are must to render css import &amp;#34;@patternfly/react-core/dist/styles/base.css&amp;#34;; import &amp;#34;@patternfly/patternfly/patternfly.css&amp;#34;; To make sure everything is working correctly, update App.'>
 <meta property='og:url' content='https://vikaspogu.dev/posts/patternfly-setup-react/'>
-<meta property='og:site_name' content='Vikas Pogu&#39;s Blog'>
+<meta property='og:site_name' content='My approach...'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Patternfly' /><meta property='article:tag' content='ReactJS' /><meta property='article:published_time' content='2019-07-01T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2019-07-01T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Patternfly setup in React Application">
 <meta name="twitter:description" content="To order to integrate Patternfly framework into a ReactJS application, create a new project or use an existing one
@@ -81,7 +81,7 @@ npm i --save @patternfly/patternfly \  @patternfly/react-core @patternfly/react-
             
         
         
-        <h1 class="site-name"><a href="/">Vikas Pogu&#39;s Blog</a></h1>
+        <h1 class="site-name"><a href="/">My approach...</a></h1>
         <h2 class="site-description">OpenShift, Kubernetes, Docker and more</h2><ol class="social-menu">
                 
                     <li>
@@ -297,74 +297,74 @@ npm i --save @patternfly/patternfly \  @patternfly/react-core @patternfly/react-
     <section class="article-content">
     <p>To order to integrate <a class="link" href="https://www.patternfly.org/v4/"  target="_blank" rel="noopener"
     >Patternfly</a> framework into a ReactJS application, create a new project or use an existing one</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">npx create-react-app patternfly-setup-react
-</code></pre></div><p>Install patternfly dependencies <code>react-core</code>, <code>react-table</code> and <code>patternfly</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">npm i --save @patternfly/patternfly <span class="se">\
-</span><span class="se"></span>  @patternfly/react-core @patternfly/react-table
-</code></pre></div><p><strong>Note:</strong> Import <code>base.css</code> and <code>patternfly.css</code> in your project, or some components may diverge in appearance</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">//This imports are must to render css
-</span><span class="c1"></span><span class="kr">import</span> <span class="s2">&#34;@patternfly/react-core/dist/styles/base.css&#34;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="s2">&#34;@patternfly/patternfly/patternfly.css&#34;</span><span class="p">;</span>
-</code></pre></div><p>To make sure everything is working correctly, update <code>App.js</code> with a demo layout from <a class="link" href="https://www.patternfly.org/v4/documentation/react/demos/"  target="_blank" rel="noopener"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npx create-react-app patternfly-setup-react
+</span></span></code></pre></div><p>Install patternfly dependencies <code>react-core</code>, <code>react-table</code> and <code>patternfly</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm i --save @patternfly/patternfly <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  @patternfly/react-core @patternfly/react-table
+</span></span></code></pre></div><p><strong>Note:</strong> Import <code>base.css</code> and <code>patternfly.css</code> in your project, or some components may diverge in appearance</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">//This imports are must to render css
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">import</span> <span class="s2">&#34;@patternfly/react-core/dist/styles/base.css&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="s2">&#34;@patternfly/patternfly/patternfly.css&#34;</span><span class="p">;</span>
+</span></span></code></pre></div><p>To make sure everything is working correctly, update <code>App.js</code> with a demo layout from <a class="link" href="https://www.patternfly.org/v4/documentation/react/demos/"  target="_blank" rel="noopener"
     >documentation</a></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s2">&#34;react&#34;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span>
-  <span class="nx">Avatar</span><span class="p">,</span>
-  <span class="nx">Brand</span><span class="p">,</span>
-  <span class="nx">Button</span><span class="p">,</span>
-  <span class="nx">ButtonVariant</span>
-  <span class="p">...</span>
-  <span class="p">...</span>
-<span class="p">}</span> <span class="nx">from</span> <span class="s2">&#34;@patternfly/react-core&#34;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="nx">accessibleStyles</span> <span class="nx">from</span> <span class="s2">&#34;@patternfly/react-styles/css/utilities/Accessibility/accessibility&#34;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="nx">spacingStyles</span> <span class="nx">from</span> <span class="s2">&#34;@patternfly/react-styles/css/utilities/Spacing/spacing&#34;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">css</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&#34;@patternfly/react-styles&#34;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">BellIcon</span><span class="p">,</span> <span class="nx">CogIcon</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&#34;@patternfly/react-icons&#34;</span><span class="p">;</span>
-
-<span class="c1">//This imports are must to render css
-</span><span class="c1"></span><span class="kr">import</span> <span class="s2">&#34;@patternfly/react-core/dist/styles/base.css&#34;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="s2">&#34;@patternfly/patternfly/patternfly.css&#34;</span><span class="p">;</span>
-
-<span class="kr">class</span> <span class="nx">App</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
-<span class="p">...</span>
-<span class="p">...</span>
-    <span class="k">return</span> <span class="p">(</span>
-      <span class="o">&lt;</span><span class="nx">React</span><span class="p">.</span><span class="nx">Fragment</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="nx">Page</span>
-          <span class="nx">header</span><span class="o">=</span><span class="p">{</span><span class="nx">Header</span><span class="p">}</span>
-          <span class="nx">sidebar</span><span class="o">=</span><span class="p">{</span><span class="nx">Sidebar</span><span class="p">}</span>
-          <span class="nx">isManagedSidebar</span>
-          <span class="nx">skipToContent</span><span class="o">=</span><span class="p">{</span><span class="nx">PageSkipToContent</span><span class="p">}</span>
-        <span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="nx">PageSection</span> <span class="nx">variant</span><span class="o">=</span><span class="p">{</span><span class="nx">PageSectionVariants</span><span class="p">.</span><span class="nx">light</span><span class="p">}</span><span class="o">&gt;</span>
-            <span class="o">&lt;</span><span class="nx">TextContent</span><span class="o">&gt;</span>
-              <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">component</span><span class="o">=</span><span class="s2">&#34;h1&#34;</span><span class="o">&gt;</span><span class="nx">Main</span> <span class="nx">Title</span><span class="o">&lt;</span><span class="err">/Text&gt;</span>
-              <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">component</span><span class="o">=</span><span class="s2">&#34;p&#34;</span><span class="o">&gt;</span>
-                <span class="nx">Body</span> <span class="nx">text</span> <span class="nx">should</span> <span class="nx">be</span> <span class="nx">Overpass</span> <span class="nx">Regular</span> <span class="nx">at</span> <span class="mi">16</span><span class="nx">px</span><span class="p">.</span> <span class="nx">It</span> <span class="nx">should</span> <span class="nx">have</span> <span class="nx">leading</span> <span class="k">of</span> <span class="mi">24</span><span class="nx">px</span> <span class="nx">because</span> <span class="o">&lt;</span><span class="nx">br</span> <span class="o">/&gt;</span>
-                <span class="k">of</span> <span class="nx">it</span><span class="err">’</span><span class="nx">s</span> <span class="nx">relative</span> <span class="nx">line</span> <span class="nx">height</span> <span class="k">of</span> <span class="mf">1.5</span><span class="p">.</span>
-              <span class="o">&lt;</span><span class="err">/Text&gt;</span>
-            <span class="o">&lt;</span><span class="err">/TextContent&gt;</span>
-          <span class="o">&lt;</span><span class="err">/PageSection&gt;</span>
-          <span class="o">&lt;</span><span class="nx">PageSection</span><span class="o">&gt;</span>
-            <span class="o">&lt;</span><span class="nx">Gallery</span> <span class="nx">gutter</span><span class="o">=</span><span class="s2">&#34;md&#34;</span><span class="o">&gt;</span>
-              <span class="p">{</span><span class="nb">Array</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">10</span><span class="p">)).</span><span class="nx">map</span><span class="p">((</span><span class="nx">x</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span>
-                <span class="o">&lt;</span><span class="nx">GalleryItem</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">i</span><span class="p">}</span><span class="o">&gt;</span>
-                  <span class="o">&lt;</span><span class="nx">Card</span><span class="o">&gt;</span>
-                    <span class="o">&lt;</span><span class="nx">CardBody</span><span class="o">&gt;</span><span class="nx">This</span> <span class="nx">is</span> <span class="nx">a</span> <span class="nx">card</span><span class="o">&lt;</span><span class="err">/CardBody&gt;</span>
-                  <span class="o">&lt;</span><span class="err">/Card&gt;</span>
-                <span class="o">&lt;</span><span class="err">/GalleryItem&gt;</span>
-              <span class="p">))}</span>
-            <span class="o">&lt;</span><span class="err">/Gallery&gt;</span>
-            <span class="o">&lt;</span><span class="err">/PageSection&gt;</span>
-        <span class="o">&lt;</span><span class="err">/Page&gt;</span>
-      <span class="o">&lt;</span><span class="err">/React.Fragment&gt;</span>
-    <span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-<span class="kr">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
-</code></pre></div><p>Start the application</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">npm start
-</code></pre></div><p>You should see patternfly design like this!</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s2">&#34;react&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">Avatar</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">Brand</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">Button</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">ButtonVariant</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="nx">from</span> <span class="s2">&#34;@patternfly/react-core&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">accessibleStyles</span> <span class="nx">from</span> <span class="s2">&#34;@patternfly/react-styles/css/utilities/Accessibility/accessibility&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">spacingStyles</span> <span class="nx">from</span> <span class="s2">&#34;@patternfly/react-styles/css/utilities/Spacing/spacing&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">css</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&#34;@patternfly/react-styles&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">BellIcon</span><span class="p">,</span> <span class="nx">CogIcon</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&#34;@patternfly/react-icons&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//This imports are must to render css
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">import</span> <span class="s2">&#34;@patternfly/react-core/dist/styles/base.css&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="s2">&#34;@patternfly/patternfly/patternfly.css&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">class</span> <span class="nx">App</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="nx">React</span><span class="p">.</span><span class="nx">Fragment</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;</span><span class="nx">Page</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">header</span><span class="o">=</span><span class="p">{</span><span class="nx">Header</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">sidebar</span><span class="o">=</span><span class="p">{</span><span class="nx">Sidebar</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">isManagedSidebar</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">skipToContent</span><span class="o">=</span><span class="p">{</span><span class="nx">PageSkipToContent</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;</span><span class="nx">PageSection</span> <span class="nx">variant</span><span class="o">=</span><span class="p">{</span><span class="nx">PageSectionVariants</span><span class="p">.</span><span class="nx">light</span><span class="p">}</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">&lt;</span><span class="nx">TextContent</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">              <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">component</span><span class="o">=</span><span class="s2">&#34;h1&#34;</span><span class="o">&gt;</span><span class="nx">Main</span> <span class="nx">Title</span><span class="o">&lt;</span><span class="err">/Text&gt;</span>
+</span></span><span class="line"><span class="cl">              <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">component</span><span class="o">=</span><span class="s2">&#34;p&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">Body</span> <span class="nx">text</span> <span class="nx">should</span> <span class="nx">be</span> <span class="nx">Overpass</span> <span class="nx">Regular</span> <span class="nx">at</span> <span class="mi">16</span><span class="nx">px</span><span class="p">.</span> <span class="nx">It</span> <span class="nx">should</span> <span class="nx">have</span> <span class="nx">leading</span> <span class="k">of</span> <span class="mi">24</span><span class="nx">px</span> <span class="nx">because</span> <span class="o">&lt;</span><span class="nx">br</span> <span class="o">/&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">of</span> <span class="nx">it</span><span class="err">’</span><span class="nx">s</span> <span class="nx">relative</span> <span class="nx">line</span> <span class="nx">height</span> <span class="k">of</span> <span class="mf">1.5</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl">              <span class="o">&lt;</span><span class="err">/Text&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">&lt;</span><span class="err">/TextContent&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="o">&lt;</span><span class="err">/PageSection&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="o">&lt;</span><span class="nx">PageSection</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">&lt;</span><span class="nx">Gallery</span> <span class="nx">gutter</span><span class="o">=</span><span class="s2">&#34;md&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">              <span class="p">{</span><span class="nb">Array</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">10</span><span class="p">)).</span><span class="nx">map</span><span class="p">((</span><span class="nx">x</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="o">&lt;</span><span class="nx">GalleryItem</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">i</span><span class="p">}</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">                  <span class="o">&lt;</span><span class="nx">Card</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="o">&lt;</span><span class="nx">CardBody</span><span class="o">&gt;</span><span class="nx">This</span> <span class="nx">is</span> <span class="nx">a</span> <span class="nx">card</span><span class="o">&lt;</span><span class="err">/CardBody&gt;</span>
+</span></span><span class="line"><span class="cl">                  <span class="o">&lt;</span><span class="err">/Card&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="o">&lt;</span><span class="err">/GalleryItem&gt;</span>
+</span></span><span class="line"><span class="cl">              <span class="p">))}</span>
+</span></span><span class="line"><span class="cl">            <span class="o">&lt;</span><span class="err">/Gallery&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">&lt;</span><span class="err">/PageSection&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;</span><span class="err">/Page&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="err">/React.Fragment&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</span></span></code></pre></div><p>Start the application</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm start
+</span></span></code></pre></div><p>You should see patternfly design like this!</p>
 <p><figure 
 	
 		class="gallery-image" 
@@ -421,7 +421,7 @@ npm i --save @patternfly/patternfly \  @patternfly/react-core @patternfly/react-
         
             2020 - 
         
-        2021 Vikas Pogu&#39;s Blog
+        2022 My approach...
     </section>
     
     <section class="powerby">

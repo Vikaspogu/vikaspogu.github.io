@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>jenkins on Vikas Pogu&#39;s Blog</title>
+    <title>jenkins on My approach...</title>
     <link>https://vikaspogu.dev/tags/jenkins/</link>
-    <description>Recent content in jenkins on Vikas Pogu&#39;s Blog</description>
+    <description>Recent content in jenkins on My approach...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 18 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/jenkins/index.xml" rel="self" type="application/rss+xml" />
@@ -24,28 +24,28 @@ This is an example of configuring a declarative pipeline job from bitbucket repo
       <pubDate>Tue, 07 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/posts/jenkins-date-difference/</guid>
-      <description>This is how you can calucate days between two dates in Jenkins pipeline. @NonCPS annotation is useful when you have methods which use objects that aren&amp;rsquo;t serializable
-import java.text.SimpleDateFormat stages { stage(&amp;#34;Calucate days&amp;#34;) { steps { script { def daysRemaining = getRemainingDays(&amp;#34;2020-06-25&amp;#34;) } } } } } @NonCPS def getRemainingDays(previousDate){ def currentDate = new Date() String currentTimeFormat= currentDate.format(&amp;#34;yyyy-MM-dd&amp;#34;) def oldDate = new SimpleDateFormat(&amp;#34;yyyy-MM-dd&amp;#34;).parse(previousDate) return currentTimeFormat-oldDate } Calculate if date is greater than 14 days</description>
+      <description>This is how you can calculate days between two dates in Jenkins pipeline. @NonCPS annotation is useful when you have methods which use objects that aren&amp;rsquo;t serializable
+import java.text.SimpleDateFormat stages { stage(&amp;#34;Calculate days&amp;#34;) { steps { script { def daysRemaining = getRemainingDays(&amp;#34;2020-06-25&amp;#34;) } } } } } @NonCPS def getRemainingDays(previousDate){ def currentDate = new Date() String currentTimeFormat= currentDate.format(&amp;#34;yyyy-MM-dd&amp;#34;) def oldDate = new SimpleDateFormat(&amp;#34;yyyy-MM-dd&amp;#34;).parse(previousDate) return currentTimeFormat-oldDate } Calculate if date is greater than 14 days</description>
     </item>
     
     <item>
-      <title>Openshift Jenkins configuration via JCasC plugin</title>
+      <title>OpenShift Jenkins configuration via JCasC plugin</title>
       <link>https://vikaspogu.dev/posts/jenkins-config-as-code-openshift/</link>
       <pubDate>Mon, 06 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/posts/jenkins-config-as-code-openshift/</guid>
       <description>Deploying Jenkins on Kubernetes provides important benefits over a standard VM-based deployment. For example, gaining the ability to have project-specific Jenkins slaves (agents) on demand, instead of having a pool of VMs idle waiting for a job.
-Jenkins can be easily deployed using Helm, Openshift using jenkins catalog
+Jenkins can be easily deployed using Helm, OpenShift using jenkins catalog
 As everyone has experienced setting up Jenkins is a complex process, as both Jenkins and its plugins require some tuning and configuration, with dozens of parameters to set within the web UI manage section</description>
     </item>
     
     <item>
-      <title>Jenkins Openshift OAuth SSL</title>
+      <title>Jenkins OpenShift OAuth SSL</title>
       <link>https://vikaspogu.dev/posts/openshift-jenkins-oauth-ssl/</link>
       <pubDate>Mon, 10 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/posts/openshift-jenkins-oauth-ssl/</guid>
-      <description>Jenkins SSL Problem Recently, I encountered an issue while authenticating to Openshift Jenkins using Openshift OAuth plugin where trusted certificate provided by CA that aren&amp;rsquo;t included in the default JRE TrustStore.
+      <description>Jenkins SSL Problem Recently, I encountered an issue while authenticating to OpenShift Jenkins using OpenShift OAuth plugin where trusted certificate provided by CA that aren&amp;rsquo;t included in the default JRE TrustStore.
  Jenkins Error 
 Logs from Jenkins pod
 2020-02-10 21:19:07.335+0000 [id=17]	INFO	o.o.j.p.o.OpenShiftOAuth2SecurityRealm#transportToUse: OpenShift OAuth got an SSL error when accessing the issuer&amp;#39;s token endpoint when using the SA certificate2020-02-10 21:19:07.348+0000 [id=17]	INFO	o.o.j.p.o.OpenShiftOAuth2SecurityRealm#transportToUse: OpenShift OAuth provider token endpoint failed unexpectedly using the JVMs default keystore sun.</description>

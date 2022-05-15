@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://vikaspogu.dev/</loc>
+    <lastmod>2022-05-13T16:09:15-05:00</lastmod>
+  </url><url>
+    <loc>https://vikaspogu.dev/tags/nas/</loc>
+    <lastmod>2022-05-13T16:09:15-05:00</lastmod>
+  </url><url>
+    <loc>https://vikaspogu.dev/posts/</loc>
+    <lastmod>2022-05-13T16:09:15-05:00</lastmod>
+  </url><url>
+    <loc>https://vikaspogu.dev/tags/pxe/</loc>
+    <lastmod>2022-05-13T16:09:15-05:00</lastmod>
+  </url><url>
+    <loc>https://vikaspogu.dev/posts/tftp-udm-pxe/</loc>
+    <lastmod>2022-05-13T16:09:15-05:00</lastmod>
+  </url><url>
+    <loc>https://vikaspogu.dev/tags/</loc>
+    <lastmod>2022-05-13T16:09:15-05:00</lastmod>
+  </url><url>
+    <loc>https://vikaspogu.dev/tags/udm/</loc>
+    <lastmod>2022-05-13T16:09:15-05:00</lastmod>
+  </url><url>
     <loc>https://vikaspogu.dev/categories/</loc>
     <lastmod>2021-07-08T00:00:00+00:00</lastmod>
   </url><url>
@@ -14,12 +35,6 @@
     <loc>https://vikaspogu.dev/posts/helm-dict-function/</loc>
     <lastmod>2021-07-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://vikaspogu.dev/posts/</loc>
-    <lastmod>2021-07-08T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://vikaspogu.dev/</loc>
-    <lastmod>2021-07-08T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://vikaspogu.dev/posts/tekton-multiarch-buildx/</loc>
     <lastmod>2021-01-19T00:00:00+00:00</lastmod>
   </url><url>
@@ -30,9 +45,6 @@
     <lastmod>2021-01-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://vikaspogu.dev/tags/multi-arch/</loc>
-    <lastmod>2021-01-19T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://vikaspogu.dev/tags/</loc>
     <lastmod>2021-01-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://vikaspogu.dev/tags/tekton/</loc>

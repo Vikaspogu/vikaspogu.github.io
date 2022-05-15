@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>jcasc on Vikas Pogu&#39;s Blog</title>
+    <title>jcasc on My approach...</title>
     <link>https://vikaspogu.dev/tags/jcasc/</link>
-    <description>Recent content in jcasc on Vikas Pogu&#39;s Blog</description>
+    <description>Recent content in jcasc on My approach...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 06 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/jcasc/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Openshift Jenkins configuration via JCasC plugin</title>
+      <title>OpenShift Jenkins configuration via JCasC plugin</title>
       <link>https://vikaspogu.dev/posts/jenkins-config-as-code-openshift/</link>
       <pubDate>Mon, 06 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/posts/jenkins-config-as-code-openshift/</guid>
       <description>Deploying Jenkins on Kubernetes provides important benefits over a standard VM-based deployment. For example, gaining the ability to have project-specific Jenkins slaves (agents) on demand, instead of having a pool of VMs idle waiting for a job.
-Jenkins can be easily deployed using Helm, Openshift using jenkins catalog
+Jenkins can be easily deployed using Helm, OpenShift using jenkins catalog
 As everyone has experienced setting up Jenkins is a complex process, as both Jenkins and its plugins require some tuning and configuration, with dozens of parameters to set within the web UI manage section</description>
     </item>
     

@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en-us">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Permission denied on pushing build images into openshift internal registry'><title>Permission denied pushing to Openshift Registry</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Permission denied on pushing build images into OpenShift internal registry'><title>Permission denied pushing to OpenShift Registry</title>
 
 <link rel='canonical' href='https://vikaspogu.dev/posts/ocp-docker-registry-500-err/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Permission denied pushing to Openshift Registry'>
-<meta property='og:description' content='Permission denied on pushing build images into openshift internal registry'>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Permission denied pushing to OpenShift Registry'>
+<meta property='og:description' content='Permission denied on pushing build images into OpenShift internal registry'>
 <meta property='og:url' content='https://vikaspogu.dev/posts/ocp-docker-registry-500-err/'>
-<meta property='og:site_name' content='Vikas Pogu&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Openshift' /><meta property='article:published_time' content='2019-12-18T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2019-12-18T00:00:00&#43;00:00'/>
-<meta name="twitter:title" content="Permission denied pushing to Openshift Registry">
-<meta name="twitter:description" content="Permission denied on pushing build images into openshift internal registry">
+<meta property='og:site_name' content='My approach...'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='OpenShift' /><meta property='article:published_time' content='2019-12-18T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2019-12-18T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Permission denied pushing to OpenShift Registry">
+<meta name="twitter:description" content="Permission denied on pushing build images into OpenShift internal registry">
     </head>
     <body class="
     article-page 
@@ -72,7 +72,7 @@
             
         
         
-        <h1 class="site-name"><a href="/">Vikas Pogu&#39;s Blog</a></h1>
+        <h1 class="site-name"><a href="/">My approach...</a></h1>
         <h2 class="site-description">OpenShift, Kubernetes, Docker and more</h2><ol class="social-menu">
                 
                     <li>
@@ -243,12 +243,12 @@
     
 
     <h2 class="article-title">
-        <a href="/posts/ocp-docker-registry-500-err/">Permission denied pushing to Openshift Registry</a>
+        <a href="/posts/ocp-docker-registry-500-err/">Permission denied pushing to OpenShift Registry</a>
     </h2>
 
     
     <h3 class="article-subtitle">
-        Permission denied on pushing build images into openshift internal registry
+        Permission denied on pushing build images into OpenShift internal registry
     </h3>
     
 
@@ -291,18 +291,18 @@
 
     <section class="article-content">
     <p>Recently, i ran into a issue where pushing images to the docker registry after a build fails</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">Pushing image docker-registry.default.svc:5000/simple-go-build/simple-go:latest ...
-Registry server Address:
-Registry server User Name: serviceaccount
-Registry server Email: serviceaccount@example.org
-Registry server Password: <span class="s">&lt;&lt;non</span>-empty&gt;&gt;
-error: build error: Failed to push image: received unexpected HTTP status: <span class="m">500</span> Internal Server Error
-</code></pre></div><p>Registry pods logs show <code>permission denied</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">err.code<span class="o">=</span>UNKNOWN err.detail<span class="o">=</span><span class="s2">&#34;filesystem: mkdir /registry/docker/registry/v2/repositories/simple-go-build/simple-go/_uploads/c34415b4-c6d8-42ba-9854-aee449efd984: permission denied&#34;</span>
-</code></pre></div><p>One of the Red Hat solutions article suggested to verify the file ownership of the files, directories in the volume and compare it to the uid of the registry</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Pushing image docker-registry.default.svc:5000/simple-go-build/simple-go:latest ...
+</span></span><span class="line"><span class="cl">Registry server Address:
+</span></span><span class="line"><span class="cl">Registry server User Name: serviceaccount
+</span></span><span class="line"><span class="cl">Registry server Email: serviceaccount@example.org
+</span></span><span class="line"><span class="cl">Registry server Password: <span class="s">&lt;&lt;non</span>-empty&gt;&gt;
+</span></span><span class="line"><span class="cl">error: build error: Failed to push image: received unexpected HTTP status: <span class="m">500</span> Internal Server Error
+</span></span></code></pre></div><p>Registry pods logs show <code>permission denied</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">err.code<span class="o">=</span>UNKNOWN err.detail<span class="o">=</span><span class="s2">&#34;filesystem: mkdir /registry/docker/registry/v2/repositories/simple-go-build/simple-go/_uploads/c34415b4-c6d8-42ba-9854-aee449efd984: permission denied&#34;</span>
+</span></span></code></pre></div><p>One of the Red Hat solutions article suggested to verify the file ownership of the files, directories in the volume and compare it to the uid of the registry</p>
 <p>Changing the owner recursively to the uid of the registry, fixed the issue</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@master# chown -R <span class="m">1001</span> /exports/registry/docker/
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@master# chown -R <span class="m">1001</span> /exports/registry/docker/
+</span></span></code></pre></div>
 </section>
 
 
@@ -310,7 +310,7 @@ error: build error: Failed to push image: received unexpected HTTP status: <span
     
     <section class="article-tags">
         
-            <a href="/tags/openshift/">Openshift</a>
+            <a href="/tags/openshift/">OpenShift</a>
         
     </section>
 
@@ -337,7 +337,7 @@ error: build error: Failed to push image: received unexpected HTTP status: <span
         
             2020 - 
         
-        2021 Vikas Pogu&#39;s Blog
+        2022 My approach...
     </section>
     
     <section class="powerby">
