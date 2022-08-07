@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>buildx on My approach...</title>
+    <title>buildx on hugo-theme-gruvbox</title>
     <link>https://vikaspogu.dev/tags/buildx/</link>
-    <description>Recent content in buildx on My approach...</description>
+    <description>Recent content in buildx on hugo-theme-gruvbox</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <copyright>Copyright © 2021</copyright>
     <lastBuildDate>Tue, 19 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/buildx/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Build multi arch docker image using Tekton</title>
-      <link>https://vikaspogu.dev/posts/tekton-multiarch-buildx/</link>
+      <link>https://vikaspogu.dev/blog/tekton-multiarch-buildx/</link>
       <pubDate>Tue, 19 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://vikaspogu.dev/posts/tekton-multiarch-buildx/</guid>
+      <guid>https://vikaspogu.dev/blog/tekton-multiarch-buildx/</guid>
       <description>There are three different strategies to build multi-platform images that are supported by Buildx and Dockerfiles:
- Using the QEMU emulation support in the kernel Building on multiple native nodes using the same builder instance Using a stage in Dockerfile to cross-compile to different architectures  I’ll focus on the first option, cross building with emulation.
-docker buildx build --platform linux/amd64,linux/arm64 . Setup This differs from platform to platform but one thing we all have in common is pipelines, so I’ve constructed a basic buildx setup for TektonCD task.</description>
+Using the QEMU emulation support in the kernel Building on multiple native nodes using the same builder instance Using a stage in Dockerfile to cross-compile to different architectures I’ll focus on the first option, cross building with emulation.
+docker buildx build --platform linux/amd64,linux/arm64 . Setup # This differs from platform to platform but one thing we all have in common is pipelines, so I’ve constructed a basic buildx setup for TektonCD task.</description>
     </item>
     
     <item>
       <title>Setting up docker buildx on Linux</title>
-      <link>https://vikaspogu.dev/posts/docker-buildx-setup/</link>
+      <link>https://vikaspogu.dev/blog/docker-buildx-setup/</link>
       <pubDate>Sat, 05 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://vikaspogu.dev/posts/docker-buildx-setup/</guid>
-      <description>Docker buildx on Linux Installation instructions for Ubuntu
+      <guid>https://vikaspogu.dev/blog/docker-buildx-setup/</guid>
+      <description>Docker buildx on Linux # Installation instructions for Ubuntu
 To execute docker commands without sudo. We need to add username to the docker group
- Find current username by typing who Add username to docker group Reboot system  $ who vikaspogu :0 2020-12-05 10:10 (:0) $ sudo usermod -aG docker vikaspogu $ sudo reboot Enable buildx Create a new config.json file under ~.docker folder and enable experimental feature
+Find current username by typing who Add username to docker group Reboot system $ who vikaspogu :0 2020-12-05 10:10 (:0) $ sudo usermod -aG docker vikaspogu $ sudo reboot Enable buildx # Create a new config.json file under ~.docker folder and enable experimental feature
 $ mkdir ~/.</description>
     </item>
     

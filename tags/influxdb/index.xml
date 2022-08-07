@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>influxdb on My approach...</title>
+    <title>influxdb on hugo-theme-gruvbox</title>
     <link>https://vikaspogu.dev/tags/influxdb/</link>
-    <description>Recent content in influxdb on My approach...</description>
+    <description>Recent content in influxdb on hugo-theme-gruvbox</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <copyright>Copyright © 2021</copyright>
     <lastBuildDate>Wed, 01 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/influxdb/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Measure Raspberry Pi temperature using Telegraf, Influxdb, Grafana on k3s</title>
-      <link>https://vikaspogu.dev/posts/raspberry-pi-temp-telegraf/</link>
+      <link>https://vikaspogu.dev/blog/raspberry-pi-temp-telegraf/</link>
       <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://vikaspogu.dev/posts/raspberry-pi-temp-telegraf/</guid>
+      <guid>https://vikaspogu.dev/blog/raspberry-pi-temp-telegraf/</guid>
       <description>In my previous post, I went through k3s cluster home setup. Now, i&amp;rsquo;ll show how to measure the temperature of those Raspberry Pi&amp;rsquo;s using Telegraf, Influxdb, Grafana and Helm charts.
-Why Telegraf? Telegraf has a plugin called exec, which can execute the commands on host machine at certain interval and parses those metrics from their output in any one of the accepted input data formats.
+Why Telegraf? # Telegraf has a plugin called exec, which can execute the commands on host machine at certain interval and parses those metrics from their output in any one of the accepted input data formats.
 First, deploy influxdb time series database chart</description>
     </item>
     

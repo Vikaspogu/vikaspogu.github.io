@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>argocd on My approach...</title>
+    <title>argocd on hugo-theme-gruvbox</title>
     <link>https://vikaspogu.dev/tags/argocd/</link>
-    <description>Recent content in argocd on My approach...</description>
+    <description>Recent content in argocd on hugo-theme-gruvbox</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <copyright>Copyright © 2021</copyright>
     <lastBuildDate>Thu, 14 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/argocd/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GitOps with Tekton and ArgoCD</title>
-      <link>https://vikaspogu.dev/posts/tekton-argocd-gitops/</link>
+      <link>https://vikaspogu.dev/blog/tekton-argocd-gitops/</link>
       <pubDate>Thu, 14 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://vikaspogu.dev/posts/tekton-argocd-gitops/</guid>
+      <guid>https://vikaspogu.dev/blog/tekton-argocd-gitops/</guid>
       <description>In this post, I will:
- Use Tekton to build and publish image to docker registry Trigger a Tekton pipeline from GitHub Use Argo to deploy application   alt argo-flow-1 
-Getting Started Assumptions:
- You have a running OpenShift 4 cluster with ArgoCD, and OpenShift Pipelines installed. If not, you follow instructions to OpenShift Pipelines and ArgoCD Operator Understand of basic argocd and tekton concepts  Create an OpenShift project called node-web-project</description>
+Use Tekton to build and publish image to docker registry Trigger a Tekton pipeline from GitHub Use Argo to deploy application Getting Started # Assumptions:
+You have a running OpenShift 4 cluster with ArgoCD, and OpenShift Pipelines installed. If not, you follow instructions to OpenShift Pipelines and ArgoCD Operator Understand of basic argocd and tekton concepts Create an OpenShift project called node-web-project
+oc new-project node-web-project Using Private Registries # Create a docker secret with registry authentication details</description>
     </item>
     
   </channel>

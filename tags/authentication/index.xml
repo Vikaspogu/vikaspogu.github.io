@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>authentication on My approach...</title>
+    <title>authentication on hugo-theme-gruvbox</title>
     <link>https://vikaspogu.dev/tags/authentication/</link>
-    <description>Recent content in authentication on My approach...</description>
+    <description>Recent content in authentication on hugo-theme-gruvbox</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <copyright>Copyright © 2021</copyright>
     <lastBuildDate>Thu, 12 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/authentication/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>End User Auth and Authz with OpenShift Service Mesh and Keycloak</title>
-      <link>https://vikaspogu.dev/posts/servicemesh-jwt-auth-authz-keycloack/</link>
+      <link>https://vikaspogu.dev/blog/servicemesh-jwt-auth-authz-keycloack/</link>
       <pubDate>Thu, 12 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://vikaspogu.dev/posts/servicemesh-jwt-auth-authz-keycloack/</guid>
+      <guid>https://vikaspogu.dev/blog/servicemesh-jwt-auth-authz-keycloack/</guid>
       <description>In this article, I will share the setup for enabling Authentication and Authorization in OpenShift Service Mesh with Keycloak
-Installing OpenShift Service Mesh Follow the Installing Red Hat OpenShift Service Mesh guide for setup
+Installing OpenShift Service Mesh # Follow the Installing Red Hat OpenShift Service Mesh guide for setup
 Enable following configuration in your ServiceMeshControlPlane resource
- Strict mTLS across the mesh Automatic istio route creation  apiVersion:maistra.io/v2kind:ServiceMeshControlPlanespec:version:v1.1security:controlPlane:mtls:truegateways:OpenShiftRoute:enabled:trueKeycloak Keycloak is an open-source identity and access management application that uses open protocols and is easily integrated with other providers.</description>
+Strict mTLS across the mesh Automatic istio route creation apiVersion: maistra.io/v2 kind: ServiceMeshControlPlane spec: version: v1.1 security: controlPlane: mtls: true gateways: OpenShiftRoute: enabled: true Keycloak # Keycloak is an open-source identity and access management application that uses open protocols and is easily integrated with other providers.</description>
     </item>
     
   </channel>

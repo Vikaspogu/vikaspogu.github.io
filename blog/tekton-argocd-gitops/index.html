@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  theme="light"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  
+
+
+<link
+  rel="preload"
+  as="font"
+  type="font/woff2"
+  href="/fonts/roboto-slab-latin-400.woff2"
+  crossorigin="anonymous"
+/>
+<link
+  rel="prefetch"
+  as="font"
+  type="font/woff2"
+  href="/fonts/roboto-slab-latin-700.woff2"
+  crossorigin="anonymous"
+/>
+
+
+<link
+  rel="preload"
+  as="font"
+  type="font/woff2"
+  href="/fonts/fira-code-latin-300.woff2"
+  crossorigin="anonymous"
+/>
+<link
+  rel="preload"
+  as="font"
+  type="font/woff2"
+  href="/fonts/fira-code-latin-400.woff2"
+  crossorigin="anonymous"
+/>
+<link
+  rel="prefetch"
+  as="font"
+  type="font/woff2"
+  href="/fonts/fira-code-latin-700.woff2"
+  crossorigin="anonymous"
+/>
+
+  
+  
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+  
+
+
+
+<title>GitOps with Tekton and ArgoCD</title>
+
+<meta
+  name="description"
+  content="build and release pipeline with tekton, argocd in gitops fashion"
+/>
+
+<link rel="canonical" href="https://vikaspogu.dev/blog/tekton-argocd-gitops/" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="GitOps with Tekton and ArgoCD"/>
+<meta name="twitter:description" content="build and release pipeline with tekton, argocd in gitops fashion"/>
+
+<meta property="og:title" content="GitOps with Tekton and ArgoCD" />
+<meta property="og:description" content="build and release pipeline with tekton, argocd in gitops fashion" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://vikaspogu.dev/blog/tekton-argocd-gitops/" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2021-01-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-01-14T00:00:00+00:00" />
+
+
+<meta itemprop="name" content="GitOps with Tekton and ArgoCD">
+<meta itemprop="description" content="build and release pipeline with tekton, argocd in gitops fashion"><meta itemprop="datePublished" content="2021-01-14T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-01-14T00:00:00+00:00" />
+<meta itemprop="wordCount" content="710">
+<meta itemprop="keywords" content="argocd,tekton,gitops,OpenShift-pipelines," />
+
+
+
+
+
+
+
+
+  
+  
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<style>
+   
+  @font-face{font-display:swap;font-family:Roboto Slab;font-style:normal;font-weight:100;src:local("Roboto Slab Thin "),local("Roboto Slab-Thin"),url(/fonts/roboto-slab-latin-100.woff2) format("woff2"),url(/fonts/roboto-slab-latin-100.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto Slab;font-style:normal;font-weight:200;src:local("Roboto Slab Extra Light "),local("Roboto Slab-Extra Light"),url(/fonts/roboto-slab-latin-200.woff2) format("woff2"),url(/fonts/roboto-slab-latin-200.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto Slab;font-style:normal;font-weight:300;src:local("Roboto Slab Light "),local("Roboto Slab-Light"),url(/fonts/roboto-slab-latin-300.woff2) format("woff2"),url(/fonts/roboto-slab-latin-300.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto Slab;font-style:normal;font-weight:400;src:local("Roboto Slab Regular "),local("Roboto Slab-Regular"),url(/fonts/roboto-slab-latin-400.woff2) format("woff2"),url(/fonts/roboto-slab-latin-400.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto Slab;font-style:normal;font-weight:500;src:local("Roboto Slab Medium "),local("Roboto Slab-Medium"),url(/fonts/roboto-slab-latin-500.woff2) format("woff2"),url(/fonts/roboto-slab-latin-500.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto Slab;font-style:normal;font-weight:600;src:local("Roboto Slab SemiBold "),local("Roboto Slab-SemiBold"),url(/fonts/roboto-slab-latin-600.woff2) format("woff2"),url(/fonts/roboto-slab-latin-600.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto Slab;font-style:normal;font-weight:700;src:local("Roboto Slab Bold "),local("Roboto Slab-Bold"),url(/fonts/roboto-slab-latin-700.woff2) format("woff2"),url(/fonts/roboto-slab-latin-700.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto Slab;font-style:normal;font-weight:800;src:local("Roboto Slab ExtraBold "),local("Roboto Slab-ExtraBold"),url(/fonts/roboto-slab-latin-800.woff2) format("woff2"),url(/fonts/roboto-slab-latin-800.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto Slab;font-style:normal;font-weight:900;src:local("Roboto Slab Black "),local("Roboto Slab-Black"),url(/fonts/roboto-slab-latin-900.woff2) format("woff2"),url(/fonts/roboto-slab-latin-900.woff) format("woff")}@font-face{font-display:swap;font-family:Fira Code;font-style:normal;font-weight:300;src:local("Fira Code Light "),local("Fira Code-Light"),url(/fonts/fira-code-latin-300.woff2) format("woff2"),url(/fonts/fira-code-latin-300.woff) format("woff")}@font-face{font-display:swap;font-family:Fira Code;font-style:normal;font-weight:400;src:local("Fira Code Regular "),local("Fira Code-Regular"),url(/fonts/fira-code-latin-400.woff2) format("woff2"),url(/fonts/fira-code-latin-400.woff) format("woff")}@font-face{font-display:swap;font-family:Fira Code;font-style:normal;font-weight:500;src:local("Fira Code Medium "),local("Fira Code-Medium"),url(/fonts/fira-code-latin-500.woff2) format("woff2"),url(/fonts/fira-code-latin-500.woff) format("woff")}@font-face{font-display:swap;font-family:Fira Code;font-style:normal;font-weight:600;src:local("Fira Code SemiBold "),local("Fira Code-SemiBold"),url(/fonts/fira-code-latin-600.woff2) format("woff2"),url(/fonts/fira-code-latin-600.woff) format("woff")}@font-face{font-display:swap;font-family:Fira Code;font-style:normal;font-weight:700;src:local("Fira Code Bold "),local("Fira Code-Bold"),url(/fonts/fira-code-latin-700.woff2) format("woff2"),url(/fonts/fira-code-latin-700.woff) format("woff")}
+
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{-webkit-text-size-adjust:100%;line-height:1.15}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}[hidden],template{display:none}:root[theme=light]{--bg:var(--bg0);--bg0:#fbf1c7;--bg0_h:#f9f5d7;--bg0_s:#f2e5bc;--bg1:#ebdbb2;--bg2:#d5c4a1;--bg3:#bdae93;--bg4:#a89984;--fg:var(--fg1);--fg0:#282828;--fg1:#3c3836;--fg2:#504945;--fg3:#665c54;--fg4:#7c6f64;--gray1:var(--fg4);--gray2:#928374;--red1:#cc241d;--red2:#9d0006;--green1:#98971a;--green2:#797403;--yellow1:#d79921;--yellow2:#b57614;--blue1:#458588;--blue2:#076678;--purple1:#b16286;--purple2:#8f3f71;--aqua1:#689d6a;--aqua2:#427b58;--orange1:#d65d0e;--orange2:#af3a03}[theme=light]:root .light--hidden{display:none}:root[theme=dark]{--bg:var(--bg0);--bg0:#282828;--bg0_h:#1d2021;--bg0_s:#32302f;--bg1:#3c3836;--bg2:#504945;--bg3:#665c54;--bg4:#7c6f64;--fg:var(--fg1);--fg0:#fbf1c7;--fg1:#ebdbb2;--fg2:#d5c4a1;--fg3:#bdae93;--fg4:#a89984;--gray1:var(--fg4);--gray2:#928374;--red1:#cc241d;--red2:#fb4934;--green1:#98971a;--green2:#b8bb26;--yellow1:#d79921;--yellow2:#fabd2f;--blue1:#458588;--blue2:#83a598;--purple1:#b16286;--purple2:#d3869b;--aqua1:#689d6a;--aqua2:#8ec07c;--orange1:#d65d0e;--orange2:#fe8019}[theme=dark]:root .dark--hidden{display:none}:root{--primary:var(--blue1);--primary-alt:var(--blue2);--font-monospace:"Fira Code","Lucida Console",Monaco,monospace;--font-sans-serif:Verdana,Helvetica,sans-serif;--font-serif:"Roboto Slab",Georgia,serif}html{font-family:Roboto Slab,Georgia,serif;font-family:var(--font-serif);font-size:1rem;scroll-behavior:smooth}body{word-wrap:break-word;background:var(--bg);color:var(--fg);line-height:1.675}strong{letter-spacing:.35px}a{color:inherit;text-decoration:none}a.link--external:after{content:"\2009↗"}img{border:2px solid var(--bg1);height:auto;max-width:100%}figure{display:inline-block}figcaption{color:var(--fg3);font-family:Roboto Slab,Georgia,serif;font-family:var(--font-serif);font-size:.9rem}::-moz-selection{background:var(--bg4);color:var(--fg0)}::selection{background:var(--bg4);color:var(--fg0)}h1,h2,h3,h4{color:var(--fg0);font-family:Fira Code,Lucida Console,Monaco,monospace;font-family:var(--font-monospace);font-weight:300;line-height:1.4}h1 code,h2 code,h3 code,h4 code{font-size:1em}h2,h3,h4{border-bottom:1px solid var(--bg1)}h1,h2{font-weight:400}h1{font-size:1.875rem}h2{font-size:1.75rem}h3{font-size:1.625rem}@media (min-width:768px){h1{font-size:2.375rem}h2{font-size:2rem}h3{font-size:1.75rem}}h4{font-size:1.5rem}hr{background:var(--bg1);border:none;height:1px;margin:3rem auto;width:80%}blockquote,code,pre{border-radius:.2rem;padding:0 .2em}pre code{padding:0}blockquote,code,pre{background:var(--bg1)}code,pre{font-family:Fira Code,Lucida Console,Monaco,monospace;font-family:var(--font-monospace)}code code{background:var(--bg2)}blockquote,pre{padding:1rem}pre{background:var(--bg1)!important;overflow:auto}pre code{background:none}blockquote{border-left:5px solid var(--primary-alt);margin:.5rem 0}blockquote:not(.does-not-exist) code{background:var(--bg2)}blockquote:not(.does-not-exist) p:first-of-type{margin-top:0}blockquote:not(.does-not-exist) p:last-of-type{margin-bottom:0}pre::-webkit-scrollbar{height:.5rem;scrollbar-width:auto}pre::-webkit-scrollbar-track{background:var(--bg2);border-radius:.2rem}pre::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:.2rem}.layout{display:grid;grid-template-areas:"header" "main" "footer";grid-template-rows:auto 1fr auto;height:100vh}main{align-items:start;display:grid;grid-area:main;grid-template-areas:"empty content sidebar";grid-template-columns:1fr minmax(0,650px) 4fr}header{background:var(--bg1);grid-area:header}footer{grid-area:footer}footer,main{margin:.5em 1.1em}.content{grid-area:content}.sidebar{display:none;flex-direction:column;grid-area:sidebar;margin-top:3rem;position:-webkit-sticky;position:sticky;top:2rem}@media (min-width:992px){.sidebar{display:flex}}header{display:grid;font-family:Fira Code,Lucida Console,Monaco,monospace;font-family:var(--font-monospace);font-size:1.125rem;grid-template-areas:"heading search nav theme-toggle";grid-template-columns:auto auto 1fr auto;padding:.75rem}.logo{color:var(--fg0);display:flex;font-weight:700;grid-area:heading}.logo:hover .logo__cursor{-webkit-animation:blink 1s infinite;animation:blink 1s infinite;opacity:1}.logo__chevron,.logo__cursor{margin-left:.5rem}.logo__cursor{opacity:0}.logo__text{display:none}@media (min-width:768px){.logo__text{display:block}}.search{display:flex;grid-area:search;margin:0 1rem}#search__text{background:var(--bg2);border:1px solid var(--bg2);border-radius:.2rem;caret-color:var(--fg);color:var(--fg);outline:none;padding:0 .5rem;width:100%}#search__text:hover{border-color:var(--bg3)}#search__text:focus{border-color:var(--bg4)}#search__text::-moz-placeholder{color:var(--fg3)}#search__text::placeholder{color:var(--fg3)}#search__text[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}#search__suggestions{background:var(--bg);border-radius:.2rem;box-shadow:0 .5rem 1rem var(--bg1);font-family:Roboto Slab,Georgia,serif;font-family:var(--font-serif);left:0;margin-top:2rem;position:absolute;width:95vw;z-index:1000}@media (min-width:768px){.search{position:relative}#search__suggestions{width:60vw}}.search__suggestions--hidden{display:none}.search__suggestion-item{border-bottom:1px dashed var(--bg2);display:grid;grid-template-columns:1fr 2fr}.search__suggestion-item.focus-visible,.search__suggestion-item:focus,.search__suggestion-item:hover{background:var(--bg1);cursor:pointer;outline:none}.search__suggestion-item:focus,.search__suggestion-item:focus-visible,.search__suggestion-item:hover{background:var(--bg1);cursor:pointer;outline:none}.search__suggestion-item:last-child{border:none}.search__suggestion-description,.search__suggestion-title{margin:1rem 0;padding:0 1rem}.search__suggestion-title{font-weight:700}.search__suggestion-description{border-left:1px solid var(--bg2)}.search__no-results{padding:.75rem}.theme__toggle{align-items:center;background:none;border:none;color:var(--yellow1);cursor:pointer;display:flex;grid-area:theme-toggle;margin:0 1rem}.theme__toggle:hover{color:var(--yellow2)}.theme__toggle svg{height:28px;width:28px}nav#menu{align-items:center;display:flex;grid-area:nav;justify-content:flex-end}nav#menu .menu__item{color:var(--fg)}nav#menu .menu__item:hover{color:var(--fg3);cursor:pointer}nav#menu ul{list-style:none;margin:0;padding:0}nav#menu ul.menu--horizontal{align-items:center;display:none}nav#menu ul.menu--horizontal li{display:inline-block;margin:0 .75rem}@media (min-width:768px){nav#menu ul.menu--horizontal{display:flex}}nav#menu ul.menu--vertical{background:var(--fg0);bottom:0;margin:0;padding:3rem;position:fixed;right:0;top:0;transform:translate(100%);transition:transform .5s cubic-bezier(.9,0,.1,1);width:50%;z-index:10}nav#menu ul.menu--vertical .menu__item{color:var(--bg1)}nav#menu ul.menu--vertical .menu__item:hover{color:var(--bg4)}nav#menu .menu__burger{display:flex;height:24px;width:24px}nav#menu .menu__burger>*{position:absolute}nav#menu .menu__burger svg{height:inherit;width:inherit;z-index:20}nav#menu .menu__burger svg line{transition-duration:.5s;transition-property:stroke,opacity,transform;transition-timing-function:cubic-bezier(.9,0,.1,1)}nav#menu .menu__burger svg line:first-of-type{transform-origin:center 6px}nav#menu .menu__burger svg line:nth-of-type(2){transform-origin:center 12px}nav#menu .menu__burger svg line:nth-of-type(3){transform-origin:center 18px}nav#menu .menu__burger input{height:inherit;opacity:0;width:inherit;z-index:30}:is(nav#menu .menu__burger input:checked)~ul.menu--vertical{transform:none}:is(nav#menu .menu__burger input:checked)~svg{stroke:var(--bg1)}:is(nav#menu .menu__burger input:checked)~svg line:first-of-type{transform:translateY(6px) rotate(45deg)}:is(nav#menu .menu__burger input:checked)~svg line:nth-of-type(2){opacity:0;transform:scale(.2)}:is(nav#menu .menu__burger input:checked)~svg line:nth-of-type(3){transform:translateY(-6px) rotate(-45deg)}@media (min-width:768px){nav#menu .menu__burger{display:none}}
+
+/*! Source: https://stackoverflow.com/a/36118384/1154965 */@-webkit-keyframes blink{50%{opacity:0}to{opacity:1}}@keyframes blink{50%{opacity:0}to{opacity:1}}.sidebar{font-family:Fira Code,Lucida Console,Monaco,monospace;font-family:var(--font-monospace);margin-left:auto;margin-right:auto;max-width:350px;padding-left:2.5rem}.sidebar svg{fill:var(--fg)}.jr-basics__image{background:var(--bg1);border:2px solid var(--bg2)}.jr-basics__summary{color:var(--fg3);font-family:Roboto Slab,Georgia,serif;font-family:var(--font-serif);margin:.75rem 0}.jr-basics__profile a:hover{color:var(--fg3)}.jr-basics__profile a:hover svg{fill:var(--fg3)}.post{border-bottom:2px dotted var(--bg1);padding:2rem 0}.post figure,.post img:not(figure img){box-sizing:border-box;margin:.5rem 0}.post-content__read-more,.post-header{font-family:Fira Code,Lucida Console,Monaco,monospace;font-family:var(--font-monospace)}.post-content{margin:1.3rem 0}.post-content__read-more{margin-top:1.3rem}.post-content a,.post-content__read-more,.post-header a{color:var(--blue2);color:var(--primary-alt)}.post-content a:hover,.post-header a:hover{color:var(--blue1);color:var(--primary)}.post-tags{align-items:center;display:flex;flex-wrap:wrap;gap:.9rem;margin:1rem 0}.post-tag{font-size:.9rem;line-height:1}.post-tag:before{content:"#"}.post-heading__anchor{display:none}h1:hover .post-heading__anchor,h2:hover .post-heading__anchor,h3:hover .post-heading__anchor,h4:hover .post-heading__anchor{display:inline-block}.jr__item-meta{flex-direction:column}.jr-basics__image,.jr-basics__item,.jr-basics__profile-icon,.jr-basics__profile-item,.jr__item-meta{align-items:center;display:flex}.jr-basics__name,.jr-certificates__name,.jr-education__area,.jr-work__position{font-size:1.125rem;font-weight:700}.jr-basics__item{flex-direction:column;text-align:center}.jr-basics__item hr{margin:1.5rem auto}.jr-basics__image{border-radius:50%;height:250px;justify-content:center;overflow:hidden;width:250px}.jr-basics__label,.jr-basics__name,.jr-basics__summary{margin-top:.75rem}.jr-basics__profile svg{height:24px;width:24px}.jr-basics__profile,.jr-basics__profile-item{display:flex}.jr-basics__profile-item{display:flex;padding:.2rem}.jr-basics__profile--col{flex-direction:column}.jr-basics__profile-icon{padding:0 .75rem}.jr__item-meta{align-items:start;flex-flow:column;font-family:Fira Code,Lucida Console,Monaco,monospace;font-family:var(--font-monospace)}@media (min-width:768px){.jr__item-meta{align-items:center;flex-flow:row wrap}.jr-work__location,.jr__date-range{flex-grow:1;text-align:right}.jr-education__institution{flex-basis:100%}}
+   
+</style>
+
+<link
+  rel="preload"
+  href="/css/non-critical.f67aefdd3191adb1c6e4b37bfbc0a254a8dc0816623d76a2d22160692d4abecf0ba11b28bbd577706969ec49af9d0775bedde87d55848b3276d6f261d689c960.css"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+  integrity="sha512-9nrv3TGRrbHG5LN7+8CiVKjcCBZiPXai0iFgaS1Kvs8LoRsou9V3cGlp7EmvnQd1vt3ofVWEizJ21vJh1onJYA=="
+/>
+
+<link
+  id="prism-dark"
+  rel="prefetch"
+  href="/prism-themes/prism-gruvbox-dark.min.54aecc64074623a4f9898544dcbdab9e804f1560ef0b38f4cf8e10fcaaf72264e798cb407c601aca6ecd833ec4eb93d66535581f18d45ba202cf848b70dbc332.css"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+  integrity="sha512-VK7MZAdGI6T5iYVE3L2rnoBPFWDvCzj0z44Q/Kr3ImTnmMtAfGAaym7Ngz7E65PWZTVYHxjUW6ICz4SLcNvDMg=="
+  disabled
+/>
+
+<link
+  id="prism-light"
+  rel="prefetch"
+  href="/prism-themes/prism-gruvbox-light.min.42a221741efe997fcc94187c39d63c555560678789ac9ca856c74a5f0ddb2aa6c50d38b2ffbecc7a99038cbbd2efa99746e862267f781c559e0cfec10b88a5fc.css"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+  integrity="sha512-QqIhdB7&#43;mX/MlBh8OdY8VVVgZ4eJrJyoVsdKXw3bKqbFDTiy/77MepkDjLvS76mXRuhiJn94HFWeDP7BC4il/A=="
+  
+/>
+
+<noscript>
+  
+    <link
+      rel="stylesheet"
+      href="/prism-themes/prism-gruvbox-light.min.42a221741efe997fcc94187c39d63c555560678789ac9ca856c74a5f0ddb2aa6c50d38b2ffbecc7a99038cbbd2efa99746e862267f781c559e0cfec10b88a5fc.css"
+      integrity="sha512-QqIhdB7&#43;mX/MlBh8OdY8VVVgZ4eJrJyoVsdKXw3bKqbFDTiy/77MepkDjLvS76mXRuhiJn94HFWeDP7BC4il/A=="
+    />
+  
+
+  <link
+    rel="stylesheet"
+    href="/css/non-critical.f67aefdd3191adb1c6e4b37bfbc0a254a8dc0816623d76a2d22160692d4abecf0ba11b28bbd577706969ec49af9d0775bedde87d55848b3276d6f261d689c960.css"
+    integrity="sha512-9nrv3TGRrbHG5LN7+8CiVKjcCBZiPXai0iFgaS1Kvs8LoRsou9V3cGlp7EmvnQd1vt3ofVWEizJ21vJh1onJYA=="
+  />
+</noscript>
+
+
+  
+
+  
+
+
+
+
+<script>
+  (()=>{function c(){if(localStorage&&localStorage.getItem("theme"))return localStorage.getItem("theme");if(window.matchMedia)return window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}function n(t){document.documentElement.setAttribute("theme",t);let e=document.getElementById("prism-dark"),i=document.getElementById("prism-light");e.toggleAttribute("disabled",t==="light"),i.toggleAttribute("disabled",t==="dark"),localStorage.setItem("theme",t)}var o=c();o&&n(o);function l(t){let e=t.currentTarget.classList.contains("light--hidden")?"light":"dark";n(e)}document.addEventListener("DOMContentLoaded",function(){document.querySelectorAll(".theme__toggle").forEach(e=>{e.addEventListener("click",l)})});})();
+
+</script>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#282828" />
+<meta name="msapplication-TileColor" content="#282828" />
+<meta name="theme-color" content="#282828" />
+
+
+
+  
+  
+
+</head>
+
+  <body>
+    <div class="layout">
+      <header>
+  <a
+    class="logo"
+    href="/"
+  >
+    
+      <div class="logo__text">My approach...</div>
+    
+    <div class="logo__chevron">></div>
+    <div class="logo__cursor">█</div>
+  </a>
+
+  <div class="search">
+    <input
+      id="search__text"
+      type="search"
+      placeholder="Search..."
+      aria-label="Search"
+      autocomplete="off"
+    />
+    <div id="search__suggestions" class="search__suggestions--hidden"></div>
+  </div>
+
+  <nav id="menu">
+    <ul class="menu--horizontal">
+      
+        <li class="menu__item">
+          <a href="/blog">Blog</a>
+        </li>
+      
+        <li class="menu__item">
+          <a href="/cv">CV</a>
+        </li>
+      
+        <li class="menu__item">
+          <a href="/about">About</a>
+        </li>
+      
+    </ul>
+
+    <div class="menu__burger">
+      
+      <input class="menu__item" type="checkbox" aria-label="Open main menu" />
+
+      
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <line x1="4" y1="6" x2="20" y2="6" />
+  <line x1="4" y1="12" x2="20" y2="12" />
+  <line x1="4" y1="18" x2="20" y2="18" />
+</svg>
+
+
+
+
+
+
+
+      <ul class="menu--vertical">
+        
+          <li>
+            <a class="menu__item" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="menu__item" href="/cv">CV</a>
+          </li>
+        
+          <li>
+            <a class="menu__item" href="/about">About</a>
+          </li>
+        
+      </ul>
+    </div>
+  </nav>
+
+  <button class="theme__toggle light--hidden" aria-label="Toggle light mode">
+    
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sun" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <circle cx="12" cy="12" r="4" />
+  <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
+</svg>
+
+
+
+
+
+  </button>
+
+  <button class="theme__toggle dark--hidden" aria-label="Toggle dark mode">
+    
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-moon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+</svg>
+
+
+
+
+
+  </button>
+</header>
+
+      <main>
+        <div class="content">
+          
+  <article class="post">
+    <div class="post-header">
+  <h1>
+    <a href="/blog/tekton-argocd-gitops/">GitOps with Tekton and ArgoCD</a>
+  </h1>
+
+  <div class="post-meta">
+    
+      <span>2021-01-14</span>
+    
+    
+    
+    
+    
+    
+      <div class="post-tags">
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/argocd"
+          >argocd</a>
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/tekton"
+          >tekton</a>
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/gitops"
+          >gitops</a>
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/openshift-pipelines"
+          >openshift&#8209;pipelines</a>
+        
+      </div>
+    
+
+    
+  </div>
+</div>
+
+    <div class="post-content">
+      <p>In this post, I will:</p>
+<ul>
+<li>Use Tekton to build and publish image to docker registry</li>
+<li>Trigger a Tekton pipeline from GitHub</li>
+<li>Use Argo to deploy application</li>
+</ul>
+<p>
+
+
+
+  
+  
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+      
+        
+        
+        
+          
+          
+          
+        
+      
+    
+      
+        
+        
+        
+          
+          
+          
+        
+      
+    
+      
+        
+        
+        
+          
+          
+          
+        
+      
+    
+      
+        
+        
+        
+          
+          
+          
+        
+      
+    
+      
+        
+        
+        
+          
+          
+          
+        
+      
+    
+
+
+    <picture>
+      
+        <source srcset="/blog/tekton-argocd-gitops/gitops-architecture_hubde0f5c74cd5be5b2b4fc3aebd8cf3f8_118960_100x0_resize_q75_h2_box_3.webp 100w,/blog/tekton-argocd-gitops/gitops-architecture_hubde0f5c74cd5be5b2b4fc3aebd8cf3f8_118960_200x0_resize_q75_h2_box_3.webp 200w,/blog/tekton-argocd-gitops/gitops-architecture_hubde0f5c74cd5be5b2b4fc3aebd8cf3f8_118960_300x0_resize_q75_h2_box_3.webp 300w,/blog/tekton-argocd-gitops/gitops-architecture_hubde0f5c74cd5be5b2b4fc3aebd8cf3f8_118960_400x0_resize_q75_h2_box_3.webp 400w,/blog/tekton-argocd-gitops/gitops-architecture_hubde0f5c74cd5be5b2b4fc3aebd8cf3f8_118960_500x0_resize_q75_h2_box_3.webp 500w" />
+      
+      <img
+        src="/blog/tekton-argocd-gitops/gitops-architecture.png"
+        srcset="/blog/tekton-argocd-gitops/gitops-architecture_hubde0f5c74cd5be5b2b4fc3aebd8cf3f8_118960_100x0_resize_box_3.png 100w,/blog/tekton-argocd-gitops/gitops-architecture_hubde0f5c74cd5be5b2b4fc3aebd8cf3f8_118960_200x0_resize_box_3.png 200w,/blog/tekton-argocd-gitops/gitops-architecture_hubde0f5c74cd5be5b2b4fc3aebd8cf3f8_118960_300x0_resize_box_3.png 300w,/blog/tekton-argocd-gitops/gitops-architecture_hubde0f5c74cd5be5b2b4fc3aebd8cf3f8_118960_400x0_resize_box_3.png 400w,/blog/tekton-argocd-gitops/gitops-architecture_hubde0f5c74cd5be5b2b4fc3aebd8cf3f8_118960_500x0_resize_box_3.png 500w"
+        alt="alt argo-flow-1"
+        
+        loading="lazy"
+        width="1250"
+        height="614"
+      />
+    </picture>
+  
+
+
+
+
+
+
+</p>
+<h2 id="getting-started">
+  Getting Started
+  <a href="#getting-started" class="post-heading__anchor" aria-hidden="true">#</a>
+</h2>
+<p><em><strong>Assumptions:</strong></em></p>
+<ul>
+<li>You have a running OpenShift 4 cluster with ArgoCD, and OpenShift Pipelines installed. If not, you follow instructions to <a
+  href="https://docs.OpenShift.com/container-platform/4.6/pipelines/installing-pipelines.html"
+  
+  
+    class="link--external" target="_blank" rel="noreferrer"
+  
+>OpenShift Pipelines</a> and <a
+  href="https://argocd-operator.readthedocs.io/en/latest/install/OpenShift/"
+  
+  
+    class="link--external" target="_blank" rel="noreferrer"
+  
+>ArgoCD Operator</a></li>
+<li>Understand of basic argocd and tekton concepts</li>
+</ul>
+<p>Create an OpenShift project called node-web-project</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oc new-project node-web-project
+</span></span></code></pre></div><h3 id="using-private-registries">
+  Using Private Registries
+  <a href="#using-private-registries" class="post-heading__anchor" aria-hidden="true">#</a>
+</h3>
+<p>Create a docker secret with registry authentication details</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oc create secret docker-registry container-registry-secret <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --docker-server<span style="color:#f92672">=</span>$CONTAINER_REGISTRY_SERVER <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --docker-username<span style="color:#f92672">=</span>$CONTAINER_REGISTRY_USER <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --docker-password<span style="color:#f92672">=</span>$CONTAINER_REGISTRY_PASSWORD -n node-web-project
+</span></span></code></pre></div><p>Create a service account named <code>build-bot</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oc create sa -n node-web-project build-bot
+</span></span><span style="display:flex;"><span>serviceaccount/build-bot created
+</span></span></code></pre></div><p>Add docker secret <code>container-registry-secret</code> to newly created service account <code>build-bot</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oc patch serviceaccount build-bot <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -p <span style="color:#e6db74">&#39;{&#34;secrets&#34;: [{&#34;name&#34;: &#34;container-registry-secret&#34;}]}&#39;</span>
+</span></span><span style="display:flex;"><span>serviceaccount/build-bot patched
+</span></span></code></pre></div><p>Verify if the service account has the secret added:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oc get sa -n node-web-project build-bot -o yaml
+</span></span><span style="display:flex;"><span>apiVersion: v1
+</span></span><span style="display:flex;"><span>kind: ServiceAccount
+</span></span><span style="display:flex;"><span>metadata:
+</span></span><span style="display:flex;"><span>  creationTimestamp: <span style="color:#e6db74">&#34;2021-01-12T03:34:32Z&#34;</span>
+</span></span><span style="display:flex;"><span>  name: build-bot
+</span></span><span style="display:flex;"><span>  namespace: node-web-project
+</span></span><span style="display:flex;"><span>  resourceVersion: <span style="color:#e6db74">&#34;53879&#34;</span>
+</span></span><span style="display:flex;"><span>  selfLink: /api/v1/namespaces/node-web-project/serviceaccounts/build-bot
+</span></span><span style="display:flex;"><span>  uid: 628067fd-91d1-4cdd-b6a6-88b4f7280ff0
+</span></span><span style="display:flex;"><span>secrets:
+</span></span><span style="display:flex;"><span>- name: container-registry-secret
+</span></span><span style="display:flex;"><span>- name: build-bot-token-8nl2v
+</span></span></code></pre></div><h3 id="create-pipeline">
+  Create Pipeline
+  <a href="#create-pipeline" class="post-heading__anchor" aria-hidden="true">#</a>
+</h3>
+<p>A Pipeline is a collection of Tasks that you want to run as part of your workflow. Each Task in a Pipeline is executed in a pod and by default they run in parallel. However, you can specify the order by using <code>runAfter</code></p>
+<p>There are 3 Tasks in below pipeline</p>
+<ul>
+<li>Clone source code</li>
+<li>Build and push image using <code>Buildah</code> cluster task</li>
+<li>Syncing argo deployment</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">tekton.dev/v1alpha1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pipeline</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">node-web-app-pipeline</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">node-web-project</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">workspaces</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">shared-workspace</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">params</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">node-web-app-source</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">node-web-app-image</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">tasks</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">fetch-repository</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">taskRef</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ClusterTask</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">name</span>: <span style="color:#ae81ff">git-clone</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">workspaces</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">output</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">workspace</span>: <span style="color:#ae81ff">shared-workspace</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">params</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">url</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">value</span>: <span style="color:#ae81ff">$(params.node-web-app-source)</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">build-and-publish-image</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">params</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">IMAGE</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">value</span>: <span style="color:#ae81ff">$(params.node-web-app-image)</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">TLSVERIFY</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#39;false&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">taskRef</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ClusterTask</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">name</span>: <span style="color:#ae81ff">buildah</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">runAfter</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">fetch-repository</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">workspaces</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">source</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">workspace</span>: <span style="color:#ae81ff">shared-workspace</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">sync-application</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">taskRef</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">name</span>: <span style="color:#ae81ff">argocd-task-sync-and-wait</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">params</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">application-name</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">value</span>: <span style="color:#ae81ff">node-web-app</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">flags</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">value</span>: --<span style="color:#ae81ff">insecure --grpc-web</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">argocd-version</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">value</span>: <span style="color:#ae81ff">v1.7.11</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">runAfter</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">build-and-publish-image</span>
+</span></span></code></pre></div><h3 id="triggers">
+  Triggers
+  <a href="#triggers" class="post-heading__anchor" aria-hidden="true">#</a>
+</h3>
+<p>Now that the pipeline is setup, we need to setup webhook from GitHub to trigger pipeline. We need to create following resources:</p>
+<ul>
+<li>
+<p>A <code>TriggerTemplate</code> act as a blueprint for pipeline resources. It can also be used to define parameters that can then be substituted anywhere within the resource template(s) being defined</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">triggers.tekton.dev/v1alpha1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">TriggerTemplate</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pipeline-template</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">node-web-project</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">params</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">git-repo-url</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">git-repo-name</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">git-revision</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">image-name</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">resourcetemplates</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">tekton.dev/v1beta1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">PipelineRun</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">generateName</span>: <span style="color:#ae81ff">$(tt.params.git-repo-name)-pipeline-run-</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">node-web-project</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">params</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">source</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">value</span>: <span style="color:#ae81ff">$(tt.params.git-repo-url)</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">image</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">value</span>: <span style="color:#ae81ff">$(tt.params.image-name)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">pipelineRef</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">name</span>: <span style="color:#ae81ff">node-web-app-pipeline</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">serviceAccountName</span>: <span style="color:#ae81ff">build-bot</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">timeout</span>: <span style="color:#ae81ff">1h0m0s</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">workspaces</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">shared-workspace</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">persistentVolumeClaim</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">claimName</span>: <span style="color:#ae81ff">tekton-workspace-pvc</span>
+</span></span></code></pre></div></li>
+<li>
+<p>A <code>TriggerBinding</code> binds the incoming event data to the template (i.e. git url, repo name, revision, etc&hellip;.)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">triggers.tekton.dev/v1alpha1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">TriggerBinding</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pipeline-binding</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">node-web-project</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">params</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">git-repo-name</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">value</span>: <span style="color:#ae81ff">$(body.repository.name)</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">git-repo-url</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">value</span>: <span style="color:#ae81ff">$(body.repository.url)</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">git-revision</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">value</span>: <span style="color:#ae81ff">$(body.head_commit.id)</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">image-name</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">value</span>: <span style="color:#ae81ff">docker.io/vikaspogu/$(body.repository.name):$(body.head_commit.id)</span>
+</span></span></code></pre></div></li>
+<li>
+<p>An <code>EventListener</code> that will create a pod application bringing together a binding and a template</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">triggers.tekton.dev/v1alpha1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">EventListener</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">el-node-web-app</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">default</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">serviceAccountName</span>: <span style="color:#ae81ff">build-bot</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">triggers</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">node-web-app-trigger</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">bindings</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">ref</span>: <span style="color:#ae81ff">pipeline-binding</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">template</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ref</span>: <span style="color:#ae81ff">pipeline-template</span>
+</span></span></code></pre></div></li>
+<li>
+<p>An OpenShift Route to expose the Event Listener</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ oc expose svc el-node-web-app
+</span></span><span style="display:flex;"><span>$ echo <span style="color:#e6db74">&#34;URL: </span><span style="color:#66d9ef">$(</span>oc get route el-node-web-app --template<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;http://{{.spec.host}}&#39;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>http://el-node-web-app-node-web-project.apps.cluster-7d51.sandbox659.opentlc.com
+</span></span></code></pre></div></li>
+</ul>
+<p>You can learn about <a
+  href="https://tekton.dev/docs/triggers/"
+  
+  
+    class="link--external" target="_blank" rel="noreferrer"
+  
+>Tekton Triggers</a> and <a
+  href="https://docs.OpenShift.com/container-platform/4.6/pipelines/understanding-OpenShift-pipelines.html"
+  
+  
+    class="link--external" target="_blank" rel="noreferrer"
+  
+>OpenShift Pipelines</a></p>
+<h3 id="create-argocd-app-for-web-app-resources">
+  Create ArgoCD App for Web App Resources
+  <a href="#create-argocd-app-for-web-app-resources" class="post-heading__anchor" aria-hidden="true">#</a>
+</h3>
+<p><a
+  href="https://argoproj.github.io/argo-cd/getting_started/"
+  
+  
+    class="link--external" target="_blank" rel="noreferrer"
+  
+>Create an ArgoCD application via the GUI or command line</a></p>
+<p>
+
+
+
+  
+  
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+      
+        
+        
+        
+          
+          
+          
+        
+      
+    
+      
+        
+        
+        
+          
+          
+          
+        
+      
+    
+      
+        
+        
+        
+          
+          
+          
+        
+      
+    
+      
+        
+        
+        
+          
+          
+          
+        
+      
+    
+      
+        
+        
+        
+          
+          
+          
+        
+      
+    
+
+
+    <picture>
+      
+        <source srcset="/blog/tekton-argocd-gitops/argo-node-web-app_hu6636c0858bff3a76bc0c396f3c5785e2_50576_100x0_resize_q75_h2_box_3.webp 100w,/blog/tekton-argocd-gitops/argo-node-web-app_hu6636c0858bff3a76bc0c396f3c5785e2_50576_200x0_resize_q75_h2_box_3.webp 200w,/blog/tekton-argocd-gitops/argo-node-web-app_hu6636c0858bff3a76bc0c396f3c5785e2_50576_300x0_resize_q75_h2_box_3.webp 300w,/blog/tekton-argocd-gitops/argo-node-web-app_hu6636c0858bff3a76bc0c396f3c5785e2_50576_400x0_resize_q75_h2_box_3.webp 400w,/blog/tekton-argocd-gitops/argo-node-web-app_hu6636c0858bff3a76bc0c396f3c5785e2_50576_500x0_resize_q75_h2_box_3.webp 500w" />
+      
+      <img
+        src="/blog/tekton-argocd-gitops/argo-node-web-app.png"
+        srcset="/blog/tekton-argocd-gitops/argo-node-web-app_hu6636c0858bff3a76bc0c396f3c5785e2_50576_100x0_resize_box_3.png 100w,/blog/tekton-argocd-gitops/argo-node-web-app_hu6636c0858bff3a76bc0c396f3c5785e2_50576_200x0_resize_box_3.png 200w,/blog/tekton-argocd-gitops/argo-node-web-app_hu6636c0858bff3a76bc0c396f3c5785e2_50576_300x0_resize_box_3.png 300w,/blog/tekton-argocd-gitops/argo-node-web-app_hu6636c0858bff3a76bc0c396f3c5785e2_50576_400x0_resize_box_3.png 400w,/blog/tekton-argocd-gitops/argo-node-web-app_hu6636c0858bff3a76bc0c396f3c5785e2_50576_500x0_resize_box_3.png 500w"
+        alt="alt argo-pipeline"
+        
+        loading="lazy"
+        width="735"
+        height="643"
+      />
+    </picture>
+  
+
+
+
+
+
+
+</p>
+<ul>
+<li>Project: default</li>
+<li>cluster: (URL Of your OpenShift Cluster)</li>
+<li>namespace should be the name of your OpenShift Project</li>
+<li>repo url: git repo</li>
+<li>Target Revision: Head</li>
+<li>PATH: deployment</li>
+<li>AutoSync Disabled</li>
+</ul>
+<h3 id="configure-webhooks">
+  Configure Webhooks
+  <a href="#configure-webhooks" class="post-heading__anchor" aria-hidden="true">#</a>
+</h3>
+<p>You will now need to configure GitHub webHook to Tekton Event Listener to start a tekton build from git push</p>
+<p>
+
+
+
+  
+  
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    
+      
+    
+
+    
+    
+    
+      
+        
+        
+        
+          
+          
+          
+        
+      
+    
+      
+        
+        
+        
+          
+          
+          
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+        
+        
+          
+          
+          
+        
+      
+    
+
+
+    <picture>
+      
+        <source srcset="/blog/tekton-argocd-gitops/tekton-webhook_hu3188bb5535b7fb4560af5351c8f7e541_57777_100x0_resize_q75_h2_box_3.webp 100w,/blog/tekton-argocd-gitops/tekton-webhook_hu3188bb5535b7fb4560af5351c8f7e541_57777_200x0_resize_q75_h2_box_3.webp 200w,/blog/tekton-argocd-gitops/tekton-webhook_hu3188bb5535b7fb4560af5351c8f7e541_57777_218x0_resize_q75_h2_box_3.webp 218w" />
+      
+      <img
+        src="/blog/tekton-argocd-gitops/tekton-webhook.png"
+        srcset="/blog/tekton-argocd-gitops/tekton-webhook_hu3188bb5535b7fb4560af5351c8f7e541_57777_100x0_resize_box_3.png 100w,/blog/tekton-argocd-gitops/tekton-webhook_hu3188bb5535b7fb4560af5351c8f7e541_57777_200x0_resize_box_3.png 200w,/blog/tekton-argocd-gitops/tekton-webhook_hu3188bb5535b7fb4560af5351c8f7e541_57777_218x0_resize_box_3.png 218w"
+        alt="alt webhooks"
+        
+        loading="lazy"
+        width="218"
+        height="793"
+      />
+    </picture>
+  
+
+
+
+
+
+
+</p>
+<h3 id="make-a-code-change-and-commit-look-at-build">
+  Make a code change and commit, look at build
+  <a href="#make-a-code-change-and-commit-look-at-build" class="post-heading__anchor" aria-hidden="true">#</a>
+</h3>
+<ol>
+<li>
+<p>Push an empty commit to repo</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;empty-commit&#34;</span> --allow-empty <span style="color:#f92672">&amp;&amp;</span> git push
+</span></span></code></pre></div></li>
+<li>
+<p>In OpenShift Console you should see a pipeline run</p>
+<p>
+
+
+
+  
+  
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+      
+        
+        
+        
+          
+          
+          
+        
+      
+    
+      
+        
+        
+        
+          
+          
+          
+        
+      
+    
+      
+        
+        
+        
+          
+          
+          
+        
+      
+    
+      
+        
+        
+        
+          
+          
+          
+        
+      
+    
+      
+        
+        
+        
+          
+          
+          
+        
+      
+    
+
+
+    <picture>
+      
+        <source srcset="/blog/tekton-argocd-gitops/gittrigger_hu9d9c53e3185c492bcb7a34eb689644f5_50745_100x0_resize_q75_h2_box_3.webp 100w,/blog/tekton-argocd-gitops/gittrigger_hu9d9c53e3185c492bcb7a34eb689644f5_50745_200x0_resize_q75_h2_box_3.webp 200w,/blog/tekton-argocd-gitops/gittrigger_hu9d9c53e3185c492bcb7a34eb689644f5_50745_300x0_resize_q75_h2_box_3.webp 300w,/blog/tekton-argocd-gitops/gittrigger_hu9d9c53e3185c492bcb7a34eb689644f5_50745_400x0_resize_q75_h2_box_3.webp 400w,/blog/tekton-argocd-gitops/gittrigger_hu9d9c53e3185c492bcb7a34eb689644f5_50745_500x0_resize_q75_h2_box_3.webp 500w" />
+      
+      <img
+        src="/blog/tekton-argocd-gitops/gittrigger.png"
+        srcset="/blog/tekton-argocd-gitops/gittrigger_hu9d9c53e3185c492bcb7a34eb689644f5_50745_100x0_resize_box_3.png 100w,/blog/tekton-argocd-gitops/gittrigger_hu9d9c53e3185c492bcb7a34eb689644f5_50745_200x0_resize_box_3.png 200w,/blog/tekton-argocd-gitops/gittrigger_hu9d9c53e3185c492bcb7a34eb689644f5_50745_300x0_resize_box_3.png 300w,/blog/tekton-argocd-gitops/gittrigger_hu9d9c53e3185c492bcb7a34eb689644f5_50745_400x0_resize_box_3.png 400w,/blog/tekton-argocd-gitops/gittrigger_hu9d9c53e3185c492bcb7a34eb689644f5_50745_500x0_resize_box_3.png 500w"
+        alt="alt webhooks"
+        
+        loading="lazy"
+        width="1110"
+        height="430"
+      />
+    </picture>
+  
+
+
+
+
+
+
+</p>
+</li>
+<li>
+<p>Once pipeline is finished. Use OpenShift route to verify app</p>
+</li>
+</ol>
+<h2 id="workspace-pvc">
+  Workspace PVC
+  <a href="#workspace-pvc" class="post-heading__anchor" aria-hidden="true">#</a>
+</h2>
+<p>To use same PVC wit multiple pipelines, a <code>ReadWriteMany</code> pvc has to be created</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">PersistentVolumeClaim</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">tekton-workspace-pvc</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">default</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">accessModes</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">ReadWriteMany</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">resources</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">requests</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">storage</span>: <span style="color:#ae81ff">2Gi</span>
+</span></span></code></pre></div>
+    </div>
+
+    
+
+    
+  </article>
+
+        </div>
+        <div class="sidebar">
+  
+
+  
+  
+    <aside class="bio">
+      
+
+  <section class="jr__item jr-basics__item">
+    
+  <div class="jr-basics__image">
+    <img
+      src="https://raw.githubusercontent.com/Vikaspogu/blog/master/static/images/myAvatar.png"
+      alt="Picture of Vikas Pogu"
+      width="250"
+      height="250"
+    />
+  </div>
+
+
+
+    
+      <div class="jr-basics__name">Vikas Pogu</div>
+    
+
+    
+      <div class="jr-basics__label">Senior Consultant</div>
+    
+
+    
+      <div class="jr-basics__email">vikaspoguadf@gmail.com</div>
+    
+
+    
+
+    
+
+    
+      <div class="jr-basics__summary">Currently working as a Senior Consultant@Red Hat. Focusing on cloud technologies primarily OpenShift and kubernetes.</div>
+    
+
+    
+      
+
+      
+
+      
+        <div class="jr-basics__location-city">Rochester, Minnesota</div>
+      
+
+      
+
+      
+    
+
+    
+      <hr />
+      <div class="jr-basics__profile jr-basics__profile--col">
+        
+          
+
+<a href="https://github.com/Vikaspogu">
+
+<div class="jr-basics__profile-item">
+  <div class="jr-basics__profile-icon">
+    
+    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+  </div>
+
+  
+    <div class="jr-basics__profile-username">vikaspogu</div>
+  
+</div>
+
+
+</a>
+
+        
+      </div>
+    
+
+    
+  </section>
+
+
+    </aside>
+  
+</div>
+
+      </main>
+      <footer>
+  <div class="copyright">
+    
+      Copyright © 2021
+    
+  </div>
+</footer>
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+
+
+<script
+  type="text/javascript"
+  src="/js/main.dcd63d82dd0c74d9d5f2328aba99dda49ba95acfa94883553cd8fc004ae9f6fd3d12c159b12e17df64a8c94749e4d6639b769bde643094819ba7aa8078aedd3f.js"
+  integrity="sha512-3NY9gt0MdNnV8jKKupndpJupWs&#43;pSINVPNj8AErp9v09EsFZsS4X32SoyUdJ5NZjm3ab3mQwlIGbp6qAeK7dPw==">
+</script>
+
+<script
+  type="text/javascript"
+  src="/js/flexsearch.0ce552103d9a536a8b7fc2e560e280bc96f43f1d016496e4aac8f4738d340b4cb1302c4be849a5999cd63d20a7c20e495047f439bdf683dbd7da67bd211aad3f.js"
+  integrity="sha512-DOVSED2aU2qLf8LlYOKAvJb0Px0BZJbkqsj0c400C0yxMCxL6EmlmZzWPSCnwg5JUEf0Ob32g9vX2me9IRqtPw==">
+</script>
+
+
+
+
+
+    </div>
+  </body>
+</html>

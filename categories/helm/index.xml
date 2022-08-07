@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>helm on My approach...</title>
+    <title>helm on hugo-theme-gruvbox</title>
     <link>https://vikaspogu.dev/categories/helm/</link>
-    <description>Recent content in helm on My approach...</description>
+    <description>Recent content in helm on hugo-theme-gruvbox</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <copyright>Copyright © 2021</copyright>
     <lastBuildDate>Thu, 08 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/categories/helm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Helm alternative for multiple If-Else conditions</title>
-      <link>https://vikaspogu.dev/posts/helm-dict-function/</link>
+      <link>https://vikaspogu.dev/blog/helm-dict-function/</link>
       <pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://vikaspogu.dev/posts/helm-dict-function/</guid>
+      <guid>https://vikaspogu.dev/blog/helm-dict-function/</guid>
       <description>Recently I was in a situation where I ended up writing multiple if-else statements in the helm template. Code block didn&amp;rsquo;t look clean and, I begin to explore alternative ways to achieve a clean and concise way to achieve the same behavior.
 Helm dict function perfectly fits my use case.
 Before
-{{- if eq .Values.imageType &amp;#34;java&amp;#34; }}name:openjdk:latest{{- else if eq .Values.imageType &amp;#34;nodejs&amp;#34; }}name:nodejs:latest{{- else if eq .Values.imageType &amp;#34;golang&amp;#34; }}name:golang:latest{{- else if eq .</description>
+{{- if eq .Values.imageType &amp;#34;java&amp;#34; }} name: openjdk:latest {{- else if eq .Values.imageType &amp;#34;nodejs&amp;#34; }} name: nodejs:latest {{- else if eq .</description>
     </item>
     
     <item>
       <title>Helm join strings in a named template</title>
-      <link>https://vikaspogu.dev/posts/helm-join-function/</link>
+      <link>https://vikaspogu.dev/blog/helm-join-function/</link>
       <pubDate>Thu, 08 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://vikaspogu.dev/posts/helm-join-function/</guid>
+      <guid>https://vikaspogu.dev/blog/helm-join-function/</guid>
       <description>Key benefits of Helm is that it helps reduce the amount of configuration a user needs to provide to deploy applications to Kubernetes. With Helm, we can have a single chart that can deploy all the microservices.
-Unique ServiceAccount Recently we wanted to create a unique service account for each microservice, so all microservices don&amp;rsquo;t share same service account using helm template. In our example, we will append the release name with the service account name.</description>
+Unique ServiceAccount # Recently we wanted to create a unique service account for each microservice, so all microservices don&amp;rsquo;t share same service account using helm template. In our example, we will append the release name with the service account name.</description>
     </item>
     
   </channel>

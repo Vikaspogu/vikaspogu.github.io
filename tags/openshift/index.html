@@ -1,522 +1,954 @@
 <!DOCTYPE html>
-<html lang="en-us">
-    <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='OpenShift, Kubernetes, Docker and more'><title>Tag: OpenShift - My approach...</title>
+<html
+  lang="en"
+  theme="light"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<link rel='canonical' href='https://vikaspogu.dev/tags/openshift/'>
+  
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Tag: OpenShift - My approach...'>
-<meta property='og:description' content='OpenShift, Kubernetes, Docker and more'>
-<meta property='og:url' content='https://vikaspogu.dev/tags/openshift/'>
-<meta property='og:site_name' content='My approach...'>
-<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2022-05-13T16:09:15-05:00 '/>
-<meta name="twitter:title" content="Tag: OpenShift - My approach...">
-<meta name="twitter:description" content="OpenShift, Kubernetes, Docker and more"><link rel="alternate" type="application/rss&#43;xml" href="https://vikaspogu.dev/tags/openshift/index.xml">
-    </head>
-    <body class="">
-    <script>
-        (function() {
-            const colorSchemeKey = 'StackColorScheme';
-            if(!localStorage.getItem(colorSchemeKey)){
-                localStorage.setItem(colorSchemeKey, "auto");
-            }
-        })();
-    </script><script>
-    (function() {
-        const colorSchemeKey = 'StackColorScheme';
-        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
-        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
 
-        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
-            
+<link
+  rel="preload"
+  as="font"
+  type="font/woff2"
+  href="/fonts/roboto-slab-latin-400.woff2"
+  crossorigin="anonymous"
+/>
+<link
+  rel="prefetch"
+  as="font"
+  type="font/woff2"
+  href="/fonts/roboto-slab-latin-700.woff2"
+  crossorigin="anonymous"
+/>
 
-            document.documentElement.dataset.scheme = 'dark';
-        } else {
-            document.documentElement.dataset.scheme = 'light';
-        }
-    })();
+
+<link
+  rel="preload"
+  as="font"
+  type="font/woff2"
+  href="/fonts/fira-code-latin-300.woff2"
+  crossorigin="anonymous"
+/>
+<link
+  rel="preload"
+  as="font"
+  type="font/woff2"
+  href="/fonts/fira-code-latin-400.woff2"
+  crossorigin="anonymous"
+/>
+<link
+  rel="prefetch"
+  as="font"
+  type="font/woff2"
+  href="/fonts/fira-code-latin-700.woff2"
+  crossorigin="anonymous"
+/>
+
+  
+  
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+  
+
+
+
+<title>OpenShift</title>
+
+<meta
+  name="description"
+  content="My blog using a retro-looking Hugo theme inspired by gruvbox."
+/>
+
+<link rel="canonical" href="https://vikaspogu.dev/tags/openshift/" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="OpenShift"/>
+<meta name="twitter:description" content="My blog using a retro-looking Hugo theme inspired by gruvbox."/>
+
+<meta property="og:title" content="OpenShift" />
+<meta property="og:description" content="My blog using a retro-looking Hugo theme inspired by gruvbox." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://vikaspogu.dev/tags/openshift/" />
+
+
+<meta itemprop="name" content="OpenShift">
+<meta itemprop="description" content="My blog using a retro-looking Hugo theme inspired by gruvbox.">
+
+
+
+
+
+  <link
+    rel="alternate"
+    type="application/rss&#43;xml"
+    href="/tags/openshift/index.xml"
+    title="hugo-theme-gruvbox"
+  />
+
+
+
+
+  
+  
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<style>
+   
+  @font-face{font-display:swap;font-family:Roboto Slab;font-style:normal;font-weight:100;src:local("Roboto Slab Thin "),local("Roboto Slab-Thin"),url(/fonts/roboto-slab-latin-100.woff2) format("woff2"),url(/fonts/roboto-slab-latin-100.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto Slab;font-style:normal;font-weight:200;src:local("Roboto Slab Extra Light "),local("Roboto Slab-Extra Light"),url(/fonts/roboto-slab-latin-200.woff2) format("woff2"),url(/fonts/roboto-slab-latin-200.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto Slab;font-style:normal;font-weight:300;src:local("Roboto Slab Light "),local("Roboto Slab-Light"),url(/fonts/roboto-slab-latin-300.woff2) format("woff2"),url(/fonts/roboto-slab-latin-300.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto Slab;font-style:normal;font-weight:400;src:local("Roboto Slab Regular "),local("Roboto Slab-Regular"),url(/fonts/roboto-slab-latin-400.woff2) format("woff2"),url(/fonts/roboto-slab-latin-400.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto Slab;font-style:normal;font-weight:500;src:local("Roboto Slab Medium "),local("Roboto Slab-Medium"),url(/fonts/roboto-slab-latin-500.woff2) format("woff2"),url(/fonts/roboto-slab-latin-500.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto Slab;font-style:normal;font-weight:600;src:local("Roboto Slab SemiBold "),local("Roboto Slab-SemiBold"),url(/fonts/roboto-slab-latin-600.woff2) format("woff2"),url(/fonts/roboto-slab-latin-600.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto Slab;font-style:normal;font-weight:700;src:local("Roboto Slab Bold "),local("Roboto Slab-Bold"),url(/fonts/roboto-slab-latin-700.woff2) format("woff2"),url(/fonts/roboto-slab-latin-700.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto Slab;font-style:normal;font-weight:800;src:local("Roboto Slab ExtraBold "),local("Roboto Slab-ExtraBold"),url(/fonts/roboto-slab-latin-800.woff2) format("woff2"),url(/fonts/roboto-slab-latin-800.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto Slab;font-style:normal;font-weight:900;src:local("Roboto Slab Black "),local("Roboto Slab-Black"),url(/fonts/roboto-slab-latin-900.woff2) format("woff2"),url(/fonts/roboto-slab-latin-900.woff) format("woff")}@font-face{font-display:swap;font-family:Fira Code;font-style:normal;font-weight:300;src:local("Fira Code Light "),local("Fira Code-Light"),url(/fonts/fira-code-latin-300.woff2) format("woff2"),url(/fonts/fira-code-latin-300.woff) format("woff")}@font-face{font-display:swap;font-family:Fira Code;font-style:normal;font-weight:400;src:local("Fira Code Regular "),local("Fira Code-Regular"),url(/fonts/fira-code-latin-400.woff2) format("woff2"),url(/fonts/fira-code-latin-400.woff) format("woff")}@font-face{font-display:swap;font-family:Fira Code;font-style:normal;font-weight:500;src:local("Fira Code Medium "),local("Fira Code-Medium"),url(/fonts/fira-code-latin-500.woff2) format("woff2"),url(/fonts/fira-code-latin-500.woff) format("woff")}@font-face{font-display:swap;font-family:Fira Code;font-style:normal;font-weight:600;src:local("Fira Code SemiBold "),local("Fira Code-SemiBold"),url(/fonts/fira-code-latin-600.woff2) format("woff2"),url(/fonts/fira-code-latin-600.woff) format("woff")}@font-face{font-display:swap;font-family:Fira Code;font-style:normal;font-weight:700;src:local("Fira Code Bold "),local("Fira Code-Bold"),url(/fonts/fira-code-latin-700.woff2) format("woff2"),url(/fonts/fira-code-latin-700.woff) format("woff")}
+
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{-webkit-text-size-adjust:100%;line-height:1.15}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}[hidden],template{display:none}:root[theme=light]{--bg:var(--bg0);--bg0:#fbf1c7;--bg0_h:#f9f5d7;--bg0_s:#f2e5bc;--bg1:#ebdbb2;--bg2:#d5c4a1;--bg3:#bdae93;--bg4:#a89984;--fg:var(--fg1);--fg0:#282828;--fg1:#3c3836;--fg2:#504945;--fg3:#665c54;--fg4:#7c6f64;--gray1:var(--fg4);--gray2:#928374;--red1:#cc241d;--red2:#9d0006;--green1:#98971a;--green2:#797403;--yellow1:#d79921;--yellow2:#b57614;--blue1:#458588;--blue2:#076678;--purple1:#b16286;--purple2:#8f3f71;--aqua1:#689d6a;--aqua2:#427b58;--orange1:#d65d0e;--orange2:#af3a03}[theme=light]:root .light--hidden{display:none}:root[theme=dark]{--bg:var(--bg0);--bg0:#282828;--bg0_h:#1d2021;--bg0_s:#32302f;--bg1:#3c3836;--bg2:#504945;--bg3:#665c54;--bg4:#7c6f64;--fg:var(--fg1);--fg0:#fbf1c7;--fg1:#ebdbb2;--fg2:#d5c4a1;--fg3:#bdae93;--fg4:#a89984;--gray1:var(--fg4);--gray2:#928374;--red1:#cc241d;--red2:#fb4934;--green1:#98971a;--green2:#b8bb26;--yellow1:#d79921;--yellow2:#fabd2f;--blue1:#458588;--blue2:#83a598;--purple1:#b16286;--purple2:#d3869b;--aqua1:#689d6a;--aqua2:#8ec07c;--orange1:#d65d0e;--orange2:#fe8019}[theme=dark]:root .dark--hidden{display:none}:root{--primary:var(--blue1);--primary-alt:var(--blue2);--font-monospace:"Fira Code","Lucida Console",Monaco,monospace;--font-sans-serif:Verdana,Helvetica,sans-serif;--font-serif:"Roboto Slab",Georgia,serif}html{font-family:Roboto Slab,Georgia,serif;font-family:var(--font-serif);font-size:1rem;scroll-behavior:smooth}body{word-wrap:break-word;background:var(--bg);color:var(--fg);line-height:1.675}strong{letter-spacing:.35px}a{color:inherit;text-decoration:none}a.link--external:after{content:"\2009↗"}img{border:2px solid var(--bg1);height:auto;max-width:100%}figure{display:inline-block}figcaption{color:var(--fg3);font-family:Roboto Slab,Georgia,serif;font-family:var(--font-serif);font-size:.9rem}::-moz-selection{background:var(--bg4);color:var(--fg0)}::selection{background:var(--bg4);color:var(--fg0)}h1,h2,h3,h4{color:var(--fg0);font-family:Fira Code,Lucida Console,Monaco,monospace;font-family:var(--font-monospace);font-weight:300;line-height:1.4}h1 code,h2 code,h3 code,h4 code{font-size:1em}h2,h3,h4{border-bottom:1px solid var(--bg1)}h1,h2{font-weight:400}h1{font-size:1.875rem}h2{font-size:1.75rem}h3{font-size:1.625rem}@media (min-width:768px){h1{font-size:2.375rem}h2{font-size:2rem}h3{font-size:1.75rem}}h4{font-size:1.5rem}hr{background:var(--bg1);border:none;height:1px;margin:3rem auto;width:80%}blockquote,code,pre{border-radius:.2rem;padding:0 .2em}pre code{padding:0}blockquote,code,pre{background:var(--bg1)}code,pre{font-family:Fira Code,Lucida Console,Monaco,monospace;font-family:var(--font-monospace)}code code{background:var(--bg2)}blockquote,pre{padding:1rem}pre{background:var(--bg1)!important;overflow:auto}pre code{background:none}blockquote{border-left:5px solid var(--primary-alt);margin:.5rem 0}blockquote:not(.does-not-exist) code{background:var(--bg2)}blockquote:not(.does-not-exist) p:first-of-type{margin-top:0}blockquote:not(.does-not-exist) p:last-of-type{margin-bottom:0}pre::-webkit-scrollbar{height:.5rem;scrollbar-width:auto}pre::-webkit-scrollbar-track{background:var(--bg2);border-radius:.2rem}pre::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:.2rem}.layout{display:grid;grid-template-areas:"header" "main" "footer";grid-template-rows:auto 1fr auto;height:100vh}main{align-items:start;display:grid;grid-area:main;grid-template-areas:"empty content sidebar";grid-template-columns:1fr minmax(0,650px) 4fr}header{background:var(--bg1);grid-area:header}footer{grid-area:footer}footer,main{margin:.5em 1.1em}.content{grid-area:content}.sidebar{display:none;flex-direction:column;grid-area:sidebar;margin-top:3rem;position:-webkit-sticky;position:sticky;top:2rem}@media (min-width:992px){.sidebar{display:flex}}header{display:grid;font-family:Fira Code,Lucida Console,Monaco,monospace;font-family:var(--font-monospace);font-size:1.125rem;grid-template-areas:"heading search nav theme-toggle";grid-template-columns:auto auto 1fr auto;padding:.75rem}.logo{color:var(--fg0);display:flex;font-weight:700;grid-area:heading}.logo:hover .logo__cursor{-webkit-animation:blink 1s infinite;animation:blink 1s infinite;opacity:1}.logo__chevron,.logo__cursor{margin-left:.5rem}.logo__cursor{opacity:0}.logo__text{display:none}@media (min-width:768px){.logo__text{display:block}}.search{display:flex;grid-area:search;margin:0 1rem}#search__text{background:var(--bg2);border:1px solid var(--bg2);border-radius:.2rem;caret-color:var(--fg);color:var(--fg);outline:none;padding:0 .5rem;width:100%}#search__text:hover{border-color:var(--bg3)}#search__text:focus{border-color:var(--bg4)}#search__text::-moz-placeholder{color:var(--fg3)}#search__text::placeholder{color:var(--fg3)}#search__text[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}#search__suggestions{background:var(--bg);border-radius:.2rem;box-shadow:0 .5rem 1rem var(--bg1);font-family:Roboto Slab,Georgia,serif;font-family:var(--font-serif);left:0;margin-top:2rem;position:absolute;width:95vw;z-index:1000}@media (min-width:768px){.search{position:relative}#search__suggestions{width:60vw}}.search__suggestions--hidden{display:none}.search__suggestion-item{border-bottom:1px dashed var(--bg2);display:grid;grid-template-columns:1fr 2fr}.search__suggestion-item.focus-visible,.search__suggestion-item:focus,.search__suggestion-item:hover{background:var(--bg1);cursor:pointer;outline:none}.search__suggestion-item:focus,.search__suggestion-item:focus-visible,.search__suggestion-item:hover{background:var(--bg1);cursor:pointer;outline:none}.search__suggestion-item:last-child{border:none}.search__suggestion-description,.search__suggestion-title{margin:1rem 0;padding:0 1rem}.search__suggestion-title{font-weight:700}.search__suggestion-description{border-left:1px solid var(--bg2)}.search__no-results{padding:.75rem}.theme__toggle{align-items:center;background:none;border:none;color:var(--yellow1);cursor:pointer;display:flex;grid-area:theme-toggle;margin:0 1rem}.theme__toggle:hover{color:var(--yellow2)}.theme__toggle svg{height:28px;width:28px}nav#menu{align-items:center;display:flex;grid-area:nav;justify-content:flex-end}nav#menu .menu__item{color:var(--fg)}nav#menu .menu__item:hover{color:var(--fg3);cursor:pointer}nav#menu ul{list-style:none;margin:0;padding:0}nav#menu ul.menu--horizontal{align-items:center;display:none}nav#menu ul.menu--horizontal li{display:inline-block;margin:0 .75rem}@media (min-width:768px){nav#menu ul.menu--horizontal{display:flex}}nav#menu ul.menu--vertical{background:var(--fg0);bottom:0;margin:0;padding:3rem;position:fixed;right:0;top:0;transform:translate(100%);transition:transform .5s cubic-bezier(.9,0,.1,1);width:50%;z-index:10}nav#menu ul.menu--vertical .menu__item{color:var(--bg1)}nav#menu ul.menu--vertical .menu__item:hover{color:var(--bg4)}nav#menu .menu__burger{display:flex;height:24px;width:24px}nav#menu .menu__burger>*{position:absolute}nav#menu .menu__burger svg{height:inherit;width:inherit;z-index:20}nav#menu .menu__burger svg line{transition-duration:.5s;transition-property:stroke,opacity,transform;transition-timing-function:cubic-bezier(.9,0,.1,1)}nav#menu .menu__burger svg line:first-of-type{transform-origin:center 6px}nav#menu .menu__burger svg line:nth-of-type(2){transform-origin:center 12px}nav#menu .menu__burger svg line:nth-of-type(3){transform-origin:center 18px}nav#menu .menu__burger input{height:inherit;opacity:0;width:inherit;z-index:30}:is(nav#menu .menu__burger input:checked)~ul.menu--vertical{transform:none}:is(nav#menu .menu__burger input:checked)~svg{stroke:var(--bg1)}:is(nav#menu .menu__burger input:checked)~svg line:first-of-type{transform:translateY(6px) rotate(45deg)}:is(nav#menu .menu__burger input:checked)~svg line:nth-of-type(2){opacity:0;transform:scale(.2)}:is(nav#menu .menu__burger input:checked)~svg line:nth-of-type(3){transform:translateY(-6px) rotate(-45deg)}@media (min-width:768px){nav#menu .menu__burger{display:none}}
+
+/*! Source: https://stackoverflow.com/a/36118384/1154965 */@-webkit-keyframes blink{50%{opacity:0}to{opacity:1}}@keyframes blink{50%{opacity:0}to{opacity:1}}.sidebar{font-family:Fira Code,Lucida Console,Monaco,monospace;font-family:var(--font-monospace);margin-left:auto;margin-right:auto;max-width:350px;padding-left:2.5rem}.sidebar svg{fill:var(--fg)}.jr-basics__image{background:var(--bg1);border:2px solid var(--bg2)}.jr-basics__summary{color:var(--fg3);font-family:Roboto Slab,Georgia,serif;font-family:var(--font-serif);margin:.75rem 0}.jr-basics__profile a:hover{color:var(--fg3)}.jr-basics__profile a:hover svg{fill:var(--fg3)}.post{border-bottom:2px dotted var(--bg1);padding:2rem 0}.post figure,.post img:not(figure img){box-sizing:border-box;margin:.5rem 0}.post-content__read-more,.post-header{font-family:Fira Code,Lucida Console,Monaco,monospace;font-family:var(--font-monospace)}.post-content{margin:1.3rem 0}.post-content__read-more{margin-top:1.3rem}.post-content a,.post-content__read-more,.post-header a{color:var(--blue2);color:var(--primary-alt)}.post-content a:hover,.post-header a:hover{color:var(--blue1);color:var(--primary)}.post-tags{align-items:center;display:flex;flex-wrap:wrap;gap:.9rem;margin:1rem 0}.post-tag{font-size:.9rem;line-height:1}.post-tag:before{content:"#"}.post-heading__anchor{display:none}h1:hover .post-heading__anchor,h2:hover .post-heading__anchor,h3:hover .post-heading__anchor,h4:hover .post-heading__anchor{display:inline-block}.jr__item-meta{flex-direction:column}.jr-basics__image,.jr-basics__item,.jr-basics__profile-icon,.jr-basics__profile-item,.jr__item-meta{align-items:center;display:flex}.jr-basics__name,.jr-certificates__name,.jr-education__area,.jr-work__position{font-size:1.125rem;font-weight:700}.jr-basics__item{flex-direction:column;text-align:center}.jr-basics__item hr{margin:1.5rem auto}.jr-basics__image{border-radius:50%;height:250px;justify-content:center;overflow:hidden;width:250px}.jr-basics__label,.jr-basics__name,.jr-basics__summary{margin-top:.75rem}.jr-basics__profile svg{height:24px;width:24px}.jr-basics__profile,.jr-basics__profile-item{display:flex}.jr-basics__profile-item{display:flex;padding:.2rem}.jr-basics__profile--col{flex-direction:column}.jr-basics__profile-icon{padding:0 .75rem}.jr__item-meta{align-items:start;flex-flow:column;font-family:Fira Code,Lucida Console,Monaco,monospace;font-family:var(--font-monospace)}@media (min-width:768px){.jr__item-meta{align-items:center;flex-flow:row wrap}.jr-work__location,.jr__date-range{flex-grow:1;text-align:right}.jr-education__institution{flex-basis:100%}}
+   
+</style>
+
+<link
+  rel="preload"
+  href="/css/non-critical.f67aefdd3191adb1c6e4b37bfbc0a254a8dc0816623d76a2d22160692d4abecf0ba11b28bbd577706969ec49af9d0775bedde87d55848b3276d6f261d689c960.css"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+  integrity="sha512-9nrv3TGRrbHG5LN7+8CiVKjcCBZiPXai0iFgaS1Kvs8LoRsou9V3cGlp7EmvnQd1vt3ofVWEizJ21vJh1onJYA=="
+/>
+
+<link
+  id="prism-dark"
+  rel="prefetch"
+  href="/prism-themes/prism-gruvbox-dark.min.54aecc64074623a4f9898544dcbdab9e804f1560ef0b38f4cf8e10fcaaf72264e798cb407c601aca6ecd833ec4eb93d66535581f18d45ba202cf848b70dbc332.css"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+  integrity="sha512-VK7MZAdGI6T5iYVE3L2rnoBPFWDvCzj0z44Q/Kr3ImTnmMtAfGAaym7Ngz7E65PWZTVYHxjUW6ICz4SLcNvDMg=="
+  disabled
+/>
+
+<link
+  id="prism-light"
+  rel="prefetch"
+  href="/prism-themes/prism-gruvbox-light.min.42a221741efe997fcc94187c39d63c555560678789ac9ca856c74a5f0ddb2aa6c50d38b2ffbecc7a99038cbbd2efa99746e862267f781c559e0cfec10b88a5fc.css"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+  integrity="sha512-QqIhdB7&#43;mX/MlBh8OdY8VVVgZ4eJrJyoVsdKXw3bKqbFDTiy/77MepkDjLvS76mXRuhiJn94HFWeDP7BC4il/A=="
+  
+/>
+
+<noscript>
+  
+    <link
+      rel="stylesheet"
+      href="/prism-themes/prism-gruvbox-light.min.42a221741efe997fcc94187c39d63c555560678789ac9ca856c74a5f0ddb2aa6c50d38b2ffbecc7a99038cbbd2efa99746e862267f781c559e0cfec10b88a5fc.css"
+      integrity="sha512-QqIhdB7&#43;mX/MlBh8OdY8VVVgZ4eJrJyoVsdKXw3bKqbFDTiy/77MepkDjLvS76mXRuhiJn94HFWeDP7BC4il/A=="
+    />
+  
+
+  <link
+    rel="stylesheet"
+    href="/css/non-critical.f67aefdd3191adb1c6e4b37bfbc0a254a8dc0816623d76a2d22160692d4abecf0ba11b28bbd577706969ec49af9d0775bedde87d55848b3276d6f261d689c960.css"
+    integrity="sha512-9nrv3TGRrbHG5LN7+8CiVKjcCBZiPXai0iFgaS1Kvs8LoRsou9V3cGlp7EmvnQd1vt3ofVWEizJ21vJh1onJYA=="
+  />
+</noscript>
+
+
+  
+
+  
+
+
+
+
+<script>
+  (()=>{function c(){if(localStorage&&localStorage.getItem("theme"))return localStorage.getItem("theme");if(window.matchMedia)return window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}function n(t){document.documentElement.setAttribute("theme",t);let e=document.getElementById("prism-dark"),i=document.getElementById("prism-light");e.toggleAttribute("disabled",t==="light"),i.toggleAttribute("disabled",t==="dark"),localStorage.setItem("theme",t)}var o=c();o&&n(o);function l(t){let e=t.currentTarget.classList.contains("light--hidden")?"light":"dark";n(e)}document.addEventListener("DOMContentLoaded",function(){document.querySelectorAll(".theme__toggle").forEach(e=>{e.addEventListener("click",l)})});})();
+
 </script>
-<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
 
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/myAvatar_hua882c21ea061ff9a690a266cf38baf1a_68117_300x0_resize_box_3.png" width="300"
-                            height="300" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
 
-                
-                    <span class="emoji">🍥</span>
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My approach...</a></h1>
-        <h2 class="site-description">OpenShift, Kubernetes, Docker and more</h2><ol class="social-menu">
-                
-                    <li>
-                        <a 
-                            href='https://github.com/vikaspogu'
-                            target="_blank"
-                            title="GitHub"
-                        >
-                            
-                            
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#282828" />
+<meta name="msapplication-TileColor" content="#282828" />
+<meta name="theme-color" content="#282828" />
+
+
+
+  
+  
+
+</head>
+
+  <body>
+    <div class="layout">
+      <header>
+  <a
+    class="logo"
+    href="/"
+  >
+    
+      <div class="logo__text">My approach...</div>
+    
+    <div class="logo__chevron">></div>
+    <div class="logo__cursor">█</div>
+  </a>
+
+  <div class="search">
+    <input
+      id="search__text"
+      type="search"
+      placeholder="Search..."
+      aria-label="Search"
+      autocomplete="off"
+    />
+    <div id="search__suggestions" class="search__suggestions--hidden"></div>
+  </div>
+
+  <nav id="menu">
+    <ul class="menu--horizontal">
+      
+        <li class="menu__item">
+          <a href="/blog">Blog</a>
+        </li>
+      
+        <li class="menu__item">
+          <a href="/cv">CV</a>
+        </li>
+      
+        <li class="menu__item">
+          <a href="/about">About</a>
+        </li>
+      
+    </ul>
+
+    <div class="menu__burger">
+      
+      <input class="menu__item" type="checkbox" aria-label="Open main menu" />
+
+      
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+  <line x1="4" y1="6" x2="20" y2="6" />
+  <line x1="4" y1="12" x2="20" y2="12" />
+  <line x1="4" y1="18" x2="20" y2="18" />
 </svg>
 
 
 
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a 
-                            href='https://www.linkedin.com/in/vikaspogu/'
-                            target="_blank"
-                            title="Linkedin"
-                        >
-                            
-                            
-                                <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg 
-    role="img" 
-    xmlns="http://www.w3.org/2000/svg" 
-    width="1000mm"
-    height="1000mm"
-    viewBox="0 0 1000 1000"
-    style="max-width:1.6em; height: auto;">
-    
-    <path 
-        id="path" 
-        style="opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;"
-        d=" M 336 332C 336 332 336 789 336 789C 336 789 211 789 211 789C 211 789 211 332 211 332C 211 332 336 332 336 332M 346 206C 346 206 346 206 346 206C 346 247 313 280 273 280C 233 280 201 247 201 206C 201 166 233 133 273 133C 313 133 346 166 346 206M 834 508C 834 508 834 789 834 789C 834 789 709 789 709 789C 709 789 709 556 709 556C 709 416 543 427 543 556C 543 556 543 789 543 789C 543 789 419 789 419 789C 419 789 419 332 419 332C 419 332 543 332 543 332C 543 332 543 406 543 406C 601 298 834 290 834 508"
-        transform="">
-    </path>    
-</svg>
-                            
-                        </a>
-                    </li>
-                
-            </ol></header>
 
-    <ol class="menu" id="main-menu">
+
+
+
+      <ul class="menu--vertical">
         
+          <li>
+            <a class="menu__item" href="/blog">Blog</a>
+          </li>
         
+          <li>
+            <a class="menu__item" href="/cv">CV</a>
+          </li>
         
-
-        <li >
-            <a href='/' target="_blank">
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <polyline points="5 12 3 12 12 3 21 12 19 12" />
-  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
-</svg>
-
-
-
-                
-                <span>Home</span>
-            </a>
-        </li>
+          <li>
+            <a class="menu__item" href="/about">About</a>
+          </li>
         
-        
-
-        <li >
-            <a href='/about-me/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-</svg>
-
-
-
-                
-                <span>About Me</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-<main class="main full-width">
-    <h3 class="section-title">
-        
-            Tags
-        
-    </h3>
-
-    <div class="section-card">
-        <div class="section-details">
-            <h3 class="section-count">11 pages</h3>
-            <h1 class="section-term">OpenShift</h1>
-            
-        </div>
+      </ul>
     </div>
+  </nav>
+
+  <button class="theme__toggle light--hidden" aria-label="Toggle light mode">
     
-    <section class="article-list--compact">
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sun" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <circle cx="12" cy="12" r="4" />
+  <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
+</svg>
+
+
+
+
+
+  </button>
+
+  <button class="theme__toggle dark--hidden" aria-label="Toggle dark mode">
+    
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-moon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+</svg>
+
+
+
+
+
+  </button>
+</header>
+
+      <main>
+        <div class="content">
+          
+  
+  <article class="post">
+    <div class="post-header">
+  <h1>
+    <a href="/blog/opa-gatekeeper-openshift/">OPA Gatekeeper on OpenShift</a>
+  </h1>
+
+  <div class="post-meta">
+    
+      <span>2020-08-18</span>
+    
+    
+    
+    
+    
+    
+      <div class="post-tags">
         
-            <article>
-    <a href="/posts/opa-gatekeeper-openshift/">
-        <div class="article-details">
-            <h2 class="article-title">OPA Gatekeeper on OpenShift</h2>
-            <footer class="article-time">
-                <time datetime='2020-08-18T00:00:00Z'>Aug 18, 2020</time>
-            </footer>
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/openshift"
+          >openshift</a>
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/opa"
+          >opa</a>
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/gatekeeper"
+          >gatekeeper</a>
+        
+      </div>
+    
+
+    
+  </div>
+</div>
+
+    <div class="post-content">
+      <span>
+        
+          OpenShift policy management with opa gatekeeper
+        
+      </span>
+    </div>
+  </article>
+
+  <article class="post">
+    <div class="post-header">
+  <h1>
+    <a href="/blog/jenkins-config-as-code-openshift/">OpenShift Jenkins configuration via JCasC plugin</a>
+  </h1>
+
+  <div class="post-meta">
+    
+      <span>2020-07-06</span>
+    
+    
+    
+    
+    
+    
+      <div class="post-tags">
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/jenkins"
+          >jenkins</a>
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/openshift"
+          >openshift</a>
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/jcasc"
+          >jcasc</a>
+        
+      </div>
+    
+
+    
+  </div>
+</div>
+
+    <div class="post-content">
+      <span>
+        
+          Configuring OpenShift jenkins via jenkins configuration as code plugin
+        
+      </span>
+    </div>
+  </article>
+
+  <article class="post">
+    <div class="post-header">
+  <h1>
+    <a href="/blog/openshift-jenkins-oauth-ssl/">Jenkins OpenShift OAuth SSL</a>
+  </h1>
+
+  <div class="post-meta">
+    
+      <span>2020-02-10</span>
+    
+    
+    
+    
+    
+    
+      <div class="post-tags">
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/openshift"
+          >openshift</a>
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/jenkins"
+          >jenkins</a>
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/ssl"
+          >ssl</a>
+        
+      </div>
+    
+
+    
+  </div>
+</div>
+
+    <div class="post-content">
+      <span>
+        
+          Add SSL certificates for OpenShift Jenkins Authentication using OpenShift OAuth plugin
+        
+      </span>
+    </div>
+  </article>
+
+  <article class="post">
+    <div class="post-header">
+  <h1>
+    <a href="/blog/ocp-docker-registry-500-err/">Permission denied pushing to OpenShift Registry</a>
+  </h1>
+
+  <div class="post-meta">
+    
+      <span>2019-12-18</span>
+    
+    
+    
+    
+    
+    
+      <div class="post-tags">
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/openshift"
+          >openshift</a>
+        
+      </div>
+    
+
+    
+  </div>
+</div>
+
+    <div class="post-content">
+      <span>
+        
+          Permission denied on pushing build images into OpenShift internal registry
+        
+      </span>
+    </div>
+  </article>
+
+  <article class="post">
+    <div class="post-header">
+  <h1>
+    <a href="/blog/couchbase-ssl-openshift/">Configuring couchbase SSL for dynamic certificates in OpenShift</a>
+  </h1>
+
+  <div class="post-meta">
+    
+      <span>2019-08-28</span>
+    
+    
+    
+    
+    
+    
+      <div class="post-tags">
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/openshift"
+          >openshift</a>
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/couchbase"
+          >couchbase</a>
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/ssl"
+          >ssl</a>
+        
+      </div>
+    
+
+    
+  </div>
+</div>
+
+    <div class="post-content">
+      <span>
+        
+          Couchbase SSL # If you have followed dynamic creation of java keystores in OpenShift post and wondered how to use similar concepts for couchbase database and a java application. This post will help you.
+Couchbase setup # This is the couchbase documentation for configuring server side certificates, we are interested in last few steps since OpenShift will generate key and cert by adding annotation to the couchbase service.
+Note: By adding this annotation you can dynamically create certificates service.
+          
+            <div class="post-content__read-more">
+              <a href="/blog/couchbase-ssl-openshift/">Read more ></a>
+            </div>
+          
+        
+      </span>
+    </div>
+  </article>
+
+  <article class="post">
+    <div class="post-header">
+  <h1>
+    <a href="/blog/intro-tektoncd-ocp/">TektonCD on OpenShift</a>
+  </h1>
+
+  <div class="post-meta">
+    
+      <span>2019-08-09</span>
+    
+    
+    
+    
+    
+    
+      <div class="post-tags">
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/openshift"
+          >openshift</a>
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/tektoncd"
+          >tektoncd</a>
+        
+      </div>
+    
+
+    
+  </div>
+</div>
+
+    <div class="post-content">
+      <span>
+        
+          Recently I came across tektoncd project, The Tekton Pipelines project provides Kubernetes-style resources for declaring CI/CD-style pipelines caught my attention and started playing with it.
+Basic Concepts # In order to create a tekton pipeline, one does the following:
+Create custom or install existing reusable Tasks Create a Pipeline and PipelineResources to define your application&rsquo;s delivery pipeline Create a PipelineRun to instantiate and invoke the pipeline Installing Tekton on OpenShift # Login as a user with cluster-admin privileges
+          
+            <div class="post-content__read-more">
+              <a href="/blog/intro-tektoncd-ocp/">Read more ></a>
+            </div>
+          
+        
+      </span>
+    </div>
+  </article>
+
+  <article class="post">
+    <div class="post-header">
+  <h1>
+    <a href="/blog/project-terminating/">Deleting a OpenShift project stuck in terminating state</a>
+  </h1>
+
+  <div class="post-meta">
+    
+      <span>2019-05-15</span>
+    
+    
+    
+    
+    
+    
+      <div class="post-tags">
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/openshift"
+          >openshift</a>
+        
+      </div>
+    
+
+    
+  </div>
+</div>
+
+    <div class="post-content">
+      <span>
+        
+          Recently I was faced an issue where one of my project was stuck in terminating state for days. The workaround below fixed the issue.
+Export OpenShift project as an JSON Object
+oc get project delete-me -o json &gt; ns-without-finalizers.json Replace below from
+spec: finalizers: - kubernetes to
+spec: finalizers: [] On one of the master node, execute these commands.
+kubectl proxy &amp; PID=$! curl -X PUT http://localhost:8001/api/v1/namespaces/delete-me/finalize \ -H &#34;Content-Type: application/json&#34; --data-binary @ns-without-finalizers.
+          
+            <div class="post-content__read-more">
+              <a href="/blog/project-terminating/">Read more ></a>
+            </div>
+          
+        
+      </span>
+    </div>
+  </article>
+
+  <article class="post">
+    <div class="post-header">
+  <h1>
+    <a href="/blog/springboot-metrics-grafana/">Spring Boot metrics with Prometheus and Grafana in OpenShift</a>
+  </h1>
+
+  <div class="post-meta">
+    
+      <span>2019-05-15</span>
+    
+    
+    
+    
+    
+    
+      <div class="post-tags">
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/openshift"
+          >openshift</a>
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/spring-boot"
+          >spring&#8209;boot</a>
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/prometheus"
+          >prometheus</a>
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/grafana"
+          >grafana</a>
+        
+      </div>
+    
+
+    
+  </div>
+</div>
+
+    <div class="post-content">
+      <span>
+        
+          Spring Boot Metrics # In this post I&rsquo;ll discuss how to monitor spring boot application metrics using Prometheus and Grafana.
+Prometheus # Prometheus is a monitoring system which collects metrics from configured targets at given intervals.
+Grafana # Grafana is an open source metric analytics &amp; visualization tool.
+Micrometer # Micrometer is a metrics instrumentation library for JVM-based applications.
+Spring Boot Actuator # Spring Boot Actuator helps you monitor and manage your application when it’s pushed to production.
+          
+            <div class="post-content__read-more">
+              <a href="/blog/springboot-metrics-grafana/">Read more ></a>
+            </div>
+          
+        
+      </span>
+    </div>
+  </article>
+
+  <article class="post">
+    <div class="post-header">
+  <h1>
+    <a href="/blog/debug-netcore-openshift/">Debugging a .NET Core application running on OpenShift</a>
+  </h1>
+
+  <div class="post-meta">
+    
+      <span>2019-05-14</span>
+    
+    
+    
+    
+    
+    
+      <div class="post-tags">
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/openshift"
+          >openshift</a>
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/dot-net"
+          >dot&#8209;net</a>
+        
+      </div>
+    
+
+    
+  </div>
+</div>
+
+    <div class="post-content">
+      <span>
+        
+          This post is about how to remote debug a ASP.NET Core application on OpenShift using Visual Studio Code. You can use any Microsoft proprietary debugger engine vsdbg with Visual Studio Code.
+First, list the available .Net application pods using oc command.
+$ oc get pod NAME READY STATUS RESTARTS AGE MY_APP_NAME-3-1xrsp 0/1 Running 0 6s $ oc rsh MY_APP_NAME-3-1xrsp sh-4.2$ curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l /opt/app-root/vsdbg -r linux-x64 Note: If you&rsquo;re container is running behind a corporate proxy and cannot access internet, you&rsquo;ll have to build base dotnet image with the debugger engine vsdbg installed in it.
+          
+            <div class="post-content__read-more">
+              <a href="/blog/debug-netcore-openshift/">Read more ></a>
+            </div>
+          
+        
+      </span>
+    </div>
+  </article>
+
+  <article class="post">
+    <div class="post-header">
+  <h1>
+    <a href="/blog/debug-java-container/">Debugging a Java application in OpenShift</a>
+  </h1>
+
+  <div class="post-meta">
+    
+      <span>2019-05-14</span>
+    
+    
+    
+    
+    
+    
+      <div class="post-tags">
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/openshift"
+          >openshift</a>
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/java"
+          >java</a>
+        
+      </div>
+    
+
+    
+  </div>
+</div>
+
+    <div class="post-content">
+      <span>
+        
+          This post will discuss debugging a JAVA application running inside a container.
+Red Hat container images # When you bootstrap your JVM, you should have a way to enable JVM debug. For example Red Hat S2I images allows you to control classpath and debugging via environment variables.
+# Set debug options if required if [ x&#34;${JAVA_DEBUG}&#34; != x ] &amp;&amp; [ &#34;${JAVA_DEBUG}&#34; != &#34;false&#34; ]; then java_debug_args=&#34;-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=${JAVA_DEBUG_PORT:-5005}&#34; fi Setting the JAVA_DEBUG environment variable inside the container to true will add debug args to JVM startup command Configure port forwarding so that you can connect to your application from a remote debugger If you are using tomcat image replace JAVA_DEBUG environment variable to DEBUG
+          
+            <div class="post-content__read-more">
+              <a href="/blog/debug-java-container/">Read more ></a>
+            </div>
+          
+        
+      </span>
+    </div>
+  </article>
+
+
+<div class="pagination">
+  
+  
+    <span class="pagination__button pagination__button--next">
+      <a href="/tags/openshift/page/2/">
+        <span>Older Posts</span>
+        <span>></span>
+      </a>
+    </span>
+  
+</div>
+
+
+
         </div>
-    </a>
-</article>
+        <div class="sidebar">
+  
+
+  
+  
+    <aside class="bio">
+      
+
+  <section class="jr__item jr-basics__item">
+    
+  <div class="jr-basics__image">
+    <img
+      src="https://raw.githubusercontent.com/Vikaspogu/blog/master/static/images/myAvatar.png"
+      alt="Picture of Vikas Pogu"
+      width="250"
+      height="250"
+    />
+  </div>
+
+
+
+    
+      <div class="jr-basics__name">Vikas Pogu</div>
+    
+
+    
+      <div class="jr-basics__label">Senior Consultant</div>
+    
+
+    
+      <div class="jr-basics__email">vikaspoguadf@gmail.com</div>
+    
+
+    
+
+    
+
+    
+      <div class="jr-basics__summary">Currently working as a Senior Consultant@Red Hat. Focusing on cloud technologies primarily OpenShift and kubernetes.</div>
+    
+
+    
+      
+
+      
+
+      
+        <div class="jr-basics__location-city">Rochester, Minnesota</div>
+      
+
+      
+
+      
+    
+
+    
+      <hr />
+      <div class="jr-basics__profile jr-basics__profile--col">
         
-            <article>
-    <a href="/posts/jenkins-config-as-code-openshift/">
-        <div class="article-details">
-            <h2 class="article-title">OpenShift Jenkins configuration via JCasC plugin</h2>
-            <footer class="article-time">
-                <time datetime='2020-07-06T00:00:00Z'>Jul 06, 2020</time>
-            </footer>
-        </div>
-    </a>
-</article>
-        
-            <article>
-    <a href="/posts/openshift-jenkins-oauth-ssl/">
-        <div class="article-details">
-            <h2 class="article-title">Jenkins OpenShift OAuth SSL</h2>
-            <footer class="article-time">
-                <time datetime='2020-02-10T00:00:00Z'>Feb 10, 2020</time>
-            </footer>
-        </div>
-    </a>
-</article>
-        
-            <article>
-    <a href="/posts/ocp-docker-registry-500-err/">
-        <div class="article-details">
-            <h2 class="article-title">Permission denied pushing to OpenShift Registry</h2>
-            <footer class="article-time">
-                <time datetime='2019-12-18T00:00:00Z'>Dec 18, 2019</time>
-            </footer>
-        </div>
-    </a>
-</article>
-        
-            <article>
-    <a href="/posts/couchbase-ssl-openshift/">
-        <div class="article-details">
-            <h2 class="article-title">Configuring couchbase SSL for dynamic certificates in OpenShift</h2>
-            <footer class="article-time">
-                <time datetime='2019-08-28T00:00:00Z'>Aug 28, 2019</time>
-            </footer>
-        </div>
-    </a>
-</article>
-        
-            <article>
-    <a href="/posts/intro-tektoncd-ocp/">
-        <div class="article-details">
-            <h2 class="article-title">TektonCD on OpenShift</h2>
-            <footer class="article-time">
-                <time datetime='2019-08-09T00:00:00Z'>Aug 09, 2019</time>
-            </footer>
-        </div>
-    </a>
-</article>
-        
-            <article>
-    <a href="/posts/project-terminating/">
-        <div class="article-details">
-            <h2 class="article-title">Deleting a OpenShift project stuck in terminating state</h2>
-            <footer class="article-time">
-                <time datetime='2019-05-15T00:00:00Z'>May 15, 2019</time>
-            </footer>
-        </div>
-    </a>
-</article>
-        
-            <article>
-    <a href="/posts/springboot-metrics-grafana/">
-        <div class="article-details">
-            <h2 class="article-title">Spring Boot metrics with Prometheus and Grafana in OpenShift</h2>
-            <footer class="article-time">
-                <time datetime='2019-05-15T00:00:00Z'>May 15, 2019</time>
-            </footer>
-        </div>
-    </a>
-</article>
-        
-    </section>
-    <nav class='pagination'>
-        
-        
+          
+
+<a href="https://github.com/Vikaspogu">
+
+<div class="jr-basics__profile-item">
+  <div class="jr-basics__profile-icon">
+    
+    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+  </div>
+
+  
+    <div class="jr-basics__profile-username">vikaspogu</div>
+  
+</div>
+
+
+</a>
 
         
-            
-                <span class='page-link current'>1</span>
-                
-            
-            
-                    <a class='page-link' href='/tags/openshift/page/2/'>2</a>
-                
-            
-    </nav>
-
-<footer class="site-footer">
-    <section class="copyright">
-        &copy; 
-        
-            2020 - 
-        
-        2022 My approach...
-    </section>
+      </div>
     
-    <section class="powerby">
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
-    </section>
+
+    
+  </section>
+
+
+    </aside>
+  
+</div>
+
+      </main>
+      <footer>
+  <div class="copyright">
+    
+      Copyright © 2021
+    
+  </div>
 </footer>
 
 
-            </main>
-    
-    
-    <aside class="sidebar right-sidebar sticky">
-        
-            <form action="/search/" class="search-form widget" >
-        <p>
-            <label>Search</label>
-            <input name="keyword" required placeholder="Type something..." />
-        
-            <button title="Search">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
+
+  
 
 
 
-            </button>
-        </p>
-    </form>
-        
-            <section class="widget archives">
-        <div class="widget-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
-</svg>
 
 
 
-        </div>
-        <h2 class="widget-title section-title">Archives</h2>
 
-        
-        
-        
-        
-        
-        <div class="widget-archive--list">
-            <div class="archives-year">
-                    <a href="/archives/#2022">
-                        
-                            <span class="year">2022</span>
-                            <span class="count">1</span>
-                        
-                    </a> 
-                </div>
-            <div class="archives-year">
-                    <a href="/archives/#2021">
-                        
-                            <span class="year">2021</span>
-                            <span class="count">4</span>
-                        
-                    </a> 
-                </div>
-            <div class="archives-year">
-                    <a href="/archives/#2020">
-                        
-                            <span class="year">2020</span>
-                            <span class="count">16</span>
-                        
-                    </a> 
-                </div>
-            <div class="archives-year">
-                    <a href="/archives/#2019">
-                        
-                            <span class="year">2019</span>
-                            <span class="count">16</span>
-                        
-                    </a> 
-                </div>
-            
-        </div>
-    </section>
-        
-            <section class="widget tagCloud">
-    <div class="widget-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
-  <circle cx="9" cy="9" r="2" />
-</svg>
+  
+  
 
 
-
-    </div>
-    <h2 class="widget-title section-title">Tags</h2>
-
-    <div class="tagCloud-tags">
-        
-            <a href="/tags/openshift/" class="font_size_11">
-                OpenShift
-            </a>
-        
-            <a href="/tags/jenkins/" class="font_size_4">
-                jenkins
-            </a>
-        
-            <a href="/tags/k3s/" class="font_size_3">
-                k3s
-            </a>
-        
-            <a href="/tags/keycloak/" class="font_size_3">
-                keycloak
-            </a>
-        
-            <a href="/tags/nodejs/" class="font_size_3">
-                NodeJS
-            </a>
-        
-            <a href="/tags/tekton/" class="font_size_3">
-                tekton
-            </a>
-        
-            <a href="/tags/buildx/" class="font_size_2">
-                buildx
-            </a>
-        
-            <a href="/tags/docker/" class="font_size_2">
-                docker
-            </a>
-        
-            <a href="/tags/golang/" class="font_size_2">
-                golang
-            </a>
-        
-            <a href="/tags/grafana/" class="font_size_2">
-                grafana
-            </a>
-        
-    </div>
-</section>
-        
-    </aside>
-
-
-        </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
-                defer="false"
-                >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
-<script>
-    (function () {
-        const customFont = document.createElement('link');
-        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
-
-        customFont.type = "text/css";
-        customFont.rel = "stylesheet";
-
-        document.head.appendChild(customFont);
-    }());
+<script
+  type="text/javascript"
+  src="/js/main.dcd63d82dd0c74d9d5f2328aba99dda49ba95acfa94883553cd8fc004ae9f6fd3d12c159b12e17df64a8c94749e4d6639b769bde643094819ba7aa8078aedd3f.js"
+  integrity="sha512-3NY9gt0MdNnV8jKKupndpJupWs&#43;pSINVPNj8AErp9v09EsFZsS4X32SoyUdJ5NZjm3ab3mQwlIGbp6qAeK7dPw==">
 </script>
 
-    </body>
+<script
+  type="text/javascript"
+  src="/js/flexsearch.0ce552103d9a536a8b7fc2e560e280bc96f43f1d016496e4aac8f4738d340b4cb1302c4be849a5999cd63d20a7c20e495047f439bdf683dbd7da67bd211aad3f.js"
+  integrity="sha512-DOVSED2aU2qLf8LlYOKAvJb0Px0BZJbkqsj0c400C0yxMCxL6EmlmZzWPSCnwg5JUEf0Ob32g9vX2me9IRqtPw==">
+</script>
+
+
+
+
+
+    </div>
+  </body>
 </html>

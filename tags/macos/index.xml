@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>macos on My approach...</title>
+    <title>macos on hugo-theme-gruvbox</title>
     <link>https://vikaspogu.dev/tags/macos/</link>
-    <description>Recent content in macos on My approach...</description>
+    <description>Recent content in macos on hugo-theme-gruvbox</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <copyright>Copyright © 2021</copyright>
     <lastBuildDate>Mon, 06 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/macos/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Installing Podman remote client on macOS using vagrant</title>
-      <link>https://vikaspogu.dev/posts/podman-macos/</link>
+      <link>https://vikaspogu.dev/blog/podman-macos/</link>
       <pubDate>Mon, 06 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://vikaspogu.dev/posts/podman-macos/</guid>
+      <guid>https://vikaspogu.dev/blog/podman-macos/</guid>
       <description>Installing podman as a remote client on macOS using vagrant. Vagrant setup is not covered in this post.
-Podman remote client Podman is the tool to start and manage containers. On macOS we have to use a thin remote-client that connects to a real Podman process running on a Linux host.
+Podman remote client # Podman is the tool to start and manage containers. On macOS we have to use a thin remote-client that connects to a real Podman process running on a Linux host.
 Here are the main steps how to configure the remote-client to work with a Linux host:
- Create a linux machine using Vagrant Set key based ssh as root to the Linux host Install remote-client binary with Homebrew: brew cask install podman  Create a fedora vagrant box.</description>
+Create a linux machine using Vagrant Set key based ssh as root to the Linux host Install remote-client binary with Homebrew: brew cask install podman Create a fedora vagrant box.</description>
     </item>
     
   </channel>
