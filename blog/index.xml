@@ -106,7 +106,7 @@ Strict mTLS across the mesh Automatic istio route creation apiVersion: maistra.i
       <pubDate>Wed, 04 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/blog/loki-rsyslog-k3s/</guid>
-      <description>Loki Promtail # Enable syslog, do this on each host and replace target IP (and maybe port) with you syslog externalIP that is in helm values for promtail
+      <description>Enable syslog, do this on each host and replace target IP (and maybe port) with you syslog externalIP that is in helm values for promtail
 promtail: serviceMonitor: enabled: true extraScrapeConfigs: - job_name: syslog syslog: listen_address: 0.0.0.0:1514 label_structured_data: yes labels: job: &amp;#34;syslog&amp;#34; relabel_configs: - source_labels: [&amp;#34;__syslog_connection_ip_address&amp;#34;] target_label: &amp;#34;ip_address&amp;#34; - source_labels: [&amp;#34;__syslog_message_severity&amp;#34;] target_label: &amp;#34;severity&amp;#34; - source_labels: [&amp;#34;__syslog_message_facility&amp;#34;] target_label: &amp;#34;facility&amp;#34; - source_labels: [&amp;#34;__syslog_message_hostname&amp;#34;] target_label: &amp;#34;host&amp;#34; syslogService: enabled: true type: LoadBalancer port: 1514 externalIPs: - 192.</description>
     </item>
     
@@ -178,12 +178,12 @@ As everyone has experienced setting up Jenkins is a complex process, as both Jen
     </item>
     
     <item>
-      <title>Raspberry Pi garage door opener using nodejs on k3s cluster</title>
+      <title>Raspberry Pi garage opener on k3s cluster</title>
       <link>https://vikaspogu.dev/blog/pi-garage-k3s/</link>
       <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/blog/pi-garage-k3s/</guid>
-      <description>Pi Garage Door Opener # There are many articles out there which demonstartes how to use a raspberry pi as a DIY garage door opener project. Few are outdated and not deployed using containers images. I found couple good solutions on google but i wasn&amp;rsquo;t able to run them on kubernetes cluster either due to older packages or no enough information. I decided to build my own solution from different sources of information i found</description>
+      <description>There are many articles out there which demonstartes how to use a raspberry pi as a DIY garage door opener project. Few are outdated and not deployed using containers images. I found couple good solutions on google but i wasn&amp;rsquo;t able to run them on kubernetes cluster either due to older packages or no enough information. I decided to build my own solution from different sources of information i found</description>
     </item>
     
     <item>

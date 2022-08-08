@@ -13,7 +13,7 @@
       <pubDate>Wed, 04 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/blog/loki-rsyslog-k3s/</guid>
-      <description>Loki Promtail # Enable syslog, do this on each host and replace target IP (and maybe port) with you syslog externalIP that is in helm values for promtail
+      <description>Enable syslog, do this on each host and replace target IP (and maybe port) with you syslog externalIP that is in helm values for promtail
 promtail: serviceMonitor: enabled: true extraScrapeConfigs: - job_name: syslog syslog: listen_address: 0.0.0.0:1514 label_structured_data: yes labels: job: &amp;#34;syslog&amp;#34; relabel_configs: - source_labels: [&amp;#34;__syslog_connection_ip_address&amp;#34;] target_label: &amp;#34;ip_address&amp;#34; - source_labels: [&amp;#34;__syslog_message_severity&amp;#34;] target_label: &amp;#34;severity&amp;#34; - source_labels: [&amp;#34;__syslog_message_facility&amp;#34;] target_label: &amp;#34;facility&amp;#34; - source_labels: [&amp;#34;__syslog_message_hostname&amp;#34;] target_label: &amp;#34;host&amp;#34; syslogService: enabled: true type: LoadBalancer port: 1514 externalIPs: - 192.</description>
     </item>
     
