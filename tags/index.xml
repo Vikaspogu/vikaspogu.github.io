@@ -6,7 +6,25 @@
     <description>Recent content in Tags on Vikas Pogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2021</copyright>
-    <lastBuildDate>Fri, 13 May 2022 16:09:15 -0500</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 08 Aug 2022 15:32:00 -0500</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>grafana</title>
+      <link>https://vikaspogu.dev/tags/grafana/</link>
+      <pubDate>Mon, 08 Aug 2022 15:32:00 -0500</pubDate>
+      
+      <guid>https://vikaspogu.dev/tags/grafana/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>influxdb</title>
+      <link>https://vikaspogu.dev/tags/influxdb/</link>
+      <pubDate>Mon, 08 Aug 2022 15:32:00 -0500</pubDate>
+      
+      <guid>https://vikaspogu.dev/tags/influxdb/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>NAS</title>
       <link>https://vikaspogu.dev/tags/nas/</link>
@@ -409,24 +427,6 @@
       <pubDate>Mon, 06 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/tags/vagrant/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>grafana</title>
-      <link>https://vikaspogu.dev/tags/grafana/</link>
-      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://vikaspogu.dev/tags/grafana/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>influxdb</title>
-      <link>https://vikaspogu.dev/tags/influxdb/</link>
-      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://vikaspogu.dev/tags/influxdb/</guid>
       <description></description>
     </item>
     

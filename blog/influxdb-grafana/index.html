@@ -58,46 +58,38 @@
 
 
 
-<title>Patternfly setup in React Application</title>
+<title>Configure Influxdb with Grafana</title>
 
 <meta
   name="description"
-  content="To order to integrate Patternfly framework into a ReactJS application, create a new project or use an existing one
-npx create-react-app patternfly-setup-react Install patternfly dependencies react-core, react-table and patternfly
-npm i --save @patternfly/patternfly \ @patternfly/react-core @patternfly/react-table Note: Import base.css and patternfly.css in your project, or some components may diverge in appearance
-//This imports are must to render css import &amp;#34;@patternfly/react-core/dist/styles/base.css&amp;#34;; import &amp;#34;@patternfly/patternfly/patternfly.css&amp;#34;; To make sure everything is working correctly, update App."
+  content="I recently started using proxmox and I chose to monitor metrics using InfluxDB and Grafana which are already deployed on my Kubernetes cluster. During that process, I encountered two issues:
+Authentication &amp;ldquo;Database not found&amp;rdquo; Authentication # For the Authentication issue, I found out that you have to use the Authorization header with the Token yourAuthToken value to access the bucket. The header name is configured in the jsonData field and the header value should be configured in secureJsonData for grafana helm chart values."
 />
 
-<link rel="canonical" href="https://vikaspogu.dev/blog/patternfly-setup-react/" />
+<link rel="canonical" href="https://vikaspogu.dev/blog/influxdb-grafana/" />
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Patternfly setup in React Application"/>
-<meta name="twitter:description" content="To order to integrate Patternfly framework into a ReactJS application, create a new project or use an existing one
-npx create-react-app patternfly-setup-react Install patternfly dependencies react-core, react-table and patternfly
-npm i --save @patternfly/patternfly \ @patternfly/react-core @patternfly/react-table Note: Import base.css and patternfly.css in your project, or some components may diverge in appearance
-//This imports are must to render css import &#34;@patternfly/react-core/dist/styles/base.css&#34;; import &#34;@patternfly/patternfly/patternfly.css&#34;; To make sure everything is working correctly, update App."/>
+<meta name="twitter:title" content="Configure Influxdb with Grafana"/>
+<meta name="twitter:description" content="I recently started using proxmox and I chose to monitor metrics using InfluxDB and Grafana which are already deployed on my Kubernetes cluster. During that process, I encountered two issues:
+Authentication &ldquo;Database not found&rdquo; Authentication # For the Authentication issue, I found out that you have to use the Authorization header with the Token yourAuthToken value to access the bucket. The header name is configured in the jsonData field and the header value should be configured in secureJsonData for grafana helm chart values."/>
 
-<meta property="og:title" content="Patternfly setup in React Application" />
-<meta property="og:description" content="To order to integrate Patternfly framework into a ReactJS application, create a new project or use an existing one
-npx create-react-app patternfly-setup-react Install patternfly dependencies react-core, react-table and patternfly
-npm i --save @patternfly/patternfly \ @patternfly/react-core @patternfly/react-table Note: Import base.css and patternfly.css in your project, or some components may diverge in appearance
-//This imports are must to render css import &#34;@patternfly/react-core/dist/styles/base.css&#34;; import &#34;@patternfly/patternfly/patternfly.css&#34;; To make sure everything is working correctly, update App." />
+<meta property="og:title" content="Configure Influxdb with Grafana" />
+<meta property="og:description" content="I recently started using proxmox and I chose to monitor metrics using InfluxDB and Grafana which are already deployed on my Kubernetes cluster. During that process, I encountered two issues:
+Authentication &ldquo;Database not found&rdquo; Authentication # For the Authentication issue, I found out that you have to use the Authorization header with the Token yourAuthToken value to access the bucket. The header name is configured in the jsonData field and the header value should be configured in secureJsonData for grafana helm chart values." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://vikaspogu.dev/blog/patternfly-setup-react/" /><meta property="article:section" content="blog" />
-<meta property="article:published_time" content="2019-07-01T00:00:00+00:00" />
-<meta property="article:modified_time" content="2019-07-01T00:00:00+00:00" />
+<meta property="og:url" content="https://vikaspogu.dev/blog/influxdb-grafana/" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2022-08-08T15:32:00-05:00" />
+<meta property="article:modified_time" content="2022-08-08T15:32:00-05:00" />
 
 
-<meta itemprop="name" content="Patternfly setup in React Application">
-<meta itemprop="description" content="To order to integrate Patternfly framework into a ReactJS application, create a new project or use an existing one
-npx create-react-app patternfly-setup-react Install patternfly dependencies react-core, react-table and patternfly
-npm i --save @patternfly/patternfly \ @patternfly/react-core @patternfly/react-table Note: Import base.css and patternfly.css in your project, or some components may diverge in appearance
-//This imports are must to render css import &#34;@patternfly/react-core/dist/styles/base.css&#34;; import &#34;@patternfly/patternfly/patternfly.css&#34;; To make sure everything is working correctly, update App."><meta itemprop="datePublished" content="2019-07-01T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2019-07-01T00:00:00+00:00" />
-<meta itemprop="wordCount" content="215">
-<meta itemprop="keywords" content="Patternfly,ReactJS," />
+<meta itemprop="name" content="Configure Influxdb with Grafana">
+<meta itemprop="description" content="I recently started using proxmox and I chose to monitor metrics using InfluxDB and Grafana which are already deployed on my Kubernetes cluster. During that process, I encountered two issues:
+Authentication &ldquo;Database not found&rdquo; Authentication # For the Authentication issue, I found out that you have to use the Authorization header with the Token yourAuthToken value to access the bucket. The header name is configured in the jsonData field and the header value should be configured in secureJsonData for grafana helm chart values."><meta itemprop="datePublished" content="2022-08-08T15:32:00-05:00" />
+<meta itemprop="dateModified" content="2022-08-08T15:32:00-05:00" />
+<meta itemprop="wordCount" content="275">
+<meta itemprop="keywords" content="influxdb,grafana," />
 
 
 
@@ -320,12 +312,12 @@ npm i --save @patternfly/patternfly \ @patternfly/react-core @patternfly/react-t
   <article class="post">
     <div class="post-header">
   <h1>
-    <a href="/blog/patternfly-setup-react/">Patternfly setup in React Application</a>
+    <a href="/blog/influxdb-grafana/">Configure Influxdb with Grafana</a>
   </h1>
 
   <div class="post-meta">
     
-      <span>2019-07-01</span>
+      <span>2022-08-08</span>
     
     
     
@@ -336,13 +328,13 @@ npm i --save @patternfly/patternfly \ @patternfly/react-core @patternfly/react-t
         
           <a
             class="post-tag"
-            href="https://vikaspogu.dev/tags/patternfly"
-          >patternfly</a>
+            href="https://vikaspogu.dev/tags/influxdb"
+          >influxdb</a>
         
           <a
             class="post-tag"
-            href="https://vikaspogu.dev/tags/reactjs"
-          >reactjs</a>
+            href="https://vikaspogu.dev/tags/grafana"
+          >grafana</a>
         
       </div>
     
@@ -352,180 +344,73 @@ npm i --save @patternfly/patternfly \ @patternfly/react-core @patternfly/react-t
 </div>
 
     <div class="post-content">
-      <p>To order to integrate <a
-  href="https://www.patternfly.org/v4/"
+      <p>I recently started using proxmox and I chose to monitor metrics using InfluxDB and Grafana which are already deployed on my Kubernetes cluster. During that process, I encountered two issues:</p>
+<ul>
+<li>Authentication</li>
+<li>&ldquo;Database not found&rdquo;</li>
+</ul>
+<h2 id="authentication">
+  Authentication
+  <a href="#authentication" class="post-heading__anchor" aria-hidden="true">#</a>
+</h2>
+<p>For the Authentication issue, I found out that you have to use the <code>Authorization</code> header with the <code>Token yourAuthToken</code> value to access the bucket. The header name is configured in the <code>jsonData</code> field and the header value should be configured in <code>secureJsonData</code> for <a
+  href="https://github.com/grafana/helm-charts/tree/main/charts/grafana"
   
   
     class="link--external" target="_blank" rel="noreferrer"
   
->Patternfly</a> framework into a ReactJS application, create a new project or use an existing one</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npx create-react-app patternfly-setup-react
-</span></span></code></pre></div><p>Install patternfly dependencies <code>react-core</code>, <code>react-table</code> and <code>patternfly</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm i --save @patternfly/patternfly <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  @patternfly/react-core @patternfly/react-table
-</span></span></code></pre></div><p><strong>Note:</strong> Import <code>base.css</code> and <code>patternfly.css</code> in your project, or some components may diverge in appearance</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">//This imports are must to render css
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#34;@patternfly/react-core/dist/styles/base.css&#34;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#34;@patternfly/patternfly/patternfly.css&#34;</span>;
-</span></span></code></pre></div><p>To make sure everything is working correctly, update <code>App.js</code> with a demo layout from <a
-  href="https://www.patternfly.org/v4/documentation/react/demos/"
+>grafana helm chart</a> values.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">secureJsonData</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">httpHeaderValue1</span>: <span style="color:#e6db74">&#39;Token ${INFLUXDB_TOKEN}&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jsonData</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">httpHeaderName1</span>: <span style="color:#e6db74">&#39;Authorization&#39;</span>
+</span></span></code></pre></div><p>Complete <code>datasources</code> helm values</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">datasources</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">datasources.yaml</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">deleteDatasources</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Loki</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">orgId</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">datasources</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Prometheus</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">type</span>: <span style="color:#ae81ff">prometheus</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">url</span>: <span style="color:#ae81ff">http://prometheus-operated:9090</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">access</span>: <span style="color:#ae81ff">proxy</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">isDefault</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">InfluxDB</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">type</span>: <span style="color:#ae81ff">influxdb</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">url</span>: <span style="color:#e6db74">&#34;http://influxdb.default.svc.cluster.local:80&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">database</span>: <span style="color:#e6db74">&#34;default&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">secureJsonData</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">httpHeaderValue1</span>: <span style="color:#e6db74">&#39;Token ${INFLUXDB_TOKEN}&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">access</span>: <span style="color:#ae81ff">proxy</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">jsonData</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">httpHeaderName1</span>: <span style="color:#e6db74">&#39;Authorization&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">httpMode</span>: <span style="color:#ae81ff">GET</span>
+</span></span></code></pre></div><h2 id="database-not-found">
+  &ldquo;Database not found&rdquo;
+  <a href="#database-not-found" class="post-heading__anchor" aria-hidden="true">#</a>
+</h2>
+<p>This one took me a while to figure out. In InfluxDB v1, data is stored in databases and retention policies. In InfluxDB v2, data is stored in buckets. Because InfluxQL uses the v1 data model, before querying in InfluxQL, a bucket must be mapped to a database and retention policy. Find more information <a
+  href="https://docs.influxdata.com/influxdb/v2.0/query-data/influxql/?t=InfluxDB&#43;API#map-unmapped-buckets"
   
   
     class="link--external" target="_blank" rel="noreferrer"
   
->documentation</a></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Avatar</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Brand</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Button</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ButtonVariant</span>
-</span></span><span style="display:flex;"><span>  ...
-</span></span><span style="display:flex;"><span>  ...
-</span></span><span style="display:flex;"><span>} <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@patternfly/react-core&#34;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">accessibleStyles</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@patternfly/react-styles/css/utilities/Accessibility/accessibility&#34;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">spacingStyles</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@patternfly/react-styles/css/utilities/Spacing/spacing&#34;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">css</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@patternfly/react-styles&#34;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">BellIcon</span>, <span style="color:#a6e22e">CogIcon</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@patternfly/react-icons&#34;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">//This imports are must to render css
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#34;@patternfly/react-core/dist/styles/base.css&#34;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#34;@patternfly/patternfly/patternfly.css&#34;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">App</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">React</span>.<span style="color:#a6e22e">Component</span> {
-</span></span><span style="display:flex;"><span>...
-</span></span><span style="display:flex;"><span>...
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">React</span>.<span style="color:#a6e22e">Fragment</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Page</span>
-</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">header</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">Header</span>}
-</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">sidebar</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">Sidebar</span>}
-</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">isManagedSidebar</span>
-</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">skipToContent</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">PageSkipToContent</span>}
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">PageSection</span> <span style="color:#a6e22e">variant</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">PageSectionVariants</span>.<span style="color:#a6e22e">light</span>}<span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">TextContent</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Text</span> <span style="color:#a6e22e">component</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;h1&#34;</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">Main</span> <span style="color:#a6e22e">Title</span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/Text&gt;</span>
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Text</span> <span style="color:#a6e22e">component</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;p&#34;</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">Body</span> <span style="color:#a6e22e">text</span> <span style="color:#a6e22e">should</span> <span style="color:#a6e22e">be</span> <span style="color:#a6e22e">Overpass</span> <span style="color:#a6e22e">Regular</span> <span style="color:#a6e22e">at</span> <span style="color:#ae81ff">16</span><span style="color:#a6e22e">px</span>. <span style="color:#a6e22e">It</span> <span style="color:#a6e22e">should</span> <span style="color:#a6e22e">have</span> <span style="color:#a6e22e">leading</span> <span style="color:#66d9ef">of</span> <span style="color:#ae81ff">24</span><span style="color:#a6e22e">px</span> <span style="color:#a6e22e">because</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">br</span> <span style="color:#f92672">/&gt;</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">it</span><span style="color:#960050;background-color:#1e0010">’</span><span style="color:#a6e22e">s</span> <span style="color:#a6e22e">relative</span> <span style="color:#a6e22e">line</span> <span style="color:#a6e22e">height</span> <span style="color:#66d9ef">of</span> <span style="color:#ae81ff">1.5</span>.
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/Text&gt;</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/TextContent&gt;</span>
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/PageSection&gt;</span>
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">PageSection</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Gallery</span> <span style="color:#a6e22e">gutter</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;md&#34;</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span>              {Array.<span style="color:#a6e22e">apply</span>(<span style="color:#ae81ff">0</span>, Array(<span style="color:#ae81ff">10</span>)).<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">i</span>) =&gt; (
-</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">GalleryItem</span> <span style="color:#a6e22e">key</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">i</span>}<span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Card</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">CardBody</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">This</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">card</span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/CardBody&gt;</span>
-</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/Card&gt;</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/GalleryItem&gt;</span>
-</span></span><span style="display:flex;"><span>              ))}
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/Gallery&gt;</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/PageSection&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/Page&gt;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/React.Fragment&gt;</span>
-</span></span><span style="display:flex;"><span>    );
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#a6e22e">App</span>;
-</span></span></code></pre></div><p>Start the application</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm start
-</span></span></code></pre></div><p>You should see patternfly design like this!</p>
-<p>
-
-
-
-  
-  
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    
-
-    
-    
-    
-      
-        
-        
-        
-          
-          
-          
-        
-      
-    
-      
-        
-        
-        
-          
-          
-          
-        
-      
-    
-      
-        
-        
-        
-          
-          
-          
-        
-      
-    
-      
-        
-        
-        
-          
-          
-          
-        
-      
-    
-      
-        
-        
-        
-          
-          
-          
-        
-      
-    
-
-
-    <picture>
-      
-        <source srcset="/blog/patternfly-setup-react/patternfly-react_huc6721c457fd9be3437e850e2a6887c32_62058_100x0_resize_q75_h2_box_3.webp 100w,/blog/patternfly-setup-react/patternfly-react_huc6721c457fd9be3437e850e2a6887c32_62058_200x0_resize_q75_h2_box_3.webp 200w,/blog/patternfly-setup-react/patternfly-react_huc6721c457fd9be3437e850e2a6887c32_62058_300x0_resize_q75_h2_box_3.webp 300w,/blog/patternfly-setup-react/patternfly-react_huc6721c457fd9be3437e850e2a6887c32_62058_400x0_resize_q75_h2_box_3.webp 400w,/blog/patternfly-setup-react/patternfly-react_huc6721c457fd9be3437e850e2a6887c32_62058_500x0_resize_q75_h2_box_3.webp 500w" />
-      
-      <img
-        src="/blog/patternfly-setup-react/patternfly-react.png"
-        srcset="/blog/patternfly-setup-react/patternfly-react_huc6721c457fd9be3437e850e2a6887c32_62058_100x0_resize_box_3.png 100w,/blog/patternfly-setup-react/patternfly-react_huc6721c457fd9be3437e850e2a6887c32_62058_200x0_resize_box_3.png 200w,/blog/patternfly-setup-react/patternfly-react_huc6721c457fd9be3437e850e2a6887c32_62058_300x0_resize_box_3.png 300w,/blog/patternfly-setup-react/patternfly-react_huc6721c457fd9be3437e850e2a6887c32_62058_400x0_resize_box_3.png 400w,/blog/patternfly-setup-react/patternfly-react_huc6721c457fd9be3437e850e2a6887c32_62058_500x0_resize_box_3.png 500w"
-        alt="intellij-debug"
-        
-        loading="lazy"
-        width="1366"
-        height="742"
-      />
-    </picture>
-  
-
-
-
-
-
-
-</p>
+>here</a>.</p>
+<p>I am using <code>InfluxDB API</code> method to manually create DBRP mappings for unmapped buckets as shown below.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl --request POST http://localhost:8086/api/v2/dbrps <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --header <span style="color:#e6db74">&#34;Authorization: Token YourAuthToken&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --header <span style="color:#e6db74">&#39;Content-type: application/json&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --data <span style="color:#e6db74">&#39;{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;bucketID&#34;: &#34;00oxo0oXx000x0Xo&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;database&#34;: &#34;example-db&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;default&#34;: true,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;orgID&#34;: &#34;00oxo0oXx000x0Xo&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;retention_policy&#34;: &#34;example-rp&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      }&#39;</span>
+</span></span></code></pre></div><p>Make sure to update Host, Token, bucketID, database, orgID, retention_policy with your values.</p>
+<p>Lastly, go to Grafana, choose the InfluxDB data source, and try to run a query to see that the setting up process was successful.</p>
 
     </div>
 
@@ -541,7 +426,7 @@ npm i --save @patternfly/patternfly \ @patternfly/react-core @patternfly/react-t
       
       <a
         class="social-share__item"
-        href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Fpatternfly-setup-react%2F"
+        href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Finfluxdb-grafana%2F"
         target="_blank"
         rel="noreferrer"
       >
@@ -556,7 +441,7 @@ npm i --save @patternfly/patternfly \ @patternfly/react-core @patternfly/react-t
       
       <a
         class="social-share__item"
-        href="https://reddit.com/submit?url=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Fpatternfly-setup-react%2F&amp;title=Patternfly&#43;setup&#43;in&#43;React&#43;Application"
+        href="https://reddit.com/submit?url=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Finfluxdb-grafana%2F&amp;title=Configure&#43;Influxdb&#43;with&#43;Grafana"
         target="_blank"
         rel="noreferrer"
       >
@@ -571,7 +456,7 @@ npm i --save @patternfly/patternfly \ @patternfly/react-core @patternfly/react-t
       
       <a
         class="social-share__item"
-        href="mailto:?subject=Patternfly&#43;setup&#43;in&#43;React&#43;Application&amp;body=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Fpatternfly-setup-react%2F"
+        href="mailto:?subject=Configure&#43;Influxdb&#43;with&#43;Grafana&amp;body=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Finfluxdb-grafana%2F"
         target="_blank"
         rel="noreferrer"
       >

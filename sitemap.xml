@@ -3,7 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://vikaspogu.dev/blog/</loc>
-    <lastmod>2022-05-13T16:09:15-05:00</lastmod>
+    <lastmod>2022-08-08T15:32:00-05:00</lastmod>
+  </url><url>
+    <loc>https://vikaspogu.dev/blog/influxdb-grafana/</loc>
+    <lastmod>2022-08-08T15:32:00-05:00</lastmod>
+  </url><url>
+    <loc>https://vikaspogu.dev/tags/grafana/</loc>
+    <lastmod>2022-08-08T15:32:00-05:00</lastmod>
+  </url><url>
+    <loc>https://vikaspogu.dev/tags/influxdb/</loc>
+    <lastmod>2022-08-08T15:32:00-05:00</lastmod>
+  </url><url>
+    <loc>https://vikaspogu.dev/tags/</loc>
+    <lastmod>2022-08-08T15:32:00-05:00</lastmod>
+  </url><url>
+    <loc>https://vikaspogu.dev/</loc>
+    <lastmod>2022-08-08T15:32:00-05:00</lastmod>
   </url><url>
     <loc>https://vikaspogu.dev/tags/nas/</loc>
     <lastmod>2022-05-13T16:09:15-05:00</lastmod>
@@ -14,13 +29,7 @@
     <loc>https://vikaspogu.dev/blog/tftp-udm-pxe/</loc>
     <lastmod>2022-05-13T16:09:15-05:00</lastmod>
   </url><url>
-    <loc>https://vikaspogu.dev/tags/</loc>
-    <lastmod>2022-05-13T16:09:15-05:00</lastmod>
-  </url><url>
     <loc>https://vikaspogu.dev/tags/udm/</loc>
-    <lastmod>2022-05-13T16:09:15-05:00</lastmod>
-  </url><url>
-    <loc>https://vikaspogu.dev/</loc>
     <lastmod>2022-05-13T16:09:15-05:00</lastmod>
   </url><url>
     <loc>https://vikaspogu.dev/categories/</loc>
@@ -214,12 +223,6 @@
   </url><url>
     <loc>https://vikaspogu.dev/tags/vagrant/</loc>
     <lastmod>2020-01-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://vikaspogu.dev/tags/grafana/</loc>
-    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://vikaspogu.dev/tags/influxdb/</loc>
-    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://vikaspogu.dev/blog/raspberry-pi-temp-telegraf/</loc>
     <lastmod>2020-01-01T00:00:00+00:00</lastmod>
