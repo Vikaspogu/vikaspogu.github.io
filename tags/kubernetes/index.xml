@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>kubernetes on hugo-theme-gruvbox</title>
+    <title>kubernetes on Vikas Pogu</title>
     <link>https://vikaspogu.dev/tags/kubernetes/</link>
-    <description>Recent content in kubernetes on hugo-theme-gruvbox</description>
+    <description>Recent content in kubernetes on Vikas Pogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2021</copyright>
     <lastBuildDate>Wed, 19 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />

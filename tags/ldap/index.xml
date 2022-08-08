@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>LDAP on hugo-theme-gruvbox</title>
+    <title>LDAP on Vikas Pogu</title>
     <link>https://vikaspogu.dev/tags/ldap/</link>
-    <description>Recent content in LDAP on hugo-theme-gruvbox</description>
+    <description>Recent content in LDAP on Vikas Pogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2021</copyright>
     <lastBuildDate>Wed, 15 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/ldap/index.xml" rel="self" type="application/rss+xml" />
