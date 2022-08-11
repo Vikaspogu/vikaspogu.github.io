@@ -6,7 +6,17 @@
     <description>Recent content in Blogs on Vikas Pogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2021</copyright>
-    <lastBuildDate>Mon, 08 Aug 2022 15:32:00 -0500</lastBuildDate><atom:link href="https://vikaspogu.dev/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Aug 2022 16:31:43 -0500</lastBuildDate><atom:link href="https://vikaspogu.dev/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ArgoCD with Kustomize and ksops using Age encryption</title>
+      <link>https://vikaspogu.dev/blog/argo-operator-ksops-age/</link>
+      <pubDate>Wed, 10 Aug 2022 16:31:43 -0500</pubDate>
+      
+      <guid>https://vikaspogu.dev/blog/argo-operator-ksops-age/</guid>
+      <description>I am a big fan of FluxCD and its integration with secret management, however recently I decided to tinker with ArgoCD. One of the challenges I encountered was secret management. Although, ArgoCD provides flexible integration with most of secret management tools but it requires little extra configuration.
+So I started my journey to configure ArgoCD with SOPS, there isn&amp;rsquo;t a direct integration with SOPS. We will have to use Kustomize plugin called ksops which is the suggested tool on Argo&amp;rsquo;s website and it has pretty good instructions for Argo integration.</description>
+    </item>
+    
     <item>
       <title>Configure Influxdb with Grafana</title>
       <link>https://vikaspogu.dev/blog/influxdb-grafana/</link>
