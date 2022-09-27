@@ -13,7 +13,8 @@
       <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/blog/pi-garage-k3s/</guid>
-      <description>There are many articles out there which demonstartes how to use a raspberry pi as a DIY garage door opener project. Few are outdated and not deployed using containers images. I found couple good solutions on google but i wasn&amp;rsquo;t able to run them on kubernetes cluster either due to older packages or no enough information. I decided to build my own solution from different sources of information i found</description>
+      <description>Many articles are out there which demonstrate how to use a raspberry pi as a DIY garage door opener project. Few are outdated and not deployed using container images. I found a few reasonable solutions on google, but I couldn&amp;rsquo;t run them on the Kubernetes cluster due to older packages or insufficient information. I decided to build my solution from different sources of information I found
+What we&amp;rsquo;ll cover in this post</description>
     </item>
     
   </channel>

@@ -13,10 +13,10 @@
       <pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/blog/helm-dict-function/</guid>
-      <description>Recently I was in a situation where I ended up writing multiple if-else statements in the helm template. Code block didn&amp;rsquo;t look clean and, I begin to explore alternative ways to achieve a clean and concise way to achieve the same behavior.
+      <description>Recently I was in a situation where I ended up writing multiple if-else statements in the helm template. As a result, the code block wasn&amp;rsquo;t clean, and I began to explore alternative ways to achieve the same behavior concisely.
 Helm dict function perfectly fits my use case.
 Before
-{{- if eq .Values.imageType &amp;#34;java&amp;#34; }} name: openjdk:latest {{- else if eq .Values.imageType &amp;#34;nodejs&amp;#34; }} name: nodejs:latest {{- else if eq .</description>
+{{- if eq .Values.imageType &amp;#34;java&amp;#34; }} name: openjdk:latest {{- else if eq .Values.imageType &amp;#34;nodejs&amp;#34; }} name: nodejs:latest {{- else if eq .Values.imageType &amp;#34;golang&amp;#34; }} name: golang:latest {{- else if eq .</description>
     </item>
     
     <item>
@@ -25,8 +25,8 @@ Before
       <pubDate>Thu, 08 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/blog/helm-join-function/</guid>
-      <description>Key benefits of Helm is that it helps reduce the amount of configuration a user needs to provide to deploy applications to Kubernetes. With Helm, we can have a single chart that can deploy all the microservices.
-Unique ServiceAccount # Recently we wanted to create a unique service account for each microservice, so all microservices don&amp;rsquo;t share same service account using helm template. In our example, we will append the release name with the service account name.</description>
+      <description>The key benefit of Helm is that it helps reduce the configuration a user needs to provide to deploy applications to Kubernetes. With Helm, we can have a single chart that can deploy all the microservices.
+Unique ServiceAccount # Recently we wanted to create a unique service account for each microservice, so all microservices don&amp;rsquo;t share the same service account using the helm template. In our example, we will append the release name with the service account name.</description>
     </item>
     
   </channel>

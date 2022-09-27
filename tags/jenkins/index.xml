@@ -8,14 +8,14 @@
     <copyright>Copyright © 2021</copyright>
     <lastBuildDate>Tue, 18 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/jenkins/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Configure jenkins pipeline job</title>
+      <title>Configure Jenkins pipeline job</title>
       <link>https://vikaspogu.dev/blog/jenkins-seed-job/</link>
       <pubDate>Tue, 18 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/blog/jenkins-seed-job/</guid>
-      <description>In one of my previous posts, I have discussed configuring multibranch pipeline seed jobs using Jenkins configuration as code plugin
-This is an example of configuring a declarative pipeline job from bitbucket repo, running at midnight every day
-- script: &amp;gt; pipelineJob(&amp;#39;sample-job&amp;#39;) { definition { cpsScm { scriptPath &amp;#39;job1/Jenkinsfile&amp;#39; ## If jenkins job is in a nested folder scm { git { remote { url &amp;#39;https://github.com/Vikaspogu/sample-repo&amp;#39; credentials &amp;#39;sample-creds&amp;#39; } branch &amp;#39;*/master&amp;#39; extensions {} } } triggers { cron(&amp;#39;@midnight&amp;#39;) } } } } </description>
+      <description>In one of my previous posts, I discussed configuring multibranch pipeline seed jobs using Jenkins configuration as code plugin
+Below is an example of configuring a declarative pipeline job from a bitbucket repo, running at midnight every day
+- script: &amp;gt; pipelineJob(&amp;#39;sample-job&amp;#39;) { definition { cpsScm { scriptPath &amp;#39;job1/Jenkinsfile&amp;#39; ## If the Jenkins job is in a nested folder scm { git { remote { url &amp;#39;https://github.com/Vikaspogu/sample-repo&amp;#39; credentials &amp;#39;sample-creds&amp;#39; } branch &amp;#39;*/master&amp;#39; extensions {} } } triggers { cron(&amp;#39;@midnight&amp;#39;) } } } } </description>
     </item>
     
     <item>
@@ -24,8 +24,8 @@ This is an example of configuring a declarative pipeline job from bitbucket repo
       <pubDate>Tue, 07 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/blog/jenkins-date-difference/</guid>
-      <description>This is how you can calculate days between two dates in Jenkins pipeline. @NonCPS annotation is useful when you have methods which use objects that aren&amp;rsquo;t serializable
-import java.text.SimpleDateFormat stages { stage(&amp;#34;Calculate days&amp;#34;) { steps { script { def daysRemaining = getRemainingDays(&amp;#34;2020-06-25&amp;#34;) } } } } } @NonCPS def getRemainingDays(previousDate){ def currentDate = new Date() String currentTimeFormat= currentDate.format(&amp;#34;yyyy-MM-dd&amp;#34;) def oldDate = new SimpleDateFormat(&amp;#34;yyyy-MM-dd&amp;#34;).parse(previousDate) return currentTimeFormat-oldDate } Calculate if date is greater than 14 days</description>
+      <description>The below snippet shows how to calculate days between two dates in the Jenkins pipeline. @NonCPS annotation is functional when you have methods that use objects that aren&amp;rsquo;t serializable.
+import java.text.SimpleDateFormat stages { stage(&amp;#34;Calculate days&amp;#34;) { steps { script { def daysRemaining = getRemainingDays(&amp;#34;2020-06-25&amp;#34;) } } } } } @NonCPS def getRemainingDays(previousDate){ def currentDate = new Date() String currentTimeFormat= currentDate.format(&amp;#34;yyyy-MM-dd&amp;#34;) def oldDate = new SimpleDateFormat(&amp;#34;yyyy-MM-dd&amp;#34;).parse(previousDate) return currentTimeFormat-oldDate } Calculate if the date is greater than 14 days</description>
     </item>
     
     <item>
@@ -34,9 +34,9 @@ import java.text.SimpleDateFormat stages { stage(&amp;#34;Calculate days&amp;#34
       <pubDate>Mon, 06 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/blog/jenkins-config-as-code-openshift/</guid>
-      <description>Deploying Jenkins on Kubernetes provides important benefits over a standard VM-based deployment. For example, gaining the ability to have project-specific Jenkins slaves (agents) on demand, instead of having a pool of VMs idle waiting for a job.
-Jenkins can be easily deployed using Helm, OpenShift using jenkins catalog
-As everyone has experienced setting up Jenkins is a complex process, as both Jenkins and its plugins require some tuning and configuration, with dozens of parameters to set within the web UI manage section</description>
+      <description>Deploying Jenkins on Kubernetes provides significant benefits over a standard VM-based deployment. For example, we are gaining the ability to have project-specific Jenkins slaves (agents) on demand instead of having a pool of VMs idle waiting for a job.
+In vanilla Kubernetes, we can deploy Jenkins using Helm, and In OpenShift, we can deploy Jenkins via the developer&amp;rsquo;s catalog.
+As everyone has experienced, setting up Jenkins is a complex process. Both Jenkins and its plugins require some tuning and Configuration, with dozens of parameters to set within the web UI manage section.</description>
     </item>
     
     <item>
@@ -45,9 +45,9 @@ As everyone has experienced setting up Jenkins is a complex process, as both Jen
       <pubDate>Mon, 10 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/blog/openshift-jenkins-oauth-ssl/</guid>
-      <description>Jenkins SSL # Problem # Recently, I encountered an issue while authenticating to OpenShift Jenkins using OpenShift OAuth plugin where trusted certificate provided by CA that aren&amp;rsquo;t included in the default JRE TrustStore.
+      <description>Jenkins SSL # Problem # I recently encountered an issue while authenticating to OpenShift Jenkins using the OpenShift OAuth plugin, where trusted certificates provided by CA aren&amp;rsquo;t included in the default JRE TrustStore.
 Logs from Jenkins pod
-2020-02-10 21:19:07.335+0000 [id=17]	INFO	o.o.j.p.o.OpenShiftOAuth2SecurityRealm#transportToUse: OpenShift OAuth got an SSL error when accessing the issuer&amp;#39;s token endpoint when using the SA certificate2020-02-10 21:19:07.348+0000 [id=17]	INFO	o.o.j.p.o.OpenShiftOAuth2SecurityRealm#transportToUse: OpenShift OAuth provider token endpoint failed unexpectedly using the JVMs default keystore sun.</description>
+2020-02-10 21:19:07.335+0000 [id=17] INFO o.o.j.p.o.OpenShiftOAuth2SecurityRealm#transportToUse: OpenShift OAuth got an SSL error when accessing the issuer&amp;#39;s token endpoint when using the SA certificate2020-02-10 21:19:07.348+0000 [id=17] INFO o.o.j.p.o.OpenShiftOAuth2SecurityRealm#transportToUse: OpenShift OAuth provider token endpoint failed unexpectedly using the JVMs default keystore sun.</description>
     </item>
     
   </channel>

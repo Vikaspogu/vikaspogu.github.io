@@ -58,12 +58,12 @@
 
 
 
-<title>Profiling a application in OpenShift container</title>
+<title>Profiling an application in OpenShift container.</title>
 
 <meta
   name="description"
-  content="Sometimes writing code that just runs is not enough. We might want to know what goes on internally such as how memory is allocated, consequences of using one coding approach over another, implications of concurrent executions, areas to improve performance, etc. We can use profilers for this.
-In this post I&amp;rsquo;ll discuss how to use YourKit-JavaProfiler inside a container.
+  content="Sometimes writing code that runs is not enough. We might want to know what goes on internally, such as memory allocation, consequences of using one coding approach over another, implications of concurrent executions, areas to improve performance, etc. We can use profilers for this.
+In this post, I&amp;rsquo;ll discuss using YourKit-JavaProfiler inside a container.
 Since my sample application is built using OpenShift S2I process and pushed into OpenShift internal registry, I&amp;rsquo;ll have to pull the image locally."
 />
 
@@ -72,14 +72,14 @@ Since my sample application is built using OpenShift S2I process and pushed into
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Profiling a application in OpenShift container"/>
-<meta name="twitter:description" content="Sometimes writing code that just runs is not enough. We might want to know what goes on internally such as how memory is allocated, consequences of using one coding approach over another, implications of concurrent executions, areas to improve performance, etc. We can use profilers for this.
-In this post I&rsquo;ll discuss how to use YourKit-JavaProfiler inside a container.
+<meta name="twitter:title" content="Profiling an application in OpenShift container."/>
+<meta name="twitter:description" content="Sometimes writing code that runs is not enough. We might want to know what goes on internally, such as memory allocation, consequences of using one coding approach over another, implications of concurrent executions, areas to improve performance, etc. We can use profilers for this.
+In this post, I&rsquo;ll discuss using YourKit-JavaProfiler inside a container.
 Since my sample application is built using OpenShift S2I process and pushed into OpenShift internal registry, I&rsquo;ll have to pull the image locally."/>
 
-<meta property="og:title" content="Profiling a application in OpenShift container" />
-<meta property="og:description" content="Sometimes writing code that just runs is not enough. We might want to know what goes on internally such as how memory is allocated, consequences of using one coding approach over another, implications of concurrent executions, areas to improve performance, etc. We can use profilers for this.
-In this post I&rsquo;ll discuss how to use YourKit-JavaProfiler inside a container.
+<meta property="og:title" content="Profiling an application in OpenShift container." />
+<meta property="og:description" content="Sometimes writing code that runs is not enough. We might want to know what goes on internally, such as memory allocation, consequences of using one coding approach over another, implications of concurrent executions, areas to improve performance, etc. We can use profilers for this.
+In this post, I&rsquo;ll discuss using YourKit-JavaProfiler inside a container.
 Since my sample application is built using OpenShift S2I process and pushed into OpenShift internal registry, I&rsquo;ll have to pull the image locally." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://vikaspogu.dev/blog/javaprofiler-openshift/" /><meta property="article:section" content="blog" />
@@ -87,12 +87,12 @@ Since my sample application is built using OpenShift S2I process and pushed into
 <meta property="article:modified_time" content="2019-05-14T00:00:00+00:00" />
 
 
-<meta itemprop="name" content="Profiling a application in OpenShift container">
-<meta itemprop="description" content="Sometimes writing code that just runs is not enough. We might want to know what goes on internally such as how memory is allocated, consequences of using one coding approach over another, implications of concurrent executions, areas to improve performance, etc. We can use profilers for this.
-In this post I&rsquo;ll discuss how to use YourKit-JavaProfiler inside a container.
+<meta itemprop="name" content="Profiling an application in OpenShift container.">
+<meta itemprop="description" content="Sometimes writing code that runs is not enough. We might want to know what goes on internally, such as memory allocation, consequences of using one coding approach over another, implications of concurrent executions, areas to improve performance, etc. We can use profilers for this.
+In this post, I&rsquo;ll discuss using YourKit-JavaProfiler inside a container.
 Since my sample application is built using OpenShift S2I process and pushed into OpenShift internal registry, I&rsquo;ll have to pull the image locally."><meta itemprop="datePublished" content="2019-05-14T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2019-05-14T00:00:00+00:00" />
-<meta itemprop="wordCount" content="228">
+<meta itemprop="wordCount" content="226">
 <meta itemprop="keywords" content="OpenShift,Java,YourKit-JavaProfiler," />
 
 
@@ -316,7 +316,7 @@ Since my sample application is built using OpenShift S2I process and pushed into
   <article class="post">
     <div class="post-header">
   <h1>
-    <a href="/blog/javaprofiler-openshift/">Profiling a application in OpenShift container</a>
+    <a href="/blog/javaprofiler-openshift/">Profiling an application in OpenShift container.</a>
   </h1>
 
   <div class="post-meta">
@@ -353,8 +353,8 @@ Since my sample application is built using OpenShift S2I process and pushed into
 </div>
 
     <div class="post-content">
-      <p>Sometimes writing code that just runs is not enough. We might want to know what goes on internally such as how memory is allocated, consequences of using one coding approach over another, implications of concurrent executions, areas to improve performance, etc. We can use profilers for this.</p>
-<p>In this post I&rsquo;ll discuss how to use <a
+      <p>Sometimes writing code that runs is not enough. We might want to know what goes on internally, such as memory allocation, consequences of using one coding approach over another, implications of concurrent executions, areas to improve performance, etc. We can use profilers for this.</p>
+<p>In this post, I&rsquo;ll discuss using <a
   href="https://www.yourkit.com/"
   
   
@@ -364,16 +364,16 @@ Since my sample application is built using OpenShift S2I process and pushed into
 <p>Since my sample application is built using OpenShift S2I process and pushed into OpenShift internal registry, I&rsquo;ll have to pull the image locally.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker login -p <span style="color:#66d9ef">$(</span>oc whoami --show-token<span style="color:#66d9ef">)</span> -u admin docker-registry.example.com
 </span></span><span style="display:flex;"><span>docker pull docker-registry.example.com/myproject/sample-app:latest
-</span></span></code></pre></div><p>Create a new Dockerfile, add few lines to install YourKit Java Profiler agents and expose the profiler agent port.</p>
+</span></span></code></pre></div><p>Create a new Dockerfile, add a few lines to install YourKit Java Profiler agents, and expose the profiler agent port.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> docker-registry.example.com/myproject/sample-app:latest</span><span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> wget https://www.yourkit.com/download/docker/YourKit-JavaProfiler-2019.1-docker.zip -P /tmp/ <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    unzip /tmp/YourKit-JavaProfiler-2019.1-docker.zip -d /usr/local <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    rm /tmp/YourKit-JavaProfiler-2019.1-docker.zip<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> 10001</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span></code></pre></div><p>Build and push the image into registry</p>
+</span></span></span></code></pre></div><p>Build and push the image into the registry</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker build . -t docker-registry.example.com/myproject/sample-app-profiler:latest
 </span></span><span style="display:flex;"><span>docker push docker-registry.example.com/myproject/sample-app-profiler:latest
-</span></span></code></pre></div><p>Update image in the deployment configuration.</p>
+</span></span></code></pre></div><p>Update the image in the deployment configuration.</p>
 <p>
 
 
@@ -471,13 +471,13 @@ Since my sample application is built using OpenShift S2I process and pushed into
 <p>Load the agent into the JVM by adding a <code>JAVA_TOOL_OPTIONS</code> environment variable in the deployment configuration.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ oc set env dc/MY_APP_NAME JAVA_TOOL_OPTIONS<span style="color:#f92672">=</span>-agentpath:/usr/local/YourKit-JavaProfiler-2019.01/bin/linux-x86-64/libyjpagent.so<span style="color:#f92672">=</span>port<span style="color:#f92672">=</span>10001,listen<span style="color:#f92672">=</span>all
 </span></span><span style="display:flex;"><span>oc rollout latest dc/MY_APP_NAME
-</span></span></code></pre></div><p>Once deployment is finished, do a oc port forwarding from your local machine to the application pod.</p>
+</span></span></code></pre></div><p>Once the deployment is completed, run <code>oc port forwarding</code> from your local machine to the application pod.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ oc get pod
 </span></span><span style="display:flex;"><span>NAME                            READY     STATUS      RESTARTS   AGE
 </span></span><span style="display:flex;"><span>MY_APP_NAME-3-1xrsp             1/1       Running     <span style="color:#ae81ff">0</span>          6s
 </span></span><span style="display:flex;"><span>...
 </span></span><span style="display:flex;"><span>$ oc port-forward MY_APP_NAME-3-1xrsp 10001:10001
-</span></span></code></pre></div><p>Add a connection in the profiler with <code>localhost:10001</code> and you&rsquo;re all set.</p>
+</span></span></code></pre></div><p>Add a connection in the profiler with <code>localhost:10001,</code> and you&rsquo;re all set.</p>
 
     </div>
 
@@ -508,7 +508,7 @@ Since my sample application is built using OpenShift S2I process and pushed into
       
       <a
         class="social-share__item"
-        href="https://reddit.com/submit?url=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Fjavaprofiler-openshift%2F&amp;title=Profiling&#43;a&#43;application&#43;in&#43;OpenShift&#43;container"
+        href="https://reddit.com/submit?url=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Fjavaprofiler-openshift%2F&amp;title=Profiling&#43;an&#43;application&#43;in&#43;OpenShift&#43;container."
         target="_blank"
         rel="noreferrer"
       >
@@ -523,7 +523,7 @@ Since my sample application is built using OpenShift S2I process and pushed into
       
       <a
         class="social-share__item"
-        href="mailto:?subject=Profiling&#43;a&#43;application&#43;in&#43;OpenShift&#43;container&amp;body=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Fjavaprofiler-openshift%2F"
+        href="mailto:?subject=Profiling&#43;an&#43;application&#43;in&#43;OpenShift&#43;container.&amp;body=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Fjavaprofiler-openshift%2F"
         target="_blank"
         rel="noreferrer"
       >
@@ -667,8 +667,8 @@ Since my sample application is built using OpenShift S2I process and pushed into
 
 <script
   type="text/javascript"
-  src="/js/flexsearch.3f77632a5e276b2f254e33a8da752303c9c167d604d662532d4e2649829e86a9fb988138e9e27ac214ffe560a53974ba68dd2b6e306db43e1ac908e11197b97d.js"
-  integrity="sha512-P3djKl4nay8lTjOo2nUjA8nBZ9YE1mJTLU4mSYKehqn7mIE46eJ6whT/5WClOXS6aN0rbjBttD4ayQjhEZe5fQ==">
+  src="/js/flexsearch.7a24f461a845e684001eeb74564d173afc16e43e00d45973599a7307708a896cab3eed6fc2576ad0d4ca5e6eed1e5c9421f94947789d054a67640babb379dea5.js"
+  integrity="sha512-eiT0YahF5oQAHut0Vk0XOvwW5D4A1FlzWZpzB3CKiWyrPu1vwldq0NTKXm7tHlyUIflJR3idBUpnZAurs3nepQ==">
 </script>
 
 

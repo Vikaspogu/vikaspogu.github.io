@@ -84,7 +84,7 @@
 <meta itemprop="name" content="Boot from USB through grub menu">
 <meta itemprop="description" content="Boot OS from grub menu"><meta itemprop="datePublished" content="2020-12-01T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2020-12-01T00:00:00+00:00" />
-<meta itemprop="wordCount" content="106">
+<meta itemprop="wordCount" content="111">
 <meta itemprop="keywords" content="boot,grub," />
 
 
@@ -340,24 +340,24 @@
 </div>
 
     <div class="post-content">
-      <p>First make sure you have secure boot disabled from the firmware settings. Once you are in grub command line type <code>ls</code> to list all partitions</p>
+      <p>First, make sure you have secure boot disabled from the firmware settings. Once you are in the grub command line, type <code>ls</code> to list all partitions</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>grub&gt;ls 
 </span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>hd0<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>hd0,gpt1<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>hd1<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>hd1,gpt8<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>cd0<span style="color:#f92672">))</span>
-</span></span></code></pre></div><p>Type <code>ls (cd0)</code> to get UUID of device</p>
+</span></span></code></pre></div><p>Type <code>ls (cd0)</code> to get the UUID of the device.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>grub&gt;ls <span style="color:#f92672">(</span>hd0,gpt1<span style="color:#f92672">)</span> 
 </span></span><span style="display:flex;"><span>Partition hd0,gpt1: Filesystem type fat - Label <span style="color:#e6db74">`</span>CES_X64FREV<span style="color:#e6db74">`</span>, UUID 4099-DBD9 Partition start-512 Sectors...
-</span></span></code></pre></div><p>Note the UUID of you usb drive, shown in above command</p>
+</span></span></code></pre></div><p>Note the UUID of your USB drive, shown in the above command</p>
 <p>Type the following commands</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>insmod part_gpt
 </span></span><span style="display:flex;"><span>insmod fat
 </span></span><span style="display:flex;"><span>insmod search_fs_uuid
 </span></span><span style="display:flex;"><span>insmod chain
 </span></span><span style="display:flex;"><span>search --fs-uuid --set<span style="color:#f92672">=</span>root 409-DBD9
-</span></span></code></pre></div><p>Replace <code>UUID</code> of your device</p>
-<p>Now we select the efi file to boot from</p>
+</span></span></code></pre></div><p>Replace the <code>UUID</code> of your device</p>
+<p>Now we select the EFI file to boot from</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chainloader /efi/boot/bootx64.efi
 </span></span><span style="display:flex;"><span>boot
-</span></span></code></pre></div><p>That&rsquo;s it, That should boot the usb drive</p>
+</span></span></code></pre></div><p>That&rsquo;s it; that should boot the USB drive.</p>
 
     </div>
 
@@ -547,8 +547,8 @@
 
 <script
   type="text/javascript"
-  src="/js/flexsearch.3f77632a5e276b2f254e33a8da752303c9c167d604d662532d4e2649829e86a9fb988138e9e27ac214ffe560a53974ba68dd2b6e306db43e1ac908e11197b97d.js"
-  integrity="sha512-P3djKl4nay8lTjOo2nUjA8nBZ9YE1mJTLU4mSYKehqn7mIE46eJ6whT/5WClOXS6aN0rbjBttD4ayQjhEZe5fQ==">
+  src="/js/flexsearch.7a24f461a845e684001eeb74564d173afc16e43e00d45973599a7307708a896cab3eed6fc2576ad0d4ca5e6eed1e5c9421f94947789d054a67640babb379dea5.js"
+  integrity="sha512-eiT0YahF5oQAHut0Vk0XOvwW5D4A1FlzWZpzB3CKiWyrPu1vwldq0NTKXm7tHlyUIflJR3idBUpnZAurs3nepQ==">
 </script>
 
 

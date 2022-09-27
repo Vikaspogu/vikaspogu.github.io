@@ -58,11 +58,11 @@
 
 
 
-<title>Build multi arch docker image using Tekton</title>
+<title>Build multi-arch docker image using Tekton</title>
 
 <meta
   name="description"
-  content="multi arch builds in tekton using docker buildx"
+  content="multi-arch builds in Tekton using docker buildx"
 />
 
 <link rel="canonical" href="https://vikaspogu.dev/blog/tekton-multiarch-buildx/" />
@@ -70,21 +70,21 @@
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Build multi arch docker image using Tekton"/>
-<meta name="twitter:description" content="multi arch builds in tekton using docker buildx"/>
+<meta name="twitter:title" content="Build multi-arch docker image using Tekton"/>
+<meta name="twitter:description" content="multi-arch builds in Tekton using docker buildx"/>
 
-<meta property="og:title" content="Build multi arch docker image using Tekton" />
-<meta property="og:description" content="multi arch builds in tekton using docker buildx" />
+<meta property="og:title" content="Build multi-arch docker image using Tekton" />
+<meta property="og:description" content="multi-arch builds in Tekton using docker buildx" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://vikaspogu.dev/blog/tekton-multiarch-buildx/" /><meta property="article:section" content="blog" />
 <meta property="article:published_time" content="2021-01-19T00:00:00+00:00" />
 <meta property="article:modified_time" content="2021-01-19T00:00:00+00:00" />
 
 
-<meta itemprop="name" content="Build multi arch docker image using Tekton">
-<meta itemprop="description" content="multi arch builds in tekton using docker buildx"><meta itemprop="datePublished" content="2021-01-19T00:00:00+00:00" />
+<meta itemprop="name" content="Build multi-arch docker image using Tekton">
+<meta itemprop="description" content="multi-arch builds in Tekton using docker buildx"><meta itemprop="datePublished" content="2021-01-19T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-01-19T00:00:00+00:00" />
-<meta itemprop="wordCount" content="640">
+<meta itemprop="wordCount" content="644">
 <meta itemprop="keywords" content="tekton,multi-arch,buildx," />
 
 
@@ -308,7 +308,7 @@
   <article class="post">
     <div class="post-header">
   <h1>
-    <a href="/blog/tekton-multiarch-buildx/">Build multi arch docker image using Tekton</a>
+    <a href="/blog/tekton-multiarch-buildx/">Build multi-arch docker image using Tekton</a>
   </h1>
 
   <div class="post-meta">
@@ -345,30 +345,30 @@
 </div>
 
     <div class="post-content">
-      <p>There are three different strategies to build multi-platform images that are supported by Buildx and Dockerfiles:</p>
+      <p>There are three different strategies to build multi-platform images that Buildx and Dockerfiles support:</p>
 <ul>
 <li>Using the QEMU emulation support in the kernel</li>
 <li>Building on multiple native nodes using the same builder instance</li>
 <li>Using a stage in Dockerfile to cross-compile to different architectures</li>
 </ul>
-<p>I’ll focus on the first option, cross building with emulation.</p>
+<p>I&rsquo;ll focus on the first option, cross-building with emulation using buildx.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker buildx build --platform linux/amd64,linux/arm64 .
 </span></span></code></pre></div><h2 id="setup">
   Setup
   <a href="#setup" class="post-heading__anchor" aria-hidden="true">#</a>
 </h2>
-<p>This differs from platform to platform but one thing we all have in common is pipelines, so I’ve constructed a basic buildx setup for TektonCD task.</p>
+<p>Steps might differ from platform to platform, but the pipelines will remain the same. So I&rsquo;ve constructed a basic buildx setup for the TektonCD task.</p>
 <h2 id="pipeline">
   Pipeline
   <a href="#pipeline" class="post-heading__anchor" aria-hidden="true">#</a>
 </h2>
-<p>Below is a modified task of <a
+<p>I am taking the upstream <a
   href="https://github.com/tektoncd/catalog/blob/master/task/docker-build/0.1/docker-build.yaml"
   
   
     class="link--external" target="_blank" rel="noreferrer"
   
->docker-build</a></p>
+>docker-build</a> task and modifying it to my needs</p>
 <p>What&rsquo;s modified</p>
 <ul>
 <li>Enable <code>DOCKER_BUILDKIT</code> and <code>DOCKER_CLI_EXPERIMENTAL</code></li>
@@ -376,8 +376,8 @@
 <li>Run the latest <code>docker/binfmt</code> tag to use its qemu parts</li>
 <li>Docker login (using secret for values)</li>
 <li>Docker build with <code>docker buildx build --platform</code></li>
+<li>Create a secret holding docker username and token</li>
 </ul>
-<p>Create a secret holding docker username and token</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubectl create secret generic docker-token <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --from-literal<span style="color:#f92672">=</span>username<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>CONTAINER_REGISTRY_USER<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --from-literal<span style="color:#f92672">=</span>password<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>CONTAINER_REGISTRY_PASSWORD<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
@@ -509,7 +509,7 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">volumes</span>:
 </span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">dind-certs</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">emptyDir</span>: {}
-</span></span></code></pre></div><p>Make sure you have a base image that supports multiarch like alpine or one of <a
+</span></span></code></pre></div><p>Make sure you have a base image that supports multi-arch like alpine or one of <a
   href="https://hub.docker.com/search?category=base&amp;source=verified&amp;type=image&amp;architecture=arm%2Carm64%2Camd64"
   
   
@@ -546,7 +546,7 @@
       
       <a
         class="social-share__item"
-        href="https://reddit.com/submit?url=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Ftekton-multiarch-buildx%2F&amp;title=Build&#43;multi&#43;arch&#43;docker&#43;image&#43;using&#43;Tekton"
+        href="https://reddit.com/submit?url=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Ftekton-multiarch-buildx%2F&amp;title=Build&#43;multi-arch&#43;docker&#43;image&#43;using&#43;Tekton"
         target="_blank"
         rel="noreferrer"
       >
@@ -561,7 +561,7 @@
       
       <a
         class="social-share__item"
-        href="mailto:?subject=Build&#43;multi&#43;arch&#43;docker&#43;image&#43;using&#43;Tekton&amp;body=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Ftekton-multiarch-buildx%2F"
+        href="mailto:?subject=Build&#43;multi-arch&#43;docker&#43;image&#43;using&#43;Tekton&amp;body=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Ftekton-multiarch-buildx%2F"
         target="_blank"
         rel="noreferrer"
       >
@@ -705,8 +705,8 @@
 
 <script
   type="text/javascript"
-  src="/js/flexsearch.3f77632a5e276b2f254e33a8da752303c9c167d604d662532d4e2649829e86a9fb988138e9e27ac214ffe560a53974ba68dd2b6e306db43e1ac908e11197b97d.js"
-  integrity="sha512-P3djKl4nay8lTjOo2nUjA8nBZ9YE1mJTLU4mSYKehqn7mIE46eJ6whT/5WClOXS6aN0rbjBttD4ayQjhEZe5fQ==">
+  src="/js/flexsearch.7a24f461a845e684001eeb74564d173afc16e43e00d45973599a7307708a896cab3eed6fc2576ad0d4ca5e6eed1e5c9421f94947789d054a67640babb379dea5.js"
+  integrity="sha512-eiT0YahF5oQAHut0Vk0XOvwW5D4A1FlzWZpzB3CKiWyrPu1vwldq0NTKXm7tHlyUIflJR3idBUpnZAurs3nepQ==">
 </script>
 
 

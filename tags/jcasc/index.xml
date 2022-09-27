@@ -13,9 +13,9 @@
       <pubDate>Mon, 06 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/blog/jenkins-config-as-code-openshift/</guid>
-      <description>Deploying Jenkins on Kubernetes provides important benefits over a standard VM-based deployment. For example, gaining the ability to have project-specific Jenkins slaves (agents) on demand, instead of having a pool of VMs idle waiting for a job.
-Jenkins can be easily deployed using Helm, OpenShift using jenkins catalog
-As everyone has experienced setting up Jenkins is a complex process, as both Jenkins and its plugins require some tuning and configuration, with dozens of parameters to set within the web UI manage section</description>
+      <description>Deploying Jenkins on Kubernetes provides significant benefits over a standard VM-based deployment. For example, we are gaining the ability to have project-specific Jenkins slaves (agents) on demand instead of having a pool of VMs idle waiting for a job.
+In vanilla Kubernetes, we can deploy Jenkins using Helm, and In OpenShift, we can deploy Jenkins via the developer&amp;rsquo;s catalog.
+As everyone has experienced, setting up Jenkins is a complex process. Both Jenkins and its plugins require some tuning and Configuration, with dozens of parameters to set within the web UI manage section.</description>
     </item>
     
   </channel>

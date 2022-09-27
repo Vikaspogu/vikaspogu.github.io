@@ -62,8 +62,8 @@
 
 <meta
   name="description"
-  content="Tekton Triggers work by having EventListeners receive incoming webhook notifications, processing them using an Interceptor, and creating Kubernetes resources from templates if the interceptor allows it, with extraction of fields from the body of the webhook
-CEL Interceptors can be used to filter or modify incoming events. for example if you want to truncate commit id from the webhook body
+  content="Tekton Triggers work by having EventListeners receive incoming webhook notifications, processing them using an Interceptor, and creating Kubernetes resources from templates if the interceptor allows it, with the extraction of fields from the body of the webhook
+CEL Interceptors can filter or modify incoming events. For example, you can truncate the commit id from the webhook body.
 apiVersion: triggers.tekton.dev/v1alpha1 kind: EventListener metadata: name: shared-listener namespace: default spec: serviceAccountName: build-bot triggers: - name: shared-pipeline-trigger interceptors: - cel: overlays: - key: intercepted."
 />
 
@@ -73,13 +73,13 @@ apiVersion: triggers.tekton.dev/v1alpha1 kind: EventListener metadata: name: sha
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Tekton triggers and Interceptors"/>
-<meta name="twitter:description" content="Tekton Triggers work by having EventListeners receive incoming webhook notifications, processing them using an Interceptor, and creating Kubernetes resources from templates if the interceptor allows it, with extraction of fields from the body of the webhook
-CEL Interceptors can be used to filter or modify incoming events. for example if you want to truncate commit id from the webhook body
+<meta name="twitter:description" content="Tekton Triggers work by having EventListeners receive incoming webhook notifications, processing them using an Interceptor, and creating Kubernetes resources from templates if the interceptor allows it, with the extraction of fields from the body of the webhook
+CEL Interceptors can filter or modify incoming events. For example, you can truncate the commit id from the webhook body.
 apiVersion: triggers.tekton.dev/v1alpha1 kind: EventListener metadata: name: shared-listener namespace: default spec: serviceAccountName: build-bot triggers: - name: shared-pipeline-trigger interceptors: - cel: overlays: - key: intercepted."/>
 
 <meta property="og:title" content="Tekton triggers and Interceptors" />
-<meta property="og:description" content="Tekton Triggers work by having EventListeners receive incoming webhook notifications, processing them using an Interceptor, and creating Kubernetes resources from templates if the interceptor allows it, with extraction of fields from the body of the webhook
-CEL Interceptors can be used to filter or modify incoming events. for example if you want to truncate commit id from the webhook body
+<meta property="og:description" content="Tekton Triggers work by having EventListeners receive incoming webhook notifications, processing them using an Interceptor, and creating Kubernetes resources from templates if the interceptor allows it, with the extraction of fields from the body of the webhook
+CEL Interceptors can filter or modify incoming events. For example, you can truncate the commit id from the webhook body.
 apiVersion: triggers.tekton.dev/v1alpha1 kind: EventListener metadata: name: shared-listener namespace: default spec: serviceAccountName: build-bot triggers: - name: shared-pipeline-trigger interceptors: - cel: overlays: - key: intercepted." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://vikaspogu.dev/blog/tekton-triggers-cel-interception/" /><meta property="article:section" content="blog" />
@@ -88,11 +88,11 @@ apiVersion: triggers.tekton.dev/v1alpha1 kind: EventListener metadata: name: sha
 
 
 <meta itemprop="name" content="Tekton triggers and Interceptors">
-<meta itemprop="description" content="Tekton Triggers work by having EventListeners receive incoming webhook notifications, processing them using an Interceptor, and creating Kubernetes resources from templates if the interceptor allows it, with extraction of fields from the body of the webhook
-CEL Interceptors can be used to filter or modify incoming events. for example if you want to truncate commit id from the webhook body
+<meta itemprop="description" content="Tekton Triggers work by having EventListeners receive incoming webhook notifications, processing them using an Interceptor, and creating Kubernetes resources from templates if the interceptor allows it, with the extraction of fields from the body of the webhook
+CEL Interceptors can filter or modify incoming events. For example, you can truncate the commit id from the webhook body.
 apiVersion: triggers.tekton.dev/v1alpha1 kind: EventListener metadata: name: shared-listener namespace: default spec: serviceAccountName: build-bot triggers: - name: shared-pipeline-trigger interceptors: - cel: overlays: - key: intercepted."><meta itemprop="datePublished" content="2021-01-19T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-01-19T00:00:00+00:00" />
-<meta itemprop="wordCount" content="134">
+<meta itemprop="wordCount" content="132">
 <meta itemprop="keywords" content="tekton,triggers,cel," />
 
 
@@ -359,14 +359,14 @@ apiVersion: triggers.tekton.dev/v1alpha1 kind: EventListener metadata: name: sha
   
     class="link--external" target="_blank" rel="noreferrer"
   
->Triggers</a> work by having EventListeners receive incoming webhook notifications, processing them using an Interceptor, and creating Kubernetes resources from templates if the interceptor allows it, with extraction of fields from the body of the webhook</p>
+>Triggers</a> work by having EventListeners receive incoming webhook notifications, processing them using an Interceptor, and creating Kubernetes resources from templates if the interceptor allows it, with the extraction of fields from the body of the webhook</p>
 <p><a
   href="https://tekton.dev/docs/triggers/eventlisteners/#cel-interceptors"
   
   
     class="link--external" target="_blank" rel="noreferrer"
   
->CEL Interceptors</a> can be used to filter or modify incoming events. for example if you want to truncate commit id from the webhook body</p>
+>CEL Interceptors</a> can filter or modify incoming events. For example, you can truncate the commit id from the webhook body.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">triggers.tekton.dev/v1alpha1</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">EventListener</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
@@ -385,7 +385,7 @@ apiVersion: triggers.tekton.dev/v1alpha1 kind: EventListener metadata: name: sha
 </span></span><span style="display:flex;"><span>        - <span style="color:#f92672">ref</span>: <span style="color:#ae81ff">pipeline-binding</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">template</span>:
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">ref</span>: <span style="color:#ae81ff">pipeline-template</span>
-</span></span></code></pre></div><p>Applied overlay can be extracted using a extensions body in the binding. In below example <code>$(extensions.&lt;overlay_key&gt;)</code></p>
+</span></span></code></pre></div><p>The applied overlay uses an extension body in the binding. As shown in below example as <code>$(extensions.&lt;overlay_key&gt;)</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">triggers.tekton.dev/v1alpha1</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">TriggerBinding</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
@@ -588,8 +588,8 @@ apiVersion: triggers.tekton.dev/v1alpha1 kind: EventListener metadata: name: sha
 
 <script
   type="text/javascript"
-  src="/js/flexsearch.3f77632a5e276b2f254e33a8da752303c9c167d604d662532d4e2649829e86a9fb988138e9e27ac214ffe560a53974ba68dd2b6e306db43e1ac908e11197b97d.js"
-  integrity="sha512-P3djKl4nay8lTjOo2nUjA8nBZ9YE1mJTLU4mSYKehqn7mIE46eJ6whT/5WClOXS6aN0rbjBttD4ayQjhEZe5fQ==">
+  src="/js/flexsearch.7a24f461a845e684001eeb74564d173afc16e43e00d45973599a7307708a896cab3eed6fc2576ad0d4ca5e6eed1e5c9421f94947789d054a67640babb379dea5.js"
+  integrity="sha512-eiT0YahF5oQAHut0Vk0XOvwW5D4A1FlzWZpzB3CKiWyrPu1vwldq0NTKXm7tHlyUIflJR3idBUpnZAurs3nepQ==">
 </script>
 
 

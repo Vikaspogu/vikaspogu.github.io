@@ -13,8 +13,8 @@
       <pubDate>Tue, 07 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/blog/jenkins-date-difference/</guid>
-      <description>This is how you can calculate days between two dates in Jenkins pipeline. @NonCPS annotation is useful when you have methods which use objects that aren&amp;rsquo;t serializable
-import java.text.SimpleDateFormat stages { stage(&amp;#34;Calculate days&amp;#34;) { steps { script { def daysRemaining = getRemainingDays(&amp;#34;2020-06-25&amp;#34;) } } } } } @NonCPS def getRemainingDays(previousDate){ def currentDate = new Date() String currentTimeFormat= currentDate.format(&amp;#34;yyyy-MM-dd&amp;#34;) def oldDate = new SimpleDateFormat(&amp;#34;yyyy-MM-dd&amp;#34;).parse(previousDate) return currentTimeFormat-oldDate } Calculate if date is greater than 14 days</description>
+      <description>The below snippet shows how to calculate days between two dates in the Jenkins pipeline. @NonCPS annotation is functional when you have methods that use objects that aren&amp;rsquo;t serializable.
+import java.text.SimpleDateFormat stages { stage(&amp;#34;Calculate days&amp;#34;) { steps { script { def daysRemaining = getRemainingDays(&amp;#34;2020-06-25&amp;#34;) } } } } } @NonCPS def getRemainingDays(previousDate){ def currentDate = new Date() String currentTimeFormat= currentDate.format(&amp;#34;yyyy-MM-dd&amp;#34;) def oldDate = new SimpleDateFormat(&amp;#34;yyyy-MM-dd&amp;#34;).parse(previousDate) return currentTimeFormat-oldDate } Calculate if the date is greater than 14 days</description>
     </item>
     
   </channel>

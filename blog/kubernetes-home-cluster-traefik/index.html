@@ -62,7 +62,7 @@
 
 <meta
   name="description"
-  content="Walk through on setting up K3S cluster on raspberry pi and traefik ingress with cloudfare"
+  content="Walk through on setting up K3S cluster on raspberry pi and traefik ingress with cloudfare."
 />
 
 <link rel="canonical" href="https://vikaspogu.dev/blog/kubernetes-home-cluster-traefik/" />
@@ -71,10 +71,10 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="k3s cluster with Raspberry-Pi, Traefik"/>
-<meta name="twitter:description" content="Walk through on setting up K3S cluster on raspberry pi and traefik ingress with cloudfare"/>
+<meta name="twitter:description" content="Walk through on setting up K3S cluster on raspberry pi and traefik ingress with cloudfare."/>
 
 <meta property="og:title" content="k3s cluster with Raspberry-Pi, Traefik" />
-<meta property="og:description" content="Walk through on setting up K3S cluster on raspberry pi and traefik ingress with cloudfare" />
+<meta property="og:description" content="Walk through on setting up K3S cluster on raspberry pi and traefik ingress with cloudfare." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://vikaspogu.dev/blog/kubernetes-home-cluster-traefik/" /><meta property="article:section" content="blog" />
 <meta property="article:published_time" content="2019-12-31T00:00:00+00:00" />
@@ -82,9 +82,9 @@
 
 
 <meta itemprop="name" content="k3s cluster with Raspberry-Pi, Traefik">
-<meta itemprop="description" content="Walk through on setting up K3S cluster on raspberry pi and traefik ingress with cloudfare"><meta itemprop="datePublished" content="2019-12-31T00:00:00+00:00" />
+<meta itemprop="description" content="Walk through on setting up K3S cluster on raspberry pi and traefik ingress with cloudfare."><meta itemprop="datePublished" content="2019-12-31T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2019-12-31T00:00:00+00:00" />
-<meta itemprop="wordCount" content="896">
+<meta itemprop="wordCount" content="899">
 <meta itemprop="keywords" content="k3s,traefik,raspberry-pi," />
 
 
@@ -351,11 +351,11 @@
   
     class="link--external" target="_blank" rel="noreferrer"
   
->Rancher&rsquo;s k3s</a> kubernetes cluster.</p>
+>Rancher&rsquo;s k3s</a> Kubernetes cluster.</p>
 <p>Use-case:</p>
 <ul>
 <li>A web interface to be accessible outside of my home so I could check and manage devices while away</li>
-<li>Way to manage dynamic DNS since I don’t have a static IP</li>
+<li>Way to manage dynamic DNS since I don’t have a static I.P.</li>
 </ul>
 <h3 id="setup">
   Setup
@@ -370,7 +370,7 @@
   Setting up a Pi Kubernetes Cluster
   <a href="#setting-up-a-pi-kubernetes-cluster" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
-<p>I followed an excellent guide written by Alex Ellis <a
+<p>I followed an excellent guide by Alex Ellis <a
   href="https://blog.alexellis.io/test-drive-k3s-on-raspberry-pi/"
   
   
@@ -386,34 +386,34 @@
   <a href="#dns-and-routing" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
 <ul>
-<li>Add a DNS entry for the wildcard domain <code>*.home.vikaspogu.com</code> to point at the dynamic IP</li>
-<li>Open ports <code>80</code> and <code>443</code> on router’s firewall</li>
+<li>Add a DNS entry for the wildcard domain <code>*.home.vikaspogu.com</code> to point at the dynamic I.P.</li>
+<li>Open ports <code>80</code> and <code>443</code> on the router’s firewall</li>
 </ul>
-<p>At this point a short <code>dig</code> on domain should return your dynamic IP.</p>
+<p>At this point, a short <code>dig</code> on the domain should return your dynamic I.P.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ dig +short test.home.vikaspogu.com
-</span></span><span style="display:flex;"><span>X.X.X.X
-</span></span></code></pre></div><p>I found this script online which will update DNS record if Dynamic IP is changed.</p>
+</span></span><span style="display:flex;"><span>X.X.X.X.
+</span></span></code></pre></div><p>I found this script online, which will update the DNS record if Dynamic I.P. is changed.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>zone<span style="color:#f92672">=</span>example.com
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># dnsrecord is the A record which will be updated</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># dnsrecord is the A record which the script will update</span>
 </span></span><span style="display:flex;"><span>dnsrecord<span style="color:#f92672">=</span>www.example.com
 </span></span><span style="display:flex;"><span>EMAIL<span style="color:#f92672">=</span>me@cloudflare.com
 </span></span><span style="display:flex;"><span>API_KEY<span style="color:#f92672">=</span>1234567890abcdef1234567890abcdef
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get the current external IP address</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get the current external I.P. address</span>
 </span></span><span style="display:flex;"><span>ip<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>dig +short &lt;CURRENT EXTERNAL IP&gt;<span style="color:#66d9ef">)</span>
 </span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Current IP is </span>$ip<span style="color:#e6db74">&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> host $dnsrecord 1.1.1.1 | grep <span style="color:#e6db74">&#34;has address&#34;</span> | grep <span style="color:#e6db74">&#34;</span>$ip<span style="color:#e6db74">&#34;</span>; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;</span>$dnsrecord<span style="color:#e6db74"> is currently set to </span>$ip<span style="color:#e6db74">; no changes needed&#34;</span>
+</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;</span>$dnsrecord<span style="color:#e6db74"> is currently set to </span>$ip<span style="color:#e6db74">; no changes needed.&#34;</span>
 </span></span><span style="display:flex;"><span>  exit
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># if here, the dns record needs updating</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># if here, the DNS record needs updating</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># get the zone id for the requested zone</span>
 </span></span><span style="display:flex;"><span>zoneid<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>curl -s -X GET <span style="color:#e6db74">&#34;https://api.cloudflare.com/client/v4/zones?name=</span>$zone<span style="color:#e6db74">&amp;status=active&#34;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;X-Auth-Email: </span>$EMAIL<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;X-Auth-Key: </span>$API_KEY<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> | jq -r <span style="color:#e6db74">&#39;{&#34;result&#34;}[] | .[0] | .id&#39;</span><span style="color:#66d9ef">)</span>
 </span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Zoneid for </span>$zone<span style="color:#e6db74"> is </span>$zoneid<span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># get the dns record id</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># get the DNS record id</span>
 </span></span><span style="display:flex;"><span>dnsrecordid<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>curl -s -X GET <span style="color:#e6db74">&#34;https://api.cloudflare.com/client/v4/zones/</span>$zoneid<span style="color:#e6db74">/dns_records?type=A&amp;name=</span>$dnsrecord<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;X-Auth-Email: </span>$EMAIL<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;X-Auth-Key: </span>$API_KEY<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
@@ -425,11 +425,11 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;X-Auth-Key: </span>$API_KEY<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --data <span style="color:#e6db74">&#34;{\&#34;type\&#34;:\&#34;A\&#34;,\&#34;name\&#34;:\&#34;</span>$dnsrecord<span style="color:#e6db74">\&#34;,\&#34;content\&#34;:\&#34;</span>$ip<span style="color:#e6db74">\&#34;,\&#34;ttl\&#34;:1,\&#34;proxied\&#34;:false}&#34;</span> | jq
-</span></span></code></pre></div><p>Create a configmap from script, secret with cloudflare <code>EMAIL</code> and <code>GLOBAL_API_TOKEN</code>.</p>
+</span></span></code></pre></div><p>Create a configmap from the script, secret with Cloudflare <code>EMAIL</code> and <code>GLOBAL_API_TOKEN</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ k3s create configmap update-script --from-file<span style="color:#f92672">=</span>cloudfare-dns-update.sh
 </span></span><span style="display:flex;"><span>$ k3s kubectl create secret generic cloudflare --from-literal<span style="color:#f92672">=</span>email<span style="color:#f92672">=</span>me@cloudflare.com <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--from-literal<span style="color:#f92672">=</span>api_key<span style="color:#f92672">=</span>1234567890abcdef1234567890abcdef
-</span></span></code></pre></div><p>Now create a kubernetes cronjob to update DNS record to right address.</p>
+</span></span></code></pre></div><p>Now create a Kubernetes cronjob to update the DNS record to the correct address.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">batch/v1beta1</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">CronJob</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
@@ -471,17 +471,17 @@
   <a href="#traefik-and-lets-encrypt" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
 <p>With a functioning cluster and the networking setup complete, the next task is to deploy a reverse proxy to manage the application routing.</p>
-<p>In Kubernetes we can deploy an Ingress Controller to achieve this. An Ingress Controller is an implementation of a reverse proxy which listens for changes to KubernetesIngress resources and updates it’s configuration accordingly.</p>
-<p>Traefik provides an detailed <a
+<p>In Kubernetes, we can deploy an Ingress Controller to achieve this. An Ingress Controller implements a reverse proxy that listens for changes to KubernetesIngress resources and updates its configuration accordingly.</p>
+<p>Traefik provides detailed <a
   href="https://docs.traefik.io/v1.7/user-guide/kubernetes/"
   
   
     class="link--external" target="_blank" rel="noreferrer"
   
->instructions</a> on kubernetes implementation but I customized it slightly to get things working with my setup.</p>
-<p>First create RoleBinding&rsquo;s.</p>
+>instructions</a> on Kubernetes implementation, but I customized it slightly to get things working with my setup.</p>
+<p>First, create RoleBinding.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>k3s kubectl apply -f https://raw.githubusercontent.com/containous/traefik/v1.7/examples/k8s/traefik-rbac.yaml
-</span></span></code></pre></div><p>Configure Let’s Encrypt to support HTTPS endpoint and automatically fetch certificates. I used Cloudflare as the DNS provider which configures Traefik to use DNS records for domain validation.</p>
+</span></span></code></pre></div><p>Configure Let’s Encrypt to support HTTPS endpoint and automatically fetch certificates. I used Cloudflare as the DNS provider, configuring Traefik to use DNS records for domain validation.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>[<span style="color:#ae81ff">acme]</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">email = &#34;me@cloudflare.com&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">storage=&#34;./acme.json&#34;</span>
@@ -720,7 +720,7 @@
 
 </p>
 <h3 id="deploy-kubernetes-dashboard">
-  Deploy kubernetes dashboard
+  Deploy Kubernetes dashboard
   <a href="#deploy-kubernetes-dashboard" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
 <p>Follow these instructions to <a
@@ -729,8 +729,8 @@
   
     class="link--external" target="_blank" rel="noreferrer"
   
->deploy dashboard UI</a>.</p>
-<p>Create ingress controller to access dashboard.</p>
+>deploy dashboard U.I.</a>.</p>
+<p>Create an ingress controller to access the dashboard.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>---
 </span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">extensions/v1beta1</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Ingress</span>
@@ -934,8 +934,8 @@
 
 <script
   type="text/javascript"
-  src="/js/flexsearch.3f77632a5e276b2f254e33a8da752303c9c167d604d662532d4e2649829e86a9fb988138e9e27ac214ffe560a53974ba68dd2b6e306db43e1ac908e11197b97d.js"
-  integrity="sha512-P3djKl4nay8lTjOo2nUjA8nBZ9YE1mJTLU4mSYKehqn7mIE46eJ6whT/5WClOXS6aN0rbjBttD4ayQjhEZe5fQ==">
+  src="/js/flexsearch.7a24f461a845e684001eeb74564d173afc16e43e00d45973599a7307708a896cab3eed6fc2576ad0d4ca5e6eed1e5c9421f94947789d054a67640babb379dea5.js"
+  integrity="sha512-eiT0YahF5oQAHut0Vk0XOvwW5D4A1FlzWZpzB3CKiWyrPu1vwldq0NTKXm7tHlyUIflJR3idBUpnZAurs3nepQ==">
 </script>
 
 

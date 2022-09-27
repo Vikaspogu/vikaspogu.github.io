@@ -62,8 +62,8 @@
 
 <meta
   name="description"
-  content="I recently started using proxmox and I chose to monitor metrics using InfluxDB and Grafana which are already deployed on my Kubernetes cluster. During that process, I encountered two issues:
-Authentication &amp;ldquo;Database not found&amp;rdquo; Authentication # For the Authentication issue, I found out that you have to use the Authorization header with the Token yourAuthToken value to access the bucket. The header name is configured in the jsonData field and the header value should be configured in secureJsonData for grafana helm chart values."
+  content="I recently started using proxmox and was planning on monitoring metrics using InfluxDB and Grafana, which I have already deployed on my Kubernetes cluster. However, during that process, I encountered two issues:
+Authentication &amp;ldquo;Database not found&amp;rdquo; Authentication # For the Authentication issue, I found out that you have to use the Authorization header with the Token yourAuthToken value to access the bucket. So, configure the header name in the jsonData field, and we should configure the header value in secureJsonData for grafana helm chart values."
 />
 
 <link rel="canonical" href="https://vikaspogu.dev/blog/influxdb-grafana/" />
@@ -72,12 +72,12 @@ Authentication &amp;ldquo;Database not found&amp;rdquo; Authentication # For the
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Configure Influxdb with Grafana"/>
-<meta name="twitter:description" content="I recently started using proxmox and I chose to monitor metrics using InfluxDB and Grafana which are already deployed on my Kubernetes cluster. During that process, I encountered two issues:
-Authentication &ldquo;Database not found&rdquo; Authentication # For the Authentication issue, I found out that you have to use the Authorization header with the Token yourAuthToken value to access the bucket. The header name is configured in the jsonData field and the header value should be configured in secureJsonData for grafana helm chart values."/>
+<meta name="twitter:description" content="I recently started using proxmox and was planning on monitoring metrics using InfluxDB and Grafana, which I have already deployed on my Kubernetes cluster. However, during that process, I encountered two issues:
+Authentication &ldquo;Database not found&rdquo; Authentication # For the Authentication issue, I found out that you have to use the Authorization header with the Token yourAuthToken value to access the bucket. So, configure the header name in the jsonData field, and we should configure the header value in secureJsonData for grafana helm chart values."/>
 
 <meta property="og:title" content="Configure Influxdb with Grafana" />
-<meta property="og:description" content="I recently started using proxmox and I chose to monitor metrics using InfluxDB and Grafana which are already deployed on my Kubernetes cluster. During that process, I encountered two issues:
-Authentication &ldquo;Database not found&rdquo; Authentication # For the Authentication issue, I found out that you have to use the Authorization header with the Token yourAuthToken value to access the bucket. The header name is configured in the jsonData field and the header value should be configured in secureJsonData for grafana helm chart values." />
+<meta property="og:description" content="I recently started using proxmox and was planning on monitoring metrics using InfluxDB and Grafana, which I have already deployed on my Kubernetes cluster. However, during that process, I encountered two issues:
+Authentication &ldquo;Database not found&rdquo; Authentication # For the Authentication issue, I found out that you have to use the Authorization header with the Token yourAuthToken value to access the bucket. So, configure the header name in the jsonData field, and we should configure the header value in secureJsonData for grafana helm chart values." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://vikaspogu.dev/blog/influxdb-grafana/" /><meta property="article:section" content="blog" />
 <meta property="article:published_time" content="2022-08-08T15:32:00-05:00" />
@@ -85,10 +85,10 @@ Authentication &ldquo;Database not found&rdquo; Authentication # For the Authent
 
 
 <meta itemprop="name" content="Configure Influxdb with Grafana">
-<meta itemprop="description" content="I recently started using proxmox and I chose to monitor metrics using InfluxDB and Grafana which are already deployed on my Kubernetes cluster. During that process, I encountered two issues:
-Authentication &ldquo;Database not found&rdquo; Authentication # For the Authentication issue, I found out that you have to use the Authorization header with the Token yourAuthToken value to access the bucket. The header name is configured in the jsonData field and the header value should be configured in secureJsonData for grafana helm chart values."><meta itemprop="datePublished" content="2022-08-08T15:32:00-05:00" />
+<meta itemprop="description" content="I recently started using proxmox and was planning on monitoring metrics using InfluxDB and Grafana, which I have already deployed on my Kubernetes cluster. However, during that process, I encountered two issues:
+Authentication &ldquo;Database not found&rdquo; Authentication # For the Authentication issue, I found out that you have to use the Authorization header with the Token yourAuthToken value to access the bucket. So, configure the header name in the jsonData field, and we should configure the header value in secureJsonData for grafana helm chart values."><meta itemprop="datePublished" content="2022-08-08T15:32:00-05:00" />
 <meta itemprop="dateModified" content="2022-08-08T15:32:00-05:00" />
-<meta itemprop="wordCount" content="275">
+<meta itemprop="wordCount" content="276">
 <meta itemprop="keywords" content="influxdb,grafana," />
 
 
@@ -344,7 +344,7 @@ Authentication &ldquo;Database not found&rdquo; Authentication # For the Authent
 </div>
 
     <div class="post-content">
-      <p>I recently started using proxmox and I chose to monitor metrics using InfluxDB and Grafana which are already deployed on my Kubernetes cluster. During that process, I encountered two issues:</p>
+      <p>I recently started using proxmox and was planning on monitoring metrics using InfluxDB and Grafana, which I have already deployed on my Kubernetes cluster. However, during that process, I encountered two issues:</p>
 <ul>
 <li>Authentication</li>
 <li>&ldquo;Database not found&rdquo;</li>
@@ -353,7 +353,7 @@ Authentication &ldquo;Database not found&rdquo; Authentication # For the Authent
   Authentication
   <a href="#authentication" class="post-heading__anchor" aria-hidden="true">#</a>
 </h2>
-<p>For the Authentication issue, I found out that you have to use the <code>Authorization</code> header with the <code>Token yourAuthToken</code> value to access the bucket. The header name is configured in the <code>jsonData</code> field and the header value should be configured in <code>secureJsonData</code> for <a
+<p>For the Authentication issue, I found out that you have to use the <code>Authorization</code> header with the <code>Token yourAuthToken</code> value to access the bucket. So, configure the header name in the <code>jsonData</code> field, and we should configure the header value in <code>secureJsonData</code> for <a
   href="https://github.com/grafana/helm-charts/tree/main/charts/grafana"
   
   
@@ -391,14 +391,14 @@ Authentication &ldquo;Database not found&rdquo; Authentication # For the Authent
   &ldquo;Database not found&rdquo;
   <a href="#database-not-found" class="post-heading__anchor" aria-hidden="true">#</a>
 </h2>
-<p>This one took me a while to figure out. In InfluxDB v1, data is stored in databases and retention policies. In InfluxDB v2, data is stored in buckets. Because InfluxQL uses the v1 data model, before querying in InfluxQL, a bucket must be mapped to a database and retention policy. Find more information <a
+<p>This one took me a while to figure out. In InfluxDB v1, data gets stored in databases and retention policies. In InfluxDB v2, data gets stored in buckets. Because InfluxQL uses the v1 data model, before querying in InfluxQL, we must map a bucket to a database and retention policy. Find more information <a
   href="https://docs.influxdata.com/influxdb/v2.0/query-data/influxql/?t=InfluxDB&#43;API#map-unmapped-buckets"
   
   
     class="link--external" target="_blank" rel="noreferrer"
   
 >here</a>.</p>
-<p>I am using <code>InfluxDB API</code> method to manually create DBRP mappings for unmapped buckets as shown below.</p>
+<p>As shown below, I am using the <code>InfluxDB API</code> method to create DBRP mappings for unmapped buckets.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl --request POST http://localhost:8086/api/v2/dbrps <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --header <span style="color:#e6db74">&#34;Authorization: Token YourAuthToken&#34;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --header <span style="color:#e6db74">&#39;Content-type: application/json&#39;</span> <span style="color:#ae81ff">\
@@ -410,7 +410,7 @@ Authentication &ldquo;Database not found&rdquo; Authentication # For the Authent
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;retention_policy&#34;: &#34;example-rp&#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      }&#39;</span>
 </span></span></code></pre></div><p>Make sure to update Host, Token, bucketID, database, orgID, retention_policy with your values.</p>
-<p>Lastly, go to Grafana, choose the InfluxDB data source, and try to run a query to see that the setting up process was successful.</p>
+<p>Lastly, go to Grafana, choose the InfluxDB data source, and try to run a query to see that the setup process was successful.</p>
 
     </div>
 
@@ -600,8 +600,8 @@ Authentication &ldquo;Database not found&rdquo; Authentication # For the Authent
 
 <script
   type="text/javascript"
-  src="/js/flexsearch.3f77632a5e276b2f254e33a8da752303c9c167d604d662532d4e2649829e86a9fb988138e9e27ac214ffe560a53974ba68dd2b6e306db43e1ac908e11197b97d.js"
-  integrity="sha512-P3djKl4nay8lTjOo2nUjA8nBZ9YE1mJTLU4mSYKehqn7mIE46eJ6whT/5WClOXS6aN0rbjBttD4ayQjhEZe5fQ==">
+  src="/js/flexsearch.7a24f461a845e684001eeb74564d173afc16e43e00d45973599a7307708a896cab3eed6fc2576ad0d4ca5e6eed1e5c9421f94947789d054a67640babb379dea5.js"
+  integrity="sha512-eiT0YahF5oQAHut0Vk0XOvwW5D4A1FlzWZpzB3CKiWyrPu1vwldq0NTKXm7tHlyUIflJR3idBUpnZAurs3nepQ==">
 </script>
 
 

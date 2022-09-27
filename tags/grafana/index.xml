@@ -13,8 +13,8 @@
       <pubDate>Mon, 08 Aug 2022 15:32:00 -0500</pubDate>
       
       <guid>https://vikaspogu.dev/blog/influxdb-grafana/</guid>
-      <description>I recently started using proxmox and I chose to monitor metrics using InfluxDB and Grafana which are already deployed on my Kubernetes cluster. During that process, I encountered two issues:
-Authentication &amp;ldquo;Database not found&amp;rdquo; Authentication # For the Authentication issue, I found out that you have to use the Authorization header with the Token yourAuthToken value to access the bucket. The header name is configured in the jsonData field and the header value should be configured in secureJsonData for grafana helm chart values.</description>
+      <description>I recently started using proxmox and was planning on monitoring metrics using InfluxDB and Grafana, which I have already deployed on my Kubernetes cluster. However, during that process, I encountered two issues:
+Authentication &amp;ldquo;Database not found&amp;rdquo; Authentication # For the Authentication issue, I found out that you have to use the Authorization header with the Token yourAuthToken value to access the bucket. So, configure the header name in the jsonData field, and we should configure the header value in secureJsonData for grafana helm chart values.</description>
     </item>
     
     <item>
@@ -23,9 +23,9 @@ Authentication &amp;ldquo;Database not found&amp;rdquo; Authentication # For the
       <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/blog/raspberry-pi-temp-telegraf/</guid>
-      <description>In my previous post, I went through k3s cluster home setup. Now, i&amp;rsquo;ll show how to measure the temperature of those Raspberry Pi&amp;rsquo;s using Telegraf, Influxdb, Grafana and Helm charts.
-Why Telegraf? # Telegraf has a plugin called exec, which can execute the commands on host machine at certain interval and parses those metrics from their output in any one of the accepted input data formats.
-First, deploy influxdb time series database chart</description>
+      <description>In my previous post, I went through the k3s cluster home setup. Now, I&amp;rsquo;ll show how to measure the temperature of those Raspberry Pi&amp;rsquo;s using Telegraf, Influxdb, Grafana, and Helm charts.
+Why Telegraf? # Telegraf has a plugin called exec, which can execute the commands on the host machine at a specific interval and parses those metrics from their output in any one of the accepted input data formats.
+First, deploy the influxdb time series database chart.</description>
     </item>
     
     <item>
@@ -34,10 +34,10 @@ First, deploy influxdb time series database chart</description>
       <pubDate>Wed, 15 May 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/blog/springboot-metrics-grafana/</guid>
-      <description>Spring Boot Metrics # In this post I&amp;rsquo;ll discuss how to monitor spring boot application metrics using Prometheus and Grafana.
-Prometheus # Prometheus is a monitoring system which collects metrics from configured targets at given intervals.
-Grafana # Grafana is an open source metric analytics &amp;amp; visualization tool.
-Micrometer # Micrometer is a metrics instrumentation library for JVM-based applications.
+      <description>Spring Boot Metrics # This post will discuss how to monitor spring boot application metrics using Prometheus and Grafana.
+Prometheus # Prometheus is a monitoring system that collects metrics from configured targets at intervals.
+Grafana # Grafana is an open-source metric analytics &amp;amp; visualization tool.
+Micrometer # The micrometer is a metrics instrumentation library for JVM-based applications.
 Spring Boot Actuator # Spring Boot Actuator helps you monitor and manage your application when it’s pushed to production.</description>
     </item>
     

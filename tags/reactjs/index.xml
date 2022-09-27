@@ -16,7 +16,7 @@
       <description>To order to integrate Patternfly framework into a ReactJS application, create a new project or use an existing one
 npx create-react-app patternfly-setup-react Install patternfly dependencies react-core, react-table and patternfly
 npm i --save @patternfly/patternfly \ @patternfly/react-core @patternfly/react-table Note: Import base.css and patternfly.css in your project, or some components may diverge in appearance
-//This imports are must to render css import &amp;#34;@patternfly/react-core/dist/styles/base.css&amp;#34;; import &amp;#34;@patternfly/patternfly/patternfly.css&amp;#34;; To make sure everything is working correctly, update App.</description>
+//These imports are a must to render CSS import &amp;#34;@patternfly/react-core/dist/styles/base.css&amp;#34;; import &amp;#34;@patternfly/patternfly/patternfly.css&amp;#34;; To make sure everything is working correctly, update App.</description>
     </item>
     
   </channel>

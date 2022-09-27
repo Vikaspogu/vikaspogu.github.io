@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>adguard on Vikas Pogu</title>
+    <title>AdGuard on Vikas Pogu</title>
     <link>https://vikaspogu.dev/tags/adguard/</link>
-    <description>Recent content in adguard on Vikas Pogu</description>
+    <description>Recent content in AdGuard on Vikas Pogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2021</copyright>
     <lastBuildDate>Wed, 19 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/adguard/index.xml" rel="self" type="application/rss+xml" />
@@ -15,7 +15,7 @@
       <guid>https://vikaspogu.dev/blog/adguardhome-kubernetes/</guid>
       <description>AdGuard # AdGuard Home is a network-wide software for blocking ads &amp;amp; tracking
 Adguard is similar to Pi-Hole with more features. Comparison of Adguard to Pi-Hole
-The below configuration has worked for me. I am a big fan of helm charts and I&amp;rsquo;ll be using AdGuard chart
+The below configuration has worked for me. I am a big fan of helm charts, and I&amp;rsquo;ll be using AdGuard chart
 Configure chart # Pull chart locally
 helm repo add billimek https://billimek.com/billimek-charts/ helm fetch billimek/adguard-home Update deployment to use hostNetwork
 #templates/deployment.yaml ... spec: hostNetwork: true securityContext: .</description>

@@ -62,10 +62,10 @@
 
 <meta
   name="description"
-  content="Spring Boot Metrics # In this post I&amp;rsquo;ll discuss how to monitor spring boot application metrics using Prometheus and Grafana.
-Prometheus # Prometheus is a monitoring system which collects metrics from configured targets at given intervals.
-Grafana # Grafana is an open source metric analytics &amp;amp; visualization tool.
-Micrometer # Micrometer is a metrics instrumentation library for JVM-based applications.
+  content="Spring Boot Metrics # This post will discuss how to monitor spring boot application metrics using Prometheus and Grafana.
+Prometheus # Prometheus is a monitoring system that collects metrics from configured targets at intervals.
+Grafana # Grafana is an open-source metric analytics &amp;amp; visualization tool.
+Micrometer # The micrometer is a metrics instrumentation library for JVM-based applications.
 Spring Boot Actuator # Spring Boot Actuator helps you monitor and manage your application when it’s pushed to production."
 />
 
@@ -75,17 +75,17 @@ Spring Boot Actuator # Spring Boot Actuator helps you monitor and manage your ap
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Spring Boot metrics with Prometheus and Grafana in OpenShift"/>
-<meta name="twitter:description" content="Spring Boot Metrics # In this post I&rsquo;ll discuss how to monitor spring boot application metrics using Prometheus and Grafana.
-Prometheus # Prometheus is a monitoring system which collects metrics from configured targets at given intervals.
-Grafana # Grafana is an open source metric analytics &amp; visualization tool.
-Micrometer # Micrometer is a metrics instrumentation library for JVM-based applications.
+<meta name="twitter:description" content="Spring Boot Metrics # This post will discuss how to monitor spring boot application metrics using Prometheus and Grafana.
+Prometheus # Prometheus is a monitoring system that collects metrics from configured targets at intervals.
+Grafana # Grafana is an open-source metric analytics &amp; visualization tool.
+Micrometer # The micrometer is a metrics instrumentation library for JVM-based applications.
 Spring Boot Actuator # Spring Boot Actuator helps you monitor and manage your application when it’s pushed to production."/>
 
 <meta property="og:title" content="Spring Boot metrics with Prometheus and Grafana in OpenShift" />
-<meta property="og:description" content="Spring Boot Metrics # In this post I&rsquo;ll discuss how to monitor spring boot application metrics using Prometheus and Grafana.
-Prometheus # Prometheus is a monitoring system which collects metrics from configured targets at given intervals.
-Grafana # Grafana is an open source metric analytics &amp; visualization tool.
-Micrometer # Micrometer is a metrics instrumentation library for JVM-based applications.
+<meta property="og:description" content="Spring Boot Metrics # This post will discuss how to monitor spring boot application metrics using Prometheus and Grafana.
+Prometheus # Prometheus is a monitoring system that collects metrics from configured targets at intervals.
+Grafana # Grafana is an open-source metric analytics &amp; visualization tool.
+Micrometer # The micrometer is a metrics instrumentation library for JVM-based applications.
 Spring Boot Actuator # Spring Boot Actuator helps you monitor and manage your application when it’s pushed to production." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://vikaspogu.dev/blog/springboot-metrics-grafana/" /><meta property="article:section" content="blog" />
@@ -94,13 +94,13 @@ Spring Boot Actuator # Spring Boot Actuator helps you monitor and manage your ap
 
 
 <meta itemprop="name" content="Spring Boot metrics with Prometheus and Grafana in OpenShift">
-<meta itemprop="description" content="Spring Boot Metrics # In this post I&rsquo;ll discuss how to monitor spring boot application metrics using Prometheus and Grafana.
-Prometheus # Prometheus is a monitoring system which collects metrics from configured targets at given intervals.
-Grafana # Grafana is an open source metric analytics &amp; visualization tool.
-Micrometer # Micrometer is a metrics instrumentation library for JVM-based applications.
+<meta itemprop="description" content="Spring Boot Metrics # This post will discuss how to monitor spring boot application metrics using Prometheus and Grafana.
+Prometheus # Prometheus is a monitoring system that collects metrics from configured targets at intervals.
+Grafana # Grafana is an open-source metric analytics &amp; visualization tool.
+Micrometer # The micrometer is a metrics instrumentation library for JVM-based applications.
 Spring Boot Actuator # Spring Boot Actuator helps you monitor and manage your application when it’s pushed to production."><meta itemprop="datePublished" content="2019-05-15T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2019-05-15T00:00:00+00:00" />
-<meta itemprop="wordCount" content="435">
+<meta itemprop="wordCount" content="423">
 <meta itemprop="keywords" content="OpenShift,Spring Boot,Prometheus,Grafana," />
 
 
@@ -370,7 +370,7 @@ Spring Boot Actuator # Spring Boot Actuator helps you monitor and manage your ap
   Spring Boot Metrics
   <a href="#spring-boot-metrics" class="post-heading__anchor" aria-hidden="true">#</a>
 </h2>
-<p>In this post I&rsquo;ll discuss how to monitor spring boot application metrics using Prometheus and Grafana.</p>
+<p>This post will discuss how to monitor spring boot application metrics using Prometheus and Grafana.</p>
 <h3 id="prometheushttpsprometheusio">
   <a
   href="https://prometheus.io/"
@@ -381,7 +381,7 @@ Spring Boot Actuator # Spring Boot Actuator helps you monitor and manage your ap
 >Prometheus</a>
   <a href="#prometheushttpsprometheusio" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
-<p>Prometheus is a monitoring system which collects metrics from configured targets at given intervals.</p>
+<p>Prometheus is a monitoring system that collects metrics from configured targets at intervals.</p>
 <h3 id="grafanahttpsgrafanacomdocs">
   <a
   href="https://grafana.com/docs/"
@@ -392,7 +392,7 @@ Spring Boot Actuator # Spring Boot Actuator helps you monitor and manage your ap
 >Grafana</a>
   <a href="#grafanahttpsgrafanacomdocs" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
-<p>Grafana is an open source metric analytics &amp; visualization tool.</p>
+<p>Grafana is an open-source metric analytics &amp; visualization tool.</p>
 <h3 id="micrometerhttpsmicrometerio">
   <a
   href="https://micrometer.io/"
@@ -403,7 +403,7 @@ Spring Boot Actuator # Spring Boot Actuator helps you monitor and manage your ap
 >Micrometer</a>
   <a href="#micrometerhttpsmicrometerio" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
-<p>Micrometer is a metrics instrumentation library for JVM-based applications.</p>
+<p>The micrometer is a metrics instrumentation library for JVM-based applications.</p>
 <h3 id="spring-boot-actuatorhttpsdocsspringiospring-bootdocscurrentreferencehtmlproduction-ready-endpointshtml">
   <a
   href="https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html"
@@ -414,12 +414,12 @@ Spring Boot Actuator # Spring Boot Actuator helps you monitor and manage your ap
 >Spring Boot Actuator</a>
   <a href="#spring-boot-actuatorhttpsdocsspringiospring-bootdocscurrentreferencehtmlproduction-ready-endpointshtml" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
-<p>Spring Boot Actuator helps you monitor and manage your application when it’s pushed to production. You can choose to manage and monitor your application using HTTP or JMX endpoints.</p>
+<p>Spring Boot Actuator helps you monitor and manage your application when it’s pushed to production. You can control and monitor your application using HTTP or JMX endpoints.</p>
 <h3 id="setup">
   Setup
   <a href="#setup" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
-<p>Enable prometheus metrics by adding dependencies in <code>pom.xml</code></p>
+<p>Enable Prometheus metrics by adding dependencies in <code>pom.xml</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;dependency&gt;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-starter-actuator<span style="color:#f92672">&lt;/artifactId&gt;</span>
@@ -434,31 +434,31 @@ Spring Boot Actuator # Spring Boot Actuator helps you monitor and manage your ap
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;artifactId&gt;</span>micrometer-registry-prometheus<span style="color:#f92672">&lt;/artifactId&gt;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;version&gt;</span>1.0.6<span style="color:#f92672">&lt;/version&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/dependency&gt;</span>
-</span></span></code></pre></div><p>By default <code>prometheus</code> endpoint is not available and must be enabled in <code>application.properties</code>. More configurations can be found at spring-boot <a
+</span></span></code></pre></div><p>By default <code>Prometheus</code> endpoint is not available and must be enabled in <code>application.properties</code>. You can find more configurations at spring-boot <a
   href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready-metrics"
   
   
     class="link--external" target="_blank" rel="noreferrer"
   
 >docs</a></p>
-<pre tabindex="0"><code class="language-properties" data-lang="properties">#Metrics related configurations
-management.endpoint.metrics.enabled=true
-management.endpoints.web.exposure.include=*
-management.endpoint.prometheus.enabled=true
-management.metrics.export.prometheus.enabled=true
-management.metrics.distribution.percentiles-histogram.http.server.requests=true
-management.metrics.distribution.sla.http.server.requests=1ms,5ms
-management.metrics.distribution.percentiles.http.server.requests=0.5,0.9,0.95,0.99,0.999
-</code></pre><p>Optionally register any number of <code>MeterRegistryCustomizer</code> to further configure the registry (such as applying common tags) before any meters are registered with the registry.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#75715e">#Metrics related configurations</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">management.endpoint.metrics.enabled</span><span style="color:#f92672">=</span><span style="color:#e6db74">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">management.endpoints.web.exposure.include</span><span style="color:#f92672">=</span><span style="color:#e6db74">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">management.endpoint.prometheus.enabled</span><span style="color:#f92672">=</span><span style="color:#e6db74">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">management.metrics.export.prometheus.enabled</span><span style="color:#f92672">=</span><span style="color:#e6db74">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">management.metrics.distribution.percentiles-histogram.http.server.requests</span><span style="color:#f92672">=</span><span style="color:#e6db74">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">management.metrics.distribution.sla.http.server.requests</span><span style="color:#f92672">=</span><span style="color:#e6db74">1ms,5ms</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">management.metrics.distribution.percentiles.http.server.requests</span><span style="color:#f92672">=</span><span style="color:#e6db74">0.5,0.9,0.95,0.99,0.999</span>
+</span></span></code></pre></div><p>Optionally you can configure any number with the <code>MeterRegistryCustomizer</code> registry (such as applying common tags).</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Bean</span>
 </span></span><span style="display:flex;"><span>MeterRegistryCustomizer<span style="color:#f92672">&lt;</span>MeterRegistry<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">metricsCommonTags</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> registry <span style="color:#f92672">-&gt;</span> registry<span style="color:#f92672">.</span><span style="color:#a6e22e">config</span><span style="color:#f92672">().</span><span style="color:#a6e22e">commonTags</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;application&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;sample-app&#34;</span><span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><p>Create a new project; deploy the application and prometheus in OpenShift.</p>
+</span></span></code></pre></div><p>Create a new project; deploy the application and Prometheus in OpenShift.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ oc project myproject
 </span></span><span style="display:flex;"><span>$ oc new-app redhat-openjdk18-OpenShift~&lt;git_repo_URL&gt; -n sample-app
 </span></span><span style="display:flex;"><span>oc new-app prom/prometheus -n prometheus
-</span></span></code></pre></div><p>In order to keep the prometheus image and configuration decoupled, use the <code>ConfigMap</code> object to inject our the Prometheus deployment with the appropriate configuration data</p>
+</span></span></code></pre></div><p>To keep the Prometheus image and configuration decoupled, use the <code>ConfigMap</code> object to inject the Prometheus deployment with the appropriate configuration data.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat <span style="color:#e6db74">&lt;&lt;&#39;EOF&#39; &gt; prometheus.yml
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">global:
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  scrape_interval:     5s
@@ -475,7 +475,7 @@ management.metrics.distribution.percentiles.http.server.requests=0.5,0.9,0.95,0.
 </span></span><span style="display:flex;"><span>oc create configmap prom-config-example --from-file<span style="color:#f92672">=</span>prometheus.yml
 </span></span></code></pre></div><p>Next, edit the deployment configuration for Prometheus to include this ConfigMap.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oc edit dc/prometheus
-</span></span></code></pre></div><p>Add new volume and volume mount</p>
+</span></span></code></pre></div><p>Add new volume and volume mount.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>- name: prom-config-example-volume
 </span></span><span style="display:flex;"><span>   configMap:
 </span></span><span style="display:flex;"><span>     name: prom-config-example
@@ -485,17 +485,17 @@ management.metrics.distribution.percentiles.http.server.requests=0.5,0.9,0.95,0.
 </span></span><span style="display:flex;"><span>  mountPath: /etc/prometheus/
 </span></span></code></pre></div><p>Use an OpenShift Template to run Grafana with persistent storage.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ oc process -f https://gist.githubusercontent.com/Vikaspogu/4a67495acf8dba5dc94837e031129fde/raw/e88f42515c6ed101c9554c7c2425794e80e10a64/OpenShift-grafana.yaml | oc apply -f-
-</span></span></code></pre></div><p>Once deployed, log-in to Grafana using the Route provided in the Template and using default account admin with password admin (it maybe a good idea to change the password after this).</p>
+</span></span></code></pre></div><p>Once deployed, log in to Grafana using the Route provided in the Template and using the default account admin with password admin (it may be a good idea to change the password after this).</p>
 <h3 id="grafana-data-source">
   Grafana Data Source
   <a href="#grafana-data-source" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
 <ol>
 <li>
-<p>The Grafana template automatically provisions a Prometheus data source <code>App-Prometheus</code> which connects to <code>http://prometheus:9090</code> via proxy connection.</p>
+<p>The Grafana template automatically provisions a Prometheus data source, <code>App-Prometheus</code>, which connects to <code>http://prometheus:9090</code> via a proxy connection.</p>
 </li>
 <li>
-<p>This works only if there is a Prometheus service (called prometheus) in the same project as Grafana. If this is not the case, it is necessary to edit the datasource to point to another location.</p>
+<p>This works if there is a Prometheus service (called Prometheus) in the same project as Grafana. If this is not the case, it is necessary to edit the data source to point to the appropriate location.</p>
 </li>
 </ol>
 <h3 id="grafana-dashboard">
@@ -503,7 +503,7 @@ management.metrics.distribution.percentiles.http.server.requests=0.5,0.9,0.95,0.
   <a href="#grafana-dashboard" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
 <ol>
-<li>The Grafana template automatically provisions sample dashboards. These dashboards are by no means comprehensive but could be used as a starting point for further customization.</li>
+<li>The Grafana template automatically provisions sample dashboards. These dashboards are not comprehensive, but you can use them as a starting point for further customization.</li>
 </ol>
 <p>
 
@@ -795,8 +795,8 @@ management.metrics.distribution.percentiles.http.server.requests=0.5,0.9,0.95,0.
 
 <script
   type="text/javascript"
-  src="/js/flexsearch.3f77632a5e276b2f254e33a8da752303c9c167d604d662532d4e2649829e86a9fb988138e9e27ac214ffe560a53974ba68dd2b6e306db43e1ac908e11197b97d.js"
-  integrity="sha512-P3djKl4nay8lTjOo2nUjA8nBZ9YE1mJTLU4mSYKehqn7mIE46eJ6whT/5WClOXS6aN0rbjBttD4ayQjhEZe5fQ==">
+  src="/js/flexsearch.7a24f461a845e684001eeb74564d173afc16e43e00d45973599a7307708a896cab3eed6fc2576ad0d4ca5e6eed1e5c9421f94947789d054a67640babb379dea5.js"
+  integrity="sha512-eiT0YahF5oQAHut0Vk0XOvwW5D4A1FlzWZpzB3CKiWyrPu1vwldq0NTKXm7tHlyUIflJR3idBUpnZAurs3nepQ==">
 </script>
 
 

@@ -13,9 +13,9 @@
       <pubDate>Thu, 12 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/blog/servicemesh-jwt-auth-authz-keycloack/</guid>
-      <description>In this article, I will share the setup for enabling Authentication and Authorization in OpenShift Service Mesh with Keycloak
+      <description>In this article, I will share the setup for enabling Authentication and Authorization in OpenShift Service Mesh with Keycloak.
 Installing OpenShift Service Mesh # Follow the Installing Red Hat OpenShift Service Mesh guide for setup
-Enable following configuration in your ServiceMeshControlPlane resource
+Enable the following configuration in your ServiceMeshControlPlane resource
 Strict mTLS across the mesh Automatic istio route creation apiVersion: maistra.io/v2 kind: ServiceMeshControlPlane spec: version: v1.1 security: controlPlane: mtls: true gateways: OpenShiftRoute: enabled: true Keycloak # Keycloak is an open-source identity and access management application that uses open protocols and is easily integrated with other providers.</description>
     </item>
     

@@ -84,7 +84,7 @@
 <meta itemprop="name" content="Setting up docker buildx on Linux">
 <meta itemprop="description" content="Docker buildx setup on linux"><meta itemprop="datePublished" content="2020-12-05T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2020-12-05T00:00:00+00:00" />
-<meta itemprop="wordCount" content="292">
+<meta itemprop="wordCount" content="300">
 <meta itemprop="keywords" content="docker,buildx,linux," />
 
 
@@ -356,9 +356,9 @@
     class="link--external" target="_blank" rel="noreferrer"
   
 >Ubuntu</a></p>
-<p>To execute docker commands without <code>sudo</code>. We need to add username to the <code>docker</code> group</p>
+<p>To execute docker commands without <code>sudo</code>. We need to add the username to the <code>docker</code> group.</p>
 <ul>
-<li>Find current username by typing <code>who</code></li>
+<li>Find the current username by typing <code>who</code></li>
 <li>Add username to <code>docker</code> group</li>
 <li>Reboot system</li>
 </ul>
@@ -370,27 +370,27 @@
   Enable buildx
   <a href="#enable-buildx" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
-<p>Create a new <code>config.json</code> file under <code>~.docker</code> folder and enable experimental feature</p>
+<p>Create a new <code>config.json</code> file under the <code>~.docker</code> folder and enable the experimental feature</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ mkdir ~/.docker
 </span></span><span style="display:flex;"><span>$ vim ~/.docker/config.json
 </span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#34;experimental&#34;</span>: <span style="color:#e6db74">&#34;enabled&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><p>Now you should be able to do multi arch builds</p>
+</span></span></code></pre></div><p>Now you should be able to do multi-arch builds</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker buildx build -t vikaspogu/test:v0.0.1 . --push --platform linux/arm64
-</span></span></code></pre></div><p>If you encounter below error when trying to build image using <code>buildx</code>. You need to create new build instance</p>
+</span></span></code></pre></div><p>If you encounter the below error when trying to build the image using <code>buildx</code>. It would help if you created new build instance</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>failed to solve: rpc error: code <span style="color:#f92672">=</span> Unknown desc <span style="color:#f92672">=</span> failed to solve with frontend dockerfile.v0: failed to load LLB: runtime execution on platform linux/arm64 not supported
 </span></span></code></pre></div><h3 id="create-build-instance">
   Create build instance
   <a href="#create-build-instance" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
-<p>The following steps are used to create new build instance for arm64</p>
+<p>Follow the below steps to create a new build instance for arm64.</p>
 <ol>
 <li>List existing buildx platforms</li>
-<li>Create new build instance named <code>arm64</code></li>
+<li>Create a new build instance named <code>arm64</code></li>
 <li>Inspect build instance to verify <code>arm64</code> platform exists</li>
 <li>Set builder instance</li>
-<li>Build multi platform image</li>
+<li>Build multi-platform image</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker buildx ls
 </span></span><span style="display:flex;"><span>NAME/NODE DRIVER/ENDPOINT             STATUS   PLATFORMS
@@ -411,13 +411,13 @@
 </span></span><span style="display:flex;"><span>Status:    running
 </span></span><span style="display:flex;"><span>Platforms: linux/amd64*, linux/arm64*, linux/riscv64, linux/ppc64le, linux/386, linux/arm/v7, linux/arm/v6, linux/s390x
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># set current buidler instance</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># set current builder instance</span>
 </span></span><span style="display:flex;"><span>$ docker buildx use amr64
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># build the multi images</span>
 </span></span><span style="display:flex;"><span>$ docker buildx build -t vikaspogu/test:v0.0.1 . --push --platform linux/arm64
 </span></span></code></pre></div><blockquote>
-<p>If you encounter <code>/bin/sh: Invalid ELF image for this architecture</code> error. Run following docker image and then build</p>
+<p>If you encounter <code>/bin/sh: Invalid ELF image for this architecture</code> error. Run the following docker image and then build</p>
 </blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
 </span></span></code></pre></div>
@@ -609,8 +609,8 @@
 
 <script
   type="text/javascript"
-  src="/js/flexsearch.3f77632a5e276b2f254e33a8da752303c9c167d604d662532d4e2649829e86a9fb988138e9e27ac214ffe560a53974ba68dd2b6e306db43e1ac908e11197b97d.js"
-  integrity="sha512-P3djKl4nay8lTjOo2nUjA8nBZ9YE1mJTLU4mSYKehqn7mIE46eJ6whT/5WClOXS6aN0rbjBttD4ayQjhEZe5fQ==">
+  src="/js/flexsearch.7a24f461a845e684001eeb74564d173afc16e43e00d45973599a7307708a896cab3eed6fc2576ad0d4ca5e6eed1e5c9421f94947789d054a67640babb379dea5.js"
+  integrity="sha512-eiT0YahF5oQAHut0Vk0XOvwW5D4A1FlzWZpzB3CKiWyrPu1vwldq0NTKXm7tHlyUIflJR3idBUpnZAurs3nepQ==">
 </script>
 
 

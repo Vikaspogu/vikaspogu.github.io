@@ -335,17 +335,17 @@
 </div>
 
     <div class="post-content">
-      <p>Recently, i ran into a issue where pushing images to the docker registry after a build fails</p>
+      <p>Recently, I ran into an issue where pushing images to the docker registry after a build fails.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Pushing image docker-registry.default.svc:5000/simple-go-build/simple-go:latest ...
 </span></span><span style="display:flex;"><span>Registry server Address:
 </span></span><span style="display:flex;"><span>Registry server User Name: serviceaccount
 </span></span><span style="display:flex;"><span>Registry server Email: serviceaccount@example.org
 </span></span><span style="display:flex;"><span>Registry server Password: <span style="color:#e6db74">&lt;&lt;non</span>-empty&gt;&gt;
 </span></span><span style="display:flex;"><span>error: build error: Failed to push image: received unexpected HTTP status: <span style="color:#ae81ff">500</span> Internal Server Error
-</span></span></code></pre></div><p>Registry pods logs show <code>permission denied</code></p>
+</span></span></code></pre></div><p>Registry pods logs show <code>permission denied</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>err.code<span style="color:#f92672">=</span>UNKNOWN err.detail<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;filesystem: mkdir /registry/docker/registry/v2/repositories/simple-go-build/simple-go/_uploads/c34415b4-c6d8-42ba-9854-aee449efd984: permission denied&#34;</span>
-</span></span></code></pre></div><p>One of the Red Hat solutions article suggested to verify the file ownership of the files, directories in the volume and compare it to the uid of the registry</p>
-<p>Changing the owner recursively to the uid of the registry, fixed the issue</p>
+</span></span></code></pre></div><p>One of the Red Hat solutions articles suggested verifying the file ownership of the files and directories in the volume and comparing it to the uid of the registry.</p>
+<p>Changing the owner recursively to the uid of the registry fixed the issue</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@master# chown -R <span style="color:#ae81ff">1001</span> /exports/registry/docker/
 </span></span></code></pre></div>
     </div>
@@ -536,8 +536,8 @@
 
 <script
   type="text/javascript"
-  src="/js/flexsearch.3f77632a5e276b2f254e33a8da752303c9c167d604d662532d4e2649829e86a9fb988138e9e27ac214ffe560a53974ba68dd2b6e306db43e1ac908e11197b97d.js"
-  integrity="sha512-P3djKl4nay8lTjOo2nUjA8nBZ9YE1mJTLU4mSYKehqn7mIE46eJ6whT/5WClOXS6aN0rbjBttD4ayQjhEZe5fQ==">
+  src="/js/flexsearch.7a24f461a845e684001eeb74564d173afc16e43e00d45973599a7307708a896cab3eed6fc2576ad0d4ca5e6eed1e5c9421f94947789d054a67640babb379dea5.js"
+  integrity="sha512-eiT0YahF5oQAHut0Vk0XOvwW5D4A1FlzWZpzB3CKiWyrPu1vwldq0NTKXm7tHlyUIflJR3idBUpnZAurs3nepQ==">
 </script>
 
 

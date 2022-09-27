@@ -58,15 +58,15 @@
 
 
 
-<title>Deleting a OpenShift project stuck in terminating state</title>
+<title>Deleting an OpenShift project stuck in terminating state</title>
 
 <meta
   name="description"
-  content="Recently I was faced an issue where one of my project was stuck in terminating state for days. The workaround below fixed the issue.
-Export OpenShift project as an JSON Object
+  content="Recently I faced an issue where one of my projects got stuck in a terminating state for days. The workaround below fixed the problem.
+Export OpenShift project as a JSON Object
 oc get project delete-me -o json &amp;gt; ns-without-finalizers.json Replace below from
 spec: finalizers: - kubernetes to
-spec: finalizers: [] On one of the master node, execute these commands.
+spec: finalizers: [] On one of the master nodes, execute these commands.
 kubectl proxy &amp;amp; PID=$! curl -X PUT http://localhost:8001/api/v1/namespaces/delete-me/finalize \ -H &amp;#34;Content-Type: application/json&amp;#34; --data-binary @ns-without-finalizers."
 />
 
@@ -75,20 +75,20 @@ kubectl proxy &amp;amp; PID=$! curl -X PUT http://localhost:8001/api/v1/namespac
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Deleting a OpenShift project stuck in terminating state"/>
-<meta name="twitter:description" content="Recently I was faced an issue where one of my project was stuck in terminating state for days. The workaround below fixed the issue.
-Export OpenShift project as an JSON Object
+<meta name="twitter:title" content="Deleting an OpenShift project stuck in terminating state"/>
+<meta name="twitter:description" content="Recently I faced an issue where one of my projects got stuck in a terminating state for days. The workaround below fixed the problem.
+Export OpenShift project as a JSON Object
 oc get project delete-me -o json &gt; ns-without-finalizers.json Replace below from
 spec: finalizers: - kubernetes to
-spec: finalizers: [] On one of the master node, execute these commands.
+spec: finalizers: [] On one of the master nodes, execute these commands.
 kubectl proxy &amp; PID=$! curl -X PUT http://localhost:8001/api/v1/namespaces/delete-me/finalize \ -H &#34;Content-Type: application/json&#34; --data-binary @ns-without-finalizers."/>
 
-<meta property="og:title" content="Deleting a OpenShift project stuck in terminating state" />
-<meta property="og:description" content="Recently I was faced an issue where one of my project was stuck in terminating state for days. The workaround below fixed the issue.
-Export OpenShift project as an JSON Object
+<meta property="og:title" content="Deleting an OpenShift project stuck in terminating state" />
+<meta property="og:description" content="Recently I faced an issue where one of my projects got stuck in a terminating state for days. The workaround below fixed the problem.
+Export OpenShift project as a JSON Object
 oc get project delete-me -o json &gt; ns-without-finalizers.json Replace below from
 spec: finalizers: - kubernetes to
-spec: finalizers: [] On one of the master node, execute these commands.
+spec: finalizers: [] On one of the master nodes, execute these commands.
 kubectl proxy &amp; PID=$! curl -X PUT http://localhost:8001/api/v1/namespaces/delete-me/finalize \ -H &#34;Content-Type: application/json&#34; --data-binary @ns-without-finalizers." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://vikaspogu.dev/blog/project-terminating/" /><meta property="article:section" content="blog" />
@@ -96,12 +96,12 @@ kubectl proxy &amp; PID=$! curl -X PUT http://localhost:8001/api/v1/namespaces/d
 <meta property="article:modified_time" content="2019-05-15T00:00:00+00:00" />
 
 
-<meta itemprop="name" content="Deleting a OpenShift project stuck in terminating state">
-<meta itemprop="description" content="Recently I was faced an issue where one of my project was stuck in terminating state for days. The workaround below fixed the issue.
-Export OpenShift project as an JSON Object
+<meta itemprop="name" content="Deleting an OpenShift project stuck in terminating state">
+<meta itemprop="description" content="Recently I faced an issue where one of my projects got stuck in a terminating state for days. The workaround below fixed the problem.
+Export OpenShift project as a JSON Object
 oc get project delete-me -o json &gt; ns-without-finalizers.json Replace below from
 spec: finalizers: - kubernetes to
-spec: finalizers: [] On one of the master node, execute these commands.
+spec: finalizers: [] On one of the master nodes, execute these commands.
 kubectl proxy &amp; PID=$! curl -X PUT http://localhost:8001/api/v1/namespaces/delete-me/finalize \ -H &#34;Content-Type: application/json&#34; --data-binary @ns-without-finalizers."><meta itemprop="datePublished" content="2019-05-15T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2019-05-15T00:00:00+00:00" />
 <meta itemprop="wordCount" content="75">
@@ -328,7 +328,7 @@ kubectl proxy &amp; PID=$! curl -X PUT http://localhost:8001/api/v1/namespaces/d
   <article class="post">
     <div class="post-header">
   <h1>
-    <a href="/blog/project-terminating/">Deleting a OpenShift project stuck in terminating state</a>
+    <a href="/blog/project-terminating/">Deleting an OpenShift project stuck in terminating state</a>
   </h1>
 
   <div class="post-meta">
@@ -355,8 +355,8 @@ kubectl proxy &amp; PID=$! curl -X PUT http://localhost:8001/api/v1/namespaces/d
 </div>
 
     <div class="post-content">
-      <p>Recently I was faced an issue where one of my project was stuck in terminating state for days. The workaround below fixed the issue.</p>
-<p>Export OpenShift project as an JSON Object</p>
+      <p>Recently I faced an issue where one of my projects got stuck in a terminating state for days. The workaround below fixed the problem.</p>
+<p>Export OpenShift project as a JSON Object</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oc get project delete-me -o json &gt; ns-without-finalizers.json
 </span></span></code></pre></div><p>Replace below from</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
@@ -365,7 +365,7 @@ kubectl proxy &amp; PID=$! curl -X PUT http://localhost:8001/api/v1/namespaces/d
 </span></span></code></pre></div><p>to</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">finalizers</span>: []
-</span></span></code></pre></div><p>On one of the master node, execute these commands.</p>
+</span></span></code></pre></div><p>On one of the master nodes, execute these commands.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubectl proxy &amp; PID<span style="color:#f92672">=</span>$!
 </span></span><span style="display:flex;"><span>curl -X PUT http://localhost:8001/api/v1/namespaces/delete-me/finalize <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> --data-binary @ns-without-finalizers.json
@@ -400,7 +400,7 @@ kubectl proxy &amp; PID=$! curl -X PUT http://localhost:8001/api/v1/namespaces/d
       
       <a
         class="social-share__item"
-        href="https://reddit.com/submit?url=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Fproject-terminating%2F&amp;title=Deleting&#43;a&#43;OpenShift&#43;project&#43;stuck&#43;in&#43;terminating&#43;state"
+        href="https://reddit.com/submit?url=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Fproject-terminating%2F&amp;title=Deleting&#43;an&#43;OpenShift&#43;project&#43;stuck&#43;in&#43;terminating&#43;state"
         target="_blank"
         rel="noreferrer"
       >
@@ -415,7 +415,7 @@ kubectl proxy &amp; PID=$! curl -X PUT http://localhost:8001/api/v1/namespaces/d
       
       <a
         class="social-share__item"
-        href="mailto:?subject=Deleting&#43;a&#43;OpenShift&#43;project&#43;stuck&#43;in&#43;terminating&#43;state&amp;body=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Fproject-terminating%2F"
+        href="mailto:?subject=Deleting&#43;an&#43;OpenShift&#43;project&#43;stuck&#43;in&#43;terminating&#43;state&amp;body=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Fproject-terminating%2F"
         target="_blank"
         rel="noreferrer"
       >
@@ -559,8 +559,8 @@ kubectl proxy &amp; PID=$! curl -X PUT http://localhost:8001/api/v1/namespaces/d
 
 <script
   type="text/javascript"
-  src="/js/flexsearch.3f77632a5e276b2f254e33a8da752303c9c167d604d662532d4e2649829e86a9fb988138e9e27ac214ffe560a53974ba68dd2b6e306db43e1ac908e11197b97d.js"
-  integrity="sha512-P3djKl4nay8lTjOo2nUjA8nBZ9YE1mJTLU4mSYKehqn7mIE46eJ6whT/5WClOXS6aN0rbjBttD4ayQjhEZe5fQ==">
+  src="/js/flexsearch.7a24f461a845e684001eeb74564d173afc16e43e00d45973599a7307708a896cab3eed6fc2576ad0d4ca5e6eed1e5c9421f94947789d054a67640babb379dea5.js"
+  integrity="sha512-eiT0YahF5oQAHut0Vk0XOvwW5D4A1FlzWZpzB3CKiWyrPu1vwldq0NTKXm7tHlyUIflJR3idBUpnZAurs3nepQ==">
 </script>
 
 

@@ -14,8 +14,8 @@
       
       <guid>https://vikaspogu.dev/blog/tekton-argocd-gitops/</guid>
       <description>In this post, I will:
-Use Tekton to build and publish image to docker registry Trigger a Tekton pipeline from GitHub Use Argo to deploy application Getting Started # Assumptions:
-You have a running OpenShift 4 cluster with ArgoCD, and OpenShift Pipelines installed. If not, you follow instructions to OpenShift Pipelines and ArgoCD Operator Understand of basic argocd and tekton concepts Create an OpenShift project called node-web-project
+Use Tekton to build and publish an image to the docker registry Trigger a Tekton pipeline from GitHub Use ArgoCD to deploy an application Getting Started # Pre-requisites:
+An OpenShift 4 cluster with ArgoCD and OpenShift Pipelines installed. If not, you follow instructions to OpenShift Pipelines and ArgoCD Operator Basic understanding of ArgoCD and Tekton concepts Create an OpenShift project called node-web-project
 oc new-project node-web-project Using Private Registries # Create a docker secret with registry authentication details</description>
     </item>
     

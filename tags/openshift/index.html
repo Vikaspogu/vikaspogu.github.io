@@ -350,7 +350,7 @@
     <div class="post-content">
       <span>
         
-          OpenShift policy management with opa gatekeeper
+          OpenShift policy management with OPA gatekeeper.
         
       </span>
     </div>
@@ -446,7 +446,7 @@
     <div class="post-content">
       <span>
         
-          Add SSL certificates for OpenShift Jenkins Authentication using OpenShift OAuth plugin
+          Add SSL certificates for OpenShift Jenkins Authentication using OpenShift OAuth plugin.
         
       </span>
     </div>
@@ -532,9 +532,9 @@
     <div class="post-content">
       <span>
         
-          Couchbase SSL # If you have followed dynamic creation of java keystores in OpenShift post and wondered how to use similar concepts for couchbase database and a java application. This post will help you.
-Couchbase setup # This is the couchbase documentation for configuring server side certificates, we are interested in last few steps since OpenShift will generate key and cert by adding annotation to the couchbase service.
-Note: By adding this annotation you can dynamically create certificates service.
+          Couchbase SSL # Suppose you have followed dynamic creation of java keystores in OpenShift post and wondered how to use similar concepts for couchbase database and a java application. This post will help you.
+Couchbase setup # Here is the couchbase documentation for configuring server-side certificates, we are interested in last few steps since OpenShift will generate key and cert by adding an annotation to the couchbase service.
+Note: By adding this annotation, you can dynamically create certificates service.
           
             <div class="post-content__read-more">
               <a href="/blog/couchbase-ssl-openshift/">Read more ></a>
@@ -582,9 +582,9 @@ Note: By adding this annotation you can dynamically create certificates service.
     <div class="post-content">
       <span>
         
-          Recently I came across tektoncd project, The Tekton Pipelines project provides Kubernetes-style resources for declaring CI/CD-style pipelines caught my attention and started playing with it.
-Basic Concepts # In order to create a tekton pipeline, one does the following:
-Create custom or install existing reusable Tasks Create a Pipeline and PipelineResources to define your application&rsquo;s delivery pipeline Create a PipelineRun to instantiate and invoke the pipeline Installing Tekton on OpenShift # Login as a user with cluster-admin privileges
+          Recently I came across tektoncd project, The Tekton Pipelines project provides Kubernetes-style resources for declaring CI/CD-style pipelines caught my attention, and I started playing with it.
+Basic Concepts # To create a Tekton pipeline, one does the following:
+Create custom or install existing reusable Tasks Create a Pipeline and PipelineResources to define your application&rsquo;s delivery pipeline Create a PipelineRun to instantiate and invoke the pipeline Installing Tekton on OpenShift # Log in as a user with cluster-admin privileges.
           
             <div class="post-content__read-more">
               <a href="/blog/intro-tektoncd-ocp/">Read more ></a>
@@ -598,7 +598,7 @@ Create custom or install existing reusable Tasks Create a Pipeline and PipelineR
   <article class="post">
     <div class="post-header">
   <h1>
-    <a href="/blog/project-terminating/">Deleting a OpenShift project stuck in terminating state</a>
+    <a href="/blog/project-terminating/">Deleting an OpenShift project stuck in terminating state</a>
   </h1>
 
   <div class="post-meta">
@@ -627,11 +627,11 @@ Create custom or install existing reusable Tasks Create a Pipeline and PipelineR
     <div class="post-content">
       <span>
         
-          Recently I was faced an issue where one of my project was stuck in terminating state for days. The workaround below fixed the issue.
-Export OpenShift project as an JSON Object
+          Recently I faced an issue where one of my projects got stuck in a terminating state for days. The workaround below fixed the problem.
+Export OpenShift project as a JSON Object
 oc get project delete-me -o json &gt; ns-without-finalizers.json Replace below from
 spec: finalizers: - kubernetes to
-spec: finalizers: [] On one of the master node, execute these commands.
+spec: finalizers: [] On one of the master nodes, execute these commands.
 kubectl proxy &amp; PID=$! curl -X PUT http://localhost:8001/api/v1/namespaces/delete-me/finalize \ -H &#34;Content-Type: application/json&#34; --data-binary @ns-without-finalizers.
           
             <div class="post-content__read-more">
@@ -690,10 +690,10 @@ kubectl proxy &amp; PID=$! curl -X PUT http://localhost:8001/api/v1/namespaces/d
     <div class="post-content">
       <span>
         
-          Spring Boot Metrics # In this post I&rsquo;ll discuss how to monitor spring boot application metrics using Prometheus and Grafana.
-Prometheus # Prometheus is a monitoring system which collects metrics from configured targets at given intervals.
-Grafana # Grafana is an open source metric analytics &amp; visualization tool.
-Micrometer # Micrometer is a metrics instrumentation library for JVM-based applications.
+          Spring Boot Metrics # This post will discuss how to monitor spring boot application metrics using Prometheus and Grafana.
+Prometheus # Prometheus is a monitoring system that collects metrics from configured targets at intervals.
+Grafana # Grafana is an open-source metric analytics &amp; visualization tool.
+Micrometer # The micrometer is a metrics instrumentation library for JVM-based applications.
 Spring Boot Actuator # Spring Boot Actuator helps you monitor and manage your application when it’s pushed to production.
           
             <div class="post-content__read-more">
@@ -742,9 +742,9 @@ Spring Boot Actuator # Spring Boot Actuator helps you monitor and manage your ap
     <div class="post-content">
       <span>
         
-          This post is about how to remote debug a ASP.NET Core application on OpenShift using Visual Studio Code. You can use any Microsoft proprietary debugger engine vsdbg with Visual Studio Code.
-First, list the available .Net application pods using oc command.
-$ oc get pod NAME READY STATUS RESTARTS AGE MY_APP_NAME-3-1xrsp 0/1 Running 0 6s $ oc rsh MY_APP_NAME-3-1xrsp sh-4.2$ curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l /opt/app-root/vsdbg -r linux-x64 Note: If you&rsquo;re container is running behind a corporate proxy and cannot access internet, you&rsquo;ll have to build base dotnet image with the debugger engine vsdbg installed in it.
+          This post concerns remote debugging an ASP.NET Core application on OpenShift using Visual Studio Code. You can use any Microsoft proprietary debugger engine vsdbg with Visual Studio Code.
+First, list the available .Net application pods using the oc command.
+$ oc get pod NAME READY STATUS RESTARTS AGE MY_APP_NAME-3-1xrsp 0/1 Running 0 6s $ oc rsh MY_APP_NAME-3-1xrsp sh-4.2$ curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l /opt/app-root/vsdbg -r linux-x64 Note: If your container is running behind a corporate proxy and cannot access the internet, you&rsquo;ll have to build a base dotnet image with the installed debugger engine vsdbg.
           
             <div class="post-content__read-more">
               <a href="/blog/debug-netcore-openshift/">Read more ></a>
@@ -758,7 +758,7 @@ $ oc get pod NAME READY STATUS RESTARTS AGE MY_APP_NAME-3-1xrsp 0/1 Running 0 6s
   <article class="post">
     <div class="post-header">
   <h1>
-    <a href="/blog/debug-java-container/">Debugging a Java application in OpenShift</a>
+    <a href="/blog/debug-java-container/">Debugging a Java application in OpenShift.</a>
   </h1>
 
   <div class="post-meta">
@@ -793,8 +793,8 @@ $ oc get pod NAME READY STATUS RESTARTS AGE MY_APP_NAME-3-1xrsp 0/1 Running 0 6s
       <span>
         
           This post will discuss debugging a JAVA application running inside a container.
-Red Hat container images # When you bootstrap your JVM, you should have a way to enable JVM debug. For example Red Hat S2I images allows you to control classpath and debugging via environment variables.
-# Set debug options if required if [ x&#34;${JAVA_DEBUG}&#34; != x ] &amp;&amp; [ &#34;${JAVA_DEBUG}&#34; != &#34;false&#34; ]; then java_debug_args=&#34;-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=${JAVA_DEBUG_PORT:-5005}&#34; fi Setting the JAVA_DEBUG environment variable inside the container to true will add debug args to JVM startup command Configure port forwarding so that you can connect to your application from a remote debugger If you are using tomcat image replace JAVA_DEBUG environment variable to DEBUG
+Red Hat container images # When you bootstrap your JVM, you should have a way to enable JVM to debug. For example, Red Hat S2I images allow you to control classpath and debugging via environment variables.
+# Set debug options if required if [ x&#34;${JAVA_DEBUG}&#34; != x ] &amp;&amp; [ &#34;${JAVA_DEBUG}&#34; != &#34;false&#34; ]; then java_debug_args=&#34;-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=${JAVA_DEBUG_PORT:-5005}&#34; fi Setting the JAVA_DEBUG environment variable inside the container to true will append debug args to the JVM startup command Configure port forwarding so that you can connect to your application from a remote debugger If you are using the tomcat image, replace the JAVA_DEBUG environment variable with DEBUG
           
             <div class="post-content__read-more">
               <a href="/blog/debug-java-container/">Read more ></a>
@@ -939,8 +939,8 @@ Red Hat container images # When you bootstrap your JVM, you should have a way to
 
 <script
   type="text/javascript"
-  src="/js/flexsearch.3f77632a5e276b2f254e33a8da752303c9c167d604d662532d4e2649829e86a9fb988138e9e27ac214ffe560a53974ba68dd2b6e306db43e1ac908e11197b97d.js"
-  integrity="sha512-P3djKl4nay8lTjOo2nUjA8nBZ9YE1mJTLU4mSYKehqn7mIE46eJ6whT/5WClOXS6aN0rbjBttD4ayQjhEZe5fQ==">
+  src="/js/flexsearch.7a24f461a845e684001eeb74564d173afc16e43e00d45973599a7307708a896cab3eed6fc2576ad0d4ca5e6eed1e5c9421f94947789d054a67640babb379dea5.js"
+  integrity="sha512-eiT0YahF5oQAHut0Vk0XOvwW5D4A1FlzWZpzB3CKiWyrPu1vwldq0NTKXm7tHlyUIflJR3idBUpnZAurs3nepQ==">
 </script>
 
 

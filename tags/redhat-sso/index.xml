@@ -8,14 +8,14 @@
     <copyright>Copyright © 2021</copyright>
     <lastBuildDate>Sat, 27 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/redhat-sso/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Go JWT Authentication with keycloak</title>
+      <title>Go JWT Authentication with Keycloak</title>
       <link>https://vikaspogu.dev/blog/sso-jwt-golang/</link>
       <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/blog/sso-jwt-golang/</guid>
-      <description>Recently I was working on a React project with Go backend using Gin web framework. Keycloak was the authentication mechanism for the frontend; I also wanted to secure the backend using JSON Web Tokens which was provided by Keycloak on every login. Setup for jwt verification in Go was easy.
-First, copy RS256 algorithm public key value from Keycloak
-Send the token as Authorization header
+      <description>I recently worked on a React project with Go backend using Gin web framework. Keycloak was the authentication mechanism for the front end; I also wanted to secure the back end using JSON Web Tokens, which Keycloak provided on every login. JWT verification setup in the Go application was easy.
+First, copy the RS256 algorithm public key value from Keycloak.
+Send the token as an Authorization header.
 axios .get(BACKEND_URL.concat(&amp;#34;sampleendpoint&amp;#34;), { headers: { Authorization: this.</description>
     </item>
     
@@ -25,11 +25,11 @@ axios .get(BACKEND_URL.concat(&amp;#34;sampleendpoint&amp;#34;), { headers: { Au
       <pubDate>Thu, 25 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/blog/redhat-sso-react/</guid>
-      <description>In this post, I will show you how to secure a React app using RedHat SSO (upstream keycloak). In this case, openid-connect is my identity provider.
-Install the official keycloak js adapter
-npm i keycloak-js --save Setup the client with the host and port; in my case it&amp;rsquo;s localhost:9000
-In App.js add in a JavaScript object with the required configuration; you will find these configurations under Clients-&amp;gt;Installation
-//keycloak init options const initOptions = { url: &amp;#34;https://localhost:8080/auth&amp;#34;, realm: &amp;#34;test&amp;#34;, clientId: &amp;#34;react-app&amp;#34;, onLoad: &amp;#34;login-required&amp;#34; }; By default, to authenticate you need to call the login function.</description>
+      <description>This post will show you how to secure a React app using RedHat SSO (upstream Keycloak). In this case, OpenID-connect is my identity provider.
+Install the official Keycloak js adapter
+npm i keycloak-js --save Add host and port information to the client; in my case, it&amp;rsquo;s localhost:9000
+In App.js, add a JavaScript object with the required configuration; you will find these configurations under Clients-&amp;gt;Installation.
+//keycloak init options const initOptions = { url: &amp;#34;https://localhost:8080/auth&amp;#34;, realm: &amp;#34;test&amp;#34;, clientId: &amp;#34;react-app&amp;#34;, onLoad: &amp;#34;login-required&amp;#34; }; By default, to authenticate, you need to call the login function.</description>
     </item>
     
   </channel>

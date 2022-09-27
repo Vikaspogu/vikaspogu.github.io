@@ -13,7 +13,8 @@
       <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/blog/pi-garage-k3s/</guid>
-      <description>There are many articles out there which demonstartes how to use a raspberry pi as a DIY garage door opener project. Few are outdated and not deployed using containers images. I found couple good solutions on google but i wasn&amp;rsquo;t able to run them on kubernetes cluster either due to older packages or no enough information. I decided to build my own solution from different sources of information i found</description>
+      <description>Many articles are out there which demonstrate how to use a raspberry pi as a DIY garage door opener project. Few are outdated and not deployed using container images. I found a few reasonable solutions on google, but I couldn&amp;rsquo;t run them on the Kubernetes cluster due to older packages or insufficient information. I decided to build my solution from different sources of information I found
+What we&amp;rsquo;ll cover in this post</description>
     </item>
     
     <item>
@@ -22,10 +23,10 @@
       <pubDate>Sat, 04 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/blog/nodejs-slack-bot/</guid>
-      <description>Build your own personal slack bot in few steps. In this post we&amp;rsquo;ll navigate through process of creating the bot.
-Slack setup # First create a slack workspace
+      <description>Build your slack bot in a few steps. In this post, we&amp;rsquo;ll navigate the process of creating the bot.
+Slack setup # First, create a slack workspace
 Give your workspace a name Create a new bot at slack apps
-Give your new app a name Choose workspace you created before to install the app Then go to Features &amp;gt; OAuth &amp;amp; Permissions screen to scroll down to Bot Token Scopes to specify the OAuth scopes, select app_mentions and chat_write to enable the bot to send messages.</description>
+Give your new application a name Choose the workspace you created before installing the bot application Then go to the Features &amp;gt; OAuth &amp;amp; Permissions screen to scroll down to Bot Token Scopes to specify the OAuth scopes, and select app_mentions and chat_write to enable the bot to send messages.</description>
     </item>
     
     <item>
@@ -37,7 +38,7 @@ Give your new app a name Choose workspace you created before to install the app 
       <description>This post demonstrates how to authenticate a user against LDAP.
 Let&amp;rsquo;s start by installing basic-auth and ldapauth-fork packages
 npm install ldapauth-fork npm install basic-auth Steps for implementation;
-Add packages Create a ldap variable with authentication configuration Basic auth should prompt for you username and password. Once user is found, verify the given password by trying to bind the user client with the found LDAP user object and given password. const auth = require(&amp;#34;basic-auth&amp;#34;); var LdapAuth = require(&amp;#34;ldapauth-fork&amp;#34;); var ldap = new LdapAuth({ url: &amp;#34;ldap://ldap-url:389&amp;#34;, bindDN: &amp;#34;uid=rc,ou=AppAccounts,ou=People,ou=Entsys,dc=example.</description>
+Add packages Create an LDAP variable with authentication configuration Basic auth should prompt for your username and password. Once the user is found, verify the given password by trying to bind the user client with the found LDAP user object and the given password.</description>
     </item>
     
   </channel>

@@ -13,10 +13,10 @@
       <pubDate>Sat, 04 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/blog/nodejs-slack-bot/</guid>
-      <description>Build your own personal slack bot in few steps. In this post we&amp;rsquo;ll navigate through process of creating the bot.
-Slack setup # First create a slack workspace
+      <description>Build your slack bot in a few steps. In this post, we&amp;rsquo;ll navigate the process of creating the bot.
+Slack setup # First, create a slack workspace
 Give your workspace a name Create a new bot at slack apps
-Give your new app a name Choose workspace you created before to install the app Then go to Features &amp;gt; OAuth &amp;amp; Permissions screen to scroll down to Bot Token Scopes to specify the OAuth scopes, select app_mentions and chat_write to enable the bot to send messages.</description>
+Give your new application a name Choose the workspace you created before installing the bot application Then go to the Features &amp;gt; OAuth &amp;amp; Permissions screen to scroll down to Bot Token Scopes to specify the OAuth scopes, and select app_mentions and chat_write to enable the bot to send messages.</description>
     </item>
     
   </channel>

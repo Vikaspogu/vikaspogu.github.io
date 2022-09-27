@@ -13,8 +13,8 @@
       <pubDate>Tue, 19 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/blog/tekton-triggers-cel-interception/</guid>
-      <description>Tekton Triggers work by having EventListeners receive incoming webhook notifications, processing them using an Interceptor, and creating Kubernetes resources from templates if the interceptor allows it, with extraction of fields from the body of the webhook
-CEL Interceptors can be used to filter or modify incoming events. for example if you want to truncate commit id from the webhook body
+      <description>Tekton Triggers work by having EventListeners receive incoming webhook notifications, processing them using an Interceptor, and creating Kubernetes resources from templates if the interceptor allows it, with the extraction of fields from the body of the webhook
+CEL Interceptors can filter or modify incoming events. For example, you can truncate the commit id from the webhook body.
 apiVersion: triggers.tekton.dev/v1alpha1 kind: EventListener metadata: name: shared-listener namespace: default spec: serviceAccountName: build-bot triggers: - name: shared-pipeline-trigger interceptors: - cel: overlays: - key: intercepted.</description>
     </item>
     

@@ -88,7 +88,7 @@ Install &amp; Configure TFTP Install &amp; Configure HTTP server Enable network 
 <meta itemprop="description" content="In this post, I have documented the steps I followed to install RHEL 8 by booting from a PXE server over the network with a Kickstart file using Synology NAS as TFTP, HTTP server, and UDM as DHCP.
 Install &amp; Configure TFTP Install &amp; Configure HTTP server Enable network boot on UDM PXE Boot setup Prepare Installation Repository Prepare kickstart file Perform PXE boot Install and Configure TFTP # Trivial File Transfer Protocol (TFTP) is a simple file transfer protocol, generally used for transferring configurations or boot files when authentication is not required."><meta itemprop="datePublished" content="2022-05-13T16:09:15-05:00" />
 <meta itemprop="dateModified" content="2022-05-13T16:09:15-05:00" />
-<meta itemprop="wordCount" content="732">
+<meta itemprop="wordCount" content="716">
 <meta itemprop="keywords" content="PXE,NAS,UDM," />
 
 
@@ -395,7 +395,7 @@ Install &amp; Configure TFTP Install &amp; Configure HTTP server Enable network 
   <a href="#install-and-configure-tftp" class="post-heading__anchor" aria-hidden="true">#</a>
 </h2>
 <p>Trivial File Transfer Protocol (TFTP) is a simple file transfer protocol, generally used for transferring configurations or boot files when authentication is not required.</p>
-<p>Synology NAS comes with TFTP file services</p>
+<p>Synology NAS comes with TFTP file services.</p>
 <h3 id="to-configure-tftp">
   To configure TFTP
   <a href="#to-configure-tftp" class="post-heading__anchor" aria-hidden="true">#</a>
@@ -503,7 +503,7 @@ Install &amp; Configure TFTP Install &amp; Configure HTTP server Enable network 
   Install and Configure HTTP server
   <a href="#install-and-configure-http-server" class="post-heading__anchor" aria-hidden="true">#</a>
 </h2>
-<p>We also need a service to host our image repository, we can use FTP or HTTP, or NFS to host our image repository. Synology NAS comes with web hosting features. In Web Station, we will create a port-based virtual host to host the contents of our image repository.</p>
+<p>We also need a service to host our image repository; we can use FTP or HTTP, or NFS to host our image repository. Synology NAS comes with web hosting features. In Web Station, we will create a port-based virtual host to host the contents of our image repository.</p>
 <p>Install the following packages from the Synology package center</p>
 <ul>
 <li>Web Station</li>
@@ -706,7 +706,7 @@ Install &amp; Configure TFTP Install &amp; Configure HTTP server Enable network 
 <p>In the virtual host wizard</p>
 <ul>
 <li>Select Port-based with protocol as <code>HTTP</code> and enter port number <code>8080</code></li>
-<li>Select the <code>Document root</code> directory which is the same PXE location as TFTP</li>
+<li>Select the <code>Document root</code> directory, which is the exact PXE location as TFTP</li>
 <li>Select Apache HTTP Server as the back-end server</li>
 <li>Click Create to save settings</li>
 </ul>
@@ -804,10 +804,10 @@ Install &amp; Configure TFTP Install &amp; Configure HTTP server Enable network 
 
 
 </p>
-<p>We need to enable simple directory browsing on the virtual host we just create to access the contents of images and configuration files to perform PXE Boot.</p>
-<p>In the <code>Document root</code> directory create a file named <code>.htaccess</code> with the following content</p>
+<p>We need to enable simple directory browsing on the virtual host to access the contents of images and configuration files to perform PXE Boot.</p>
+<p>In the <code>Document root</code> directory, create a file named <code>.htaccess</code> with the following content.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>Options +Indexes
-</span></span></code></pre></div><p>Navigate to <code>IP:8080</code> and you should see a similar screen with files in the folder</p>
+</span></span></code></pre></div><p>Navigate to <code>IP:8080</code>, and you should see a similar screen with files in the folder.</p>
 <p>
 
 
@@ -907,7 +907,7 @@ Install &amp; Configure TFTP Install &amp; Configure HTTP server Enable network 
 
 </p>
 <h2 id="pxe-boot-setup">
-  PXE Boot setup
+  PXE Boot Setup
   <a href="#pxe-boot-setup" class="post-heading__anchor" aria-hidden="true">#</a>
 </h2>
 <h3 id="prepare-installation-repository">
@@ -915,14 +915,14 @@ Install &amp; Configure TFTP Install &amp; Configure HTTP server Enable network 
   <a href="#prepare-installation-repository" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
 <ul>
-<li>Download the ISO image file of the full installation DVD</li>
-<li>Create a directory named <code>images/rhel/8.6</code> under root directory of TFTP/HTTP server</li>
+<li>Download the ISO image file of the complete installation DVD</li>
+<li>Create a directory named <code>images/rhel/8.6</code> under the root directory of the TFTP/HTTP server</li>
 <li>Mount the ISO image</li>
 <li>Copy all the files from the ISO to the previously created directory on TFTP/HTTP server. You will need around 10GB of storage to copy all the files from the ISO to the local directory.</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mount rhel-8.6-x86_64-dvd.iso /mnt
 </span></span><span style="display:flex;"><span>scp -pr /mnt/* nas-user@nas-address:/media/PXE/images/rhel/8.6
-</span></span></code></pre></div><p>To perform UEFI PXE Boot installation, we will need the following PXE boot files</p>
+</span></span></code></pre></div><p>To perform the UEFI PXE Boot installation, we will need the following PXE boot files.</p>
 <ul>
 <li>grubx64.efi provided by grub2-efi-x64 rpm</li>
 <li>shimx64.efi provided by shim-x64 rpm</li>
@@ -938,7 +938,7 @@ Install &amp; Configure TFTP Install &amp; Configure HTTP server Enable network 
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>scp /tmp/boot/efi/EFI/BOOT/BOOTX64.EFI nas-user@nas-address:/media/PXE
 </span></span><span style="display:flex;"><span>scp /tmp/boot/efi/EFI/centos/shimx64.efi nas-user@nas-address:/media/PXE
 </span></span><span style="display:flex;"><span>scp /tmp/boot/efi/EFI/centos/grubx64.efi nas-user@nas-address:/media/PXE
-</span></span></code></pre></div><p>Add a configuration file named <code>grub.cfg</code> to the TFTP/HTTP root directory. We need initrd and vmlinuz files to load the Operating System until the hard disk and other interfaces are detected. In the <code>grub.cfg</code> take a note of <code>linuxefi</code> and <code>initrdefi</code> I am referring to TFTP/HTTP image directory location.</p>
+</span></span></code></pre></div><p>Add a configuration file named <code>grub.cfg</code> to the TFTP/HTTP root directory. We need <code>initrd</code> and <code>vmlinuz</code> files to load the Operating System until the hard disk and other interfaces are detected. In the <code>grub.cfg</code> take note of <code>linuxefi</code> and <code>initrdefi</code>. Please update it to TFTP/HTTP image directory location.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>set timeout=30
 </span></span><span style="display:flex;"><span>menuentry &#39;Install RHEL 8.6 on T7910&#39; {
 </span></span><span style="display:flex;"><span>    linuxefi images/rhel/8.6/images/pxeboot/vmlinuz inst.stage2=http://192.168.100.160:8080/images/rhel/8.6 quiet
@@ -948,7 +948,7 @@ Install &amp; Configure TFTP Install &amp; Configure HTTP server Enable network 
   Prepare kickstart file
   <a href="#prepare-kickstart-file" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
-<p>Next, we will create our kickstart file to have an unattended automated installation. I have used the Kickstart Configuration Tool available at <a
+<p>Next, we will create our kickstart file for an unattended automated installation. I have used the kickstart configuration tool available at <a
   href="https://access.redhat.com/labs/kickstartconfig/"
   
   
@@ -956,12 +956,12 @@ Install &amp; Configure TFTP Install &amp; Configure HTTP server Enable network 
   
 >https://access.redhat.com/labs/kickstartconfig/</a> in the Red Hat Customer Portal Labs. This tool will walk you through basic configuration and allows you to download the resulting Kickstart file.</p>
 <ul>
-<li>Create a new directory named <code>ks</code> under the root directory of TFTP/HTTP server to store the kickstart file for the UEFI PXE Boot purpose</li>
+<li>Create a new directory named <code>ks</code> under the root directory of the TFTP/HTTP server to store the kickstart file for the UEFI PXE Boot purpose</li>
 <li>Copy the downloaded kickstart file into the previously created location</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>scp kickstart.cfg nas-user@nas-address:/media/PXE/ks
 </span></span></code></pre></div><ul>
-<li>Update the <code>grub.cfg</code> to use the kickstart file during installation. The <code>inst.ks=</code> boot option specifies the location of the kickstart location</li>
+<li>Update the <code>grub.cfg</code> to use the kickstart file during installation. For the <code>inst.ks=</code> boot option, specify kickstart location</li>
 </ul>
 <p>The final <code>grub.cfg</code> will look like this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>set timeout=30
@@ -973,8 +973,8 @@ Install &amp; Configure TFTP Install &amp; Configure HTTP server Enable network 
   Perform PXE boot
   <a href="#perform-pxe-boot" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
-<p>We are all set up to perform UEFI PXE Boot. The shortcut button to boot over the network may vary for different hardware but in most cases we are expected to press F12 to boot from the network:</p>
-<p>If your UEFI PXE Boot Server configuration is proper, then the TFTP files should get successfully</p>
+<p>We are ready to perform UEFI PXE Boot. The shortcut button to boot over the network may vary for different hardware, F12 on most common hardware.</p>
+<p>If your UEFI PXE boot server configuration is accurate, then the TFTP files should acquire successfully.</p>
 
     </div>
 
@@ -1164,8 +1164,8 @@ Install &amp; Configure TFTP Install &amp; Configure HTTP server Enable network 
 
 <script
   type="text/javascript"
-  src="/js/flexsearch.3f77632a5e276b2f254e33a8da752303c9c167d604d662532d4e2649829e86a9fb988138e9e27ac214ffe560a53974ba68dd2b6e306db43e1ac908e11197b97d.js"
-  integrity="sha512-P3djKl4nay8lTjOo2nUjA8nBZ9YE1mJTLU4mSYKehqn7mIE46eJ6whT/5WClOXS6aN0rbjBttD4ayQjhEZe5fQ==">
+  src="/js/flexsearch.7a24f461a845e684001eeb74564d173afc16e43e00d45973599a7307708a896cab3eed6fc2576ad0d4ca5e6eed1e5c9421f94947789d054a67640babb379dea5.js"
+  integrity="sha512-eiT0YahF5oQAHut0Vk0XOvwW5D4A1FlzWZpzB3CKiWyrPu1vwldq0NTKXm7tHlyUIflJR3idBUpnZAurs3nepQ==">
 </script>
 
 

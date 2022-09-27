@@ -84,8 +84,8 @@
 <meta itemprop="name" content="Basic Authentication in Go with Gin">
 <meta itemprop="description" content="Basic user authentication with gin web framework in Golang"><meta itemprop="datePublished" content="2019-12-16T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2019-12-16T00:00:00+00:00" />
-<meta itemprop="wordCount" content="144">
-<meta itemprop="keywords" content="golang,basicauth,gin," />
+<meta itemprop="wordCount" content="154">
+<meta itemprop="keywords" content="golang,basic-auth,gin," />
 
 
 
@@ -329,8 +329,8 @@
         
           <a
             class="post-tag"
-            href="https://vikaspogu.dev/tags/basicauth"
-          >basicauth</a>
+            href="https://vikaspogu.dev/tags/basic-auth"
+          >basic&#8209;auth</a>
         
           <a
             class="post-tag"
@@ -345,26 +345,26 @@
 </div>
 
     <div class="post-content">
-      <p>This is short post on adding basic authentication to go applications. Our sample application uses gin web framework</p>
-<p>Let&rsquo;s start by creating a gin router with default middleware, by default it serves on <code>:8080</code> unless a <code>PORT</code> environment variable was defined</p>
+      <p>This short post looks at adding basic authentication to GoLang applications. Below example application uses the gin web framework.</p>
+<p>Let&rsquo;s start by creating a gin router with default middleware. By default, it serves on <code>:8080</code> unless we define a <code>PORT</code> environment variable.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>(){
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">r</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Default</span>()
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/getAllUsers&#34;</span>, <span style="color:#a6e22e">basicAuth</span>, <span style="color:#a6e22e">handlers</span>.<span style="color:#a6e22e">UsersList</span>)
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Run</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">r</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Default</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/getAllUsers&#34;</span>, <span style="color:#a6e22e">basicAuth</span>, <span style="color:#a6e22e">handlers</span>.<span style="color:#a6e22e">UsersList</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Run</span>()
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Now that we have our basic route, lets create a method to add authentication logic. Get basic auth credentials from context request and validate them. If user isn&rsquo;t authenticated, authentication window is prompted with username and password.</p>
+</span></span></code></pre></div><p>Now that we have our primary route let us create a method to add authentication logic. First, get basic auth credentials from the context request and validate them. The browser will prompt an authentication window for username and password details if the user is not authenticated.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">basicAuth</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Get the Basic Authentication credentials
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">user</span>, <span style="color:#a6e22e">password</span>, <span style="color:#a6e22e">hasAuth</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Request</span>.<span style="color:#a6e22e">BasicAuth</span>()
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">hasAuth</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;testuser&#34;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">password</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;testpass&#34;</span> {
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">WithFields</span>(<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fields</span>{
-</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#34;user&#34;</span>: <span style="color:#a6e22e">user</span>,
-</span></span><span style="display:flex;"><span>		}).<span style="color:#a6e22e">Info</span>(<span style="color:#e6db74">&#34;User authenticated&#34;</span>)
-</span></span><span style="display:flex;"><span>	} <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Abort</span>()
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Writer</span>.<span style="color:#a6e22e">Header</span>().<span style="color:#a6e22e">Set</span>(<span style="color:#e6db74">&#34;WWW-Authenticate&#34;</span>, <span style="color:#e6db74">&#34;Basic realm=Restricted&#34;</span>)
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>
-</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Get the Basic Authentication credentials
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">user</span>, <span style="color:#a6e22e">password</span>, <span style="color:#a6e22e">hasAuth</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Request</span>.<span style="color:#a6e22e">BasicAuth</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">hasAuth</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;testuser&#34;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">password</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;testpass&#34;</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">WithFields</span>(<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fields</span>{
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;user&#34;</span>: <span style="color:#a6e22e">user</span>,
+</span></span><span style="display:flex;"><span>        }).<span style="color:#a6e22e">Info</span>(<span style="color:#e6db74">&#34;User authenticated&#34;</span>)
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Abort</span>()
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Writer</span>.<span style="color:#a6e22e">Header</span>().<span style="color:#a6e22e">Set</span>(<span style="color:#e6db74">&#34;WWW-Authenticate&#34;</span>, <span style="color:#e6db74">&#34;Basic realm=Restricted&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Run application</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>go run main.go
@@ -559,8 +559,8 @@
 
 <script
   type="text/javascript"
-  src="/js/flexsearch.3f77632a5e276b2f254e33a8da752303c9c167d604d662532d4e2649829e86a9fb988138e9e27ac214ffe560a53974ba68dd2b6e306db43e1ac908e11197b97d.js"
-  integrity="sha512-P3djKl4nay8lTjOo2nUjA8nBZ9YE1mJTLU4mSYKehqn7mIE46eJ6whT/5WClOXS6aN0rbjBttD4ayQjhEZe5fQ==">
+  src="/js/flexsearch.7a24f461a845e684001eeb74564d173afc16e43e00d45973599a7307708a896cab3eed6fc2576ad0d4ca5e6eed1e5c9421f94947789d054a67640babb379dea5.js"
+  integrity="sha512-eiT0YahF5oQAHut0Vk0XOvwW5D4A1FlzWZpzB3CKiWyrPu1vwldq0NTKXm7tHlyUIflJR3idBUpnZAurs3nepQ==">
 </script>
 
 

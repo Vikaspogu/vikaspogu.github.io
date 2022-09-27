@@ -84,7 +84,7 @@
 <meta itemprop="name" content="End User Auth and Authz with OpenShift Service Mesh and Keycloak">
 <meta itemprop="description" content="End User Authentication and Authorization with OpenShift Service Mesh and Keycloak"><meta itemprop="datePublished" content="2020-11-12T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2020-11-12T00:00:00+00:00" />
-<meta itemprop="wordCount" content="980">
+<meta itemprop="wordCount" content="986">
 <meta itemprop="keywords" content="istio,service mesh,keycloak,jwt,authentication,authorization," />
 
 
@@ -360,7 +360,7 @@
 </div>
 
     <div class="post-content">
-      <p>In this article, I will share the setup for enabling Authentication and Authorization in OpenShift Service Mesh with Keycloak</p>
+      <p>In this article, I will share the setup for enabling Authentication and Authorization in OpenShift Service Mesh with Keycloak.</p>
 <h2 id="installing-openshift-service-mesh">
   Installing OpenShift Service Mesh
   <a href="#installing-openshift-service-mesh" class="post-heading__anchor" aria-hidden="true">#</a>
@@ -372,7 +372,7 @@
     class="link--external" target="_blank" rel="noreferrer"
   
 >Installing Red Hat OpenShift Service Mesh</a> guide for setup</p>
-<p>Enable following configuration in your <code>ServiceMeshControlPlane</code> resource</p>
+<p>Enable the following configuration in your <code>ServiceMeshControlPlane</code> resource</p>
 <ul>
 <li>Strict mTLS across the mesh</li>
 <li>Automatic istio route creation</li>
@@ -396,7 +396,7 @@
   Deploying Red Hat Single Sign-on
   <a href="#deploying-red-hat-single-sign-on" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
-<p>The easiest way to deploy SSO is from the operator hub</p>
+<p>The easiest way to deploy SSO is from the operator hub.</p>
 <p>
 
 
@@ -497,14 +497,14 @@
   
     class="link--external" target="_blank" rel="noreferrer"
   
->Keycloak identity provider</a> article for adding new secuity realm, client, role, user</p>
+>Keycloak identity provider</a> article for adding a new security realm, client, role, user</p>
 <h3 id="deploying-bookinfo-example-application">
   Deploying Bookinfo example application
   <a href="#deploying-bookinfo-example-application" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
 <p>Create a new namespace</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oc new-project bookinfo
-</span></span></code></pre></div><p>Edit the default Service Mesh Member Roll YAML and add bookinfo to the members list</p>
+</span></span></code></pre></div><p>Edit the default Service Mesh Member Roll YAML and add bookinfo to the member&rsquo;s list</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">maistra.io/v1</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ServiceMeshMemberRoll</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
@@ -523,7 +523,7 @@
 <p>I have enabled global mutual TLS in the control plane, so I’ll deploy the destination rule with all mtls</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oc apply -n bookinfo -f https://raw.githubusercontent.com/Maistra/istio/maistra-2.0/samples/bookinfo/networking/destination-rule-all-mtls.yaml
 </span></span></code></pre></div><p>Verifying the Bookinfo installation</p>
-<p>Run this command to confirm that Bookinfo is deployed</p>
+<p>Run the following command to confirm that the Bookinfo application is up and running</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -o /dev/null -s -w <span style="color:#e6db74">&#34;%{http_code}\n&#34;</span> http://$GATEWAY_URL/productpage
 </span></span></code></pre></div><h2 id="authentication">
   Authentication
@@ -533,11 +533,11 @@
   Enabling User-End Authentication
   <a href="#enabling-user-end-authentication" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
-<p>Now it is time to enable end-user authentication</p>
-<p>The first thing you need to do is validate that it is possible to communicate between all services without authentication</p>
+<p>Now it is time to enable end-user authentication.</p>
+<p>The first thing you need to do is validate that it is possible to communicate between all services without authentication.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -k -o /dev/null -w <span style="color:#e6db74">&#34;%{http_code}&#34;</span> http://$GATEWAY_URL/productpage
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">200</span>
-</span></span></code></pre></div><p>You can create the end-user authentication policy</p>
+</span></span></code></pre></div><p>You can create the end-user authentication policy.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat <span style="color:#e6db74">&lt;&lt;EOF | oc apply -n bookinfo -f -
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">apiVersion: authentication.istio.io/v1alpha1
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">kind: Policy
@@ -560,27 +560,27 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              - prefix: /healthz
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  principalBinding: USE_ORIGIN
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
-</span></span></code></pre></div><p><strong>NOTE</strong>: If you see <code>Origin authentication failed.</code> after passing right access token and url. Verify your istio-pilot pods for any <code>x509: certificate signed by unknown authority</code> if thats the case follow this <a
+</span></span></code></pre></div><p><strong>NOTE</strong>: If you see <code>Origin authentication failed.</code> after passing the correct access token and URL. Verify your istio-pilot pods for any <code>x509: certificate signed by unknown authority</code>; if that is the case, follow this <a
   href="https://labs.consol.de/development/2020/05/07/debugging-istio.html"
   
   
     class="link--external" target="_blank" rel="noreferrer"
   
 >workaround</a></p>
-<p>Then let’s run the curl again</p>
+<p>Then let’s rerun the curl.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -k http://$GATEWAY_URL/productpage
 </span></span></code></pre></div><p>And you will see something like</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Origin authentication failed.
 </span></span></code></pre></div><p>Set the value for the <code>TOKEN</code> parameter from keyclock</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export TOKEN<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>curl -sk --data <span style="color:#e6db74">&#34;username=demo&amp;password=demo&amp;grant_type=password&amp;client_id=istio&#34;</span> https://keycloak-sso.apps.amp01.lab.amp.aapaws/auth/realms/istio/protocol/openid-connect/token | jq <span style="color:#e6db74">&#34;.access_token&#34;</span><span style="color:#66d9ef">)</span>
-</span></span></code></pre></div><p>Then let’s run the curl again, this time with the token</p>
+</span></span></code></pre></div><p>Then let’s rerun the curl, this time with the token.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -k -o /dev/null -w <span style="color:#e6db74">&#34;%{http_code}&#34;</span> -H <span style="color:#e6db74">&#34;Authorization: Bearer </span>$TOKEN<span style="color:#e6db74">&#34;</span> http://$GATEWAY_URL/productpage
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">200</span>
 </span></span></code></pre></div><h2 id="authorization">
   Authorization
   <a href="#authorization" class="post-heading__anchor" aria-hidden="true">#</a>
 </h2>
-<p>Create a deny-all policy in the namespace. The policy doesn’t have a selector field, which applies the policy to every workload in the namespace. The spec: field of the policy has the empty value {}. The empty value means that no traffic is permitted, effectively denying all requests</p>
+<p>Create a deny-all policy in the namespace. The policy doesn’t have a selector field, which applies to every workload in the namespace. The <code>spec: field</code> in the policy has the empty value {}, this means that no traffic is permitted, effectively denying all requests</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat <span style="color:#e6db74">&lt;&lt;EOF | oc apply -n bookinfo -f -
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">apiVersion: security.istio.io/v1beta1
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">kind: AuthorizationPolicy
@@ -589,10 +589,10 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">spec:
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  {}
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
-</span></span></code></pre></div><p>Once the policy takes effect, verify that mesh rejected the curl connection to the workload</p>
+</span></span></code></pre></div><p>Once the policy takes effect, verify that mesh rejected the curl connection to the workload.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ curl -k -H <span style="color:#e6db74">&#34;Authorization: Bearer </span>$TOKEN<span style="color:#e6db74">&#34;</span> http://$GATEWAY_URL/productpage
 </span></span><span style="display:flex;"><span>RBAC: access denied
-</span></span></code></pre></div><p>To give read access to the productpage workload, create the policy that applies to workload with label app: productpage and allows users with roles customer to access it with all method</p>
+</span></span></code></pre></div><p>To give read access to the product page workload, create the policy that applies to the workload with label app: product page and allows users with roles customer to access it with all method.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat <span style="color:#e6db74">&lt;&lt;EOF | oc apply -n bookinfo -f -
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">apiVersion: security.istio.io/v1beta1
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">kind: AuthorizationPolicy
@@ -611,16 +611,16 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        - key: request.auth.claims[roles]
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          values: [&#34;customer&#34;]
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
-</span></span></code></pre></div><p>Wait for the newly defined policy to take effect</p>
-<p>After the policy takes effect, verify the connection to the httpbin workload succeeds</p>
+</span></span></code></pre></div><p>Wait for the newly defined policy to take effect.</p>
+<p>After the policy takes effect, verify the connection to the httpbin workload succeeds.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -k  -o /dev/null -w <span style="color:#e6db74">&#34;%{http_code}&#34;</span> -H <span style="color:#e6db74">&#34;Authorization: Bearer </span>$TOKEN<span style="color:#e6db74">&#34;</span> http://$GATEWAY_URL/productpage
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">200</span>
-</span></span></code></pre></div><p>However, you can see the following errors on the page</p>
+</span></span></code></pre></div><p>However, you can see the following errors on the page.</p>
 <ul>
 <li>Error fetching product details</li>
 <li>Error fetching product reviews on the page</li>
 </ul>
-<p>Run the following command to create the details-viewer policy to allow the productpage workload, which issues requests using the <code>cluster.local/ns/bookinfo/sa/bookinfo-productpage</code> service account, to access the details workload through GET methods</p>
+<p>Run the following command to create the details-viewer policy to allow the productpage workload, which issues requests using the <code>cluster.local/ns/bookinfo/sa/bookinfo-productpage</code> service account, to access the details workload via GET methods.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oc apply -f - <span style="color:#e6db74">&lt;&lt;EOF
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">apiVersion: &#34;security.istio.io/v1beta1&#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">kind: &#34;AuthorizationPolicy&#34;
@@ -658,9 +658,9 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    - operation:
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        methods: [&#34;GET&#34;]
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
-</span></span></code></pre></div><p>Point your browser at the Bookinfo productpage (http://$GATEWAY_URL/productpage). Now, you should see the “Bookinfo Sample” page with “Book Details” on the lower left part, and “Book Reviews” on the lower right part. However, in the “Book Reviews” section, there is an error Ratings service currently unavailable</p>
-<p>This is because the reviews workload doesn’t have permission to access the ratings workload. To fix this issue, you need to grant the reviews workload access to the ratings workload. Next, we configure a policy to grant the reviews workload that access</p>
-<p>Run the following command to create the ratings-viewer policy to allow the reviews workload, which issues requests using the <code>cluster.local/ns/bookinfo/sa/bookinfo-reviews</code> service account, to access the ratings workload through GET methods</p>
+</span></span></code></pre></div><p>Point your browser at the Bookinfo productpage (http://$GATEWAY_URL/productpage). Now, you should see the “Bookinfo Sample” page with “Book Details” on the lower left part and “Book Reviews” on the lower right part.</p>
+<p>However, in the “Book Reviews” section, you&rsquo;ll see an error Rating service is currently unavailable. This error is because the reviews workload doesn’t permit access to the ratings workload. To fix this issue, you need to grant the reviews workload access to the ratings workload. Next, configure a policy to grant access to the reviews workload.</p>
+<p>Run the following command to create the ratings-viewer policy to allow the reviews workload, which issues requests using the <code>cluster.local/ns/bookinfo/sa/bookinfo-reviews</code> service account,  to access the ratings workload through GET methods</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oc apply -f - <span style="color:#e6db74">&lt;&lt;EOF
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">apiVersion: &#34;security.istio.io/v1beta1&#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">kind: &#34;AuthorizationPolicy&#34;
@@ -679,7 +679,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    - operation:
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        methods: [&#34;GET&#34;]
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
-</span></span></code></pre></div><p>Point your browser at the Bookinfo productpage (http://$GATEWAY_URL/productpage). You should see the “black” and “red” ratings in the “Book Reviews” section</p>
+</span></span></code></pre></div><p>Point your browser at the Bookinfo productpage (http://$GATEWAY_URL/productpage). You should see the “black” and “red” ratings in the “Book Reviews” section.</p>
 
     </div>
 
@@ -869,8 +869,8 @@
 
 <script
   type="text/javascript"
-  src="/js/flexsearch.3f77632a5e276b2f254e33a8da752303c9c167d604d662532d4e2649829e86a9fb988138e9e27ac214ffe560a53974ba68dd2b6e306db43e1ac908e11197b97d.js"
-  integrity="sha512-P3djKl4nay8lTjOo2nUjA8nBZ9YE1mJTLU4mSYKehqn7mIE46eJ6whT/5WClOXS6aN0rbjBttD4ayQjhEZe5fQ==">
+  src="/js/flexsearch.7a24f461a845e684001eeb74564d173afc16e43e00d45973599a7307708a896cab3eed6fc2576ad0d4ca5e6eed1e5c9421f94947789d054a67640babb379dea5.js"
+  integrity="sha512-eiT0YahF5oQAHut0Vk0XOvwW5D4A1FlzWZpzB3CKiWyrPu1vwldq0NTKXm7tHlyUIflJR3idBUpnZAurs3nepQ==">
 </script>
 
 

@@ -13,11 +13,10 @@
       <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/blog/boot-from-usb-through-grub-menu/</guid>
-      <description>First make sure you have secure boot disabled from the firmware settings. Once you are in grub command line type ls to list all partitions
-grub&amp;gt;ls (hd0) (hd0,gpt1) (hd1) (hd1,gpt8) (cd0)) Type ls (cd0) to get UUID of device
-grub&amp;gt;ls (hd0,gpt1) Partition hd0,gpt1: Filesystem type fat - Label `CES_X64FREV`, UUID 4099-DBD9 Partition start-512 Sectors... Note the UUID of you usb drive, shown in above command
-Type the following commands
-insmod part_gpt insmod fat insmod search_fs_uuid insmod chain search --fs-uuid --set=root 409-DBD9 Replace UUID of your device</description>
+      <description>First, make sure you have secure boot disabled from the firmware settings. Once you are in the grub command line, type ls to list all partitions
+grub&amp;gt;ls (hd0) (hd0,gpt1) (hd1) (hd1,gpt8) (cd0)) Type ls (cd0) to get the UUID of the device.
+grub&amp;gt;ls (hd0,gpt1) Partition hd0,gpt1: Filesystem type fat - Label `CES_X64FREV`, UUID 4099-DBD9 Partition start-512 Sectors... Note the UUID of your USB drive, shown in the above command
+Type the following commands</description>
     </item>
     
   </channel>

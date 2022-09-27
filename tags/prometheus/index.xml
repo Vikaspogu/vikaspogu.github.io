@@ -13,10 +13,10 @@
       <pubDate>Wed, 15 May 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/blog/springboot-metrics-grafana/</guid>
-      <description>Spring Boot Metrics # In this post I&amp;rsquo;ll discuss how to monitor spring boot application metrics using Prometheus and Grafana.
-Prometheus # Prometheus is a monitoring system which collects metrics from configured targets at given intervals.
-Grafana # Grafana is an open source metric analytics &amp;amp; visualization tool.
-Micrometer # Micrometer is a metrics instrumentation library for JVM-based applications.
+      <description>Spring Boot Metrics # This post will discuss how to monitor spring boot application metrics using Prometheus and Grafana.
+Prometheus # Prometheus is a monitoring system that collects metrics from configured targets at intervals.
+Grafana # Grafana is an open-source metric analytics &amp;amp; visualization tool.
+Micrometer # The micrometer is a metrics instrumentation library for JVM-based applications.
 Spring Boot Actuator # Spring Boot Actuator helps you monitor and manage your application when it’s pushed to production.</description>
     </item>
     

@@ -13,10 +13,10 @@
       <pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/blog/helm-dict-function/</guid>
-      <description>Recently I was in a situation where I ended up writing multiple if-else statements in the helm template. Code block didn&amp;rsquo;t look clean and, I begin to explore alternative ways to achieve a clean and concise way to achieve the same behavior.
+      <description>Recently I was in a situation where I ended up writing multiple if-else statements in the helm template. As a result, the code block wasn&amp;rsquo;t clean, and I began to explore alternative ways to achieve the same behavior concisely.
 Helm dict function perfectly fits my use case.
 Before
-{{- if eq .Values.imageType &amp;#34;java&amp;#34; }} name: openjdk:latest {{- else if eq .Values.imageType &amp;#34;nodejs&amp;#34; }} name: nodejs:latest {{- else if eq .</description>
+{{- if eq .Values.imageType &amp;#34;java&amp;#34; }} name: openjdk:latest {{- else if eq .Values.imageType &amp;#34;nodejs&amp;#34; }} name: nodejs:latest {{- else if eq .Values.imageType &amp;#34;golang&amp;#34; }} name: golang:latest {{- else if eq .</description>
     </item>
     
   </channel>

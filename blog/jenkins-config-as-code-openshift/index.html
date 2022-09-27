@@ -84,7 +84,7 @@
 <meta itemprop="name" content="OpenShift Jenkins configuration via JCasC plugin">
 <meta itemprop="description" content="Configuring OpenShift jenkins via jenkins configuration as code plugin"><meta itemprop="datePublished" content="2020-07-06T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2020-07-06T00:00:00+00:00" />
-<meta itemprop="wordCount" content="573">
+<meta itemprop="wordCount" content="592">
 <meta itemprop="keywords" content="jenkins,OpenShift,jcasc," />
 
 
@@ -345,9 +345,9 @@
 </div>
 
     <div class="post-content">
-      <p>Deploying Jenkins on Kubernetes provides important benefits over a standard VM-based deployment. For example, gaining the ability to have project-specific Jenkins slaves (agents) on demand, instead of having a pool of VMs idle waiting for a job.</p>
-<p>Jenkins can be easily deployed using Helm, OpenShift using jenkins catalog</p>
-<p>As everyone has experienced setting up Jenkins is a complex process, as both Jenkins and its plugins require some tuning and configuration, with dozens of parameters to set within the web UI manage section</p>
+      <p>Deploying Jenkins on Kubernetes provides significant benefits over a standard VM-based deployment. For example, we are gaining the ability to have project-specific Jenkins slaves (agents) on demand instead of having a pool of VMs idle waiting for a job.</p>
+<p>In vanilla Kubernetes, we can deploy Jenkins using Helm, and In OpenShift, we can deploy Jenkins via the developer&rsquo;s catalog.</p>
+<p>As everyone has experienced, setting up Jenkins is a complex process. Both Jenkins and its plugins require some tuning and Configuration, with dozens of parameters to set within the web UI manage section.</p>
 <h2 id="jenkins-config-as-code">
   Jenkins Config as code
   <a href="#jenkins-config-as-code" class="post-heading__anchor" aria-hidden="true">#</a>
@@ -358,11 +358,11 @@
   
     class="link--external" target="_blank" rel="noreferrer"
   
->Configuration as code</a> gives you an <em>opinionated</em> way to configure jenkins based on <code>yaml</code> files</p>
-<p>In this post will cover jenkins configuration code on OpenShift</p>
+>Configuration as code</a> gives you an <em>opinionated</em> way to configure Jenkins based on <code>yaml</code> files</p>
+<p>This post will cover Jenkins configuration code on OpenShift.</p>
 <ul>
-<li>Mount jenkins config as a configmap and load configuration</li>
-<li>Updated configuration file to automate creation of
+<li>Mount Jenkins config as a configmap and load configuration</li>
+<li>Updated configuration file to automate the creation of
 <ul>
 <li>credentials</li>
 <li>script approval signatures</li>
@@ -375,7 +375,7 @@
   Install Plugin
   <a href="#install-plugin" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
-<p>First, lets install <code>configuration-as-code</code> plugins in jenkins. In OpenShift you can easily install plugins by adding <code>INSTALL_PLUGINS</code> environment variable to deploymentconfig</p>
+<p>First, let us install <code>configuration-as-code</code> plugins in Jenkins. In OpenShift, you can easily install plugins by adding the <code>INSTALL_PLUGINS</code> environment variable to the deployment config</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>...<span style="color:#ae81ff">.</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">env</span>:
 </span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">INSTALL_PLUGINS</span>
@@ -400,7 +400,7 @@
   Mount Secret
   <a href="#mount-secret" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
-<p>Since we can have jenkins config in git repo we don&rsquo;t want to hardcode the secrets as it is a security risk. The easiest way to automate credential in jenkins configuration is to create a OpenShift secret, add that secret as a environment variable to deployment config</p>
+<p>Since we can have Jenkins configuration in the git repo, we don&rsquo;t want to hardcode the secrets as it is a security risk. The easiest way to automate credentials in Jenkins configuration is to create an OpenShift secret, and add that secret as an environment variable to the deployment config</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oc create secret generic github-ssh --from-file<span style="color:#f92672">=</span>ssh-privatekey<span style="color:#f92672">=</span>github-ssh/
 </span></span><span style="display:flex;"><span>oc create secret generic jenkins-credentials --from-literal<span style="color:#f92672">=</span>OCP_SA<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;qwerty26sds99ie9kcsd&#34;</span>  --from-literal<span style="color:#f92672">=</span>GITHUB_PASSWORD<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;dummypassword&#34;</span>
 </span></span></code></pre></div><p>Mount secrets into the container</p>
@@ -488,8 +488,8 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          branchSource {
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            source {
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              github {
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                //This is a unique identifier if not set, pipeline will be 
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                //indexed and jobs will be kicked off everytime new config is applied
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                //This is a unique identifier; if not set, the pipeline will be 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                //indexed, and jobs will be kicked off every time new config is applied
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                id(&#34;5bb970c2-766b-4588-8cf8-e077bfec23a0&#34;)
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                credentialsId(&#34;github-user&#34;)
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                repoOwner(&#34;vikaspogu&#34;)
@@ -724,8 +724,8 @@
 
 <script
   type="text/javascript"
-  src="/js/flexsearch.3f77632a5e276b2f254e33a8da752303c9c167d604d662532d4e2649829e86a9fb988138e9e27ac214ffe560a53974ba68dd2b6e306db43e1ac908e11197b97d.js"
-  integrity="sha512-P3djKl4nay8lTjOo2nUjA8nBZ9YE1mJTLU4mSYKehqn7mIE46eJ6whT/5WClOXS6aN0rbjBttD4ayQjhEZe5fQ==">
+  src="/js/flexsearch.7a24f461a845e684001eeb74564d173afc16e43e00d45973599a7307708a896cab3eed6fc2576ad0d4ca5e6eed1e5c9421f94947789d054a67640babb379dea5.js"
+  integrity="sha512-eiT0YahF5oQAHut0Vk0XOvwW5D4A1FlzWZpzB3CKiWyrPu1vwldq0NTKXm7tHlyUIflJR3idBUpnZAurs3nepQ==">
 </script>
 
 

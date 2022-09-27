@@ -8,14 +8,14 @@
     <copyright>Copyright © 2021</copyright>
     <lastBuildDate>Tue, 19 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/tekton/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Build multi arch docker image using Tekton</title>
+      <title>Build multi-arch docker image using Tekton</title>
       <link>https://vikaspogu.dev/blog/tekton-multiarch-buildx/</link>
       <pubDate>Tue, 19 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/blog/tekton-multiarch-buildx/</guid>
-      <description>There are three different strategies to build multi-platform images that are supported by Buildx and Dockerfiles:
-Using the QEMU emulation support in the kernel Building on multiple native nodes using the same builder instance Using a stage in Dockerfile to cross-compile to different architectures I’ll focus on the first option, cross building with emulation.
-docker buildx build --platform linux/amd64,linux/arm64 . Setup # This differs from platform to platform but one thing we all have in common is pipelines, so I’ve constructed a basic buildx setup for TektonCD task.</description>
+      <description>There are three different strategies to build multi-platform images that Buildx and Dockerfiles support:
+Using the QEMU emulation support in the kernel Building on multiple native nodes using the same builder instance Using a stage in Dockerfile to cross-compile to different architectures I&amp;rsquo;ll focus on the first option, cross-building with emulation using buildx.
+docker buildx build --platform linux/amd64,linux/arm64 . Setup # Steps might differ from platform to platform, but the pipelines will remain the same.</description>
     </item>
     
     <item>
@@ -24,8 +24,8 @@ docker buildx build --platform linux/amd64,linux/arm64 . Setup # This differs fr
       <pubDate>Tue, 19 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/blog/tekton-triggers-cel-interception/</guid>
-      <description>Tekton Triggers work by having EventListeners receive incoming webhook notifications, processing them using an Interceptor, and creating Kubernetes resources from templates if the interceptor allows it, with extraction of fields from the body of the webhook
-CEL Interceptors can be used to filter or modify incoming events. for example if you want to truncate commit id from the webhook body
+      <description>Tekton Triggers work by having EventListeners receive incoming webhook notifications, processing them using an Interceptor, and creating Kubernetes resources from templates if the interceptor allows it, with the extraction of fields from the body of the webhook
+CEL Interceptors can filter or modify incoming events. For example, you can truncate the commit id from the webhook body.
 apiVersion: triggers.tekton.dev/v1alpha1 kind: EventListener metadata: name: shared-listener namespace: default spec: serviceAccountName: build-bot triggers: - name: shared-pipeline-trigger interceptors: - cel: overlays: - key: intercepted.</description>
     </item>
     
@@ -36,8 +36,8 @@ apiVersion: triggers.tekton.dev/v1alpha1 kind: EventListener metadata: name: sha
       
       <guid>https://vikaspogu.dev/blog/tekton-argocd-gitops/</guid>
       <description>In this post, I will:
-Use Tekton to build and publish image to docker registry Trigger a Tekton pipeline from GitHub Use Argo to deploy application Getting Started # Assumptions:
-You have a running OpenShift 4 cluster with ArgoCD, and OpenShift Pipelines installed. If not, you follow instructions to OpenShift Pipelines and ArgoCD Operator Understand of basic argocd and tekton concepts Create an OpenShift project called node-web-project
+Use Tekton to build and publish an image to the docker registry Trigger a Tekton pipeline from GitHub Use ArgoCD to deploy an application Getting Started # Pre-requisites:
+An OpenShift 4 cluster with ArgoCD and OpenShift Pipelines installed. If not, you follow instructions to OpenShift Pipelines and ArgoCD Operator Basic understanding of ArgoCD and Tekton concepts Create an OpenShift project called node-web-project
 oc new-project node-web-project Using Private Registries # Create a docker secret with registry authentication details</description>
     </item>
     

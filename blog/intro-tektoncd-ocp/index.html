@@ -62,9 +62,9 @@
 
 <meta
   name="description"
-  content="Recently I came across tektoncd project, The Tekton Pipelines project provides Kubernetes-style resources for declaring CI/CD-style pipelines caught my attention and started playing with it.
-Basic Concepts # In order to create a tekton pipeline, one does the following:
-Create custom or install existing reusable Tasks Create a Pipeline and PipelineResources to define your application&amp;rsquo;s delivery pipeline Create a PipelineRun to instantiate and invoke the pipeline Installing Tekton on OpenShift # Login as a user with cluster-admin privileges"
+  content="Recently I came across tektoncd project, The Tekton Pipelines project provides Kubernetes-style resources for declaring CI/CD-style pipelines caught my attention, and I started playing with it.
+Basic Concepts # To create a Tekton pipeline, one does the following:
+Create custom or install existing reusable Tasks Create a Pipeline and PipelineResources to define your application&amp;rsquo;s delivery pipeline Create a PipelineRun to instantiate and invoke the pipeline Installing Tekton on OpenShift # Log in as a user with cluster-admin privileges."
 />
 
 <link rel="canonical" href="https://vikaspogu.dev/blog/intro-tektoncd-ocp/" />
@@ -73,14 +73,14 @@ Create custom or install existing reusable Tasks Create a Pipeline and PipelineR
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="TektonCD on OpenShift"/>
-<meta name="twitter:description" content="Recently I came across tektoncd project, The Tekton Pipelines project provides Kubernetes-style resources for declaring CI/CD-style pipelines caught my attention and started playing with it.
-Basic Concepts # In order to create a tekton pipeline, one does the following:
-Create custom or install existing reusable Tasks Create a Pipeline and PipelineResources to define your application&rsquo;s delivery pipeline Create a PipelineRun to instantiate and invoke the pipeline Installing Tekton on OpenShift # Login as a user with cluster-admin privileges"/>
+<meta name="twitter:description" content="Recently I came across tektoncd project, The Tekton Pipelines project provides Kubernetes-style resources for declaring CI/CD-style pipelines caught my attention, and I started playing with it.
+Basic Concepts # To create a Tekton pipeline, one does the following:
+Create custom or install existing reusable Tasks Create a Pipeline and PipelineResources to define your application&rsquo;s delivery pipeline Create a PipelineRun to instantiate and invoke the pipeline Installing Tekton on OpenShift # Log in as a user with cluster-admin privileges."/>
 
 <meta property="og:title" content="TektonCD on OpenShift" />
-<meta property="og:description" content="Recently I came across tektoncd project, The Tekton Pipelines project provides Kubernetes-style resources for declaring CI/CD-style pipelines caught my attention and started playing with it.
-Basic Concepts # In order to create a tekton pipeline, one does the following:
-Create custom or install existing reusable Tasks Create a Pipeline and PipelineResources to define your application&rsquo;s delivery pipeline Create a PipelineRun to instantiate and invoke the pipeline Installing Tekton on OpenShift # Login as a user with cluster-admin privileges" />
+<meta property="og:description" content="Recently I came across tektoncd project, The Tekton Pipelines project provides Kubernetes-style resources for declaring CI/CD-style pipelines caught my attention, and I started playing with it.
+Basic Concepts # To create a Tekton pipeline, one does the following:
+Create custom or install existing reusable Tasks Create a Pipeline and PipelineResources to define your application&rsquo;s delivery pipeline Create a PipelineRun to instantiate and invoke the pipeline Installing Tekton on OpenShift # Log in as a user with cluster-admin privileges." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://vikaspogu.dev/blog/intro-tektoncd-ocp/" /><meta property="article:section" content="blog" />
 <meta property="article:published_time" content="2019-08-09T00:00:00+00:00" />
@@ -88,11 +88,11 @@ Create custom or install existing reusable Tasks Create a Pipeline and PipelineR
 
 
 <meta itemprop="name" content="TektonCD on OpenShift">
-<meta itemprop="description" content="Recently I came across tektoncd project, The Tekton Pipelines project provides Kubernetes-style resources for declaring CI/CD-style pipelines caught my attention and started playing with it.
-Basic Concepts # In order to create a tekton pipeline, one does the following:
-Create custom or install existing reusable Tasks Create a Pipeline and PipelineResources to define your application&rsquo;s delivery pipeline Create a PipelineRun to instantiate and invoke the pipeline Installing Tekton on OpenShift # Login as a user with cluster-admin privileges"><meta itemprop="datePublished" content="2019-08-09T00:00:00+00:00" />
+<meta itemprop="description" content="Recently I came across tektoncd project, The Tekton Pipelines project provides Kubernetes-style resources for declaring CI/CD-style pipelines caught my attention, and I started playing with it.
+Basic Concepts # To create a Tekton pipeline, one does the following:
+Create custom or install existing reusable Tasks Create a Pipeline and PipelineResources to define your application&rsquo;s delivery pipeline Create a PipelineRun to instantiate and invoke the pipeline Installing Tekton on OpenShift # Log in as a user with cluster-admin privileges."><meta itemprop="datePublished" content="2019-08-09T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2019-08-09T00:00:00+00:00" />
-<meta itemprop="wordCount" content="656">
+<meta itemprop="wordCount" content="666">
 <meta itemprop="keywords" content="OpenShift,tektoncd," />
 
 
@@ -354,7 +354,7 @@ Create custom or install existing reusable Tasks Create a Pipeline and PipelineR
   
     class="link--external" target="_blank" rel="noreferrer"
   
->tektoncd</a> project, <strong><em>The Tekton Pipelines project provides Kubernetes-style resources for declaring CI/CD-style pipelines</em></strong> caught my attention and started playing with it.</p>
+>tektoncd</a> project, <strong><em>The Tekton Pipelines project provides Kubernetes-style resources for declaring CI/CD-style pipelines</em></strong> caught my attention, and I started playing with it.</p>
 <h2 id="basic-concepts">
   Basic Concepts
   <a href="#basic-concepts" class="post-heading__anchor" aria-hidden="true">#</a>
@@ -453,7 +453,7 @@ Create custom or install existing reusable Tasks Create a Pipeline and PipelineR
 
 
 </p>
-<p>In order to create a tekton pipeline, one does the following:</p>
+<p>To create a Tekton pipeline, one does the following:</p>
 <ul>
 <li>Create custom or install existing reusable Tasks</li>
 <li>Create a Pipeline and PipelineResources to define your application&rsquo;s delivery pipeline</li>
@@ -463,7 +463,7 @@ Create custom or install existing reusable Tasks Create a Pipeline and PipelineR
   Installing Tekton on OpenShift
   <a href="#installing-tekton-on-openshift" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
-<p>Login as a user with <code>cluster-admin</code> privileges</p>
+<p>Log in as a user with <code>cluster-admin</code> privileges.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oc new-project tekton-pipelines
 </span></span><span style="display:flex;"><span>oc adm policy add-scc-to-user anyuid -z tekton-pipelines-controller
 </span></span><span style="display:flex;"><span>oc apply --filename https://storage.googleapis.com/tekton-releases/latest/release.yaml
@@ -471,7 +471,7 @@ Create custom or install existing reusable Tasks Create a Pipeline and PipelineR
   Install dashboard
   <a href="#install-dashboard" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
-<p>Dashboard is a general purpose, web-based UI for Tekton Pipelines. Tekton also has <a
+<p>The dashboard is a general-purpose, web-based UI for Tekton Pipelines. Tekton also has <a
   href="https://github.com/tektoncd/cli"
   
   
@@ -582,7 +582,7 @@ Create custom or install existing reusable Tasks Create a Pipeline and PipelineR
   Create pipeline
   <a href="#create-pipeline" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
-<p>This pipeline builds image from the source, starts a new rollout</p>
+<p>This pipeline builds an image from the source and starts a new rollout.</p>
 <p>Create a new project</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oc new-project tektontutorial
 </span></span></code></pre></div><p>Create a service account for running pipelines and enable it to run privileged pods for building images</p>
@@ -705,7 +705,7 @@ Create custom or install existing reusable Tasks Create a Pipeline and PipelineR
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">go-sample</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">weight</span>: <span style="color:#ae81ff">100</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oc apply -f go-sample-template.yml
-</span></span></code></pre></div><p>Deployment will not complete since there are no container image for <code>go-sample</code> app</p>
+</span></span></code></pre></div><p>The deployment will not be complete since there are no container images for the <code>go-sample</code> app.</p>
 <p>
 
 
@@ -813,7 +813,7 @@ Create custom or install existing reusable Tasks Create a Pipeline and PipelineR
     class="link--external" target="_blank" rel="noreferrer"
   
 >OpenShift Catalog</a> repositories.</p>
-<p><strong>Note:</strong> Tasks consist of a number of steps that are executed sequentially. Each task is executed in a separate container within the same pod</p>
+<p><strong>Note:</strong> Tasks consist of several steps that get executed sequentially. The pipeline will perform each task in a separate container within the same pod.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oc apply -f https://raw.githubusercontent.com/OpenShift/pipelines-catalog/master/s2i-go/s2i-go-task.yaml
 </span></span><span style="display:flex;"><span>oc create -f https://raw.githubusercontent.com/tektoncd/catalog/master/OpenShift-client/OpenShift-client-task.yaml
 </span></span></code></pre></div><p>Create pipeline resources</p>
@@ -932,7 +932,7 @@ Create custom or install existing reusable Tasks Create a Pipeline and PipelineR
 
 
 </p>
-<p>Create pipeline, pipelines has two tasks here <code>build</code>, <code>deploy</code>. Build uses <code>s2i-go</code> task to create image from source and deploy uses <code>OpenShift-client</code> task to rollout latest deployment of <code>go-sample</code></p>
+<p>Create pipeline; pipelines have two tasks here <code>build</code> and <code>deploy.</code> Build uses <code>s2i-go</code> task to create an image from source and deploy uses <code>OpenShift-client</code> task to rollout latest deployment of <code>go-sample</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">tekton.dev/v1alpha1</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pipeline</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
@@ -1062,7 +1062,7 @@ Create custom or install existing reusable Tasks Create a Pipeline and PipelineR
 
 
 </p>
-<p>Start pipeline on dashboard or by <a
+<p>Start pipeline on the dashboard or by <a
   href="https://github.com/tektoncd/cli"
   
   
@@ -1166,7 +1166,7 @@ Create custom or install existing reusable Tasks Create a Pipeline and PipelineR
 
 
 </p>
-<p>Click on <code>Create PipelineRun</code>, select pipeline, resources, service account and start the pipeline</p>
+<p>Click on <code>Create PipelineRun</code>, select pipeline, resources, and service account and start the pipeline.</p>
 <p>
 
 
@@ -1261,7 +1261,7 @@ Create custom or install existing reusable Tasks Create a Pipeline and PipelineR
 
 
 </p>
-<p>Once, finished you should see all tasks marked in green</p>
+<p>Once finished, you should see all tasks marked in green.</p>
 <p>
 
 
@@ -1356,7 +1356,7 @@ Create custom or install existing reusable Tasks Create a Pipeline and PipelineR
 
 
 </p>
-<p><code>go-sample</code> deployment should have 1 running pod</p>
+<p>The <code>go-sample</code> deployment should have one running pod.</p>
 
     </div>
 
@@ -1546,8 +1546,8 @@ Create custom or install existing reusable Tasks Create a Pipeline and PipelineR
 
 <script
   type="text/javascript"
-  src="/js/flexsearch.3f77632a5e276b2f254e33a8da752303c9c167d604d662532d4e2649829e86a9fb988138e9e27ac214ffe560a53974ba68dd2b6e306db43e1ac908e11197b97d.js"
-  integrity="sha512-P3djKl4nay8lTjOo2nUjA8nBZ9YE1mJTLU4mSYKehqn7mIE46eJ6whT/5WClOXS6aN0rbjBttD4ayQjhEZe5fQ==">
+  src="/js/flexsearch.7a24f461a845e684001eeb74564d173afc16e43e00d45973599a7307708a896cab3eed6fc2576ad0d4ca5e6eed1e5c9421f94947789d054a67640babb379dea5.js"
+  integrity="sha512-eiT0YahF5oQAHut0Vk0XOvwW5D4A1FlzWZpzB3CKiWyrPu1vwldq0NTKXm7tHlyUIflJR3idBUpnZAurs3nepQ==">
 </script>
 
 

@@ -62,7 +62,7 @@
 
 <meta
   name="description"
-  content="OpenShift policy management with opa gatekeeper"
+  content="OpenShift policy management with OPA gatekeeper."
 />
 
 <link rel="canonical" href="https://vikaspogu.dev/blog/opa-gatekeeper-openshift/" />
@@ -71,10 +71,10 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="OPA Gatekeeper on OpenShift"/>
-<meta name="twitter:description" content="OpenShift policy management with opa gatekeeper"/>
+<meta name="twitter:description" content="OpenShift policy management with OPA gatekeeper."/>
 
 <meta property="og:title" content="OPA Gatekeeper on OpenShift" />
-<meta property="og:description" content="OpenShift policy management with opa gatekeeper" />
+<meta property="og:description" content="OpenShift policy management with OPA gatekeeper." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://vikaspogu.dev/blog/opa-gatekeeper-openshift/" /><meta property="article:section" content="blog" />
 <meta property="article:published_time" content="2020-08-18T00:00:00+00:00" />
@@ -82,10 +82,10 @@
 
 
 <meta itemprop="name" content="OPA Gatekeeper on OpenShift">
-<meta itemprop="description" content="OpenShift policy management with opa gatekeeper"><meta itemprop="datePublished" content="2020-08-18T00:00:00+00:00" />
+<meta itemprop="description" content="OpenShift policy management with OPA gatekeeper."><meta itemprop="datePublished" content="2020-08-18T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2020-08-18T00:00:00+00:00" />
-<meta itemprop="wordCount" content="648">
-<meta itemprop="keywords" content="OpenShift,opa,gatekeeper," />
+<meta itemprop="wordCount" content="638">
+<meta itemprop="keywords" content="OpenShift,OPA,gatekeeper," />
 
 
 
@@ -345,8 +345,8 @@
 </div>
 
     <div class="post-content">
-      <p>Every organization has policies. Some are essential to meet governance and legal requirements. Others help ensure adherence to best practices and institutional conventions. Attempting to ensure compliance manually would be error-prone and frustrating</p>
-<p>OPA lets you specific policy as code using OPA policy language <a
+      <p>Every organization has policies. Some are essential to meet governance and legal requirements. Others help ensure adherence to best practices and institutional conventions. Attempting to ensure compliance manually would be error-prone and frustrating.</p>
+<p>OPA allows users to a specific policy as code using OPA&rsquo;s policy language <a
   href="https://www.openpolicyagent.org/docs/latest/policy-language/"
   
   
@@ -359,48 +359,48 @@
   
     class="link--external" target="_blank" rel="noreferrer"
   
->Gatekeeper</a> on OpenShift and creating few policies for demonstartions. This post is not an introduction to OPA, <a
+>Gatekeeper</a> on OpenShift and creating a few policies for demonstrations. This post is not an introduction to OPA <a
   href="https://www.magalix.com/blog/introducing-policy-as-code-the-open-policy-agent-opa"
   
   
     class="link--external" target="_blank" rel="noreferrer"
   
->refer to</a> for intro</p>
-<p>Gatekeeper introduces native kubernetes CRDs for instantiating policies</p>
+>refer to</a> for an intro</p>
+<p>Gatekeeper introduces native Kubernetes CRDs for instantiating policies.</p>
 <h2 id="installation">
   Installation
   <a href="#installation" class="post-heading__anchor" aria-hidden="true">#</a>
 </h2>
-<p>For installation, make sure you have cluster admin permissions</p>
-<p>Let&rsquo;s start by adding the <code>admission.gatekeeper.sh/ignore</code> label to non-user namespaces, so that all the resources in the labeled project are exempted from admission webhook</p>
+<p>For installation, make sure you have cluster-admin permissions.</p>
+<p>Let&rsquo;s start by adding the <code>admission.gatekeeper.sh/ignore</code> label to non-user namespaces so that all the resources in the labeled project are exempted from the admission webhook.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oc login --token<span style="color:#f92672">=</span>l4xjpLh0e722B2_i7iWAbPsUNOb6vPDaAXnqhH563oU --server<span style="color:#f92672">=</span>https://api.cluster-1d4d.sandbox702.opentlc.com:6443
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> namespace in <span style="color:#66d9ef">$(</span>oc get namespaces -o jsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{.items[*].metadata.name}&#39;</span> | xargs<span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>namespace<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">=</span>~ OpenShift.* <span style="color:#f92672">]]</span> <span style="color:#f92672">||</span> <span style="color:#f92672">[[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>namespace<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">=</span>~ kube.* <span style="color:#f92672">]]</span> <span style="color:#f92672">||</span> <span style="color:#f92672">[[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>namespace<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">=</span>~ default <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>    oc patch namespace/<span style="color:#e6db74">${</span>namespace<span style="color:#e6db74">}</span> -p<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{&#34;metadata&#34;:{&#34;labels&#34;:{&#34;admission.gatekeeper.sh/ignore&#34;:&#34;true&#34;}}}&#39;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Probably a users project, so leave it alone</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Skipping: </span><span style="color:#e6db74">${</span>namespace<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>namespace<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">=</span>~ OpenShift.* <span style="color:#f92672">]]</span> <span style="color:#f92672">||</span> <span style="color:#f92672">[[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>namespace<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">=</span>~ kube.* <span style="color:#f92672">]]</span> <span style="color:#f92672">||</span> <span style="color:#f92672">[[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>namespace<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">=</span>~ default <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    oc patch namespace/<span style="color:#e6db74">${</span>namespace<span style="color:#e6db74">}</span> -p<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{&#34;metadata&#34;:{&#34;labels&#34;:{&#34;admission.gatekeeper.sh/ignore&#34;:&#34;true&#34;}}}&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Probably a user project, so leave it alone</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Skipping: </span><span style="color:#e6db74">${</span>namespace<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
 </span></span></code></pre></div><h3 id="deploying-a-release-using-prebuilt-image">
   Deploying a Release using Prebuilt Image
   <a href="#deploying-a-release-using-prebuilt-image" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
-<p>Deploy Gatekeeper with prebuilt image</p>
+<p>Deploy Gatekeeper with a prebuilt image</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oc apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/deploy/gatekeeper.yaml
-</span></span></code></pre></div><p>Remove securityContext and annotations from the deployments</p>
+</span></span></code></pre></div><p>Remove securityContext and annotations from the deployments.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oc patch Deployment/gatekeeper-audit --type json -p<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;[{&#34;op&#34;: &#34;remove&#34;, &#34;path&#34;: &#34;/spec/template/metadata/annotations&#34;}]&#39;</span> -n gatekeeper-system
 </span></span><span style="display:flex;"><span>oc patch Deployment/gatekeeper-controller-manager --type json -p<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;[{&#34;op&#34;: &#34;remove&#34;, &#34;path&#34;: &#34;/spec/template/metadata/annotations&#34;}]&#39;</span> -n gatekeeper-system
 </span></span><span style="display:flex;"><span>oc patch Deployment/gatekeeper-audit --type json --patch <span style="color:#e6db74">&#39;[{ &#34;op&#34;: &#34;remove&#34;, &#34;path&#34;: &#34;/spec/template/spec/containers/0/securityContext&#34; }]&#39;</span> -n gatekeeper-system
 </span></span><span style="display:flex;"><span>oc patch Deployment/gatekeeper-controller-manager --type json --patch <span style="color:#e6db74">&#39;[{ &#34;op&#34;: &#34;remove&#34;, &#34;path&#34;: &#34;/spec/template/spec/containers/0/securityContext&#34; }]&#39;</span> -n gatekeeper-system
-</span></span></code></pre></div><p>Wait for Gatekeeper to be ready</p>
+</span></span></code></pre></div><p>Wait for Gatekeeper to be ready.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oc get pods -n gatekeeper-system
-</span></span><span style="display:flex;"><span>NAME                                            READY   STATUS    RESTARTS   AGE
-</span></span><span style="display:flex;"><span>gatekeeper-audit-7c84869dbf-r5p87               1/1     Running   <span style="color:#ae81ff">0</span>          2m34s
-</span></span><span style="display:flex;"><span>gatekeeper-controller-manager-ff58b6688-9tbxx   1/1     Running   <span style="color:#ae81ff">0</span>          3m23s
-</span></span><span style="display:flex;"><span>gatekeeper-controller-manager-ff58b6688-njfnd   1/1     Running   <span style="color:#ae81ff">0</span>          2m54s
-</span></span><span style="display:flex;"><span>gatekeeper-controller-manager-ff58b6688-vlrsl   1/1     Running   <span style="color:#ae81ff">0</span>          3m11s
+</span></span><span style="display:flex;"><span>NAME                                            READY   STATUS    RESTARTS   AGE
+</span></span><span style="display:flex;"><span>gatekeeper-audit-7c84869dbf-r5p87               1/1     Running   <span style="color:#ae81ff">0</span>          2m34s
+</span></span><span style="display:flex;"><span>gatekeeper-controller-manager-ff58b6688-9tbxx   1/1     Running   <span style="color:#ae81ff">0</span>          3m23s
+</span></span><span style="display:flex;"><span>gatekeeper-controller-manager-ff58b6688-njfnd   1/1     Running   <span style="color:#ae81ff">0</span>          2m54s
+</span></span><span style="display:flex;"><span>gatekeeper-controller-manager-ff58b6688-vlrsl   1/1     Running   <span style="color:#ae81ff">0</span>          3m11s
 </span></span></code></pre></div><p>Gatekeeper uses the <a
   href="https://github.com/open-policy-agent/frameworks/tree/master/constraint"
   
@@ -412,8 +412,8 @@
   Defining constraints
   <a href="#defining-constraints" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
-<p>Constraints can be defined by creating a CRD (CustomResourceDefinition) with the template of the constraint you want. Let’s look at a template which enforces that only secure routes are created in the cluster</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">templates.gatekeeper.sh/v1beta1</span>
+<p>Users can define constraints by creating a CRD (CustomResourceDefinition) with the template of the constraint they want. For example, let’s look at a template that only enforces users must create secure routes on the cluster.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">templates. Gatekeeper.sh/v1beta1</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ConstraintTemplate</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">k8sallowedroutes</span>
@@ -431,13 +431,13 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          not input.review.object.spec.tls
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          msg := sprintf(&#34;&#39;%v&#39; route must be a secured route. non secured routes are not permitted&#34;, [input.review.object.metadata.name])
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }</span>        
-</span></span></code></pre></div><p>It will get the route and check if <code>tls</code> object is specified. If this is not true, the violation block continues and the violation is triggered with the corresponding message</p>
+</span></span></code></pre></div><p>It will get the route and check if the <code>tls</code> object is specified. If this is not true, the violation block continues, and the violation is triggered with the corresponding message.</p>
 <h3 id="enforcing-constraints">
   Enforcing constraints
   <a href="#enforcing-constraints" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
-<p>These constrains which you defined now need to be enforced. This is done by defining a constraint which will use the template specified earlier.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">constraints.gatekeeper.sh/v1beta1</span>
+<p>Define a template using earlier constraints to enforce.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">constraints. Gatekeeper.sh/v1beta1</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">K8sAllowedRoutes</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">secure-route</span>
@@ -446,7 +446,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">kinds</span>:
 </span></span><span style="display:flex;"><span>      - <span style="color:#f92672">apiGroups</span>: [<span style="color:#e6db74">&#34;route.OpenShift.io&#34;</span>]
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">kinds</span>: [<span style="color:#e6db74">&#34;Route&#34;</span>]
-</span></span></code></pre></div><p>This policy will use the CRD “K8sAllowedRoutes” which we had already defined. Matching is done by specifying on which API group it has to be enforced</p>
+</span></span></code></pre></div><p>The above policy uses the CRD “K8sAllowedRoutes”, which we had already defined. Enforcement takes place by matching the API group.</p>
 <p>
 
 
@@ -541,8 +541,8 @@
 
 
 </p>
-<p>Some constraints are impossible to write without access to more state than just the object under test. For example, it is impossible to know if an route&rsquo;s hostname is unique among all routes unless a rule has access to all other routes. To make such rules possible, we enable syncing of data into OPA.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">config.gatekeeper.sh/v1alpha1</span>
+<p>Some constraints are impossible to write without access to more states than the object under test. For example, it is impossible to know if a route&rsquo;s hostname is unique among all routes unless a rule has access to all other routes. To make such laws possible, we enable syncing of data into OPA.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">config. Gatekeeper.sh/v1alpha1</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Config</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">config</span>
@@ -556,8 +556,8 @@
 </span></span><span style="display:flex;"><span>      - <span style="color:#f92672">group</span>: <span style="color:#e6db74">&#34;route.OpenShift.io&#34;</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">version</span>: <span style="color:#e6db74">&#34;v1&#34;</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">kind</span>: <span style="color:#e6db74">&#34;Route&#34;</span>
-</span></span></code></pre></div><p>Let&rsquo;s create another policy which prevents conflicting routes from being created</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">templates.gatekeeper.sh/v1beta1</span>
+</span></span></code></pre></div><p>Let&rsquo;s create another policy that prevents conflicting routes from being created.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">templates. Gatekeeper.sh/v1beta1</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ConstraintTemplate</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">k8suniqueroutehost</span>
@@ -586,7 +586,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          not identical(other, input.review)
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          msg := sprintf(&#34;Route host conflicts with an existing route &lt;%v&gt;&#34;, [host])
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }</span>        
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">constraints.gatekeeper.sh/v1beta1</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">constraints. Gatekeeper.sh/v1beta1</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">K8sUniqueRouteHost</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">unique-route-host</span>
@@ -811,8 +811,8 @@
 
 <script
   type="text/javascript"
-  src="/js/flexsearch.3f77632a5e276b2f254e33a8da752303c9c167d604d662532d4e2649829e86a9fb988138e9e27ac214ffe560a53974ba68dd2b6e306db43e1ac908e11197b97d.js"
-  integrity="sha512-P3djKl4nay8lTjOo2nUjA8nBZ9YE1mJTLU4mSYKehqn7mIE46eJ6whT/5WClOXS6aN0rbjBttD4ayQjhEZe5fQ==">
+  src="/js/flexsearch.7a24f461a845e684001eeb74564d173afc16e43e00d45973599a7307708a896cab3eed6fc2576ad0d4ca5e6eed1e5c9421f94947789d054a67640babb379dea5.js"
+  integrity="sha512-eiT0YahF5oQAHut0Vk0XOvwW5D4A1FlzWZpzB3CKiWyrPu1vwldq0NTKXm7tHlyUIflJR3idBUpnZAurs3nepQ==">
 </script>
 
 

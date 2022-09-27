@@ -14,9 +14,8 @@
       
       <guid>https://vikaspogu.dev/blog/docker-buildx-setup/</guid>
       <description>Docker buildx on Linux # Installation instructions for Ubuntu
-To execute docker commands without sudo. We need to add username to the docker group
-Find current username by typing who Add username to docker group Reboot system $ who vikaspogu :0 2020-12-05 10:10 (:0) $ sudo usermod -aG docker vikaspogu $ sudo reboot Enable buildx # Create a new config.json file under ~.docker folder and enable experimental feature
-$ mkdir ~/.</description>
+To execute docker commands without sudo. We need to add the username to the docker group.
+Find the current username by typing who Add username to docker group Reboot system $ who vikaspogu :0 2020-12-05 10:10 (:0) $ sudo usermod -aG docker vikaspogu $ sudo reboot Enable buildx # Create a new config.json file under the ~.docker folder and enable the experimental feature</description>
     </item>
     
   </channel>

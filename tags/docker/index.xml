@@ -14,9 +14,8 @@
       
       <guid>https://vikaspogu.dev/blog/docker-buildx-setup/</guid>
       <description>Docker buildx on Linux # Installation instructions for Ubuntu
-To execute docker commands without sudo. We need to add username to the docker group
-Find current username by typing who Add username to docker group Reboot system $ who vikaspogu :0 2020-12-05 10:10 (:0) $ sudo usermod -aG docker vikaspogu $ sudo reboot Enable buildx # Create a new config.json file under ~.docker folder and enable experimental feature
-$ mkdir ~/.</description>
+To execute docker commands without sudo. We need to add the username to the docker group.
+Find the current username by typing who Add username to docker group Reboot system $ who vikaspogu :0 2020-12-05 10:10 (:0) $ sudo usermod -aG docker vikaspogu $ sudo reboot Enable buildx # Create a new config.json file under the ~.docker folder and enable the experimental feature</description>
     </item>
     
     <item>
@@ -25,7 +24,8 @@ $ mkdir ~/.</description>
       <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>https://vikaspogu.dev/blog/pi-garage-k3s/</guid>
-      <description>There are many articles out there which demonstartes how to use a raspberry pi as a DIY garage door opener project. Few are outdated and not deployed using containers images. I found couple good solutions on google but i wasn&amp;rsquo;t able to run them on kubernetes cluster either due to older packages or no enough information. I decided to build my own solution from different sources of information i found</description>
+      <description>Many articles are out there which demonstrate how to use a raspberry pi as a DIY garage door opener project. Few are outdated and not deployed using container images. I found a few reasonable solutions on google, but I couldn&amp;rsquo;t run them on the Kubernetes cluster due to older packages or insufficient information. I decided to build my solution from different sources of information I found
+What we&amp;rsquo;ll cover in this post</description>
     </item>
     
   </channel>

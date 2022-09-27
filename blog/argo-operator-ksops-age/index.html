@@ -58,12 +58,12 @@
 
 
 
-<title>ArgoCD with Kustomize and ksops using Age encryption</title>
+<title>ArgoCD with Kustomize and KSOPS using Age encryption</title>
 
 <meta
   name="description"
-  content="I am a big fan of FluxCD and its integration with secret management, however recently I decided to tinker with ArgoCD. One of the challenges I encountered was secret management. Although, ArgoCD provides flexible integration with most of secret management tools but it requires little extra configuration.
-So I started my journey to configure ArgoCD with SOPS, there isn&amp;rsquo;t a direct integration with SOPS. We will have to use Kustomize plugin called ksops which is the suggested tool on Argo&amp;rsquo;s website and it has pretty good instructions for Argo integration."
+  content="I am a big fan of FluxCD and its integration with secrets management; however, recently, I decided to tinker with ArgoCD. One of the challenges I encountered was secrets management. Although ArgoCD provides flexible integration with most secrets management tools, it requires little extra configuration.
+So I started my journey to configure ArgoCD with SOPS; there isn&amp;rsquo;t a direct integration with SOPS. So we will have to use the Kustomize plugin called ksops, which is the suggested tool on Argo&amp;rsquo;s website and it has pretty good instructions for Argo integration."
 />
 
 <link rel="canonical" href="https://vikaspogu.dev/blog/argo-operator-ksops-age/" />
@@ -71,24 +71,24 @@ So I started my journey to configure ArgoCD with SOPS, there isn&amp;rsquo;t a d
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="ArgoCD with Kustomize and ksops using Age encryption"/>
-<meta name="twitter:description" content="I am a big fan of FluxCD and its integration with secret management, however recently I decided to tinker with ArgoCD. One of the challenges I encountered was secret management. Although, ArgoCD provides flexible integration with most of secret management tools but it requires little extra configuration.
-So I started my journey to configure ArgoCD with SOPS, there isn&rsquo;t a direct integration with SOPS. We will have to use Kustomize plugin called ksops which is the suggested tool on Argo&rsquo;s website and it has pretty good instructions for Argo integration."/>
+<meta name="twitter:title" content="ArgoCD with Kustomize and KSOPS using Age encryption"/>
+<meta name="twitter:description" content="I am a big fan of FluxCD and its integration with secrets management; however, recently, I decided to tinker with ArgoCD. One of the challenges I encountered was secrets management. Although ArgoCD provides flexible integration with most secrets management tools, it requires little extra configuration.
+So I started my journey to configure ArgoCD with SOPS; there isn&rsquo;t a direct integration with SOPS. So we will have to use the Kustomize plugin called ksops, which is the suggested tool on Argo&rsquo;s website and it has pretty good instructions for Argo integration."/>
 
-<meta property="og:title" content="ArgoCD with Kustomize and ksops using Age encryption" />
-<meta property="og:description" content="I am a big fan of FluxCD and its integration with secret management, however recently I decided to tinker with ArgoCD. One of the challenges I encountered was secret management. Although, ArgoCD provides flexible integration with most of secret management tools but it requires little extra configuration.
-So I started my journey to configure ArgoCD with SOPS, there isn&rsquo;t a direct integration with SOPS. We will have to use Kustomize plugin called ksops which is the suggested tool on Argo&rsquo;s website and it has pretty good instructions for Argo integration." />
+<meta property="og:title" content="ArgoCD with Kustomize and KSOPS using Age encryption" />
+<meta property="og:description" content="I am a big fan of FluxCD and its integration with secrets management; however, recently, I decided to tinker with ArgoCD. One of the challenges I encountered was secrets management. Although ArgoCD provides flexible integration with most secrets management tools, it requires little extra configuration.
+So I started my journey to configure ArgoCD with SOPS; there isn&rsquo;t a direct integration with SOPS. So we will have to use the Kustomize plugin called ksops, which is the suggested tool on Argo&rsquo;s website and it has pretty good instructions for Argo integration." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://vikaspogu.dev/blog/argo-operator-ksops-age/" /><meta property="article:section" content="blog" />
 <meta property="article:published_time" content="2022-08-10T16:31:43-05:00" />
 <meta property="article:modified_time" content="2022-08-10T16:31:43-05:00" />
 
 
-<meta itemprop="name" content="ArgoCD with Kustomize and ksops using Age encryption">
-<meta itemprop="description" content="I am a big fan of FluxCD and its integration with secret management, however recently I decided to tinker with ArgoCD. One of the challenges I encountered was secret management. Although, ArgoCD provides flexible integration with most of secret management tools but it requires little extra configuration.
-So I started my journey to configure ArgoCD with SOPS, there isn&rsquo;t a direct integration with SOPS. We will have to use Kustomize plugin called ksops which is the suggested tool on Argo&rsquo;s website and it has pretty good instructions for Argo integration."><meta itemprop="datePublished" content="2022-08-10T16:31:43-05:00" />
+<meta itemprop="name" content="ArgoCD with Kustomize and KSOPS using Age encryption">
+<meta itemprop="description" content="I am a big fan of FluxCD and its integration with secrets management; however, recently, I decided to tinker with ArgoCD. One of the challenges I encountered was secrets management. Although ArgoCD provides flexible integration with most secrets management tools, it requires little extra configuration.
+So I started my journey to configure ArgoCD with SOPS; there isn&rsquo;t a direct integration with SOPS. So we will have to use the Kustomize plugin called ksops, which is the suggested tool on Argo&rsquo;s website and it has pretty good instructions for Argo integration."><meta itemprop="datePublished" content="2022-08-10T16:31:43-05:00" />
 <meta itemprop="dateModified" content="2022-08-10T16:31:43-05:00" />
-<meta itemprop="wordCount" content="361">
+<meta itemprop="wordCount" content="353">
 <meta itemprop="keywords" content="ArgoCD,gitops,sops," />
 
 
@@ -312,7 +312,7 @@ So I started my journey to configure ArgoCD with SOPS, there isn&rsquo;t a direc
   <article class="post">
     <div class="post-header">
   <h1>
-    <a href="/blog/argo-operator-ksops-age/">ArgoCD with Kustomize and ksops using Age encryption</a>
+    <a href="/blog/argo-operator-ksops-age/">ArgoCD with Kustomize and KSOPS using Age encryption</a>
   </h1>
 
   <div class="post-meta">
@@ -349,8 +349,8 @@ So I started my journey to configure ArgoCD with SOPS, there isn&rsquo;t a direc
 </div>
 
     <div class="post-content">
-      <p>I am a big fan of FluxCD and its integration with secret management, however recently I decided to tinker with ArgoCD. One of the challenges I encountered was secret management. Although, ArgoCD provides flexible integration with most of secret management tools but it requires little extra configuration.</p>
-<p>So I started my journey to configure ArgoCD with SOPS, there isn&rsquo;t a direct integration with SOPS. We will have to use <a
+      <p>I am a big fan of FluxCD and its integration with secrets management; however, recently, I decided to tinker with ArgoCD. One of the challenges I encountered was secrets management. Although ArgoCD provides flexible integration with most secrets management tools, it requires little extra configuration.</p>
+<p>So I started my journey to configure ArgoCD with SOPS; there isn&rsquo;t a direct integration with SOPS. So we will have to use the <a
   href="https://github.com/kubernetes-sigs/kustomize/"
   
   
@@ -362,7 +362,7 @@ So I started my journey to configure ArgoCD with SOPS, there isn&rsquo;t a direc
   
     class="link--external" target="_blank" rel="noreferrer"
   
->ksops</a> which is the suggested tool on Argo&rsquo;s website and it has pretty good instructions for <a
+>ksops</a>, which is the suggested tool on Argo&rsquo;s website and it has pretty good instructions for <a
   href="https://github.com/viaduct-ai/kustomize-sops#argo-cd-integration-"
   
   
@@ -373,33 +373,27 @@ So I started my journey to configure ArgoCD with SOPS, there isn&rsquo;t a direc
   What is KSOPS?
   <a href="#what-is-ksops" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
-<p>KSOPS, or kustomize-SOPS, is a kustomize plugin for managing SOPS encrypted resources. KSOPS is used to decrypt any Kubernetes resource but is most commonly used to decrypt encrypted Kubernetes Secrets and ConfigMaps. The main goal of KSOPS is to manage encrypted resources the same way we manage the Kubernetes manifests.</p>
+<p>KSOPS, or kustomize-SOPS, is a kustomize plugin for managing SOPS encrypted resources. KSOPS is used to decrypt any Kubernetes resources but is most commonly used to decrypt encrypted Kubernetes Secrets and ConfigMaps. The main goal of KSOPS is to manage encrypted resources the same way we manage the Kubernetes manifests.</p>
 <h3 id="setup">
   Setup
   <a href="#setup" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
-<p>I am setting up this integration for my OpenShift cluster and I am using <a
+<p>I am setting up this integration on my OpenShift cluster and deploying ArgoCD via <a
   href="https://argocd-operator.readthedocs.io/en/latest/"
   
   
     class="link--external" target="_blank" rel="noreferrer"
   
->ArgoCD Operator</a> to be specific <a
-  href="https://docs.openshift.com/container-platform/4.11/cicd/gitops/understanding-openshift-gitops.html"
-  
-  
-    class="link--external" target="_blank" rel="noreferrer"
-  
->openshift-gitops-operator</a>. For encryption I&rsquo;ll be using <a
+>Operator</a>. For file encryption, I&rsquo;ll use <a
   href="https://github.com/FiloSottile/age"
   
   
     class="link--external" target="_blank" rel="noreferrer"
   
->Age encryption</a> as it is recommended over PGP by SOPS.</p>
-<h4 id="step-1-install-and-generate-the-age-key">
-  Step 1: Install and Generate the age key
-  <a href="#step-1-install-and-generate-the-age-key" class="post-heading__anchor" aria-hidden="true">#</a>
+>Age encryption</a> tool recommended over PGP by SOPS documentation.</p>
+<h4 id="install-and-generate-the-age-key">
+  Install and Generate the age key
+  <a href="#install-and-generate-the-age-key" class="post-heading__anchor" aria-hidden="true">#</a>
 </h4>
 <p><a
   href="https://github.com/FiloSottile/age#installation"
@@ -411,18 +405,18 @@ So I started my journey to configure ArgoCD with SOPS, there isn&rsquo;t a direc
 <p>Generating an age key using age-keygen:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ age-keygen -o age.agekey
 </span></span><span style="display:flex;"><span>Public key: age1helqcqsh9464r8chnwc2fzj8uv7vr5ntnsft0tn45v2xtz0hpfwq98cmsg
-</span></span><span style="display:flex;"><span>Create a secret with the age private key, the key name must end with .agekey to be detected as an age key:
-</span></span></code></pre></div><h4 id="step-2-create-a-secret-with-the-age-key-in-openshift-gitops-project">
-  Step 2: Create a secret with the age key in <code>openshift-gitops</code> project
-  <a href="#step-2-create-a-secret-with-the-age-key-in-openshift-gitops-project" class="post-heading__anchor" aria-hidden="true">#</a>
+</span></span><span style="display:flex;"><span>Create a secret with the age private key; the key name must end with .agekey to be detected as an age key:
+</span></span></code></pre></div><h4 id="create-a-secret-with-the-age-key-in-openshift-gitops-project">
+  Create a secret with the age key in <code>openshift-gitops</code> project
+  <a href="#create-a-secret-with-the-age-key-in-openshift-gitops-project" class="post-heading__anchor" aria-hidden="true">#</a>
 </h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat age.agekey | kubectl create secret generic sops-age --namespace<span style="color:#f92672">=</span>openshift-gitops <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--from-file<span style="color:#f92672">=</span>key.txt<span style="color:#f92672">=</span>/dev/stdin
-</span></span></code></pre></div><h4 id="step-3-update-the-repo-definition-of-argocd-cr-to-configure-ksops-custom-tooling">
-  Step 3: Update the repo definition of ArgoCD CR to configure KSOPS custom tooling
-  <a href="#step-3-update-the-repo-definition-of-argocd-cr-to-configure-ksops-custom-tooling" class="post-heading__anchor" aria-hidden="true">#</a>
+</span></span></code></pre></div><h4 id="update-the-repo-definition-of-argocd-cr-to-configure-ksops-custom-tooling">
+  Update the repo definition of ArgoCD CR to configure KSOPS custom tooling
+  <a href="#update-the-repo-definition-of-argocd-cr-to-configure-ksops-custom-tooling" class="post-heading__anchor" aria-hidden="true">#</a>
 </h4>
-<p>Below configuration mounts the age secret and installs KSOPS tool using initContainer</p>
+<p>Below configuration mounts the age secret and installs the KSOPS tool using initContainer</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">repo</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">env</span>:
 </span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">XDG_CONFIG_HOME</span>
@@ -454,13 +448,13 @@ So I started my journey to configure ArgoCD with SOPS, there isn&rsquo;t a direc
 </span></span><span style="display:flex;"><span>    - <span style="color:#f92672">mountPath</span>: <span style="color:#ae81ff">/.config/sops/age/keys.txt</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">sops-age</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">subPath</span>: <span style="color:#ae81ff">keys.txt</span>
-</span></span></code></pre></div><p>Here&rsquo;s Step-By-Step <a
+</span></span></code></pre></div><p>Here is a <a
   href="https://github.com/viaduct-ai/kustomize-sops#3-configure-sops-via-sopsyaml"
   
   
     class="link--external" target="_blank" rel="noreferrer"
   
->guide</a> for create the resources</p>
+>guide</a> for creating and testing the resources</p>
 
     </div>
 
@@ -491,7 +485,7 @@ So I started my journey to configure ArgoCD with SOPS, there isn&rsquo;t a direc
       
       <a
         class="social-share__item"
-        href="https://reddit.com/submit?url=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Fargo-operator-ksops-age%2F&amp;title=ArgoCD&#43;with&#43;Kustomize&#43;and&#43;ksops&#43;using&#43;Age&#43;encryption"
+        href="https://reddit.com/submit?url=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Fargo-operator-ksops-age%2F&amp;title=ArgoCD&#43;with&#43;Kustomize&#43;and&#43;KSOPS&#43;using&#43;Age&#43;encryption"
         target="_blank"
         rel="noreferrer"
       >
@@ -506,7 +500,7 @@ So I started my journey to configure ArgoCD with SOPS, there isn&rsquo;t a direc
       
       <a
         class="social-share__item"
-        href="mailto:?subject=ArgoCD&#43;with&#43;Kustomize&#43;and&#43;ksops&#43;using&#43;Age&#43;encryption&amp;body=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Fargo-operator-ksops-age%2F"
+        href="mailto:?subject=ArgoCD&#43;with&#43;Kustomize&#43;and&#43;KSOPS&#43;using&#43;Age&#43;encryption&amp;body=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Fargo-operator-ksops-age%2F"
         target="_blank"
         rel="noreferrer"
       >
@@ -650,8 +644,8 @@ So I started my journey to configure ArgoCD with SOPS, there isn&rsquo;t a direc
 
 <script
   type="text/javascript"
-  src="/js/flexsearch.e68298651407c9990e0640f348bcda95f7366f7be787c90bbe2c940e6867f3a82011fcddf1592e912c86feb74b89fd228d7c95def0d69b972ee79443acded903.js"
-  integrity="sha512-5oKYZRQHyZkOBkDzSLzalfc2b3vnh8kLviyUDmhn86ggEfzd8VkukSyG/rdLif0ijXyV3vDWm5cu55RDrN7ZAw==">
+  src="/js/flexsearch.7a24f461a845e684001eeb74564d173afc16e43e00d45973599a7307708a896cab3eed6fc2576ad0d4ca5e6eed1e5c9421f94947789d054a67640babb379dea5.js"
+  integrity="sha512-eiT0YahF5oQAHut0Vk0XOvwW5D4A1FlzWZpzB3CKiWyrPu1vwldq0NTKXm7tHlyUIflJR3idBUpnZAurs3nepQ==">
 </script>
 
 
