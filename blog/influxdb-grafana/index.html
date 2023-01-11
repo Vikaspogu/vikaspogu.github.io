@@ -83,7 +83,6 @@ Authentication &ldquo;Database not found&rdquo; Authentication # For the Authent
 <meta property="article:published_time" content="2022-08-08T15:32:00-05:00" />
 <meta property="article:modified_time" content="2022-08-08T15:32:00-05:00" />
 
-
 <meta itemprop="name" content="Configure Influxdb with Grafana">
 <meta itemprop="description" content="I recently started using proxmox and was planning on monitoring metrics using InfluxDB and Grafana, which I have already deployed on my Kubernetes cluster. However, during that process, I encountered two issues:
 Authentication &ldquo;Database not found&rdquo; Authentication # For the Authentication issue, I found out that you have to use the Authorization header with the Token yourAuthToken value to access the bucket. So, configure the header name in the jsonData field, and we should configure the header value in secureJsonData for grafana helm chart values."><meta itemprop="datePublished" content="2022-08-08T15:32:00-05:00" />
@@ -527,7 +526,7 @@ Authentication &ldquo;Database not found&rdquo; Authentication # For the Authent
       
 
       
-        <div class="jr-basics__location-city">Rochester, Minnesota</div>
+        <div class="jr-basics__location-city">Rochester, Minnesota.</div>
       
 
       
