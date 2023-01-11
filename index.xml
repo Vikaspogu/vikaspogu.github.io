@@ -6,7 +6,17 @@
     <description>Recent content on Vikas Pogu</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2021</copyright>
-    <lastBuildDate>Wed, 10 Aug 2022 16:31:43 -0500</lastBuildDate><atom:link href="https://vikaspogu.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 11 Jan 2023 12:52:13 -0600</lastBuildDate><atom:link href="https://vikaspogu.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Forward Openshift Audit Logs to Splunk using Newrelic Fluent Bit</title>
+      <link>https://vikaspogu.dev/blog/openshift-audit-logs-splunk-newrelic-fluent-bit/</link>
+      <pubDate>Wed, 11 Jan 2023 12:52:13 -0600</pubDate>
+      
+      <guid>https://vikaspogu.dev/blog/openshift-audit-logs-splunk-newrelic-fluent-bit/</guid>
+      <description>It is common for organizations to send logs to multiple systems—for example, container logs to NewRelic, and audit logs to Splunk for the InfoSec team.
+Deploying NewRelic using helm chart will also deploy the NewRelic logging deamonset, which utilizes a custom Fluent Bit image with a NewRelic output plugin to forward logs easily. Since the NewRelic Fluent Bit image uses an upstream fluent bit as a base image, it is pre-baked with the Splunk plugin.</description>
+    </item>
+    
     <item>
       <title>ArgoCD with Kustomize and KSOPS using Age encryption</title>
       <link>https://vikaspogu.dev/blog/argo-operator-ksops-age/</link>

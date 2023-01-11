@@ -58,39 +58,41 @@
 
 
 
-<title>k3s</title>
+<title>Forward Openshift Audit Logs to Splunk using Newrelic Fluent Bit</title>
 
 <meta
   name="description"
-  content="Blog using a retro-looking Hugo theme inspired by gruvbox."
+  content="It is common for organizations to send logs to multiple systems—for example, container logs to NewRelic, and audit logs to Splunk for the InfoSec team.
+Deploying NewRelic using helm chart will also deploy the NewRelic logging deamonset, which utilizes a custom Fluent Bit image with a NewRelic output plugin to forward logs easily. Since the NewRelic Fluent Bit image uses an upstream fluent bit as a base image, it is pre-baked with the Splunk plugin."
 />
 
-<link rel="canonical" href="https://vikaspogu.dev/tags/k3s/" />
+<link rel="canonical" href="https://vikaspogu.dev/blog/openshift-audit-logs-splunk-newrelic-fluent-bit/" />
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="k3s"/>
-<meta name="twitter:description" content="Blog using a retro-looking Hugo theme inspired by gruvbox."/>
+<meta name="twitter:title" content="Forward Openshift Audit Logs to Splunk using Newrelic Fluent Bit"/>
+<meta name="twitter:description" content="It is common for organizations to send logs to multiple systems—for example, container logs to NewRelic, and audit logs to Splunk for the InfoSec team.
+Deploying NewRelic using helm chart will also deploy the NewRelic logging deamonset, which utilizes a custom Fluent Bit image with a NewRelic output plugin to forward logs easily. Since the NewRelic Fluent Bit image uses an upstream fluent bit as a base image, it is pre-baked with the Splunk plugin."/>
 
-<meta property="og:title" content="k3s" />
-<meta property="og:description" content="Blog using a retro-looking Hugo theme inspired by gruvbox." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://vikaspogu.dev/tags/k3s/" />
+<meta property="og:title" content="Forward Openshift Audit Logs to Splunk using Newrelic Fluent Bit" />
+<meta property="og:description" content="It is common for organizations to send logs to multiple systems—for example, container logs to NewRelic, and audit logs to Splunk for the InfoSec team.
+Deploying NewRelic using helm chart will also deploy the NewRelic logging deamonset, which utilizes a custom Fluent Bit image with a NewRelic output plugin to forward logs easily. Since the NewRelic Fluent Bit image uses an upstream fluent bit as a base image, it is pre-baked with the Splunk plugin." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://vikaspogu.dev/blog/openshift-audit-logs-splunk-newrelic-fluent-bit/" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2023-01-11T12:52:13-06:00" />
+<meta property="article:modified_time" content="2023-01-11T12:52:13-06:00" />
 
-<meta itemprop="name" content="k3s">
-<meta itemprop="description" content="Blog using a retro-looking Hugo theme inspired by gruvbox.">
+<meta itemprop="name" content="Forward Openshift Audit Logs to Splunk using Newrelic Fluent Bit">
+<meta itemprop="description" content="It is common for organizations to send logs to multiple systems—for example, container logs to NewRelic, and audit logs to Splunk for the InfoSec team.
+Deploying NewRelic using helm chart will also deploy the NewRelic logging deamonset, which utilizes a custom Fluent Bit image with a NewRelic output plugin to forward logs easily. Since the NewRelic Fluent Bit image uses an upstream fluent bit as a base image, it is pre-baked with the Splunk plugin."><meta itemprop="datePublished" content="2023-01-11T12:52:13-06:00" />
+<meta itemprop="dateModified" content="2023-01-11T12:52:13-06:00" />
+<meta itemprop="wordCount" content="420">
+<meta itemprop="keywords" content="" />
 
 
 
 
-
-  <link
-    rel="alternate"
-    type="application/rss&#43;xml"
-    href="/tags/k3s/index.xml"
-    title="Vikas Pogu"
-  />
 
 
 
@@ -306,35 +308,20 @@
       <main>
         <div class="content">
           
-  
   <article class="post">
     <div class="post-header">
   <h1>
-    <a href="/blog/pi-hole-kubernetes/">Pi Hole on k3s cluster</a>
+    <a href="/blog/openshift-audit-logs-splunk-newrelic-fluent-bit/">Forward Openshift Audit Logs to Splunk using Newrelic Fluent Bit</a>
   </h1>
 
   <div class="post-meta">
     
-      <span>2020-03-07</span>
+      <span>2023-01-11</span>
     
     
     
     
     
-    
-      <div class="post-tags">
-        
-          <a
-            class="post-tag"
-            href="https://vikaspogu.dev/tags/pi-hole"
-          >pi&#8209;hole</a>
-        
-          <a
-            class="post-tag"
-            href="https://vikaspogu.dev/tags/k3s"
-          >k3s</a>
-        
-      </div>
     
 
     
@@ -342,122 +329,195 @@
 </div>
 
     <div class="post-content">
-      <span>
-        
-          Deploying Pi-Hole on k3s cluster.
-        
-      </span>
-    </div>
-  </article>
-
-  <article class="post">
-    <div class="post-header">
-  <h1>
-    <a href="/blog/raspberry-pi-temp-telegraf/">Measure Raspberry Pi temperature using Telegraf, Influxdb, Grafana on k3s</a>
-  </h1>
-
-  <div class="post-meta">
-    
-      <span>2020-01-01</span>
-    
-    
-    
-    
-    
-    
-      <div class="post-tags">
-        
-          <a
-            class="post-tag"
-            href="https://vikaspogu.dev/tags/k3s"
-          >k3s</a>
-        
-          <a
-            class="post-tag"
-            href="https://vikaspogu.dev/tags/grafana"
-          >grafana</a>
-        
-          <a
-            class="post-tag"
-            href="https://vikaspogu.dev/tags/influxdb"
-          >influxdb</a>
-        
-          <a
-            class="post-tag"
-            href="https://vikaspogu.dev/tags/telegraf"
-          >telegraf</a>
-        
-      </div>
-    
-
-    
-  </div>
-</div>
-
-    <div class="post-content">
-      <span>
-        
-          Measure Raspberry Pi temperature using Telegraf, Influxdb, Grafana on k3s.
-        
-      </span>
-    </div>
-  </article>
-
-  <article class="post">
-    <div class="post-header">
-  <h1>
-    <a href="/blog/kubernetes-home-cluster-traefik/">k3s cluster with Raspberry-Pi, Traefik</a>
-  </h1>
-
-  <div class="post-meta">
-    
-      <span>2019-12-31</span>
-    
-    
-    
-    
-    
-    
-      <div class="post-tags">
-        
-          <a
-            class="post-tag"
-            href="https://vikaspogu.dev/tags/k3s"
-          >k3s</a>
-        
-          <a
-            class="post-tag"
-            href="https://vikaspogu.dev/tags/traefik"
-          >traefik</a>
-        
-          <a
-            class="post-tag"
-            href="https://vikaspogu.dev/tags/raspberry-pi"
-          >raspberry&#8209;pi</a>
-        
-      </div>
-    
-
-    
-  </div>
-</div>
-
-    <div class="post-content">
-      <span>
-        
-          Walk through on setting up K3S cluster on raspberry pi and traefik ingress with cloudfare.
-        
-      </span>
-    </div>
-  </article>
-
-
-<div class="pagination">
+      <p>It is common for organizations to send logs to multiple systems—for example, container logs to NewRelic, and audit logs to Splunk for the InfoSec team.</p>
+<p>Deploying <a
+  href="https://github.com/newrelic/helm-charts/tree/master/charts/nri-bundle"
   
   
-</div>
+    class="link--external" target="_blank" rel="noreferrer"
+  
+>NewRelic</a> using helm chart will also deploy the NewRelic logging deamonset, which utilizes a custom Fluent Bit image with a NewRelic output <a
+  href="https://github.com/newrelic/newrelic-fluent-bit-output"
+  
+  
+    class="link--external" target="_blank" rel="noreferrer"
+  
+>plugin</a> to forward logs easily. Since the NewRelic Fluent Bit image uses an upstream fluent bit as a <a
+  href="https://github.com/newrelic/newrelic-fluent-bit-output/blob/master/Dockerfile#L19"
+  
+  
+    class="link--external" target="_blank" rel="noreferrer"
+  
+>base</a> image, it is pre-baked with the Splunk <a
+  href="https://github.com/fluent/fluent-bit#output-plugins"
+  
+  
+    class="link--external" target="_blank" rel="noreferrer"
+  
+>plugin</a>.</p>
+<p>Now, let&rsquo;s look at how to configure both NewRelic for container logs and Splunk for audit logs using the helm chart.</p>
+<p>Three things have to be configured in helm chart values</p>
+<ul>
+<li>Configure <a
+  href="https://docs.fluentbit.io/manual/pipeline/inputs/tail"
+  
+  
+    class="link--external" target="_blank" rel="noreferrer"
+  
+>tail</a> input for audit log paths</li>
+<li>Update the <code>Match</code> tag in the Kubernetes <a
+  href="https://docs.fluentbit.io/manual/pipeline/filters/kubernetes"
+  
+  
+    class="link--external" target="_blank" rel="noreferrer"
+  
+>filter</a> to match all records that start with <code>audit.*</code></li>
+<li>Configure Splunk <a
+  href="https://docs.fluentbit.io/manual/pipeline/outputs/splunk"
+  
+  
+    class="link--external" target="_blank" rel="noreferrer"
+  
+>output</a> with HEC token and host details</li>
+</ul>
+<h3 id="configure-audit-input">
+  Configure audit input
+  <a href="#configure-audit-input" class="post-heading__anchor" aria-hidden="true">#</a>
+</h3>
+<p>Input Plugins gather information from different sources; some collect data from log files. <code>tail</code> input plugin allows monitoring one or several text files. It has similar behavior to the <code>tail -f</code> shell command.</p>
+<p>In this case, we want to tail <code>/var/log/audit/audit.log</code>; to configure new input in NewRelic logging. Add <code>tail</code> input for <code>audit</code> logs in <code>values.yaml</code> file under the <code>fluentBit</code> config -&gt; inputs section, as shown below.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">fluentBit</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">config</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">inputs</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      [INPUT]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          Name              tail
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          Tag               kube.*
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          Path              ${PATH}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          Parser            ${LOG_PARSER}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          DB                ${FB_DB}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          Mem_Buf_Limit     7MB
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          Skip_Long_Lines   On
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          Refresh_Interval  10
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      [INPUT]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          Name              tail
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          Tag               audit.*
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          Path              &#34;/var/log/audit/audit.log&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          Parser            ${LOG_PARSER}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          DB                ${FB_DB}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          Mem_Buf_Limit     7MB
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          Skip_Long_Lines   On
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          Refresh_Interval  10</span>      
+</span></span></code></pre></div><h3 id="update-match-rule">
+  Update Match rule
+  <a href="#update-match-rule" class="post-heading__anchor" aria-hidden="true">#</a>
+</h3>
+<p>A <code>Match</code> represents a simple rule to select Events whose Tags match a defined rule.</p>
+<p>In this scenario, we are checking the <code>audit.*</code> tags. Only one unique filter is allowed; we&rsquo;ll append it to the existing <code>kube.*</code> tag.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">fluentBit</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">config</span>:
+</span></span><span style="display:flex;"><span>      [<span style="color:#ae81ff">FILTER]</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#ae81ff">Name                kubernetes</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#ae81ff">Match               kube.* audit.*</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#ae81ff">Kube_URL            https://kubernetes.default.svc.cluster.local:443</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#ae81ff">Buffer_Size         ${K8S_BUFFER_SIZE}</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#ae81ff">K8S-Logging.Exclude ${K8S_LOGGING_EXCLUDE}</span>
+</span></span><span style="display:flex;"><span>      [<span style="color:#ae81ff">FILTER]</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#ae81ff">Name           record_modifier</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#ae81ff">Match          *</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#ae81ff">Record         cluster_name ${CLUSTER_NAME}</span>
+</span></span></code></pre></div><h3 id="configure-splunk-output">
+  Configure Splunk output
+  <a href="#configure-splunk-output" class="post-heading__anchor" aria-hidden="true">#</a>
+</h3>
+<p>The <code>output</code> interface allows the definition of destinations for the data. For example, our destination for audit logs is <code>Splunk</code>.</p>
+<p>To configure new output in NewRelic logging. Add <code>splunk</code> output for <code>audit.*</code> logs in the <code>values.yaml</code> file under the <code>fluentBit</code> config -&gt; outputs section, as shown below.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">fluentBit</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">config</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">outputs</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      [OUTPUT]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          Name           newrelic
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          Match          *
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          licenseKey     ${LICENSE_KEY}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          endpoint       ${ENDPOINT}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          lowDataMode    ${LOW_DATA_MODE}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          Retry_Limit    ${RETRY_LIMIT}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      [OUTPUT]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          Name           splunk
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          Match          audit.*
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          Host           splunk-hec.host
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          Port           443
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          TLS            On
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          Splunk_Token   ${SPLUNK_TOKEN} #Create a secret with Splunk token and mount into container</span>      
+</span></span></code></pre></div><p>Finally, recreate the logging pods. Audit logs should be routed to Splunk along with container logs to NewRelic.</p>
+
+    </div>
+
+    
+      
 
 
+  <div class="social-share">
+    <strong class="social-share__heading">Share this post: </strong>
+    
+      
+      
+      
+      <a
+        class="social-share__item"
+        href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Fopenshift-audit-logs-splunk-newrelic-fluent-bit%2F"
+        target="_blank"
+        rel="noreferrer"
+      >
+        
+<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+
+
+      </a>
+    
+      
+      
+      
+      <a
+        class="social-share__item"
+        href="https://reddit.com/submit?url=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Fopenshift-audit-logs-splunk-newrelic-fluent-bit%2F&amp;title=Forward&#43;Openshift&#43;Audit&#43;Logs&#43;to&#43;Splunk&#43;using&#43;Newrelic&#43;Fluent&#43;Bit"
+        target="_blank"
+        rel="noreferrer"
+      >
+        
+<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Reddit</title><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+
+
+      </a>
+    
+      
+      
+      
+      <a
+        class="social-share__item"
+        href="mailto:?subject=Forward&#43;Openshift&#43;Audit&#43;Logs&#43;to&#43;Splunk&#43;using&#43;Newrelic&#43;Fluent&#43;Bit&amp;body=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Fopenshift-audit-logs-splunk-newrelic-fluent-bit%2F"
+        target="_blank"
+        rel="noreferrer"
+      >
+        
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="3" y="5" width="18" height="14" rx="2" />
+  <polyline points="3 7 12 13 21 7" />
+</svg>
+
+
+
+
+
+      </a>
+    
+  </div>
+
+
+    
+
+    
+  </article>
 
         </div>
         <div class="sidebar">
