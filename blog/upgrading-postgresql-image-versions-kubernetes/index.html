@@ -58,45 +58,41 @@
 
 
 
-<title>Authenticate a Node application with LDAP</title>
+<title>Upgrading PostgreSQL in Kubernetes</title>
 
 <meta
   name="description"
-  content="This post demonstrates how to authenticate a user against LDAP.
-Let&amp;rsquo;s start by installing basic-auth and ldapauth-fork packages
-npm install ldapauth-fork npm install basic-auth Steps for implementation;
-Add packages Create an LDAP variable with authentication configuration Basic auth should prompt for your username and password. Once the user is found, verify the given password by trying to bind the user client with the found LDAP user object and the given password."
+  content="I have been running an instance of bitnami&amp;rsquo;s version of Postgresql 12 for a while, and I have recently upgraded/migrated data from version 12 to 15.
+This post doesn&amp;rsquo;t cover in-place upgrades; instead, it will require you to spin a newer container version.
+Deploy New Container Image # The first step is to deploy a new Postgres container using the updated image version. This container MUST NOT mount the same volume as the older Postgres container."
 />
 
-<link rel="canonical" href="https://vikaspogu.dev/blog/node-ldap-auth/" />
+<link rel="canonical" href="https://vikaspogu.dev/blog/upgrading-postgresql-image-versions-kubernetes/" />
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Authenticate a Node application with LDAP"/>
-<meta name="twitter:description" content="This post demonstrates how to authenticate a user against LDAP.
-Let&rsquo;s start by installing basic-auth and ldapauth-fork packages
-npm install ldapauth-fork npm install basic-auth Steps for implementation;
-Add packages Create an LDAP variable with authentication configuration Basic auth should prompt for your username and password. Once the user is found, verify the given password by trying to bind the user client with the found LDAP user object and the given password."/>
+<meta name="twitter:title" content="Upgrading PostgreSQL in Kubernetes"/>
+<meta name="twitter:description" content="I have been running an instance of bitnami&rsquo;s version of Postgresql 12 for a while, and I have recently upgraded/migrated data from version 12 to 15.
+This post doesn&rsquo;t cover in-place upgrades; instead, it will require you to spin a newer container version.
+Deploy New Container Image # The first step is to deploy a new Postgres container using the updated image version. This container MUST NOT mount the same volume as the older Postgres container."/>
 
-<meta property="og:title" content="Authenticate a Node application with LDAP" />
-<meta property="og:description" content="This post demonstrates how to authenticate a user against LDAP.
-Let&rsquo;s start by installing basic-auth and ldapauth-fork packages
-npm install ldapauth-fork npm install basic-auth Steps for implementation;
-Add packages Create an LDAP variable with authentication configuration Basic auth should prompt for your username and password. Once the user is found, verify the given password by trying to bind the user client with the found LDAP user object and the given password." />
+<meta property="og:title" content="Upgrading PostgreSQL in Kubernetes" />
+<meta property="og:description" content="I have been running an instance of bitnami&rsquo;s version of Postgresql 12 for a while, and I have recently upgraded/migrated data from version 12 to 15.
+This post doesn&rsquo;t cover in-place upgrades; instead, it will require you to spin a newer container version.
+Deploy New Container Image # The first step is to deploy a new Postgres container using the updated image version. This container MUST NOT mount the same volume as the older Postgres container." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://vikaspogu.dev/blog/node-ldap-auth/" /><meta property="article:section" content="blog" />
-<meta property="article:published_time" content="2019-05-15T00:00:00+00:00" />
-<meta property="article:modified_time" content="2019-05-15T00:00:00+00:00" />
+<meta property="og:url" content="https://vikaspogu.dev/blog/upgrading-postgresql-image-versions-kubernetes/" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2023-01-21T11:36:34-06:00" />
+<meta property="article:modified_time" content="2023-01-21T11:36:34-06:00" />
 
-<meta itemprop="name" content="Authenticate a Node application with LDAP">
-<meta itemprop="description" content="This post demonstrates how to authenticate a user against LDAP.
-Let&rsquo;s start by installing basic-auth and ldapauth-fork packages
-npm install ldapauth-fork npm install basic-auth Steps for implementation;
-Add packages Create an LDAP variable with authentication configuration Basic auth should prompt for your username and password. Once the user is found, verify the given password by trying to bind the user client with the found LDAP user object and the given password."><meta itemprop="datePublished" content="2019-05-15T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2019-05-15T00:00:00+00:00" />
-<meta itemprop="wordCount" content="161">
-<meta itemprop="keywords" content="NodeJS,LDAP," />
+<meta itemprop="name" content="Upgrading PostgreSQL in Kubernetes">
+<meta itemprop="description" content="I have been running an instance of bitnami&rsquo;s version of Postgresql 12 for a while, and I have recently upgraded/migrated data from version 12 to 15.
+This post doesn&rsquo;t cover in-place upgrades; instead, it will require you to spin a newer container version.
+Deploy New Container Image # The first step is to deploy a new Postgres container using the updated image version. This container MUST NOT mount the same volume as the older Postgres container."><meta itemprop="datePublished" content="2023-01-21T11:36:34-06:00" />
+<meta itemprop="dateModified" content="2023-01-21T11:36:34-06:00" />
+<meta itemprop="wordCount" content="259">
+<meta itemprop="keywords" content="" />
 
 
 
@@ -319,31 +315,17 @@ Add packages Create an LDAP variable with authentication configuration Basic aut
   <article class="post">
     <div class="post-header">
   <h1>
-    <a href="/blog/node-ldap-auth/">Authenticate a Node application with LDAP</a>
+    <a href="/blog/upgrading-postgresql-image-versions-kubernetes/">Upgrading PostgreSQL in Kubernetes</a>
   </h1>
 
   <div class="post-meta">
     
-      <span>2019-05-15</span>
+      <span>2023-01-21</span>
     
     
     
     
     
-    
-      <div class="post-tags">
-        
-          <a
-            class="post-tag"
-            href="https://vikaspogu.dev/tags/nodejs"
-          >nodejs</a>
-        
-          <a
-            class="post-tag"
-            href="https://vikaspogu.dev/tags/ldap"
-          >ldap</a>
-        
-      </div>
     
 
     
@@ -351,74 +333,44 @@ Add packages Create an LDAP variable with authentication configuration Basic aut
 </div>
 
     <div class="post-content">
-      <p>This post demonstrates how to authenticate a user against LDAP.</p>
-<p>Let&rsquo;s start by installing <a
-  href="https://www.npmjs.com/package/basic-auth"
-  
-  
-    class="link--external" target="_blank" rel="noreferrer"
-  
->basic-auth</a> and <a
-  href="https://www.npmjs.com/package/ldapauth-fork"
-  
-  
-    class="link--external" target="_blank" rel="noreferrer"
-  
->ldapauth-fork</a> packages</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm install ldapauth-fork
-</span></span><span style="display:flex;"><span>npm install basic-auth
-</span></span></code></pre></div><p>Steps for implementation;</p>
-<ol>
-<li>Add packages</li>
-<li>Create an <code>LDAP</code> variable with authentication configuration</li>
-<li>Basic auth should prompt for your username and password. Once the user is found, verify the given password by trying to bind the user client with the found LDAP user object and the given password.</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">auth</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;basic-auth&#34;</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">LdapAuth</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;ldapauth-fork&#34;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ldap</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">LdapAuth</span>({
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ldap://ldap-url:389&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">bindDN</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;uid=rc,ou=AppAccounts,ou=People,ou=Entsys,dc=example.com&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">bindCredentials</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;credentials&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">searchBase</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ou=entsys,dc=example.com&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">searchFilter</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;(uid={{username}})&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">reconnect</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>});
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>(<span style="color:#e6db74">&#34;/API/admin/&#34;</span>, (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>, <span style="color:#a6e22e">next</span>) =&gt; {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">credentials</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">auth</span>(<span style="color:#a6e22e">req</span>);
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">credentials</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">LDAP</span>.<span style="color:#a6e22e">authenticate</span>(<span style="color:#a6e22e">credentials</span>.<span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">credentials</span>.<span style="color:#a6e22e">pass</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">user</span>) {
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>) {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">message</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
-</span></span><span style="display:flex;"><span>          .<span style="color:#a6e22e">status</span>(<span style="color:#e6db74">&#34;401&#34;</span>)
-</span></span><span style="display:flex;"><span>          .<span style="color:#a6e22e">set</span>({ <span style="color:#e6db74">&#34;WWW-Authenticate&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Basic realm=&#34;Access Denied&#34;&#39;</span> })
-</span></span><span style="display:flex;"><span>          .<span style="color:#a6e22e">end</span>(<span style="color:#e6db74">&#34;access denied&#34;</span>);
-</span></span><span style="display:flex;"><span>      }
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">user</span>;
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">next</span>();
-</span></span><span style="display:flex;"><span>    });
-</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
-</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">status</span>(<span style="color:#e6db74">&#34;401&#34;</span>)
-</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">set</span>({ <span style="color:#e6db74">&#34;WWW-Authenticate&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Basic realm=&#34;Access Denied&#34;&#39;</span> })
-</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">end</span>(<span style="color:#e6db74">&#34;access denied&#34;</span>);
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>});
-</span></span></code></pre></div><p>Visit <a
-  href="https://www.npmjs.com/package/basic-auth"
-  
-  
-    class="link--external" target="_blank" rel="noreferrer"
-  
->basic-auth</a>, <a
-  href="https://www.npmjs.com/package/ldapauth-fork"
-  
-  
-    class="link--external" target="_blank" rel="noreferrer"
-  
->ldapauth-fork</a> packages for more information on configuration.</p>
+      <p>I have been running an instance of bitnami&rsquo;s version of Postgresql 12 for a while, and I have recently upgraded/migrated data from version 12 to 15.</p>
+<p>This post doesn&rsquo;t cover in-place upgrades; instead, it will require you to spin a newer container version.</p>
+<h2 id="deploy-new-container-image">
+  Deploy New Container Image
+  <a href="#deploy-new-container-image" class="post-heading__anchor" aria-hidden="true">#</a>
+</h2>
+<p>The first step is to deploy a new Postgres container using the updated image version. This container <strong>MUST NOT</strong> mount the same volume as the older Postgres container.</p>
+<p>Instead, it will need to mount a new volume for the database. The new Postgres server will fail if you mount the older Postgres server volume. This is because Postgres requires the data to be migrated before it can load it.</p>
+<h2 id="backup">
+  Backup
+  <a href="#backup" class="post-heading__anchor" aria-hidden="true">#</a>
+</h2>
+<ul>
+<li>
+<p>Install the PostgreSQL command line tool on your local machine</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install PostgreSQL
+</span></span></code></pre></div></li>
+<li>
+<p>Start Kubernetes <code>port-forward</code> for postgres service to expose the port on the local system to perform a data dump</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubectl port-forward svc/postgresql-kube <span style="color:#ae81ff">5432</span> &amp;
+</span></span></code></pre></div></li>
+<li>
+<p>Run <code>pg_dumpall</code>, a utility for writing out (dumping) all of your PostgreSQL databases of a cluster</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pg_dumpall -h 127.0.0.1 -p <span style="color:#ae81ff">5432</span> -U postgres -W -f database.sql
+</span></span></code></pre></div></li>
+</ul>
+<p>If everything goes successfully, a new file is created on the local filesystem.</p>
+<h3 id="import">
+  Import
+  <a href="#import" class="post-heading__anchor" aria-hidden="true">#</a>
+</h3>
+<p>We&rsquo;ll use the Kubernetes copy(<code>cp</code>) command to transfer the dump file into the container.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubectl cp database.sql postgresql-0:/tmp/database.sql
+</span></span></code></pre></div><p>Open a terminal shell on the new postgresql container.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubectl exec -it postgresql-0 bash
+</span></span></code></pre></div><p>Finally, import the databases.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>I have no name!@postgresql-0:/$ psql -U postgres -W -f /tmp/database.sql
+</span></span></code></pre></div><p>Verify the import and stop the old container. You have completed the upgrade successfully now. Congrats!</p>
 
     </div>
 
@@ -434,7 +386,7 @@ Add packages Create an LDAP variable with authentication configuration Basic aut
       
       <a
         class="social-share__item"
-        href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Fnode-ldap-auth%2F"
+        href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Fupgrading-postgresql-image-versions-kubernetes%2F"
         target="_blank"
         rel="noreferrer"
       >
@@ -449,7 +401,7 @@ Add packages Create an LDAP variable with authentication configuration Basic aut
       
       <a
         class="social-share__item"
-        href="https://reddit.com/submit?url=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Fnode-ldap-auth%2F&amp;title=Authenticate&#43;a&#43;Node&#43;application&#43;with&#43;LDAP"
+        href="https://reddit.com/submit?url=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Fupgrading-postgresql-image-versions-kubernetes%2F&amp;title=Upgrading&#43;PostgreSQL&#43;in&#43;Kubernetes"
         target="_blank"
         rel="noreferrer"
       >
@@ -464,7 +416,7 @@ Add packages Create an LDAP variable with authentication configuration Basic aut
       
       <a
         class="social-share__item"
-        href="mailto:?subject=Authenticate&#43;a&#43;Node&#43;application&#43;with&#43;LDAP&amp;body=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Fnode-ldap-auth%2F"
+        href="mailto:?subject=Upgrading&#43;PostgreSQL&#43;in&#43;Kubernetes&amp;body=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Fupgrading-postgresql-image-versions-kubernetes%2F"
         target="_blank"
         rel="noreferrer"
       >

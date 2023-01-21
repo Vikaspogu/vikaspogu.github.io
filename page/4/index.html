@@ -4,7 +4,7 @@
   theme="light"
 >
   <head>
-	<meta name="generator" content="Hugo 0.109.0">
+	<meta name="generator" content="Hugo 0.110.0">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -313,6 +313,56 @@
   
   
   
+  <article class="post">
+    <div class="post-header">
+  <h1>
+    <a href="/blog/intro-tektoncd-ocp/">TektonCD on OpenShift</a>
+  </h1>
+
+  <div class="post-meta">
+    
+      <span>2019-08-09</span>
+    
+    
+    
+    
+    
+    
+      <div class="post-tags">
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/openshift"
+          >openshift</a>
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/tektoncd"
+          >tektoncd</a>
+        
+      </div>
+    
+
+    
+  </div>
+</div>
+
+    <div class="post-content">
+      <span>
+        
+          Recently I came across tektoncd project, The Tekton Pipelines project provides Kubernetes-style resources for declaring CI/CD-style pipelines caught my attention, and I started playing with it.
+Basic Concepts # To create a Tekton pipeline, one does the following:
+Create custom or install existing reusable Tasks Create a Pipeline and PipelineResources to define your application&rsquo;s delivery pipeline Create a PipelineRun to instantiate and invoke the pipeline Installing Tekton on OpenShift # Log in as a user with cluster-admin privileges.
+          
+            <div class="post-content__read-more">
+              <a href="/blog/intro-tektoncd-ocp/">Read more ></a>
+            </div>
+          
+        
+      </span>
+    </div>
+  </article>
+
   <article class="post">
     <div class="post-header">
   <h1>
@@ -789,61 +839,6 @@ Red Hat container images # When you bootstrap your JVM, you should have a way to
     </div>
   </article>
 
-  <article class="post">
-    <div class="post-header">
-  <h1>
-    <a href="/blog/javaprofiler-openshift/">Profiling an application in OpenShift container.</a>
-  </h1>
-
-  <div class="post-meta">
-    
-      <span>2019-05-14</span>
-    
-    
-    
-    
-    
-    
-      <div class="post-tags">
-        
-          <a
-            class="post-tag"
-            href="https://vikaspogu.dev/tags/openshift"
-          >openshift</a>
-        
-          <a
-            class="post-tag"
-            href="https://vikaspogu.dev/tags/java"
-          >java</a>
-        
-          <a
-            class="post-tag"
-            href="https://vikaspogu.dev/tags/yourkit-javaprofiler"
-          >yourkit&#8209;javaprofiler</a>
-        
-      </div>
-    
-
-    
-  </div>
-</div>
-
-    <div class="post-content">
-      <span>
-        
-          Sometimes writing code that runs is not enough. We might want to know what goes on internally, such as memory allocation, consequences of using one coding approach over another, implications of concurrent executions, areas to improve performance, etc. We can use profilers for this.
-In this post, I&rsquo;ll discuss using YourKit-JavaProfiler inside a container.
-Since my sample application is built using OpenShift S2I process and pushed into OpenShift internal registry, I&rsquo;ll have to pull the image locally.
-          
-            <div class="post-content__read-more">
-              <a href="/blog/javaprofiler-openshift/">Read more ></a>
-            </div>
-          
-        
-      </span>
-    </div>
-  </article>
-
 
 <div class="pagination">
   
@@ -854,6 +849,13 @@ Since my sample application is built using OpenShift S2I process and pushed into
       </a>
     </span>
   
+  
+    <span class="pagination__button pagination__button--next">
+      <a href="/page/5/">
+        <span>Older Posts</span>
+        <span>></span>
+      </a>
+    </span>
   
 </div>
 
@@ -972,14 +974,14 @@ Since my sample application is built using OpenShift S2I process and pushed into
 
 <script
   type="text/javascript"
-  src="/js/main.dcd63d82dd0c74d9d5f2328aba99dda49ba95acfa94883553cd8fc004ae9f6fd3d12c159b12e17df64a8c94749e4d6639b769bde643094819ba7aa8078aedd3f.js"
-  integrity="sha512-3NY9gt0MdNnV8jKKupndpJupWs&#43;pSINVPNj8AErp9v09EsFZsS4X32SoyUdJ5NZjm3ab3mQwlIGbp6qAeK7dPw==">
+  src="/js/main.208ad98be109e8d42030d15d513c04bf8a3e4238d1e8f885c1062328ea2fc9b389dd1af11c86a87ade934b3acecf72a0a4bdc4d50dfe07765ac0df1b40e3db0e.js"
+  integrity="sha512-IIrZi&#43;EJ6NQgMNFdUTwEv4o&#43;QjjR6PiFwQYjKOovybOJ3RrxHIaoet6TSzrOz3KgpL3E1Q3&#43;B3ZawN8bQOPbDg==">
 </script>
 
 <script
   type="text/javascript"
-  src="/js/flexsearch.477d728528b7faf92b0bfd4bfa7f6895df1421f336e1b02b6de3e216a2f9b6a24b3d787689c8d07f389af449200c1f2d515bdbf896bf0d0fc2fde51cea9390c1.js"
-  integrity="sha512-R31yhSi3&#43;vkrC/1L&#43;n9old8UIfM24bArbePiFqL5tqJLPXh2icjQfzia9EkgDB8tUVvb&#43;Ja/DQ/C/eUc6pOQwQ==">
+  src="/js/flexsearch.5c4126f4969f99858077e967e3c9aba803b19b24894e211bdc8b858de9dc293eee2f7727c32d3851d7ea1ce5fc7e5b4cf65a37a5f1f9acaf68b5800bc45dc4ca.js"
+  integrity="sha512-XEEm9JafmYWAd&#43;ln48mrqAOxmySJTiEb3IuFjencKT7uL3cnwy04UdfqHOX8fltM9lo3pfH5rK9otYALxF3Eyg==">
 </script>
 
 
