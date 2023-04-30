@@ -58,12 +58,12 @@
 
 
 
-<title>PXE boot with Synology NAS and UDM router</title>
+<title>PXE boot with Synology NAS</title>
 
 <meta
   name="description"
-  content="In this post, I have documented the steps I followed to install RHEL 8 by booting from a PXE server over the network with a Kickstart file using Synology NAS as TFTP, HTTP server, and UDM as DHCP.
-Install &amp;amp; Configure TFTP Install &amp;amp; Configure HTTP server Enable network boot on UDM PXE Boot setup Prepare Installation Repository Prepare kickstart file Perform PXE boot Install and Configure TFTP # Trivial File Transfer Protocol (TFTP) is a simple file transfer protocol, generally used for transferring configurations or boot files when authentication is not required."
+  content="In this post, I have documented the steps I followed to install RHEL 8 by booting from a PXE server over the network with a Kickstart file using Synology NAS as TFTP, and HTTP server.
+Install &amp;amp; Configure TFTP Install &amp;amp; Configure HTTP server PXE Boot setup Prepare Installation Repository Prepare kickstart file Perform PXE boot Install and Configure TFTP # Trivial File Transfer Protocol (TFTP) is a simple file transfer protocol, generally used for transferring configurations or boot files when authentication is not required."
 />
 
 <link rel="canonical" href="https://vikaspogu.dev/blog/tftp-udm-pxe/" />
@@ -71,24 +71,24 @@ Install &amp;amp; Configure TFTP Install &amp;amp; Configure HTTP server Enable 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="PXE boot with Synology NAS and UDM router"/>
-<meta name="twitter:description" content="In this post, I have documented the steps I followed to install RHEL 8 by booting from a PXE server over the network with a Kickstart file using Synology NAS as TFTP, HTTP server, and UDM as DHCP.
-Install &amp; Configure TFTP Install &amp; Configure HTTP server Enable network boot on UDM PXE Boot setup Prepare Installation Repository Prepare kickstart file Perform PXE boot Install and Configure TFTP # Trivial File Transfer Protocol (TFTP) is a simple file transfer protocol, generally used for transferring configurations or boot files when authentication is not required."/>
+<meta name="twitter:title" content="PXE boot with Synology NAS"/>
+<meta name="twitter:description" content="In this post, I have documented the steps I followed to install RHEL 8 by booting from a PXE server over the network with a Kickstart file using Synology NAS as TFTP, and HTTP server.
+Install &amp; Configure TFTP Install &amp; Configure HTTP server PXE Boot setup Prepare Installation Repository Prepare kickstart file Perform PXE boot Install and Configure TFTP # Trivial File Transfer Protocol (TFTP) is a simple file transfer protocol, generally used for transferring configurations or boot files when authentication is not required."/>
 
-<meta property="og:title" content="PXE boot with Synology NAS and UDM router" />
-<meta property="og:description" content="In this post, I have documented the steps I followed to install RHEL 8 by booting from a PXE server over the network with a Kickstart file using Synology NAS as TFTP, HTTP server, and UDM as DHCP.
-Install &amp; Configure TFTP Install &amp; Configure HTTP server Enable network boot on UDM PXE Boot setup Prepare Installation Repository Prepare kickstart file Perform PXE boot Install and Configure TFTP # Trivial File Transfer Protocol (TFTP) is a simple file transfer protocol, generally used for transferring configurations or boot files when authentication is not required." />
+<meta property="og:title" content="PXE boot with Synology NAS" />
+<meta property="og:description" content="In this post, I have documented the steps I followed to install RHEL 8 by booting from a PXE server over the network with a Kickstart file using Synology NAS as TFTP, and HTTP server.
+Install &amp; Configure TFTP Install &amp; Configure HTTP server PXE Boot setup Prepare Installation Repository Prepare kickstart file Perform PXE boot Install and Configure TFTP # Trivial File Transfer Protocol (TFTP) is a simple file transfer protocol, generally used for transferring configurations or boot files when authentication is not required." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://vikaspogu.dev/blog/tftp-udm-pxe/" /><meta property="article:section" content="blog" />
 <meta property="article:published_time" content="2022-05-13T16:09:15-05:00" />
 <meta property="article:modified_time" content="2022-05-13T16:09:15-05:00" />
 
-<meta itemprop="name" content="PXE boot with Synology NAS and UDM router">
-<meta itemprop="description" content="In this post, I have documented the steps I followed to install RHEL 8 by booting from a PXE server over the network with a Kickstart file using Synology NAS as TFTP, HTTP server, and UDM as DHCP.
-Install &amp; Configure TFTP Install &amp; Configure HTTP server Enable network boot on UDM PXE Boot setup Prepare Installation Repository Prepare kickstart file Perform PXE boot Install and Configure TFTP # Trivial File Transfer Protocol (TFTP) is a simple file transfer protocol, generally used for transferring configurations or boot files when authentication is not required."><meta itemprop="datePublished" content="2022-05-13T16:09:15-05:00" />
+<meta itemprop="name" content="PXE boot with Synology NAS">
+<meta itemprop="description" content="In this post, I have documented the steps I followed to install RHEL 8 by booting from a PXE server over the network with a Kickstart file using Synology NAS as TFTP, and HTTP server.
+Install &amp; Configure TFTP Install &amp; Configure HTTP server PXE Boot setup Prepare Installation Repository Prepare kickstart file Perform PXE boot Install and Configure TFTP # Trivial File Transfer Protocol (TFTP) is a simple file transfer protocol, generally used for transferring configurations or boot files when authentication is not required."><meta itemprop="datePublished" content="2022-05-13T16:09:15-05:00" />
 <meta itemprop="dateModified" content="2022-05-13T16:09:15-05:00" />
-<meta itemprop="wordCount" content="716">
-<meta itemprop="keywords" content="PXE,NAS,UDM," />
+<meta itemprop="wordCount" content="708">
+<meta itemprop="keywords" content="PXE,NAS," />
 
 
 
@@ -311,7 +311,7 @@ Install &amp; Configure TFTP Install &amp; Configure HTTP server Enable network 
   <article class="post">
     <div class="post-header">
   <h1>
-    <a href="/blog/tftp-udm-pxe/">PXE boot with Synology NAS and UDM router</a>
+    <a href="/blog/tftp-udm-pxe/">PXE boot with Synology NAS</a>
   </h1>
 
   <div class="post-meta">
@@ -335,11 +335,6 @@ Install &amp; Configure TFTP Install &amp; Configure HTTP server Enable network 
             href="https://vikaspogu.dev/tags/nas"
           >nas</a>
         
-          <a
-            class="post-tag"
-            href="https://vikaspogu.dev/tags/udm"
-          >udm</a>
-        
       </div>
     
 
@@ -348,7 +343,7 @@ Install &amp; Configure TFTP Install &amp; Configure HTTP server Enable network 
 </div>
 
     <div class="post-content">
-      <p>In this post, I have documented the steps I followed to install RHEL 8 by booting from a PXE server over the network with a Kickstart file using Synology NAS as TFTP, HTTP server, and UDM as DHCP.</p>
+      <p>In this post, I have documented the steps I followed to install RHEL 8 by booting from a PXE server over the network with a Kickstart file using Synology NAS as TFTP, and HTTP server.</p>
 <ol>
 <li><a
   href="#install-and-configure-tftp"
@@ -360,11 +355,6 @@ Install &amp; Configure TFTP Install &amp; Configure HTTP server Enable network 
   
   
 >Install &amp; Configure HTTP server</a></li>
-<li><a
-  href="#enable-network-boot-udm"
-  
-  
->Enable network boot on UDM</a></li>
 <li><a
   href="#pxe-boot-setup"
   
@@ -1004,7 +994,7 @@ Install &amp; Configure TFTP Install &amp; Configure HTTP server Enable network 
       
       <a
         class="social-share__item"
-        href="https://reddit.com/submit?url=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Ftftp-udm-pxe%2F&amp;title=PXE&#43;boot&#43;with&#43;Synology&#43;NAS&#43;and&#43;UDM&#43;router"
+        href="https://reddit.com/submit?url=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Ftftp-udm-pxe%2F&amp;title=PXE&#43;boot&#43;with&#43;Synology&#43;NAS"
         target="_blank"
         rel="noreferrer"
       >
@@ -1019,7 +1009,7 @@ Install &amp; Configure TFTP Install &amp; Configure HTTP server Enable network 
       
       <a
         class="social-share__item"
-        href="mailto:?subject=PXE&#43;boot&#43;with&#43;Synology&#43;NAS&#43;and&#43;UDM&#43;router&amp;body=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Ftftp-udm-pxe%2F"
+        href="mailto:?subject=PXE&#43;boot&#43;with&#43;Synology&#43;NAS&amp;body=https%3A%2F%2Fvikaspogu.dev%2Fblog%2Ftftp-udm-pxe%2F"
         target="_blank"
         rel="noreferrer"
       >
@@ -1163,8 +1153,8 @@ Install &amp; Configure TFTP Install &amp; Configure HTTP server Enable network 
 
 <script
   type="text/javascript"
-  src="/js/flexsearch.5c4126f4969f99858077e967e3c9aba803b19b24894e211bdc8b858de9dc293eee2f7727c32d3851d7ea1ce5fc7e5b4cf65a37a5f1f9acaf68b5800bc45dc4ca.js"
-  integrity="sha512-XEEm9JafmYWAd&#43;ln48mrqAOxmySJTiEb3IuFjencKT7uL3cnwy04UdfqHOX8fltM9lo3pfH5rK9otYALxF3Eyg==">
+  src="/js/flexsearch.18991457e446017a42fe8a8c67ddb9ae7d150e30264998d4395650eda6743cd85e25c127bbfb2f8159d897f1f80bec3c9fc3bbd40407576f5256d638c136e817.js"
+  integrity="sha512-GJkUV&#43;RGAXpC/oqMZ925rn0VDjAmSZjUOVZQ7aZ0PNheJcEnu/svgVnYl/H4C&#43;w8n8O71AQHV29SVtY4wTboFw==">
 </script>
 
 
