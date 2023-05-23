@@ -316,6 +316,61 @@
   <article class="post">
     <div class="post-header">
   <h1>
+    <a href="/blog/couchbase-ssl-openshift/">Configuring couchbase SSL for dynamic certificates in OpenShift</a>
+  </h1>
+
+  <div class="post-meta">
+    
+      <span>2019-08-28</span>
+    
+    
+    
+    
+    
+    
+      <div class="post-tags">
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/openshift"
+          >openshift</a>
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/couchbase"
+          >couchbase</a>
+        
+          <a
+            class="post-tag"
+            href="https://vikaspogu.dev/tags/ssl"
+          >ssl</a>
+        
+      </div>
+    
+
+    
+  </div>
+</div>
+
+    <div class="post-content">
+      <span>
+        
+          Couchbase SSL # Suppose you have followed dynamic creation of java keystores in OpenShift post and wondered how to use similar concepts for couchbase database and a java application. This post will help you.
+Couchbase setup # Here is the couchbase documentation for configuring server-side certificates, we are interested in last few steps since OpenShift will generate key and cert by adding an annotation to the couchbase service.
+Note: By adding this annotation, you can dynamically create certificates service.
+          
+            <div class="post-content__read-more">
+              <a href="/blog/couchbase-ssl-openshift/">Read more ></a>
+            </div>
+          
+        
+      </span>
+    </div>
+  </article>
+
+  <article class="post">
+    <div class="post-header">
+  <h1>
     <a href="/blog/intro-tektoncd-ocp/">TektonCD on OpenShift</a>
   </h1>
 
@@ -789,56 +844,6 @@ $ oc get pod NAME READY STATUS RESTARTS AGE MY_APP_NAME-3-1xrsp 0/1 Running 0 6s
     </div>
   </article>
 
-  <article class="post">
-    <div class="post-header">
-  <h1>
-    <a href="/blog/debug-java-container/">Debugging a Java application in OpenShift.</a>
-  </h1>
-
-  <div class="post-meta">
-    
-      <span>2019-05-14</span>
-    
-    
-    
-    
-    
-    
-      <div class="post-tags">
-        
-          <a
-            class="post-tag"
-            href="https://vikaspogu.dev/tags/openshift"
-          >openshift</a>
-        
-          <a
-            class="post-tag"
-            href="https://vikaspogu.dev/tags/java"
-          >java</a>
-        
-      </div>
-    
-
-    
-  </div>
-</div>
-
-    <div class="post-content">
-      <span>
-        
-          This post will discuss debugging a JAVA application running inside a container.
-Red Hat container images # When you bootstrap your JVM, you should have a way to enable JVM to debug. For example, Red Hat S2I images allow you to control classpath and debugging via environment variables.
-# Set debug options if required if [ x&#34;${JAVA_DEBUG}&#34; != x ] &amp;&amp; [ &#34;${JAVA_DEBUG}&#34; != &#34;false&#34; ]; then java_debug_args=&#34;-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=${JAVA_DEBUG_PORT:-5005}&#34; fi Setting the JAVA_DEBUG environment variable inside the container to true will append debug args to the JVM startup command Configure port forwarding so that you can connect to your application from a remote debugger If you are using the tomcat image, replace the JAVA_DEBUG environment variable with DEBUG
-          
-            <div class="post-content__read-more">
-              <a href="/blog/debug-java-container/">Read more ></a>
-            </div>
-          
-        
-      </span>
-    </div>
-  </article>
-
 
 <div class="pagination">
   
@@ -980,8 +985,8 @@ Red Hat container images # When you bootstrap your JVM, you should have a way to
 
 <script
   type="text/javascript"
-  src="/js/flexsearch.18991457e446017a42fe8a8c67ddb9ae7d150e30264998d4395650eda6743cd85e25c127bbfb2f8159d897f1f80bec3c9fc3bbd40407576f5256d638c136e817.js"
-  integrity="sha512-GJkUV&#43;RGAXpC/oqMZ925rn0VDjAmSZjUOVZQ7aZ0PNheJcEnu/svgVnYl/H4C&#43;w8n8O71AQHV29SVtY4wTboFw==">
+  src="/js/flexsearch.a6e3c6b648da5bb991a12f99f617372fbd4e51cb8822f2c5c853a3af3511e7164581305c49a58e5739e83a689c39b0a0871a382c509ba147a0d542ca3bf7741e.js"
+  integrity="sha512-puPGtkjaW7mRoS&#43;Z9hc3L71OUcuIIvLFyFOjrzUR5xZFgTBcSaWOVznoOmicObCghxo4LFCboUeg1ULKO/d0Hg==">
 </script>
 
 
