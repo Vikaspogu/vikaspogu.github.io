@@ -7,18 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2021</copyright>
-    <lastBuildDate>Sat, 02 Nov 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/rhv/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 02 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://vikaspogu.dev/tags/rhv/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Create and add NFS storage to RHV</title>
       <link>https://vikaspogu.dev/blog/create-nfs-server-rhel-rhv/</link>
       <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://vikaspogu.dev/blog/create-nfs-server-rhel-rhv/</guid>
-      <description>Set up NFS shares that will serve as storage domains on a Red Hat Enterprise Linux server.
-Add a firewall rule to RHEL server.
-firewall-cmd --permanent --add-service nfs firewall-cmd --permanent --add-service mountd firewall-cmd --reload Create and add group kvm; set the ownership of your exported directories to 36:36, which gives vdsm:kvm ownership; change the director&amp;rsquo;s permission so that read and write access is granted to the owner.
-groupadd kvm -g 36 useradd vdsm -u 36 -g 36 mkdir -pv /home/rhv-data-vol chown -R 36:36 /home/rhv-data-vol chmod 0755 /home/rhv-data-vol Add newly created directory to /etc/exports file, which controls file systems exported to remote hosts and specifies options.</description>
+      <description>Set up NFS shares that will serve as storage domains on a Red Hat Enterprise Linux server.&#xA;Add a firewall rule to RHEL server.&#xA;firewall-cmd --permanent --add-service nfs firewall-cmd --permanent --add-service mountd firewall-cmd --reload Create and add group kvm; set the ownership of your exported directories to 36:36, which gives vdsm:kvm ownership; change the director&amp;rsquo;s permission so that read and write access is granted to the owner.&#xA;groupadd kvm -g 36 useradd vdsm -u 36 -g 36 mkdir -pv /home/rhv-data-vol chown -R 36:36 /home/rhv-data-vol chmod 0755 /home/rhv-data-vol Add newly created directory to /etc/exports file, which controls file systems exported to remote hosts and specifies options.</description>
     </item>
-    
   </channel>
 </rss>

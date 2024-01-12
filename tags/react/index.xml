@@ -7,19 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2021</copyright>
-    <lastBuildDate>Thu, 25 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/react/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 25 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://vikaspogu.dev/tags/react/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>React App with RedHat SSO or keycloak</title>
       <link>https://vikaspogu.dev/blog/redhat-sso-react/</link>
       <pubDate>Thu, 25 Jul 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://vikaspogu.dev/blog/redhat-sso-react/</guid>
-      <description>This post will show you how to secure a React app using RedHat SSO (upstream Keycloak). In this case, OpenID-connect is my identity provider.
-Install the official Keycloak js adapter
-npm i keycloak-js --save Add host and port information to the client; in my case, it&amp;rsquo;s localhost:9000
-In App.js, add a JavaScript object with the required configuration; you will find these configurations under Clients-&amp;gt;Installation.
-//keycloak init options const initOptions = { url: &amp;#34;https://localhost:8080/auth&amp;#34;, realm: &amp;#34;test&amp;#34;, clientId: &amp;#34;react-app&amp;#34;, onLoad: &amp;#34;login-required&amp;#34; }; By default, to authenticate, you need to call the login function.</description>
+      <description>This post will show you how to secure a React app using RedHat SSO (upstream Keycloak). In this case, OpenID-connect is my identity provider.&#xA;Install the official Keycloak js adapter&#xA;npm i keycloak-js --save Add host and port information to the client; in my case, it&amp;rsquo;s localhost:9000&#xA;In App.js, add a JavaScript object with the required configuration; you will find these configurations under Clients-&amp;gt;Installation.&#xA;//keycloak init options const initOptions = { url: &amp;#34;https://localhost:8080/auth&amp;#34;, realm: &amp;#34;test&amp;#34;, clientId: &amp;#34;react-app&amp;#34;, onLoad: &amp;#34;login-required&amp;#34; }; By default, to authenticate, you need to call the login function.</description>
     </item>
-    
   </channel>
 </rss>

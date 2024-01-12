@@ -7,18 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2021</copyright>
-    <lastBuildDate>Mon, 01 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/patternfly/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://vikaspogu.dev/tags/patternfly/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Patternfly setup in React Application</title>
       <link>https://vikaspogu.dev/blog/patternfly-setup-react/</link>
       <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://vikaspogu.dev/blog/patternfly-setup-react/</guid>
-      <description>To order to integrate Patternfly framework into a ReactJS application, create a new project or use an existing one
-npx create-react-app patternfly-setup-react Install patternfly dependencies react-core, react-table and patternfly
-npm i --save @patternfly/patternfly \ @patternfly/react-core @patternfly/react-table Note: Import base.css and patternfly.css in your project, or some components may diverge in appearance
-//These imports are a must to render CSS import &amp;#34;@patternfly/react-core/dist/styles/base.css&amp;#34;; import &amp;#34;@patternfly/patternfly/patternfly.css&amp;#34;; To make sure everything is working correctly, update App.</description>
+      <description>To order to integrate Patternfly framework into a ReactJS application, create a new project or use an existing one&#xA;npx create-react-app patternfly-setup-react Install patternfly dependencies react-core, react-table and patternfly&#xA;npm i --save @patternfly/patternfly \ @patternfly/react-core @patternfly/react-table Note: Import base.css and patternfly.css in your project, or some components may diverge in appearance&#xA;//These imports are a must to render CSS import &amp;#34;@patternfly/react-core/dist/styles/base.css&amp;#34;; import &amp;#34;@patternfly/patternfly/patternfly.css&amp;#34;; To make sure everything is working correctly, update App.</description>
     </item>
-    
   </channel>
 </rss>

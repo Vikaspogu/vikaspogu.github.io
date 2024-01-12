@@ -7,18 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2021</copyright>
-    <lastBuildDate>Thu, 08 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/categories/dict/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 08 Jul 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://vikaspogu.dev/categories/dict/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Helm alternative for multiple If-Else conditions</title>
       <link>https://vikaspogu.dev/blog/helm-dict-function/</link>
       <pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://vikaspogu.dev/blog/helm-dict-function/</guid>
-      <description>Recently I was in a situation where I ended up writing multiple if-else statements in the helm template. As a result, the code block wasn&amp;rsquo;t clean, and I began to explore alternative ways to achieve the same behavior concisely.
-Helm dict function perfectly fits my use case.
-Before
-{{- if eq .Values.imageType &amp;#34;java&amp;#34; }} name: openjdk:latest {{- else if eq .Values.imageType &amp;#34;nodejs&amp;#34; }} name: nodejs:latest {{- else if eq .Values.imageType &amp;#34;golang&amp;#34; }} name: golang:latest {{- else if eq .</description>
+      <description>Recently I was in a situation where I ended up writing multiple if-else statements in the helm template. As a result, the code block wasn&amp;rsquo;t clean, and I began to explore alternative ways to achieve the same behavior concisely.&#xA;Helm dict function perfectly fits my use case.&#xA;Before&#xA;{{- if eq .Values.imageType &amp;#34;java&amp;#34; }} name: openjdk:latest {{- else if eq .Values.imageType &amp;#34;nodejs&amp;#34; }} name: nodejs:latest {{- else if eq .Values.imageType &amp;#34;golang&amp;#34; }} name: golang:latest {{- else if eq .</description>
     </item>
-    
   </channel>
 </rss>

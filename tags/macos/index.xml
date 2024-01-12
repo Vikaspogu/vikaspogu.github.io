@@ -7,17 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2021</copyright>
-    <lastBuildDate>Mon, 06 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/macos/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://vikaspogu.dev/tags/macos/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Installing Podman remote client on macOS using vagrant</title>
       <link>https://vikaspogu.dev/blog/podman-macos/</link>
       <pubDate>Mon, 06 Jan 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://vikaspogu.dev/blog/podman-macos/</guid>
-      <description>I am installing podman as a remote client on macOS using Vagrant. I will not cover the vagrant setup in this post.
-Podman remote client # Podman is the tool to start and manage containers. On macOS, we have to use a thin remote client that connects to an actual Podman process running on a Linux host.
-Here are the main steps how to configure the remote client to work with a Linux host:</description>
+      <description>I am installing podman as a remote client on macOS using Vagrant. I will not cover the vagrant setup in this post.&#xA;Podman remote client # Podman is the tool to start and manage containers. On macOS, we have to use a thin remote client that connects to an actual Podman process running on a Linux host.&#xA;Here are the main steps how to configure the remote client to work with a Linux host:</description>
     </item>
-    
   </channel>
 </rss>

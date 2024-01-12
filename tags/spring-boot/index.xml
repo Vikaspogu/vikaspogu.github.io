@@ -7,19 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2021</copyright>
-    <lastBuildDate>Wed, 15 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/spring-boot/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 15 May 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://vikaspogu.dev/tags/spring-boot/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Spring Boot metrics with Prometheus and Grafana in OpenShift</title>
       <link>https://vikaspogu.dev/blog/springboot-metrics-grafana/</link>
       <pubDate>Wed, 15 May 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://vikaspogu.dev/blog/springboot-metrics-grafana/</guid>
-      <description>Spring Boot Metrics # This post will discuss how to monitor spring boot application metrics using Prometheus and Grafana.
-Prometheus # Prometheus is a monitoring system that collects metrics from configured targets at intervals.
-Grafana # Grafana is an open-source metric analytics &amp;amp; visualization tool.
-Micrometer # The micrometer is a metrics instrumentation library for JVM-based applications.
-Spring Boot Actuator # Spring Boot Actuator helps you monitor and manage your application when it’s pushed to production.</description>
+      <description>Spring Boot Metrics # This post will discuss how to monitor spring boot application metrics using Prometheus and Grafana.&#xA;Prometheus # Prometheus is a monitoring system that collects metrics from configured targets at intervals.&#xA;Grafana # Grafana is an open-source metric analytics &amp;amp; visualization tool.&#xA;Micrometer # The micrometer is a metrics instrumentation library for JVM-based applications.&#xA;Spring Boot Actuator # Spring Boot Actuator helps you monitor and manage your application when it’s pushed to production.</description>
     </item>
-    
   </channel>
 </rss>

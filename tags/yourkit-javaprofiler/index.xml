@@ -7,17 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2021</copyright>
-    <lastBuildDate>Tue, 14 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/yourkit-javaprofiler/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 14 May 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://vikaspogu.dev/tags/yourkit-javaprofiler/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Profiling an application in OpenShift container.</title>
       <link>https://vikaspogu.dev/blog/javaprofiler-openshift/</link>
       <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://vikaspogu.dev/blog/javaprofiler-openshift/</guid>
-      <description>Sometimes writing code that runs is not enough. We might want to know what goes on internally, such as memory allocation, consequences of using one coding approach over another, implications of concurrent executions, areas to improve performance, etc. We can use profilers for this.
-In this post, I&amp;rsquo;ll discuss using YourKit-JavaProfiler inside a container.
-Since my sample application is built using OpenShift S2I process and pushed into OpenShift internal registry, I&amp;rsquo;ll have to pull the image locally.</description>
+      <description>Sometimes writing code that runs is not enough. We might want to know what goes on internally, such as memory allocation, consequences of using one coding approach over another, implications of concurrent executions, areas to improve performance, etc. We can use profilers for this.&#xA;In this post, I&amp;rsquo;ll discuss using YourKit-JavaProfiler inside a container.&#xA;Since my sample application is built using OpenShift S2I process and pushed into OpenShift internal registry, I&amp;rsquo;ll have to pull the image locally.</description>
     </item>
-    
   </channel>
 </rss>

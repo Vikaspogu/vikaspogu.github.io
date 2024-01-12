@@ -7,17 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2021</copyright>
-    <lastBuildDate>Sat, 05 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://vikaspogu.dev/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 05 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://vikaspogu.dev/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Setting up docker buildx on Linux</title>
       <link>https://vikaspogu.dev/blog/docker-buildx-setup/</link>
       <pubDate>Sat, 05 Dec 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://vikaspogu.dev/blog/docker-buildx-setup/</guid>
-      <description>Docker buildx on Linux # Installation instructions for Ubuntu
-To execute docker commands without sudo. We need to add the username to the docker group.
-Find the current username by typing who Add username to docker group Reboot system $ who vikaspogu :0 2020-12-05 10:10 (:0) $ sudo usermod -aG docker vikaspogu $ sudo reboot Enable buildx # Create a new config.json file under the ~.docker folder and enable the experimental feature</description>
+      <description>Docker buildx on Linux # Installation instructions for Ubuntu&#xA;To execute docker commands without sudo. We need to add the username to the docker group.&#xA;Find the current username by typing who Add username to docker group Reboot system $ who vikaspogu :0 2020-12-05 10:10 (:0) $ sudo usermod -aG docker vikaspogu $ sudo reboot Enable buildx # Create a new config.json file under the ~.docker folder and enable the experimental feature</description>
     </item>
-    
   </channel>
 </rss>

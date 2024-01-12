@@ -2,14 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://vikaspogu.dev/blog/cloudnative-pg-upgrade/</loc>
+    <lastmod>2024-01-12T12:11:03-06:00</lastmod>
+  </url><url>
     <loc>https://vikaspogu.dev/blog/</loc>
+    <lastmod>2024-01-12T12:11:03-06:00</lastmod>
+  </url><url>
+    <loc>https://vikaspogu.dev/tags/cloudnative-pg/</loc>
+    <lastmod>2024-01-12T12:11:03-06:00</lastmod>
+  </url><url>
+    <loc>https://vikaspogu.dev/tags/postgresql/</loc>
+    <lastmod>2024-01-12T12:11:03-06:00</lastmod>
+  </url><url>
+    <loc>https://vikaspogu.dev/tags/</loc>
+    <lastmod>2024-01-12T12:11:03-06:00</lastmod>
+  </url><url>
+    <loc>https://vikaspogu.dev/</loc>
+    <lastmod>2024-01-12T12:11:03-06:00</lastmod>
+  </url><url>
+    <loc>https://vikaspogu.dev/tags/ansible/</loc>
+    <lastmod>2023-04-29T20:01:54-05:00</lastmod>
+  </url><url>
+    <loc>https://vikaspogu.dev/tags/custom-execution-image/</loc>
+    <lastmod>2023-04-29T20:01:54-05:00</lastmod>
+  </url><url>
+    <loc>https://vikaspogu.dev/tags/sops/</loc>
     <lastmod>2023-04-29T20:01:54-05:00</lastmod>
   </url><url>
     <loc>https://vikaspogu.dev/blog/ansible-sops/</loc>
     <lastmod>2023-04-29T20:01:54-05:00</lastmod>
   </url><url>
-    <loc>https://vikaspogu.dev/</loc>
-    <lastmod>2023-04-29T20:01:54-05:00</lastmod>
+    <loc>https://vikaspogu.dev/tags/upgrade/</loc>
+    <lastmod>2023-01-21T11:36:34-06:00</lastmod>
   </url><url>
     <loc>https://vikaspogu.dev/blog/upgrading-postgresql-image-versions-kubernetes/</loc>
     <lastmod>2023-01-21T11:36:34-06:00</lastmod>
@@ -24,12 +48,6 @@
     <lastmod>2022-08-10T16:31:43-05:00</lastmod>
   </url><url>
     <loc>https://vikaspogu.dev/tags/gitops/</loc>
-    <lastmod>2022-08-10T16:31:43-05:00</lastmod>
-  </url><url>
-    <loc>https://vikaspogu.dev/tags/sops/</loc>
-    <lastmod>2022-08-10T16:31:43-05:00</lastmod>
-  </url><url>
-    <loc>https://vikaspogu.dev/tags/</loc>
     <lastmod>2022-08-10T16:31:43-05:00</lastmod>
   </url><url>
     <loc>https://vikaspogu.dev/blog/influxdb-grafana/</loc>
