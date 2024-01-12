@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>jenkins on Vikas Pogu</title>
+    <title>jenkins on Tech Chronicles...</title>
     <link>https://vikaspogu.dev/tags/jenkins/</link>
-    <description>Recent content in jenkins on Vikas Pogu</description>
+    <description>Recent content in jenkins on Tech Chronicles...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>Copyright © 2021</copyright>
     <lastBuildDate>Tue, 18 Aug 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://vikaspogu.dev/tags/jenkins/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,28 +13,28 @@
       <link>https://vikaspogu.dev/blog/jenkins-seed-job/</link>
       <pubDate>Tue, 18 Aug 2020 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/jenkins-seed-job/</guid>
-      <description>In one of my previous posts, I discussed configuring multibranch pipeline seed jobs using Jenkins configuration as code plugin&#xA;Below is an example of configuring a declarative pipeline job from a bitbucket repo, running at midnight every day&#xA;- script: &amp;gt; pipelineJob(&amp;#39;sample-job&amp;#39;) { definition { cpsScm { scriptPath &amp;#39;job1/Jenkinsfile&amp;#39; ## If the Jenkins job is in a nested folder scm { git { remote { url &amp;#39;https://github.com/Vikaspogu/sample-repo&amp;#39; credentials &amp;#39;sample-creds&amp;#39; } branch &amp;#39;*/master&amp;#39; extensions {} } } triggers { cron(&amp;#39;@midnight&amp;#39;) } } } } </description>
+      <description>In one of my previous posts, I discussed configuring multibranch pipeline seed jobs using Jenkins configuration as code plugin</description>
     </item>
     <item>
       <title>Jenkins pipeline date helper functions</title>
       <link>https://vikaspogu.dev/blog/jenkins-date-difference/</link>
       <pubDate>Tue, 07 Jul 2020 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/jenkins-date-difference/</guid>
-      <description>The below snippet shows how to calculate days between two dates in the Jenkins pipeline. @NonCPS annotation is functional when you have methods that use objects that aren&amp;rsquo;t serializable.&#xA;import java.text.SimpleDateFormat stages { stage(&amp;#34;Calculate days&amp;#34;) { steps { script { def daysRemaining = getRemainingDays(&amp;#34;2020-06-25&amp;#34;) } } } } } @NonCPS def getRemainingDays(previousDate){ def currentDate = new Date() String currentTimeFormat= currentDate.format(&amp;#34;yyyy-MM-dd&amp;#34;) def oldDate = new SimpleDateFormat(&amp;#34;yyyy-MM-dd&amp;#34;).parse(previousDate) return currentTimeFormat-oldDate } Calculate if the date is greater than 14 days</description>
+      <description>The below snippet shows how to calculate days between two dates in the Jenkins pipeline.</description>
     </item>
     <item>
       <title>OpenShift Jenkins configuration via JCasC plugin</title>
       <link>https://vikaspogu.dev/blog/jenkins-config-as-code-openshift/</link>
       <pubDate>Mon, 06 Jul 2020 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/jenkins-config-as-code-openshift/</guid>
-      <description>Deploying Jenkins on Kubernetes provides significant benefits over a standard VM-based deployment. For example, we are gaining the ability to have project-specific Jenkins slaves (agents) on demand instead of having a pool of VMs idle waiting for a job.&#xA;In vanilla Kubernetes, we can deploy Jenkins using Helm, and In OpenShift, we can deploy Jenkins via the developer&amp;rsquo;s catalog.&#xA;As everyone has experienced, setting up Jenkins is a complex process. Both Jenkins and its plugins require some tuning and Configuration, with dozens of parameters to set within the web UI manage section.</description>
+      <description>Deploying Jenkins on Kubernetes provides significant benefits over a standard VM-based deployment.</description>
     </item>
     <item>
       <title>Jenkins OpenShift OAuth SSL</title>
       <link>https://vikaspogu.dev/blog/openshift-jenkins-oauth-ssl/</link>
       <pubDate>Mon, 10 Feb 2020 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/openshift-jenkins-oauth-ssl/</guid>
-      <description>Jenkins SSL # Problem # I recently encountered an issue while authenticating to OpenShift Jenkins using the OpenShift OAuth plugin, where trusted certificates provided by CA aren&amp;rsquo;t included in the default JRE TrustStore.&#xA;Logs from Jenkins pod&#xA;2020-02-10 21:19:07.335+0000 [id=17] INFO o.o.j.p.o.OpenShiftOAuth2SecurityRealm#transportToUse: OpenShift OAuth got an SSL error when accessing the issuer&amp;#39;s token endpoint when using the SA certificate2020-02-10 21:19:07.348+0000 [id=17] INFO o.o.j.p.o.OpenShiftOAuth2SecurityRealm#transportToUse: OpenShift OAuth provider token endpoint failed unexpectedly using the JVMs default keystore sun.</description>
+      <description>Jenkins SSL #Problem #I recently encountered an issue while authenticating to OpenShift Jenkins using the OpenShift OAuth plugin, where trusted certificates provided by CA aren&amp;rsquo;t included in the default JRE TrustStore.</description>
     </item>
   </channel>
 </rss>

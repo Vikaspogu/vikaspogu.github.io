@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>OpenShift on Vikas Pogu</title>
+    <title>OpenShift on Tech Chronicles...</title>
     <link>https://vikaspogu.dev/tags/openshift/</link>
-    <description>Recent content in OpenShift on Vikas Pogu</description>
+    <description>Recent content in OpenShift on Tech Chronicles...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>Copyright © 2021</copyright>
     <lastBuildDate>Tue, 18 Aug 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://vikaspogu.dev/tags/openshift/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,77 +13,77 @@
       <link>https://vikaspogu.dev/blog/opa-gatekeeper-openshift/</link>
       <pubDate>Tue, 18 Aug 2020 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/opa-gatekeeper-openshift/</guid>
-      <description>Every organization has policies. Some are essential to meet governance and legal requirements. Others help ensure adherence to best practices and institutional conventions. Attempting to ensure compliance manually would be error-prone and frustrating.&#xA;OPA allows users to a specific policy as code using OPA&amp;rsquo;s policy language Rego&#xA;In this post, I&amp;rsquo;ll share my experience deploying OPA Gatekeeper on OpenShift and creating a few policies for demonstrations. This post is not an introduction to OPA refer to for an intro</description>
+      <description>Every organization has policies.</description>
     </item>
     <item>
       <title>OpenShift Jenkins configuration via JCasC plugin</title>
       <link>https://vikaspogu.dev/blog/jenkins-config-as-code-openshift/</link>
       <pubDate>Mon, 06 Jul 2020 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/jenkins-config-as-code-openshift/</guid>
-      <description>Deploying Jenkins on Kubernetes provides significant benefits over a standard VM-based deployment. For example, we are gaining the ability to have project-specific Jenkins slaves (agents) on demand instead of having a pool of VMs idle waiting for a job.&#xA;In vanilla Kubernetes, we can deploy Jenkins using Helm, and In OpenShift, we can deploy Jenkins via the developer&amp;rsquo;s catalog.&#xA;As everyone has experienced, setting up Jenkins is a complex process. Both Jenkins and its plugins require some tuning and Configuration, with dozens of parameters to set within the web UI manage section.</description>
+      <description>Deploying Jenkins on Kubernetes provides significant benefits over a standard VM-based deployment.</description>
     </item>
     <item>
       <title>Jenkins OpenShift OAuth SSL</title>
       <link>https://vikaspogu.dev/blog/openshift-jenkins-oauth-ssl/</link>
       <pubDate>Mon, 10 Feb 2020 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/openshift-jenkins-oauth-ssl/</guid>
-      <description>Jenkins SSL # Problem # I recently encountered an issue while authenticating to OpenShift Jenkins using the OpenShift OAuth plugin, where trusted certificates provided by CA aren&amp;rsquo;t included in the default JRE TrustStore.&#xA;Logs from Jenkins pod&#xA;2020-02-10 21:19:07.335+0000 [id=17] INFO o.o.j.p.o.OpenShiftOAuth2SecurityRealm#transportToUse: OpenShift OAuth got an SSL error when accessing the issuer&amp;#39;s token endpoint when using the SA certificate2020-02-10 21:19:07.348+0000 [id=17] INFO o.o.j.p.o.OpenShiftOAuth2SecurityRealm#transportToUse: OpenShift OAuth provider token endpoint failed unexpectedly using the JVMs default keystore sun.</description>
+      <description>Jenkins SSL #Problem #I recently encountered an issue while authenticating to OpenShift Jenkins using the OpenShift OAuth plugin, where trusted certificates provided by CA aren&amp;rsquo;t included in the default JRE TrustStore.</description>
     </item>
     <item>
       <title>Permission denied pushing to OpenShift Registry</title>
       <link>https://vikaspogu.dev/blog/ocp-docker-registry-500-err/</link>
       <pubDate>Wed, 18 Dec 2019 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/ocp-docker-registry-500-err/</guid>
-      <description>Recently, I ran into an issue where pushing images to the docker registry after a build fails.&#xA;Pushing image docker-registry.default.svc:5000/simple-go-build/simple-go:latest ... Registry server Address: Registry server User Name: serviceaccount Registry server Email: serviceaccount@example.org Registry server Password: &amp;lt;&amp;lt;non-empty&amp;gt;&amp;gt; error: build error: Failed to push image: received unexpected HTTP status: 500 Internal Server Error Registry pods logs show permission denied.&#xA;err.code=UNKNOWN err.detail=&amp;#34;filesystem: mkdir /registry/docker/registry/v2/repositories/simple-go-build/simple-go/_uploads/c34415b4-c6d8-42ba-9854-aee449efd984: permission denied&amp;#34; One of the Red Hat solutions articles suggested verifying the file ownership of the files and directories in the volume and comparing it to the uid of the registry.</description>
+      <description>Recently, I ran into an issue where pushing images to the docker registry after a build fails.</description>
     </item>
     <item>
       <title>Configuring couchbase SSL for dynamic certificates in OpenShift</title>
       <link>https://vikaspogu.dev/blog/couchbase-ssl-openshift/</link>
       <pubDate>Wed, 28 Aug 2019 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/couchbase-ssl-openshift/</guid>
-      <description>Couchbase SSL # Suppose you have followed dynamic creation of java keystores in OpenShift post and wondered how to use similar concepts for couchbase database and a java application. This post will help you.&#xA;Couchbase setup # Here is the couchbase documentation for configuring server-side certificates, we are interested in last few steps since OpenShift will generate key and cert by adding an annotation to the couchbase service.&#xA;Note: By adding this annotation, you can dynamically create certificates service.</description>
+      <description>Couchbase SSL #Suppose you have followed dynamic creation of java keystores in OpenShift post and wondered how to use similar concepts for couchbase database and a java application.</description>
     </item>
     <item>
       <title>TektonCD on OpenShift</title>
       <link>https://vikaspogu.dev/blog/intro-tektoncd-ocp/</link>
       <pubDate>Fri, 09 Aug 2019 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/intro-tektoncd-ocp/</guid>
-      <description>Recently I came across tektoncd project, The Tekton Pipelines project provides Kubernetes-style resources for declaring CI/CD-style pipelines caught my attention, and I started playing with it.&#xA;Basic Concepts # To create a Tekton pipeline, one does the following:&#xA;Create custom or install existing reusable Tasks Create a Pipeline and PipelineResources to define your application&amp;rsquo;s delivery pipeline Create a PipelineRun to instantiate and invoke the pipeline Installing Tekton on OpenShift # Log in as a user with cluster-admin privileges.</description>
+      <description>Recently I came across tektoncd project, The Tekton Pipelines project provides Kubernetes-style resources for declaring CI/CD-style pipelines caught my attention, and I started playing with it.</description>
     </item>
     <item>
       <title>Deleting an OpenShift project stuck in terminating state</title>
       <link>https://vikaspogu.dev/blog/project-terminating/</link>
       <pubDate>Wed, 15 May 2019 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/project-terminating/</guid>
-      <description>Recently I faced an issue where one of my projects got stuck in a terminating state for days. The workaround below fixed the problem.&#xA;Export OpenShift project as a JSON Object&#xA;oc get project delete-me -o json &amp;gt; ns-without-finalizers.json Replace below from&#xA;spec: finalizers: - kubernetes to&#xA;spec: finalizers: [] On one of the master nodes, execute these commands.&#xA;kubectl proxy &amp;amp; PID=$! curl -X PUT http://localhost:8001/api/v1/namespaces/delete-me/finalize \ -H &amp;#34;Content-Type: application/json&amp;#34; --data-binary @ns-without-finalizers.</description>
+      <description>Recently I faced an issue where one of my projects got stuck in a terminating state for days.</description>
     </item>
     <item>
       <title>Spring Boot metrics with Prometheus and Grafana in OpenShift</title>
       <link>https://vikaspogu.dev/blog/springboot-metrics-grafana/</link>
       <pubDate>Wed, 15 May 2019 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/springboot-metrics-grafana/</guid>
-      <description>Spring Boot Metrics # This post will discuss how to monitor spring boot application metrics using Prometheus and Grafana.&#xA;Prometheus # Prometheus is a monitoring system that collects metrics from configured targets at intervals.&#xA;Grafana # Grafana is an open-source metric analytics &amp;amp; visualization tool.&#xA;Micrometer # The micrometer is a metrics instrumentation library for JVM-based applications.&#xA;Spring Boot Actuator # Spring Boot Actuator helps you monitor and manage your application when it’s pushed to production.</description>
+      <description>Spring Boot Metrics #This post will discuss how to monitor spring boot application metrics using Prometheus and Grafana.</description>
     </item>
     <item>
       <title>Debugging a .NET Core application running on OpenShift</title>
       <link>https://vikaspogu.dev/blog/debug-netcore-openshift/</link>
       <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/debug-netcore-openshift/</guid>
-      <description>This post concerns remote debugging an ASP.NET Core application on OpenShift using Visual Studio Code. You can use any Microsoft proprietary debugger engine vsdbg with Visual Studio Code.&#xA;First, list the available .Net application pods using the oc command.&#xA;$ oc get pod NAME READY STATUS RESTARTS AGE MY_APP_NAME-3-1xrsp 0/1 Running 0 6s $ oc rsh MY_APP_NAME-3-1xrsp sh-4.2$ curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l /opt/app-root/vsdbg -r linux-x64 Note: If your container is running behind a corporate proxy and cannot access the internet, you&amp;rsquo;ll have to build a base dotnet image with the installed debugger engine vsdbg.</description>
+      <description>This post concerns remote debugging an ASP.</description>
     </item>
     <item>
       <title>Debugging a Java application in OpenShift.</title>
       <link>https://vikaspogu.dev/blog/debug-java-container/</link>
       <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/debug-java-container/</guid>
-      <description>This post will discuss debugging a JAVA application running inside a container.&#xA;Red Hat container images # When you bootstrap your JVM, you should have a way to enable JVM to debug. For example, Red Hat S2I images allow you to control classpath and debugging via environment variables.&#xA;# Set debug options if required if [ x&amp;#34;${JAVA_DEBUG}&amp;#34; != x ] &amp;amp;&amp;amp; [ &amp;#34;${JAVA_DEBUG}&amp;#34; != &amp;#34;false&amp;#34; ]; then java_debug_args=&amp;#34;-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=${JAVA_DEBUG_PORT:-5005}&amp;#34; fi Setting the JAVA_DEBUG environment variable inside the container to true will append debug args to the JVM startup command Configure port forwarding so that you can connect to your application from a remote debugger If you are using the tomcat image, replace the JAVA_DEBUG environment variable with DEBUG</description>
+      <description>This post will discuss debugging a JAVA application running inside a container.</description>
     </item>
     <item>
       <title>Profiling an application in OpenShift container.</title>
       <link>https://vikaspogu.dev/blog/javaprofiler-openshift/</link>
       <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/javaprofiler-openshift/</guid>
-      <description>Sometimes writing code that runs is not enough. We might want to know what goes on internally, such as memory allocation, consequences of using one coding approach over another, implications of concurrent executions, areas to improve performance, etc. We can use profilers for this.&#xA;In this post, I&amp;rsquo;ll discuss using YourKit-JavaProfiler inside a container.&#xA;Since my sample application is built using OpenShift S2I process and pushed into OpenShift internal registry, I&amp;rsquo;ll have to pull the image locally.</description>
+      <description>Sometimes writing code that runs is not enough.</description>
     </item>
   </channel>
 </rss>

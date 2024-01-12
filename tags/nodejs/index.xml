@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>NodeJS on Vikas Pogu</title>
+    <title>NodeJS on Tech Chronicles...</title>
     <link>https://vikaspogu.dev/tags/nodejs/</link>
-    <description>Recent content in NodeJS on Vikas Pogu</description>
+    <description>Recent content in NodeJS on Tech Chronicles...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>Copyright © 2021</copyright>
     <lastBuildDate>Sun, 05 Jul 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://vikaspogu.dev/tags/nodejs/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,21 +13,21 @@
       <link>https://vikaspogu.dev/blog/pi-garage-k3s/</link>
       <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/pi-garage-k3s/</guid>
-      <description>Many articles are out there which demonstrate how to use a raspberry pi as a DIY garage door opener project. Few are outdated and not deployed using container images. I found a few reasonable solutions on google, but I couldn&amp;rsquo;t run them on the Kubernetes cluster due to older packages or insufficient information. I decided to build my solution from different sources of information I found&#xA;What we&amp;rsquo;ll cover in this post</description>
+      <description>Many articles are out there which demonstrate how to use a raspberry pi as a DIY garage door opener project.</description>
     </item>
     <item>
       <title>Slack bot with Nodejs</title>
       <link>https://vikaspogu.dev/blog/nodejs-slack-bot/</link>
       <pubDate>Sat, 04 Jul 2020 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/nodejs-slack-bot/</guid>
-      <description>Build your slack bot in a few steps. In this post, we&amp;rsquo;ll navigate the process of creating the bot.&#xA;Slack setup # First, create a slack workspace&#xA;Give your workspace a name Create a new bot at slack apps&#xA;Give your new application a name Choose the workspace you created before installing the bot application Then go to the Features &amp;gt; OAuth &amp;amp; Permissions screen to scroll down to Bot Token Scopes to specify the OAuth scopes, and select app_mentions and chat_write to enable the bot to send messages.</description>
+      <description>Build your slack bot in a few steps.</description>
     </item>
     <item>
       <title>Authenticate a Node application with LDAP</title>
       <link>https://vikaspogu.dev/blog/node-ldap-auth/</link>
       <pubDate>Wed, 15 May 2019 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/node-ldap-auth/</guid>
-      <description>This post demonstrates how to authenticate a user against LDAP.&#xA;Let&amp;rsquo;s start by installing basic-auth and ldapauth-fork packages&#xA;npm install ldapauth-fork npm install basic-auth Steps for implementation;&#xA;Add packages Create an LDAP variable with authentication configuration Basic auth should prompt for your username and password. Once the user is found, verify the given password by trying to bind the user client with the found LDAP user object and the given password.</description>
+      <description>This post demonstrates how to authenticate a user against LDAP.</description>
     </item>
   </channel>
 </rss>

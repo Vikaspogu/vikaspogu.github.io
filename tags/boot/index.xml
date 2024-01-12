@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>boot on Vikas Pogu</title>
+    <title>boot on Tech Chronicles...</title>
     <link>https://vikaspogu.dev/tags/boot/</link>
-    <description>Recent content in boot on Vikas Pogu</description>
+    <description>Recent content in boot on Tech Chronicles...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>Copyright © 2021</copyright>
     <lastBuildDate>Tue, 01 Dec 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://vikaspogu.dev/tags/boot/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,7 +13,7 @@
       <link>https://vikaspogu.dev/blog/boot-from-usb-through-grub-menu/</link>
       <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/boot-from-usb-through-grub-menu/</guid>
-      <description>First, make sure you have secure boot disabled from the firmware settings. Once you are in the grub command line, type ls to list all partitions&#xA;grub&amp;gt;ls (hd0) (hd0,gpt1) (hd1) (hd1,gpt8) (cd0)) Type ls (cd0) to get the UUID of the device.&#xA;grub&amp;gt;ls (hd0,gpt1) Partition hd0,gpt1: Filesystem type fat - Label `CES_X64FREV`, UUID 4099-DBD9 Partition start-512 Sectors... Note the UUID of your USB drive, shown in the above command&#xA;Type the following commands</description>
+      <description>First, make sure you have secure boot disabled from the firmware settings.</description>
     </item>
   </channel>
 </rss>

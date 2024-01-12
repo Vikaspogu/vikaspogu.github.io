@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>basic-auth on Vikas Pogu</title>
+    <title>basic-auth on Tech Chronicles...</title>
     <link>https://vikaspogu.dev/tags/basic-auth/</link>
-    <description>Recent content in basic-auth on Vikas Pogu</description>
+    <description>Recent content in basic-auth on Tech Chronicles...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>Copyright © 2021</copyright>
     <lastBuildDate>Mon, 16 Dec 2019 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://vikaspogu.dev/tags/basic-auth/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,7 +13,7 @@
       <link>https://vikaspogu.dev/blog/golang-basicauth-gin/</link>
       <pubDate>Mon, 16 Dec 2019 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/golang-basicauth-gin/</guid>
-      <description>This short post looks at adding basic authentication to GoLang applications. Below example application uses the gin web framework.&#xA;Let&amp;rsquo;s start by creating a gin router with default middleware. By default, it serves on :8080 unless we define a PORT environment variable.&#xA;func main(){ r := gin.Default() r.GET(&amp;#34;/getAllUsers&amp;#34;, basicAuth, handlers.UsersList) _ = r.Run() } Now that we have our primary route let us create a method to add authentication logic. First, get basic auth credentials from the context request and validate them.</description>
+      <description>This short post looks at adding basic authentication to GoLang applications.</description>
     </item>
   </channel>
 </rss>

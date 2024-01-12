@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>telegraf on Vikas Pogu</title>
+    <title>telegraf on Tech Chronicles...</title>
     <link>https://vikaspogu.dev/tags/telegraf/</link>
-    <description>Recent content in telegraf on Vikas Pogu</description>
+    <description>Recent content in telegraf on Tech Chronicles...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>Copyright © 2021</copyright>
     <lastBuildDate>Wed, 01 Jan 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://vikaspogu.dev/tags/telegraf/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,7 +13,7 @@
       <link>https://vikaspogu.dev/blog/raspberry-pi-temp-telegraf/</link>
       <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/raspberry-pi-temp-telegraf/</guid>
-      <description>In my previous post, I went through the k3s cluster home setup. Now, I&amp;rsquo;ll show how to measure the temperature of those Raspberry Pi&amp;rsquo;s using Telegraf, Influxdb, Grafana, and Helm charts.&#xA;Why Telegraf? # Telegraf has a plugin called exec, which can execute the commands on the host machine at a specific interval and parses those metrics from their output in any one of the accepted input data formats.&#xA;First, deploy the influxdb time series database chart.</description>
+      <description>In my previous post, I went through the k3s cluster home setup.</description>
     </item>
   </channel>
 </rss>

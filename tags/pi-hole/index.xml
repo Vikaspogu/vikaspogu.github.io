@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>pi-hole on Vikas Pogu</title>
+    <title>pi-hole on Tech Chronicles...</title>
     <link>https://vikaspogu.dev/tags/pi-hole/</link>
-    <description>Recent content in pi-hole on Vikas Pogu</description>
+    <description>Recent content in pi-hole on Tech Chronicles...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>Copyright © 2021</copyright>
     <lastBuildDate>Sat, 07 Mar 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://vikaspogu.dev/tags/pi-hole/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,7 +13,7 @@
       <link>https://vikaspogu.dev/blog/pi-hole-kubernetes/</link>
       <pubDate>Sat, 07 Mar 2020 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/pi-hole-kubernetes/</guid>
-      <description>Pi-hole is a fantastic tool that blocks DNS requests to ad servers. That means you can surf the web without looking at ads on every page.&#xA;Pi-Hole in Kubernetes # We are going to deploy a modified version of this pihole helm chart&#xA;Let&amp;rsquo;s start by cloning the repo.&#xA;git clone https://github.com/ChrisPhillips-cminion/pihole-helm.git cd pihole-helm We now need to make a few updates to the chart.&#xA;Update ServerIP with container host IP Update image to v5.</description>
+      <description>Pi-hole is a fantastic tool that blocks DNS requests to ad servers.</description>
     </item>
   </channel>
 </rss>

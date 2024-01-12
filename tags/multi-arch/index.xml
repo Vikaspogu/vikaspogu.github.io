@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>multi-arch on Vikas Pogu</title>
+    <title>multi-arch on Tech Chronicles...</title>
     <link>https://vikaspogu.dev/tags/multi-arch/</link>
-    <description>Recent content in multi-arch on Vikas Pogu</description>
+    <description>Recent content in multi-arch on Tech Chronicles...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>Copyright © 2021</copyright>
     <lastBuildDate>Tue, 19 Jan 2021 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://vikaspogu.dev/tags/multi-arch/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,7 +13,7 @@
       <link>https://vikaspogu.dev/blog/tekton-multiarch-buildx/</link>
       <pubDate>Tue, 19 Jan 2021 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/tekton-multiarch-buildx/</guid>
-      <description>There are three different strategies to build multi-platform images that Buildx and Dockerfiles support:&#xA;Using the QEMU emulation support in the kernel Building on multiple native nodes using the same builder instance Using a stage in Dockerfile to cross-compile to different architectures I&amp;rsquo;ll focus on the first option, cross-building with emulation using buildx.&#xA;docker buildx build --platform linux/amd64,linux/arm64 . Setup # Steps might differ from platform to platform, but the pipelines will remain the same.</description>
+      <description>There are three different strategies to build multi-platform images that Buildx and Dockerfiles support:</description>
     </item>
   </channel>
 </rss>

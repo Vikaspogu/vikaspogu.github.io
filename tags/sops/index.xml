@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>sops on Vikas Pogu</title>
+    <title>sops on Tech Chronicles...</title>
     <link>https://vikaspogu.dev/tags/sops/</link>
-    <description>Recent content in sops on Vikas Pogu</description>
+    <description>Recent content in sops on Tech Chronicles...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>Copyright © 2021</copyright>
     <lastBuildDate>Sat, 29 Apr 2023 20:01:54 -0500</lastBuildDate>
     <atom:link href="https://vikaspogu.dev/tags/sops/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,14 +13,14 @@
       <link>https://vikaspogu.dev/blog/ansible-sops/</link>
       <pubDate>Sat, 29 Apr 2023 20:01:54 -0500</pubDate>
       <guid>https://vikaspogu.dev/blog/ansible-sops/</guid>
-      <description>Today, I am excited to share how to set up an Ansible execution environment to control SOPS secrets. The Ansible execution image is a pre-built container containing all the necessary components for decrypting SOPS secrets in Ansible playbooks.&#xA;Ansible Builder is a tool that can help with building the image&#xA;Let&amp;rsquo;s start by creating a new working directory&#xA;mkdir custom-ansible-execution; cd custom-ansible-execution Add an execution-environment.yml file. ansible-builder build container images with the definition file execution-environment.</description>
+      <description>Today, I am excited to share how to set up an Ansible execution environment to control SOPS secrets.</description>
     </item>
     <item>
       <title>ArgoCD with Kustomize and KSOPS using Age encryption</title>
       <link>https://vikaspogu.dev/blog/argo-operator-ksops-age/</link>
       <pubDate>Wed, 10 Aug 2022 16:31:43 -0500</pubDate>
       <guid>https://vikaspogu.dev/blog/argo-operator-ksops-age/</guid>
-      <description>I am a big fan of FluxCD and its integration with secrets management; however, recently, I decided to tinker with ArgoCD. One of the challenges I encountered was secrets management. Although ArgoCD provides flexible integration with most secrets management tools, it requires little extra configuration.&#xA;So I started my journey to configure ArgoCD with SOPS; there isn&amp;rsquo;t a direct integration with SOPS. So we will have to use the Kustomize plugin called ksops, which is the suggested tool on Argo&amp;rsquo;s website and it has pretty good instructions for Argo integration.</description>
+      <description>I am a big fan of FluxCD and its integration with secrets management; however, recently, I decided to tinker with ArgoCD.</description>
     </item>
   </channel>
 </rss>

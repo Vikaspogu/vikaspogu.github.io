@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>groovy on Vikas Pogu</title>
+    <title>groovy on Tech Chronicles...</title>
     <link>https://vikaspogu.dev/tags/groovy/</link>
-    <description>Recent content in groovy on Vikas Pogu</description>
+    <description>Recent content in groovy on Tech Chronicles...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>Copyright © 2021</copyright>
     <lastBuildDate>Tue, 07 Jul 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://vikaspogu.dev/tags/groovy/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,7 +13,7 @@
       <link>https://vikaspogu.dev/blog/jenkins-date-difference/</link>
       <pubDate>Tue, 07 Jul 2020 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/jenkins-date-difference/</guid>
-      <description>The below snippet shows how to calculate days between two dates in the Jenkins pipeline. @NonCPS annotation is functional when you have methods that use objects that aren&amp;rsquo;t serializable.&#xA;import java.text.SimpleDateFormat stages { stage(&amp;#34;Calculate days&amp;#34;) { steps { script { def daysRemaining = getRemainingDays(&amp;#34;2020-06-25&amp;#34;) } } } } } @NonCPS def getRemainingDays(previousDate){ def currentDate = new Date() String currentTimeFormat= currentDate.format(&amp;#34;yyyy-MM-dd&amp;#34;) def oldDate = new SimpleDateFormat(&amp;#34;yyyy-MM-dd&amp;#34;).parse(previousDate) return currentTimeFormat-oldDate } Calculate if the date is greater than 14 days</description>
+      <description>The below snippet shows how to calculate days between two dates in the Jenkins pipeline.</description>
     </item>
   </channel>
 </rss>

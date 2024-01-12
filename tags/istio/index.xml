@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>istio on Vikas Pogu</title>
+    <title>istio on Tech Chronicles...</title>
     <link>https://vikaspogu.dev/tags/istio/</link>
-    <description>Recent content in istio on Vikas Pogu</description>
+    <description>Recent content in istio on Tech Chronicles...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>Copyright © 2021</copyright>
     <lastBuildDate>Thu, 12 Nov 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://vikaspogu.dev/tags/istio/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,7 +13,7 @@
       <link>https://vikaspogu.dev/blog/servicemesh-jwt-auth-authz-keycloack/</link>
       <pubDate>Thu, 12 Nov 2020 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/servicemesh-jwt-auth-authz-keycloack/</guid>
-      <description>In this article, I will share the setup for enabling Authentication and Authorization in OpenShift Service Mesh with Keycloak.&#xA;Installing OpenShift Service Mesh # Follow the Installing Red Hat OpenShift Service Mesh guide for setup&#xA;Enable the following configuration in your ServiceMeshControlPlane resource&#xA;Strict mTLS across the mesh Automatic istio route creation apiVersion: maistra.io/v2 kind: ServiceMeshControlPlane spec: version: v1.1 security: controlPlane: mtls: true gateways: OpenShiftRoute: enabled: true Keycloak # Keycloak is an open-source identity and access management application that uses open protocols and is easily integrated with other providers.</description>
+      <description>In this article, I will share the setup for enabling Authentication and Authorization in OpenShift Service Mesh with Keycloak.</description>
     </item>
   </channel>
 </rss>

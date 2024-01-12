@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>keycloak on Vikas Pogu</title>
+    <title>keycloak on Tech Chronicles...</title>
     <link>https://vikaspogu.dev/tags/keycloak/</link>
-    <description>Recent content in keycloak on Vikas Pogu</description>
+    <description>Recent content in keycloak on Tech Chronicles...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>Copyright © 2021</copyright>
     <lastBuildDate>Thu, 12 Nov 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://vikaspogu.dev/tags/keycloak/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,21 +13,21 @@
       <link>https://vikaspogu.dev/blog/servicemesh-jwt-auth-authz-keycloack/</link>
       <pubDate>Thu, 12 Nov 2020 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/servicemesh-jwt-auth-authz-keycloack/</guid>
-      <description>In this article, I will share the setup for enabling Authentication and Authorization in OpenShift Service Mesh with Keycloak.&#xA;Installing OpenShift Service Mesh # Follow the Installing Red Hat OpenShift Service Mesh guide for setup&#xA;Enable the following configuration in your ServiceMeshControlPlane resource&#xA;Strict mTLS across the mesh Automatic istio route creation apiVersion: maistra.io/v2 kind: ServiceMeshControlPlane spec: version: v1.1 security: controlPlane: mtls: true gateways: OpenShiftRoute: enabled: true Keycloak # Keycloak is an open-source identity and access management application that uses open protocols and is easily integrated with other providers.</description>
+      <description>In this article, I will share the setup for enabling Authentication and Authorization in OpenShift Service Mesh with Keycloak.</description>
     </item>
     <item>
       <title>Go JWT Authentication with Keycloak</title>
       <link>https://vikaspogu.dev/blog/sso-jwt-golang/</link>
       <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/sso-jwt-golang/</guid>
-      <description>I recently worked on a React project with Go backend using Gin web framework. Keycloak was the authentication mechanism for the front end; I also wanted to secure the back end using JSON Web Tokens, which Keycloak provided on every login. JWT verification setup in the Go application was easy.&#xA;First, copy the RS256 algorithm public key value from Keycloak.&#xA;Send the token as an Authorization header.&#xA;axios .get(BACKEND_URL.concat(&amp;#34;sampleendpoint&amp;#34;), { headers: { Authorization: this.</description>
+      <description>I recently worked on a React project with Go backend using Gin web framework.</description>
     </item>
     <item>
       <title>React App with RedHat SSO or keycloak</title>
       <link>https://vikaspogu.dev/blog/redhat-sso-react/</link>
       <pubDate>Thu, 25 Jul 2019 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/redhat-sso-react/</guid>
-      <description>This post will show you how to secure a React app using RedHat SSO (upstream Keycloak). In this case, OpenID-connect is my identity provider.&#xA;Install the official Keycloak js adapter&#xA;npm i keycloak-js --save Add host and port information to the client; in my case, it&amp;rsquo;s localhost:9000&#xA;In App.js, add a JavaScript object with the required configuration; you will find these configurations under Clients-&amp;gt;Installation.&#xA;//keycloak init options const initOptions = { url: &amp;#34;https://localhost:8080/auth&amp;#34;, realm: &amp;#34;test&amp;#34;, clientId: &amp;#34;react-app&amp;#34;, onLoad: &amp;#34;login-required&amp;#34; }; By default, to authenticate, you need to call the login function.</description>
+      <description>This post will show you how to secure a React app using RedHat SSO (upstream Keycloak).</description>
     </item>
   </channel>
 </rss>

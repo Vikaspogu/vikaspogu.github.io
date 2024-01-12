@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>dot net on Vikas Pogu</title>
+    <title>dot net on Tech Chronicles...</title>
     <link>https://vikaspogu.dev/tags/dot-net/</link>
-    <description>Recent content in dot net on Vikas Pogu</description>
+    <description>Recent content in dot net on Tech Chronicles...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>Copyright © 2021</copyright>
     <lastBuildDate>Tue, 14 May 2019 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://vikaspogu.dev/tags/dot-net/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,7 +13,7 @@
       <link>https://vikaspogu.dev/blog/debug-netcore-openshift/</link>
       <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/debug-netcore-openshift/</guid>
-      <description>This post concerns remote debugging an ASP.NET Core application on OpenShift using Visual Studio Code. You can use any Microsoft proprietary debugger engine vsdbg with Visual Studio Code.&#xA;First, list the available .Net application pods using the oc command.&#xA;$ oc get pod NAME READY STATUS RESTARTS AGE MY_APP_NAME-3-1xrsp 0/1 Running 0 6s $ oc rsh MY_APP_NAME-3-1xrsp sh-4.2$ curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l /opt/app-root/vsdbg -r linux-x64 Note: If your container is running behind a corporate proxy and cannot access the internet, you&amp;rsquo;ll have to build a base dotnet image with the installed debugger engine vsdbg.</description>
+      <description>This post concerns remote debugging an ASP.</description>
     </item>
   </channel>
 </rss>

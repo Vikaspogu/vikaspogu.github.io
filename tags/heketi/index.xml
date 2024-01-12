@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Heketi on Vikas Pogu</title>
+    <title>Heketi on Tech Chronicles...</title>
     <link>https://vikaspogu.dev/tags/heketi/</link>
-    <description>Recent content in Heketi on Vikas Pogu</description>
+    <description>Recent content in Heketi on Tech Chronicles...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>Copyright © 2021</copyright>
     <lastBuildDate>Tue, 16 Jul 2019 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://vikaspogu.dev/tags/heketi/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,7 +13,7 @@
       <link>https://vikaspogu.dev/blog/heketi-jwt-error/</link>
       <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/heketi-jwt-error/</guid>
-      <description>Recently I encountered a JWT token expired error on the heketi pod in the OpenShift cluster.&#xA;[jwt] ERROR 2019/07/16 19:17:14 heketi/middleware/jwt.go:66:middleware.(*HeketiJwtClaims).Valid: exp validation failed: Token is expired by 1h48m59s After a lot of google searches, I synchronized clocks across the pod running heketi and the master nodes, which solved the issue&#xA;ntpdate -q 0.rhel.pool.ntp.org; systemctl restart ntpd </description>
+      <description>Recently I encountered a JWT token expired error on the heketi pod in the OpenShift cluster.</description>
     </item>
   </channel>
 </rss>

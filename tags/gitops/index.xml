@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>gitops on Vikas Pogu</title>
+    <title>gitops on Tech Chronicles...</title>
     <link>https://vikaspogu.dev/tags/gitops/</link>
-    <description>Recent content in gitops on Vikas Pogu</description>
+    <description>Recent content in gitops on Tech Chronicles...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>Copyright © 2021</copyright>
     <lastBuildDate>Wed, 10 Aug 2022 16:31:43 -0500</lastBuildDate>
     <atom:link href="https://vikaspogu.dev/tags/gitops/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,14 +13,14 @@
       <link>https://vikaspogu.dev/blog/argo-operator-ksops-age/</link>
       <pubDate>Wed, 10 Aug 2022 16:31:43 -0500</pubDate>
       <guid>https://vikaspogu.dev/blog/argo-operator-ksops-age/</guid>
-      <description>I am a big fan of FluxCD and its integration with secrets management; however, recently, I decided to tinker with ArgoCD. One of the challenges I encountered was secrets management. Although ArgoCD provides flexible integration with most secrets management tools, it requires little extra configuration.&#xA;So I started my journey to configure ArgoCD with SOPS; there isn&amp;rsquo;t a direct integration with SOPS. So we will have to use the Kustomize plugin called ksops, which is the suggested tool on Argo&amp;rsquo;s website and it has pretty good instructions for Argo integration.</description>
+      <description>I am a big fan of FluxCD and its integration with secrets management; however, recently, I decided to tinker with ArgoCD.</description>
     </item>
     <item>
       <title>GitOps with Tekton and ArgoCD</title>
       <link>https://vikaspogu.dev/blog/tekton-argocd-gitops/</link>
       <pubDate>Thu, 14 Jan 2021 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/blog/tekton-argocd-gitops/</guid>
-      <description>In this post, I will:&#xA;Use Tekton to build and publish an image to the docker registry Trigger a Tekton pipeline from GitHub Use ArgoCD to deploy an application Getting Started # Pre-requisites:&#xA;An OpenShift 4 cluster with ArgoCD and OpenShift Pipelines installed. If not, you follow instructions to OpenShift Pipelines and ArgoCD Operator Basic understanding of ArgoCD and Tekton concepts Create an OpenShift project called node-web-project&#xA;oc new-project node-web-project Using Private Registries # Create a docker secret with registry authentication details</description>
+      <description>In this post, I will:</description>
     </item>
   </channel>
 </rss>
