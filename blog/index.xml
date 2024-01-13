@@ -6,8 +6,15 @@
     <description>Recent content in Blogs on Tech Chronicles...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 12 Jan 2024 12:11:03 -0600</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jan 2024 11:51:33 -0600</lastBuildDate>
     <atom:link href="https://vikaspogu.dev/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Getting Started with Red Hat Developer Hub - Part 1</title>
+      <link>https://vikaspogu.dev/blog/developer-hub-getting-started-part-1/</link>
+      <pubDate>Sat, 13 Jan 2024 11:51:33 -0600</pubDate>
+      <guid>https://vikaspogu.dev/blog/developer-hub-getting-started-part-1/</guid>
+      <description>Introduction #Red Hat Developer Hub is based on Spotify&amp;rsquo;s open-sourced backstage project.</description>
+    </item>
     <item>
       <title> A Seamless Upgrade: Cloud-Native PostgreSQL Database Version 15 to 16</title>
       <link>https://vikaspogu.dev/blog/cloudnative-pg-upgrade/</link>

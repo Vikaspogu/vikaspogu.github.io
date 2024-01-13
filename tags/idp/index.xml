@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>IDP on Tech Chronicles...</title>
+    <link>https://vikaspogu.dev/tags/idp/</link>
+    <description>Recent content in IDP on Tech Chronicles...</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 13 Jan 2024 11:51:33 -0600</lastBuildDate>
+    <atom:link href="https://vikaspogu.dev/tags/idp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Getting Started with Red Hat Developer Hub - Part 1</title>
+      <link>https://vikaspogu.dev/blog/developer-hub-getting-started-part-1/</link>
+      <pubDate>Sat, 13 Jan 2024 11:51:33 -0600</pubDate>
+      <guid>https://vikaspogu.dev/blog/developer-hub-getting-started-part-1/</guid>
+      <description>Introduction #Red Hat Developer Hub is based on Spotify&amp;rsquo;s open-sourced backstage project.</description>
+    </item>
+  </channel>
+</rss>

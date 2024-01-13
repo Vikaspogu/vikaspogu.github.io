@@ -3,16 +3,18 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     
+  
+    
       <url>
-            <loc>https://vikaspogu.dev/blog/cloudnative-pg-upgrade/</loc>
-            <lastmod>2024-01-12T12:11:03-06:00</lastmod>
+            <loc>https://vikaspogu.dev/blog/</loc>
+            <lastmod>2024-01-13T11:51:33-06:00</lastmod>
           </url>
     
   
     
       <url>
-            <loc>https://vikaspogu.dev/blog/</loc>
-            <lastmod>2024-01-12T12:11:03-06:00</lastmod>
+            <loc>https://vikaspogu.dev/blog/developer-hub-getting-started-part-1/</loc>
+            <lastmod>2024-01-13T11:51:33-06:00</lastmod>
           </url>
     
   
@@ -25,8 +27,19 @@
     
       <url>
             <loc>https://vikaspogu.dev/</loc>
+            <lastmod>2024-01-13T11:51:33-06:00</lastmod>
+          </url>
+    
+  
+    
+      <url>
+            <loc>https://vikaspogu.dev/blog/cloudnative-pg-upgrade/</loc>
             <lastmod>2024-01-12T12:11:03-06:00</lastmod>
           </url>
+    
+  
+    
+  
     
   
     
