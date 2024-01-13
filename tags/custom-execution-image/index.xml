@@ -13,7 +13,7 @@
       <link>https://vikaspogu.dev/blog/ansible-sops/</link>
       <pubDate>Sat, 29 Apr 2023 20:01:54 -0500</pubDate>
       <guid>https://vikaspogu.dev/blog/ansible-sops/</guid>
-      <description>Today, I am excited to share how to set up an Ansible execution environment to control SOPS secrets.</description>
+      <description>Introduction #Today, I am excited to share how to set up an Ansible execution environment to control SOPS secrets.</description>
     </item>
   </channel>
 </rss>
