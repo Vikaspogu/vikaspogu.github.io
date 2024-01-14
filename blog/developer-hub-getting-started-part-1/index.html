@@ -126,7 +126,7 @@
     "keywords": ["Red Hat Developer Hub","Backstage","IDP"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "907"
+    "wordCount": "1470"
   }
   </script>
 
@@ -321,7 +321,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2024-01-13 11:51:33 -0600 CST">13 January 2024</time><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">5 mins</span>
+      <time datetime="2024-01-13 11:51:33 -0600 CST">13 January 2024</time><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">7 mins</span>
     
 
     
@@ -402,7 +402,8 @@
 </div>
 </div>
 <p>Install the helm chart with modified values</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">helm install developer-hub developer-hub/developer-hub -f values.yaml
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">oc new-project developer-hub
+</span></span><span class="line"><span class="cl">helm install developer-hub developer-hub/developer-hub -f values.yaml
 </span></span></code></pre></div><p>Wait for the developer hub and postgresql database pods to be in ready status</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">oc get pods
 </span></span><span class="line"><span class="cl">NAME                             READY   STATUS    RESTARTS   AGE
@@ -514,7 +515,6 @@
 </code></pre><h2 id="plugin-integrations" class="relative group">Plugin Integrations <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#plugin-integrations" aria-label="Anchor">#</a></span></h2><blockquote>
 <p>In the spirit of brevity and to ensure accuracy, I&rsquo;ve posted the configuration code snippets for your convenience. However, for a more detailed and nuanced understanding of the integration process, I highly recommend referring to the official product documentation.</p>
 </blockquote>
-<h3 id="externalize-configuration" class="relative group">Externalize configuration <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#externalize-configuration" aria-label="Anchor">#</a></span></h3><p>Create a <code>configmap</code> to add configuration to the developer hub as described in the <a href="https://access.redhat.com/documentation/en-us/red_hat_developer_hub/1.0/html/getting_started_with_red_hat_developer_hub/ref-rhdh-supported-configs_rhdh-getting-started" target="_blank" rel="noreferrer">documentation</a></p>
 <div class="flex px-4 py-3 rounded-md bg-primary-100 dark:bg-primary-900">
   <span class="pe-3 text-primary-400">
     <span class="relative inline-block align-text-bottom px-1 icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M506.3 417l-213.3-364c-16.33-28-57.54-28-73.98 0l-213.2 364C-10.59 444.9 9.849 480 42.74 480h426.6C502.1 480 522.6 445 506.3 417zM232 168c0-13.25 10.75-24 24-24S280 154.8 280 168v128c0 13.25-10.75 24-23.1 24S232 309.3 232 296V168zM256 416c-17.36 0-31.44-14.08-31.44-31.44c0-17.36 14.07-31.44 31.44-31.44s31.44 14.08 31.44 31.44C287.4 401.9 273.4 416 256 416z"/></svg>
@@ -523,8 +523,158 @@
   <span class="dark:text-neutral-300">Integration code snippets are added to the configmap; for reference, here is the complete <a href="https://raw.githubusercontent.com/Vikaspogu/openshift-multicluster/main/kustomize/cluster-overlays/pxm-acm/developer-hub-chart/app-config-rhdh.yaml" target="_blank" rel="noreferrer">configmap</a></span>
 </div>
 
-<h3 id="github-integration" class="relative group">GitHub Integration <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#github-integration" aria-label="Anchor">#</a></span></h3><p>Seamlessly connect your projects with GitHub by configuring the <a href="https://access.redhat.com/documentation/en-us/red_hat_developer_hub/1.0/html/getting_started_with_red_hat_developer_hub/ref-rhdh-supported-configs_rhdh-getting-started#setting-github-integration-and-authentication" target="_blank" rel="noreferrer">integration</a>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">auth</span><span class="p">:</span><span class="w">
+<h3 id="externalize-configuration" class="relative group">Externalize configuration <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#externalize-configuration" aria-label="Anchor">#</a></span></h3><p>Create a <code>configmap</code> to add configuration to the developer hub as described in the <a href="https://access.redhat.com/documentation/en-us/red_hat_developer_hub/1.0/html/getting_started_with_red_hat_developer_hub/ref-rhdh-supported-configs_rhdh-getting-started" target="_blank" rel="noreferrer">documentation</a></p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="mx-auto my-0 rounded-md"
+        
+          width="2074"
+          height="1054"
+          
+            srcset="/blog/developer-hub-getting-started-part-1/configmap_hu1ac1014bc56e450f127890208737ffbe_214235_330x0_resize_box_3.png 330w,/blog/developer-hub-getting-started-part-1/configmap_hu1ac1014bc56e450f127890208737ffbe_214235_660x0_resize_box_3.png 660w,/blog/developer-hub-getting-started-part-1/configmap_hu1ac1014bc56e450f127890208737ffbe_214235_1024x0_resize_box_3.png 1024w,/blog/developer-hub-getting-started-part-1/configmap_hu1ac1014bc56e450f127890208737ffbe_214235_1320x0_resize_box_3.png 2x"
+            src="/blog/developer-hub-getting-started-part-1/configmap_hu1ac1014bc56e450f127890208737ffbe_214235_660x0_resize_box_3.png"
+          
+        
+        alt="Alt text"
+        
+          loading="lazy"
+        
+      />
+      <figcaption class="text-center">ConfigMap</figcaption>
+    </figure>
+  
+</p>
+<p>Mount the ConfigMap, add <code>extraAppConfig</code> to the values file under <code>upstream.backstage</code> section</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="hl"><span class="lnt">21
+</span></span><span class="hl"><span class="lnt">22
+</span></span><span class="hl"><span class="lnt">23
+</span></span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">upstream</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">backstage</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">appConfig</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">baseUrl</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://{{- include &#34;janus-idp.hostname&#34; . }}&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">backend</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">baseUrl</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://{{- include &#34;janus-idp.hostname&#34; . }}&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">cors</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://{{- include &#34;janus-idp.hostname&#34; . }}&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">database</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">connection</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l">${POSTGRESQL_ADMIN_PASSWORD}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l">postgres</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">auth</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">keys</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="nt">secret</span><span class="p">:</span><span class="w"> </span><span class="l">${BACKEND_SECRET}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">args</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;--config&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">dynamic-plugins-root/app-config.dynamic-plugins.yaml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w">    </span><span class="nt">extraAppConfig</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w">      </span>- <span class="nt">configMapRef</span><span class="p">:</span><span class="w"> </span><span class="l">app-config-rhdh</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w">        </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l">app-config-rhdh.yaml</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Re-install the chart with updated values</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">helm upgrade --install developer-hub developer-hub/developer-hub -f values.yaml
+</span></span></code></pre></div><h3 id="github-integration" class="relative group">GitHub Integration <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#github-integration" aria-label="Anchor">#</a></span></h3><p>Seamlessly connect your projects with GitHub by configuring the <a href="https://access.redhat.com/documentation/en-us/red_hat_developer_hub/1.0/html/getting_started_with_red_hat_developer_hub/ref-rhdh-supported-configs_rhdh-getting-started#setting-github-integration-and-authentication" target="_blank" rel="noreferrer">integration</a>.</p>
+<p>Create a secret named <code>rhdh-secrets</code> as mentioned in documentation with GitHub clientId, secret and token</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">oc create secret generic rhdh-secrets --from-literal<span class="o">=</span><span class="nv">GITHUB_APP_CLIENT_ID</span><span class="o">=</span>dummy --from-literal<span class="o">=</span><span class="nv">GITHUB_APP_CLIENT_SECRET</span><span class="o">=</span>dummy --from-literal<span class="o">=</span><span class="nv">GITHUB_TOKEN</span><span class="o">=</span>dummy
+</span></span></code></pre></div><p>Mount the <code>rhdh-secrets</code>, add <code>extraEnvVarsSecrets</code> to the values file under <code>upstream.backstage</code> section</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="hl"><span class="lnt">21
+</span></span><span class="hl"><span class="lnt">22
+</span></span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">upstream</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">backstage</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">appConfig</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">baseUrl</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://{{- include &#34;janus-idp.hostname&#34; . }}&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">backend</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">baseUrl</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://{{- include &#34;janus-idp.hostname&#34; . }}&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">cors</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://{{- include &#34;janus-idp.hostname&#34; . }}&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">database</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">connection</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l">${POSTGRESQL_ADMIN_PASSWORD}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l">postgres</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">auth</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">keys</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="nt">secret</span><span class="p">:</span><span class="w"> </span><span class="l">${BACKEND_SECRET}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">args</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;--config&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">dynamic-plugins-root/app-config.dynamic-plugins.yaml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w">    </span><span class="nt">extraEnvVarsSecrets</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w">      </span>- <span class="l">rhdh-secrets</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">extraAppConfig</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">configMapRef</span><span class="p">:</span><span class="w"> </span><span class="l">app-config-rhdh</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l">app-config-rhdh.yaml</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Update the <code>app-config-rhdh</code> configmap and add below configuration</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">integrations</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">github</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l">github.com</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="l">${GITHUB_TOKEN}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">auth</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># see https://backstage.io/docs/auth/ to learn about auth providers</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="l">development</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">providers</span><span class="p">:</span><span class="w">
@@ -532,7 +682,9 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">development</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">clientId</span><span class="p">:</span><span class="w"> </span><span class="l">${GITHUB_APP_CLIENT_ID}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">clientSecret</span><span class="p">:</span><span class="w"> </span><span class="l">${GITHUB_APP_CLIENT_SECRET}</span><span class="w">
-</span></span></span></code></pre></div><p>
+</span></span></span></code></pre></div><p>Re-installing the chart will recreate a new pod with updated values and configmap</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">helm upgrade --install developer-hub developer-hub/developer-hub -f values.yaml
+</span></span></code></pre></div><p>
 
 
 
@@ -563,6 +715,75 @@
   
 </p>
 <h3 id="navigating-clusters-with-open-cluster-management" class="relative group">Navigating Clusters with Open Cluster Management <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#navigating-clusters-with-open-cluster-management" aria-label="Anchor">#</a></span></h3><p>Open Cluster Management extends our reach to manage and monitor multiple clusters effortlessly. To enable we can add kubernetes <a href="https://backstage.io/docs/features/kubernetes/configuration" target="_blank" rel="noreferrer">configuration</a> and reference the cluster in catalog provider</p>
+<p>We are setting up authentication for the Kubernetes cluster using the serviceaccount token. Create a serviceaccount in the developer-hub namespace</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">oc create sa developer-hub -n developer-hub
+</span></span></code></pre></div><p>Obtain a long-lived token by creating a secret</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">oc apply -f - <span class="s">&lt;&lt;EOF
+</span></span></span><span class="line"><span class="cl"><span class="s">apiVersion: v1
+</span></span></span><span class="line"><span class="cl"><span class="s">kind: Secret
+</span></span></span><span class="line"><span class="cl"><span class="s">metadata:
+</span></span></span><span class="line"><span class="cl"><span class="s">  name: developer-hub-sa
+</span></span></span><span class="line"><span class="cl"><span class="s">  namespace: developer-hub
+</span></span></span><span class="line"><span class="cl"><span class="s">  annotations:
+</span></span></span><span class="line"><span class="cl"><span class="s">    kubernetes.io/service-account.name: developer-hub
+</span></span></span><span class="line"><span class="cl"><span class="s">type: kubernetes.io/service-account-token
+</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
+</span></span></code></pre></div><p>Add a new entry in the <code>extraEnvVars</code> to mount the serviceaccount token secret as an environment variables in the values file under <code>upstream.backstage</code> section</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="hl"><span class="lnt">20
+</span></span><span class="hl"><span class="lnt">21
+</span></span><span class="hl"><span class="lnt">22
+</span></span><span class="hl"><span class="lnt">23
+</span></span><span class="hl"><span class="lnt">24
+</span></span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">upstream</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">backstage</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="l">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">extraEnvVarsSecrets</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">rhdh-secrets</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">extraAppConfig</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">configMapRef</span><span class="p">:</span><span class="w"> </span><span class="l">app-config-rhdh</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l">app-config-rhdh.yaml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">extraEnvVars</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">BACKEND_SECRET</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">secretKeyRef</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">backend-secret</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;{{ include &#34;janus-idp.backend-secret-name&#34; $ }}&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">POSTGRESQL_ADMIN_PASSWORD</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">secretKeyRef</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">postgres-password</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;{{- include &#34;janus-idp.postgresql.secretName&#34; . }}&#39;</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">KUBE_TOKEN</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w">        </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w">          </span><span class="nt">secretKeyRef</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w">            </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">token</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">developer-hub-sa</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Update the <code>app-config-rhdh</code> configmap with below configuration</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">kubernetes</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">serviceLocatorMethod</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;multiTenant&#34;</span><span class="w">
@@ -588,7 +809,9 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">seconds</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">timeout</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">seconds</span><span class="p">:</span><span class="w"> </span><span class="m">60</span><span class="w">
-</span></span></span></code></pre></div><p>
+</span></span></span></code></pre></div><p>Re-installing the chart will recreate a new pod with updated values and mount serviceaccount token secret as an environment variable</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">helm upgrade --install developer-hub developer-hub/developer-hub -f values.yaml
+</span></span></code></pre></div><p>
 
 
 
@@ -618,7 +841,106 @@
     </figure>
   
 </p>
-<h3 id="synchronizing-with-argocd" class="relative group">Synchronizing with ArgoCD <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#synchronizing-with-argocd" aria-label="Anchor">#</a></span></h3><p>The ArgoCD Backstage plugin provides synced, health status and updates the history of your services to your Developer Portal. Add the <code>ARGOCD_TOKEN</code> as an environment variable, or create a secret and add it from secret.</p>
+<h3 id="synchronizing-with-argocd" class="relative group">Synchronizing with ArgoCD <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#synchronizing-with-argocd" aria-label="Anchor">#</a></span></h3><p>The ArgoCD Backstage plugin provides synced, health status and updates the history of your services to your Developer Portal.</p>
+<p>Generate a new token from the ArgoCD instance</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="mx-auto my-0 rounded-md"
+        
+          width="2976"
+          height="1272"
+          
+            srcset="/blog/developer-hub-getting-started-part-1/argocd-token_hu894f0f3786cef3740472a5db321eca81_173816_330x0_resize_box_3.png 330w,/blog/developer-hub-getting-started-part-1/argocd-token_hu894f0f3786cef3740472a5db321eca81_173816_660x0_resize_box_3.png 660w,/blog/developer-hub-getting-started-part-1/argocd-token_hu894f0f3786cef3740472a5db321eca81_173816_1024x0_resize_box_3.png 1024w,/blog/developer-hub-getting-started-part-1/argocd-token_hu894f0f3786cef3740472a5db321eca81_173816_1320x0_resize_box_3.png 2x"
+            src="/blog/developer-hub-getting-started-part-1/argocd-token_hu894f0f3786cef3740472a5db321eca81_173816_660x0_resize_box_3.png"
+          
+        
+        alt="Alt text"
+        
+          loading="lazy"
+        
+      />
+      <figcaption class="text-center">ArgoCD token</figcaption>
+    </figure>
+  
+</p>
+<p>Create a new secret from the ArgoCD token</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">oc create secret generic argocd-token --from-literal<span class="o">=</span><span class="nv">ARGOCD_TOKEN</span><span class="o">=</span>dummy
+</span></span></code></pre></div><p>Add a new entry in the <code>extraEnvVars</code> to mount the secret as an environment variables in the values file under <code>upstream.backstage</code> section</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="hl"><span class="lnt">25
+</span></span><span class="hl"><span class="lnt">26
+</span></span><span class="hl"><span class="lnt">27
+</span></span><span class="hl"><span class="lnt">28
+</span></span><span class="hl"><span class="lnt">29
+</span></span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">upstream</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">backstage</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="l">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">extraEnvVarsSecrets</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">rhdh-secrets</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">extraAppConfig</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">configMapRef</span><span class="p">:</span><span class="w"> </span><span class="l">app-config-rhdh</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l">app-config-rhdh.yaml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">extraEnvVars</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">BACKEND_SECRET</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">secretKeyRef</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">backend-secret</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;{{ include &#34;janus-idp.backend-secret-name&#34; $ }}&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">POSTGRESQL_ADMIN_PASSWORD</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">secretKeyRef</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">postgres-password</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;{{- include &#34;janus-idp.postgresql.secretName&#34; . }}&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">KUBE_TOKEN</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">secretKeyRef</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">token</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">developer-hub-sa</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">ARGOCD_TOKEN</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w">        </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w">          </span><span class="nt">secretKeyRef</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w">            </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">ARGOCD_TOKEN</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">argocd-token</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Update the <code>app-config-rhdh</code> configmap with below configuration</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">argocd</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">appLocatorMethods</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">instances</span><span class="p">:</span><span class="w">
@@ -626,7 +948,9 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="l">${ARGOCD_TOKEN}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">https://openshift-gitops-server-openshift-gitops.apps.example.com</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">config</span><span class="w">
-</span></span></span></code></pre></div><p>
+</span></span></span></code></pre></div><p>Re-installing the chart</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">helm upgrade --install developer-hub developer-hub/developer-hub -f values.yaml
+</span></span></code></pre></div><p>
 
 
 
