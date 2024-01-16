@@ -6,8 +6,15 @@
     <description>Recent content in Blogs on Tech Chronicles...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 13 Jan 2024 11:51:33 -0600</lastBuildDate>
+    <lastBuildDate>Sun, 14 Jan 2024 11:51:33 -0600</lastBuildDate>
     <atom:link href="https://vikaspogu.dev/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Getting Started with Red Hat Developer Hub - Part 2</title>
+      <link>https://vikaspogu.dev/blog/developer-hub-getting-started-part-2/</link>
+      <pubDate>Sun, 14 Jan 2024 11:51:33 -0600</pubDate>
+      <guid>https://vikaspogu.dev/blog/developer-hub-getting-started-part-2/</guid>
+      <description>In this continuation of our getting started with Developer Hub series, we&amp;rsquo;re diving into the art of crafting templates.</description>
+    </item>
     <item>
       <title>Getting Started with Red Hat Developer Hub - Part 1</title>
       <link>https://vikaspogu.dev/blog/developer-hub-getting-started-part-1/</link>
