@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>service mesh on Tech Chronicles...</title>
+    <title>Service Mesh on Tech Chronicles...</title>
     <link>https://vikaspogu.dev/tags/service-mesh/</link>
-    <description>Recent content in service mesh on Tech Chronicles...</description>
+    <description>Recent content in Service Mesh on Tech Chronicles...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 12 Nov 2020 00:00:00 +0000</lastBuildDate>

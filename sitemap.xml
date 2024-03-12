@@ -3,12 +3,32 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     
+      <url>
+            <loc>https://vikaspogu.dev/blog/</loc>
+            <lastmod>2024-03-11T16:03:46-04:00</lastmod>
+          </url>
+    
+  
+    
+  
+    
   
     
       <url>
-            <loc>https://vikaspogu.dev/blog/</loc>
-            <lastmod>2024-01-14T11:51:33-06:00</lastmod>
+            <loc>https://vikaspogu.dev/blog/cloudflared-tunnel-openshift/</loc>
+            <lastmod>2024-03-11T16:03:46-04:00</lastmod>
           </url>
+    
+  
+    
+  
+    
+      <url>
+            <loc>https://vikaspogu.dev/</loc>
+            <lastmod>2024-03-11T16:03:46-04:00</lastmod>
+          </url>
+    
+  
     
   
     
@@ -20,15 +40,6 @@
   
     
   
-    
-  
-    
-  
-    
-      <url>
-            <loc>https://vikaspogu.dev/</loc>
-            <lastmod>2024-01-14T11:51:33-06:00</lastmod>
-          </url>
     
   
     
@@ -249,8 +260,6 @@
             <loc>https://vikaspogu.dev/blog/opa-gatekeeper-openshift/</loc>
             <lastmod>2020-08-18T00:00:00+00:00</lastmod>
           </url>
-    
-  
     
   
     

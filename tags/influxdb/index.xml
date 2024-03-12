@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>influxdb on Tech Chronicles...</title>
+    <title>Influxdb on Tech Chronicles...</title>
     <link>https://vikaspogu.dev/tags/influxdb/</link>
-    <description>Recent content in influxdb on Tech Chronicles...</description>
+    <description>Recent content in Influxdb on Tech Chronicles...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 08 Aug 2022 15:32:00 -0500</lastBuildDate>
