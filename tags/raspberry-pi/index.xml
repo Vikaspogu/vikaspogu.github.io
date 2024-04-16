@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Raspberry-Pi on Tech Chronicles...</title>
-    <link>https://vikaspogu.dev/tags/raspberry-pi/</link>
+    <link>https://vikaspogu.github.io/tags/raspberry-pi/</link>
     <description>Recent content in Raspberry-Pi on Tech Chronicles...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sun, 05 Jul 2020 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://vikaspogu.dev/tags/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://vikaspogu.github.io/tags/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Raspberry Pi garage opener on k3s cluster</title>
-      <link>https://vikaspogu.dev/blog/pi-garage-k3s/</link>
+      <link>https://vikaspogu.github.io/blog/pi-garage-k3s/</link>
       <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.dev/blog/pi-garage-k3s/</guid>
+      <guid>https://vikaspogu.github.io/blog/pi-garage-k3s/</guid>
       <description>Many articles are out there which demonstrate how to use a raspberry pi as a DIY garage door opener project.</description>
     </item>
     <item>
       <title>k3s cluster with Raspberry-Pi, Traefik</title>
-      <link>https://vikaspogu.dev/blog/kubernetes-home-cluster-traefik/</link>
+      <link>https://vikaspogu.github.io/blog/kubernetes-home-cluster-traefik/</link>
       <pubDate>Tue, 31 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.dev/blog/kubernetes-home-cluster-traefik/</guid>
+      <guid>https://vikaspogu.github.io/blog/kubernetes-home-cluster-traefik/</guid>
       <description>In this post, I’ll share my home lab setup for Rancher&amp;rsquo;s k3s Kubernetes cluster.</description>
     </item>
   </channel>

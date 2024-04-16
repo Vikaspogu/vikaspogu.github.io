@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Groovy on Tech Chronicles...</title>
-    <link>https://vikaspogu.dev/tags/groovy/</link>
+    <link>https://vikaspogu.github.io/tags/groovy/</link>
     <description>Recent content in Groovy on Tech Chronicles...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 07 Jul 2020 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://vikaspogu.dev/tags/groovy/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://vikaspogu.github.io/tags/groovy/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Jenkins pipeline date helper functions</title>
-      <link>https://vikaspogu.dev/blog/jenkins-date-difference/</link>
+      <link>https://vikaspogu.github.io/blog/jenkins-date-difference/</link>
       <pubDate>Tue, 07 Jul 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.dev/blog/jenkins-date-difference/</guid>
+      <guid>https://vikaspogu.github.io/blog/jenkins-date-difference/</guid>
       <description>The below snippet shows how to calculate days between two dates in the Jenkins pipeline.</description>
     </item>
   </channel>

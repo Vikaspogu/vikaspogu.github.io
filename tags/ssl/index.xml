@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SSL on Tech Chronicles...</title>
-    <link>https://vikaspogu.dev/tags/ssl/</link>
+    <link>https://vikaspogu.github.io/tags/ssl/</link>
     <description>Recent content in SSL on Tech Chronicles...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 10 Feb 2020 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://vikaspogu.dev/tags/ssl/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://vikaspogu.github.io/tags/ssl/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Jenkins OpenShift OAuth SSL</title>
-      <link>https://vikaspogu.dev/blog/openshift-jenkins-oauth-ssl/</link>
+      <link>https://vikaspogu.github.io/blog/openshift-jenkins-oauth-ssl/</link>
       <pubDate>Mon, 10 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.dev/blog/openshift-jenkins-oauth-ssl/</guid>
+      <guid>https://vikaspogu.github.io/blog/openshift-jenkins-oauth-ssl/</guid>
       <description>Jenkins SSL #Problem #I recently encountered an issue while authenticating to OpenShift Jenkins using the OpenShift OAuth plugin, where trusted certificates provided by CA aren&amp;rsquo;t included in the default JRE TrustStore.</description>
     </item>
     <item>
       <title>Configuring couchbase SSL for dynamic certificates in OpenShift</title>
-      <link>https://vikaspogu.dev/blog/couchbase-ssl-openshift/</link>
+      <link>https://vikaspogu.github.io/blog/couchbase-ssl-openshift/</link>
       <pubDate>Wed, 28 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.dev/blog/couchbase-ssl-openshift/</guid>
+      <guid>https://vikaspogu.github.io/blog/couchbase-ssl-openshift/</guid>
       <description>Couchbase SSL #Suppose you have followed dynamic creation of java keystores in OpenShift post and wondered how to use similar concepts for couchbase database and a java application.</description>
     </item>
   </channel>

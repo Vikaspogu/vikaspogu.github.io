@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Triggers on Tech Chronicles...</title>
-    <link>https://vikaspogu.dev/tags/triggers/</link>
+    <link>https://vikaspogu.github.io/tags/triggers/</link>
     <description>Recent content in Triggers on Tech Chronicles...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 19 Jan 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://vikaspogu.dev/tags/triggers/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://vikaspogu.github.io/tags/triggers/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tekton triggers and Interceptors</title>
-      <link>https://vikaspogu.dev/blog/tekton-triggers-cel-interception/</link>
+      <link>https://vikaspogu.github.io/blog/tekton-triggers-cel-interception/</link>
       <pubDate>Tue, 19 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.dev/blog/tekton-triggers-cel-interception/</guid>
+      <guid>https://vikaspogu.github.io/blog/tekton-triggers-cel-interception/</guid>
       <description>Tekton Triggers work by having EventListeners receive incoming webhook notifications, processing them using an Interceptor, and creating Kubernetes resources from templates if the interceptor allows it, with the extraction of fields from the body of the webhook</description>
     </item>
   </channel>

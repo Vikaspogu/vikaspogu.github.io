@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Authentication on Tech Chronicles...</title>
-    <link>https://vikaspogu.dev/tags/authentication/</link>
+    <link>https://vikaspogu.github.io/tags/authentication/</link>
     <description>Recent content in Authentication on Tech Chronicles...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 12 Nov 2020 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://vikaspogu.dev/tags/authentication/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://vikaspogu.github.io/tags/authentication/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>End User Auth and Authz with OpenShift Service Mesh and Keycloak</title>
-      <link>https://vikaspogu.dev/blog/servicemesh-jwt-auth-authz-keycloack/</link>
+      <link>https://vikaspogu.github.io/blog/servicemesh-jwt-auth-authz-keycloack/</link>
       <pubDate>Thu, 12 Nov 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.dev/blog/servicemesh-jwt-auth-authz-keycloack/</guid>
+      <guid>https://vikaspogu.github.io/blog/servicemesh-jwt-auth-authz-keycloack/</guid>
       <description>In this article, I will share the setup for enabling Authentication and Authorization in OpenShift Service Mesh with Keycloak.</description>
     </item>
   </channel>

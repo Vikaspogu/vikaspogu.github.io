@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Influxdb on Tech Chronicles...</title>
-    <link>https://vikaspogu.dev/tags/influxdb/</link>
+    <link>https://vikaspogu.github.io/tags/influxdb/</link>
     <description>Recent content in Influxdb on Tech Chronicles...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 08 Aug 2022 15:32:00 -0500</lastBuildDate>
-    <atom:link href="https://vikaspogu.dev/tags/influxdb/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://vikaspogu.github.io/tags/influxdb/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Configure Influxdb with Grafana</title>
-      <link>https://vikaspogu.dev/blog/influxdb-grafana/</link>
+      <link>https://vikaspogu.github.io/blog/influxdb-grafana/</link>
       <pubDate>Mon, 08 Aug 2022 15:32:00 -0500</pubDate>
-      <guid>https://vikaspogu.dev/blog/influxdb-grafana/</guid>
+      <guid>https://vikaspogu.github.io/blog/influxdb-grafana/</guid>
       <description>I recently started using proxmox and was planning on monitoring metrics using InfluxDB and Grafana, which I have already deployed on my Kubernetes cluster.</description>
     </item>
     <item>
       <title>Measure Raspberry Pi temperature using Telegraf, Influxdb, Grafana on k3s</title>
-      <link>https://vikaspogu.dev/blog/raspberry-pi-temp-telegraf/</link>
+      <link>https://vikaspogu.github.io/blog/raspberry-pi-temp-telegraf/</link>
       <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.dev/blog/raspberry-pi-temp-telegraf/</guid>
+      <guid>https://vikaspogu.github.io/blog/raspberry-pi-temp-telegraf/</guid>
       <description>In my previous post, I went through the k3s cluster home setup.</description>
     </item>
   </channel>

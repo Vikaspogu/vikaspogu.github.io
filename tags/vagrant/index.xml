@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vagrant on Tech Chronicles...</title>
-    <link>https://vikaspogu.dev/tags/vagrant/</link>
+    <link>https://vikaspogu.github.io/tags/vagrant/</link>
     <description>Recent content in Vagrant on Tech Chronicles...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 06 Jan 2020 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://vikaspogu.dev/tags/vagrant/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://vikaspogu.github.io/tags/vagrant/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Installing Podman remote client on macOS using vagrant</title>
-      <link>https://vikaspogu.dev/blog/podman-macos/</link>
+      <link>https://vikaspogu.github.io/blog/podman-macos/</link>
       <pubDate>Mon, 06 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.dev/blog/podman-macos/</guid>
+      <guid>https://vikaspogu.github.io/blog/podman-macos/</guid>
       <description>I am installing podman as a remote client on macOS using Vagrant.</description>
     </item>
   </channel>

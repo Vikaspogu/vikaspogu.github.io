@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jenkins on Tech Chronicles...</title>
-    <link>https://vikaspogu.dev/tags/jenkins/</link>
+    <link>https://vikaspogu.github.io/tags/jenkins/</link>
     <description>Recent content in Jenkins on Tech Chronicles...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 18 Aug 2020 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://vikaspogu.dev/tags/jenkins/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://vikaspogu.github.io/tags/jenkins/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Configure Jenkins pipeline job</title>
-      <link>https://vikaspogu.dev/blog/jenkins-seed-job/</link>
+      <link>https://vikaspogu.github.io/blog/jenkins-seed-job/</link>
       <pubDate>Tue, 18 Aug 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.dev/blog/jenkins-seed-job/</guid>
+      <guid>https://vikaspogu.github.io/blog/jenkins-seed-job/</guid>
       <description>In one of my previous posts, I discussed configuring multibranch pipeline seed jobs using Jenkins configuration as code plugin</description>
     </item>
     <item>
       <title>Jenkins pipeline date helper functions</title>
-      <link>https://vikaspogu.dev/blog/jenkins-date-difference/</link>
+      <link>https://vikaspogu.github.io/blog/jenkins-date-difference/</link>
       <pubDate>Tue, 07 Jul 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.dev/blog/jenkins-date-difference/</guid>
+      <guid>https://vikaspogu.github.io/blog/jenkins-date-difference/</guid>
       <description>The below snippet shows how to calculate days between two dates in the Jenkins pipeline.</description>
     </item>
     <item>
       <title>OpenShift Jenkins configuration via JCasC plugin</title>
-      <link>https://vikaspogu.dev/blog/jenkins-config-as-code-openshift/</link>
+      <link>https://vikaspogu.github.io/blog/jenkins-config-as-code-openshift/</link>
       <pubDate>Mon, 06 Jul 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.dev/blog/jenkins-config-as-code-openshift/</guid>
+      <guid>https://vikaspogu.github.io/blog/jenkins-config-as-code-openshift/</guid>
       <description>Deploying Jenkins on Kubernetes provides significant benefits over a standard VM-based deployment.</description>
     </item>
     <item>
       <title>Jenkins OpenShift OAuth SSL</title>
-      <link>https://vikaspogu.dev/blog/openshift-jenkins-oauth-ssl/</link>
+      <link>https://vikaspogu.github.io/blog/openshift-jenkins-oauth-ssl/</link>
       <pubDate>Mon, 10 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.dev/blog/openshift-jenkins-oauth-ssl/</guid>
+      <guid>https://vikaspogu.github.io/blog/openshift-jenkins-oauth-ssl/</guid>
       <description>Jenkins SSL #Problem #I recently encountered an issue while authenticating to OpenShift Jenkins using the OpenShift OAuth plugin, where trusted certificates provided by CA aren&amp;rsquo;t included in the default JRE TrustStore.</description>
     </item>
   </channel>

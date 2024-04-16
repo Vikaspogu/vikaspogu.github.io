@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tektoncd on Tech Chronicles...</title>
-    <link>https://vikaspogu.dev/tags/tektoncd/</link>
+    <link>https://vikaspogu.github.io/tags/tektoncd/</link>
     <description>Recent content in Tektoncd on Tech Chronicles...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Fri, 09 Aug 2019 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://vikaspogu.dev/tags/tektoncd/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://vikaspogu.github.io/tags/tektoncd/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>TektonCD on OpenShift</title>
-      <link>https://vikaspogu.dev/blog/intro-tektoncd-ocp/</link>
+      <link>https://vikaspogu.github.io/blog/intro-tektoncd-ocp/</link>
       <pubDate>Fri, 09 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.dev/blog/intro-tektoncd-ocp/</guid>
+      <guid>https://vikaspogu.github.io/blog/intro-tektoncd-ocp/</guid>
       <description>Recently I came across tektoncd project, The Tekton Pipelines project provides Kubernetes-style resources for declaring CI/CD-style pipelines caught my attention, and I started playing with it.</description>
     </item>
   </channel>
