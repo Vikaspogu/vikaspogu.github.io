@@ -26,20 +26,20 @@ Let&rsquo;s start by installing basic-auth and ldapauth-fork packages
 npm install ldapauth-fork npm install basic-auth Steps for implementation;
  Add packages Create a ldap variable with authentication configuration Basic auth should prompt for you username and password. Once user is found, verify the given password by trying to bind the user client with the found LDAP user object and given password.  const auth = require(&#34;basic-auth&#34;); var LdapAuth = require(&#34;ldapauth-fork&#34;); var ldap = new LdapAuth({ url: &#34;ldap://ldap-url:389&#34;, bindDN: &#34;uid=rc,ou=AppAccounts,ou=People,ou=Entsys,dc=example." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://vikaspogu.dev/posts/2019-05-15-node-ldap-auth/" />
+<meta property="og:url" content="https://vikaspogu.github.io/posts/2019-05-15-node-ldap-auth/" />
 <meta property="article:published_time" content="2019-05-15T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-05-15T00:00:00+00:00" />
 
 
   
-  <base href="https://vikaspogu.dev/posts/2019-05-15-node-ldap-auth/">
+  <base href="https://vikaspogu.github.io/posts/2019-05-15-node-ldap-auth/">
   
   <title>
   Authenticate a Node application with LDAP · vikaspogu
 </title>
 
   
-  <link rel="canonical" href="https://vikaspogu.dev/posts/2019-05-15-node-ldap-auth/">
+  <link rel="canonical" href="https://vikaspogu.github.io/posts/2019-05-15-node-ldap-auth/">
   
 
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700"
@@ -52,7 +52,7 @@ npm install ldapauth-fork npm install basic-auth Steps for implementation;
   
   
   
-  <link rel="stylesheet" href="https://vikaspogu.dev/css/coder.min.28d751104f30c16da1aa1bb04015cbe662cacfe0d1b01af4f2240ad58580069c.css" integrity="sha256-KNdREE8wwW2hqhuwQBXL5mLKz&#43;DRsBr08iQK1YWABpw="
+  <link rel="stylesheet" href="https://vikaspogu.github.io/css/coder.min.28d751104f30c16da1aa1bb04015cbe662cacfe0d1b01af4f2240ad58580069c.css" integrity="sha256-KNdREE8wwW2hqhuwQBXL5mLKz&#43;DRsBr08iQK1YWABpw="
     crossorigin="anonymous" media="screen" />
   
 
@@ -62,7 +62,7 @@ npm install ldapauth-fork npm install basic-auth Steps for implementation;
   
   
   
-  <link rel="stylesheet" href="https://vikaspogu.dev/css/coder-dark.min.83a2010dac9f59f943b3004cd6c4f230507ad036da635d3621401d42ec4e2835.css" integrity="sha256-g6IBDayfWflDswBM1sTyMFB60DbaY102IUAdQuxOKDU="
+  <link rel="stylesheet" href="https://vikaspogu.github.io/css/coder-dark.min.83a2010dac9f59f943b3004cd6c4f230507ad036da635d3621401d42ec4e2835.css" integrity="sha256-g6IBDayfWflDswBM1sTyMFB60DbaY102IUAdQuxOKDU="
     crossorigin="anonymous" media="screen" />
   
   
@@ -71,9 +71,9 @@ npm install ldapauth-fork npm install basic-auth Steps for implementation;
 
   
 
-  <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-32x32.png"
+  <link rel="icon" type="image/png" href="https://vikaspogu.github.io/images/favicon-32x32.png"
     sizes="32x32">
-  <link rel="icon" type="image/png" href="https://vikaspogu.dev/images/favicon-16x16.png"
+  <link rel="icon" type="image/png" href="https://vikaspogu.github.io/images/favicon-16x16.png"
     sizes="16x16">
 
   <meta name="generator" content="Hugo 0.73.0" />
@@ -88,7 +88,7 @@ npm install ldapauth-fork npm install basic-auth Steps for implementation;
   <main class="wrapper">
     <nav class="navigation">
   <section class="container">
-    <a class="navigation-title" href="https://vikaspogu.dev/">
+    <a class="navigation-title" href="https://vikaspogu.github.io/">
       vikaspogu
     </a>
     <input type="checkbox" id="menu-toggle" />
@@ -97,11 +97,11 @@ npm install ldapauth-fork npm install basic-auth Steps for implementation;
       
       
       <li class="navigation-item">
-        <a class="navigation-link" href="https://vikaspogu.dev/about/">About</a>
+        <a class="navigation-link" href="https://vikaspogu.github.io/about/">About</a>
       </li>
       
       <li class="navigation-item">
-        <a class="navigation-link" href="https://vikaspogu.dev/posts/">Blog</a>
+        <a class="navigation-link" href="https://vikaspogu.github.io/posts/">Blog</a>
       </li>
       
       
@@ -115,7 +115,7 @@ npm install ldapauth-fork npm install basic-auth Steps for implementation;
         "@type" : "BlogPosting",
         "mainEntityOfPage": {
              "@type": "WebPage",
-             "@id": "https:\/\/vikaspogu.dev"
+             "@id": "https:\/\/vikaspogu.github.io"
         },
         "articleSection" : "posts",
         "name" : "Authenticate a Node application with LDAP",
@@ -130,7 +130,7 @@ npm install ldapauth-fork npm install basic-auth Steps for implementation;
         "copyrightYear" : "2019",
         "datePublished": "2019-05-15 00:00:00 \u002b0000 UTC",
         "dateModified" : "2019-05-15 00:00:00 \u002b0000 UTC",
-        "url" : "https:\/\/vikaspogu.dev\/posts\/2019-05-15-node-ldap-auth\/",
+        "url" : "https:\/\/vikaspogu.github.io\/posts\/2019-05-15-node-ldap-auth\/",
         "wordCount" : "159",
         "keywords" : [ "NodeJS","LDAP","Blog" ]
     }
@@ -160,9 +160,9 @@ npm install ldapauth-fork npm install basic-auth Steps for implementation;
           
           <div class="tags">
   <i class="fas fa-tag"></i>
-    <a href="https://vikaspogu.dev/tags/nodejs/">NodeJS</a>
+    <a href="https://vikaspogu.github.io/tags/nodejs/">NodeJS</a>
       <span class="separator">•</span>
-    <a href="https://vikaspogu.dev/tags/ldap/">LDAP</a></div>
+    <a href="https://vikaspogu.github.io/tags/ldap/">LDAP</a></div>
 
         </div>
       </header>

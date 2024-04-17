@@ -5,13 +5,13 @@
 Red Hat container images When you bootstrap your JVM, you should have a way to enable JVM debug. For example Red Hat S2I images allows you to control classpath and debugging via environment variables.
 # Set debug options if required if [ x&amp;#34;${JAVA_DEBUG}&amp;#34; != x ] &amp;amp;&amp;amp; [ &amp;#34;${JAVA_DEBUG}&amp;#34; != &amp;#34;false&amp;#34; ]; then java_debug_args=&amp;#34;-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=${JAVA_DEBUG_PORT:-5005}&amp;#34; fi  Setting the JAVA_DEBUG environment variable inside the container to true will add debug args to JVM startup command Configure port forwarding so that you can connect to your application from a remote debugger   If you are using tomcat image replace JAVA_DEBUG environment variable to DEBUG'><title>Debugging a Java application in OpenShift</title>
 
-<link rel='canonical' href='https://vikaspogu.dev/posts/debug-java-container/'>
+<link rel='canonical' href='https://vikaspogu.github.io/posts/debug-java-container/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Debugging a Java application in OpenShift'>
 <meta property='og:description' content='This post will discuss debugging a JAVA application running inside a container.
 Red Hat container images When you bootstrap your JVM, you should have a way to enable JVM debug. For example Red Hat S2I images allows you to control classpath and debugging via environment variables.
 # Set debug options if required if [ x&amp;#34;${JAVA_DEBUG}&amp;#34; != x ] &amp;amp;&amp;amp; [ &amp;#34;${JAVA_DEBUG}&amp;#34; != &amp;#34;false&amp;#34; ]; then java_debug_args=&amp;#34;-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=${JAVA_DEBUG_PORT:-5005}&amp;#34; fi  Setting the JAVA_DEBUG environment variable inside the container to true will add debug args to JVM startup command Configure port forwarding so that you can connect to your application from a remote debugger   If you are using tomcat image replace JAVA_DEBUG environment variable to DEBUG'>
-<meta property='og:url' content='https://vikaspogu.dev/posts/debug-java-container/'>
+<meta property='og:url' content='https://vikaspogu.github.io/posts/debug-java-container/'>
 <meta property='og:site_name' content='My approach...'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='OpenShift' /><meta property='article:tag' content='Java' /><meta property='article:published_time' content='2019-05-14T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2019-05-14T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Debugging a Java application in OpenShift">
