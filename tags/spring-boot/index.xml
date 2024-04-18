@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Spring Boot on Tech Chronicles...</title>
-    <link>https://vikaspogu.github.io/tags/spring-boot/</link>
+    <link>https://vikaspogu.dev/tags/spring-boot/</link>
     <description>Recent content in Spring Boot on Tech Chronicles...</description>
     <generator>Hugo 0.125.0</generator>
     <language>en</language>
     <lastBuildDate>Wed, 15 May 2019 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://vikaspogu.github.io/tags/spring-boot/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://vikaspogu.dev/tags/spring-boot/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Spring Boot metrics with Prometheus and Grafana in OpenShift</title>
-      <link>https://vikaspogu.github.io/blog/springboot-metrics-grafana/</link>
+      <link>https://vikaspogu.dev/blog/springboot-metrics-grafana/</link>
       <pubDate>Wed, 15 May 2019 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/springboot-metrics-grafana/</guid>
+      <guid>https://vikaspogu.dev/blog/springboot-metrics-grafana/</guid>
       <description>Spring Boot Metrics #This post will discuss how to monitor spring boot application metrics using Prometheus and Grafana.</description>
     </item>
   </channel>

@@ -2,339 +2,339 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blogs on Tech Chronicles...</title>
-    <link>https://vikaspogu.github.io/blog/</link>
+    <link>https://vikaspogu.dev/blog/</link>
     <description>Recent content in Blogs on Tech Chronicles...</description>
     <generator>Hugo 0.125.0</generator>
     <language>en</language>
     <lastBuildDate>Sun, 17 Mar 2024 08:39:20 -0400</lastBuildDate>
-    <atom:link href="https://vikaspogu.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://vikaspogu.dev/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Helm Chart Testing on OpenShift Pipelines</title>
-      <link>https://vikaspogu.github.io/blog/chart-testing-tekton-pipelines/</link>
+      <link>https://vikaspogu.dev/blog/chart-testing-tekton-pipelines/</link>
       <pubDate>Sun, 17 Mar 2024 08:39:20 -0400</pubDate>
-      <guid>https://vikaspogu.github.io/blog/chart-testing-tekton-pipelines/</guid>
+      <guid>https://vikaspogu.dev/blog/chart-testing-tekton-pipelines/</guid>
       <description>Introduction #OpenShift Pipelines is a cloud-native CI/CD solution built on Tekton that allows you to define and run pipelines for your applications.</description>
     </item>
     <item>
       <title>Setting Up Cloudflared Tunnel on OpenShift</title>
-      <link>https://vikaspogu.github.io/blog/cloudflared-tunnel-openshift/</link>
+      <link>https://vikaspogu.dev/blog/cloudflared-tunnel-openshift/</link>
       <pubDate>Mon, 11 Mar 2024 16:03:46 -0400</pubDate>
-      <guid>https://vikaspogu.github.io/blog/cloudflared-tunnel-openshift/</guid>
+      <guid>https://vikaspogu.dev/blog/cloudflared-tunnel-openshift/</guid>
       <description>Introduction #Cloudflare&amp;rsquo;s Tunnel, powered by Cloudflared, provides a secure way to expose your web applications to the internet without exposing your origin server&amp;rsquo;s IP address.</description>
     </item>
     <item>
       <title>Getting Started with Red Hat Developer Hub - Part 2</title>
-      <link>https://vikaspogu.github.io/blog/developer-hub-getting-started-part-2/</link>
+      <link>https://vikaspogu.dev/blog/developer-hub-getting-started-part-2/</link>
       <pubDate>Sun, 14 Jan 2024 11:51:33 -0600</pubDate>
-      <guid>https://vikaspogu.github.io/blog/developer-hub-getting-started-part-2/</guid>
+      <guid>https://vikaspogu.dev/blog/developer-hub-getting-started-part-2/</guid>
       <description>In this continuation of our getting started with Developer Hub series, we&amp;rsquo;re diving into the art of crafting templates.</description>
     </item>
     <item>
       <title>Getting Started with Red Hat Developer Hub - Part 1</title>
-      <link>https://vikaspogu.github.io/blog/developer-hub-getting-started-part-1/</link>
+      <link>https://vikaspogu.dev/blog/developer-hub-getting-started-part-1/</link>
       <pubDate>Sat, 13 Jan 2024 11:51:33 -0600</pubDate>
-      <guid>https://vikaspogu.github.io/blog/developer-hub-getting-started-part-1/</guid>
+      <guid>https://vikaspogu.dev/blog/developer-hub-getting-started-part-1/</guid>
       <description>Introduction #Red Hat Developer Hub is based on Spotify&amp;rsquo;s open-sourced backstage project.</description>
     </item>
     <item>
       <title> A Seamless Upgrade: Cloud-Native PostgreSQL Database Version 15 to 16</title>
-      <link>https://vikaspogu.github.io/blog/cloudnative-pg-upgrade/</link>
+      <link>https://vikaspogu.dev/blog/cloudnative-pg-upgrade/</link>
       <pubDate>Fri, 12 Jan 2024 12:11:03 -0600</pubDate>
-      <guid>https://vikaspogu.github.io/blog/cloudnative-pg-upgrade/</guid>
+      <guid>https://vikaspogu.dev/blog/cloudnative-pg-upgrade/</guid>
       <description>Introduction #In the ever-evolving landscape of cloud-native technologies, staying up-to-date with the latest software versions is crucial for ensuring optimal performance, security, and access to new features.</description>
     </item>
     <item>
       <title>SOPS Ansible Execution Image</title>
-      <link>https://vikaspogu.github.io/blog/ansible-sops/</link>
+      <link>https://vikaspogu.dev/blog/ansible-sops/</link>
       <pubDate>Sat, 29 Apr 2023 20:01:54 -0500</pubDate>
-      <guid>https://vikaspogu.github.io/blog/ansible-sops/</guid>
+      <guid>https://vikaspogu.dev/blog/ansible-sops/</guid>
       <description>Introduction #Today, I am excited to share how to set up an Ansible execution environment to control SOPS secrets.</description>
     </item>
     <item>
       <title>Upgrading PostgreSQL in Kubernetes</title>
-      <link>https://vikaspogu.github.io/blog/upgrading-postgresql-image-versions-kubernetes/</link>
+      <link>https://vikaspogu.dev/blog/upgrading-postgresql-image-versions-kubernetes/</link>
       <pubDate>Sat, 21 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/upgrading-postgresql-image-versions-kubernetes/</guid>
+      <guid>https://vikaspogu.dev/blog/upgrading-postgresql-image-versions-kubernetes/</guid>
       <description>I have been running an instance of bitnami&amp;rsquo;s version of Postgresql 12 for a while, and I have recently upgraded/migrated data from version 12 to 15.</description>
     </item>
     <item>
       <title>Forward Openshift Audit Logs to Splunk using Newrelic Fluent Bit</title>
-      <link>https://vikaspogu.github.io/blog/openshift-audit-logs-splunk-newrelic-fluent-bit/</link>
+      <link>https://vikaspogu.dev/blog/openshift-audit-logs-splunk-newrelic-fluent-bit/</link>
       <pubDate>Wed, 11 Jan 2023 12:52:13 -0600</pubDate>
-      <guid>https://vikaspogu.github.io/blog/openshift-audit-logs-splunk-newrelic-fluent-bit/</guid>
+      <guid>https://vikaspogu.dev/blog/openshift-audit-logs-splunk-newrelic-fluent-bit/</guid>
       <description>It is common for organizations to send logs to multiple systems—for example, container logs to NewRelic, and audit logs to Splunk for the InfoSec team.</description>
     </item>
     <item>
       <title>ArgoCD with Kustomize and KSOPS using Age encryption</title>
-      <link>https://vikaspogu.github.io/blog/argo-operator-ksops-age/</link>
+      <link>https://vikaspogu.dev/blog/argo-operator-ksops-age/</link>
       <pubDate>Wed, 10 Aug 2022 16:31:43 -0500</pubDate>
-      <guid>https://vikaspogu.github.io/blog/argo-operator-ksops-age/</guid>
+      <guid>https://vikaspogu.dev/blog/argo-operator-ksops-age/</guid>
       <description>I am a big fan of FluxCD and its integration with secrets management; however, recently, I decided to tinker with ArgoCD.</description>
     </item>
     <item>
       <title>Configure Influxdb with Grafana</title>
-      <link>https://vikaspogu.github.io/blog/influxdb-grafana/</link>
+      <link>https://vikaspogu.dev/blog/influxdb-grafana/</link>
       <pubDate>Mon, 08 Aug 2022 15:32:00 -0500</pubDate>
-      <guid>https://vikaspogu.github.io/blog/influxdb-grafana/</guid>
+      <guid>https://vikaspogu.dev/blog/influxdb-grafana/</guid>
       <description>I recently started using proxmox and was planning on monitoring metrics using InfluxDB and Grafana, which I have already deployed on my Kubernetes cluster.</description>
     </item>
     <item>
       <title>PXE boot with Synology NAS</title>
-      <link>https://vikaspogu.github.io/blog/tftp-udm-pxe/</link>
+      <link>https://vikaspogu.dev/blog/tftp-udm-pxe/</link>
       <pubDate>Fri, 13 May 2022 16:09:15 -0500</pubDate>
-      <guid>https://vikaspogu.github.io/blog/tftp-udm-pxe/</guid>
+      <guid>https://vikaspogu.dev/blog/tftp-udm-pxe/</guid>
       <description>In this post, I have documented the steps I followed to install RHEL 8 by booting from a PXE server over the network with a Kickstart file using Synology NAS as TFTP, and HTTP server.</description>
     </item>
     <item>
       <title>Helm alternative for multiple If-Else conditions</title>
-      <link>https://vikaspogu.github.io/blog/helm-dict-function/</link>
+      <link>https://vikaspogu.dev/blog/helm-dict-function/</link>
       <pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/helm-dict-function/</guid>
+      <guid>https://vikaspogu.dev/blog/helm-dict-function/</guid>
       <description>Recently I was in a situation where I ended up writing multiple if-else statements in the helm template.</description>
     </item>
     <item>
       <title>Build multi-arch docker image using Tekton</title>
-      <link>https://vikaspogu.github.io/blog/tekton-multiarch-buildx/</link>
+      <link>https://vikaspogu.dev/blog/tekton-multiarch-buildx/</link>
       <pubDate>Tue, 19 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/tekton-multiarch-buildx/</guid>
+      <guid>https://vikaspogu.dev/blog/tekton-multiarch-buildx/</guid>
       <description>There are three different strategies to build multi-platform images that Buildx and Dockerfiles support:</description>
     </item>
     <item>
       <title>Tekton triggers and Interceptors</title>
-      <link>https://vikaspogu.github.io/blog/tekton-triggers-cel-interception/</link>
+      <link>https://vikaspogu.dev/blog/tekton-triggers-cel-interception/</link>
       <pubDate>Tue, 19 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/tekton-triggers-cel-interception/</guid>
+      <guid>https://vikaspogu.dev/blog/tekton-triggers-cel-interception/</guid>
       <description>Tekton Triggers work by having EventListeners receive incoming webhook notifications, processing them using an Interceptor, and creating Kubernetes resources from templates if the interceptor allows it, with the extraction of fields from the body of the webhook</description>
     </item>
     <item>
       <title>GitOps with Tekton and ArgoCD</title>
-      <link>https://vikaspogu.github.io/blog/tekton-argocd-gitops/</link>
+      <link>https://vikaspogu.dev/blog/tekton-argocd-gitops/</link>
       <pubDate>Thu, 14 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/tekton-argocd-gitops/</guid>
+      <guid>https://vikaspogu.dev/blog/tekton-argocd-gitops/</guid>
       <description>In this post, I will:</description>
     </item>
     <item>
       <title>Setting up docker buildx on Linux</title>
-      <link>https://vikaspogu.github.io/blog/docker-buildx-setup/</link>
+      <link>https://vikaspogu.dev/blog/docker-buildx-setup/</link>
       <pubDate>Sat, 05 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/docker-buildx-setup/</guid>
+      <guid>https://vikaspogu.dev/blog/docker-buildx-setup/</guid>
       <description>Docker buildx on Linux #Installation instructions for Ubuntu</description>
     </item>
     <item>
       <title>Boot from USB through grub menu</title>
-      <link>https://vikaspogu.github.io/blog/boot-from-usb-through-grub-menu/</link>
+      <link>https://vikaspogu.dev/blog/boot-from-usb-through-grub-menu/</link>
       <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/boot-from-usb-through-grub-menu/</guid>
+      <guid>https://vikaspogu.dev/blog/boot-from-usb-through-grub-menu/</guid>
       <description>First, make sure you have secure boot disabled from the firmware settings.</description>
     </item>
     <item>
       <title>End User Auth and Authz with OpenShift Service Mesh and Keycloak</title>
-      <link>https://vikaspogu.github.io/blog/servicemesh-jwt-auth-authz-keycloack/</link>
+      <link>https://vikaspogu.dev/blog/servicemesh-jwt-auth-authz-keycloack/</link>
       <pubDate>Thu, 12 Nov 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/servicemesh-jwt-auth-authz-keycloack/</guid>
+      <guid>https://vikaspogu.dev/blog/servicemesh-jwt-auth-authz-keycloack/</guid>
       <description>In this article, I will share the setup for enabling Authentication and Authorization in OpenShift Service Mesh with Keycloak.</description>
     </item>
     <item>
       <title>Syslog with Loki Promtail</title>
-      <link>https://vikaspogu.github.io/blog/loki-rsyslog-k3s/</link>
+      <link>https://vikaspogu.dev/blog/loki-rsyslog-k3s/</link>
       <pubDate>Wed, 04 Nov 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/loki-rsyslog-k3s/</guid>
+      <guid>https://vikaspogu.dev/blog/loki-rsyslog-k3s/</guid>
       <description>Enable Syslog, do this on each host, and replace target IP (and maybe port) with your Syslog externalIP that is in helm values for promtail</description>
     </item>
     <item>
       <title>Helm join strings in a named template</title>
-      <link>https://vikaspogu.github.io/blog/helm-join-function/</link>
+      <link>https://vikaspogu.dev/blog/helm-join-function/</link>
       <pubDate>Thu, 08 Oct 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/helm-join-function/</guid>
+      <guid>https://vikaspogu.dev/blog/helm-join-function/</guid>
       <description>The key benefit of Helm is that it helps reduce the configuration a user needs to provide to deploy applications to Kubernetes.</description>
     </item>
     <item>
       <title>AdGuard on Kubernetes</title>
-      <link>https://vikaspogu.github.io/blog/adguardhome-kubernetes/</link>
+      <link>https://vikaspogu.dev/blog/adguardhome-kubernetes/</link>
       <pubDate>Wed, 19 Aug 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/adguardhome-kubernetes/</guid>
+      <guid>https://vikaspogu.dev/blog/adguardhome-kubernetes/</guid>
       <description>AdGuard #AdGuard Home is a network-wide software for blocking ads &amp;amp; tracking</description>
     </item>
     <item>
       <title>Configure Jenkins pipeline job</title>
-      <link>https://vikaspogu.github.io/blog/jenkins-seed-job/</link>
+      <link>https://vikaspogu.dev/blog/jenkins-seed-job/</link>
       <pubDate>Tue, 18 Aug 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/jenkins-seed-job/</guid>
+      <guid>https://vikaspogu.dev/blog/jenkins-seed-job/</guid>
       <description>In one of my previous posts, I discussed configuring multibranch pipeline seed jobs using Jenkins configuration as code plugin</description>
     </item>
     <item>
       <title>OPA Gatekeeper on OpenShift</title>
-      <link>https://vikaspogu.github.io/blog/opa-gatekeeper-openshift/</link>
+      <link>https://vikaspogu.dev/blog/opa-gatekeeper-openshift/</link>
       <pubDate>Tue, 18 Aug 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/opa-gatekeeper-openshift/</guid>
+      <guid>https://vikaspogu.dev/blog/opa-gatekeeper-openshift/</guid>
       <description>Every organization has policies.</description>
     </item>
     <item>
       <title>Jenkins pipeline date helper functions</title>
-      <link>https://vikaspogu.github.io/blog/jenkins-date-difference/</link>
+      <link>https://vikaspogu.dev/blog/jenkins-date-difference/</link>
       <pubDate>Tue, 07 Jul 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/jenkins-date-difference/</guid>
+      <guid>https://vikaspogu.dev/blog/jenkins-date-difference/</guid>
       <description>The below snippet shows how to calculate days between two dates in the Jenkins pipeline.</description>
     </item>
     <item>
       <title>OpenShift Jenkins configuration via JCasC plugin</title>
-      <link>https://vikaspogu.github.io/blog/jenkins-config-as-code-openshift/</link>
+      <link>https://vikaspogu.dev/blog/jenkins-config-as-code-openshift/</link>
       <pubDate>Mon, 06 Jul 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/jenkins-config-as-code-openshift/</guid>
+      <guid>https://vikaspogu.dev/blog/jenkins-config-as-code-openshift/</guid>
       <description>Deploying Jenkins on Kubernetes provides significant benefits over a standard VM-based deployment.</description>
     </item>
     <item>
       <title>Raspberry Pi garage opener on k3s cluster</title>
-      <link>https://vikaspogu.github.io/blog/pi-garage-k3s/</link>
+      <link>https://vikaspogu.dev/blog/pi-garage-k3s/</link>
       <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/pi-garage-k3s/</guid>
+      <guid>https://vikaspogu.dev/blog/pi-garage-k3s/</guid>
       <description>Many articles are out there which demonstrate how to use a raspberry pi as a DIY garage door opener project.</description>
     </item>
     <item>
       <title>Slack bot with Nodejs</title>
-      <link>https://vikaspogu.github.io/blog/nodejs-slack-bot/</link>
+      <link>https://vikaspogu.dev/blog/nodejs-slack-bot/</link>
       <pubDate>Sat, 04 Jul 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/nodejs-slack-bot/</guid>
+      <guid>https://vikaspogu.dev/blog/nodejs-slack-bot/</guid>
       <description>Build your slack bot in a few steps.</description>
     </item>
     <item>
       <title>Pi Hole on k3s cluster</title>
-      <link>https://vikaspogu.github.io/blog/pi-hole-kubernetes/</link>
+      <link>https://vikaspogu.dev/blog/pi-hole-kubernetes/</link>
       <pubDate>Sat, 07 Mar 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/pi-hole-kubernetes/</guid>
+      <guid>https://vikaspogu.dev/blog/pi-hole-kubernetes/</guid>
       <description>Pi-hole is a fantastic tool that blocks DNS requests to ad servers.</description>
     </item>
     <item>
       <title>Jenkins OpenShift OAuth SSL</title>
-      <link>https://vikaspogu.github.io/blog/openshift-jenkins-oauth-ssl/</link>
+      <link>https://vikaspogu.dev/blog/openshift-jenkins-oauth-ssl/</link>
       <pubDate>Mon, 10 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/openshift-jenkins-oauth-ssl/</guid>
+      <guid>https://vikaspogu.dev/blog/openshift-jenkins-oauth-ssl/</guid>
       <description>Jenkins SSL #Problem #I recently encountered an issue while authenticating to OpenShift Jenkins using the OpenShift OAuth plugin, where trusted certificates provided by CA aren&amp;rsquo;t included in the default JRE TrustStore.</description>
     </item>
     <item>
       <title>Installing Podman remote client on macOS using vagrant</title>
-      <link>https://vikaspogu.github.io/blog/podman-macos/</link>
+      <link>https://vikaspogu.dev/blog/podman-macos/</link>
       <pubDate>Mon, 06 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/podman-macos/</guid>
+      <guid>https://vikaspogu.dev/blog/podman-macos/</guid>
       <description>I am installing podman as a remote client on macOS using Vagrant.</description>
     </item>
     <item>
       <title>Measure Raspberry Pi temperature using Telegraf, Influxdb, Grafana on k3s</title>
-      <link>https://vikaspogu.github.io/blog/raspberry-pi-temp-telegraf/</link>
+      <link>https://vikaspogu.dev/blog/raspberry-pi-temp-telegraf/</link>
       <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/raspberry-pi-temp-telegraf/</guid>
+      <guid>https://vikaspogu.dev/blog/raspberry-pi-temp-telegraf/</guid>
       <description>In my previous post, I went through the k3s cluster home setup.</description>
     </item>
     <item>
       <title>k3s cluster with Raspberry-Pi, Traefik</title>
-      <link>https://vikaspogu.github.io/blog/kubernetes-home-cluster-traefik/</link>
+      <link>https://vikaspogu.dev/blog/kubernetes-home-cluster-traefik/</link>
       <pubDate>Tue, 31 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/kubernetes-home-cluster-traefik/</guid>
+      <guid>https://vikaspogu.dev/blog/kubernetes-home-cluster-traefik/</guid>
       <description>In this post, I’ll share my home lab setup for Rancher&amp;rsquo;s k3s Kubernetes cluster.</description>
     </item>
     <item>
       <title>Permission denied pushing to OpenShift Registry</title>
-      <link>https://vikaspogu.github.io/blog/ocp-docker-registry-500-err/</link>
+      <link>https://vikaspogu.dev/blog/ocp-docker-registry-500-err/</link>
       <pubDate>Wed, 18 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/ocp-docker-registry-500-err/</guid>
+      <guid>https://vikaspogu.dev/blog/ocp-docker-registry-500-err/</guid>
       <description>Recently, I ran into an issue where pushing images to the docker registry after a build fails.</description>
     </item>
     <item>
       <title>Basic Authentication in Go with Gin</title>
-      <link>https://vikaspogu.github.io/blog/golang-basicauth-gin/</link>
+      <link>https://vikaspogu.dev/blog/golang-basicauth-gin/</link>
       <pubDate>Mon, 16 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/golang-basicauth-gin/</guid>
+      <guid>https://vikaspogu.dev/blog/golang-basicauth-gin/</guid>
       <description>This short post looks at adding basic authentication to GoLang applications.</description>
     </item>
     <item>
       <title>Create and add NFS storage to RHV</title>
-      <link>https://vikaspogu.github.io/blog/create-nfs-server-rhel-rhv/</link>
+      <link>https://vikaspogu.dev/blog/create-nfs-server-rhel-rhv/</link>
       <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/create-nfs-server-rhel-rhv/</guid>
+      <guid>https://vikaspogu.dev/blog/create-nfs-server-rhel-rhv/</guid>
       <description>Set up NFS shares that will serve as storage domains on a Red Hat Enterprise Linux server.</description>
     </item>
     <item>
       <title>Configuring couchbase SSL for dynamic certificates in OpenShift</title>
-      <link>https://vikaspogu.github.io/blog/couchbase-ssl-openshift/</link>
+      <link>https://vikaspogu.dev/blog/couchbase-ssl-openshift/</link>
       <pubDate>Wed, 28 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/couchbase-ssl-openshift/</guid>
+      <guid>https://vikaspogu.dev/blog/couchbase-ssl-openshift/</guid>
       <description>Couchbase SSL #Suppose you have followed dynamic creation of java keystores in OpenShift post and wondered how to use similar concepts for couchbase database and a java application.</description>
     </item>
     <item>
       <title>TektonCD on OpenShift</title>
-      <link>https://vikaspogu.github.io/blog/intro-tektoncd-ocp/</link>
+      <link>https://vikaspogu.dev/blog/intro-tektoncd-ocp/</link>
       <pubDate>Fri, 09 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/intro-tektoncd-ocp/</guid>
+      <guid>https://vikaspogu.dev/blog/intro-tektoncd-ocp/</guid>
       <description>Recently I came across tektoncd project, The Tekton Pipelines project provides Kubernetes-style resources for declaring CI/CD-style pipelines caught my attention, and I started playing with it.</description>
     </item>
     <item>
       <title>Go JWT Authentication with Keycloak</title>
-      <link>https://vikaspogu.github.io/blog/sso-jwt-golang/</link>
+      <link>https://vikaspogu.dev/blog/sso-jwt-golang/</link>
       <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/sso-jwt-golang/</guid>
+      <guid>https://vikaspogu.dev/blog/sso-jwt-golang/</guid>
       <description>I recently worked on a React project with Go backend using Gin web framework.</description>
     </item>
     <item>
       <title>React App with RedHat SSO or keycloak</title>
-      <link>https://vikaspogu.github.io/blog/redhat-sso-react/</link>
+      <link>https://vikaspogu.dev/blog/redhat-sso-react/</link>
       <pubDate>Thu, 25 Jul 2019 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/redhat-sso-react/</guid>
+      <guid>https://vikaspogu.dev/blog/redhat-sso-react/</guid>
       <description>This post will show you how to secure a React app using RedHat SSO (upstream Keycloak).</description>
     </item>
     <item>
       <title>Heketi JWT token expired error</title>
-      <link>https://vikaspogu.github.io/blog/heketi-jwt-error/</link>
+      <link>https://vikaspogu.dev/blog/heketi-jwt-error/</link>
       <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/heketi-jwt-error/</guid>
+      <guid>https://vikaspogu.dev/blog/heketi-jwt-error/</guid>
       <description>Recently I encountered a JWT token expired error on the heketi pod in the OpenShift cluster.</description>
     </item>
     <item>
       <title>Patternfly setup in React Application</title>
-      <link>https://vikaspogu.github.io/blog/patternfly-setup-react/</link>
+      <link>https://vikaspogu.dev/blog/patternfly-setup-react/</link>
       <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/patternfly-setup-react/</guid>
+      <guid>https://vikaspogu.dev/blog/patternfly-setup-react/</guid>
       <description>To order to integrate Patternfly framework into a ReactJS application, create a new project or use an existing one</description>
     </item>
     <item>
       <title>Authenticate a Node application with LDAP</title>
-      <link>https://vikaspogu.github.io/blog/node-ldap-auth/</link>
+      <link>https://vikaspogu.dev/blog/node-ldap-auth/</link>
       <pubDate>Wed, 15 May 2019 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/node-ldap-auth/</guid>
+      <guid>https://vikaspogu.dev/blog/node-ldap-auth/</guid>
       <description>This post demonstrates how to authenticate a user against LDAP.</description>
     </item>
     <item>
       <title>Deleting an OpenShift project stuck in terminating state</title>
-      <link>https://vikaspogu.github.io/blog/project-terminating/</link>
+      <link>https://vikaspogu.dev/blog/project-terminating/</link>
       <pubDate>Wed, 15 May 2019 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/project-terminating/</guid>
+      <guid>https://vikaspogu.dev/blog/project-terminating/</guid>
       <description>Recently I faced an issue where one of my projects got stuck in a terminating state for days.</description>
     </item>
     <item>
       <title>Spring Boot metrics with Prometheus and Grafana in OpenShift</title>
-      <link>https://vikaspogu.github.io/blog/springboot-metrics-grafana/</link>
+      <link>https://vikaspogu.dev/blog/springboot-metrics-grafana/</link>
       <pubDate>Wed, 15 May 2019 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/springboot-metrics-grafana/</guid>
+      <guid>https://vikaspogu.dev/blog/springboot-metrics-grafana/</guid>
       <description>Spring Boot Metrics #This post will discuss how to monitor spring boot application metrics using Prometheus and Grafana.</description>
     </item>
     <item>
       <title>Debugging a .NET Core application running on OpenShift</title>
-      <link>https://vikaspogu.github.io/blog/debug-netcore-openshift/</link>
+      <link>https://vikaspogu.dev/blog/debug-netcore-openshift/</link>
       <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/debug-netcore-openshift/</guid>
+      <guid>https://vikaspogu.dev/blog/debug-netcore-openshift/</guid>
       <description>This post concerns remote debugging an ASP.</description>
     </item>
     <item>
       <title>Debugging a Java application in OpenShift.</title>
-      <link>https://vikaspogu.github.io/blog/debug-java-container/</link>
+      <link>https://vikaspogu.dev/blog/debug-java-container/</link>
       <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/debug-java-container/</guid>
+      <guid>https://vikaspogu.dev/blog/debug-java-container/</guid>
       <description>This post will discuss debugging a JAVA application running inside a container.</description>
     </item>
     <item>
       <title>Profiling an application in OpenShift container.</title>
-      <link>https://vikaspogu.github.io/blog/javaprofiler-openshift/</link>
+      <link>https://vikaspogu.dev/blog/javaprofiler-openshift/</link>
       <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/javaprofiler-openshift/</guid>
+      <guid>https://vikaspogu.dev/blog/javaprofiler-openshift/</guid>
       <description>Sometimes writing code that runs is not enough.</description>
     </item>
   </channel>

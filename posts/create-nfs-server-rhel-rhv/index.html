@@ -6,14 +6,14 @@ Add firewall rule are to rhel server
 firewall-cmd --permanent --add-service nfs firewall-cmd --permanent --add-service mountd firewall-cmd --reload Create and add group kvm; set the ownership of your exported directories to 36:36, which gives vdsm:kvm ownership; change the mode of the directories so that read and write access is granted to the owner
 groupadd kvm -g 36 useradd vdsm -u 36 -g 36 mkdir -pv /home/rhv-data-vol chown -R 36:36 /home/rhv-data-vol chmod 0755 /home/rhv-data-vol Add newly created directory to /etc/exports file which controls file systems are exported to remote hosts and specifies options.'><title>Create and add NFS storage to RHV</title>
 
-<link rel='canonical' href='https://vikaspogu.github.io/posts/create-nfs-server-rhel-rhv/'>
+<link rel='canonical' href='https://vikaspogu.dev/posts/create-nfs-server-rhel-rhv/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Create and add NFS storage to RHV'>
 <meta property='og:description' content='Set up NFS shares that will serve as storage domains on a Red Hat Enterprise Linux server.
 Add firewall rule are to rhel server
 firewall-cmd --permanent --add-service nfs firewall-cmd --permanent --add-service mountd firewall-cmd --reload Create and add group kvm; set the ownership of your exported directories to 36:36, which gives vdsm:kvm ownership; change the mode of the directories so that read and write access is granted to the owner
 groupadd kvm -g 36 useradd vdsm -u 36 -g 36 mkdir -pv /home/rhv-data-vol chown -R 36:36 /home/rhv-data-vol chmod 0755 /home/rhv-data-vol Add newly created directory to /etc/exports file which controls file systems are exported to remote hosts and specifies options.'>
-<meta property='og:url' content='https://vikaspogu.github.io/posts/create-nfs-server-rhel-rhv/'>
+<meta property='og:url' content='https://vikaspogu.dev/posts/create-nfs-server-rhel-rhv/'>
 <meta property='og:site_name' content='My approach...'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='RHV' /><meta property='article:tag' content='NFS' /><meta property='article:published_time' content='2019-11-02T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2019-11-02T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Create and add NFS storage to RHV">

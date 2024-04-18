@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Heketi on Tech Chronicles...</title>
-    <link>https://vikaspogu.github.io/tags/heketi/</link>
+    <link>https://vikaspogu.dev/tags/heketi/</link>
     <description>Recent content in Heketi on Tech Chronicles...</description>
     <generator>Hugo 0.125.0</generator>
     <language>en</language>
     <lastBuildDate>Tue, 16 Jul 2019 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://vikaspogu.github.io/tags/heketi/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://vikaspogu.dev/tags/heketi/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Heketi JWT token expired error</title>
-      <link>https://vikaspogu.github.io/blog/heketi-jwt-error/</link>
+      <link>https://vikaspogu.dev/blog/heketi-jwt-error/</link>
       <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/heketi-jwt-error/</guid>
+      <guid>https://vikaspogu.dev/blog/heketi-jwt-error/</guid>
       <description>Recently I encountered a JWT token expired error on the heketi pod in the OpenShift cluster.</description>
     </item>
   </channel>

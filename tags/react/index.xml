@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>React on Tech Chronicles...</title>
-    <link>https://vikaspogu.github.io/tags/react/</link>
+    <link>https://vikaspogu.dev/tags/react/</link>
     <description>Recent content in React on Tech Chronicles...</description>
     <generator>Hugo 0.125.0</generator>
     <language>en</language>
     <lastBuildDate>Thu, 25 Jul 2019 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://vikaspogu.github.io/tags/react/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://vikaspogu.dev/tags/react/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>React App with RedHat SSO or keycloak</title>
-      <link>https://vikaspogu.github.io/blog/redhat-sso-react/</link>
+      <link>https://vikaspogu.dev/blog/redhat-sso-react/</link>
       <pubDate>Thu, 25 Jul 2019 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/redhat-sso-react/</guid>
+      <guid>https://vikaspogu.dev/blog/redhat-sso-react/</guid>
       <description>This post will show you how to secure a React app using RedHat SSO (upstream Keycloak).</description>
     </item>
   </channel>

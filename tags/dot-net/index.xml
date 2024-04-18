@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dot Net on Tech Chronicles...</title>
-    <link>https://vikaspogu.github.io/tags/dot-net/</link>
+    <link>https://vikaspogu.dev/tags/dot-net/</link>
     <description>Recent content in Dot Net on Tech Chronicles...</description>
     <generator>Hugo 0.125.0</generator>
     <language>en</language>
     <lastBuildDate>Tue, 14 May 2019 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://vikaspogu.github.io/tags/dot-net/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://vikaspogu.dev/tags/dot-net/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Debugging a .NET Core application running on OpenShift</title>
-      <link>https://vikaspogu.github.io/blog/debug-netcore-openshift/</link>
+      <link>https://vikaspogu.dev/blog/debug-netcore-openshift/</link>
       <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/debug-netcore-openshift/</guid>
+      <guid>https://vikaspogu.dev/blog/debug-netcore-openshift/</guid>
       <description>This post concerns remote debugging an ASP.</description>
     </item>
   </channel>

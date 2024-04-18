@@ -6,14 +6,14 @@ Let&amp;rsquo;s start by installing basic-auth and ldapauth-fork packages
 npm install ldapauth-fork npm install basic-auth Steps for implementation;
  Add packages Create a ldap variable with authentication configuration Basic auth should prompt for you username and password. Once user is found, verify the given password by trying to bind the user client with the found LDAP user object and given password.  const auth = require(&amp;#34;basic-auth&amp;#34;); var LdapAuth = require(&amp;#34;ldapauth-fork&amp;#34;); var ldap = new LdapAuth({ url: &amp;#34;ldap://ldap-url:389&amp;#34;, bindDN: &amp;#34;uid=rc,ou=AppAccounts,ou=People,ou=Entsys,dc=example.'><title>Authenticate a Node application with LDAP</title>
 
-<link rel='canonical' href='https://vikaspogu.github.io/posts/node-ldap-auth/'>
+<link rel='canonical' href='https://vikaspogu.dev/posts/node-ldap-auth/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Authenticate a Node application with LDAP'>
 <meta property='og:description' content='This post demonstrates how to authenticate a user against LDAP.
 Let&amp;rsquo;s start by installing basic-auth and ldapauth-fork packages
 npm install ldapauth-fork npm install basic-auth Steps for implementation;
  Add packages Create a ldap variable with authentication configuration Basic auth should prompt for you username and password. Once user is found, verify the given password by trying to bind the user client with the found LDAP user object and given password.  const auth = require(&amp;#34;basic-auth&amp;#34;); var LdapAuth = require(&amp;#34;ldapauth-fork&amp;#34;); var ldap = new LdapAuth({ url: &amp;#34;ldap://ldap-url:389&amp;#34;, bindDN: &amp;#34;uid=rc,ou=AppAccounts,ou=People,ou=Entsys,dc=example.'>
-<meta property='og:url' content='https://vikaspogu.github.io/posts/node-ldap-auth/'>
+<meta property='og:url' content='https://vikaspogu.dev/posts/node-ldap-auth/'>
 <meta property='og:site_name' content='My approach...'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='NodeJS' /><meta property='article:tag' content='LDAP' /><meta property='article:published_time' content='2019-05-15T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2019-05-15T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Authenticate a Node application with LDAP">

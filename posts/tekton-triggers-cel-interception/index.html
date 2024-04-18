@@ -5,13 +5,13 @@
 CEL Interceptors can be used to filter or modify incoming events. for example if you want to truncate commit id from the webhook body
 apiVersion:triggers.tekton.dev/v1alpha1kind:EventListenermetadata:name:shared-listenernamespace:defaultspec:serviceAccountName:build-bottriggers:- name:shared-pipeline-triggerinterceptors:- cel:overlays:- key:intercepted.commit_id_shortexpression:&amp;#34;body.head_commit.id.truncate(7)&amp;#34;bindings:- ref:pipeline-bindingtemplate:ref:pipeline-templateApplied overlay can be extracted using a extensions body in the binding.'><title>Tekton triggers and Interceptors</title>
 
-<link rel='canonical' href='https://vikaspogu.github.io/posts/tekton-triggers-cel-interception/'>
+<link rel='canonical' href='https://vikaspogu.dev/posts/tekton-triggers-cel-interception/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Tekton triggers and Interceptors'>
 <meta property='og:description' content='Tekton Triggers work by having EventListeners receive incoming webhook notifications, processing them using an Interceptor, and creating Kubernetes resources from templates if the interceptor allows it, with extraction of fields from the body of the webhook
 CEL Interceptors can be used to filter or modify incoming events. for example if you want to truncate commit id from the webhook body
 apiVersion:triggers.tekton.dev/v1alpha1kind:EventListenermetadata:name:shared-listenernamespace:defaultspec:serviceAccountName:build-bottriggers:- name:shared-pipeline-triggerinterceptors:- cel:overlays:- key:intercepted.commit_id_shortexpression:&amp;#34;body.head_commit.id.truncate(7)&amp;#34;bindings:- ref:pipeline-bindingtemplate:ref:pipeline-templateApplied overlay can be extracted using a extensions body in the binding.'>
-<meta property='og:url' content='https://vikaspogu.github.io/posts/tekton-triggers-cel-interception/'>
+<meta property='og:url' content='https://vikaspogu.dev/posts/tekton-triggers-cel-interception/'>
 <meta property='og:site_name' content='My approach...'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='tekton' /><meta property='article:tag' content='triggers' /><meta property='article:tag' content='cel' /><meta property='article:published_time' content='2021-01-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-01-19T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Tekton triggers and Interceptors">

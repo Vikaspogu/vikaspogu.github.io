@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Patternfly on Tech Chronicles...</title>
-    <link>https://vikaspogu.github.io/tags/patternfly/</link>
+    <link>https://vikaspogu.dev/tags/patternfly/</link>
     <description>Recent content in Patternfly on Tech Chronicles...</description>
     <generator>Hugo 0.125.0</generator>
     <language>en</language>
     <lastBuildDate>Mon, 01 Jul 2019 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://vikaspogu.github.io/tags/patternfly/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://vikaspogu.dev/tags/patternfly/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Patternfly setup in React Application</title>
-      <link>https://vikaspogu.github.io/blog/patternfly-setup-react/</link>
+      <link>https://vikaspogu.dev/blog/patternfly-setup-react/</link>
       <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/patternfly-setup-react/</guid>
+      <guid>https://vikaspogu.dev/blog/patternfly-setup-react/</guid>
       <description>To order to integrate Patternfly framework into a ReactJS application, create a new project or use an existing one</description>
     </item>
   </channel>

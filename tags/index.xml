@@ -2,549 +2,549 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Tech Chronicles...</title>
-    <link>https://vikaspogu.github.io/tags/</link>
+    <link>https://vikaspogu.dev/tags/</link>
     <description>Recent content in Tags on Tech Chronicles...</description>
     <generator>Hugo 0.125.0</generator>
     <language>en</language>
     <lastBuildDate>Mon, 11 Mar 2024 16:03:46 -0400</lastBuildDate>
-    <atom:link href="https://vikaspogu.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://vikaspogu.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cloudflared</title>
-      <link>https://vikaspogu.github.io/tags/cloudflared/</link>
+      <link>https://vikaspogu.dev/tags/cloudflared/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/cloudflared/</guid>
+      <guid>https://vikaspogu.dev/tags/cloudflared/</guid>
       <description></description>
     </item>
     <item>
       <title>OpenShift</title>
-      <link>https://vikaspogu.github.io/tags/openshift/</link>
+      <link>https://vikaspogu.dev/tags/openshift/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/openshift/</guid>
+      <guid>https://vikaspogu.dev/tags/openshift/</guid>
       <description></description>
     </item>
     <item>
       <title>Backstage</title>
-      <link>https://vikaspogu.github.io/tags/backstage/</link>
+      <link>https://vikaspogu.dev/tags/backstage/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/backstage/</guid>
+      <guid>https://vikaspogu.dev/tags/backstage/</guid>
       <description></description>
     </item>
     <item>
       <title>IDP</title>
-      <link>https://vikaspogu.github.io/tags/idp/</link>
+      <link>https://vikaspogu.dev/tags/idp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/idp/</guid>
+      <guid>https://vikaspogu.dev/tags/idp/</guid>
       <description></description>
     </item>
     <item>
       <title>Red Hat Developer Hub</title>
-      <link>https://vikaspogu.github.io/tags/red-hat-developer-hub/</link>
+      <link>https://vikaspogu.dev/tags/red-hat-developer-hub/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/red-hat-developer-hub/</guid>
+      <guid>https://vikaspogu.dev/tags/red-hat-developer-hub/</guid>
       <description></description>
     </item>
     <item>
       <title>Cloudnative-Pg</title>
-      <link>https://vikaspogu.github.io/tags/cloudnative-pg/</link>
+      <link>https://vikaspogu.dev/tags/cloudnative-pg/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/cloudnative-pg/</guid>
+      <guid>https://vikaspogu.dev/tags/cloudnative-pg/</guid>
       <description></description>
     </item>
     <item>
       <title>Postgresql</title>
-      <link>https://vikaspogu.github.io/tags/postgresql/</link>
+      <link>https://vikaspogu.dev/tags/postgresql/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/postgresql/</guid>
+      <guid>https://vikaspogu.dev/tags/postgresql/</guid>
       <description></description>
     </item>
     <item>
       <title>Ansible</title>
-      <link>https://vikaspogu.github.io/tags/ansible/</link>
+      <link>https://vikaspogu.dev/tags/ansible/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/ansible/</guid>
+      <guid>https://vikaspogu.dev/tags/ansible/</guid>
       <description></description>
     </item>
     <item>
       <title>Custom Execution Image</title>
-      <link>https://vikaspogu.github.io/tags/custom-execution-image/</link>
+      <link>https://vikaspogu.dev/tags/custom-execution-image/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/custom-execution-image/</guid>
+      <guid>https://vikaspogu.dev/tags/custom-execution-image/</guid>
       <description></description>
     </item>
     <item>
       <title>Sops</title>
-      <link>https://vikaspogu.github.io/tags/sops/</link>
+      <link>https://vikaspogu.dev/tags/sops/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/sops/</guid>
+      <guid>https://vikaspogu.dev/tags/sops/</guid>
       <description></description>
     </item>
     <item>
       <title>Upgrade</title>
-      <link>https://vikaspogu.github.io/tags/upgrade/</link>
+      <link>https://vikaspogu.dev/tags/upgrade/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/upgrade/</guid>
+      <guid>https://vikaspogu.dev/tags/upgrade/</guid>
       <description></description>
     </item>
     <item>
       <title>Argocd</title>
-      <link>https://vikaspogu.github.io/tags/argocd/</link>
+      <link>https://vikaspogu.dev/tags/argocd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/argocd/</guid>
+      <guid>https://vikaspogu.dev/tags/argocd/</guid>
       <description></description>
     </item>
     <item>
       <title>Gitops</title>
-      <link>https://vikaspogu.github.io/tags/gitops/</link>
+      <link>https://vikaspogu.dev/tags/gitops/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/gitops/</guid>
+      <guid>https://vikaspogu.dev/tags/gitops/</guid>
       <description></description>
     </item>
     <item>
       <title>Grafana</title>
-      <link>https://vikaspogu.github.io/tags/grafana/</link>
+      <link>https://vikaspogu.dev/tags/grafana/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/grafana/</guid>
+      <guid>https://vikaspogu.dev/tags/grafana/</guid>
       <description></description>
     </item>
     <item>
       <title>Influxdb</title>
-      <link>https://vikaspogu.github.io/tags/influxdb/</link>
+      <link>https://vikaspogu.dev/tags/influxdb/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/influxdb/</guid>
+      <guid>https://vikaspogu.dev/tags/influxdb/</guid>
       <description></description>
     </item>
     <item>
       <title>NAS</title>
-      <link>https://vikaspogu.github.io/tags/nas/</link>
+      <link>https://vikaspogu.dev/tags/nas/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/nas/</guid>
+      <guid>https://vikaspogu.dev/tags/nas/</guid>
       <description></description>
     </item>
     <item>
       <title>PXE</title>
-      <link>https://vikaspogu.github.io/tags/pxe/</link>
+      <link>https://vikaspogu.dev/tags/pxe/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/pxe/</guid>
+      <guid>https://vikaspogu.dev/tags/pxe/</guid>
       <description></description>
     </item>
     <item>
       <title>Buildx</title>
-      <link>https://vikaspogu.github.io/tags/buildx/</link>
+      <link>https://vikaspogu.dev/tags/buildx/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/buildx/</guid>
+      <guid>https://vikaspogu.dev/tags/buildx/</guid>
       <description></description>
     </item>
     <item>
       <title>Cel</title>
-      <link>https://vikaspogu.github.io/tags/cel/</link>
+      <link>https://vikaspogu.dev/tags/cel/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/cel/</guid>
+      <guid>https://vikaspogu.dev/tags/cel/</guid>
       <description></description>
     </item>
     <item>
       <title>Multi-Arch</title>
-      <link>https://vikaspogu.github.io/tags/multi-arch/</link>
+      <link>https://vikaspogu.dev/tags/multi-arch/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/multi-arch/</guid>
+      <guid>https://vikaspogu.dev/tags/multi-arch/</guid>
       <description></description>
     </item>
     <item>
       <title>Tekton</title>
-      <link>https://vikaspogu.github.io/tags/tekton/</link>
+      <link>https://vikaspogu.dev/tags/tekton/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/tekton/</guid>
+      <guid>https://vikaspogu.dev/tags/tekton/</guid>
       <description></description>
     </item>
     <item>
       <title>Triggers</title>
-      <link>https://vikaspogu.github.io/tags/triggers/</link>
+      <link>https://vikaspogu.dev/tags/triggers/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/triggers/</guid>
+      <guid>https://vikaspogu.dev/tags/triggers/</guid>
       <description></description>
     </item>
     <item>
       <title>OpenShift-Pipelines</title>
-      <link>https://vikaspogu.github.io/tags/openshift-pipelines/</link>
+      <link>https://vikaspogu.dev/tags/openshift-pipelines/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/openshift-pipelines/</guid>
+      <guid>https://vikaspogu.dev/tags/openshift-pipelines/</guid>
       <description></description>
     </item>
     <item>
       <title>Docker</title>
-      <link>https://vikaspogu.github.io/tags/docker/</link>
+      <link>https://vikaspogu.dev/tags/docker/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/docker/</guid>
+      <guid>https://vikaspogu.dev/tags/docker/</guid>
       <description></description>
     </item>
     <item>
       <title>Linux</title>
-      <link>https://vikaspogu.github.io/tags/linux/</link>
+      <link>https://vikaspogu.dev/tags/linux/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/linux/</guid>
+      <guid>https://vikaspogu.dev/tags/linux/</guid>
       <description></description>
     </item>
     <item>
       <title>Boot</title>
-      <link>https://vikaspogu.github.io/tags/boot/</link>
+      <link>https://vikaspogu.dev/tags/boot/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/boot/</guid>
+      <guid>https://vikaspogu.dev/tags/boot/</guid>
       <description></description>
     </item>
     <item>
       <title>Grub</title>
-      <link>https://vikaspogu.github.io/tags/grub/</link>
+      <link>https://vikaspogu.dev/tags/grub/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/grub/</guid>
+      <guid>https://vikaspogu.dev/tags/grub/</guid>
       <description></description>
     </item>
     <item>
       <title>Authentication</title>
-      <link>https://vikaspogu.github.io/tags/authentication/</link>
+      <link>https://vikaspogu.dev/tags/authentication/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/authentication/</guid>
+      <guid>https://vikaspogu.dev/tags/authentication/</guid>
       <description></description>
     </item>
     <item>
       <title>Authorization</title>
-      <link>https://vikaspogu.github.io/tags/authorization/</link>
+      <link>https://vikaspogu.dev/tags/authorization/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/authorization/</guid>
+      <guid>https://vikaspogu.dev/tags/authorization/</guid>
       <description></description>
     </item>
     <item>
       <title>Istio</title>
-      <link>https://vikaspogu.github.io/tags/istio/</link>
+      <link>https://vikaspogu.dev/tags/istio/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/istio/</guid>
+      <guid>https://vikaspogu.dev/tags/istio/</guid>
       <description></description>
     </item>
     <item>
       <title>JWT</title>
-      <link>https://vikaspogu.github.io/tags/jwt/</link>
+      <link>https://vikaspogu.dev/tags/jwt/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/jwt/</guid>
+      <guid>https://vikaspogu.dev/tags/jwt/</guid>
       <description></description>
     </item>
     <item>
       <title>Keycloak</title>
-      <link>https://vikaspogu.github.io/tags/keycloak/</link>
+      <link>https://vikaspogu.dev/tags/keycloak/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/keycloak/</guid>
+      <guid>https://vikaspogu.dev/tags/keycloak/</guid>
       <description></description>
     </item>
     <item>
       <title>Service Mesh</title>
-      <link>https://vikaspogu.github.io/tags/service-mesh/</link>
+      <link>https://vikaspogu.dev/tags/service-mesh/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/service-mesh/</guid>
+      <guid>https://vikaspogu.dev/tags/service-mesh/</guid>
       <description></description>
     </item>
     <item>
       <title>Loki</title>
-      <link>https://vikaspogu.github.io/tags/loki/</link>
+      <link>https://vikaspogu.dev/tags/loki/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/loki/</guid>
+      <guid>https://vikaspogu.dev/tags/loki/</guid>
       <description></description>
     </item>
     <item>
       <title>Rsyslog</title>
-      <link>https://vikaspogu.github.io/tags/rsyslog/</link>
+      <link>https://vikaspogu.dev/tags/rsyslog/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/rsyslog/</guid>
+      <guid>https://vikaspogu.dev/tags/rsyslog/</guid>
       <description></description>
     </item>
     <item>
       <title>Ad-Blocker</title>
-      <link>https://vikaspogu.github.io/tags/ad-blocker/</link>
+      <link>https://vikaspogu.dev/tags/ad-blocker/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/ad-blocker/</guid>
+      <guid>https://vikaspogu.dev/tags/ad-blocker/</guid>
       <description></description>
     </item>
     <item>
       <title>AdGuard</title>
-      <link>https://vikaspogu.github.io/tags/adguard/</link>
+      <link>https://vikaspogu.dev/tags/adguard/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/adguard/</guid>
+      <guid>https://vikaspogu.dev/tags/adguard/</guid>
       <description></description>
     </item>
     <item>
       <title>Kubernetes</title>
-      <link>https://vikaspogu.github.io/tags/kubernetes/</link>
+      <link>https://vikaspogu.dev/tags/kubernetes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/kubernetes/</guid>
+      <guid>https://vikaspogu.dev/tags/kubernetes/</guid>
       <description></description>
     </item>
     <item>
       <title>Configuration-as-Code-Plugin</title>
-      <link>https://vikaspogu.github.io/tags/configuration-as-code-plugin/</link>
+      <link>https://vikaspogu.dev/tags/configuration-as-code-plugin/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/configuration-as-code-plugin/</guid>
+      <guid>https://vikaspogu.dev/tags/configuration-as-code-plugin/</guid>
       <description></description>
     </item>
     <item>
       <title>Gatekeeper</title>
-      <link>https://vikaspogu.github.io/tags/gatekeeper/</link>
+      <link>https://vikaspogu.dev/tags/gatekeeper/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/gatekeeper/</guid>
+      <guid>https://vikaspogu.dev/tags/gatekeeper/</guid>
       <description></description>
     </item>
     <item>
       <title>Jenkins</title>
-      <link>https://vikaspogu.github.io/tags/jenkins/</link>
+      <link>https://vikaspogu.dev/tags/jenkins/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/jenkins/</guid>
+      <guid>https://vikaspogu.dev/tags/jenkins/</guid>
       <description></description>
     </item>
     <item>
       <title>OPA</title>
-      <link>https://vikaspogu.github.io/tags/opa/</link>
+      <link>https://vikaspogu.dev/tags/opa/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/opa/</guid>
+      <guid>https://vikaspogu.dev/tags/opa/</guid>
       <description></description>
     </item>
     <item>
       <title>Pipeline-Job</title>
-      <link>https://vikaspogu.github.io/tags/pipeline-job/</link>
+      <link>https://vikaspogu.dev/tags/pipeline-job/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/pipeline-job/</guid>
+      <guid>https://vikaspogu.dev/tags/pipeline-job/</guid>
       <description></description>
     </item>
     <item>
       <title>Date</title>
-      <link>https://vikaspogu.github.io/tags/date/</link>
+      <link>https://vikaspogu.dev/tags/date/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/date/</guid>
+      <guid>https://vikaspogu.dev/tags/date/</guid>
       <description></description>
     </item>
     <item>
       <title>Groovy</title>
-      <link>https://vikaspogu.github.io/tags/groovy/</link>
+      <link>https://vikaspogu.dev/tags/groovy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/groovy/</guid>
+      <guid>https://vikaspogu.dev/tags/groovy/</guid>
       <description></description>
     </item>
     <item>
       <title>Jcasc</title>
-      <link>https://vikaspogu.github.io/tags/jcasc/</link>
+      <link>https://vikaspogu.dev/tags/jcasc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/jcasc/</guid>
+      <guid>https://vikaspogu.dev/tags/jcasc/</guid>
       <description></description>
     </item>
     <item>
       <title>Garage-Door</title>
-      <link>https://vikaspogu.github.io/tags/garage-door/</link>
+      <link>https://vikaspogu.dev/tags/garage-door/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/garage-door/</guid>
+      <guid>https://vikaspogu.dev/tags/garage-door/</guid>
       <description></description>
     </item>
     <item>
       <title>NodeJS</title>
-      <link>https://vikaspogu.github.io/tags/nodejs/</link>
+      <link>https://vikaspogu.dev/tags/nodejs/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/nodejs/</guid>
+      <guid>https://vikaspogu.dev/tags/nodejs/</guid>
       <description></description>
     </item>
     <item>
       <title>Raspberry-Pi</title>
-      <link>https://vikaspogu.github.io/tags/raspberry-pi/</link>
+      <link>https://vikaspogu.dev/tags/raspberry-pi/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/raspberry-pi/</guid>
+      <guid>https://vikaspogu.dev/tags/raspberry-pi/</guid>
       <description></description>
     </item>
     <item>
       <title>Slack-Bot</title>
-      <link>https://vikaspogu.github.io/tags/slack-bot/</link>
+      <link>https://vikaspogu.dev/tags/slack-bot/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/slack-bot/</guid>
+      <guid>https://vikaspogu.dev/tags/slack-bot/</guid>
       <description></description>
     </item>
     <item>
       <title>K3s</title>
-      <link>https://vikaspogu.github.io/tags/k3s/</link>
+      <link>https://vikaspogu.dev/tags/k3s/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/k3s/</guid>
+      <guid>https://vikaspogu.dev/tags/k3s/</guid>
       <description></description>
     </item>
     <item>
       <title>Pi-Hole</title>
-      <link>https://vikaspogu.github.io/tags/pi-hole/</link>
+      <link>https://vikaspogu.dev/tags/pi-hole/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/pi-hole/</guid>
+      <guid>https://vikaspogu.dev/tags/pi-hole/</guid>
       <description></description>
     </item>
     <item>
       <title>SSL</title>
-      <link>https://vikaspogu.github.io/tags/ssl/</link>
+      <link>https://vikaspogu.dev/tags/ssl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/ssl/</guid>
+      <guid>https://vikaspogu.dev/tags/ssl/</guid>
       <description></description>
     </item>
     <item>
       <title>MacOS</title>
-      <link>https://vikaspogu.github.io/tags/macos/</link>
+      <link>https://vikaspogu.dev/tags/macos/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/macos/</guid>
+      <guid>https://vikaspogu.dev/tags/macos/</guid>
       <description></description>
     </item>
     <item>
       <title>Podman</title>
-      <link>https://vikaspogu.github.io/tags/podman/</link>
+      <link>https://vikaspogu.dev/tags/podman/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/podman/</guid>
+      <guid>https://vikaspogu.dev/tags/podman/</guid>
       <description></description>
     </item>
     <item>
       <title>Vagrant</title>
-      <link>https://vikaspogu.github.io/tags/vagrant/</link>
+      <link>https://vikaspogu.dev/tags/vagrant/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/vagrant/</guid>
+      <guid>https://vikaspogu.dev/tags/vagrant/</guid>
       <description></description>
     </item>
     <item>
       <title>Telegraf</title>
-      <link>https://vikaspogu.github.io/tags/telegraf/</link>
+      <link>https://vikaspogu.dev/tags/telegraf/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/telegraf/</guid>
+      <guid>https://vikaspogu.dev/tags/telegraf/</guid>
       <description></description>
     </item>
     <item>
       <title>Traefik</title>
-      <link>https://vikaspogu.github.io/tags/traefik/</link>
+      <link>https://vikaspogu.dev/tags/traefik/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/traefik/</guid>
+      <guid>https://vikaspogu.dev/tags/traefik/</guid>
       <description></description>
     </item>
     <item>
       <title>Basic-Auth</title>
-      <link>https://vikaspogu.github.io/tags/basic-auth/</link>
+      <link>https://vikaspogu.dev/tags/basic-auth/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/basic-auth/</guid>
+      <guid>https://vikaspogu.dev/tags/basic-auth/</guid>
       <description></description>
     </item>
     <item>
       <title>Gin</title>
-      <link>https://vikaspogu.github.io/tags/gin/</link>
+      <link>https://vikaspogu.dev/tags/gin/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/gin/</guid>
+      <guid>https://vikaspogu.dev/tags/gin/</guid>
       <description></description>
     </item>
     <item>
       <title>Golang</title>
-      <link>https://vikaspogu.github.io/tags/golang/</link>
+      <link>https://vikaspogu.dev/tags/golang/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/golang/</guid>
+      <guid>https://vikaspogu.dev/tags/golang/</guid>
       <description></description>
     </item>
     <item>
       <title>NFS</title>
-      <link>https://vikaspogu.github.io/tags/nfs/</link>
+      <link>https://vikaspogu.dev/tags/nfs/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/nfs/</guid>
+      <guid>https://vikaspogu.dev/tags/nfs/</guid>
       <description></description>
     </item>
     <item>
       <title>RHV</title>
-      <link>https://vikaspogu.github.io/tags/rhv/</link>
+      <link>https://vikaspogu.dev/tags/rhv/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/rhv/</guid>
+      <guid>https://vikaspogu.dev/tags/rhv/</guid>
       <description></description>
     </item>
     <item>
       <title>Couchbase</title>
-      <link>https://vikaspogu.github.io/tags/couchbase/</link>
+      <link>https://vikaspogu.dev/tags/couchbase/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/couchbase/</guid>
+      <guid>https://vikaspogu.dev/tags/couchbase/</guid>
       <description></description>
     </item>
     <item>
       <title>Tektoncd</title>
-      <link>https://vikaspogu.github.io/tags/tektoncd/</link>
+      <link>https://vikaspogu.dev/tags/tektoncd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/tektoncd/</guid>
+      <guid>https://vikaspogu.dev/tags/tektoncd/</guid>
       <description></description>
     </item>
     <item>
       <title>RedHat SSO</title>
-      <link>https://vikaspogu.github.io/tags/redhat-sso/</link>
+      <link>https://vikaspogu.dev/tags/redhat-sso/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/redhat-sso/</guid>
+      <guid>https://vikaspogu.dev/tags/redhat-sso/</guid>
       <description></description>
     </item>
     <item>
       <title>React</title>
-      <link>https://vikaspogu.github.io/tags/react/</link>
+      <link>https://vikaspogu.dev/tags/react/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/react/</guid>
+      <guid>https://vikaspogu.dev/tags/react/</guid>
       <description></description>
     </item>
     <item>
       <title>Gluster</title>
-      <link>https://vikaspogu.github.io/tags/gluster/</link>
+      <link>https://vikaspogu.dev/tags/gluster/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/gluster/</guid>
+      <guid>https://vikaspogu.dev/tags/gluster/</guid>
       <description></description>
     </item>
     <item>
       <title>Heketi</title>
-      <link>https://vikaspogu.github.io/tags/heketi/</link>
+      <link>https://vikaspogu.dev/tags/heketi/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/heketi/</guid>
+      <guid>https://vikaspogu.dev/tags/heketi/</guid>
       <description></description>
     </item>
     <item>
       <title>Patternfly</title>
-      <link>https://vikaspogu.github.io/tags/patternfly/</link>
+      <link>https://vikaspogu.dev/tags/patternfly/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/patternfly/</guid>
+      <guid>https://vikaspogu.dev/tags/patternfly/</guid>
       <description></description>
     </item>
     <item>
       <title>ReactJS</title>
-      <link>https://vikaspogu.github.io/tags/reactjs/</link>
+      <link>https://vikaspogu.dev/tags/reactjs/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/reactjs/</guid>
+      <guid>https://vikaspogu.dev/tags/reactjs/</guid>
       <description></description>
     </item>
     <item>
       <title>LDAP</title>
-      <link>https://vikaspogu.github.io/tags/ldap/</link>
+      <link>https://vikaspogu.dev/tags/ldap/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/ldap/</guid>
+      <guid>https://vikaspogu.dev/tags/ldap/</guid>
       <description></description>
     </item>
     <item>
       <title>Prometheus</title>
-      <link>https://vikaspogu.github.io/tags/prometheus/</link>
+      <link>https://vikaspogu.dev/tags/prometheus/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/prometheus/</guid>
+      <guid>https://vikaspogu.dev/tags/prometheus/</guid>
       <description></description>
     </item>
     <item>
       <title>Spring Boot</title>
-      <link>https://vikaspogu.github.io/tags/spring-boot/</link>
+      <link>https://vikaspogu.dev/tags/spring-boot/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/spring-boot/</guid>
+      <guid>https://vikaspogu.dev/tags/spring-boot/</guid>
       <description></description>
     </item>
     <item>
       <title>Dot Net</title>
-      <link>https://vikaspogu.github.io/tags/dot-net/</link>
+      <link>https://vikaspogu.dev/tags/dot-net/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/dot-net/</guid>
+      <guid>https://vikaspogu.dev/tags/dot-net/</guid>
       <description></description>
     </item>
     <item>
       <title>Java</title>
-      <link>https://vikaspogu.github.io/tags/java/</link>
+      <link>https://vikaspogu.dev/tags/java/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/java/</guid>
+      <guid>https://vikaspogu.dev/tags/java/</guid>
       <description></description>
     </item>
     <item>
       <title>YourKit-JavaProfiler</title>
-      <link>https://vikaspogu.github.io/tags/yourkit-javaprofiler/</link>
+      <link>https://vikaspogu.dev/tags/yourkit-javaprofiler/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/tags/yourkit-javaprofiler/</guid>
+      <guid>https://vikaspogu.dev/tags/yourkit-javaprofiler/</guid>
       <description></description>
     </item>
   </channel>

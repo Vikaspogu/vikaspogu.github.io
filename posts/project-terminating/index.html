@@ -8,7 +8,7 @@ spec:finalizers:- kubernetesto
 spec:finalizers:[]On one of the master node, execute these commands.
 kubectl proxy &amp;amp; PID=$! curl -X PUT http://localhost:8001/api/v1/namespaces/delete-me/finalize \ -H &amp;#34;Content-Type: application/json&amp;#34; --data-binary @ns-without-finalizers.json kill $PID '><title>Deleting a OpenShift project stuck in terminating state</title>
 
-<link rel='canonical' href='https://vikaspogu.github.io/posts/project-terminating/'>
+<link rel='canonical' href='https://vikaspogu.dev/posts/project-terminating/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Deleting a OpenShift project stuck in terminating state'>
 <meta property='og:description' content='Recently I was faced an issue where one of my project was stuck in terminating state for days. The workaround below fixed the issue.
@@ -17,7 +17,7 @@ oc get project delete-me -o json &amp;gt; ns-without-finalizers.json Replace bel
 spec:finalizers:- kubernetesto
 spec:finalizers:[]On one of the master node, execute these commands.
 kubectl proxy &amp;amp; PID=$! curl -X PUT http://localhost:8001/api/v1/namespaces/delete-me/finalize \ -H &amp;#34;Content-Type: application/json&amp;#34; --data-binary @ns-without-finalizers.json kill $PID '>
-<meta property='og:url' content='https://vikaspogu.github.io/posts/project-terminating/'>
+<meta property='og:url' content='https://vikaspogu.dev/posts/project-terminating/'>
 <meta property='og:site_name' content='My approach...'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='OpenShift' /><meta property='article:published_time' content='2019-05-15T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2019-05-15T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Deleting a OpenShift project stuck in terminating state">

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Couchbase on Tech Chronicles...</title>
-    <link>https://vikaspogu.github.io/tags/couchbase/</link>
+    <link>https://vikaspogu.dev/tags/couchbase/</link>
     <description>Recent content in Couchbase on Tech Chronicles...</description>
     <generator>Hugo 0.125.0</generator>
     <language>en</language>
     <lastBuildDate>Wed, 28 Aug 2019 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://vikaspogu.github.io/tags/couchbase/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://vikaspogu.dev/tags/couchbase/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Configuring couchbase SSL for dynamic certificates in OpenShift</title>
-      <link>https://vikaspogu.github.io/blog/couchbase-ssl-openshift/</link>
+      <link>https://vikaspogu.dev/blog/couchbase-ssl-openshift/</link>
       <pubDate>Wed, 28 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/couchbase-ssl-openshift/</guid>
+      <guid>https://vikaspogu.dev/blog/couchbase-ssl-openshift/</guid>
       <description>Couchbase SSL #Suppose you have followed dynamic creation of java keystores in OpenShift post and wondered how to use similar concepts for couchbase database and a java application.</description>
     </item>
   </channel>

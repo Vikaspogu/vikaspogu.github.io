@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Golang on Tech Chronicles...</title>
-    <link>https://vikaspogu.github.io/tags/golang/</link>
+    <link>https://vikaspogu.dev/tags/golang/</link>
     <description>Recent content in Golang on Tech Chronicles...</description>
     <generator>Hugo 0.125.0</generator>
     <language>en</language>
     <lastBuildDate>Mon, 16 Dec 2019 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://vikaspogu.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://vikaspogu.dev/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Basic Authentication in Go with Gin</title>
-      <link>https://vikaspogu.github.io/blog/golang-basicauth-gin/</link>
+      <link>https://vikaspogu.dev/blog/golang-basicauth-gin/</link>
       <pubDate>Mon, 16 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/golang-basicauth-gin/</guid>
+      <guid>https://vikaspogu.dev/blog/golang-basicauth-gin/</guid>
       <description>This short post looks at adding basic authentication to GoLang applications.</description>
     </item>
     <item>
       <title>Go JWT Authentication with Keycloak</title>
-      <link>https://vikaspogu.github.io/blog/sso-jwt-golang/</link>
+      <link>https://vikaspogu.dev/blog/sso-jwt-golang/</link>
       <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/sso-jwt-golang/</guid>
+      <guid>https://vikaspogu.dev/blog/sso-jwt-golang/</guid>
       <description>I recently worked on a React project with Go backend using Gin web framework.</description>
     </item>
   </channel>

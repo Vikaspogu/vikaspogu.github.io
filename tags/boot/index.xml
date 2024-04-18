@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Boot on Tech Chronicles...</title>
-    <link>https://vikaspogu.github.io/tags/boot/</link>
+    <link>https://vikaspogu.dev/tags/boot/</link>
     <description>Recent content in Boot on Tech Chronicles...</description>
     <generator>Hugo 0.125.0</generator>
     <language>en</language>
     <lastBuildDate>Tue, 01 Dec 2020 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://vikaspogu.github.io/tags/boot/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://vikaspogu.dev/tags/boot/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Boot from USB through grub menu</title>
-      <link>https://vikaspogu.github.io/blog/boot-from-usb-through-grub-menu/</link>
+      <link>https://vikaspogu.dev/blog/boot-from-usb-through-grub-menu/</link>
       <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/boot-from-usb-through-grub-menu/</guid>
+      <guid>https://vikaspogu.dev/blog/boot-from-usb-through-grub-menu/</guid>
       <description>First, make sure you have secure boot disabled from the firmware settings.</description>
     </item>
   </channel>

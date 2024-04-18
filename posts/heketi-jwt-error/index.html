@@ -5,13 +5,13 @@
 [jwt] ERROR 2019/07/16 19:17:14 heketi/middleware/jwt.go:66:middleware.(*HeketiJwtClaims).Valid: exp validation failed: Token is expired by 1h48m59s After a lot of google search, I synchronized clocks across the pod running heketi and the masters, which solved the issue
 ntpdate -q 0.rhel.pool.ntp.org; systemctl restart ntpd '><title>Heketi JWT token expired error</title>
 
-<link rel='canonical' href='https://vikaspogu.github.io/posts/heketi-jwt-error/'>
+<link rel='canonical' href='https://vikaspogu.dev/posts/heketi-jwt-error/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Heketi JWT token expired error'>
 <meta property='og:description' content='Recently I encountered an JWT token expired error on heketi pod in OpenShift cluster.
 [jwt] ERROR 2019/07/16 19:17:14 heketi/middleware/jwt.go:66:middleware.(*HeketiJwtClaims).Valid: exp validation failed: Token is expired by 1h48m59s After a lot of google search, I synchronized clocks across the pod running heketi and the masters, which solved the issue
 ntpdate -q 0.rhel.pool.ntp.org; systemctl restart ntpd '>
-<meta property='og:url' content='https://vikaspogu.github.io/posts/heketi-jwt-error/'>
+<meta property='og:url' content='https://vikaspogu.dev/posts/heketi-jwt-error/'>
 <meta property='og:site_name' content='My approach...'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Heketi' /><meta property='article:tag' content='Gluster' /><meta property='article:published_time' content='2019-07-16T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2019-07-16T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Heketi JWT token expired error">

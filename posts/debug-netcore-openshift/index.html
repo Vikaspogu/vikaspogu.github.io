@@ -5,13 +5,13 @@
 First, list the available .Net application pods using oc command.
 $ oc get pod NAME READY STATUS RESTARTS AGE MY_APP_NAME-3-1xrsp 0/1 Running 0 6s $ oc rsh MY_APP_NAME-3-1xrsp sh-4.2$ curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l /opt/app-root/vsdbg -r linux-x64 Note: If you&amp;rsquo;re container is running behind a corporate proxy and cannot access internet, you&amp;rsquo;ll have to build base dotnet image with the debugger engine vsdbg installed in it.'><title>Debugging a .NET Core application running on OpenShift</title>
 
-<link rel='canonical' href='https://vikaspogu.github.io/posts/debug-netcore-openshift/'>
+<link rel='canonical' href='https://vikaspogu.dev/posts/debug-netcore-openshift/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Debugging a .NET Core application running on OpenShift'>
 <meta property='og:description' content='This post is about how to remote debug a ASP.NET Core application on OpenShift using Visual Studio Code. You can use any Microsoft proprietary debugger engine vsdbg with Visual Studio Code.
 First, list the available .Net application pods using oc command.
 $ oc get pod NAME READY STATUS RESTARTS AGE MY_APP_NAME-3-1xrsp 0/1 Running 0 6s $ oc rsh MY_APP_NAME-3-1xrsp sh-4.2$ curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l /opt/app-root/vsdbg -r linux-x64 Note: If you&amp;rsquo;re container is running behind a corporate proxy and cannot access internet, you&amp;rsquo;ll have to build base dotnet image with the debugger engine vsdbg installed in it.'>
-<meta property='og:url' content='https://vikaspogu.github.io/posts/debug-netcore-openshift/'>
+<meta property='og:url' content='https://vikaspogu.dev/posts/debug-netcore-openshift/'>
 <meta property='og:site_name' content='My approach...'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='OpenShift' /><meta property='article:tag' content='dot net' /><meta property='article:published_time' content='2019-05-14T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2019-05-14T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Debugging a .NET Core application running on OpenShift">

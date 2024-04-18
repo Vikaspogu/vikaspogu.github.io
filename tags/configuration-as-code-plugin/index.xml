@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Configuration-as-Code-Plugin on Tech Chronicles...</title>
-    <link>https://vikaspogu.github.io/tags/configuration-as-code-plugin/</link>
+    <link>https://vikaspogu.dev/tags/configuration-as-code-plugin/</link>
     <description>Recent content in Configuration-as-Code-Plugin on Tech Chronicles...</description>
     <generator>Hugo 0.125.0</generator>
     <language>en</language>
     <lastBuildDate>Tue, 18 Aug 2020 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://vikaspogu.github.io/tags/configuration-as-code-plugin/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://vikaspogu.dev/tags/configuration-as-code-plugin/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Configure Jenkins pipeline job</title>
-      <link>https://vikaspogu.github.io/blog/jenkins-seed-job/</link>
+      <link>https://vikaspogu.dev/blog/jenkins-seed-job/</link>
       <pubDate>Tue, 18 Aug 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/jenkins-seed-job/</guid>
+      <guid>https://vikaspogu.dev/blog/jenkins-seed-job/</guid>
       <description>In one of my previous posts, I discussed configuring multibranch pipeline seed jobs using Jenkins configuration as code plugin</description>
     </item>
   </channel>

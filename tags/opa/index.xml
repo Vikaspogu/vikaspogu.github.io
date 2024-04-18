@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>OPA on Tech Chronicles...</title>
-    <link>https://vikaspogu.github.io/tags/opa/</link>
+    <link>https://vikaspogu.dev/tags/opa/</link>
     <description>Recent content in OPA on Tech Chronicles...</description>
     <generator>Hugo 0.125.0</generator>
     <language>en</language>
     <lastBuildDate>Tue, 18 Aug 2020 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://vikaspogu.github.io/tags/opa/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://vikaspogu.dev/tags/opa/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>OPA Gatekeeper on OpenShift</title>
-      <link>https://vikaspogu.github.io/blog/opa-gatekeeper-openshift/</link>
+      <link>https://vikaspogu.dev/blog/opa-gatekeeper-openshift/</link>
       <pubDate>Tue, 18 Aug 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.github.io/blog/opa-gatekeeper-openshift/</guid>
+      <guid>https://vikaspogu.dev/blog/opa-gatekeeper-openshift/</guid>
       <description>Every organization has policies.</description>
     </item>
   </channel>
