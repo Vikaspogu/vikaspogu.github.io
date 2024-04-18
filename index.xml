@@ -212,13 +212,6 @@
       <description>Jenkins SSL #Problem #I recently encountered an issue while authenticating to OpenShift Jenkins using the OpenShift OAuth plugin, where trusted certificates provided by CA aren&amp;rsquo;t included in the default JRE TrustStore.</description>
     </item>
     <item>
-      <title>Installing Podman remote client on macOS using vagrant</title>
-      <link>https://vikaspogu.dev/blog/podman-macos/</link>
-      <pubDate>Mon, 06 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.dev/blog/podman-macos/</guid>
-      <description>I am installing podman as a remote client on macOS using Vagrant.</description>
-    </item>
-    <item>
       <title>Measure Raspberry Pi temperature using Telegraf, Influxdb, Grafana on k3s</title>
       <link>https://vikaspogu.dev/blog/raspberry-pi-temp-telegraf/</link>
       <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
