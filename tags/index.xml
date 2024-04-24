@@ -4,10 +4,38 @@
     <title>Tags on Tech Chronicles...</title>
     <link>https://vikaspogu.dev/tags/</link>
     <description>Recent content in Tags on Tech Chronicles...</description>
-    <generator>Hugo 0.125.0</generator>
+    <generator>Hugo 0.125.2</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 11 Mar 2024 16:03:46 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 23 Apr 2024 14:55:24 -0500</lastBuildDate>
     <atom:link href="https://vikaspogu.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Argocd</title>
+      <link>https://vikaspogu.dev/tags/argocd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://vikaspogu.dev/tags/argocd/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Config Management Plugin</title>
+      <link>https://vikaspogu.dev/tags/config-management-plugin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://vikaspogu.dev/tags/config-management-plugin/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Helm</title>
+      <link>https://vikaspogu.dev/tags/helm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://vikaspogu.dev/tags/helm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Multi Values</title>
+      <link>https://vikaspogu.dev/tags/multi-values/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://vikaspogu.dev/tags/multi-values/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Cloudflared</title>
       <link>https://vikaspogu.dev/tags/cloudflared/</link>
@@ -83,13 +111,6 @@
       <link>https://vikaspogu.dev/tags/upgrade/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://vikaspogu.dev/tags/upgrade/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Argocd</title>
-      <link>https://vikaspogu.dev/tags/argocd/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://vikaspogu.dev/tags/argocd/</guid>
       <description></description>
     </item>
     <item>
