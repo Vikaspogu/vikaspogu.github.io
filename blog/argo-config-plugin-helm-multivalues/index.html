@@ -58,8 +58,8 @@
       defer
       type="text/javascript"
       id="script-bundle"
-      src="/js/main.bundle.min.ef84f1e4c888f2aa2d84745ad4e1d75d27a8f29d55f84702214c97ecd79fba5b.js"
-      integrity="sha256-74Tx5MiI8qothHRa1OHXXSeo8p1V&#43;EcCIUyX7Nefuls="
+      src="/js/main.bundle.min.af5d9722112bedac95702865c340bcd6286c4e9b2c15ce26b531ea1fba974cb8.js"
+      integrity="sha256-r12XIhEr7ayVcChlw0C81ihsTpssFc4mtTHqH7qXTLg="
       data-copy="Copy"
       data-copied="Copied"
     ></script>
@@ -93,10 +93,10 @@
   <meta property="og:url" content="https://vikaspogu.dev/blog/argo-config-plugin-helm-multivalues/">
   <meta property="og:site_name" content="Tech Chronicles...">
   <meta property="og:title" content="Helm Multi-Values Plugin with Argo&#39;s CMP">
-  <meta property="og:description" content="Introduction #With the current version of Helm, it&amp;rsquo;s not possible to merge multiple values files.">
+  <meta property="og:description" content="Introduction #With the current version of Helm, it’s not possible to merge multiple values files.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
-  <meta property="article:section" content="blog">
+    <meta property="article:section" content="blog">
     <meta property="article:published_time" content="2024-04-23T14:55:24-05:00">
     <meta property="article:modified_time" content="2024-04-23T14:55:24-05:00">
     <meta property="article:tag" content="Argocd">
@@ -132,7 +132,7 @@
     "keywords": ["ArgoCD","Config Management Plugin","Helm","Multi Values"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "879"
+    "wordCount": "838"
   }
   </script>
 
@@ -330,7 +330,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2024-04-23 14:55:24 -0500 CDT">23 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">5 mins</span>
+      <time datetime="2024-04-23 14:55:24 -0500 CDT">23 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">4 mins</span>
     
 
     
@@ -375,11 +375,7 @@
         </div>
       
       <div class="min-w-0 min-h-0 max-w-prose grow">
-        <h2 id="introduction" class="relative group">Introduction <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#introduction" aria-label="Anchor">#</a></span></h2><p>With the current version of 
-  
-  
-    
-<a href="helm.sh">Helm</a>, it&rsquo;s not possible to merge multiple values files. It will override the list from the preceding values file. While trying to solve this problem, I stumbled upon this custom <a href="https://github.com/nico-ulbricht/helm-multivalues" target="_blank" rel="noreferrer">plugin</a> that can take a folder of values files and split them into individual files. This plugin is what I was looking for to solve my problem. Finally, I want to integrate this plugin into my ArgoCD instance.</p>
+        <h2 id="introduction" class="relative group">Introduction <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#introduction" aria-label="Anchor">#</a></span></h2><p>With the current version of <a href="https://helm.sh" target="_blank" rel="noreferrer">Helm</a>, it&rsquo;s not possible to merge multiple values files. It will override the list from the preceding values file. While trying to solve this problem, I stumbled upon this custom <a href="https://github.com/nico-ulbricht/helm-multivalues" target="_blank" rel="noreferrer">plugin</a> that can take a folder of values files and split them into individual files. This plugin is what I was looking for to solve my problem. Finally, I want to integrate this plugin into my ArgoCD instance.</p>
 <p>You&rsquo;ll need to perform the following steps:</p>
 <ul>
 <li>Install Helm <a href="https://helm.sh/docs/topics/plugins/" target="_blank" rel="noreferrer">Plugin</a> using InitContainer of the repo server.</li>
@@ -421,59 +417,35 @@
 </span></span><span class="hl"><span class="lnt">25
 </span></span><span class="hl"><span class="lnt">26
 </span></span><span class="hl"><span class="lnt">27
-</span></span><span class="hl"><span class="lnt">28
-</span></span><span class="hl"><span class="lnt">29
-</span></span><span class="hl"><span class="lnt">30
-</span></span><span class="hl"><span class="lnt">31
-</span></span><span class="hl"><span class="lnt">32
-</span></span><span class="hl"><span class="lnt">33
-</span></span><span class="hl"><span class="lnt">34
-</span></span><span class="hl"><span class="lnt">35
-</span></span><span class="hl"><span class="lnt">36
-</span></span><span class="hl"><span class="lnt">37
-</span></span><span class="hl"><span class="lnt">38
-</span></span><span class="hl"><span class="lnt">39
 </span></span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">argoproj.io/v1alpha1</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ArgoCD</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">openshift-gitops</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">openshift-gitops</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">openshift-gitops</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">openshift-gitops</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">repo</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">configMap</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">helm-multivalues-plugin</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">helm-multivalues-plugin</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">helm-custom-config</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">env</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_CACHE_HOME</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">/.config/helm/cache</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_CONFIG_HOME</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">/.config/helm/cache</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_DATA_HOME</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">/.config/helm/data</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">    </span><span class="nt">initContainers</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">install-helm-multivalues-plugin</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">registry.redhat.io/openshift-gitops-1/argocd-rhel8@sha256:baec6d73a77b832df8131bac3c5a86dc405ef89f600e27a22f164ed3c72816db</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">        </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">sh, -c]</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">        </span><span class="nt">args</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">          </span>- <span class="s2">&#34;helm plugin install https://github.com/nico-ulbricht/helm-multivalues&#34;</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">        </span><span class="nt">env</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">          </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_CACHE_HOME</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">/helm-custom-config/cache</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">          </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_CONFIG_HOME</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">/helm-custom-config/cache</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">          </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_DATA_HOME</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">/helm-custom-config/data</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">        </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">          </span>- <span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/helm-custom-config</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">helm-custom-config</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">    </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">      </span>- <span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/.config/helm</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">helm-custom-config</span></span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">repo</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">volumes</span><span class="p">:</span><span class="w"> </span>- <span class="nt">configMap</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">helm-multivalues-plugin</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">name: helm-multivalues-plugin - name</span><span class="p">:</span><span class="w"> </span><span class="l">helm-custom-config</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">env: - name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_CACHE_HOME</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">value: /.config/helm/cache - name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_CONFIG_HOME</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">value: /.config/helm/cache - name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_DATA_HOME</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">/.config/helm/data</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">initContainers: - name</span><span class="p">:</span><span class="w"> </span><span class="l">install-helm-multivalues-plugin</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">registry.redhat.io/openshift-gitops-1/argocd-rhel8@sha256:baec6d73a77b832df8131bac3c5a86dc405ef89f600e27a22f164ed3c72816db</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">sh, -c]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">args</span><span class="p">:</span><span class="w"> </span>- <span class="s2">&#34;helm plugin install https://github.com/nico-ulbricht/helm-multivalues&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">env: - name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_CACHE_HOME</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">value: /helm-custom-config/cache - name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_CONFIG_HOME</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">value: /helm-custom-config/cache - name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_DATA_HOME</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">/helm-custom-config/data</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">volumeMounts: - mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/helm-custom-config</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">helm-custom-config</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">volumeMounts: - mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/.config/helm</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">helm-custom-config</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <h3 id="configure-argo-cmp" class="relative group">Configure Argo CMP <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#configure-argo-cmp" aria-label="Anchor">#</a></span></h3><p>Next, create a ConfigMap with the configuration for the plugin. The <code>generate</code> command under <code>spec</code> section runs in the Application source directory each time manifests need to generate output. As per the plugin <a href="https://github.com/nico-ulbricht/helm-multivalues?tab=readme-ov-file#usage" target="_blank" rel="noreferrer">documentation</a>, we need to run the <code>helm multivalues [ORIGINAL_COMMAND] -f [VALUES_FOLDER_PATH] [ORIGINAL_ARGS]</code> to generate the output as a <code>stdout</code></p>
@@ -498,17 +470,17 @@
 <pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ConfigMap</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">helm-multivalues-plugin</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">openshift-gitops</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">helm-multivalues-plugin</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">openshift-gitops</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">data</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">plugin.yaml</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
-</span></span></span><span class="line"><span class="cl"><span class="sd">    apiVersion: argoproj.io/v1alpha1
-</span></span></span><span class="line"><span class="cl"><span class="sd">    kind: ConfigManagementPlugin
-</span></span></span><span class="line"><span class="cl"><span class="sd">    metadata:
-</span></span></span><span class="line"><span class="cl"><span class="sd">      name: helm-multivalues-plugin
-</span></span></span><span class="line"><span class="cl"><span class="sd">    spec:
-</span></span></span><span class="line hl"><span class="cl"><span class="sd">      generate:
-</span></span></span><span class="line hl"><span class="cl"><span class="sd">        command: [sh, -c, &#39;helm multivalues template $ARGOCD_APP_NAME $ARGOCD_ENV_CHART_PATH --values $ARGOCD_ENV_VALUES_FILE -f $ARGOCD_ENV_VALUES_FOLDER&#39;]</span><span class="w">    </span></span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">plugin.yaml</span><span class="p">:</span><span class="w"> </span><span class="l">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">argoproj.io/v1alpha1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ConfigManagementPlugin</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">helm-multivalues-plugin</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">generate</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">sh, -c, &#39;helm multivalues template $ARGOCD_APP_NAME $ARGOCD_ENV_CHART_PATH --values $ARGOCD_ENV_VALUES_FILE -f $ARGOCD_ENV_VALUES_FOLDER&#39;]</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>The next step is to add the <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#register-the-plugin-sidecar" target="_blank" rel="noreferrer">sidecar</a> to the ArgoCD operator CR.</p>
@@ -555,91 +527,49 @@
 </span><span class="lnt">39
 </span><span class="lnt">40
 </span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span><span class="lnt">57
-</span><span class="lnt">58
-</span><span class="lnt">59
-</span><span class="lnt">60
-</span><span class="lnt">61
-</span><span class="lnt">62
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">argoproj.io/v1alpha1</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ArgoCD</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">openshift-gitops</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">openshift-gitops</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">openshift-gitops</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">openshift-gitops</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">repo</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">    </span><span class="nt">sidecarContainers</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">helm-multivalues-plugin</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">        </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">/var/run/argocd/argocd-cmp-server]</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">registry.redhat.io/openshift-gitops-1/argocd-rhel8@sha256:baec6d73a77b832df8131bac3c5a86dc405ef89f600e27a22f164ed3c72816db</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">        </span><span class="nt">env</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">          </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_CACHE_HOME</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">/.config/helm/cache</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">          </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_CONFIG_HOME</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">/.config/helm/cache</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">          </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_DATA_HOME</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">/.config/helm/data</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">        </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">          </span>- <span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/var/run/argocd</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">var-files</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">          </span>- <span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/home/argocd/cmp-server/plugins</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">plugins</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">          </span>- <span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/tmp</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">tmp</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">          </span>- <span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/home/argocd/cmp-server/config/plugin.yaml</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">            </span><span class="nt">subPath</span><span class="p">:</span><span class="w"> </span><span class="l">plugin.yaml</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">helm-multivalues-plugin</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">          </span>- <span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/.config/helm</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">helm-custom-config</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">configMap</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">helm-multivalues-plugin</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">helm-multivalues-plugin</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">helm-custom-config</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">env</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_CACHE_HOME</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">/.config/helm/cache</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_CONFIG_HOME</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">/.config/helm/cache</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_DATA_HOME</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">/.config/helm/data</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">initContainers</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">install-helm-multivalues-plugin</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">registry.redhat.io/openshift-gitops-1/argocd-rhel8@sha256:baec6d73a77b832df8131bac3c5a86dc405ef89f600e27a22f164ed3c72816db</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">sh, -c]</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">args</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span>- <span class="s2">&#34;helm plugin install https://github.com/nico-ulbricht/helm-multivalues&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">env</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_CACHE_HOME</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">/helm-custom-config/cache</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_CONFIG_HOME</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">/helm-custom-config/cache</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_DATA_HOME</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">/helm-custom-config/data</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span>- <span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/helm-custom-config</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">helm-custom-config</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/.config/helm</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">helm-custom-config</span></span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">repo</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">sidecarContainers: - name</span><span class="p">:</span><span class="w"> </span><span class="l">helm-multivalues-plugin</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">/var/run/argocd/argocd-cmp-server]</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">registry.redhat.io/openshift-gitops-1/argocd-rhel8@sha256:baec6d73a77b832df8131bac3c5a86dc405ef89f600e27a22f164ed3c72816db</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">env: - name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_CACHE_HOME</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">value: /.config/helm/cache - name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_CONFIG_HOME</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">value: /.config/helm/cache - name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_DATA_HOME</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">/.config/helm/data</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">volumeMounts: - mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/var/run/argocd</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">name: var-files - mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/home/argocd/cmp-server/plugins</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">name: plugins - mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/tmp</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">name: tmp - mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/home/argocd/cmp-server/config/plugin.yaml</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">subPath</span><span class="p">:</span><span class="w"> </span><span class="l">plugin.yaml</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">name: helm-multivalues-plugin - mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/.config/helm</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">helm-custom-config</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">volumes</span><span class="p">:</span><span class="w"> </span>- <span class="nt">configMap</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">helm-multivalues-plugin</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">name: helm-multivalues-plugin - name</span><span class="p">:</span><span class="w"> </span><span class="l">helm-custom-config</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">env: - name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_CACHE_HOME</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">value: /.config/helm/cache - name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_CONFIG_HOME</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">value: /.config/helm/cache - name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_DATA_HOME</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">/.config/helm/data</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">initContainers: - name</span><span class="p">:</span><span class="w"> </span><span class="l">install-helm-multivalues-plugin</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">registry.redhat.io/openshift-gitops-1/argocd-rhel8@sha256:baec6d73a77b832df8131bac3c5a86dc405ef89f600e27a22f164ed3c72816db</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">sh, -c]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">args</span><span class="p">:</span><span class="w"> </span>- <span class="s2">&#34;helm plugin install https://github.com/nico-ulbricht/helm-multivalues&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">env: - name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_CACHE_HOME</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">value: /helm-custom-config/cache - name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_CONFIG_HOME</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">value: /helm-custom-config/cache - name</span><span class="p">:</span><span class="w"> </span><span class="l">HELM_DATA_HOME</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">/helm-custom-config/data</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">volumeMounts: - mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/helm-custom-config</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">helm-custom-config</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">volumeMounts: - mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/.config/helm</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">helm-custom-config</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>A few things to review:</p>
@@ -679,52 +609,36 @@
 </span><span class="lnt">26
 </span><span class="lnt">27
 </span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">argoproj.io/v1alpha1</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Application</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">tenant-gitops-config</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">config</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">tenant-gitops-config</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">labels</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">config</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">destination</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://kubernetes.default.svc&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">project</span><span class="p">:</span><span class="w"> </span><span class="l">default</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">source</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">.</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">repoURL</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://github.com/Vikaspogu/openshift-multicluster.git&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">targetRevision</span><span class="p">:</span><span class="w"> </span><span class="l">main</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">    </span><span class="nt">plugin</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">helm-multivalues-plugin</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">      </span><span class="nt">env</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">CHART_PATH</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">helm/charts/tenant-gitops</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">VALUES_FOLDER</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">kustomize/cluster-overlays/dev-acm/tenant-gitops-helm/apps</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">VALUES_FILE</span><span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">kustomize/cluster-overlays/dev-acm/tenant-gitops-helm/values.yaml</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">syncPolicy</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">retry</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">backoff</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">duration</span><span class="p">:</span><span class="w"> </span><span class="l">120s</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">factor</span><span class="p">:</span><span class="w"> </span><span class="m">3</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">maxDuration</span><span class="p">:</span><span class="w"> </span><span class="l">10m0s</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">limit</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">syncOptions</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">SkipDryRunOnMissingResource=true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">Validate=false</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">ApplyOutOfSyncOnly=true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">RespectIgnoreDifferences=true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">Prune=true</span></span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">destination</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://kubernetes.default.svc&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">project</span><span class="p">:</span><span class="w"> </span><span class="l">default</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">source</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">repoURL</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://github.com/Vikaspogu/openshift-multicluster.git&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">targetRevision</span><span class="p">:</span><span class="w"> </span><span class="l">main</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">plugin</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">helm-multivalues-plugin</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">env: - name</span><span class="p">:</span><span class="w"> </span><span class="l">CHART_PATH</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">value: helm/charts/tenant-gitops - name</span><span class="p">:</span><span class="w"> </span><span class="l">VALUES_FOLDER</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">value: kustomize/cluster-overlays/dev-acm/tenant-gitops-helm/apps - name</span><span class="p">:</span><span class="w"> </span><span class="l">VALUES_FILE</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">kustomize/cluster-overlays/dev-acm/tenant-gitops-helm/values.yaml</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">syncPolicy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">retry</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="nt">backoff</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">duration</span><span class="p">:</span><span class="w"> </span><span class="l">120s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">factor</span><span class="p">:</span><span class="w"> </span><span class="m">3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">maxDuration</span><span class="p">:</span><span class="w"> </span><span class="l">10m0s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">limit</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">syncOptions</span><span class="p">:</span><span class="w"> </span>- <span class="l">SkipDryRunOnMissingResource=true - Validate=false - ApplyOutOfSyncOnly=true - RespectIgnoreDifferences=true - Prune=true</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>
