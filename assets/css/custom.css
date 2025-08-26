@@ -1,0 +1,14 @@
+.content code:not(.code-block code) {
+  color: #c97c2e;
+}
+
+/* Code block line highlights */
+.chroma .hl {
+  background-color: rgba(255, 193, 7, 0.25);
+}
+
+/* Alternative selectors for line highlights */
+.highlight .hl,
+.highlight .hll {
+  background-color: rgba(255, 193, 7, 0.25);
+}
