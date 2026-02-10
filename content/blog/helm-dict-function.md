@@ -1,14 +1,9 @@
-+++ 
-date = 2021-07-08
-title = "Helm alternative for multiple If-Else conditions"
-description = "Helm function alternative for multiple if-else conditions"
-slug = "" 
-tags = []
-categories = ["helm", "dict"]
-externalLink = ""
-series = []
-socialShare=true
-+++
+---
+title: "Helm Alternative for Multiple If-Else Conditions"
+date: 2021-07-08
+description: "Use Helm's dict function to replace verbose if-else blocks with cleaner, more maintainable template code."
+tags: ["Helm", "Kubernetes", "Templates"]
+---
 
 Recently I was in a situation where I ended up writing multiple if-else statements in the helm template. As a result, the code block wasn't clean, and I began to explore alternative ways to achieve the same behavior concisely.
 

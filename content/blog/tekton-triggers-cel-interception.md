@@ -1,14 +1,10 @@
-+++ 
-date = 2021-01-19
-title = "Tekton triggers and Interceptors"
-description = ""
-slug = "" 
-tags = ["tekton", "triggers", "cel"]
-categories = []
-externalLink = ""
-series = []
-socialShare=true
-+++
+---
+title: "Tekton Triggers and CEL Interceptors"
+date: 2021-01-19
+description: "Filter and modify incoming webhook events in Tekton using CEL Interceptors for advanced pipeline triggering logic."
+tags: ["Tekton", "CI/CD", "Kubernetes"]
+slug: "tekton-cel-interceptors"
+---
 
 Tekton [Triggers](https://tekton.dev/docs/triggers/) work by having EventListeners receive incoming webhook notifications, processing them using an Interceptor, and creating Kubernetes resources from templates if the interceptor allows it, with the extraction of fields from the body of the webhook
 

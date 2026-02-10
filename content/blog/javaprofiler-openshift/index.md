@@ -1,10 +1,10 @@
-+++
-title="Profiling an application in OpenShift container."
-date="2019-05-14"
-tags=["OpenShift", "Java", "YourKit-JavaProfiler"]
-slug="javaprofiler-OpenShift"
-socialShare=true
-+++
+---
+title: "Profiling a Java Application in OpenShift Container"
+date: 2019-05-14
+description: "Use YourKit Java Profiler to analyze memory allocation and performance of Java applications running in OpenShift containers."
+tags: ["OpenShift", "Java", "Profiling", "Performance"]
+slug: "javaprofiler-openshift"
+---
 
 Sometimes writing code that runs is not enough. We might want to know what goes on internally, such as memory allocation, consequences of using one coding approach over another, implications of concurrent executions, areas to improve performance, etc. We can use profilers for this.
 

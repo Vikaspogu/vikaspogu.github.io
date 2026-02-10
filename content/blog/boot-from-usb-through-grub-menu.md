@@ -1,14 +1,10 @@
-+++ 
-date = 2020-12-01
-title = "Boot from USB through grub menu"
-description = "Boot OS from grub menu"
-slug = "" 
-tags = ["boot", "grub"]
-categories = []
-externalLink = ""
-series = []
-socialShare=true
-+++
+---
+title: "Boot from USB Through GRUB Menu"
+date: 2020-12-01
+description: "Manually boot from a USB drive using GRUB command line when the boot menu doesn't detect your device."
+tags: ["Linux", "GRUB", "Boot"]
+slug: "grub-usb-boot"
+---
 
 First, make sure you have secure boot disabled from the firmware settings. Once you are in the grub command line, type `ls` to list all partitions
 

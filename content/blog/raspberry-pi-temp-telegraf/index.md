@@ -1,14 +1,10 @@
-+++ 
-date = 2020-01-01
-title = "Measure Raspberry Pi temperature using Telegraf, Influxdb, Grafana on k3s"
-description = "Measure Raspberry Pi temperature using Telegraf, Influxdb, Grafana on k3s."
-slug = "raspberry-pi-temp-telegraf" 
-tags = ["k3s","grafana","influxdb","telegraf"]
-categories = []
-externalLink = ""
-series = []
-socialShare=true
-+++
+---
+title: "Measure Raspberry Pi Temperature with Telegraf, InfluxDB, and Grafana on K3s"
+date: 2020-01-01
+description: "Monitor Raspberry Pi CPU temperatures using Telegraf for collection, InfluxDB for storage, and Grafana for visualization on K3s."
+tags: ["K3s", "Grafana", "InfluxDB", "Telegraf", "Raspberry Pi", "Home Lab"]
+slug: "raspberry-pi-temp-telegraf"
+---
 
 In my previous post, I went through the k3s cluster home setup. Now, I'll show how to measure the temperature of those Raspberry Pi's using Telegraf, Influxdb, Grafana, and Helm charts.
 

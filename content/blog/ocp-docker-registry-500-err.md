@@ -1,14 +1,10 @@
-+++ 
-date = 2019-12-18
-title = "Permission denied pushing to OpenShift Registry"
-description = "Permission denied on pushing build images into OpenShift internal registry"
-slug = "" 
-tags = ["OpenShift"]
-categories = []
-externalLink = ""
-series = []
-socialShare=true
-+++
+---
+title: "Permission Denied Pushing to OpenShift Registry"
+date: 2019-12-18
+description: "Troubleshoot permission denied errors when pushing container images to the OpenShift internal registry."
+tags: ["OpenShift", "Container Registry", "Troubleshooting"]
+slug: "openshift-registry-permission-denied"
+---
 
 Recently, I ran into an issue where pushing images to the docker registry after a build fails.
 

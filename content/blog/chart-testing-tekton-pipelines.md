@@ -1,8 +1,10 @@
-+++
-title = "Helm Chart Testing on OpenShift Pipelines"
-date = 2024-03-17T08:39:20-04:00
-draft = false
-+++
+---
+title: "Helm Chart Testing on OpenShift Pipelines"
+date: 2024-03-17
+description: "Automate Helm chart validation and testing using Chart Testing (ct) tool within OpenShift Pipelines (Tekton)."
+tags: ["Helm", "OpenShift", "Tekton", "CI/CD"]
+slug: "helm-chart-testing-tekton"
+---
 
 ## Introduction
 

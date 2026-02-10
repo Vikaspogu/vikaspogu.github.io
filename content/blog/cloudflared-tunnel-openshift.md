@@ -1,9 +1,9 @@
-+++
-title = 'Setting Up Cloudflared Tunnel on OpenShift'
-date = 2024-03-11T16:03:46-04:00
-draft = false
-tags = ["OpenShift", "Cloudflared"]
-+++
+---
+title: "Setting Up Cloudflared Tunnel on OpenShift"
+date: 2024-03-11
+description: "Securely expose OpenShift applications to the internet using Cloudflare Tunnel without revealing origin server IPs."
+tags: ["OpenShift", "Cloudflare", "Networking", "Security"]
+---
 
 ## Introduction
 

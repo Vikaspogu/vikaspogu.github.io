@@ -1,13 +1,10 @@
-+++ 
-date = 2019-12-16
-title = "Basic Authentication in Go with Gin"
-description = "Basic user authentication with gin web framework in Golang"
-tags = ["golang", "basic-auth","gin"]
-categories = []
-externalLink = ""
-series = []
-socialShare=true
-+++
+---
+title: "Basic Authentication in Go with Gin"
+date: 2019-12-16
+description: "Implement HTTP Basic Authentication in a Go web application using the Gin framework middleware."
+tags: ["Golang", "Gin", "Authentication"]
+slug: "golang-basic-auth-gin"
+---
 
 This short post looks at adding basic authentication to GoLang applications. Below example application uses the gin web framework.
 

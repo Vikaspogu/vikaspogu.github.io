@@ -1,8 +1,9 @@
 ---
-title: "PXE boot with Synology NAS"
-date: 2022-05-13T16:09:15-05:00
-tags: ["PXE", "NAS"]
-socialShare: true
+title: "PXE Boot with Synology NAS"
+date: 2022-05-13
+description: "Set up network PXE booting for RHEL installation using Synology NAS as TFTP and HTTP server with Kickstart automation."
+tags: ["PXE", "Synology", "RHEL", "Home Lab"]
+slug: "pxe-boot-synology-nas"
 ---
 
 In this post, I have documented the steps I followed to install RHEL 8 by booting from a PXE server over the network with a Kickstart file using Synology NAS as TFTP, and HTTP server.

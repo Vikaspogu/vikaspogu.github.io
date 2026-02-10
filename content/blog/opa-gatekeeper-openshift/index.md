@@ -1,14 +1,10 @@
-+++ 
-date = 2020-08-18
-title = "OPA Gatekeeper on OpenShift"
-description = "OpenShift policy management with OPA gatekeeper."
-slug = "OPA-gatekeeper-OpenShift" 
-tags = ["OpenShift", "OPA", "gatekeeper"]
-categories = []
-externalLink = ""
-series = []
-socialShare=true
-+++
+---
+title: "OPA Gatekeeper on OpenShift"
+date: 2020-08-18
+description: "Implement policy-as-code on OpenShift using OPA Gatekeeper to enforce governance and compliance with Rego policies."
+tags: ["OpenShift", "OPA", "Gatekeeper", "Policy"]
+slug: "opa-gatekeeper-openshift"
+---
 
 Every organization has policies. Some are essential to meet governance and legal requirements. Others help ensure adherence to best practices and institutional conventions. Attempting to ensure compliance manually would be error-prone and frustrating.
 

@@ -1,9 +1,11 @@
-+++
-title = 'Getting Started with Red Hat Developer Hub - Part 2'
-date = 2024-01-14T11:51:33-06:00
-draft = false
-tags=["Red Hat Developer Hub","Backstage","IDP"]
-+++
+---
+title: "Getting Started with Red Hat Developer Hub - Part 2"
+date: 2024-01-14
+description: "Create software templates in Red Hat Developer Hub to automate database provisioning with CloudNative-PG through GitOps workflows."
+tags: ["Developer Hub", "Backstage", "IDP", "Templates"]
+slug: "developer-hub-getting-started-part-2"
+series: ["Developer Hub"]
+---
 
 In this [continuation](https://vikaspogu.dev/blog/developer-hub-getting-started-part-1/) of our getting started with Developer Hub series, we're diving into the art of crafting templates. These templates will not only streamline your workflow but also serve as the cornerstone for automated deployments.
 

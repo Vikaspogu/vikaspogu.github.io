@@ -1,9 +1,10 @@
-+++
-title= "Authenticate a Node application with LDAP"
-date= "2019-05-15"
-tags= ["NodeJS", "LDAP"]
-socialShare=true
-+++
+---
+title: "Authenticate a Node.js Application with LDAP"
+date: 2019-05-15
+description: "Implement LDAP authentication in a Node.js Express application using basic-auth and ldapauth-fork packages."
+tags: ["Node.js", "LDAP", "Authentication"]
+slug: "nodejs-ldap-auth"
+---
 
 This post demonstrates how to authenticate a user against LDAP.
 

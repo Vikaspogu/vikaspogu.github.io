@@ -1,14 +1,10 @@
-+++ 
-date = 2021-01-19
-title = "Build multi-arch docker image using Tekton"
-description = "multi-arch builds in Tekton using docker buildx"
-slug = "" 
-tags = ["tekton", "multi-arch", "buildx"]
-categories = []
-externalLink = ""
-series = []
-socialShare=true
-+++
+---
+title: "Build Multi-Arch Docker Images Using Tekton"
+date: 2021-01-19
+description: "Create multi-architecture container images in Tekton pipelines using Docker Buildx with QEMU emulation."
+tags: ["Tekton", "Docker", "Buildx", "Multi-arch", "CI/CD"]
+slug: "tekton-multiarch-buildx"
+---
 
 There are three different strategies to build multi-platform images that Buildx and Dockerfiles support:
 

@@ -1,10 +1,12 @@
-+++
-title= "TektonCD on OpenShift"
-date= "2019-08-09"
-tags= ["OpenShift", "tektoncd"]
-slug="intro-tektoncd-ocp"
-socialShare=true
-+++
+---
+title: "TektonCD on OpenShift"
+date: 2019-08-09
+description: "Getting started with Tekton Pipelines on OpenShift - learn the basic concepts of Tasks, Pipelines, and PipelineRuns."
+tags: ["OpenShift", "Tekton", "CI/CD"]
+slug: "intro-tektoncd-ocp"
+---
+
+> **Note:** This post uses the deprecated `v1alpha1` API and `PipelineResources`. Modern Tekton uses `v1` API with Workspaces instead of PipelineResources. See the [Tekton documentation](https://tekton.dev/docs/) for current best practices.
 
 Recently I came across [tektoncd](https://tekton.dev/) project, **_The Tekton Pipelines project provides Kubernetes-style resources for declaring CI/CD-style pipelines_** caught my attention, and I started playing with it.
 

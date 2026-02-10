@@ -1,14 +1,10 @@
-+++ 
-date = 2020-11-12
-title = "End User Auth and Authz with OpenShift Service Mesh and Keycloak"
-description = "End User Authentication and Authorization with OpenShift Service Mesh and Keycloak"
-slug = "servicemesh-jwt-auth-authz-keycloack" 
-tags = ["istio", "service mesh", "keycloak", "jwt", "authentication", "authorization"]
-categories = []
-externalLink = ""
-series = []
-socialShare=true
-+++
+---
+title: "End User Auth with OpenShift Service Mesh and Keycloak"
+date: 2020-11-12
+description: "Configure JWT-based authentication and authorization in OpenShift Service Mesh (Istio) with Keycloak as the identity provider."
+tags: ["Istio", "Service Mesh", "Keycloak", "JWT", "OpenShift"]
+slug: "servicemesh-jwt-keycloak"
+---
 
 In this article, I will share the setup for enabling Authentication and Authorization in OpenShift Service Mesh with Keycloak.
 

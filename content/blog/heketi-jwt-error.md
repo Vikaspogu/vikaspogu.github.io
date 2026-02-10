@@ -1,9 +1,11 @@
-+++
-title= "Heketi JWT token expired error"
-date= "2019-07-16"
-tags= ["Heketi", "Gluster"]
-socialShare=true
-+++
+---
+title: "Heketi JWT token expired error"
+date: 2019-07-16
+description: "Troubleshooting JWT token expiration errors in Heketi on OpenShift by synchronizing NTP clocks."
+tags: ["Heketi", "Gluster"]
+---
+
+> **Note:** This post is archived. Heketi and GlusterFS have been deprecated in favor of modern storage solutions like Rook-Ceph, OpenEBS, or cloud-native storage providers.
 
 Recently I encountered a `JWT token expired` error on the heketi pod in the OpenShift cluster.
 

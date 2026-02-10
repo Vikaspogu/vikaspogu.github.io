@@ -1,9 +1,10 @@
-+++
-title= "Deleting an OpenShift project stuck in terminating state"
-date= "2019-05-15"
-tags= ["OpenShift"]
-socialShare=true
-+++
+---
+title: "Deleting an OpenShift Project Stuck in Terminating State"
+date: 2019-05-15
+description: "Fix OpenShift namespaces stuck in terminating state by removing finalizers from the project specification."
+tags: ["OpenShift", "Kubernetes", "Troubleshooting"]
+slug: "openshift-project-terminating"
+---
 
 Recently I faced an issue where one of my projects got stuck in a terminating state for days. The workaround below fixed the problem.
 

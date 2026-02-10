@@ -1,14 +1,10 @@
-+++ 
-date = 2020-10-08
-title = "Helm join strings in a named template"
-description = "How to join strings in a named template"
-slug = "" 
-tags = []
-categories = ["helm"]
-externalLink = ""
-series = []
-socialShare=true
-+++
+---
+title: "Helm Join Strings in a Named Template"
+date: 2020-10-08
+description: "Use Helm's join function in named templates to dynamically construct ServiceAccount names and other string values."
+tags: ["Helm", "Kubernetes", "Templates"]
+slug: "helm-join-strings"
+---
 
 The key benefit of Helm is that it helps reduce the configuration a user needs to provide to deploy applications to Kubernetes. With Helm, we can have a single chart that can deploy all the microservices.
 

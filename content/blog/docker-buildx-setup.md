@@ -1,14 +1,10 @@
-+++ 
-date = 2020-12-05
-title = "Setting up docker buildx on Linux"
-description = "Docker buildx setup on linux"
-slug = "" 
-tags = ["docker","buildx","linux"]
-categories = []
-externalLink = ""
-series = []
-socialShare=true
-+++
+---
+title: "Setting Up Docker Buildx on Linux"
+date: 2020-12-05
+description: "Configure Docker Buildx for multi-architecture container builds on Linux, including ARM64 cross-compilation."
+tags: ["Docker", "Buildx", "Linux", "Multi-arch"]
+slug: "docker-buildx-setup"
+---
 
 ## Docker buildx on Linux
 

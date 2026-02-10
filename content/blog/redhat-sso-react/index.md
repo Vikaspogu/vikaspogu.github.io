@@ -1,12 +1,14 @@
-+++
-title= "React App with RedHat SSO or keycloak"
-date= "2019-07-25"
-tags= ["RedHat SSO", "React", "keycloak"]
-slug="redhat-sso-react"
-socialShare=true
-+++
+---
+title: "React App with Red Hat SSO or Keycloak"
+date: 2019-07-25
+description: "Secure a React application using Red Hat SSO (Keycloak) with OpenID Connect authentication."
+tags: ["Keycloak", "React", "Authentication"]
+slug: "redhat-sso-react"
+---
 
-This post will show you how to secure a React app using RedHat SSO (upstream Keycloak). In this case, `OpenID-connect` is my identity provider.
+> **Note:** This post uses React class components. Modern React applications should use functional components with hooks. Consider using [@react-keycloak/web](https://www.npmjs.com/package/@react-keycloak/web) for a hooks-based approach.
+
+This post will show you how to secure a React app using Red Hat SSO (upstream Keycloak). In this case, `OpenID-connect` is my identity provider.
 
 ![sso_setup](sso-openid.png)
 

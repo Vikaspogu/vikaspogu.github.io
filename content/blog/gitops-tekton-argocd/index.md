@@ -1,14 +1,10 @@
-+++ 
-date = 2021-01-14
-title = "GitOps with Tekton and ArgoCD"
-description = "build and release pipeline with Tekton, ArgoCD using GitOps principals."
-slug = "tekton-argocd-gitops" 
-tags = ["argocd", "tekton", "gitops", "OpenShift-pipelines"]
-categories = []
-externalLink = ""
-series = []
-socialShare=true
-+++
+---
+title: "GitOps with Tekton and ArgoCD"
+date: 2021-01-14
+description: "Build a complete GitOps pipeline using Tekton for CI and ArgoCD for CD on OpenShift, with GitHub webhook integration."
+tags: ["ArgoCD", "Tekton", "GitOps", "OpenShift"]
+slug: "tekton-argocd-gitops"
+---
 
 In this post, I will:
 

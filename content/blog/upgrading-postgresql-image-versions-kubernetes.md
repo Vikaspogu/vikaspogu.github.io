@@ -1,10 +1,9 @@
 ---
 title: "Upgrading PostgreSQL in Kubernetes"
-date: "2023-01-21"
-comments: false
-tags:
-    - postgresql
-    - upgrade
+date: 2023-01-21
+description: "Migrate PostgreSQL data from version 12 to 15 in Kubernetes using pg_dump and pg_restore with Bitnami containers."
+tags: ["PostgreSQL", "Kubernetes", "Database", "Migration"]
+slug: "postgresql-upgrade-kubernetes"
 ---
 
 I have been running an instance of bitnami's version of Postgresql 12 for a while, and I have recently upgraded/migrated data from version 12 to 15.

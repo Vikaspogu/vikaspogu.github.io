@@ -1,9 +1,10 @@
-+++
-title="Create and add NFS storage to RHV"
-date="2019-11-02"
-tags=["RHV", "NFS"]
-socialShare=true
-+++
+---
+title: "Create and Add NFS Storage to RHV"
+date: 2019-11-02
+description: "Configure NFS storage domains on Red Hat Virtualization using a RHEL server with proper exports and firewall rules."
+tags: ["RHV", "NFS", "Storage", "Linux"]
+slug: "nfs-storage-rhv"
+---
 
 Set up NFS shares that will serve as storage domains on a Red Hat Enterprise Linux server.
 

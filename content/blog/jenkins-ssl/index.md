@@ -1,14 +1,10 @@
-+++ 
-date = 2020-02-10
-title = "Jenkins OpenShift OAuth SSL"
-description = "Add SSL certificates for OpenShift Jenkins Authentication using OpenShift OAuth plugin."
-slug = "OpenShift-Jenkins-OAuth-SSL" 
-tags = ["OpenShift", "Jenkins", "SSL"]
-categories = []
-externalLink = ""
-series = []
-socialShare=true
-+++
+---
+title: "Jenkins OpenShift OAuth SSL"
+date: 2020-02-10
+description: "Configure SSL certificates for Jenkins authentication using the OpenShift OAuth plugin with trusted CA bundles."
+tags: ["OpenShift", "Jenkins", "SSL", "OAuth"]
+slug: "openshift-jenkins-oauth-ssl"
+---
 
 ## Jenkins SSL
 

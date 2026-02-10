@@ -1,9 +1,10 @@
-+++
-title = "Helm Multi-Values Plugin with Argo's CMP"
-date = 2024-04-23T14:55:24-05:00
-draft = false
-tags = ["ArgoCD", "Config Management Plugin", "Helm", "Multi Values"]
-+++
+---
+title: "Helm Multi-Values Plugin with ArgoCD's CMP"
+date: 2024-04-23
+description: "Merge multiple Helm values files in ArgoCD using a custom Config Management Plugin with the helm-multivalues plugin."
+tags: ["ArgoCD", "Helm", "GitOps", "Kubernetes"]
+slug: "argocd-helm-multivalues-cmp"
+---
 
 ## Introduction
 

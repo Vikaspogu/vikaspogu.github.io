@@ -1,14 +1,10 @@
-+++ 
-date = 2020-07-04
-title = "Slack bot with Nodejs"
-description = "Building a slack bot using bolt library in NodeJS"
-slug = "nodejs-slack-bot" 
-tags = ["slack-bot", "NodeJS"]
-categories = []
-externalLink = ""
-series = []
-socialShare=true
-+++
+---
+title: "Slack Bot with Node.js"
+date: 2020-07-04
+description: "Build a Slack bot using the Bolt framework in Node.js with slash commands and interactive messages."
+tags: ["Slack", "Node.js", "Automation"]
+slug: "nodejs-slack-bot"
+---
 
 Build your slack bot in a few steps. In this post, we'll navigate the process of creating the bot.
 

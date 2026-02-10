@@ -1,14 +1,9 @@
-+++ 
-date = 2020-07-06
-title = "OpenShift Jenkins configuration via JCasC plugin"
-description = "Configuring OpenShift jenkins via jenkins configuration as code plugin"
-slug = "" 
-tags = ["jenkins","OpenShift","jcasc"]
-categories = []
-externalLink = ""
-series = []
-socialShare=true
-+++
+---
+title: "OpenShift Jenkins Configuration via JCasC Plugin"
+date: 2020-07-06
+description: "Configure Jenkins on OpenShift using the Jenkins Configuration as Code (JCasC) plugin for automated setup of credentials, shared libraries, and pipelines."
+tags: ["Jenkins", "OpenShift", "JCasC", "CI/CD"]
+---
 
 Deploying Jenkins on Kubernetes provides significant benefits over a standard VM-based deployment. For example, we are gaining the ability to have project-specific Jenkins slaves (agents) on demand instead of having a pool of VMs idle waiting for a job.
 

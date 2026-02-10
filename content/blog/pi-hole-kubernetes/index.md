@@ -1,14 +1,10 @@
-+++ 
-date = 2020-03-07
-title = "Pi Hole on k3s cluster"
-description = "Deploying Pi-Hole on k3s cluster."
-slug = "pi-hole-Kubernetes" 
-tags = ["pi-hole","k3s"]
-categories = []
-externalLink = ""
-series = []
-socialShare=true
-+++
+---
+title: "Pi-hole on K3s Cluster"
+date: 2020-03-07
+description: "Deploy Pi-hole network-wide ad blocker on a K3s Kubernetes cluster using Helm charts."
+tags: ["Pi-hole", "K3s", "Kubernetes", "Home Lab"]
+slug: "pi-hole-kubernetes"
+---
 
 [Pi-hole](https://pi-hole.net/) is a fantastic tool that blocks DNS requests to ad servers. That means you can surf the web without looking at ads on every page.
 

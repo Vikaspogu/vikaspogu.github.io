@@ -1,14 +1,10 @@
-+++ 
-date = 2020-07-05
-title = "Raspberry Pi garage opener on k3s cluster"
-description = "Raspberry Pi Garage door opener on Kubernetes cluster using NodeJS"
-slug = "" 
-tags = ["raspberry-pi","garage-door","Kubernetes","docker", "NodeJS"]
-categories = []
-externalLink = ""
-series = []
-socialShare=true
-+++
+---
+title: "Raspberry Pi Garage Opener on K3s Cluster"
+date: 2020-07-05
+description: "Build a DIY smart garage door opener with Raspberry Pi GPIO, Node.js, and deploy it on a K3s Kubernetes cluster."
+tags: ["Raspberry Pi", "K3s", "Kubernetes", "Home Lab", "IoT"]
+slug: "raspberry-pi-garage-k3s"
+---
 
 Many articles are out there which demonstrate how to use a raspberry pi as a DIY garage door opener project. Few are outdated and not deployed using container images. I found a few reasonable solutions on google, but I couldn't run them on the Kubernetes cluster due to older packages or insufficient information. I decided to build my solution from different sources of information I found
 

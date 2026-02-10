@@ -1,9 +1,9 @@
 ---
-title: "Forward Openshift Audit Logs to Splunk using Newrelic Fluent Bit"
-date: "2023-01-11T12:52:13-06:00"
-comments: false
-socialShare: true
-toc: false
+title: "Forward OpenShift Audit Logs to Splunk Using NewRelic Fluent Bit"
+date: 2023-01-11
+description: "Configure NewRelic Fluent Bit to send container logs to NewRelic and audit logs to Splunk from the same OpenShift cluster."
+tags: ["OpenShift", "Fluent Bit", "Splunk", "NewRelic", "Logging"]
+slug: "openshift-audit-logs-splunk-newrelic"
 ---
 
 It is common for organizations to send logs to multiple systems—for example, container logs to NewRelic, and audit logs to Splunk for the InfoSec team. 

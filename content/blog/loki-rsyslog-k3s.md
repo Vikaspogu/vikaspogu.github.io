@@ -1,14 +1,10 @@
-+++ 
-date = 2020-11-04
-title = "Syslog with Loki Promtail"
-description = "Setup rsyslog in k3s with promtail chart"
-slug = "" 
-tags = ["loki", "rsyslog"]
-categories = []
-externalLink = ""
-series = []
-socialShare=true
-+++
+---
+title: "Syslog with Loki Promtail"
+date: 2020-11-04
+description: "Configure rsyslog to forward system logs to Loki via Promtail on K3s for centralized log aggregation."
+tags: ["Loki", "Promtail", "K3s", "Logging"]
+slug: "loki-rsyslog-k3s"
+---
 
 Enable Syslog, do this on each host, and replace `target` IP (and maybe `port`) with your Syslog `externalIP` that is in helm values for [promtail](https://github.com/grafana/loki/tree/master/production/helm/promtail)
 

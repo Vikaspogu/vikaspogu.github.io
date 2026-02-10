@@ -1,14 +1,10 @@
-+++ 
-date = 2020-08-19
-title = "AdGuard on Kubernetes"
-description = "Deploying AdGuard home on Kubernetes"
-slug = "" 
-tags = ["AdGuard", "Kubernetes", "ad-blocker"]
-categories = []
-externalLink = ""
-series = []
-socialShare=true
-+++
+---
+title: "AdGuard Home on Kubernetes"
+date: 2020-08-19
+description: "Deploy AdGuard Home network-wide ad blocker on Kubernetes using Helm charts for DNS-level filtering."
+tags: ["AdGuard", "Kubernetes", "Home Lab", "DNS"]
+slug: "adguard-kubernetes"
+---
 
 ## AdGuard
 

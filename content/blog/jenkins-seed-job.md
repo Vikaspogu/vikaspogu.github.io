@@ -1,14 +1,10 @@
-+++ 
-date = 2020-08-18
-title = "Configure Jenkins pipeline job"
-description = "Configure bitbucket pipeline job using Jenkins config as code"
-slug = "" 
-tags = ["Jenkins", "configuration-as-code-plugin", "pipeline-job"]
-categories = []
-externalLink = ""
-series = []
-socialShare=true
-+++
+---
+title: "Configure Jenkins Pipeline Job with JCasC"
+date: 2020-08-18
+description: "Define declarative pipeline jobs from Bitbucket repositories using Jenkins Configuration as Code plugin."
+tags: ["Jenkins", "JCasC", "CI/CD", "Pipeline"]
+slug: "jenkins-pipeline-jcasc"
+---
 
 In one of my previous posts, I discussed configuring multibranch pipeline seed jobs using Jenkins configuration as code [plugin](https://github.com/jenkinsci/configuration-as-code-plugin)
 

@@ -1,13 +1,9 @@
 ---
-title: " A Seamless Upgrade: Cloud-Native PostgreSQL Database Version 15 to 16"
-date: "2024-01-12T12:11:03-06:00"
-draft: false
-comments: false
-socialShare: true
-toc: false
-tags:
-  - postgresql
-  - cloudnative-pg
+title: "Upgrading CloudNative-PG: PostgreSQL 15 to 16"
+date: 2024-01-12
+description: "Perform a zero-downtime PostgreSQL major version upgrade using CloudNative-PG's bootstrap import feature with backup and recovery."
+tags: ["PostgreSQL", "CloudNative-PG", "Kubernetes", "Database"]
+slug: "cloudnative-pg-upgrade"
 ---
 
 ## Introduction

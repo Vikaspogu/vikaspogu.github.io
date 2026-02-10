@@ -49,6 +49,9 @@ params:
   blog:
     list:
       displayTags: true
+      displayReadingTime: true
+  page:
+    displayReadingTime: true
   toc:
     displayTags: true
   highlight:

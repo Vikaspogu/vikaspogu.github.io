@@ -1,14 +1,10 @@
-+++ 
-date = 2020-07-07
-title = "Jenkins pipeline date helper functions"
-description = "Jenkins pipeline function to get days between dates"
-slug = "" 
-tags = ["Jenkins","groovy","date"]
-categories = []
-externalLink = ""
-series = []
-socialShare=true
-+++
+---
+title: "Jenkins Pipeline Date Helper Functions"
+date: 2020-07-07
+description: "Calculate the difference between dates in Jenkins pipelines using Groovy with @NonCPS annotation for non-serializable objects."
+tags: ["Jenkins", "Groovy", "CI/CD"]
+slug: "jenkins-date-helper"
+---
 
 The below snippet shows how to calculate days between two dates in the Jenkins pipeline. `@NonCPS` annotation is functional when you have methods that use objects that aren't `serializable`.
 

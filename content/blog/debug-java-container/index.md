@@ -1,10 +1,10 @@
-+++
-title="Debugging a Java application in OpenShift."
-date= 2019-05-14
-tags=["OpenShift", "Java"]
-slug="debug-java-container"
-socialShare=true
-+++
+---
+title: "Debugging a Java Application in OpenShift"
+date: 2019-05-14
+description: "Enable remote debugging for Java applications running in OpenShift containers using JVM debug options and port forwarding."
+tags: ["OpenShift", "Java", "Debugging"]
+slug: "debug-java-container"
+---
 
 This post will discuss debugging a JAVA application running inside a container.
 

@@ -1,10 +1,10 @@
-+++
-title= "Spring Boot metrics with Prometheus and Grafana in OpenShift"
-date= "2019-05-15"
-tags= ["OpenShift", "Spring Boot", "Prometheus", "Grafana"]
-slug="springboot-metrics-grafana"
-socialShare=true
-+++
+---
+title: "Spring Boot Metrics with Prometheus and Grafana in OpenShift"
+date: 2019-05-15
+description: "Monitor Spring Boot application metrics using Prometheus for collection and Grafana for visualization on OpenShift."
+tags: ["OpenShift", "Spring Boot", "Prometheus", "Grafana", "Observability"]
+slug: "springboot-metrics-grafana"
+---
 
 ## Spring Boot Metrics
 

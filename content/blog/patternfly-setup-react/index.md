@@ -1,12 +1,14 @@
-+++
-title= "Patternfly setup in React Application"
-date= "2019-07-01"
-tags= ["Patternfly", "ReactJS"]
-slug="patternfly-setup-react"
-socialShare=true
-+++
+---
+title: "PatternFly Setup in React Application"
+date: 2019-07-01
+description: "How to integrate the PatternFly design system into a React application with components and styling."
+tags: ["PatternFly", "React", "UI"]
+slug: "patternfly-setup-react"
+---
 
-To order to integrate [Patternfly](https://www.patternfly.org/v4/) framework into a ReactJS application, create a new project or use an existing one
+> **Note:** This post references PatternFly v4. PatternFly is now at v5+ with significant API changes. See the [PatternFly documentation](https://www.patternfly.org/) for current installation and usage guides.
+
+To integrate [PatternFly](https://www.patternfly.org/) framework into a React application, create a new project or use an existing one
 
 ```bash
 npx create-react-app patternfly-setup-react

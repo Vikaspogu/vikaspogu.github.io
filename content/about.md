@@ -3,64 +3,50 @@ title: About
 type: about
 ---
 
-## 👋 Hello, I'm Vikas Pogu
+## Hello, I'm Vikas Pogu
 
-I'm a passionate technologist with over 13 years of experience in software development and enterprise architecture. Currently serving as a Consulting Architect at Red Hat, I help enterprise organizations modernize their infrastructure and embrace cloud-native technologies.
+I'm a passionate technologist with over 13 years of experience in software development and enterprise architecture. Currently serving as a Senior Engineer at NVIDIA, working on Infrastructure and DevOps in Omniverse.
 
-## 💼 Professional Journey
+## Professional Journey
 
-My career spans diverse technology landscapes, from traditional enterprise applications to modern cloud-native solutions. At Red Hat, I specialize in:
+My career spans diverse technology landscapes, from traditional enterprise applications to cutting-edge cloud-native platforms. At NVIDIA, I focus on:
 
-- **Platform Engineering**: OpenShift, Kubernetes, and container orchestration
-- **Automation & DevOps**: Ansible, CI/CD pipelines, and infrastructure as code  
-- **Application Modernization**: Helping organizations transition to microservices and cloud-native architectures
-- **Developer Experience**: Streamlining development workflows and tooling
+- **Infrastructure Engineering**: Building and scaling systems that power Omniverse
+- **Platform Engineering**: Kubernetes, container orchestration, and developer platforms
+- **Automation & DevOps**: CI/CD pipelines, GitOps workflows, and infrastructure as code
+- **Developer Experience**: Creating tools and workflows that accelerate engineering velocity
 
-## 🛠 Technical Expertise
+## Technical Expertise
 
-### **Programming Languages**
-- **Java** - Advanced proficiency with enterprise frameworks
-- **Golang** - Intermediate to advanced, focusing on cloud-native applications
-- **JavaScript** - Modern web development and Node.js
+### Languages & Frameworks
+- **Golang** - Cloud-native applications, CLI tools, and Kubernetes operators
+- **Python** - Automation, scripting, and infrastructure tooling
+- **Java** - Enterprise applications and microservices
 
-### **Cloud & Infrastructure**
-- **Container Platforms**: OpenShift, Kubernetes, Docker
-- **Public Cloud**: AWS, Microsoft Azure
-- **Infrastructure as Code**: Ansible, Terraform
+### Cloud & Infrastructure
+- **Container Platforms**: Kubernetes, OpenShift, Docker
+- **Public Cloud**: AWS, Azure, GCP
+- **Infrastructure as Code**: Terraform, Pulumi, Ansible
 
-### **DevOps & Automation**
-- **GitOps**: FluxCD, ArgoCD for continuous delivery
-- **CI/CD**: TektonCD, Jenkins, GitHub Actions
-- **Package Management**: Helm, Operator Framework
-- **Monitoring**: Prometheus, Grafana, logging stacks
+### DevOps & Automation
+- **GitOps**: ArgoCD, FluxCD for declarative deployments
+- **CI/CD**: GitHub Actions, Tekton, Jenkins
+- **Observability**: Prometheus, Grafana, Loki, OpenTelemetry
+- **Package Management**: Helm, Kustomize, Operator Framework
 
-### **Data & Integration**
-- **Databases**: PostgreSQL, MySQL, MongoDB, Redis
-- **Messaging**: Apache Kafka, RabbitMQ
-- **API Development**: REST, GraphQL, gRPC
+### Data & Integration
+- **Databases**: PostgreSQL, Redis, MongoDB
+- **Messaging**: Apache Kafka, NATS
+- **APIs**: REST, gRPC, GraphQL
 
-## 🏠 Home Lab Adventures
+## Home Lab
 
-When I'm not architecting enterprise solutions, you'll find me experimenting in my home lab. This personal playground allows me to:
+When I'm not building infrastructure at scale, you'll find me tinkering in my home lab—a playground for testing new technologies, self-hosting services, and experimenting with ideas before they hit production.
 
-- Test cutting-edge technologies before they hit production
-- Run self-hosted services and applications
-- Experiment with IoT devices and home automation
-- Document learnings that often translate to professional insights
+## This Blog
 
-My home lab serves as both a testing ground for new concepts and a source of practical content for this blog.
-
-## 📝 Why This Blog?
-
-This space chronicles my journey through both enterprise and personal technology projects. Whether you're looking to:
-
-- **Learn** about enterprise cloud technologies
-- **Implement** DevOps practices in your organization  
-- **Explore** home lab setups and self-hosting
-- **Stay updated** on cloud-native trends
-
-You'll find practical insights, tutorials, and real-world experiences shared here.
+This space documents my journey through both enterprise and personal projects. You'll find practical tutorials, battle-tested patterns, and lessons learned from real-world implementations. Whether you're scaling Kubernetes clusters, setting up GitOps workflows, or building your first home lab, I hope these posts help you on your journey.
 
 ---
 
-*Ready to dive in? Check out my latest posts or connect with me to discuss your technology challenges.*
+Connect with me on [GitHub](https://github.com/vikaspogu) or [LinkedIn](https://www.linkedin.com/in/vikaspogu/).

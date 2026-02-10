@@ -1,13 +1,9 @@
 ---
 title: "SOPS Ansible Execution Image"
-date: "2023-04-29T20:01:54-05:00"
-comments: false
-socialShare: true
-toc: false
-tags:
-  - ansible
-  - sops
-  - custom execution image
+date: 2023-04-29
+description: "Build a custom Ansible Execution Environment container image with SOPS integration for encrypted secrets management."
+tags: ["Ansible", "SOPS", "Secrets", "Automation"]
+slug: "ansible-sops-execution-env"
 ---
 
 ## Introduction

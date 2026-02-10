@@ -1,19 +1,31 @@
-+++
-title = 'Getting Started with Red Hat Developer Hub - Part 1'
-date = 2024-01-13T11:51:33-06:00
-draft = false
-tags=["Red Hat Developer Hub","Backstage","IDP"]
-+++
+---
+title: "Getting Started with Red Hat Developer Hub - Part 1"
+date: 2024-01-13
+description: "Deploy Red Hat Developer Hub (Backstage) on OpenShift with Helm, configure plugins for GitHub, ArgoCD, and Open Cluster Management."
+tags: ["Developer Hub", "Backstage", "IDP", "OpenShift"]
+slug: "developer-hub-getting-started-part-1"
+series: ["Developer Hub"]
+---
 
-## Introduction
+## Why I Wanted an Internal Developer Portal
 
-Red Hat Developer Hub is based on Spotify's open-sourced [backstage](https://backstage.io/docs/overview/what-is-backstage) project. Backstage is an open-source developer portal and a platform for building developer experiences. It's designed to centralize and streamline various aspects of the software development life cycle, providing a unified platform for developers, product managers, and other stakeholders. Here are some key features and advantages of Spotify Backstage: Unified Platform, Service Catalog, Documentation Hub, Plugin Architecture and more.
+Every platform team eventually faces the same question: how do developers discover what's available? We had ArgoCD for deployments, Open Cluster Management for multi-cluster visibility, and GitHub for code—but no single place to see it all.
 
-Today, I'm excited to share my learnings on the journey of getting started with the Red Hat Developer Hub. Join me as we explore the how to deploy it using Helm chart, enabling diverse plugins, and configuring integrations with GitHub, ArgoCD, Open Cluster Management. To add a cherry on top, we'll create a software template that opens a GitHub pull request to provision a database cluster using [CloudNative-PG](https://cloudnative-pg.io/).
+I'd heard about Backstage for years but never had time to evaluate it. When Red Hat released Developer Hub (their supported Backstage distribution), I decided to try building a self-service portal where developers could provision databases without filing tickets.
 
-## Installation
+This post covers what I learned deploying it—including the configuration gotchas that aren't obvious from the docs.
 
-Deploying the Red Hat Developer Hub is a breeze, and Helm charts make it a cinch. First, add the helm chart repo for the developer hub. Then, we'll download the values yaml since we need to update a few values accordingly.
+## Choosing Red Hat Developer Hub Over Vanilla Backstage
+
+**Why not just run Backstage directly?**
+
+I tried. Backstage requires you to build and maintain your own container image with plugins baked in. Every plugin update means rebuilding. For a team with time to invest, this is fine. For a quick evaluation, it's friction.
+
+Developer Hub ships pre-built with dynamic plugins—you enable them via config, not code. The tradeoff is less flexibility, but I wanted to validate the concept before committing to custom development.
+
+## Installation: What the Docs Don't Emphasize
+
+The Helm install itself is straightforward:
 
 ```bash
 helm repo add openshift-helm-charts https://charts.openshift.io/
@@ -57,22 +69,24 @@ NAME            HOST/PORT                                         PATH   SERVICE
 developer-hub   developer-hub-developer-hub.apps.example.com   /      developer-hub   http-backend   edge/Redirect   None
 ```
 
-Voila, you have successfully deployed the developer hub!
+At this point you have a running Developer Hub—but it's useless. It's an empty portal with no integrations. The real work starts now.
 
-## Plugins
+## The Plugin Problem I Didn't Anticipate
 
-Red Hat Developer Hub's power lies in its extensibility through plugins. Let's delve into enabling some key [plugins](https://backstage.io/docs/plugins/)
+Backstage's value comes from plugins. Developer Hub ships with many pre-installed but disabled. My goal was to integrate:
 
-In this post, I'll we will cover how to integrate below plugins
+- **GitHub** for authentication (so developers use their existing credentials)
+- **Kubernetes** plugin to show workloads
+- **Open Cluster Management** to display all managed clusters
+- **ArgoCD** to show deployment sync status
 
-- Kubernetes
-- GitHub for authentication
-- Open Cluster management to show cluster details
-- ArgoCD for Sync status
+**What I learned:** Enabling plugins is easy. Configuring them to actually work together is where you'll spend your time. Each plugin needs its own authentication, and the documentation assumes you're doing one at a time.
 
-### Enable plugins
+### Enable Plugins
 
-Developer Hub images are pre-packaged with some dynamic [plugins](https://access.redhat.com/documentation/en-us/red_hat_developer_hub/1.0/html/administration_guide_for_red_hat_developer_hub/rhdh-installing-dynamic-plugins#rhdh-supported-plugins). Most of these plugins are disabled by default since they must be configured. To enable plugins, add a package, set the disabled to false in the Helm Chart values under the dynamic plugins section
+Developer Hub images come with [dynamic plugins](https://access.redhat.com/documentation/en-us/red_hat_developer_hub/1.0/html/administration_guide_for_red_hat_developer_hub/rhdh-installing-dynamic-plugins#rhdh-supported-plugins) pre-installed but disabled. Enable them in your Helm values:
+
+> **Gotcha:** The `package` paths must match exactly what's in the image. These paths change between versions. If you upgrade Developer Hub and plugins stop working, check if the paths changed.
 
 ```yaml {linenos=table,hl_lines="11-33"}
 global:
@@ -408,10 +422,14 @@ helm upgrade --install developer-hub developer-hub/developer-hub -f values.yaml
 
 ![Alt text](argocd.png "ArgoCD")
 
-## Conclusion
+## What I Learned Setting This Up
 
-🛠️ That's a Wrap for Part 1! Stay Tuned for Part 2
+**Time investment:** The initial deployment took 30 minutes. Getting all four integrations working took two days. Most of that was understanding how secrets flow between the Helm values, ConfigMaps, and the actual Backstage config.
 
-In Part 1, we've navigated through installation, enabled plugins, configured the integration, and set the stage for a seamless developer experience.
+**The biggest gotcha:** Every integration needs its own service account or token, and they all have different permission requirements. The Kubernetes plugin needs cluster-wide read access. The ArgoCD plugin needs a token with specific RBAC. Plan for this before you start.
 
-In our upcoming [Part 2](https://vikaspogu.dev/blog/developer-hub-getting-started-part-2/), we'll dive into the magic of software template creation.
+**Is it worth it?** For a home lab exploration, absolutely—I learned a lot about how Backstage works. For production, you need to budget significant time for ongoing maintenance. Plugins break across Backstage upgrades, and the ecosystem moves fast.
+
+## What's Next
+
+In [Part 2](https://vikaspogu.dev/blog/developer-hub-getting-started-part-2/), I'll cover the part that actually delivers value to developers: software templates. We'll build a self-service workflow where developers can provision a CloudNative-PG database cluster by filling out a form—no tickets, no waiting.

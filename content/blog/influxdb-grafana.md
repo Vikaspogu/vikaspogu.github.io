@@ -1,10 +1,9 @@
 ---
-title: "Configure Influxdb with Grafana"
-date: "2022-08-08T15:32:00-05:00"
-comments: false
-socialShare: true
-toc: false
-tags: ["influxdb", "grafana"]
+title: "Configure InfluxDB with Grafana"
+date: 2022-08-08
+description: "Troubleshoot InfluxDB authentication and database connection issues when integrating with Grafana for metrics visualization."
+tags: ["InfluxDB", "Grafana", "Observability", "Home Lab"]
+slug: "influxdb-grafana-config"
 ---
 
 I recently started using proxmox and was planning on monitoring metrics using InfluxDB and Grafana, which I have already deployed on my Kubernetes cluster. However, during that process, I encountered two issues:

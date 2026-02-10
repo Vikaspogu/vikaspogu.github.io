@@ -1,14 +1,10 @@
-+++ 
-date = 2019-12-31
-title = "k3s cluster with Raspberry-Pi, Traefik"
-description = "Walk through on setting up K3S cluster on raspberry pi and traefik ingress with cloudfare."
-slug = "Kubernetes-home-cluster-traefik" 
-tags = ["k3s","traefik","raspberry-pi"]
-categories = []
-externalLink = ""
-series = []
-socialShare=true
-+++
+---
+title: "K3s Cluster with Raspberry Pi and Traefik"
+date: 2019-12-31
+description: "Build a home Kubernetes cluster using K3s on Raspberry Pi with Traefik ingress controller and Cloudflare DNS integration."
+tags: ["K3s", "Traefik", "Raspberry Pi", "Home Lab", "Kubernetes"]
+slug: "k3s-raspberry-pi-traefik"
+---
 
 In this post, I’ll share my home lab setup for [Rancher's k3s](https://k3s.io/) Kubernetes cluster.
 
